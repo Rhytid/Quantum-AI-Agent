@@ -18,7 +18,7 @@ I'm doing advanced math. Always:
 - Never write absolute paths (`C:\Users\...`, `/Users/...`) into scripts, notes or LaTeX. Scripts locate
   `tools/` relative to their own file: `sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tools"))`.
 - Commands here say `python`; on macOS/Linux use `python3` if `python` isn't found.
-- Setup on a new computer: see `SETUP.md`, then run `python tools/check_setup.py`.
+- Setup on a new computer: see `README.md` (beginner guide), or run `/first-time-setup`.
 
 ## Citation format
 `[<paper-key>, Thm 3.2, p. 14]`. Paper keys are the PDF file names without extension.
@@ -51,5 +51,6 @@ I'm doing advanced math. Always:
 - `/ingest-papers` — extract text from new PDFs and update `papers/INDEX.md`.
 - `/quantum <statement>` — quantum pipeline: `quantum-prover` → `quantum-computer` →
   `proof-checker` → `latex-translator`.
+- `/first-time-setup` — finish setup on a new computer (packages + checks), explained in plain language.
 - `/to-latex <note>` — translate a note to LaTeX via `latex-translator` (math unchanged).
 - `paper-reader` agent — finds and quotes exact statements from the papers.

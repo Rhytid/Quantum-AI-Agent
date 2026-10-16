@@ -5,7 +5,7 @@ Usage:
     python tools/make_package.py --no-papers   # leave out PDFs and extracted paper text
 
 Writes dist/ClaudeMath-<date>.zip. Leaves out caches, virtual envs, LaTeX build files,
-Lean build output, and earlier packages. Unpack it anywhere and follow SETUP.md.
+Lean build output, and earlier packages. Unpack it anywhere and follow README.md.
 """
 from __future__ import annotations
 
