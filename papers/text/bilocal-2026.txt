@@ -1,0 +1,1072 @@
+=== page 1 ===
+VIOLATION OF QUANTUM BILOCAL INEQUALITIES ON
+MUTUALLY-COMMUTING VON NEUMANN ALGEBRA MODELS
+BINGKE ZHENG, SHUYUAN YANG∗, JINCHUAN HOU∗, KAN HE∗
+Abstract.Differently from the non-relativistic quantum mechanics, the violation of
+Bell inequalities in quantum field theory depends more on the structure of observable
+algebras (typically type III von Neumann algebras) rather than the choice of specific
+quantum states. Therefore, studying the violation of Bell inequalities based on the von
+Neumann algebraic framework often reveals information about the algebraic structure.
+In this paper, we employ three mutually-commuting von Neumann algebras to charac-
+terize quantum entanglement swapping networks, and establish Bell-like inequalities
+thereon, commonly referred to as bilocal inequalities. We investigate the algebraic
+structural conditions under which bilocal inequalities are satisfied or violated on the
+generated algebra of these three von Neumann algebras. Furthermore, the conditions
+for maximal violation of the inequalities can be utilized to infer the structural infor-
+mation of von Neumann algebras in reverse. Our results not only utilize the violation
+of bilocal inequalities to reveal the structural properties of von Neumann algebras,
+but can also be applied to quantum mechanics and quantum field theory.
+1.Introduction
+Bell nonlocality demonstrates that local measurements performed on one subsystem
+of a quantum state can instantaneously influence the measurement outcomes on another
+subsystem, regardless of the spatial separation between them [1, 2, 3]. Such nonlocal
+correlations can be detected through Bell inequalities, which serve as constraints that
+all local correlations must obey [4, 5, 6, 7, 8]. It has been demonstrated to offer quantum
+advantages in various device-independent quantum information tasks, including com-
+munication complexity [9], quantum key distribution [10, 11], randomness amplification
+[12, 13], and measurement-based quantum computation [14, 15].
+Moreover, Bell nonlocality in quantum field theory (QFT) serves as a crucial bridge
+connecting quantum information science with fundamental physics [16, 17]. It provides
+a rigorous framework for reconciling quantum entanglement with relativistic causality,
+resolves conceptual challenges such as impossible measurements, and reveals how fun-
+damental symmetries like parity violation affect quantum correlations [19, 18]. Further-
+more, the tension between nonlocal quantum phenomena and the locality assumptions
+∗Corresponding author.
+Key words and phrases:von Neumann algebra, Bell nonlocality, Bell inequality, Quantum network.
+1
+arXiv:2603.01466v1  [math.FA]  2 Mar 2026
+
+=== page 2 ===
+2 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+of general relativity offers profound insights for quantum gravity research, suggesting
+that spacetime itself may be an emergent property rather than a fundamental aspect
+of reality [20, 21, 22].
+In QFT, the algebras assigned to touching spacetime regions are of type III von
+Neumann ones, so there are no pure normal states and no tensor-product structures
+[23, 24, 25]. This differs from the traditional quantum-mechanical setup, which is
+usually linked to type I von Neumann algebras and relies on the algebraic tensor product
+as its mathematical framework [27, 26, 28]. These are two distinct models, referred to
+respectively as the tensor product algebra model and the mutually-commuting von
+Neumann algebra model. In the tensor-product algebra model, a bipartite composite
+quantum system is described by the tensor product of two Hilbert spacesH A andH B,
+denoted asH=H A⊗HB.LetB(H) denote the algebra of all bounded linear operators
+onH, andT(H) the space of trace-class operators. Then there is a duality relation
+B(H) =T(H) ∗. A quantum stateρis a positive operator with trace 1, and the set of
+states is denoted byS(H) ={ρ∈T(H)|ρ≥0,Tr(ρ) = 1}. The algebra of observables
+is the Jordan algebra of self-adjoint operators, denoted byB s(H) ={A∈B(H)|A=
+A∗}.However, it should be pointed out that relying solely on the above tensor-product
+model to discuss quantum information problems has two drawbacks [29, 30, 31]: 1) It
+fails to provide a universal framework for accurately describing phenomena in infinite-
+dimensional systems. 2) It is not suitable for studying traditional quantum physics
+such as quantum field theory, which requires the language of type III von Neumann
+algebras. In the mutually-commuting von Neumann algebra model, the algebra of
+observables of a quantum system is described by a von Neumann algebraM, where
+M⊆B(H), andM A,MB are two mutually commuting von Neumann subalgebras of
+M. The notationM ′′ denotes the double commutant ofM. However, in more general
+cases, a natural question arises: are the two models isomorphic? In other words, does
+Madmit an isomorphism toM A⊗M B? This question is intimately related to the
+famous Tsirelson problem, which is equivalent to the Connes embedding conjecture
+in von Neumann algebra theory [33, 32, 34]. The Tsirelson problem asks whether
+the sets of joint probability distributions of measurement outcomes are the same in
+the two models. In 2020, Ji and collaborators [34] designed a quantum interactive
+protocol based on the classical halting problem in computability theory, and proved that
+the answer to the Tsirelson problem is negative. This means that the tensor-product
+model algebra model and the mutually-commuting von Neumann algebra model are not
+equivalent. Therefore, the mutually-commuting von Neumann algebra model provides a
+more general framework, and many novel quantum phenomena fundamentally different
+
+=== page 3 ===
+VIOLATION OF BILOCAL INEQUALITIES 3
+from those in the tensor-product model have been discovered in this setting [34, 35, 36,
+37].
+Overall, Bell nonlocality is not merely a quantum peculiarity but a structural feature
+encoded in the classification of operator algebras, providing rigorous tools to quantify
+non-classical correlations in relativistic quantum systems [17]. Summers et al. intro-
+duces the maximal Bell correlation and proves that its value is bounded by
+√
+2 in
+mutually-commuting von Neumann algebra model, with equality attainable iff each
+subalgebra contains a copy ofM 2(C) [38]. Translating these bounds into the vacuum
+representation of algebraic quantum field theory, he shows that tangent wedge algebras
+are always maximally correlated, whereas strictly spacelike-separated wedges and decay
+exponentially with mass-governed distance [39, 40, 41, 42, 43]. These works expose a
+new algebraic invariant ˆA¡ˆAªthe Bell correlation invariant ˆA¡ˆAªthat distinguishes infin-
+itely many isomorphism classes of mutually-commuting von Neumann algebra pairs and
+links maximal violation to the presence of the hyperfinite type-II 1 factor [17].
+In contrast to entanglement originating from an individual source, quantum net-
+works comprise numerous small-scale entangled states. Owing to the independence
+among distinct sources, the correlations emerging from quantum networks exhibit non-
+convex characteristics that transcend the polytopes associated with single-source en-
+tanglement [44, 45, 46, 47, 48, 49]. To date, Bell-type inequalities have been devised to
+certify nonlocal correlations across diverse network architectures, such as entanglement-
+swapping networks [44, 50], chain configurations [51, 52], star topologies [53, 54], poly-
+gon structures [55, 56, 57], tree-shaped networks [58, 59, 60], arbitrary acyclic networks
+[46, 47, 61], and arbitraryk-independent networks [62]. Alternative research directions
+examine the stronger forms of network nonlocality that surpass hybrid implementa-
+tions involving classical variables and post-quantum resources [63, 64]. Furthermore,
+the interplay between graph theory and quantum correlations has attracted consider-
+able attention [65, 66]. Nevertheless, limited progress has been made concerning the
+discrimination of correlations produced by different networks and the subsequent iden-
+tification of underlying quantum topologies [67]. Interestingly, the notion of bi-locality
+in the mutually-commuting von Neumann algebra model has already been introduced
+by Ligthart et al [68], and Xu has addressed the inclusion problem between the tensor
+product algebra model and the mutually-commuting von Neumann algebra model in
+this setting [69].
+In this paper we aim to establish bi-local inequalities within the mutually-commuting
+von Neumann algebra model and investigate how the degree of their violation is related
+to the structural properties of the algebras.
+
+=== page 4 ===
+4 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+2.Ternary mutually-commuting von Neumann algebra models and
+entanglement swapping networks
+Figure 1.An entanglement swapping network scenario with two
+sources. The connection between two parties represents the sharing of
+the physical system between them.
+Quantum bilocal scenario.In non-relativistic quantum mechanics, the quantum en-
+tanglement swapping network (see Fig. 1) is a scenario of three parties consisting of
+Alice, Bob and Charles, and two sourcesρ AB,ρ BC shared between them. All the three
+parties can perform measurements (or inputs) on their system, labeledx,yandzfor
+Alice, Bob and Charles. After measuring the three parties, they obtain outcomes de-
+noteda,bandc, respectively. Here,x,y,z,a,b,c∈{0,1}. Bob’s measurementymight
+correspond to a joint measurement on the two systems that he receives from each source.
+The correlations between the measurement outcomes of the three parties are described
+by the joint probability distributionp(abc|xyz). In this scenario, the joint probability
+distributionp(abc|xyz) is bilocal if it can be written as
+p(abc|xyz) =
+Z Z
+dλdµq1(λ)q2(µ)p(a|x,λ)p(b|y,λ,µ)p(c|z,µ),
+whereλ(µ) characterizes the joint hidden variable of the system produced by the source
+ρAB (ρBC) [70, 71].
+LetA x,By,Cz denote the measurements of Alice, Bob, and Charles with inputsx,
+y,z, respectively. Note that the middle party Bob always performs joint measurement.
+Then, the bilocal inequality can be written as:
+(2.1)S≡
+p
+|I|+
+p
+|J|≤2,
+where
+I≡
+X
+x,z
+⟨AxB0Cz⟩=⟨(A 0 +A 1)B0(C0 +C 1)⟩,
+J≡
+X
+x,z
+(−1)x+z⟨AxB1Cz⟩=⟨(A 0−A 1)B1(C0−C 1)⟩
+and⟨A xByCz⟩= P1
+a,b,c=0(−1)a+b+cp(abc|xyz) [72].
+
+=== page 5 ===
+VIOLATION OF BILOCAL INEQUALITIES 5
+In addition, one can choose different observables to construct different bilocal in-
+equalities. For instance, the violation of the inequality
+(2.2)S ′ =|K|+|L|≤2
+can also be used to detect nonbilocal correlations, whereK=⟨A 0(B0−B 1)C0⟩and
+L=⟨A 1(B0 +B 1)C1⟩[73]. Of course, different inequalities exhibit varying capabilities
+in detecting nonlocality.
+Mutually-commuting von Neumann algbera models.In QFT, the observables for
+Alice, Bob and Charles are associated with three mutually-commuting von Neumann
+algebrasM A,M B,M C. In general, they are all required to be type III von Neumann
+algebra factors. Recall two von Neumann algebras satisfy Haag duality means that each
+algebra equals the commutant of the other. Haag duality encode quantum nonlocality
+intrinsically within their infinite-dimensional non-abelian structure through their type
+III factor property, which enforces that local algebras of spacelike separated regions are
+entangled with trivial relative commutants [74, 75]. Here, we do not restrict von Neu-
+mann algebras to III type factors, and generalize the Haag duality condition to mutual
+commutativity, proposing a von Neumann algebra model with mutual commutativity.
+Therefore, our model covers both scenarios of non-relativistic quantum mechanics and
+quantum field theory. The idea of this model is similar to that in Refs. [69, 68].
+Definition 1. (Ternary mutually-commuting von Neumann algebra models)
+LetM A,MB,MC be von Neumann subalgebras ofB(H) over some Hilbert spaceH,
+and they are mutually commuting, i.e.,M i⊂M′
+j withi̸=j∈{A,B,C}, whereM ′
+j
+is the communicator ofM j. The generated von Neumann algebra
+MABC = (MA∨MB∨MC)′′.
+We refer to the above model as theMCvNAmodel. WhenM ABC =M A⊗MB⊗MC,
+it is called thetensor product algebra model. Here, in order to correspond to the
+Hermitian property of quantum observables, these three algebras are always restricted
+to consist of self-adjoint elements.
+We point out that the von Neumann algebra model defined above is intended for the
+study of algebraic structural properties; therefore, we have adopted the most general
+definition, which encompasses but does not correspond to models of quantum mechanics
+or quantum field theory.
+We intend to use the above model of three mutually commuting von Neumann alge-
+bras to describe the entanglement swapping network in Fig. 1. We note that there is no
+
+=== page 6 ===
+6 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+correlation between partiesAandCin the network. Mathematically, this independence
+can be described by the following formula. Letτbe a state in the dual spaceM ∗
+ABC.
+In correspondence with the bilocal scenario, we always require that
+τ(ac) =τ(a)τ(c) (∗)
+for anya∈M A,c∈M C. We call it as the independent condition (∗). This assumption
+will be used throughout this paper.
+3.Bilocal inequalities and their bounds
+Following the assumptions in Section 2, the network correlation ˆp=p(αβγ|xyz) is
+defined as
+p(αβγ|xyz) =τ(A α|xBβ|yCγ|z),
+where the measurement operatorsA α|x∈M A, Bβ|y∈M B, Cγ|z∈M C,{x,y,z}and
+{α,β,γ}denote the inputs and outputs of measurement operators withx,y,z,α,β,γ∈
+{0,1}. Leta x∈M A,b y∈M B,c z∈M C be operators such that−I≤a x,by,cz≤
+Ifor anyx,y,z∈ {0,1}, anda x = P1
+α=0(−1)αAα|x,by = P1
+β=0(−1)βBβ|y,cz =P1
+γ=0(−1)γCγ|z. Then denoteI τ =τ((a 0 +a 1)b0(c0 +c 1)), Jτ =τ((a 0−a 1)b1(c0−c 1)).
+In the MCvNA model, analogous to Ineq. (2.1), we define
+Sτ =
+p
+|Iτ|+
+p
+|Jτ|.(3.1)
+Analogous to Ineq. (2.2), under the same assumption, we have the following
+S′
+τ =|K τ|+|L τ|.(3.2)
+where,K τ =τ(a 0(b0 +b 1)c0), Lτ =τ(a 1(b0−b 1)c1).
+Next, we rely on the abelianness of the algebra to determine the bounds for the
+bilocal inequality, respectively. We mention that all theorems in this section are based
+on the independence assumption (∗).
+The following conclusion indicates that in the mutually-commuting von Neumann
+algebra model, the maximum upper bound that the quantity (3.1) can achieve is 2
+√
+2.
+This is analogous to the case in non-relativistic quantum mechanics, where the maximal
+violation of the bilocal value based on quantum resources is 2
+√
+2.
+Theorem 1.In the MCvNA model,
+p
+|Iτ|+
+p
+|Jτ|≤2
+√
+2.
+Proof.According to Gelfand-Namark-Segal (GNS) construction, there is a∗-representation
+πτ :M ABC→H τ and a cyclic vector Ω∈H τ such that the set{π τ(d)Ω :d∈M ABC}
+
+=== page 7 ===
+VIOLATION OF BILOCAL INEQUALITIES 7
+is dense inH τ. It follows by applying the Cauchy-Schwarz inequality that
+p
+|Iτ|+
+p
+|Jτ|
+=
+p
+|τ((a 0 +a 1)b0(c0 +c 1))|+
+p
+|τ((a 0−a 1)b1(c0−c 1))|
+≤
+√
+2
+p
+|τ(b 0(a0 +a 1)(c0 +c 1))|+|τ(b 1(a0−a 1)(c0−c 1))|
+=
+√
+2
+p
+|⟨πτ(b0)Ω,πτ((a0 +a 1)(c0 +c 1))Ω⟩|+|⟨π τ(b1)Ω,πτ((a0−a 1)(c0−c 1))Ω⟩|
+≤
+√
+2
+qp
+∥πτ(b0)Ω∥∥πτ((a0 +a 1)(c0 +c 1))Ω∥+
+p
+∥πτ(b1)Ω∥∥πτ((a0−a 1)(c0−c 1))Ω∥
+≤
+√
+2
+qp
+τ((a 0 +a 1)2(c0 +c 1)2) +
+p
+τ((a 0−a 1)2(c0−c 1)2)
+≤
+√
+2
+qp
+τ(a 0 +a 1)2 +τ(a 0−a 1)2
+p
+τ(c 0 +c 1)2 +τ(c 0−c 1)2
+=
+√
+2
+rq
+2τ(a 2
+0 +a 2
+1)
+q
+2τ(c 2
+0 +c 2
+1)
+≤
+√
+2
+q
+2
+√
+2
+√
+2
+= 2
+√
+2.
+The final inequality invokes the condition that−I≤a i≤I,−I≤c i≤Iand the
+positivity property ofτ.□
+Below, we demonstrate how the value (3.1) depends on the abelianness of the algebras
+MA,M B andM C. The results indicate that in entanglement-swapping networks, the
+abelianness of the three algebras plays distinct roles in setting the upper bound of the
+inequality to 2. This is not a simple generalization of the bipartite Bell scenario [17],
+where, with only two systems, Summers et al. showed that if one of these two algebras
+is abelian, the upper bound of the Bell inequality is 2.
+Theorem 2.(1) IfM A andM C are Abelian, then
+p
+|Iτ|+
+p
+|Jτ|≤2.
+(2) IfM B is Abelian, then
+|Kτ|+|L τ|≤2.
+Proof.To see (1), sinceM A andM C are Abelian, respectively, the eight elements
+aϵ0ϵ1≡ 1
+4(1 +ϵ 0a0)(1 +ϵ 1a1), c ϵ0ϵ1≡ 1
+4(1 +ϵ 1c0)(1 +ϵ 1c1)
+withϵ 0,ϵ 1∈{+,−}are positive. By direct computation, one obtains that
+a0 +a 1 = 2(a++−a−−), c0 +c 1 = 2(c++−c−−),
+
+=== page 8 ===
+8 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+a0−a 1 = 2(a+−−a−+), c0−c 1 = 2(c+−−c−+).
+So one obtains that
+p
+|Iτ|+
+p
+|Jτ|=
+p
+|τ((a 0 +a 1)b0(c0 +c 1))|+
+p
+|τ((a 0−a 1)b1(c0−c 1))|
+= 2
+p
+|τ((a ++−a−−)b0(c++−c−−))|+
+p
+|τ((a +−−a−+)b1(c+−−c−+))|
+
+= 2
+p
+|τ(a ++b0c++)−τ(a ++b0c−−)−τ(a −−b0c++) +τ(a−−b0c−−)|
++
+p
+|τ(a +−b1c+−)−τ(a +−b1c−+)−τ(a −+b1c+−) +τ(a−+b1c−+)|
+
+≤2
+p
+|τ(a ++c++) +τ(a ++c−−) +τ(a−−c++) +τ(a−−c−−)|
++
+p
+|τ(a +−c+−) +τ(a +−c−+) +τ(a−+c+−) +τ(a−+c−+)|
+
+= 2
+p
+|τ(a ++ +a−−)||τ(c ++ +c−−)|+
+p
+|τ(a +− +a−+)||τ(c +− +c−+)|
+
+≤2
+p
+τ(a ++ +a−−) +τ(a +− +a−+)
+p
+τ(c ++ +c−−) +τ(c +−c−+)
+= 2
+√
+1
+√
+1 = 2,
+where the first inequality follows the fact that−I≤b i≤Iand the order-preserving of
+stateτ, and the second inequality holds because of the Cauchy Schwarz inequality and
+the non-negativeness ofa ϵ0ϵ1, bϵ0ϵ1.
+To prove (2), sinceM B is Abelian, the four elements
+bϵ0ϵ1≡ 1
+4(1 +ϵ 0a0)(1 +ϵ 1a1),
+withϵ 0,ϵ 1∈{+,−}are positive. It follows from a direct computation that
+b0 +b 1 = 2(b++−b−−), b0−b 1 = 2(b+−−b−+).
+So one obtains that
+τ[a 0(b0 +b 1)c0] +τ[a 1(b0−b 1)c1]
+= 2(τ[a 0(b++−b−−)c0] +τ[a 1(b+−−b−+)c1])
+≤2(τ[b ++] +τ[b−−] +τ[b +−] +τ[b−+]) = 2
+where the inequality follows thatacis hermitian,∥ac∥≤1 and the positive-preserving
+ofτ. □
+Remark.The above theorem illustrates a phenomenon: the violations of the two
+Bell-type inequalities
+p
+|Iτ|+
+p
+|Jτ|≤2 and|K τ|+|Lτ|≤2 can indicate the abelianness
+of the underlying algebras. Conversely, applying the theorem, we can deduce from the
+violation of an inequality with an upper bound of 2 that the three von Neumann algebras
+are non-abelian. Here, one also needs to consider the chosen observables and the specific
+state.
+
+=== page 9 ===
+VIOLATION OF BILOCAL INEQUALITIES 9
+If we wish to set aside the influence of the algebraic structure and consider separately
+the impact of the choice of observables and the state on values of (3.1) and (3.2), then
+the following conclusion can be regarded as a generalization of the results in the non-
+classical mechanical framework. For the sake of clarity, we introduce a tensor product
+structure into the three-algebra MCvNA model. LetM B =M L
+B⊗M R
+B. We call the
+stateτ∈M ∗
+ABC is separable on (MA∨ML
+B)′′ if there areξ α∈M∗
+A,ηα∈(M L
+B)∗ such
+thatτ(ab L) =P
+αλαξα(a)ηα(bL) withP
+αλα = 1.
+Theorem 3.
+p
+|Iτ|+
+p
+|Jτ|≤2 for any stateτthat is separable on (M A∨M L
+B)′′
+and (MR
+B∨MC)′′.
+Proof.It follows from separability assumption ofτthat
+p
+|Iτ|+
+p
+|Jτ|=
+p
+|τ((a 0 +a 1)b0(c0 +c 1))|+
+p
+|τ((a 0−a 1)b1(c0−c 1))|
+=
+s
+|
+X
+α
+λαξα(a0 +a 1)ηα(bL
+0 )||
+X
+β
+µβMβ(bR
+0 )Nβ(c0 +c 1)|
++
+s
+|
+X
+α
+λαξα(a0−a 1)ηα(bR
+1 )||
+X
+β
+µβMβ(bR
+1 )Nβ(c0−c 1)|
+≤
+s
+(
+X
+α
+λα|ξα(a0 +a 1)|)(
+X
+β
+µβ|Nβ(c0 +c 1)|) +
+s
+(
+X
+α
+λα|ξα(a0−a 1)|)(
+X
+β
+µβ|Nβ(c0−c 1)|)
+≤
+sX
+α
+λα(|ξα(a0 +a 1)|+|ξ α(a0−a 1)|)
+sX
+β
+µβ(|Nβ(c0 +c 1)|+|N β(c0−c 1)|)
+= 2
+sX
+α
+λα max{ξα(a0),ξα(a1)}
+sX
+β
+µβ max{Nβ(c0),Nβ(c1)}
+≤2.
+where the first inequality are obey the facts that∥b L
+0∥,∥bR
+0∥≤1,∥b L
+1∥,∥bR
+1∥≤1, and
+the triangle inequality, and the second follows the Cauchy Schwarz inequality, and the
+last obeys the conditions of order-preserving of stateτand−I≤a i, ci≤I. It is easy
+to verity that
+p
+|Iτ|+
+p
+|Jτ|= 2 whena 0 =a 1 =b 0 =c 0 =c 1 =I, meaning 2 serves
+as a tight upper bound.□
+From the above conclusion, we see that whether a bilocal inequality can be violated
+depends on the choice of observables and the state, and even more so on the structure
+of the algebra. In the following, we define a quantity
+S(τ,M A,MB,MC) = sup
+{ax,by,cz}
+(
+p
+|Iτ|+
+p
+|Jτ|).
+
+=== page 10 ===
+10 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+Combining Theorems 1, 2 and 3, one naturally obtains the following corollary. A
+similar conclusion can be drawn for the quantity (3.2).
+Corollary 4.
+(1) 2≤S(τ,M A,MB,MC)≤2
+√
+2.
+(2) IfM A andM C are Abelian, thenS(τ,M A,MB,MC) = 2.
+(3)ϕ∈(M A∨MB1∨MB2∨MC)∗ is convex combination of separable states, then
+S(ϕ,M A,MB,MC) = 2.
+(4)|S(ϕ,M A,MB,MC)−S(ψ,M A,MB,MC)| ≤k
+p
+∥ϕ−ψ∥, so, in particular,
+sup
+{ax,by,cz}
+(
+q
+|Iϕ|+
+q
+|Jϕ|) is norm continuous.
+Proof.To show (1). Since
+p
+|Iτ|+
+p
+|Jτ|= 2 whena 0 =a 1 =b 0 =c 0 =c 1 =I.
+And combinig the proof of Theorem 2, we obtain (1).
+(2) holds by facts
+p
+|Iτ|+
+p
+|Jτ|= 2 whena 0 =a 1 =b 0 =c 0 =c 1 =Iand Theorem
+2.
+(3) holds by facts
+p
+|Iτ|+
+p
+|Jτ|= 2 whena 0 =a 1 =b 0 =c 0 =c 1 =Iand Theorem
+3.
+To prove (4). According to the representations ofI τ andJ τ, and the facts that
+|supx−supy|≤sup|x−y|and triangle inequality, one can obtain that
+ sup
+{ax,by,cz}
+q
+|Iϕ|+
+q
+|Jϕ|
+
+−sup
+{ax,by,cz}
+q
+|Iψ|+
+q
+|Jψ|
+
+=
+ sup
+{ax,by,cz}
+p
+|ϕ((a0 +a 1)b0(c0 +c 1))|+
+p
+|ϕ((a0−a 1)b1(c0−c 1))|
+
+−sup
+{ax,by,cz}
+p
+|ψ((a0 +a 1)b0(c0 +c 1))|+
+p
+|ψ((a0−a 1)b1(c0−c 1))|
+
+≤sup
+{ax,by,cz}
+
+p
+|ϕ((a0 +a 1)b0(c0 +c 1))|+
+p
+|ϕ((a0−a 1)b1(c0−c 1))|
+−
+p
+|ψ((a0 +a 1)b0(c0 +c 1))|−
+p
+|ψ((a0−a 1)b1(c0−c 1))|
+
+≤sup
+{ax,by,cz}
+
+p
+|ϕ((a0 +a 1)b0(c0 +c 1))|−
+p
+|ψ((a0 +a 1)b0(c0 +c 1))|
+
++
+
+p
+|ϕ((a0 +a 1)b0(c0 +c 1))|−
+p
+|ψ((a0−a 1)b1(c0−c 1))|
+
+
+≤sup
+{ax,by,cz}
+p
+|(ϕ−ψ)((a 0 +a 1)b0(c0 +c 1))|+
+p
+|(ϕ−ψ)((a 0−a 1)b1(c0−c 1))|
+
+≤sup
+{ax,by,cz}
+p
+∥ϕ−ψ∥∥(a 0 +a 1)b0(c0 +c 1)∥+
+p
+∥ϕ−ψ∥∥(a 0−a 1)b1(c0−c 1)∥
+
+
+=== page 11 ===
+VIOLATION OF BILOCAL INEQUALITIES 11
+≤k
+p
+∥ϕ−ψ∥,
+where the fourth one follows the Cauchy Schwarz inequality, and the last obeys the
+norm for elements ofM A,MB,MC are bounded. So sup
+{ax,by,cz}
+(
+q
+|Iϕ|+
+q
+|Jϕ|) is norm
+continuous in the stateϕ.□
+4.Maximal violation of bilocal inequalities and algebraic structures
+In this section, we aim to point out that the violation of bilocal inequalities, in
+particular the maximal violation, can reflect the structural properties of the algebra.
+Here, violation refers to exceeding the upper bound of 2 for the inequality, and maximal
+violation refers to attaining 2
+√
+2.
+In the following theorem, we attempt to analyze the conditions for maximal violation.
+Theorem 5.Ifτis faithful, then
+p
+|Iτ|+
+p
+|Jτ|= 2
+√
+2
+if and only ifτ(a 2
+ia) =τ(a), τ(b 2
+ib) =τ(b), τ(c 2
+ic) =τ(c), andτ[(a 0a1 +a 1a0)a] =
+0, τ[(c0c1 +c 1c0)c] = 0 for anya∈M A,b∈M B,c∈M C.
+Remark.This theorem states that when the inequality is maximally violated,
+I, a 0, a1 and− i
+2[a0,a 1] form a realization of the Pauli spin matrices inM A and
+generate a copy ofM 2(C) inM A. And the same holds forI, c 0, c1 and− i
+2[c0,c 1] in
+MC. Moreover,τ(a 0a1 +a 1a0) = 0, τ(c0c1 +c 1c0) = 0.
+Proof.If
+p
+|Iτ|+
+p
+|Jτ|= 2
+√
+2, it follows from the proof of Theorem 1 that for any
+t∈[0,1], these equalities hold:
+(4.1)|τ(b 0(a0 +a 1)(c0 +c 1))|=|τ(b 1(a0−a 1)(c0−c 1))|,
+(4.2)π τ(b0)Ω =k 0πτ[(a0 +a 1)(c0 +c 1)]Ω,
+(4.3)π τ(b1)Ω =k 1πτ[(a0−a 1)(c0−c 1)]Ω,
+(4.4)∥π τ(b0)Ω∥=∥π τ(b1)Ω∥= 1,
+(4.5)τ[(a 0 +a 1)2] =tτ[(c 0 +c 1)2],
+(4.6)τ[(a 0−a 1)2] =tτ[(c 0−c 1)2],
+(4.7)a 2
+0 +a 2
+1 = 2I,c 2
+0 +c 2
+1 = 2I.
+
+=== page 12 ===
+12 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+From the (4.7), one getsa 2
+i =I, c 2
+i =I(i= 0,1) because−I≤a i,ci≤I, therefore
+τ(a 2
+ia) =τ(a)τ(c 2
+ic) =τ(c) for anya∈M A, b∈M B, c∈M C.
+Now let us show the proof forτ(b 2
+ib) =τ(b), τ[(a 0a1 +a 1a0)a] = 0, andτ[(c 0c1 +
+c1c0)c] = 0 for anya∈M A, b∈M B, c∈M C, which impliesb 2
+i =I, a 0a1 +a 1a0 = 0,
+andc 0c1 +c 1c0 = 0. According to the Eqs. (4.5)-(4.7), i.e.,
+
+
+
+τ(a 2
+0 +a 2
+1 +a 0a1 +a 1a0) =tτ(c 2
+0 +c 2
+1 +c 0c1 +c 1c0)
+τ(a 2
+0 +a 2
+1−a 0a1−a 1a0) =tτ(c 2
+0 +c 2
+1−c 0c1−c 1c0)
+a2
+0 +a 2
+1 = 2I, c2
+0 +c 2
+1 = 2I,
+we can get
+t= 1, τ(a 0a1 +a 1a0) =τ(c 0c1 +c 1c0).
+Then combing the conditions (4.2), (4.3) and condition (4.4) one can get
+k2
+0τ[(a 0 +a 1)2(c0 +c 1)2] = 1, k2
+1τ[(a 0−a 1)2(c0−c 1)2] = 1,
+i.e.,
+(4.8)|k 0|= 1
+2 +τ(X) ,|k 1|= 1
+2−τ(X)
+because ofτ(X) =τ(Y), whereX=a 0a1 +a 1a0, Y=c 0c1 +c 1c0. Then according to
+Eqs. (4.2), (4.3), and (4.1),
+|τ[b 0(a0 +a 1)(c0 +c 1)]|=|k 0||τ[(a 0 +a 1)2(c0 +c 1)2]|,
+|τ[b 1(a0−a 1)(c0−c 1)]|=|k 1|τ[(a 0−a 1)2(c0−c 1)2]|.
+Substituting (4.8) and (4.1) to the above equations, we have
+1
+2 +τ(X) (2 +τ(X)) 2 = 1
+2−τ(X) (2−τ(X)) 2
+deriving thatτ(X) =τ(Y) = 0. It follows fromτ(X) = 0 =τ(Y) and∥π τ(bi)Ω∥= 1
+that
+k2
+0 =k 2
+1 = 1
+4
+from the Eq. (4.8). Since
+|⟨Ω,πτ(b2
+0)Ω⟩|=| 1
+4⟨Ω,πτ[(a0 +a 1)2(c0 +c 1)2]Ω⟩|
+≤ 1
+4
+p
+∥πτ[(a0 +a 1)(c0 +c 1)]Ω∥
+p
+∥πτ[(a0 +a 1)(c0 +c 1)]Ω∥
+= 1
+4τ[(a 0 +a 1)2]τ[(c 0 +c 1)2] = 1,
+andτ(b 2
+0) =|⟨Ω,π τ(b2
+0)Ω⟩|= 1, this implies thatπ τ[(b2
+0)]Ω = Ω, so
+τ(b 2
+0b) =⟨Ω,π τ(b2
+0)πτ(b)Ω⟩=⟨π τ(b2
+0)Ω,πτ(b)Ω⟩=⟨Ω,π τ(b)Ω⟩=τ(b).
+
+=== page 13 ===
+VIOLATION OF BILOCAL INEQUALITIES 13
+Similarlyτ(b 2
+1b) =τ(b) for anyb∈M B.Furthermore, it follows from Eq. (4.2) and
+πτ[(b2
+0)]Ω = Ω that
+πτ(2X+ 2Y+XY)Ω = 0.
+Soτ[(2X+ 2Y+XY) 2] = 0,implying that
+τ(X 2) =τ(Y 2) = 0.
+Combining the faithfulness, non-negativity of the stateτand the self-adjointness of
+X, Y. ThenX=Y= 0, i.e.,
+a0a1 +a 1a0 =c 0c1 +c 1c0 = 0,
+and implies thatτ[(a 0a1 +a 1a0)a] =τ[(c 0c1 +c 1c0)c] = 0 .
+It is straightforward to prove the converse process, as we check that Eqs. (4.1)-(4.7)
+hold true ifτ(a 2
+ia) =τ(a), τ(b 2
+ib) =τ(b), τ(c 2
+ic) =τ(c), andτ[(a 0a1 +a 1a0)a] =
+0, τ[(c0c1 +c 1c0)c] = 0. We complete the proof.□
+The above Theorem 5 indicates that if the bilocal inequality is maximally violated,
+then the underlying algebra locally contains anM 2(C) factor. However, this does not
+lead to further global structural properties of the algebra. Below, we aim to further
+explore the relationship between the maximal violation of the inequality and the global
+properties of the algebra.
+Theorem 6.LetM ABC be a von Neumann algebra on a separable Hilbert space
+Hwith cyclic and separating vector. If there are hyperfinite type II 1 factorsR A and
+RC such thatM A≃M A⊗RA andM C≃M C⊗RC, then
+p
+|Iτ|+
+p
+|Jτ|= 2
+√
+2 for
+every normal stateτ.
+Proof.We first deal with the special case:M A =R A andM C =R C. Let eH=
+⊗α∈N(Hα,Ωα) be the incomplete tensor product ofH α =C 2⊗C 2,(α∈N), with
+Ωα = 1√
+2(Φ1⊗Φ 1 + Φ2⊗Φ 2)≡Ω for some basis{Φ 1,Φ 2}∈C 2,α∈N.Then by the
+construction of Araki and Woods [76],R A≃R(H α,B(C 2)⊗1,Ω α,α∈N) holds, using
+their notation for the factor on the right-hand side which is the infinite tensor product
+ofB(C 2)⊗1 with itself on eH. Similarly, let eK=⊗ α∈N(Kα,Λα) be the incomplete
+tensor product ofK α =C 2⊗C 2,(α∈N), with Λ α = 1√
+2(Ψ3⊗Ψ 3 + Ψ4⊗Ψ 4)≡
+Λ for some basis{Ψ 3,Ψ 4} ∈C2,α∈N.ThenR C ≃ R(Kα,B(C 2)⊗1,Λ α,α∈N)
+holds, using their notation for the factor on the right-hand side which is the infinite
+tensor product ofB(C 2)⊗1 with itself on eK. We can obtain that there isR C ≃
+R(Kα,B(C 2)⊗1,Λ α,α∈N). Now from Theorem 5, we know thatI, a 0, a1 and
+
+=== page 14 ===
+14 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+a2 =− i
+2[a0,a 1] form a realization of the Pauli spin matrices onH α, and the same holds
+forI, c 0, c1 andc 2 =− i
+2[c0,c 1] inK α, andb 0,b 1 withb 2
+i =Isuch that the quantity
+(3.1) arrives at 2
+√
+2. Applying the similar technologies of Eqs. (6)-(8) of Ref.[72], one
+can obtain that
+(4.9)
+p
+|⟨Ω⊗Λ,[(a 0 +a 1)b0(c0 +c 1)]Ω⊗Λ⟩|=
+√
+2,
+(4.10)
+p
+|⟨Ω⊗Λ,[(a 0−a 1)b1(c0−c 1)]Ω⊗Λ⟩|=
+√
+2
+Next leteai,α :=I⊗···⊗a i,α⊗···I, ebj,α :=I⊗···⊗b j,α⊗···I,ec l,α :=I⊗···⊗c k,α⊗
+···I∈B( eH⊗ eK) (i,j,k∈{0,1}), wherea i,α,bj,α,ck,α are constructed as the above Eqs.
+(4.9) and (4.10) hold true. acting in theα-th tensor factor alone. Therefore, assume
+that
+eTα = (ea0,α +ea1,α)eb0,α(ec0,α +ec1,α),
+eSα = (ea0,α−ea1,α)eb1,α(ec0,α−ec1,α).
+and furthermore Φ =N
+α∈N Φα,Ψ = N
+α∈N Ψα,with Φ α = Ωα⊗Ωα and Ψα = Λα⊗Λα
+for almost allα. By definition of the incomplete infinite tensor product, such vectors
+are total in eH⊗ eK. But one has
+q
+⟨Φ,eTαΨ⟩=⟨Φ,Ψ⟩·
+√
+2,
+q
+⟨Φ,eSαΨ⟩=⟨Φ,Ψ⟩·
+√
+2.
+for allαlarger than someα 0 (depending on Φ and Ψ).
+Since the sequences{ eTα}α∈N and{ eSα}α∈N are norm-bounded, by their constructures,
+it is easily checked that eTα→2I, eSα→2Iin the weak operator topology onB( eH⊗
+eK). This follows that when the aforementioned operator families eTα,eSα are selected,p
+|Iτ|+
+p
+|Jτ|=
+√
+2 +
+√
+2 = 2
+√
+2 for every normal stateτ.
+Finally, we deal with the general case. LetM A andM C (respectivelyR A andR C)
+be represented with cyclic and separating vector in the Hilbert spaceH0 andK 0 (respec-
+tivelyH 1 andK 1). Then the two isomorphismsM A≃M A⊗RA andM C≃M C⊗RC
+are spatial and there exist unitariesU:H→H 0⊗H 1 andV:K→K 0⊗K 1 inter-
+twiningM A withM A⊗RA andM C withM C⊗RC. Now similar to the proof of the
+special case, we takeeai,α asI⊗eai,α,eci,α asI⊗eci,α for eachα. The unitary equivalence
+already established and the proof also holds true.□
+It is mentioned that the results in Theorem 6 can be applied into the quantum field
+theory. In the algebraic framework of the QFT, wedge algebras (von Neumann algebras
+associated to specific unbounded regions in Minkowski spacetime, such asOassociated
+to tangent regions are typically type III 1 factors (a classification indicating the alge-
+bra has no trace and no pure normal states, reflecting the infinite degrees of freedom
+
+=== page 15 ===
+VIOLATION OF BILOCAL INEQUALITIES 15
+of QFT). By the classical result of A. Connes, all injective (i.e., amenable or hyperfi-
+nite, a property related to physical phase space compactness) infinite factors (excepting
+some type III 0) are strongly stable (meaning they can absorb a hyperfinite II 1 factor:
+M≃M⊗R 1). So the assumption of Theorem 6 is satisfied.
+Corollary 7.LetO i (i= 1,2,3) be wedge-shaped regions,A(O i) the wedge algebra
+on a separable Hilbert spaceHwith cyclic and separating vector. If eachA(O i) is III 1
+factor, then
+p
+|Iτ|+
+p
+|Jτ|= 2
+√
+2 for every normal stateτon (A(O 1)∨A(O 2)∨A(O 3))′′.
+Acknowledgement.All authors contributed equally to this work.
+References
+[1] Scarani V.,Bell Nonlocality,Oxford Graduate Texts, 2019.
+[2] Bell J. S.,On the Einstein Podolsky Rosen Paradox,Phys. Phys. Fiz., 1964, 1(3): 195.
+[3] Bell J. S.,Speakable and Unspeakable in Quantum Mechanics: Collected papers on quantum phi-
+losophy, Cambridge university press, 2004.
+[4] Einstein A., Podolsky B., and Rosen N.,Can Quantum-Mechanical Description of Physical Reality
+be Considered Complete?Phys. Rev., 1935, 47(10): 777.
+[5] Jiang S. H., Xu Z. P., Su H. Y.,et al.,GeneralizedHardy ′s Paradox, Phys. Rev. Lett., 2018,
+120(5): 050403.
+[6] Liu Z. H., Zhou J., Meng H. X.,et al.,Experimental test of the Greenberger-Horne-Zeilinger-Type
+Paradoxes in and Beyond Graph States, NPJ Quantum Inf., 2021, 7(1): 66.
+[7] Cao H. X., and Guo Z. H.,Characterizing Bell Nonlocality and EPR Steering, Sci. China Phys.,
+Mech., 2019, 62(3): 30311.
+[8] Wiseman H. M., Jones S. J. , and A. C. Doherty,Steering, Entanglement, Nonlocality, and the
+Einstein-Podolsky-Rosen Paradox, Phys. Rev. Lett., 2007, 98, 140402.
+[9] Cleve R., and Buhrman H.,Substituting Quantum Entanglement for Communication, Phys. Rev.
+A, 1997, 56(2): 1201.
+[10] Barrett J., Hardy L., and Kent A.,No Signaling and Quantum Key Distribution, Phys. Rev. Lett.,
+2005, 95(1): 010503.
+[11] Masanes L., Pironio S., and Ac´ ın A.,Secure Device-Independent Quantum Key Distribution with
+Causally Independent Measurement Devices, Nat. Commun., 2011, 2(1): 238.
+[12] Pironio S., Ac´ ın A., Massar S.,et al.,Random Numbers Certified by Bell’s Theorem, Nature, 2010,
+464(7291): 1021-1024.
+[13] Colbeck R. and Kent A.,Private Randomness Expansion with Untrusted Devices, J. Phys. A:
+Math. Theor., 2011, 44(9): 095305.
+[14] Raussendorf R., and Briegel H. J.,A One-Way Quantum Computer, Phys. Rev. Lett., 2001,
+86(22): 5188.
+[15] Raussendorf R., Browne D. E., and Briegel H. J.,Measurement-Based Quantum Computation on
+Cluster States, Phys. Rev. A, 2003, 68(2): 022312.
+
+=== page 16 ===
+16 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+[16] Spasskii B. I., and Moskovskii A. V.,On the Nonlocality in Quantum Physics, Uspekhi Fiz. Nauk,
+1984, 142: 599-617.
+[17] Summers S. J., and Werner R.,Maximal Violation of Bell’s Inequalities Is Generic in Quantum
+Field Theory, Comm. Math. Phys., 1987, 110(2): 247-259.
+[18] Du Y., He X. G., Liu C. W.,et al. Impact of Parity Violation on Quantum Entanglement and
+Bell Nonlocality, Eur. Phys. J. C, 2025, 85(11): 1255.
+[19] Fewster C. J., and Verch R.,Measurement in Quantum Field Theory, arXiv:2304.13356, 2023.
+[20] Nomura Y.,Quantum Mechanics, Spacetime Locality, and Gravity, Found. Phys., 2013, 43(8):
+978-1007.
+[21] Kauffman S. A.,Quantum Gravity If Non-Locality Is Fundamental, Entropy, 2022, 24(4): 554.
+[22] Morales J., and Bonder Y.,Quantum Correlations and Gravity: From the Emergence of a Cos-
+mological Constant to the Gravitation of Particles in Superposition, arXiv:2512.13531, 2025.
+[23] Haag R., and Kastler D.,An Algebraic Approach to Quantum Field Theory, J. Math. Phys., 1964,
+5(7): 848-861.
+[24] Fredenhagen K.On the Modular Structure of Local Algebras of Observables, Comm. Math. Phys.,
+1985, 97(1): 79-89.
+[25] Ahmad S. A., and Jefferson R.Crossed Product Algebras and Generalized Entropy for Subregions,
+arXiv:2306.07323, 2023.
+[26] Kadison R. V.,Remarks on The Type of von Neumann Algebras of Local Observables in Quantum
+Field Theory, J. Math. Phys., 1963, 4(12): 1511-1516.
+[27] Landsman N. P.,Algebraic Quantum Mechanics, Compendium of Quantum Physics. Berlin, Hei-
+delberg: Springer Berlin Heidelberg, 2009: 6-10.
+[28] Sorce J.,Notes on The Type Classification of von Neumann Algebras, Rev. Math. Phys., 2024,
+36(02): 2430002.
+[29] Ruetsche L., and Earman J.,Infinitely Challenging:Pitowsky ′s Subjective Interpretation and The
+Physics of Infinite systems, Probability in Physics. Berlin, Heidelberg: Springer Berlin Heidelberg,
+2011: 219-232.
+[30] Fewster C. J., and Rejzner K.,Algebraic quantum field theory: An introduction, Progress and Vi-
+sions in Quantum Theory in View of Gravity: Bridging Foundations of Physics and Mathematics.
+Cham: Springer International Publishing, 2020: 1-61.
+[31] Witten E.,Algebras, Regions, and Observers, Proc. Symp. Pure Math. 2024, 107: 247.
+[32] Junge M., Navascues M., Palazuelos C.,et al.,Connes’ embedding problem and Tsirelson’s problem,
+J. Math. Phys., 2011, 52(1).
+[33] Ozawa N.,About The Connes Embedding Conjecture: Algebraic Approaches, JPN. J. Math., 2013,
+8(1): 147-183.
+[34] Ji Z., Natarajan A., Vidick T.,et al.,MIP*= RE, Commun.ACM, 2021, 64(11): 131-138.
+[35] Cirel’son, B. S.,Quantum Generalizations of Bell’s Inequality, Lett. Math. Phys., 1980, 4(2):
+93-100.
+[36] Schwartzman T.,Complexity of Entanglement Embezzlement, Phys. Rev. A, 112.1 (2025): 012415.
+[37] van Luijk L., Stottmeister A., and Wilming H.,Critical Fermions Are Universal Embezzlers,
+Nature Phys., 2025, 21(7): 1141-1146.
+[38] S. J. Summers, and R.Werner,Bell ′s Inequalities and Quantum Field Theory. I. General setting,
+J. Math. Phys., 1987, 28(10): 2440-2447.
+
+=== page 17 ===
+VIOLATION OF BILOCAL INEQUALITIES 17
+[39] S.J. Summers, and R.F. Werner,The Vacuum Violates Bell’s Inequalities, Phys. Lett. A, 1985,
+110: 257-259.
+[40] S.J. Summers, and R.F. Werner,Bell’s Inequalities and Quantum Field Theory, II: Bell’s Inequal-
+ities Are Maximally Violated in The Vacuum, J. Math. Phys., 1987, 28: 2448-2456.
+[41] S.J. Summers, and R.F. Werner,Maximal Violation of Bell’s Inequalities for Algebras of Observ-
+ables in Tangent Spacetime regions, Ann. Inst. Henri Poincar´ e, 1988, 49: 215-243.
+[42] S.J. Summers,On the Independence of Local Algebras in Quantum Field Theory, Rev. Math.
+Phys., 1990, 2: 201-247.
+[43] S.J. Summers, and R.F. Werner,On Bell’s Inequalities and Algebraic Invariants, Lett. Math.
+Phys., 33 (1995), 321-334.
+[44] Branciard C., Rosset D., Gisin N.,et al.,Bilocal Versus Nonbilocal Correlations in Entanglement-
+Swapping experiments, Phys. Rev. A, 2012, 85(3): 032119.
+[45] Lee C. M., and Spekkens R. W.,Causal Inference via Algebraic Geometry: Feasibility Tests For
+Functional Causal Structures With Two Binary Observed Variables, J. Causal Inference, 2017,
+5(2): 20160013.
+[46] Chaves R.,Polynomial Bell Inequalities, Phys. Rev. Lett., 2016, 116(1): 010402.
+[47] Rosset D., Branciard C., Barnea T J.,et al.,Nonlinear Bell Inequalities Tailored For Quantum
+Networks, Phys. Rev. Lett., 2016, 116(1): 010403.
+[48] Gisin N., Mei Q., Tavakoli A.,et al. All Entangled Pure Quantum States Violate The Bilocality
+Inequality, Phys. Rev. A, 2017, 96(2): 020304.
+[49] Tavakoli A., Pozas-Kerstjens A., Luo M. X.,et al.,Bell Nonlocality in Networks, Rep. Prog. Phys.,
+2022, 85(5): 056001.
+[50] Branciard C., Gisin N., and Pironio S.,Characterizing The Nonlocal Correlations Created Via
+Entanglement Swapping, Phys. Rev. Lett., 2010, 104(17): 170401.
+[51] Mukherjee K., Paul B., and Sarkar D.,Correlations in n-local scenario, Quantum Inf. Process.,
+2015, 14(6): 2025-2042.
+[52] Kundu A., Molla M. K., Chattopadhyay I.,et al.,Maximal Qubit Violation ofn-local inequalities
+in a quantum network, Phys. Rev. A, 2020, 102(5): 052222.
+[53] Tavakoli A., Skrzypczyk P., Cavalcanti D.,et al.,Nonlocal correlations in the star-network con-
+figuration, Phys. Rev. A, 2014, 90(6): 062109.
+[54] Andreoli F., Carvacho G., Santodonato L.,et al.,Maximal Qubit Violation ofn-Locality Inequal-
+ities in A Star-Shaped Quantum Network, New J. Phys., 2017, 19(11): 113020.
+[55] Renou M. O., B¨aumer E., Boreiri S.,et al.,Genuine Quantum Nonlocality in The Triangle Net-
+work, Phys. Rev. Lett., 2019, 123(14): 140401.
+[56] Jing B., Wang X. J., Yu Y.,et al.,Entanglement of Three Quantum Memories Via Interference
+of Three Single Photons, Nat. Photonics, 2019, 13(3): 210-213.
+[57] Kriv´ achy T., Cai Y., Cavalcanti D.,et al.,A Neural Network Oracle For Quantum Nonlocality
+Problems in Networks, NPJ Quantum Inf., 2020, 6(1): 70.
+[58] Yang L., Qi X., and Hou J.,Nonlocal Correlations in The Tree-Tensor-Network Configuration,
+Phys. Rev. A, 2021, 104(4): 042405.
+[59] Yang L., Qi X., and Hou J.,Quantum Nonlocality in Any Forked Tree-Shaped Network, Entropy,
+2022, 24(5): 691.
+
+=== page 18 ===
+18 BINGKE ZHENG, SHUYUAN YANG ∗, JINCHUAN HOU ∗, KAN HE ∗
+[60] Yang L., Qi X., and Hou J.,Multi-Nonlocality And Detection of Multipartite Entanglements by
+Special Quantum Networks, Quantum Inf. Process., 2022, 21(8): 305.
+[61] Tavakoli A.,Bell-Type Inequalities For Arbitrary Noncyclic Networks, Phys. Rev. A, 2016, 93(3):
+030101.
+[62] Luo M. X.,Computationally Efficient Nonlinear Bell Inequalities For Quantum Networks, Phys.
+Rev. Lett., 2018, 120(14): 140402.
+[63] Pozas-Kerstjens A., Gisin N., and Tavakoli A.,Full Network Nonlocality, Phys. Rev. Lett., 2022,
+128(1): 010403.
+[64] Luo M. X., Yang X., and Pozas-Kerstjens A.,Hierarchical Certification of Nonclassical Network
+Correlations, Phys. Rev. A, 2024, 110(2): 022617.
+[65] Cabello A., Severini S., and Winter A.,Graph-Theoretic Approach to Quantum Correlations, Phys.
+Rev. Lett., 2014, 112(4): 040401.
+[66] Atserias A., Manˇ cinska L., Roberson D. E.,et al.,Quantum And Non-Signalling Graph Isomor-
+phisms, J. Comb. Theory B, 2019, 136: 289-328.
+[67] Luo M. X.,A Nonlocal Game For Witnessing Quantum Networks, NPJ Quantum Inf., 2019, 5(1):
+91.
+[68] Ligthart L. T., and Gross D.,The Inflation Hierarchy And The Polarization Hierarchy Are Com-
+plete For The Quantum Bilocal Scenario, J. Math. Phys., 2023, 64(7).
+[69] Xu X.,Quantum Nonlocality in Bilocal Networks: An Operator Algebraic Perspective, 2023.
+[70] C. Branciard, N. Gisin, and S. Pironio,Characterizing the Nonlocal Correlations Created Via
+Entanglement Swapping, Phys. Rev. Lett., 2010, 104(17): 170401.
+[71] A. Tavakoli, N. Gisin, C. Branciard,Bilocal Bell Inequalities Violated by The Quantum Elegant
+Joint Measurement, Phys. Rev. Lett., 2021, 126(22): 220401.
+[72] N. Gisin, Q. Mei, A. Tavakoli,et al.,All entangled pure quantum states violate the bilocality
+inequality, Phys. Rev. A, 2017, 96(2): 020304.
+[73] C.Branciard, D. Rosset, N. Gisin,et al.,Bilocal Versus Nonbilocal Correlations in Entanglement-
+Swapping Experiments, Phys. Rev. A, 2012, 85(3): 032119.
+[74] Basteiro P., Di Giulio G., Erdmenger J.,et al.,Entanglement in Interacting Majorana Chains
+And Transitions of von Neumann Algebras, Phys. Rev. Lett., 2024, 132(16): 161604.
+[75] van Luijk L., Stottmeister A., and Wilming H.,Uniqueness of Purifications Is Equivalent to Haag
+Duality, Phys. Rev. Lett., 2026, 136(4): 040203.
+[76] H. Araki , W. EJ,A classification of factorsPublications of the Research Institute for Mathe-
+matical Sciences, Kyoto University. Ser. A, 1968, 4(1): 51-130.
+(Bingke Zheng)Department of Mathematics, Taiyuan University of Technology, TaiYuan,
+People’s Republic of China.
+(Shuyuan Yang∗)Department of Mathematics, North China University, TaiYuan, Peo-
+ple’s Republic of China.
+Email address:yangshuyuan2000@163.com
+
+=== page 19 ===
+VIOLATION OF BILOCAL INEQUALITIES 19
+(Jinchuan Hou∗)Department of Mathematics, Taiyuan University of Technology, TaiYuan,
+People’s Republic of China.
+Email address:jinchuanhou@aliyun.com
+(Kan He∗)Department of Mathematics, Taiyuan University of Technology, TaiYuan,
+People’s Republic of China.
+Email address:hekan@tyut.edu.cn

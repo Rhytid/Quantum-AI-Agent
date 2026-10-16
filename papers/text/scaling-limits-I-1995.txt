@@ -1,0 +1,2259 @@
+=== page 1 ===
+arXiv:hep-th/9501063v1  16 Jan 1995
+Scaling Algebras and Renormalization
+Group in Algebraic Quantum Field Theory
+Detlev Buchholz and Rainer Verch
+II. Institut f¨ ur Theoretische Physik, Universit¨ at Hamburg
+D-22761 Hamburg, Federal Republic of Germany
+DESY 95-004
+hep-th/9501063
+Abstract
+For any given algebra of local observables in Minkowski spac e an as-
+sociated scaling algebra is constructed on which renormali zation group
+(scaling) transformations act in a canonical manner. The me thod can
+be carried over to arbitrary spacetime manifolds and provid es a frame-
+work for the systematic analysis of the short distance prope rties of local
+quantum ﬁeld theories. It is shown that every theory has a (po ssibly non-
+unique) scaling limit which can be classiﬁed according to it s classical or
+quantum nature. Dilation invariant theories are stable und er the action of
+the renormalization group. Within this framework the probl em of wedge
+(Bisognano-Wichmann) duality in the scaling limit is discu ssed and some
+of its physical implications are outlined.
+1 Introduction
+The algebraic approach to relativistic quantum ﬁeld theory has prov en to be an
+eﬃcient setting for the structural analysis of properties of phys ical systems which
+manifest themselves at the upper end of the spatio-temporal sca le. Examples are
+the classiﬁcation of the possible statistics and superselection stru cture of particles,
+collision theory and the clariﬁcation of the infrared properties of th eories with
+long range forces [1]. At the lower end of the scale the algebraic point of view has
+been less successful, however. As a matter of fact, basic ideas wh ich have emerged
+from physics at small scales such as the parton picture or the notio n of asymptotic
+freedom have not yet found an appropriate expression in the algeb raic setting.
+What is missing so far in this approach is the analogue of the renormaliz ation
+group, cf. [2] and references quoted there, which allows one to tr ansform a theory
+at given scale into the corresponding theories at other scales.
+In order to understand the origin of this diﬃculty one has to call to m ind
+the conceptual foundations of the algebraic approach. Algebraic quantum ﬁeld
+1
+
+=== page 2 ===
+theory is based on the idea that the correspondence
+O → A(O) (1.1)
+between spacetime regions O ⊂ R 4 and local algebras of observables A(O) consti-
+tute the intrinsic description of a theory [1]. One therefore refrain s from assigning
+to the individual elements of these algebras any particular physical interpreta-
+tion. In fact, one presumes that this interpretation is essentially ﬁ xed once the
+map is given. We adhere in the following to the standard terminology ac cording
+to which this map is called a local net.
+Quantum ﬁelds, which are a basic ingredient in the conventional appr oach
+to the renormalization group, are regarded as a kind of coordinatiz ation of the
+local algebras and therefore do not appear explicitly in the algebraic setting.
+This view is justiﬁed by the observation that diﬀerent irreducible set s of ﬁeld
+operators which are relatively local to each other yield the same sca ttering matrix
+[3]. Thus the physical content of a theory does not depend on a par ticular choice
+of ﬁelds. All what matters is the information about the localization pr operties of
+the operators, i.e., the net.
+The absence of quantum ﬁelds in the algebraic setting causes proble ms, how-
+ever, if one wants to apply the ideas of the renormalization group. I n the con-
+ventional framework of quantum ﬁeld theory the renormalization g roup trans-
+formations Rλ,λ > 0, act on the underlying quantum ﬁelds φ(x) by scaling
+the spacetime coordinates x, accompanied by a multiplicative renormalization,
+Rλ : φ(x) → φλ(x) .= Nλφ(λx). One thereby maps the theory at the original
+scale λ = 1, say, onto the corresponding theory at scale λ whithout changing
+the value of the fundamental physical constants, i.e., the velocity of light c and
+Planck’s constant ℏ. Moreover, by the multiplicative renormalization factor Nλ,
+the scale of ﬁeld strength is adjusted in such a way that the mean va lues and
+mean square ﬂuctuations of the ﬁelds in some ﬁxed reference stat e are of the
+same order of magnitude at small scales. Thus the quantum ﬁelds ar e employed
+to identify at each scale λ a set of operators with a ﬁxed physical interpretation.
+These operators can then be used to compare the properties of t he theory at
+diﬀerent scales.
+It is apparent that this approach is at variance with the basic philoso phy
+of algebraic quantum ﬁeld theory and one is faced with the question o f how
+to implement the renormalization group in this setting. It is the aim of t he
+present article to provide a solution of this conceptual problem and to establish
+a mathematical framework apt for the structural analysis of loca l nets at small
+scales. Our approach is based on the following elementary observat ions.
+(i) According to the geometrical signiﬁcance of the renormalization group the
+transformations Rλ should map the given net O → A(O) at the original spatio-
+temporal scale 1 onto the corresponding net O → Aλ(O) .= A(λO) at scale λ,
+i.e.,
+Rλ : A(O) → Aλ(O) (1.2)
+2
+
+=== page 3 ===
+for every region O ⊂ R 4. Since space and time are scaled in the same way the
+value of the velocity of light c is kept ﬁxed under these maps.
+(ii) The condition that ℏ remains constant under renormalization group trans-
+formations can be expressed in the algebraic setting as follows. If o ne scales
+space and time by λ and does not want to change the unit of action one has to
+rescale energy and momentum by λ−1. The energy-momentum scale can be set
+by determining the energy and momentum which is transferred by th e action of
+observables to physical states. Hence if 1 ~A( ~O) denotes the subspace of all (quasi
+local) observables which, at the original scale 1, can transfer ener gy-momentum
+contained in the set ~O ⊂ R 4 and if ~Aλ( ~O) .= ~A(λ−1 ~O) denotes the corresponding
+space at scale λ, then the transformations Rλ should induce a map
+Rλ : ~A( ~O) → ~Aλ( ~O) (1.3)
+for every ~O. (An analogous relation should hold for the angular momentum
+transfer.)
+(iii) In the case of dilation invariant theories the transformations Rλ are ex-
+pected to be isomorphisms, yet this will not be true in general since t he algebraic
+relations between observables may depend on the scale. But since t he trans-
+formations Rλ are designed to identify observables at diﬀerent scales they still
+ought to be continuous, bounded maps, uniformly in λ. This condition is akin to
+the multiplicative renormalization of ﬁelds in the conventional approa ch to the
+renormalization group.
+The above conditions subsume the physical constraints imposed on the renor-
+malization group transformations Rλ, although they do not ﬁx these maps. As
+a matter of fact, there exists an abundance of such maps for any given λ > 0.
+But all of these maps identify the same net at scale λ, they merely reshuﬄe the
+operators within the local algebras in diﬀerent ways. Bearing in mind t he basic
+hypothesis of algebraic quantum ﬁeld theory according to which the physical in-
+formation of a theory is contained in the net, it should thus not matt er which
+map one picks for the short distance analysis of a theory. One may c onsider any
+one of them or, what amounts to the same thing, one may consider t hem all.
+We adopt here the latter point of view which can conveniently be expr essed by
+introducing the concept of scaling algebra. Roughly speaking, the s caling algebra
+consists of operator valued functions λ → Rλ(A), λ >0, which are the orbits
+of the local observables A under the action of all admissible transformations Rλ.
+As we shall see, the speciﬁc properties of the transformations Rλ indicated above
+imply that the scaling algebra still has the structure of a local net on which
+the Poincar´ e group acts in a continuous manner. Moreover, the r enormalization
+group induces an additional symmetry of this net: scaling transfor mations. Thus
+the physically signiﬁcant features of the renormalization group give rise to speciﬁc
+algebraic properties of the scaling algebra.
+The states of physical interest can be lifted to the scaling algebra a nd their
+behaviour under scaling transformations can then be analyzed. We will show that
+1All quantities relating to four-momentum space R 4 will be marked by a tilde ~, cf. the
+subsequent section for precise deﬁnitions.
+3
+
+=== page 4 ===
+the transformed states have, at arbitrarily small scales, limits whic h are vacuum
+states. This result allows it on one hand to classify the possible scaling limits
+of local nets. Besides the cases corresponding to theories with an ultraviolet
+ﬁxed point there appear in the present general setting other pos sibilities, such as
+theories with a classical or non-unique scaling limit. If the underlying t heory is
+invariant under dilations and satisﬁes a compactness criterion prop osed by Haag
+and Swieca [4], it is invariant under the action of the renormalization gr oup and
+coincides with its scaling limit.
+The information that the scaling limits of physical states are always v acuum
+states provides, on the other hand, the basis for a more detailed s hort distance
+analysis. A relevant technical result in this respect is the observat ion that theories
+satisfying a condition of wedge duality, established by Bisognano and Wichmann
+[5], comply with this condition also in the scaling limit. In an application of
+this result we will generalize a theorem by Fredenhagen [6] and show t hat in
+theories with a non-classical scaling limit the local von Neumann algebr as A(O)−
+corresponding to double cones O are of type III 1 according to the classiﬁcation
+of Connes. This fact has interesting physical implications, cf. for e xample [7, 8].
+The condition of wedge duality is also of vital importance in the genera l anal-
+ysis of the superselection structure, carried out by Doplicher, Ha ag and Roberts
+[1, 9]. Applying these methods in the present setting one can determ ine the gauge
+group and the particle structure appearing in the scaling limit and the reby lay
+the ground for a rigorous discussion of the parton aspects of the theory. We will
+deal with this issue in a future publication.
+The present article is organized as follows. In the subsequent Sec. 2 our
+assumptions are stated and some preliminary results on the moment um space
+properties of local observables are derived. The scaling algebra an d the accom-
+panying scaling transformations are introduced in Sec. 3, where it is also shown
+how to lift physical states to this algebra and to recover from the lif ts the physi-
+cal information. This method can be generalized to nets on arbitrar y spacetime
+manifolds, as is outlined in the Appendix. Section 4 contains the analys is of the
+scaling limits of physical states and the resulting classiﬁcation of the ories. The
+special case of dilation invariant theories is discussed in Sec. 5, and S ec. 6 contains
+the derivation of wedge duality in the scaling limit, as well as a discussion of its
+consequences. The article concludes with an outlook on further de velopments of
+the theory.
+2 The structure of local observables
+For the convenience of the reader who is not familiar with the framew ork of
+algebraic quantum ﬁeld theory [1] we brieﬂy list in the ﬁrst part of this section
+the basic assumptions and add a few comments. In the second part we establish
+some properties of local operators in momentum space which are of relevance in
+the subsequent discussion.
+1. (Locality) We suppose that the local observables of the underlying theory
+4
+
+=== page 5 ===
+generate a local net over Minkowski space R 4, that is an inclusion preserving
+map O → A(O) from the set of open, bounded regions O ⊂ R 4 to unital C ∗-
+algebras A(O) on the pertinent Hilbert space H. Thus each A(O) is a norm
+closed subalgebra of the algebra B(H) of all bounded operators on H which is
+stable under taking adjoints and contains the unit operator, and t here holds
+A(O1) ⊂ A(O2) if O1 ⊂ O 2. (2.1)
+The net is supposed to comply with the principle of locality (Einstein cau sal-
+ity) according to which observables in spacelike separated regions c ommute. In
+formula form,
+A(O1) ⊂ A(O2)′ if O1 ⊂ O ′
+2, (2.2)
+where O′ denotes the spacelike complement of O and A(O)′ the set of operators in
+B(H) which commute with all operators in A(O). The (global) algebra generated
+by all local algebras A(O) (as a norm inductive limit) will be denoted by A and
+is assumed to act irreducibly on H.
+2. (Covariance) On H there exists a continuous unitary representation U of
+the Poincar´ e groupP ↑
++ which induces automorphisms of the net. Thus for each
+(Λ,x ) ∈ P ↑
++ there is an αΛ,x ∈ Aut(A) given by
+αΛ,x(A) .=U(Λ,x )AU(Λ,x )−1, A ∈ A, (2.3)
+and, in an obvious notation,
+αΛ,x(A(O)) = A(ΛO +x) (2.4)
+for any region O. We amend this fundamental postulate by the condition that
+the operator valued functions
+(Λ,x ) →αΛ,x(A), A∈ A (2.5)
+are continuous in the norm topology. This assumption, which plays a c rucial role
+in the present investigation, does not impose any essential restric tions of gener-
+ality. For these functions are always continuous in the strong oper ator topology,
+because of the continuity properties of the representation U and the fact that the
+operators A are bounded. Hence, by convolution of these operator valued fun c-
+tions with suitable test functions, one can always proceed to a local net which
+complies with our continuity condition and which is dense in the original n et in
+the strong operator topology. So it still contains the relevant info rmation about
+the states of interest here.
+For the sake of uniqueness we also assume that the local algebras A(O) are
+maximal in the following sense: any operator in the strong operator topology
+closure A(O)− of A(O) which complies with our continuity condition is already
+contained in A(O). This condition on the net can always be satisﬁed by enlarging
+the local algebras, if necessary.
+5
+
+=== page 6 ===
+3. (Spectrum condition) The joint spectrum of the generators of the uni-
+tary representation of the translations U | R 4 is contained in the closed forward
+lightcone V +. Moreover, there is an (up to a phase unique) unit vector Ω ∈ H ,
+representing the vacuum, which is invariant under the action of the representation
+U,
+U(Λ,x )Ω = Ω, (Λ,x ) ∈ P ↑
++. (2.6)
+Besides the vacuum Ω and its local excitations, described by the vec tors in H,
+there exist other states of physical interest such as charged st ates, thermal states,
+etc. These states are not represented by vectors in H, but can be described by
+suitable positive, linear and normalized functionals ω on the given algebra A. By
+the GNS-construction [1], any such functional gives rise to a repre sentationπω of
+A on some Hilbert space Hω, and there exists a cyclic vector 2 Ωω ∈ H ω such that
+ω(A) = (Ω ω,π ω(A)Ωω), A ∈ A. (2.7)
+We note that according to this view the vector states in the original Hilbert
+space H induce the identical representation of A. Since this representation is
+distinguished by the existence of a vacuum state, we call it vacuum r epresentation.
+It may be regarded as the deﬁning (faithful) representation of th e theory, in accord
+with common practice in the actual construction of ﬁeld theoretic m odels based
+on vacuum functionals.
+The states of physical interest correspond to functionals ω on A which are
+locally normal with respect to the vacuum representation [1, Sec. I II.3.1]. We
+recall that this property implies, in view of the Reeh-Schlieder-Theo rem, that the
+restrictions of these functionals to any local algebra, ω| A(O), can be represented
+by vectors Ω O in the vacuum Hilbert space H [1, Sec. V.2.2],
+ω(A) = (Ω O,A ΩO), A ∈ A(O). (2.8)
+This fact is of interest in the present investigation since it shows tha t for the
+short distance analysis of physical states it suﬃces to consider th e vector states
+in the vacuum representation.
+We turn now to the analysis of the momentum space properties of th e opera-
+torsA ∈ A. To this end we consider the Fourier transforms of the operator v alued
+functionsx →αx(A), x∈ R 4, which are deﬁned in the sense of distributions. In
+fact, for each f ∈L1(R 4) the expression
+αf (A) .=
+∫
+dxf (x)αx(A) (2.9)
+exists as a Bochner integral in A because of the norm continuity of x → αx(A),
+and ||αf (A)|| ≤ ||f ||1||A||.
+Deﬁnition: Let A ∈ A. The support of A in momentum space is the smallest
+closed subset ~O ⊂ R 4 such that αf (A) = 0 for all f ∈ L1(R 4) with supp ~f ⊂
+2This means that πω(A)Ωω is dense in Hω
+6
+
+=== page 7 ===
+R 4\ ~O, where ~f denotes the Fourier transform of f . (In more physical terms, ~O
+may be called the energy-momentum transfer of A.) The subspace of all operators
+A ∈ A with support in momentum space in a given set ~O ⊂ R 4 is denoted by
+~A( ~O).
+The condition of locality imposes strong restrictions on the support properties
+of local operators A in momentum space. Let us ﬁrst remark that the support
+cannot be a compact set, because otherwise the functions x → αx(A) would
+be entire analytic. This in turn would imply that the commutator funct ions
+x → [αx(A),B ], being 0 for any local operator B ∈ A and suﬃciently large
+spacelikex, would vanish for all x. In view of the irreducibility of A, this is only
+possible if A is a multiple of the identity. By a similar argument it also follows
+that the support cannot be contained in any salient cone of R 4.
+It does not seem simple to specify in more explicit terms the possible su pport
+properties of (bounded) local operators in momentum space. But we need no
+such detailed information. What is of interest here is the fact that t here exist
+in each local algebra A(O) operators whose support in momentum space is all
+of R 4. As a matter of fact this case is generic in a certain sense, as will bec ome
+clear from the subsequent argument.
+Lemma 2.1 Suppose that the local algebras are non-trivial for every op en space-
+time region, A(O) ⁄= C · 1. Then each of these algebras contains operators with
+support R 4 in momentum space.
+Proof: The proof of this result is based on two well known facts, cf. for ex ample
+[10, Sec. VII]. First, for any local operator A ∈ A(O0), A ⁄= c 1, the Fourier
+transform of x →αx(A)Ω, where Ω is the vacuum vector, has Lorentz invariant
+support which contains a hyperboloid Hµ = {p ∈ R 4 : p2 = µ2,p 0 ≥ 0} for
+some µ ≥ 0. Second, if f,g ∈ L1(R 4) are such that αf (A)Ω and αg(A)Ω are
+diﬀerent from 0, then the function x → αf (A)αx(αg(A))Ω does not vanish for
+large spacelike x, as may be seen from the cluster theorem. Being the boundary
+value of an analytic function in the forward tube R 4+iV+, because of the spectrum
+condition, it can therefore not vanish on open subsets of R 4.
+Now letqi,i ∈ N, be a countable dense subset of points on the hyperboloid Hµ
+and let εk,k ∈ N, be a sequence of positive numbers tending to 0. For i,j,k ∈ N
+we deﬁne open neighbourhoods of the points ( qi +qj),
+∆ijk
+.= {p ∈ R 4 : |p −qi −qj|<ε k}
+and consider the corresponding sets
+Nijk = {x ∈ R 4 :E(∆ijk)Aαx(A)Ω = 0 },
+where E(. ) is the spectral resolution of the translations U | R 4. Making use of
+the spectrum condition it follows that Nijk either does not contain any open set
+or coincides with all of R 4. The latter possibility can be excluded since it would
+imply that E(∆ijk)αx′(A)αx′′(A)Ω = 0 for all x′,x ′′ ∈ R 4. From this it would
+7
+
+=== page 8 ===
+in turn follow that for any choice of functions fi,f j ∈ L1(R 4) whose Fourier
+transforms have support in a ball of radius εk/3 about qi and qj, respectively,
+there holds
+αfi(A)αx(αfj (A))Ω = E(∆ijk)αfi(A)αx(αfj (A))Ω = 0
+for all x ∈ R 4. But this is incompatible with the facts mentioned above. Hence
+eachNijk is a closed nowhere dense subset of R 4, or empty. Since the countable
+union of such sets is meager (of ﬁrst category) its complement is de nse in R 4
+and there exists in each neighbourhood of the origin in R 4 a point y which is not
+contained in any one of the sets Nijk. Hence, setting B =Aαy(A), there holds
+E(∆ijk)BΩ ⁄= 0 for all i,j,k ∈ N.
+Next we consider the sets
+Nijk,lmn = {x ∈ R 4 :E(∆ijk)Bαx(B∗)E(∆lmn) = 0 }.
+Multiplying the operator in the deﬁning condition of this set from the r ight by
+U(x) we see, using once more the spectrum condition, that also this set cannot
+contain any open subset, unless it coincides with R 4. The latter possibility can
+again be excluded since it would imply, by an application of the mean ergo dic
+theorem to the unitary group U | R 4, thatE(∆ijk)BE ({0})B∗E(∆lmn) = 0, which
+would be in conﬂict with the properties of B established before. Hence also the
+sets Nijk,lmn are closed and nowhere dense. So again there exist points z in any
+neighbourhood of the origin which are not contained in any one of the se sets,
+E(∆ijk)Bαz(B∗)E(∆lmn) ⁄= 0 for all i,j,k,l,m,n ∈ N.
+It follows from this result that the operator C = Bαz(B∗) has support in mo-
+mentum space which contains all points ( qi +qj −ql −qm). For if f ∈L1(R 4) is a
+function whose Fourier transform ~f is equal to 1 in any given neighbourhood of
+such a point and equal to 0 in the complement of any slightly larger reg ion there
+holds
+E(∆ijk )αf (C)E(∆lmn) = E(∆ijk)CE (∆lmn) ⁄= 0
+for suﬃciently large k,n , and consequently αf (C) ⁄= 0. Since the set of points
+(qi +qj −ql −qm) is dense in R 4 this implies that C has support R 4. We ﬁnally
+recall that the points y,z in the construction of C from the original operator
+A ∈ A(O0) can be chosen as close to 0 as one wishes. Hence there exists for a ny
+region O which contains the closure of O0 in its interiour an operator C ∈ A(O)
+with the stated support properties in momentum space. ✷
+Whereas local operators cannot have, in the strict mathematical sense, com-
+pact support in momentum space, it is an important consequence of their con-
+tinuity properties with respect to translations that they have “alm ost compact
+support”, as will be explained now.
+8
+
+=== page 9 ===
+Lemma 2.2 Let the local algebras be non-trivial and let O ⊂ R 4 be given.
+(i) For any A ∈ A(O) and ε> 0 there exists a closed ball ~O ⊂ R 4 centered at 0
+and an operator ~A ∈ ~A( ~O) such that ||A − ~A|| ≤ ε||A||.
+(ii) Conversely, given any such ball ~O there exist an operator A ∈ A(O) and
+operators ~Aµ,µ ≥ 1, with support µ ~O in momentum space such that ||A − ~Aµ|| ≤
+µ−1||A||.
+Proof: (i) Let f ∈ S (R 4) be any test function whose Fourier transform has
+support in some ball ~O about 0, does not vanish in its interiour, and satisﬁes∫
+dxf (x) = 1. Setting fµ(x) .=µ4f (µx),µ ≥ 1, we deﬁne operators ~Aµ
+.=αfµ(A)
+which are, by construction, elements of ~A(µ ~O). Moreover, there holds ||A− ~Aµ|| ≤∫
+dx |f (x)| ||αµ−1x(A) −A||. In view of the continuity properties of A with respect
+to translations, the right hand side of this inequality can be made arb itrarily
+small for suﬃciently large µ.
+(ii) According to the preceding lemma there exist local operators A ∈ A(O)
+which have support R 4 in momentum space. Moreover, there also exist such
+operators for which the corresponding operator functions x → αx(A) are dif-
+ferentiable in norm. (Since all of these functions are norm continuo us, the dif-
+ferentiability can be accomplished by convolution with suitable test fu nctions
+whose Fourier transforms do not vanish.) We pick any such operato r A and
+consider the corresponding operators ~Aµ introduced in the preceding step. Be-
+cause of the support properties of A in momentum space the operators ~Aµ
+have support µ ~O and because of the diﬀerentiability of x → αx(A) there holds
+||αx(A) −A|| ≤ cA |x|, x∈ R 4. Hence it follows from the estimate given in the
+preceding step that ||A − ~Aµ|| ≤ µ−1cA,f , where cA,f is a positive constant de-
+pending on A andf . If cA,f ≤ ||A|| the statement follows. Otherwise we consider
+the operator A′ .= ζ1 + ηA, where η = cA,f −1||A|| and the number ζ is chosen
+in such a way that ||A′|| = ||A||. This operator is still an element of A(O) and
+the corresponding operators ~A′
+µ
+.=ζ1 +η ~Aµ still have support µ ~O in momentum
+space since a non-zero c-number factor does not change the sup port properties
+of an operator and the unit operator has support {0}. It thus follows from the
+preceding estimate that ||A′ − ~A′
+µ|| ≤ µ−1||A′||, which completes the proof. ✷
+Although the size of the regions O, ~O in the second part of this statement is
+in principle arbitrary, it is clear that the respective operators A will be close in
+norm to the identity (i.e., the constant η in the last step of the above argument
+will be very small) if the regions do not comply with the uncertainty prin ciple.
+In order to obtain operators which do not have a dominant c-numbe r part ζ1, the
+product of the diameters of O and ~O should be of the order of Plancks constant.
+It is conceivable that in some theories ﬁtting into our general settin g the latter
+condition does not suﬃce to ensure the existence of non-trivial (“ quantum”)
+operators for arbitrarily small regions O. The orbit of any local operator under
+the action of the renormalization group would then tend in norm to a m ultiple of
+the identity, hence the quantum correlations between “comparab le observables”
+would disappear in the scaling limit. This possibility will be discussed in Sec. 4
+in more detail.
+9
+
+=== page 10 ===
+3 Scaling algebra and renormalization group
+In this section we introduce the concept of scaling algebra which allow s us to
+express the basic ideas of the renormalization group in the algebraic setting.
+Our starting point is a local, Poincar´ e covariant net A,α P ↑
++
+as described in Sec.
+2, which is assumed to be given. It is called the underlying net or under lying
+theory.
+To ﬁx ideas we assume that the net A,α P ↑
++
+is deﬁned at spatio-temporal scale
+λ = 1. As was discussed in the Introduction, one then obtains the cor responding
+nets at any other scale λ> 0 by setting
+O → Aλ(O) .= A(λO). (3.1)
+The Poincar´ e transformations at scaleλ are given by
+α(λ)
+Λ,x
+.=αΛ,λx, (Λ,x ) ∈ P ↑
++. (3.2)
+Note that Aλ,α (λ)
+P ↑
++
+deﬁnes again a local, Poincar´ e covariant net over Minkowski
+space which complies with the conditions given in Sec. 2. Thus, in accor d with
+the procedure in the conventional ﬁeld theoretical setting, we ke ep Minkowski
+space ﬁxed and interpret the properties of the underlying theory at small scales
+λ in terms of the modiﬁed theories (nets) Aλ,α (λ)
+P ↑
++
+.
+It is apparent that the nets Aλ,α (λ)
+P ↑
++
+describe, for diﬀerent values of λ, in
+general distinct theories (with diﬀerent energy-momentum spect rum, collision
+cross sections, “running” coupling constants etc.). Within the alge braic setting
+these diﬀerences ﬁnd there formal expression in the fact that th e corresponding
+nets are non-isomorphic. Conversely, any two local, Poincar´ e-covariant nets which
+are isomorphic are physically indistinguishable and consequently repr esent the
+same theory. We recall the notion of net isomorphism in the following d eﬁnition.
+Deﬁnition: Forj = 1, 2, let O → A(j)(O), α(j)
+P ↑
++
+be two local, Poincar´ e covariant
+nets on Minkowski space with C ∗-inductive limits A(j). The two nets are said
+to be isomorphic if there is an isomorphism φ : A(1) → A(2) which preserves
+localization,
+φ(A(1)(O)) = A(2)(O), O ⊂ R 4
+and intertwines the Poincar´ e transformations,
+φ ◦α(1)
+Λ,x =α(2)
+Λ,x ◦φ, (Λ,x ) ∈ P ↑
++.
+Any such isomorphism φ is called a net isomorphism. A net isomorphism which
+maps a given net onto itself is called an internal symmetry.
+According to this deﬁnition the nets Aλ,α (λ)
+P ↑
++
+are isomorphic for diﬀerent val-
+ues of λ if and only if dilations are a (geometrical) symmetry of the underlying
+theory. The physical content of the theory is then invariant unde r changes of the
+10
+
+=== page 11 ===
+spatio-temporal scale. We are here primarily interested in those ca ses where the
+underlying theory does not possess such a symmetry. Consequently we cannot
+rely on the notion of net-isomorphism in order to compare the prope rties of the
+theory at diﬀerent scales.
+This comparison can be accomplished, however, with the help of the r enormal-
+ization group transformations Rλ, considered in the Introduction, which map the
+underlying net A onto the nets Aλ at any other scale (though without preserving
+algebraic relations). As was explained, the transformations Rλ are used in the
+conventional setting of quantum ﬁeld theory to identify particular observables at
+diﬀerent scales. Yet such a detailed information is not necessary fo r the inter-
+pretation of the short distance properties of a theory. All what m atters is that
+renormalization group transformations do not change the fundam ental physical
+unitsc and ℏ and are continuous, cf. conditions (i), (ii) and (iii) in the Introduc-
+tion. As we shall see, it is not even necessary for the short distanc e analysis to
+specify the transformations Rλ explicitly. It suﬃces to have control on the phase
+space properties of the orbits λ → Rλ(A), λ > 0, of local observables A ∈ A
+under these transformations. Thus, instead of starting from so me ad hoc choice
+of the transformation Rλ, we will consider the set of all operator functions of
+the scaling parameter λ with values in A which exhibit the relevant features of
+the orbits of observables under the action of the renormalization g roup. These
+functions will constitute the elements of the scaling algebra.
+Before we can turn to the actual deﬁnition of this algebra we have t o elaborate
+the relevant properties of the functions λ →Rλ(A),A ∈ A. Given any A ∈ A(O)
+it follows from condition (i) in the Introduction that
+Rλ(A) ∈ Aλ(O) = A(λO), λ> 0. (3.3)
+Thus these functions have speciﬁc localization properties in conﬁgu ration space.
+Next, let us determine the properties of Rλ(A) in momentum space. As was
+explained in Sec. 2, local operators A ∈ A(O) cannot have compact support in
+momentum space, but they have almost compact support in the sen se of part (i)
+of Lemma 2.2. More precisely, given δ >0, there is a compact set ~O ⊂ R 4 and
+an operator ~A ∈ ~A( ~O) such that ||A − ~A || < δ||A ||. According to condition
+(ii) there holds Rλ( ~A) ∈ ~Aλ( ~O) = ~A(λ−1 ~O). Thus, making use of the continuity
+properties of Rλ, cf. condition (iii), we conclude (choosing δ suﬃciently small)
+that for any ε> 0 there is some compact set ~O such that
+Rλ(A) ∈ ~A(λ−1 ~O) +ε U, λ> 0 (3.4)
+where U is the unit ball in A. Hence in this approximate sense the orbits of
+local observables under renormalization group transformations h ave characteristic
+support properties in momentum space as well. Roughly speaking, th e volume of
+phase space occupied by these operators is independent of the sc ale λ.
+It will greatly simplify our discussion that the mildly cumbersome relatio n
+(3.4) can be replaced by a continuity condition with respect to space -time trans-
+lations, as is shown in the subsequent lemma.
+11
+
+=== page 12 ===
+Lemma 3.1 Let λ → Aλ, λ > 0, be a function with values in A which is uni-
+formly bounded in norm. Then the following two statements ar e equivalent.
+(i) For eachε> 0 there exists a compact set ~O ⊂ R 4 such thatAλ ∈ ~A(λ−1 ~O)+ε U
+for all λ> 0.
+(ii) supλ>0 ||αλx(Aλ) −Aλ || → 0 for x → 0.
+Proof: That the ﬁrst statement implies the second one may be seen as follow s.
+Let ε > 0 and let ~Aλ ∈ ~A(λ−1 ~O) be such that ||Aλ − ~Aλ || ≤ ε, λ > 0, and
+consequently
+sup
+λ>0
+||αλx(Aλ) −Aλ || ≤ sup
+λ>0
+||αλx( ~Aλ) − ~Aλ || + 2ε.
+SinceAλ is uniformly bounded for λ> 0 the same holds true for ~Aλ. We pick any
+function f ∈ L1(R 4) whose Fourier transform is equal to 1 in a neighbourhood
+of ~O and set fλ(x) .= λ−4f (λ−1x). Because of the support properties of ~Aλ in
+momentum space we have ~Aλ =αfλ( ~Aλ), hence
+sup
+λ
+||αλx( ~Aλ) − ~Aλ || ≤
+∫
+dy |f (y −x) −f (y)| · sup
+λ>0
+|| ~Aλ ||.
+Since the right hand side of this inequality vanishes for x → 0, the second state-
+ment follows.
+For the proof of the converse direction we put η(x) .= sup λ>0 ||αλx(Aλ)−Aλ ||.
+By assumption this function is bounded and vanishes for x → 0. Given ε >
+0, we can therefore ﬁnd some function g ∈ L1(R 4) such that
+∫
+dxg (x) = 1,∫
+dx |g(x)|η(x) ≤ε and the Fourier transform of g has compact support in some
+(suﬃciently large) region ~O. Proceeding to the scaled functions gλ as above it
+follows that the operators ~Aλ
+.=αgλ(Aλ) have support in momentum space in the
+regionλ−1 ~O. Since
+∫
+dxg λ(x) = 1 there holds also ||Aλ− ~Aλ || ≤
+∫
+dx |g(x)|η(x) ≤
+ε for λ> 0, proving the ﬁrst statement. ✷
+In view of this lemma and the fact that the functions λ →Rλ(A) are uniformly
+bounded, cf. condition (iii) in the Introduction, we can proceed fro m relation
+(3.4) to the equivalent statement
+sup
+λ>0
+||αλx(Rλ(A)) −Rλ(A) || → 0 for x → 0. (3.5)
+Taking into account that angular momentum has the dimension of ℏ and that
+renormalization group transformations do not change the unit of a ction one is
+led by a similar spectral analysis of the functions λ →Rλ(A) with respect to the
+Lorentz transformations αL↑
++
+to the conclusion that also
+sup
+λ>0
+||αΛ(Rλ(A)) −Rλ(A) || → 0 for Λ → 1, Λ ∈ L ↑
++. (3.6)
+We regard the properties (3.3), (3.5) and (3.6) as the distinctive fe atures of the or-
+bits of local operators under renormalization group transformat ions. As a matter
+12
+
+=== page 13 ===
+of fact one can give arguments that any function λ → Aλ with these properties
+arises from some transformation which satisﬁes conditions (i), (ii) a nd (iii) in
+the Introduction with arbitrary precision. We may therefore forg et the under-
+lying transformations and consider the set of all functions λ → Aλ with these
+properties. Given any such function we interpret its values Aλ as elements of
+the respective nets (theories) Aλ,α (λ)
+P ↑
++
+. Thus these functions provide information
+as to which operators are identiﬁed at diﬀerent scales. Since the op erators Aλ
+are only restricted by phase space conditions, this view may appear to be prob-
+lematic if one thinks of the rigid assignment of operators at diﬀerent scales in
+the conventional approach to the renormalization group. But let u s recall that
+according to the algebraic point of view the physical information of a theory is
+contained in (and can be recovered from) the net. It is not necess ary to ﬁx the
+interpretation of individual operators. Phrased diﬀerently: the p hysically rele-
+vant information about the action of the renormalization group is co ntained in
+the particular embedding of the nets Aλ,α (λ)
+P ↑
++
+at diﬀerent scales λ into each other,
+which is provided by the functions λ →Aλ. It is not contained in the individual
+orbits.
+We emphasize that this approach provides a redundant description of the
+renormalization group since the orbits induced by all admissible trans formations
+Rλ are taken into consideration. This causes some minor technical com plica-
+tions which can be handled, however, by standard functional analy tic techniques.
+What one gains on the other hand by this method is a general formalis m for the
+renormalization group analysis which is canonically associated with any given
+theory and free of arbitrariness. Moreover, it circumvents the a ctual construction
+of the renormalization group transformations Rλ.
+To stress the latter point let us note that functions λ →Aλ with the desired
+properties can easily be constructed in abundance. This follows fro m the second
+part of Lemma 2.2. According to that statement there exist for ﬁx ed regions O, ~O
+and any λ> 0 operators Aλ ∈ A(λO), ||Aλ || = 1, and ~Aλ,µ ∈ ~A(µλ−1 ~O), µ ≥ 1,
+such that ||Aλ − ~Aλ,µ || ≤ µ−1. Thus the corresponding functions λ →Aλ satisfy
+conditions (3.3) and (3.4), hence also (3.5). In order to satisfy also condition
+(3.6) it suﬃces to average the operators Aλ, λ> 0 over a ﬁxed, arbitrarily small
+neighbourhood N of unity in L↑
++, Aλ
+.=
+∫
+NdΛαΛ(Aλ), where dΛ is the Haar-
+measure. The resulting functions λ →Aλ then have all desired properties.
+After this motivation of our particular approach to the renormaliza tion group
+analysis let us turn now to the deﬁnition of the scaling algebras. As wa s explained,
+we consider functions A : R + → A from the domain R + of the scaling parameter
+λ to the underlying algebra of observables. (In order to distinguish t hese functions
+from elements of A we mark them in the following by underlining.) Since we want
+to interpret the values Aλ of these functions as elements of the local, covariant
+nets Aλ,α (λ)
+P ↑
++
+, it is natural to induce the following algebraic structures: given any
+13
+
+=== page 14 ===
+two functions A,B and a,b ∈ C we set for λ> 0
+(aA +bB)λ
+.= aAλ +bBλ
+(A ·B)λ
+.= Aλ ·Bλ (3.7)
+(A∗)λ
+.= A∗
+λ.
+Thereby the functionsA acquire the structure of a unital *-algebra, the unit being
+given by 1 λ = 1. Moreover, since we are only interested in uniformly bounded
+functions it is natural to introduce the norm
+||A || .= sup
+λ>0
+||Aλ || (3.8)
+which in fact is a C ∗-norm. Bearing in mind that α(λ)
+Λ,x =αΛ,λx, the induced action
+of the Poincar´ e transformations on the functions is given by
+(αΛ,x(A))λ
+.=αΛ,λx(Aλ). (3.9)
+It follows that the continuity requirements (3.5) and (3.6) can be ex pressed in
+the simple form
+||αΛ,x(A) −A || → 0 for (Λ ,x ) → (1, 0). (3.10)
+It remains to impose on the functions the localization condition (3.3). This is
+accomplished with the help of the following deﬁnition.
+Deﬁnition: Let O ⊂ R 4 be any open, bounded region. Then A(O) denotes the
+set of all uniformly bounded functions A which are continuous with respect to
+Poincar´ e transformations in the sense of relation (3.10) and satis fy
+Aλ ∈ A(λO), λ> 0.
+Since each A(λO) is a C ∗-algebra it follows that A(O) is a C ∗-algebra as well:
+it is stable under the algebraic operations (3.7) and complete with res pect to the
+C ∗-norm (3.8). (Note that ||αΛ,x(A) || = ||A ||, hence the limit of any Cauchy
+sequence whose elements satisfy the continuity condition (3.10) ag ain satisﬁes
+this condition.) It is also apparent from the deﬁnition that A(O) is monotonous
+with respect to O,
+A(O1) ⊂ A(O2) if O1 ⊂ O 2. (3.11)
+Thus the assignment O → A(O) deﬁnes a net of C ∗-algebras over Minkowski
+space. Since O1 ⊂ O ′
+2 implies that also λO1 ⊂ (λO2)′, λ > 0 (the velocity of
+light,c, is kept constant at each scale) it follows from the locality of the und erlying
+theory that the net A is local, too,
+AB =BA for A ∈ A(O1),B ∈ A(O2) if O1 ⊂ O ′
+2. (3.12)
+14
+
+=== page 15 ===
+Finally, because of the equality of sets (Λ λO +λx) = λ(ΛO +x),λ> 0, it follows
+from (3.9) and covariance of the underlying theory that
+αΛ,x(A(O)) = A(ΛO +x). (3.13)
+Hence the Poincar´ e transformationsαP ↑
++
+are automorphisms of the net A. We
+have thus arrived at a mathematical setting which is similar to our sta rting point.
+Deﬁnition: The local, covariant net A,α P ↑
++
+is called scaling net of the underlying
+theory. The C ∗-inductive limit of all local algebras A(O) is called scaling algebra
+and denoted by A. (As is common practice, we denote the net and the corre-
+sponding global C ∗-algebra by the same symbol.)
+Remark: The elements of the global scaling algebra A can still be represented by
+certain speciﬁc functions λ →Aλ with values in A.
+It is straightforward to describe in this formalism a change of the sp atio-temporal
+scale. Such changes are induced by an automorphic action σR+ of the multiplica-
+tive group R + on the scaling algebra A, given for any µ ∈ R + by
+(σµ(A))λ
+.=Aµλ, λ> 0. (3.14)
+As is easily veriﬁed, there holds
+σµ(A(O)) = A(µO), O ⊂ R 4 (3.15)
+and
+σµ ◦αΛ,x =αΛ,µx ◦σµ, (Λ,x ) ∈ P ↑
++. (3.16)
+According to our previous discussion the scaling transformations σR+ are to be
+viewed as renormalization group transformations which relate the o bservables at
+diﬀerent scales. They appear in the present setting as geometrica l symmetries;
+this greatly simpliﬁes their analysis.
+The scaling algebra A comprises the orbits of local observables under all pos-
+sible renormalization group transformations which comply with the ba sic condi-
+tions given in the Introduction. So in this sense it is maximal. In applicat ions
+of the formalism it may sometimes be convenient to impose further co nstraints
+on the orbits which amounts to proceeding to subnets of A. For example, it
+seems natural to restrict attention to those elements of A on which the scaling
+transformations σµ, µ > 0, act norm continuously. Let us note, however, that
+continuity at µ = 0 (from the right) would be too strong a requirement. For
+only multiples of the identity 1 have this property. In the present investigation
+we will not impose any further constraints on the functions A and work with the
+maximal net A.
+It is our objective to study the properties of the physical states of the under-
+lying theory at arbitrarily small scales. To this end we will lift these sta tes to the
+scaling algebra and study their behaviour under scaling transforma tions. Before
+15
+
+=== page 16 ===
+we explain this procedure we introduce some notation. Let ω be any state on
+the scaling algebra A and let (π, H, Ω) be the corresponding GNS-representation.
+The kernel of π (i.e., the closed two-sided ideal consisting of all elements A ∈ A
+for which π(A) = 0) will be denoted by ker( π) and the quotient of A with respect
+to ker(π) by
+Aπ .= A/ker(π) ≃π(A). (3.17)
+Here the symbol ≃ indicates the well-known fact [11, Cor. 1.8.3] that the respec-
+tive C ∗-algebras are isomorphic. The canonical isomorphism ψ between these
+algebras is given by ψ(Aπ) = π(A), where Aπ is the class of A ∈ A modulo
+ker(π). The projection of ω to the quotient Aπ is denoted by proj ω and given by
+projω .= (Ω,ψ (. )Ω). (3.18)
+The physical interpretation of the states ω will be based on their projections
+projω, regarded as states on the net
+O → Aπ(O) .= A(O)/ker(π) (3.19)
+on Minkowski space. These nets are again local. Moreover, if ker( π) is invari-
+ant under the Poincar´ e transformationsαP ↑
++
+one can also deﬁne an automorphic
+action of the Poincar´ e group on Aπ, setting for (Λ ,x ) ∈ P ↑
++
+απ
+Λ,x(Aπ) .= (αΛ,x(A))π, A π ∈ Aπ. (3.20)
+In this way any suitable state ω on A determines a local, covariant net Aπ,α π
+P ↑
++
+and a distinguished state proj ω on Aπ.
+Given a state ω on the underlying net A,α P ↑
++
+we intend to deﬁne its canonical
+lift ω to the scaling algebra A in such a way that we can recover from it by the
+above procedure the underlying net and state. This leads us to the following
+deﬁnition.
+Deﬁnition: Letω be a state on the underlying global algebra A. Its canonical lift
+ω on the scaling algebra A is deﬁned by
+ω(A) .=ω(Aλ=1), A ∈ A.
+It is apparent that ω is a state on A and we shall see with the help of the
+subsequent lemma that it provides the desired information.
+Lemma 3.2 Let ω be a state on A, let (π, H, Ω) be the corresponding GNS-
+representation and let ω be the canonical lift of ω on A with corresponding GNS-
+representation (π, H, Ω). There exists a unitary W : H → H such that W Ω = Ω
+and
+Wπ (A)W −1 =π(Aλ=1), A ∈ A.
+16
+
+=== page 17 ===
+Moreover, for each bounded region O it holds that
+Wπ (A(O))W −1 =π(A(O)),
+i.e., W induces an isomorphism between the C ∗-algebras π(A) and π(A) which
+preserves localization.
+Proof: It follows from the deﬁnition of the canonical lift that
+(Ω,π (A)Ω) = (Ω,π (Aλ=1)Ω), A ∈ A.
+Hence the map W : H → H given by
+Wπ (A)Ω .=π(Aλ=1)Ω, A ∈ A
+is densely deﬁned, isometric and linear. Setting A = 1 we have in particular
+W Ω = Ω. In order to show that the range of W is dense in H we proceed as
+follows. Given any region O and any operator A ∈ A(O) we deﬁne a function A,
+settingAλ
+.=A forλ = 1 and Aλ
+.= 0 for λ ⁄= 1. One easily checks that A ∈ A(O)
+and consequently π(A(O)) ⊂π(Aλ=1(O)), in an obvious notation. The converse
+inclusion holds by construction of A(O), hence
+π(Aλ=1(O)) = π(A(O)). (3.21)
+Proceding to the inductive limit O ր R 4 we see that also π(Aλ=1) = π(A).
+This shows that the range of W contains the vectors π(A)Ω which are dense in
+H according to the GNS-construction. Thus W maps H onto H and hence is
+invertible. Making use of the deﬁning relation of W we conclude that
+Wπ (A)W −1 =π(Aλ=1), A ∈ A.
+HenceW ·W −1 deﬁnes an isomorphism mapping π(A) onto π(A) which, because
+of relation (3.21), preserves localization. ✷
+This lemma has several interesting consequences which we list below. First, let
+us recall the following standard terminology.
+Deﬁnition: Let B be a C ∗-algebra and let β be a representation of the Poincar´ e
+group P ↑
++ by automorphisms of B. A representation ( π, H) of B is said to be
+covariant with respect to the action of βP ↑
++
+(brieﬂy: a covariant representation of
+B,β P ↑
++
+) if there is a continuous unitary (possibly projective) representa tion V of
+P ↑
++ on H such that for (Λ ,x ) ∈ P ↑
++
+V (Λ,x )π(B)V (Λ,x )−1 =π(βΛ,x(B)), B ∈ B.
+A covariant representation (π, H) is said to be a vacuum representation if V | R 4
+satisﬁes the relativistic spectrum condition, spV | R 4 ⊂ V +, and there is a vec-
+tor Ω ∈ H which is cyclic for π(B) and invariant under the action of V (Λ,x ),
+(Λ,x ) ∈ P ↑
++. Finally, a state ω on B is called a vacuum state if the corresponding
+GNS-representation (π, H, Ω) is a vacuum representation where Ω has the just
+mentioned properties.
+17
+
+=== page 18 ===
+Corollary 3.3 Letω be a state on A and let ω be its canonical lift on A.
+(i) ω is a pure state iﬀ ω is pure.
+(ii) The GNS-representation (π, H, Ω) of A,α P ↑
++
+, induced by ω, is covariant iﬀ the
+GNS-representation (π, H, Ω) of A,α P ↑
++
+, induced by ω, is covariant. Moreover, if
+U,U denote the representations of P ↑
++ on the respective Hilbert spaces H, H, one
+obtains
+U (Λ,x ) = W −1U(Λ,x )W, (Λ,x ) ∈ P ↑
++
+whereW : H → H is the unitary map appearing in the preceding lemma.
+(iii) ω is a vacuum state iﬀ ω is a vacuum state.
+Proof: These statements are an elementary consequence of Lemma 3.2. W e
+conﬁne ourselves to establishing the second one. Let ( π, H, Ω) be a covariant
+representation of A,α P ↑
++
+. There hold the equalities (cf. Lemma 3.2)
+Wπ (αΛ,x(A))W −1 =π((αΛ,x(A))λ=1)
+= π(αΛ,x(Aλ=1)) = U(Λ,x )π(Aλ=1)U(Λ,x )−1
+= U(Λ,x )Wπ (A)W −1U(Λ,x )−1.
+Hence (π, H, Ω) is a covariant representation of A,α P ↑
++
+, the corresponding unitary
+representation U of P ↑
++ being given by U (Λ,x ) = W −1U(Λ,x )W , (Λ,x ) ∈ P ↑
++.
+The proof of the “only if” part of the statement is analogous. ✷
+Let us apply now these results to the vector states ω in the deﬁning (identical)
+vacuum representation of A,α P ↑
++
+. Since this representation is covariant, the same
+is true for the representations (π, H, Ω) of A,α P ↑
++
+induced by the respective canon-
+ical lifts ω. As a consequence, the kernels ker( π) are invariant under the action
+of αP ↑
++
+. Hence any such vector state ω determines, as outlined above, via its lift
+ω on A a local covariant net Aπ,α π
+P ↑
++
+and a state proj ω. Recalling that the C ∗-
+algebras Aπ andπ(A) are canonically isomorphic, it follows from Lemma 3.2 and
+its corollary that the nets Aπ,α π
+P ↑
++
+and A,α P ↑
++
+are isomorphic, a net isomorphism
+φ being given by
+φ(Aπ) = Aλ=1, A π ∈ Aπ. (3.22)
+Hence the two nets describe the same physics. Moreover, we have
+projω ◦φ−1 =ω, (3.23)
+hence with the above choice of φ one can also recover from proj ω the underlying
+state ω.
+Let us note that any two isomorphisms between the above nets are related
+by an internal symmetry transformation of A,α P ↑
++
+. Thus even if one forgets
+about the speciﬁc assignment (3.23) one can recover from proj ω the state ω up
+to some internal symmetry transformation. The apparent loss of information
+18
+
+=== page 19 ===
+about ω is irrelevant since all physical states look alike at very small scales, a s
+we shall see. Moreover, if the internal symmetries of A,α P ↑
++
+(provided there are
+any) are not spontaneously broken in the underlying vacuum repre sentation, then
+the respective vacuum state is invariant under these symmetries. Hence in this
+relevant case one can recover without ambiguities the properties o f the vacuum
+from its projected lift. These facts show that for the physical int erpretation of the
+states proj ω there is no need to rely on the framework of the underlying theory.
+This point will be of relevance in our discussion of the scaling limit, where an
+“underlying theory” has yet to be deﬁned.
+Having seen how the physical interpretation of the states ω in the underlying
+theory can be recovered from their canonical lifts ω it is now straightforward to
+obtain information about the properties of these states at any ot her scale λ> 0.
+One simply has to compose the lifted states ω with the scaling transformation
+σλ,
+ωλ
+.=ω ◦σλ. (3.24)
+Since σλ is an automorphism of the scaling algebra A one can identify the GNS-
+representation induced by ωλ with (πλ, H, Ω) where
+πλ
+.=π ◦σλ (3.25)
+and (π, H, Ω) is the original representation of A induced by ω. It follows from
+relation (3.16) and the Poincar´ e covariance of ( π, H, Ω) that ker( πλ) is invari-
+ant under αP ↑
++
+. Consequently each state ωλ determines a local, covariant net
+Aπλ,α
+πλ
+P ↑
++
+and a state proj ωλ on this net. That this net and state have the desired
+interpretation is the content of the subsequent proposition.
+Proposition 3.4 Let ω be a vector state in the deﬁning vacuum representation
+of A, let ω be its canonical lift on A and let ωλ, λ > 0, be the corresponding
+scaled states with GNS-representations (πλ, H, Ω). For each λ >0 there exists a
+net isomorphism φλ between the nets Aπλ,α
+πλ
+P ↑
++
+and Aλ,α (λ)
+P ↑
++
+given by
+φλ(Aπλ) .=Aλ, A πλ ∈ Aπλ.
+Moreover, there holds
+projωλ ◦φ−1
+λ =ω
+whereω is regarded as a state on the net Aλ,α (λ)
+P ↑
++
+.
+Proof: Let σλ : Aπλ → Aπ be the map given by
+σλ(Aπλ) .= (σλ(A))π, A πλ ∈ Aπλ.
+Sinceσλ is an automorphism of A it follows that σλ is an isomorphism. Moreover,
+one obtains
+σλ(Aπλ(O)) = Aπ(λO).
+19
+
+=== page 20 ===
+Noticing that φλ = φ ◦σλ, where φ is the isomorphism between Aπ,α π
+P ↑
++
+and
+A,α P ↑
++
+deﬁned in relation (3.22), and recalling relation (3.16) it is straightfor ward
+to complete the proof of the statement. ✷
+In view of this result it is obvious how the states ωλ on A can be used to obtain,
+in the limit λ ց 0, information on the scaling limit of the underlying theory. The
+discussion of this issue is the subject of the subsequent section.
+4 Scaling limit
+Let us now investigate the behaviour of physical states ω on A under renormal-
+ization group transformations in the scaling limit λ ց 0. Hence we consider the
+family of states on A
+ωλ
+.=ω ◦σλ, λ> 0, (4.1)
+as a net directed towards λ = 0.
+Before entering into details, let us point out some at ﬁrst sight perh aps unex-
+pected mathematical problem appearing in this analysis. As explained , we want
+to determine the properties of states at small scales with the help o f the functions
+A ∈ A. Now there holds
+⋂
+λ>0 A(λO)− = C · 1 (cf. the proof of Lemma 4.1 below),
+hence any function A with the property that Aλ converges in norm for λ ց 0
+inevitably converges to a multiple of the identity. Consequently such functions
+are not suitable to test the properties of states in the scaling limit sin ce they are
+not sensitive to their detailed properties; they have the same limit in every state
+on A. For this reason we did not assume from the outset that the elemen ts of A
+are continuous at λ = 0. As a consequence, the nets ( ωλ)λ>0 are not convergent.
+To illustrate this fact consider for example the operators C of the form C λ =cλ ·1,
+cλ ∈ C, λ >0. There holds ωλ(C) = cλ, hence if not all of the functions λ →cλ
+are continuous forλ ց 0 the net (ωλ)λ>0 does not converge. Thus at this point we
+pay for the convenience of not having to exhibit any particular reno rmalization
+group transformation by admitting as elements of A all functions which comply
+with the basic constraints deriving from the renormalization group.
+This apparent diﬃculty can be handled, however, with the help of the Banach-
+Alaoglu theorem [12], according to which every bounded set in the dua l space of
+a Banach space is pre-compact in the weak-*-topology. Applying th is theorem
+to the family of states ( ωλ)λ>0 on the Banach space A we see that this family
+contains (many) subnets which converge in the weak-*-topology f orλ ց 0. This
+leads us to introduce the following terminology.
+Deﬁnition: Let ω be a state on A andω its canonical lift on A. Each weak-*-limit
+point of the net ( ωλ)λ>0 forλ ց 0 is called a scaling limit state ofω. The scaling
+limit states of ω are denoted by ω0,ι, ι ∈ I where I is some index set, and the set
+of all these states is denoted by SL(ω).
+For the physical interpretation of the scaling limit states ω0,ι on A we apply the
+20
+
+=== page 21 ===
+same rules as in the case of states at ﬁnite scales: we proceed to th e local nets
+O → A0,ι(O) .= Aπ0,ι(O) = A(O)/ker(π0,ι), (4.2)
+where π0,ι is the GNS-representation induced by ω0,ι. According to Proposition
+3.4 these nets are to be regarded as “limits” of the underlying nets Aλ at scale
+λ> 0, hence our simpliﬁed notation. Similarly, the states
+ω0,ι
+.= projω0,ι (4.3)
+on A0,ι are limits of the states ωλ =ω on the nets Aλ,λ> 0. Thus by proceeding
+from the underlying net to the scaling algebra we have been able to de ﬁne nets and
+states in the scaling limit λ = 0. The apparent ambiguities in this construction,
+which are reﬂected in the appearance of the index set I, will be discussed below.
+We are primarily interested here in the structure of the nets A0,ι and states
+ω0,ι induced by physical states.
+Deﬁnition: A state ω on the underlying net A is said to be a physical state if it is
+locally normal with respect to the underlying vacuum representatio n (cf. relation
+(2.8)).
+An important ingredient in our short distance analysis is the following le mma,
+due to Roberts [13], which is based on a result by Wightman [14]. For the
+convenience of the reader we sketch the proof of this statement .
+Lemma 4.1 Let ω1, ω2 be physical states on the net A. Then for any bounded
+region O one has
+|| (ω1 −ω2) | A(λO) || → 0 for λ → 0,
+where the given expression denotes the norm distance of the s tates, restricted to
+the respective algebra.
+Proof: The proof proceeds in two steps. One ﬁrst shows that the interse ction
+of the weak closures of all local algebras centered at the origin 0 of Minkowski
+space, say, is trivial, ⋂
+O∋0
+A(O)− = C · 1.
+This is accomplished as follows: if Z is any element in this intersection the
+same is true for Z ∗ and, since both operators are localized at 0, there holds
+[Z ∗,α x(Z)] = 0 for (strictly) spacelike x because of locality. But x → αx(Z)
+is continuous in the weak operator topology, hence the commutato r vanishes
+also for lightlike x and x = 0. We pick any lightlike vector e and consider the
+function R ∋t → (Ω,Z ∗αte(Z)Ω), where Ω is the vacuum vector in the deﬁning
+representation of A. Its Fourier transform has support in R + ∪ {0} because of
+the relativistic spectrum condition. Because of “lightlike commutativ ity”, the
+function coincides with t → (Ω,α te(Z)Z ∗Ω) whose Fourier transform has support
+in R − ∪ {0}. Since the intersection of these two sets is {0} and the function is
+21
+
+=== page 22 ===
+bounded, it has to be constant. It follows that U(te)ZΩ = ZΩ for any t ∈ R and
+all lightlike vectors e. Consequently U(x)ZΩ = ZΩ for all x ∈ R 4 and therefore
+ZΩ = (Ω,Z Ω)· Ω, by the uniqueness of the vacuum vector. Since Ω is separating 3
+for the local algebras A(O)− one arrives at Z = (Ω,Z Ω) · 1, as claimed.
+To complete the proof of the lemma suppose that λk, k ∈ N, is a sequence
+tending to 0 such that for some δ >0, || (ω1−ω2) | A(λkO) || ≥ δ. Then there exist
+operators Ak ∈ A(λkO) of norm 1 such that |ω1(Ak) −ω2(Ak) | ≥ δ/2, k ∈ N.
+Since the set of operators Ak, k ∈ N, is bounded, it is pre-compact in the weak
+operator topology. Its limit (accumulation) points Z are contained in
+⋂
+O∋0 A(O)−
+since for any given open region O0 containing 0 there holds A(λkO) ⊂ A(O0)− for
+suﬃciently small λk, and A(O0)− is closed in the weak operator topology. Hence
+Z ∈ C · 1. On the other hand, since Z is a weak limit point of the set of operators
+Ak, k ∈ N, and the states ωi, i = 1, 2, are locally normal with respect to the
+vacuum representation, there exists an index l such that |ωi(Al) −ωi(Z) | ≤ δ/8,
+i = 1, 2. But this implies that |ω1(Z) −ω2(Z) | ≥ δ/4 which is a contradiction in
+view of the fact that Z is a multiple of the identity and states are normalized. ✷
+The following result is an immediate consequence of this lemma. It says that all
+physical states look alike in the scaling limit.
+Corollary 4.2 Letω1,ω2 be physical states on A and let ω1,ω2 be their canonical
+lifts on A. Then
+lim
+λց0
+|| (ω1,λ −ω2,λ) | A(O) || = 0
+for all bounded spacetime regions O. In particular, SL(ω1) = SL(ω2).
+Proof: Let O be any bounded region and let A ∈ A(O). By deﬁnition
+(ω1,λ −ω2,λ)(A) = ω1(Aλ) −ω2(Aλ), λ> 0.
+But Aλ ∈ A(λO), so the ﬁrst part of the statement follows from the preceding
+lemma. Since the local algebras A(O), O ⊂ R 4, are norm dense in A, this result
+implies that lim λց0 (ω1,λ −ω2,λ)(A) = 0 for all A ∈ A. Hence the sets SL(ω1)
+and SL(ω2) coincide. ✷
+In view of the preceding arguments the following remark may be in ord er: al-
+though the limit points of the nets Aλ, λ >0, are multiples of the identity, this
+does not imply that the theory becomes trivial in the scaling limit. For t hese
+sequences converge in general only in the weak operator topology . So the limits
+of products Aλ ·Bλ need not coincide with the products of the respective limits of
+the factors Aλ and Bλ. In this way non-trivial correlations between observables
+can (and do) persist in the scaling limit.
+According to the previous result it suﬃces for the investigation of t he scaling
+limit theories to concentrate on the analysis of a single physical stat e. In the
+subsequent lemma we make use of this fact and exhibit the structur e of the
+scaling limit states inherited from the underlying vacuum state.
+3A vector Ω is called separating for a set B of bounded operators if, for each B ∈ B, BΩ = 0
+implies B = 0.
+22
+
+=== page 23 ===
+Lemma 4.3 Letω be a physical state on A and let ω be its canonical lift on A.
+Then each scaling limit state ω0,ι ∈SL(ω) is a pure, Poincar´ e invariant vacuum
+state on A.
+Remark: This statement holds in any number of spacetime dimensions greater
+than two. In two dimensional spacetime the scaling limit states are als o vacuum
+states, but they need not be pure in general.
+Proof: Without restriction of generality we may assume that ω is the underlying
+vacuum state. In order to prove that the corresponding states ω0,ι ∈SL(ω) are
+pure vacuum states on A it suﬃces to show that they are invariant under the
+action of the Poincar´ e transformations αP ↑
++
+and that the respective correlation
+functions have the right continuity, support (in momentum space) and clustering
+properties. The proof that the corresponding GNS-representa tions are vacuum
+representations is then similar to the one in standard quantum ﬁeld t heory, cf.
+[15], and may be omitted here.
+Letω0,ι ∈SL(ω) and let (ωλκ)κ∈K be a subnet of ( ωλ)λ>0 which converges in
+the weak-*-topology to ω0,ι, i.e., lim κ ωλκ(A) = ω0,ι(A) for all A ∈ A. Since each
+ωλ is a vacuum state on A, cf. relation (3.16) and Corollary 3.3, there holds
+ω0,ι(αΛ,x(A)) = limκ ωλκ(αΛ,x(A)) = limκ ωλκ(A) = ω0,ι(A)
+for allA ∈ A and (Λ,x ) ∈ P ↑
++. The required continuity properties of the functions
+(Λ,x ) →ω0,ι(BαΛ,x(A)) follow from the norm continuity of the operators A ∈ A
+with respect to Poincar´ e transformations, cf. relation (3.10). T o verify that ω0,ι
+induces a representation of A which fulﬁlls the relativistic spectrum condition we
+have to show that
+∫
+dxf (x)ω0,ι(Bαx(A)) = 0 (4.4)
+for all A,B ∈ A and all functions f ∈ L1(R 4) whose Fourier transforms have
+support in R 4\V +. In view of the continuity of the action of αP ↑
++
+and the fact
+that αf (A) ∈ A one gets
+∫
+dxf (x)ω0,ι(Bαx(A)) = ω0,ι(Bαf (A)) = limκ ωλκ(Bαf (A)).
+Making again use of the fact that each ωλ is a vacuum state on A, it follows that
+the latter expression is equal to 0 if supp ~f ⊂ R 4\V +. This proves relation (4.4).
+It remains to be shown that ω0,ι is a pure state on A, i.e., that it satisﬁes
+the clustering condition. This we do as follows. Let Or be the double cone with
+base radius r> 0, centered at the origin, and let A,B ∈ A(Or) be such that the
+functions t → αt(A) and t → αt(B) (where αt, t ∈ R , denotes the translations
+in time direction) are diﬀerentiable in the norm topology. The set of all such
+operators (for arbitrary r >0) is norm dense in A. Now since each ωλ is a pure
+vacuum state on A it follows from [16, Eq. 3.4] that for spatial translations x
+23
+
+=== page 24 ===
+with |x|> 3r there holds
+|ωλκ(Aαx(B)) −ωλκ(A) ·ωλκ(B) |
+≤ c r3
+|x|2 ·
+(
+ωλκ(AA∗)1/2ωλκ( ˙B
+∗ ˙B)1/2 +ωλκ(BB∗)1/2ωλκ( ˙A
+∗ ˙A)1/2
+)
+≤ c r3
+|x|2 ·
+(
+||A || || ˙B || + || ˙A || ||B ||
+)
+,
+where c is a universal (model independent) numerical constant and the do t de-
+notes time derivative. (Note that the relevant inequality in [16] cont ains a mis-
+print.) The upper bound in this estimate vanishes as |x|−2 for |x| → ∞ , uniformly
+in κ. This shows that the limit state ω0,ι is clustering for all pairs of operators
+A,B described above. Since these operators are norm dense in A it follows that
+ω0,ι is clustering and hence pure. ✷
+It is an immediate consequence of this lemma that the kernels of the G NS-
+representations π0,ι of A induced by the states ω0,ι ∈SL(ω) are invariant under
+Poincar´ e transformations. Hence, as discussed in Sec. 3, there is an automorphic
+actionα(0,ι)
+P ↑
++
+of the Poincar´ e group on each local netA0,ι, given by equation (3.20).
+Moreover, it follows from the lemma that the projected states ω0,ι are pure vac-
+uum states on A0,ι,α(0,ι)
+P ↑
++
+. Thus all physical states look like vacuum states in the
+scaling limit.
+Deﬁnition: The nets A0,ι,α (0,ι)
+P ↑
++
+are called scaling limit nets and the corresponding
+states ω0,ι scaling limit states , ι ∈ I.
+We summarize the results of this discussion in the following proposition .
+Proposition 4.4 Forι ∈ I, let A0,ι,α (0,ι)
+P ↑
++
+and ω0,ι be the scaling limit nets and
+scaling limit states derived from some physical state ω on the underlying net A.
+Each A0,ι is a local net which is covariant with respect to the Poincar´ e transfor-
+mations α(0,ι)
+P ↑
++
+and each ω0,ι is a pure vacuum state on A0,ι,α (0,ι)
+P ↑
++
+. The collection
+of scaling limit nets and states does not depend on the choice of the underlying
+physical state ω.
+Let us turn now to the discussion of the ambiguities involved in the deﬁ nition of
+the scaling limit of a theory. As was explained, these ambiguities have t heir origin
+in the fact that the nets of scaled states ( ωλ)λ>0 do not converge since the scaling
+algebra A subsumes the orbits of local operators under the action of an abu n-
+dance of renormalization group transformations. Loosely speakin g, every scaling
+limit net A0,ι,α (0,ι)
+P ↑
++
+and state ω0,ι may be attributed to some particular choice of
+such a transformation. Since the choice of renormalization group t ransformations
+should not aﬀect the physical interpretation of the theory at sma ll scales one may
+however expect that all scaling limit theories describe the same physics at small
+scales in generic cases. Bearing in mind that diﬀerent, but physically e quivalent
+nets can be identiﬁed with the help of net isomorphisms (cf. Sec. 3) w e are led to
+24
+
+=== page 25 ===
+the following deﬁnition.
+Deﬁnition: The underlying theory is said to have a unique scaling limit if all scal-
+ing limit nets ( A0,ι,α (0,ι)
+P ↑
++
+),ι ∈ I, derived from physical states on A are isomorphic.
+If there exist net isomorphisms which connect also the respective v acuum states
+ω0,ι, the theory is said to have a unique vacuum structure in the scaling limit.
+Making use of this terminology we see that, in view of Proposition 4.4, t here
+are the following principal possibilities for the structure of the scalin g limit of a
+theory.
+25
+
+=== page 26 ===
+Classiﬁcation: Let ( A0,ι,α (0,ι)
+P ↑
++
+), ι ∈ I, be the scaling limit nets arising from phys-
+ical states in the underlying theory. There are the following alterna tives:
+i) All (global) algebras A0,ι,ι ∈ I, consist of multiples of the identity. The theory
+is then said to have a classical scaling limit .
+ii) All nets ( A0,ι,α (0,ι)
+P ↑
++
+), ι ∈ I, are isomorphic and non-abelian. The theory then
+has a unique quantum scaling limit .
+iii) Not all of the nets ( A0,ι,α (0,ι)
+P ↑
++
+),ι ∈ I, are isomorphic. The theory is then said
+to have a degenerate scaling limit .
+Let us comment on the physical signiﬁcance of these various possib ilities. We
+refer to the ﬁrst case as “classical” since it corresponds to the sit uation where the
+observablesAλ at small scales λ attain sharp (i.e., non-ﬂuctuating) values in all
+physical states, as is the case for classical observables in pure st ates. It is note-
+worthy that the “classical ideal” in A (generated by all commutators) is a proper
+ideal in such theories. We would like to point out, however, that this c lassical
+behaviour of the scaling limit with respect to renormalization group tr ansforma-
+tions may have its origin in an exceptional quantum behaviour of the o bservables
+in small regions: due to the uncertainty principle, the energy-mome ntum transfer
+of observables in A(λO) has to be at least of order λ−1 at small scales. But it
+could be substantially larger and behave for all observables in A(λO) like λ−q,
+say, for some q >1. Then it would not be possible to exhibit sequences of opera-
+torsAλ which occupy a limited volume of phase space at small scales, apart fr om
+multiples of the identity (cf. the remark after Lemma 2.2). Hence th e scaling
+limit would be “classical” in such theories. Examples where Planck’s cons tant in
+the uncertainty principle is eﬀectively “running” in this way at small sc ales could
+be non-renormalizable theories.
+The second case corresponds to theories which have (in the langua ge of the
+renormalization group) an ultraviolet ﬁxed point. The simplest examp le of this
+kind is free ﬁeld theory. The corresponding nets can be shown to ha ve a unique
+scaling limit which, as expected, is the net generated by a massless fr ee ﬁeld
+[17]. This example, as trivial as it may be, illustrates the fact that the appar-
+ent ambiguities in our construction of the scaling limit disappear if one id entiﬁes
+isomorphic nets. Of particular interest in this second class of models are the
+asymptotically free theories. In such theories the underlying quan tum ﬁelds have,
+according to the folklore, almost canonical dimensions (modiﬁed by lo garithmic
+corrections) and become massless free ﬁelds in the scaling limit. We th erefore
+propose to characterize such theories in the present algebraic se tting by the con-
+dition that the “Huygens ideal” in A (generated by the commutators of all pairs
+of operators which are localized in strictly timelike separated regions ) is annihi-
+lated in this limit. Another class of theories with a unique quantum scalin g limit
+will be considered in the subsequent section.
+The last possibility according to our classiﬁcation appears if the stru cture of
+the underlying theory at small scales cannot be described in terms o f a single
+theory since it varies continuously if one approaches λ = 0. One then arrives
+26
+
+=== page 27 ===
+by our construction at a collection of non-isomorphic scaling limit theo ries which
+describe these various structures. It is of interest that even in t his complicated
+situation the physical states can be interpreted at small scales as vacuum states.
+But the properties of these vacua depend on the scale.
+In the remainder of this section we focus attention on the physically signiﬁcant
+class of theories with a unique (quantum) scaling limit. It turns out th at, due to
+this uniqueness, dilations are a geometrical symmetry of the scaling limit nets.
+Proposition 4.5 Forι ∈ I, let A0,ι,α (0,ι)
+P ↑
++
+be the (isomorphic) scaling limit nets
+in a theory with unique scaling limit. There exist automorph isms δ(0,ι)
+µ , µ ∈ R +,
+of the respective nets such that
+δ(0,ι)
+µ (A0,ι(O)) = A0,ι(µO)
+for all bounded regions O and µ> 0, and
+δ(0,ι)
+µ ◦α(0,ι)
+Λ,x =α(0,ι)
+Λ,µx ◦δ(0,ι)
+µ
+for all µ >0 and (Λ,x ) ∈ P ↑
++. Moreover, if the underlying theory has a unique
+vacuum structure in the scaling limit there holds ω0,ι ◦δ(0,ι)
+µ =ω0,ι for all µ> 0.
+Proof: Since for any physical state ω in the underlying theory and any µ > 0
+the corresponding sets ( ωλ)λ>0 and (ωµλ)λ>0 of lifted and scaled states on A
+coincide, they have the same limit points. Hence the set SL(ω) of scaling limit
+states is invariant under the (adjoint) action of the scaling transf ormations σµ.
+The statement then follows from the assumption that all states in SL(ω) induce
+isomorphic nets and that there exist net isomorphisms connecting t he scaling
+limit states if the theory has a unique vacuum structure in the scaling limit.
+To see this, let ω0,ι ∈ SL(ω) and consider the corresponding net A0,ι,α (0,ι)
+P ↑
++
+which is (by construction) canonically isomorphic to π0,ι(A), AdU 0,ι(P ↑
++). Here
+(π0,ι, H0,ι, Ω0,ι) is the GNS-representation induced by ω0,ι and U 0,ι the unitary
+representation of P ↑
++ on H0,ι (cf. Lemma 4.3). Now ω0,ι(µ)
+.= ω0,ι ◦σµ ∈ SL(ω)
+and the corresponding net A0,ι(µ),α 0,ι(µ)
+P ↑
++
+is canonically isomorphic to the net
+π0,ι(µ)(A), AdU 0,ι(µ)(P ↑
++) on H0,ι, where π0,ι(µ) = π0,ι ◦σµ and U 0,ι(µ)(Λ,x ) =
+U 0,ι(Λ,µx ) for (Λ ,x ) ∈ P ↑
++. Moreover, the state ω0,ι(µ) is represented in this
+setting by the vector Ω 0,ι ∈ H 0,ι. Since the nets induced by ω0,ι and ω0,ι(µ) are
+isomorphic (by the uniqueness of the scaling limit) there exists a net is omorphism
+τ (0,ι)
+µ mapping the net π0,ι(A), AdU 0,ι(P ↑
++) onto the net π0,ι(µ)(A), AdU 0,ι(µ)(P ↑
++).
+More explicitly, there holds
+τ (0,ι)
+µ (π0,ι(A(O))) = π0,ι(µ)(A(O)) = π0,ι(A(µO))
+for all bounded regions O, and
+τ (0,ι)
+µ ◦ AdU 0,ι(Λ,x ) = AdU 0,ι(µ) ◦τ (0,ι)
+µ = AdU 0,ι(Λ,µx ) ◦τ (0,ι)
+µ
+27
+
+=== page 28 ===
+for all (Λ,x ) ∈ P ↑
++ and µ >0. Thus each τ (0,ι)
+µ induces an automorphism of the
+net π0,ι(A), AdU 0,ι(P ↑
++) which has the geometrical interpretation of dilations.
+Moreover, if the theory has a unique vacuum structure in the scalin g limit there
+holds (Ω 0,ι,τ (0,ι)
+µ (. )Ω0,ι) = (Ω 0,ι, .Ω0,ι) for some such τ (0,ι)
+µ . Pulling back τ (0,ι)
+µ to
+the net A0,ι,α (0,ι)
+P ↑
++
+with the help of the canonical isomorphism mentioned above
+one obtains automorphisms δ(0,ι)
+µ with the desired properties. ✷
+Remark: The automorphisms δ(0,ι)
+µ ,µ ∈ R +, in this statement do not necessarily
+provide a representation of the multiplicative group R +. But, as is easily checked,
+there holds
+δ(0,ι)
+λ ◦δ(0,ι)
+µ =δ(0,ι)
+λµ ◦ζ (0,ι)(λ,µ ), λ,µ ∈ R +,
+where ζ (0,ι)(., .) is a 2-cocycle on R + with values in the group of internal sym-
+metries of the net A0,ι,α (0,ι)
+P ↑
++
+. It is thus a problem of cohomology whether one can
+ﬁnd a true representation of the dilations by automorphisms of the scaling limit
+theory. However, we do not enter into this question here.
+5 Scale invariant theories
+In the conventional ﬁeld theoretic setting, dilation invariant theor ies are invariant
+(ﬁxed points) under renormalization group transformations. In t his section we
+show that these theories are also invariant under the correspond ing transforma-
+tions in the present setting. This result displays the consistency of our method
+with the standard approach.
+Let us begin by listing the additional assumptions on the underlying th eory
+made in this section.
+Dilation invariance: On the underlying net A,α P ↑
++
+acts a family of automor-
+phisms δµ, µ ∈ R +, such that
+δµ(A(O)) = A(µO), µ> 0 (5.1)
+for all bounded regions O and
+δµ ◦αΛ,x =αΛ,µx ◦δµ, µ> 0 (5.2)
+for all (Λ,x ) ∈ P ↑
++. Moreover, the underlying vacuum state ω(. ) = (Ω, .Ω) on A
+is dilation invariant,
+ω ◦δµ =ω, µ> 0. (5.3)
+Note that these assumptions coincide with the results which we have established
+in Proposition 4.5 for theories with a unique vacuum structure in the s caling
+limit. In our subsequent analysis of the scaling limit of dilation invariant t heories
+we make in addition the following assumption.
+28
+
+=== page 29 ===
+Haag-Swieca compactness condition: LetE(. ) denote the projections of the spec-
+tral resolution of U | R 4, let ∆ be any compact subset of R 4 and let O be any
+bounded region. Then the linear map from A(O) into H given by
+A →E(∆)AΩ, A ∈ A(O) (5.4)
+is a compact map between the Banach spaces A(O) and H. (For a review of
+compactness and nuclearity conditions, which impose certain physic ally moti-
+vated constraints on the phase space properties of a theory, cf . [18] and references
+quoted there.)
+Let us now discuss the implications of the existence of the dilations δR+ in the
+underlying theory. Given any vector state in the underlying vacuum representa-
+tion, we consider its scaled canonical lift on A and the resulting net Aπλ, α
+πλ
+P ↑
++
+.
+As has been shown in Proposition 3.4, this net is isomorphic to the unde rlying
+net Aλ,α(λ)
+P ↑
++
+at scale λ. Now the existence of dilations implies that the latter nets
+are isomorphic for diﬀerent values of λ, say λ1 and λ2, a net isomorphism being
+given by δλ2λ−1
+1
+, cf. relations (5.1) and (5.2). Hence the nets Aπλ, α
+πλ
+P ↑
++
+, obtained
+from the original state by renormalization group transformations , describe the
+same physics at each scale, i.e., the theory is invariant (a “ﬁxed point ”) under
+the action of the renormalization group.
+It is not quite as simple to show that this invariance under the renorm alization
+group persists also in the scaling limit. As a matter of fact, we have be en able to
+establish this result only under the additional mild phase-space cons traints im-
+posed by the Haag-Swieca compactness condition. We remark that the existence
+of dilation invariant theories satisfying this condition has been estab lished in [19].
+Proposition 5.1 Suppose that the underlying net A, αP ↑
++
+is dilation invariant
+and satisﬁes the Haag-Swieca compactness condition. Then t his net has a unique
+scaling limit and vacuum structure in this limit. In fact, th e scaling limit nets
+A0,ι, α(0,ι)
+P ↑
++
+, ι ∈ I, are all isomorphic to the underlying net A,α P ↑
++
+and the scaling
+limit states ω0,ι are mapped onto the underlying vacuum state ω by the respective
+net isomorphisms.
+Proof: Let ω be the canonical lift on A of the underlying vacuum state ω on A,
+let ω0,ι ∈ SL(ω) and let A0,ι, α(0,ι)
+P ↑
++
+be the corresponding scaling limit net. As
+in the proof of Proposition 4.5 it is convenient to make use of the fact that this
+net is canonically isomorphic to π0,ι(A), AdU 0,ι(P ↑
++), where (π0,ι, H0,ι, Ω0,ι) is the
+GNS-representation of A induced by ω0,ι.
+Let (ωλκ)κ∈K be a subnet of ( ωλ)λ>0 which converges in the weak-*-topology
+to ω0,ι. A net isomorphism φ mapping π0,ι(A), AdU 0,ι(P ↑
++) onto A,α P ↑
++
+is ob-
+tained by setting for A ∈
+⋃
+O A(O)
+φ(π0,ι(A)) .=w − limκ δ−1
+λκ (Aλκ). (5.5)
+29
+
+=== page 30 ===
+We thus have to prove the following statements: (a) The right hand side of
+(5.5) exists and deﬁnes (b) a linear map from the algebra π0,ι(A) into B(H)
+which (c) is *-preserving. (d) The map φ intertwines the action of the Poincar´ e
+transformations AdU 0,ι(P ↑
++) and αP ↑
++
+and there holds for all bounded regions O,
+φ(π(A(O))) = A(O). Finally (e), φ is multiplicative.
+(a) Let O be any bounded region and let A ∈ A(O). To simplify notation we
+set Aκ
+.= δ−1
+λκ (Aλκ) and note that Aκ ∈ A(O) and ||Aκ || ≤ || A || for κ ∈ K .
+Let B ∈ A(O1), where O1 is any other bounded region. We ﬁrst show that the
+net of numbers (ω(BA κ))κ∈K converges: it follows from relations (5.1) and (5.2)
+that the function λ → Bλ
+.= δλ(B) is an element of A(O1). Hence, using the
+invariance of ω under dilations we obtain
+ω(BA κ) = ω ◦δλκ(BA κ) = ω(BλκAλκ) = ωλκ(BA)
+and consequently the limit exists,
+limκ ω(BA κ) = ω0,ι(BA).
+Since the vacuum vector Ω is cyclic for the algebra
+⋃
+O1 A(O1) and the family
+of operators Aκ, κ ∈ K , is uniformly bounded we conclude that w − limκ AκΩ
+exists. As Ω is separating for the weak closures A(O)− of the local algebras it
+follows that also w − limκ Aκ exists and that the limit is an element of A(O)−.
+(b) For the proof that the map φ is well deﬁned and linear it suﬃces to show
+that for A ∈ A(O), π0,ι(A) = 0 implies w − limκ AκΩ = 0 and consequently
+w − limκAκ = 0 (recall that Ω is separating for A(O)−). Now, making again use
+of the fact that ω is invariant under dilations, there holds
+||π0,ι(A)Ω0,ι ||2 = limκ ωλκ(A∗A)
+= limκ ω(A∗
+λκA∗
+λκ) = limκ ω(δ−1
+λκ (A∗
+λκ)δ−1
+λκ (Aλκ))
+= limκ ||AκΩ ||2,
+which establishes the desired implication.
+(c) That φ is *-preserving, i.e.,
+φ(π0,ι(A)∗) = φ(π0,ι(A))∗,
+follows from the fact that w − limκ Aκ =A implies w − limκ A∗
+κ =A∗.
+(d) The proof that φ intertwines the respective actions of the Poincar´ e transfor-
+mations is accomplished by noting that for any (Λ,x ) ∈ P ↑
++ and anyA ∈
+⋃
+O A(O)
+there holds
+φ(U 0,ι(Λ,x )π0,ι(A)U 0,ι(Λ,x )−1) = φ(π0,ι(αΛ,x(A)))
+= w − limκ δ−1
+λκ ((αΛ,x(A))λκ) = w − limκ δ−1
+λκ ◦αΛ,λκx(Aλκ)
+= w − limκ αΛ,x ◦δ−1
+λκ (Aλκ) = w − limκ U(Λ,x )AκU(Λ,x )−1
+= U(Λ,x )
+(
+w − limκ Aκ
+)
+U(Λ,x )−1 =αΛ,x ◦φ(π0,ι(A)).
+30
+
+=== page 31 ===
+From this chain of equalities it follows in particular that
+||αΛ,x ◦φ(π0,ι(A)) −φ(π0,ι(A)) || ≤ || αΛ,x(A) −A ||,
+hence all elements ofφ(π0,ι(A(O))) are norm continuous with respect to the action
+of αP ↑
++
+. Since we already know from step (a) that φ(π0,ι(A(O))) ⊂ A(O)− we
+conclude that φ(π0,ι(A(O))) ⊂ A(O) as A(O) is, according to our assumptions
+in Section 2, the maximal subalgebra of operators in A(O)− which are norm
+continuous under Poincar´ e transformations. The opposite inclus ion is obtained
+by noting, as in step (a), that for B ∈ A(O) the corresponding function λ →
+Bλ
+.=δλ(B) is an element of A(O) and there holds φ(π(B)) = lim κ δ−1
+λκ (Bλκ) = B.
+Hence φ(π0,ι(A(O))) = A(O).
+(e) It remains to establish the multiplicativity of the map φ, and it is here where
+the Haag-Swieca compactness condition enters. The crucial step in the argument
+is the demonstration that the weakly convergent net of operator s Aκ ∈ A(O),
+κ ∈ K , considered in step (a), is even convergent in the strong operato r topology.
+Again it suﬃces to establish the strong convergence of AκΩ since Ω is separating
+for A(O)− and the family Aκ, κ ∈ K , is uniformly bounded. We begin by noting
+that
+||αx(Aκ) −Aκ || = ||αxδ−1
+λκ (Aλκ) −δ−1
+λκ (Aλκ) ||
+= ||δ−1
+λκ (αλκx(Aλκ) −Aλκ) || ≤ || αx(A) −A ||
+showing that the functions x → αx(Aκ) are continuous at x = 0, uniformly in
+κ ∈ K . Hence, as in the proof of Lemma 3.1 one can ﬁnd for given ε > 0 a
+compact set ~O ⊂ R 4 and operators ~Aκ ∈ ~A( ~O) such that ||Aκ − ~Aκ ||<ε ,κ ∈ K .
+Consequently
+||AκΩ −E( ~O)AκΩ || = || (1 −E( ~O))(Aκ − ~Aκ)Ω ||<ε.
+Hence in order to prove strong convergence of the net ( AκΩ)κ∈K it suﬃces to
+prove strong convergence of ( E( ~O)AκΩ)κ∈K for all compact regions ~O. Now
+for any such ~O the latter net forms, by the compactness condition, a strongly
+precompact subnet of H sinceAκ ∈ A(O) and ||Aκ || ≤ || A ||,κ ∈ K . Whence the
+weakly convergent nets (E( ~O)AκΩ)κ∈K converge also strongly and consequently
+(AκΩ)κ∈K converges strongly, as claimed. Now let A,B ∈ A(O), O bounded,
+and let Aκ,B κ ∈ A(O) be the corresponding nets introduced in (a). Since both
+nets are uniformly bounded and convergent in the strong operato r topology there
+holds
+(s − limκ Aκ) · (s − limκ Bκ) = s − limκ AκBκ = s − limκ δ−1
+λκ ((A ·B)λκ).
+This shows that
+φ(π0,ι(A)) ·φ(π0,ι(B)) = φ(π0,ι(AB)) = φ(π0,ι(A) ·π0,ι(B)),
+i.e., φ is multiplicative. By continuity, φ can be extended to a map from π0,ι(A)
+to A, and it thus has all properties required for a net isomorphism.
+31
+
+=== page 32 ===
+The remaining statement about the action of φ on the vacuum state ω follows
+from the following relation for all A ∈ A,
+ω ◦φ(π0,ι(A)) = limκ ω ◦δ−1
+λκ (Aλκ) = ω0,ι(A),
+where we made once again use of the fact that ω is invariant under dilations.
+This completes the proof of the proposition. ✷
+We emphasize that the latter result does not mean that the nets ( ωλ)λ>0 of
+states on the scaling algebra converge in the scaling limit. There still e xists
+an abundance of diﬀerent limit points ω0,ι on A. But the result illustrates our
+statement that (a) all limit points describe the same physics in gener ic cases and
+(b) that the choice of renormalization group transformations doe s not aﬀect the
+physical interpretation.
+6 Geometric modular action and scaling limit
+The scaling limit nets and states provide information about the prope rties of
+physical states at very small scales. Of particular interest are th e particle struc-
+ture and the symmetries appearing in this limit. In this section we pres ent a
+structural result which provides a basis for such an analysis. We will show that if
+the underlying theory satisﬁes a condition of geometrical modular a ction invented
+by Bisognano and Wichmann, then the scaling limit has this property, t oo. As a
+consequence, the scaling limit nets comply with the condition of (esse ntial) Haag
+duality and one can apply the methods of Doplicher and Roberts [20] t o deter-
+mine from these nets the charged ﬁelds and the global gauge group appearing in
+the scaling limit. These applications will be discussed elsewhere.
+Another interesting consequence of this result is the insight that, excluding
+the case of theories with a classical scaling limit, the local von Neuman n algebras
+A(O)− of the underlying nets are of type III 1 for any double cone O. This
+reproduces a theorem by Fredenhagen [6] in the present general setting.
+We begin by explaining some notation. Introducing proper coordinat es on R 4,
+we choose two lightlike vectors e±
+.= ( ±1, 1, 0, 0) and consider the two opposite
+wedge-shaped regions W± (wedges, for short), given by
+W+ = −W−
+.= {x ∈ R 4 :x ·e± > 0}. (6.1)
+These regions are mutually spacelike, ( W+)′ = W−, and invariant under the one
+parametric group Λ t, t ∈ R , of proper Lorentz transformations (“boosts”) ﬁxed
+by Λ te± = e ±te±. We also consider the discrete Lorentz transformation j which
+satisﬁes je± = −e± and acts like the identity on the edge ( e±)⊥ of the wedges
+W±. Thus j2 = 1 and jW+ = W−.
+Within the underlying theory we deﬁne the C ∗-algebras A(W±) as inductive
+limits of all local algebras A(O), where O is bounded and O ⊂ W ±. The deﬁnition
+of the corresponding scaling algebras A(W±) ⊂ A and of the algebras A0,ι(W±) ⊂
+A0,ι in the scaling limit theory is analogous. The following auxiliary lemma, which
+32
+
+=== page 33 ===
+we record here for later use, summarizes some elementary proper ties of the scaling
+limit statesω0,ι. Throughout this section we assume that these states are obtain ed
+from physical states in the underlying theory.
+Lemma 6.1 Let ω0,ι be any scaling limit state on A and let (π0,ι, H0,ι, Ω0,ι) be
+the corresponding GNS-representation.
+i) The vector Ω0,ι is cyclic and separating for π0,ι(A(W±))−.
+ii) If the representation is non-trivial, i.e., if the dimen sion of H0,ι is greater than
+one, then π0,ι(A(W±))− is a factor of type III1.
+Proof: i) It follows from the relativistic spectrum condition (cf. Lemma 4.3) an d
+a well-known argument due to Reeh and Schlieder [21] that
+π0,ι(A(W±))Ω0,ι =
+⋃
+x
+π0,ι(αx(A(W±)))Ω0,ι.
+The set on the right hand side contains the vector states in π0,ι(A(O))Ω0,ι for all
+bounded regions O. Since Ω 0,ι is cyclic for π0,ι(A) by the GNS-construction, the
+cyclicity of Ω 0,ι for π0,ι(A(W±))− follows. That Ω 0,ι is also separating for these
+algebras is then a consequence of locality.
+ii) This statement is also based on the relativistic spectrum condition wh ich im-
+plies that the centralizer of the algebras π0,ι(A(W±))− relative to the vacuum
+state consists of multiples of the identity. Cf. references [22, 23] for a proof. ✷
+In the following we assume that the modular operators (introduced in the Tomita-
+Takesaki theory [24]) which are aﬃliated with the vacuum state Ω and the algebra
+A(W+)− of the underlying theory act like Lorentz transformations on the u nder-
+lying net.
+Condition of geometric modular action: Let ∆,J be the modular operator and
+modular conjugation associated with the pair A(W+)−, Ω in the underlying the-
+ory. For each bounded region O ⊂ R 4 there holds
+J A(O)−J = A(jO)−. (6.2)
+Moreover, the modular objects ∆ ,J are related to the underlying Poincar´ e trans-
+formations U(P ↑
++) according to
+JU (Λ,x )J =U(jΛj,jx ), (Λ,x ) ∈ P ↑
++, (6.3)
+and, with Λ t as deﬁned above,
+∆it =U(Λ2πt), t ∈ R. (6.4)
+This tight relation between modular objects and geometrical symme tries was
+ﬁrst established by Bisognano and Wichmann for local nets which aris e from an
+underlying Wightman theory [5]. In two dimensions the condition has als o been
+established in a purely algebraic setting [25], and in physical spacetime it is a
+consequence of much weaker assumptions [26, 27]. Therefore, th e condition may
+33
+
+=== page 34 ===
+be viewed as being “generic” in quantum ﬁeld theory. It is linked to the existence
+of a PCT-operator Θ which is related to the modular conjugation J in the above
+condition according to
+J =U(R)Θ, (6.5)
+where R denotes the rotation about the 1-axis by the angle π.
+If the underlying theory has this property there holds, for any A ∈ A(O),
+JAJ ∈ A(jO) (since A(O) is the maximal subalgebra in A(O)− of operators
+which are norm continuous under Poincar´ e transformations) and, for any A ∈ A,
+Jα Λ,x(A)J =αjΛj,jx(JAJ ). Using these facts we introduce an anti-automorphism
+χ : A → A by setting
+(χ(A))λ
+.=JA λJ, λ> 0. (6.6)
+Relations (6.2) and (6.3) imply that
+χ(A(O)) = A(jO) (6.7)
+for all bounded regions O and
+χ ◦αΛ,x =αjΛj,jx ◦χ, (Λ,x ) ∈ P ↑
++. (6.8)
+It is also clear from its deﬁnition that χ commutes with the scaling transforma-
+tions,
+χ ◦σµ =σµ ◦χ, µ> 0. (6.9)
+Since J is antiunitary and JΩ = Ω there holds (Ω ,JAJ Ω) = (Ω ,A ∗Ω), A ∈ A.
+Hence, if ω(. ) = (Ω, .Ω) denotes the vacuum state and ω its canonical lift on A
+it follows that
+ω ◦χ(A) = ω(A∗) = ω(A), A ∈ A, (6.10)
+i.e., ω is skew-invariant under the adjoint action of χ.
+Now let ω0,ι ∈ SL(ω) be any scaling limit state on A, let ( π0,ι, H0,ι, Ω0,ι)
+be its GNS-representation and let U 0,ι be the unitary representation of P ↑
++ on
+H0,ι, cf. Lemma 4.3. It is our aim to show that the corresponding scaling lim it
+net complies with the principle of geometric modular action. To this end we
+consider the modular operator and conjugation ∆ 0,ι,J 0,ι associated with the pair
+π0,ι(A(W+))−, Ω0,ι. (Note that these operators are well-deﬁned in view of the
+ﬁrst part of Lemma 6.1.) In the following crucial lemma we show that th ey are
+related to the Poincar´ e transformations.
+Lemma 6.2 Assume that the underlying theory satisﬁes the condition of geomet-
+ric modular action. Then it holds that
+∆it
+0,ι =U 0,ι(Λ2πt), t ∈ R,
+34
+
+=== page 35 ===
+where Λt, t ∈ R , are the proper Lorentz transformations introduced above, and
+J 0,ιU 0,ι(Λ,x )J 0,ι =U 0,ι(jΛj,jx ), (Λ,x ) ∈ P ↑
++.
+Moreover, the modular conjugation J 0,ι implements the action of χ in the repre-
+sentation π0,ι,
+AdJ 0,ι ◦π0,ι =π0,ι ◦χ.
+Proof: We use again the fact that ω0,ι is the weak-*-limit of some convergent
+subnet (ωλκ)κ∈K of the lifted and scaled vacuum state ω. Let A,B ∈ A(W+)
+and consider the functions
+t →ωλκ(AαΛt(B)) = (Ω,A λκαΛt(Bλκ)Ω)
+forκ ∈ K . Since Aλ,B λ ∈ A(W+) for all λ> 0 it follows from relation (6.4) and
+the fundamental results of the Tomita-Takesaki theory [24] tha t the restriction
+of each state ωλκ to the C ∗-dynamical system A(W+),α ΛR satisﬁes the KMS-
+condition at ﬁxed inverse temperature 2 π. As a consequence, the weak-*-limit
+pointω0,ι of these functionals has this property, too [24, Thm. 5.3.30]. Hence the
+unitary group U 0,ι(Λ2πt), t ∈ R , which implements the automorphisms αΛ2πt in
+the representation π0,ι is the modular group corresponding to π0,ι(A(W+))−, Ω0,ι.
+The ﬁrst equality in the lemma then follows.
+In the next step we prove the third equality. Because of the relatio ns (6.9) and
+(6.10) there holds ωλ ◦χ =ωλ,λ> 0, and consequently the limit state ω0,ι is also
+skew-invariant under the action of χ. Thus there exists on H0,ι an antiunitary
+operator I which implements the action of χ, i.e., Iπ0,ι(A)I =π0,ι(χ(A)) for all
+A ∈ A, and which leaves Ω 0,ι invariant. We will show that I =J 0,ι. To this end
+we pick any A ∈ A and any B∗ ∈ A(W+) which is entire analytic with respect
+to the action of αΛR. Since W+ is invariant under the action of the Lorentz
+transformations Λ R it is apparent that the set of all such operators is norm dense
+in A(W+). Now, as αΛiπ (B∗) ∈ A(W+), we have
+(Ω0,ι,π 0,ι(A)U 0,ι(Λiπ)π0,ι(B∗)Ω0,ι) = (Ω 0,ι,π 0,ι(A)π0,ι(αΛiπ (B∗))Ω0,ι)
+= (Ω 0,ι,π 0,ι(AαΛiπ(B∗))Ω0,ι) = limκ (Ω,A λκ(αΛiπ(B∗))λκΩ)
+= limκ (Ω,A λκαΛiπ (B∗
+λκ)Ω) = limκ (Ω,A λκU(Λiπ)B∗
+λκΩ)
+= limκ (Ω,A λκJB λκΩ) = limκ (Ω,A λκ(χ(B))λκΩ)
+= (Ω 0,ι,π 0,ι(Aχ(B))Ω0,ι) = (Ω 0,ι,π 0,ι(A)π0,ι(χ(B))Ω0,ι),
+where in the sixth equality we made use of relation (6.4) and the Tomita -Takesaki
+theory. Since A ∈ A was arbitrary, it follows from the above equation and the
+preceding result that
+J 0,ιπ0,ι(B)Ω0,ι =U 0,ι(Λiπ)π0,ι(B∗)Ω0,ι =π0,ι(χ(B))Ω0,ι =Iπ0,ι(B)Ω0,ι.
+But the set of vectors π0,ι(B)Ω0,ι, where B ∈ A(W+) is analytic, is dense in H0,ι,
+cf. Lemma 6.1, and since J 0,ι andI are bounded operators it follows that I =J 0,ι,
+35
+
+=== page 36 ===
+as claimed. The second equality in the lemma is now an immediate consequ ence
+of relation (6.8). ✷
+It follows from this result and the Tomita-Takesaki theory that th e scaling limit
+nets comply with the condition of geometric modular action. For the p recise
+formulation of this result we have to consider the representations of the nets
+A0,ι,α (0,ι)
+P ↑
++
+which are induced by the corresponding scaling limit states ω0,ι, ι ∈ I.
+Since these representations are the deﬁning representations of the respective nets
+we do not indicate in the following statement the pertinent homomorp hisms for
+the sake of a simpler notation.
+Proposition 6.3 Given an underlying theory which complies with the conditio n
+of geometric modular action, let A0,ι,α (0,ι)
+P ↑
++
+be the associated scaling limit nets
+in the deﬁning representation induced by ω0,ι, and let U0,ι(P ↑
++) and Ω0,ι be the
+respective Poincar´ e transformations and the GNS-vector c orresponding to α(0,ι)
+P ↑
++
+and ω0,ι, ι ∈ I.
+(i) The modular operators ∆0,ι and conjugationsJ0,ι ﬁxed by the pairs A0,ι(W+)−,
+Ω0,ι satisfy relations (6.2) to (6.4) with reference to the respe ctive nets A0,ι and
+representationsU0,ι of P ↑
++.
+(ii) The nets A0,ι satisfy wedge-duality, i.e.
+A0,ι(W+)′ = A0,ι(W−)−.
+Proof: Any net A0,ι,α (0,ι)
+P ↑
++
+is, by its very deﬁnition, isomorphic to the net π0,ι(A),
+AdU 0,ι(P ↑
++) on H0,ι, and the corresponding isomorphism connects the states ω0,ι
+and (Ω 0,ι, .Ω0,ι). The ﬁrst part of the statement then follows from the preceding
+lemma and the geometric action of χ given in relation (6.7). As a consequence,
+A0,ι(W−)− =J0,ιA0,ι(W+)−J0,ι = A0,ι(W+)′,
+where the second equality holds according to the Tomita-Takesaki theory. This
+proves the second part of the statement. ✷
+This result shows that the property of geometric modular action of the underlying
+theory persists in the scaling limit. In view of Proposition 4.5 and result s by Guido
+and Longo [27] one may expect that this property can also directly b e established
+in the scaling limit in theories of physical interest, such as asymptotic ally free
+theories. Its consequence, wedge duality and, as a further implica tion, (essential)
+Haag duality [28], is an important ingredient in the Doplicher-Haag-Rob erts ap-
+proach to the superselection analysis [9]. As another interesting co nsequence of
+wedge duality in the scaling limit we establish the following result on the ty pe of
+local algebras in the underlying theory.
+Proposition 6.4 Suppose that the underlying net A has a non-classical scaling
+limit, cf. Sec. 4, which satisﬁes wedge-duality. Then the lo cal von Neumann
+algebras A(O)− are of type III1 for all double cones O.
+36
+
+=== page 37 ===
+Proof: We quote the following criterion for the type III 1-property, originally es-
+tablished by Fredenhagen [6], from [29, Sec. 16.2].
+Criterion: Let M be a von Neumann algebra on some Hilbert space with sepa-
+rating vector4 Ω. The algebra M is of type III 1 if, given ϑ ∈ R + andε> 0, there
+exist nets Aκ ∈ M, Bκ ∈ M ′, κ ∈ K , such that
+||AκΩ || ≥ 1, || (ϑ1/2Bκ −A∗
+κ)Ω ||<ε, || (B∗
+κ −ϑ1/2Aκ)Ω ||<ε
+and A∗
+κAκ, B∗
+κBκ and BκAκ tend weakly to multiples of 1.
+We shall exhibit operators Aκ,B κ with the required properties by making use of
+the assumption that there exists some scaling limit state ω0,ι which induces a
+non-trivial representation (π0,ι, H0,ι, Ω0,ι) of A. By the second part of Lemma 6.1
+the algebras π0,ι(W±)− are then factors of type III 1, and taking into account the
+condition of wedge duality we get, using the Tomita-Takesaki theor y,
+J 0,ιπ0,ι(A(W+))−J 0,ι =π0,ι(A(W+))′ =π0,ι(A(W−))−,
+where ∆ 0,ι,J 0,ι are the modular operator and conjugation corresponding to the
+pair π0,ι(A(W+))−, Ω0,ι. We note that, by Kaplansky’s density theorem [30], the
+domain π0,ι(A(W+))Ω0,ι is a core for the modular operator ∆ 1/2
+0,ι , and by taking
+into account that A(W+) is generated by its local subalgebras, the same holds
+true for the domain ⋃
+O⊂W+π0,ι(A(O))Ω0,ι, where the regions O are compact.
+In view of these facts it follows from the very deﬁnition of von Neuma nn
+algebras of type III 1 that for each ϑ ∈ R + and ε > 0 there exists an operator
+A ∈ A(O1), where O1 ⊂ W + is compact, such that
+|| (π0,ι(A)∗ −ϑ1/2J 0,ιπ0,ι(A)J 0,ι)Ω0,ι || = || (∆1/2
+0,ι −ϑ1/2)π0,ι(A)Ω0,ι ||<ε
+while
+||π0,ι(A)Ω0,ι ||> 1.
+By wedge duality one has J 0,ιπ0,ι(A)J 0,ι ∈π0,ι(A(W−))−, and applying Kaplan-
+sky’s theorem a second time we see that there exists an operator B ∈ A(O2),
+where O2 ⊂ W − is compact, such that
+|| (π0,ι(B) −J 0,ιπ0,ι(A)J 0,ι)Ω0,ι ||<ε and || (π0,ι(B)∗ −J 0,ιπ0,ι(A)∗J 0,ι)Ω0,ι ||<ε.
+Combining these estimates with the preceding inequalities and making u se of the
+fact that J 0,ι is an anti-unitary involution, we arrive at
+|| (π0,ι(A)∗ −ϑ1/2π0,ι(B))Ω0,ι || ≤ (1 +ϑ1/2)ε and
+|| (π0,ι(B)∗ −ϑ1/2π0,ι(A))Ω0,ι || ≤ (1 +ϑ1/2)ε.
+Bearing in mind that the GNS-representation ( π0,ι, H0,ι, Ω0,ι) is induced by a
+scaling limit state ω0,ι which in turn is the weak-*-limit point of a net ( ωλκ)κ∈K
+4 In [29] it was assumed that Ω is also cyclic for M. But this is not necessary since the
+criterion, as stated here, implies that the stronger version is satis ﬁed in the subspace MΩ.
+37
+
+=== page 38 ===
+arising from the underlying vacuum state, we conclude that there is someκ′
+0 ∈ K
+such that for κ>κ ′
+0 there holds ||AλκΩ || ≥ 1 and
+||(A∗
+λκ −ϑ1/2Bλκ)Ω || ≤ (1 +ϑ1/2)ε, ||(B∗
+λκ −ϑ1/2Aλκ)Ω || ≤ (1 +ϑ1/2)ε.
+Since A ∈ A(O1), B ∈ A(O2), we have also Aλκ ∈ A(λκO1) and Bλκ ∈ A(λκO2).
+Now let O be any double cone such that O ⊂ W + and such that the origin
+0 lies on its boundary. Since O1 is a compact subset of the (open) wedge W+,
+it follows that λκO1 ⊂ O for suﬃciently small λκ, i.e., for all κ > κ′′
+0 with
+some suitable κ′′
+0 ∈ K . Hence Aλκ ∈ A(O)− for all of these κ. On the other
+hand, there holds λκO2 ⊂ W − for all κ and consequently Bλκ ∈ A(W−)− ⊂
+A(O)′, where the inclusion follows from locality. Finally, since O1 and O2 are
+compact, the weak limits of the nets A∗
+λκAλκ, B∗
+λκBλκ and AλκBλκ are elements
+of the algebra ⋂
+O∋0 A(O)− and therefore multiples of the identity (cf. the proof of
+Lemma 4.1). Thus, picking κ0 > κ′
+0,κ ′′
+0 we see that the nets Aκ
+.=Aλκ ∈ A(O)−
+and Bκ
+.= Bλκ ∈ A(O)′, κ > κ0, have the properties required by the criterion.
+Hence A(O)− is of type III 1. But every double cone can be brought by Poincar´ e
+transformations into the particular position required in the preced ing argument,
+proving the statement of the proposition. ✷
+7 Outlook
+In the present article we have established a general method for th e short distance
+analysis of local nets of observables. Based on the idea that the ch oice of renormal-
+ization group transformations identifying physical observables at diﬀerent scales
+ought to be largely arbitrary, apart from a few basic constraints r egulating their
+phase space properties, we were led to the concept of scaling algeb ra. These
+scaling algebras are canonically associated with any given net and com bine in a
+convenient way the information about the theory at diﬀerent scale s. It turned
+out that the scaling algebras have again the structure of local, Poin car´ e covariant
+nets on which the renormalization group acts by automorphisms (sc aling trans-
+formations). These features greatly simplify the short distance a nalysis since they
+allow it to apply well-known methods and results from algebraic quantu m ﬁeld
+theory. Several arguments given in Sections 4 and 6 illustrate this p oint.
+In a forthcoming paper it will be shown how, by using these methods, the
+phase space properties of the underlying theory which can be expr essed in terms
+of nuclearity and compactness conditions (cf. [18] and reference s quoted there),
+determine the phase space structure in the scaling limit. This point is o f relevance
+on one hand for the question of the general nature of the scaling lim it (“classical”
+versus “quantum”). On the other hand it is an important ingredient for its
+physical interpretation since the phase space properties of a net reveal the causal
+and thermal features of a theory as well as its particle aspects, c f. [1].
+The next step in our programme is the systematic analysis of the sup er-
+selection and particle structure of the scaling limit theories. Roughly speaking,
+these theories play a similar role as the asymptotic free ﬁeld theories in scattering
+38
+
+=== page 39 ===
+theory: they provide information about the stable particle conten t and the sym-
+metries of the theory which become visible in the respective limit; yet t hey do
+not contain by themselves any information about the interacting dy namics. This
+information is gained by comparing the properties of the theory at ﬁnite scales
+with those in the scaling limit.
+The ultraparticles of a theory, i.e., the particle structures appear ing at very
+small scales such as partons, leptons etc., can be identiﬁed with the particles (in
+the sense of Wigner) of the scaling limit theory [31]. Of course, inform ation about
+the masses of the ultraparticles gets lost in the scaling limit. But the c omparison
+of the ultraparticle content with the particle content of the under lying theory
+allows one to decide whether a particle is conﬁned at ﬁnite scales, i.e., e xists
+only as an ultraparticle, or disappears in the scaling limit since it disinteg rates,
+say, into non-interacting ultraparticles, as in the case of hadrons . Thus physical
+ideas and concepts which so far have been studied only in speciﬁc mod els become
+accessible in our setting to a more general analysis.
+Of similar interest is the related problem of the superselection struc ture of
+the scaling limit theories. Anticipating that the underlying theory com plies with
+the condition of geometric modular action, given in Sec. 6, we have sh own that
+the scaling limit satisﬁes the condition of essential Haag duality. Henc e, by the
+fundamental work of Doplicher and Roberts [20] we know that the s uperselection
+structure of any scaling limit theory is in one-to-one corresponden ce to the spec-
+trum (that is, the dual) of a compact group G0. Moreover, there exist charged
+Bose- and Fermi ﬁelds which transform as tensors under the actio n of G0 and
+generate the charged scaling limit states from the scaling limit vacuum . Again,
+the symmetry group G and the ﬁeld content of the underlying theory may be
+quite diﬀerent from that of its scaling limit. In asymptotically free the ories, cf.
+Sec. 4, one would expect that the underlying symmetry group G becomes larger
+in the scaling limit since interactions which can conceal a symmetry at ﬁ nite
+scales (conﬁnement) are turned oﬀ in the scaling limit. Yet also the op posite
+phenomenon may occur, e.g., in theories with a classical scaling limit.
+The structure of the gauge group G0 in the scaling limit is of particular interest
+in asymptotically free gauge theories since it should contain informat ion about
+the type of the underlying local gauge group. Since in the scaling limit there is no
+diﬀerence between global and local gauge transformations, and a ll charge degrees
+of freedom should become visible in case of asymptotic freedom, the local gauge
+group “at a point” should appear as a subgroup of G0. Thus the scaling algebra
+is a promising tool for uncovering, from the gauge invariant observ ables, the full
+gauge group of a theory.
+For the sake of concreteness let us illustrate the above points by t he example
+of the Schwinger model, i.e., massless quantum electrodynamics in two spacetime
+dimensions, see [32, 33] and references quoted therein. As is well-k nown, the
+algebra of observables of this theory is generated (in the deﬁning v acuum repre-
+sentation) by the free massive scalar ﬁeld φ, and all ﬁnitely localized observables
+are elements of the local von Neumann algebras generated by φ, or are aﬃliated
+with them in the case of unbounded operators. There exists a cons erved current
+39
+
+=== page 40 ===
+in this model, jµ = ∂νεµνφ, but there does not exist any charged superselection
+sector of states with ﬁnite energy, cf. for example [34, Thm. 3.1(1 )]. In fact, if
+one forgets about the origin of the local net of observables in this m odel, there
+does not seem to be any particular reason to relate it to a gauge the ory.
+The picture changes, however, if one proceeds to small scales with the help
+of the scaling algebra. It turns out that the scaling limit of the theor y is a local
+extension of the net generated by the free scalar massless ﬁeld (in exponentiated
+Weyl form). Let us mention as an aside that the use of bounded ope rators pays oﬀ
+at this point since one does not run into the familiar infrared problems connected
+with the massless scalar ﬁeld in two dimensions. Now the interesting po int is
+that the scaling limit theory has a one-parameter family of supersele ction sectors
+in the sense of Doplicher, Haag and Roberts which carry a non-trivia l charge
+with respect to the scaling limit of the current jµ. Thus one encounters in the
+scaling limit “electrically” charged states which do not appear at ﬁnite scales, as
+is expected in asymptotically free theories exhibiting conﬁnement. I t is also worth
+noting that the vacuum state in the scaling limit is not pure anymore, b ut the
+algebra of observables attains a center. This degeneracy of the v acuum is akin to
+the so-called θ-vacuum structure of the model at ﬁnite scales. Thus we recover by
+our general method from the net of local observables the well-kno wn features of
+the Schwinger model which are believed to illustrate the structure o f physically
+more interesting theories, such as quantum chromodynamics [35]. A detailed
+account of these results, as well as a discussion of other simple mod els, where the
+scaling limit nets can be computed explicitly, will be published elsewhere.
+After the clariﬁcation of the possible structure of the scaling limit an d its
+comparison with the underlying theory it would be desirable to unders tand the
+more detailed short distance properties of physical states. As we have seen in
+the present article, for λ ց 0 the leading contribution of the scaled states ωλ on
+the scaling algebra A are vacuum states. In next to leading order there ought to
+appear the ultraparticle content of the given states [31]. Thus by a n asymptotic
+expansion of the functionals ωλ with respect to λ one should be able to establish
+a general characterization of those physical states which may be viewed as bound
+states of ultraparticles.
+We conclude this outlook with the remark that the scaling algebra pro vides
+also a setting for the discussion of the infrared limit λ → ∞ . Moreover, the
+general ideas underlying the construction of the scaling algebra sh ould also be
+useful for the investigation of other scaling limits, such as the non- relativistic
+limit c → ∞ or the classical limit ℏ → 0. Thus the concept of scaling algebra
+seems to be a promising tool to tackle a number of interesting physic al problems
+within the setting of algebraic quantum ﬁeld theory.
+40
+
+=== page 41 ===
+Appendix
+The ideas of the renormalization group have proven to be useful in t he general
+analysis of quantum ﬁeld theories on curved spacetimes as well. They are, for
+example, an important ingredient in the formulation of the principle of local
+stability, proposed in [36, 37] to chararacterize physical states in those cases where
+the underlying spacetime structure does not exhibit any symmetrie s admitting
+the deﬁnition of vacuum states. The renormalization group has also been used
+to derive the possible values of the Hawking temperature from ﬁrst principles
+[36, 38] and to determine the type of local von Neumann algebras [29 , 39]. All
+these interesting results rely on the existence of quantum ﬁelds. I t is the aim of
+the present Appendix to indicate how the concept of scaling algebra may serve
+as a substitute in investigations of the short distance properties o f states and
+observables on arbitrary spacetime manifolds M with Lorentzian metric g.
+Let ( M,g ) be a (four-dimensional) spacetime; to simplify the discussion we
+assume that ( M,g ) is globally hyperbolic (cf. [40] for precise deﬁnitions). The
+open, relatively compact subsets (regions) of M will be denoted by R. Two
+regions R1, R2 are said to be spacelike separated if there does not exist any causal
+curve with respect to the metric g which connects R1 and R2.
+A local quantum theory on ( M,g ) is ﬁxed by specifying a net R → A (R)
+of unital C ∗-algebras on M which satisﬁes the conditions of isotony and locality
+(spacelike commutativity). We assume that this net is concretely giv en on some
+Hilbert-space of “physical states”.
+It is our aim to analyze the observables and physical states of the u nderlying
+theory at small scales. Within the present setting changes of the s patio-temporal
+scale can conveniently be described in tangent space: let q ∈ M be any spacetime
+point which will be kept ﬁxed in the following and let TqM be the tangent space
+of M at q. The open subsets with compact closure of TqM will be denoted
+by O. We ﬁx a (suﬃciently small, starshaped) neighbourhood Oq of 0 ∈ TqM
+and map it by the exponential map exp q onto a neighbourhood Rq of q ∈ M .
+Similarly, we identify the subsets O ⊂ O q with the regions R = exp q(O) ⊂ R q.
+This identiﬁcation of regions in M and TqM by the use of the exponential map
+is suggested by the idea that physics at very small scales should be d escribable
+in terms of Minkowski space, in accordance with the equivalence prin ciple of
+general relativity. As is well known, the exponential map complies wit h this
+idea in the best possible way: its inverse exp −1
+q induces, from the underlying
+metric g, a metric on (a suitable neighbourhood of 0 in) TqM which coincides
+with the usual Minkowskian metric at the origin 0 ∈ TqM, and deviates from
+it in a neighbourhood of 0 only up to terms of second order, in geodesic normal
+coordinates at q. We also recall that exp q maps the straight lines through 0 to
+the geodesics passing through q.
+These geometrical facts suggest that for the purpose of descr ibing the under-
+lying theory at small scales in the neighbourhood Rq ofq it is natural to proceed
+from the net A on M to the associated net A on the tangent space TqM given
+41
+
+=== page 42 ===
+by
+O → A(O) .= A(expq(O ∩ Oq)), O ⊂ TqM (A.1)
+if O ∩ O q ⁄= ∅. If O ∩ O q = ∅, we put A(O) = C · 1. It is easily checked
+that the assignment (A.1) is isotonous in O and hence it deﬁnes indeed a net on
+TqM with C ∗-inductive limit A, describing the possible observations in Rq. We
+emphasize that the net A dependes on the choice of the spacetime point q ∈ M,
+the neighbourhood Rq ⊂ M (respectively, Oq ⊂TqM) and, of course, the chosen,
+physically motivated identiﬁcation of the regions O ⊂ O q and R ⊂ R q via the
+exponential map. But we refrain from indicating this dependence in t he notation.
+The geometrical aspects of renormalization group transformatio ns can now be
+described as in the case of theories on Minkowski space. We conside r uniformly
+bounded functions λ → Aλ, λ > 0 with values in the algebra of observables A
+and equip them with the algebraic structure and C ∗-norm given in relations (3.7)
+and (3.8). Given any subset O ⊂ TqM, we deﬁne the corresponding local algebra
+by
+A(O) .= {A :Aλ ∈ A(λO), λ> 0}. (A.2)
+The assignment O → A(O) deﬁnes a net on TqM with corresponding global
+algebra A on which scaling transformations σµ, µ ∈ R +, can be deﬁned as in
+relation (3.14). Hence, lifting the underlying states ω on A to the algebra A by
+setting
+ω(A) .=ω(Aλ=1), (A.3)
+we can again describe in a convenient way the observations made at s mall scales
+by considering the scaled states ω ◦σλ for λ ց 0.
+The algebra A contains all functions which comply with the geometrical as-
+pects of renormalization group transformations. But since we did n ot yet impose
+any constraints on their phase-space properties, not all of thes e functions can be
+interpreted as orbits of local operators under renormalization gr oup transforma-
+tions (keeping the unit of ℏ ﬁxed). We will indicate below how one can get rid of
+these unwanted elements by proceeding to suitable subnets of A.
+Before entering into that discussion let us mention that already in th e present
+very general setting one can determine the geometrical and caus al properties of
+the nets appearing in the scaling limit: let ω be any state on A, let ω be its
+canonical lift on A and let ω0,ι be any limit point of the net ( ω ◦σλ)λ>0 forλ ց 0.
+It turns out that the corresponding net O → A0,ι(O) .= A(O)/ker(π0,ι), where
+π0,ι is the GNS-representation induced by ω0,ι, can be interpreted as a local net
+in Minkowski space if one deﬁnes on TqM the Minkowski metric with respect to
+any normal geodesic coordinate system at q. Moreover, the scaling limit nets so
+obtained are independent of the choice of the neighbourhood Oq ⊂TqM entering
+into the deﬁnition of A. This result shows that our approach is fully consistent
+with the equivalence principle.
+42
+
+=== page 43 ===
+Let us now turn to the problem of selecting elements of A which can be
+regarded as orbits under the action of the renormalization group. Again it may
+seem natural to characterize the functions by the requirement t hat they occupy
+at each scale λ a ﬁxed volume of “phase space”. But the implementation of
+this idea is not quite as simple as in Minkowski space since there need no t exist
+any isometries of ( M,g ), i.e., energy-momentum need not be conserved. Thus,
+selecting elements of A by the condition that they have at each scale λ > 0 a
+speciﬁc energy-momentum transfer involves a certain degree of a rbitrariness, as
+energy-momentum depends in general on the choice of a Cauchy-s urface.
+If one is primarily interested in the properties of the theory in the sc aling limit
+one can circumvent this problem, however. Namely, it suﬃces then t o control the
+energy-momentum transfer of the operators Aλ in the limit λ = 0, where they are
+localized at the spacetime point q. This “local” point of view is also suggested
+by classical ﬁeld theory, where phase space appears as cotangen t bundle of the
+underlying conﬁguration space.
+To implement this idea let us assume that the underlying theory admits (lo-
+cally) a “dynamics”. This requires that there exists a smooth foliatio n of the re-
+gion Rq by Cauchy-surfaces C(t), where −t0 <t<t 0 denotes the time-parameter
+(the time function Rq → R being appropriately normalized), and q ∈ C (0). The
+dynamics is then given by a family of endomorphisms αt1,t2, −t0 < t2 ≤t1 < t0,
+of the net A. They map the local algebras A(R) into A(Rq) if R ⊂ R q andt1,t 2
+are suﬃciently small and satisfy the equation
+αt1,t2 ◦αt2,t3 = αt1,t3 (A.4)
+αt,t = id .
+Let us brieﬂy explain the physical signiﬁcance of the endomorphisms αt1,t2 (some-
+times called propagators). In suitable representations of A one may think of αt1,t2
+as time ordered exponential (Dyson expansion) of generators δt(. ) = i [Ht, .],
+whereHt can locally be interpreted as a Hamiltonian on the Cauchy-surface C(t).
+The operators Ht in turn may be thought of in generic cases as suitably regu-
+larized integrals of a local stress energy tensor, integrated over C(t). We need
+not enter here into the subtle mathematical problems appearing in t he rigorous
+construction of these quantities and only mention that local dynam ics have been
+constructed in models for globally hyperbolic spacetimes, cf. [41].
+Let us now return to our problem of characterizing elements of A with suf-
+ﬁciently regular phase space properties at small scales. Picking any dynamics,
+and recalling that the ﬁxed point q under scaling transformations lies on the
+Cauchy-surface C(0), it seems natural to test the energy momentum transfer of
+the operators Aλ at small scales with the help of the endomorphisms αt,0 for small
+t. Thus we propose to select the desired elements of A by the condition
+lim sup
+λց0
+||αλt,0(Aλ) −Aλ || → 0 for t → 0, (A.5)
+in analogy to condition (3.5). Thinking of the generators of the dyna mics in terms
+of Cauchy-surface integrals of a local stress energy tensor, it is evident that condi-
+tion (A.5) does not depend on the shape of C(0) in the spacelike complement of q.
+43
+
+=== page 44 ===
+So the arbitrariness in selecting regular elements from A largely disappears. By
+imposing condition (A.5) for the dynamics corresponding to all possib le choices
+of a time direction we arrive at a strictly local generalization of condit ion (3.5).
+It is apparent that condition (A.5) determines a subnet of A which is larger
+than its analogue introduced in the case of Minkowski space. For on e does not
+impose any restrictions on the energy momentum transfer of the u nderlying op-
+erators at ﬁnite scales. But this is irrelevant for the discussion of t he scaling limit
+where the properties of the elements A ∈ A at ﬁnite scales are not tested. To
+illustrate this fact let us note that if one imposes in the case of Minkow ski space
+theories conditons (3.5) and (3.6) on the elements of the scaling alge bra only in
+the limit of small λ, as in relation (A.5), one arrives at the same scaling limit(s)
+of the underlying theory as in our present treatment.
+We conclude this Appendix with the remark that there exist interest ing vari-
+ants of condition (A.5). For example, one may select “smooth” eleme nts of A by
+imposing the condition
+lim sup
+λց0
+||λ ·δt=0(Aλ) ||< ∞, (A.6)
+where δt are the generators of the dynamics (propagators). Quite anoth er ap-
+proach to testing the phase space properties of A can be based on the modular
+groups associated with suitable physical states and local algebras , cf. [42, Sec.
+5]. A more detailed exposition of the formalism of scaling algebras on ar bitrary
+spacetime manifolds as well as some applications will be presented else where.
+Acknowledgement
+We gratefully acknowledge ﬁnancial support by the DFG (Deutsche Forschungs-
+gemeinschaft).
+References
+[1] Haag, R.: Local Quantum Physics. Berlin, Heidelberg, New York: Springer
+1992
+[2] Amit, D.J.: Field theory, the renormalization group, and critical phen omena.
+Singapore: World Scientiﬁc 1984
+[3] Borchers, H.J.: ¨Uber die Mannigfaltigkeit der interpolierenden Felder zu
+einer kausalen S-Matrix. Nuovo Cimento 15 (1960) 784
+[4] Haag, R., Swieca, J.A.: When does a quantum ﬁeld theory describe particles?
+Commun. Math. Phys. 1 (1965) 308
+[5] Bisognano, J.J., Wichmann, E.H.: On the duality condition for a hermitean
+scalar ﬁeld. J. Math. Phys. 16 (1975) 985 and J. Math. Phys. 17 (1976) 303
+44
+
+=== page 45 ===
+[6] Fredenhagen, K.: On the modular structure of local algebras of observables.
+Commun. Math. Phys. 97 (1985) 79
+[7] Summers, S.J., Werner, R.F.: Maximal violation of Bell’s inequalities for
+algebras of observables in tangent spacelike regions. Ann. Inst. H. Poincar´ e
+49 (1988) 215
+[8] Buchholz, D., D’Antoni, C., Fredenhagen, K.: The universal structure of
+local algebras. Commun. Math. Phys. 111 (1987) 123
+[9] Doplicher, S., Haag, R., Roberts, J.E.: Fields, observables and gauge trans-
+formations. Commun. Math. Phys. 13 (1969) 1 and Commun. Math. Phys.
+15 (1971) 173
+[10] Borchers, H.J.: Local rings and the connection of spin with statistics. Com-
+mun. Math. Phys. 1 (1965) 291
+[11] Dixmier, J.: C ∗-Algebras. Amsterdam: North-Holland 1977
+[12] Reed, M., Simon, B.: Methods of modern mathematical physics, Vol. 1. New
+York: Academic Press 1975
+[13] Roberts, J.E.: Some applications of dilatation invariance to structural q ues-
+tions in the theory of local observables. Commun. Math. Phys. 37 (1974)
+273
+[14] Wightman, A.S.: La th´ eorie quantique locale et la th´ eorie quantique des
+champs. Ann. Inst. H. Poincar´ e1 (1964) 403
+[15] Streater, R.F., Wightman, A.S.: PCT, spin and statistics, and all that. New
+York: Benjamin 1964
+[16] Araki, H., Hepp, K., Ruelle, D.: On the asymptotic behaviour of Wightman
+functions in spacelike directions. Helv. Phys. Acta 35 (1962) 164
+[17] Buchholz, D., Verch, R.: In preparation
+[18] Buchholz, D., Porrmann, M.: How small is the phase space in quantum ﬁeld
+theory? Ann. Inst. H. Poincar´ e52 (1990) 237
+[19] Buchholz, D., Jacobi, P.: On the nuclearity condition for massless ﬁelds.
+Lett. Math. Phys. 13 (1987) 313
+[20] Doplicher, S., Roberts, J.E.: Why there is a ﬁeld algebra with a compact
+gauge group describing the superselection structure in par ticle physics. Com-
+mun. Math. Phys. 131 (1990) 51
+[21] Reeh, H., Schlieder, S.: Bemerkungen zur Unit¨ ar¨ aquivalenz von Lorentzin-
+varianten Feldern. Nouvo Cimento 22 (1961) 1051
+45
+
+=== page 46 ===
+[22] Driessler, W.: Comments on lightlike translations and applications in rel a-
+tivistic quantum ﬁeld theory. Commun. Math. Phys. 44 (1975) 133
+[23] Longo, R.: Notes on algebraic invariants for non-commutative dynamic al
+systems. Commun. Math. Phys. 69 (1979) 195
+[24] Bratteli, O., Robinson, D.W.: Operator algebras and quantum statistical
+mechanics, Vol. 2. New York, Berlin, Heidelberg: Springer-Verlag 1986
+[25] Borchers, H.J.: The CPT-theorem in two-dimensional theories of local ob-
+servables. Commun. Math. Phys. 143 (1992) 315
+[26] Brunetti, R., Guido, D., Longo, R.: Modular structure and duality in con-
+formal quantum ﬁeld theory. Commun. Math. Phys. 156 (1993) 201
+[27] Brunetti, R., Guido, D., Longo, R.: Group cohomology, modular theory and
+spacetime symmetries. To appear in Rev. Math. Phys.
+[28] Roberts, J.E.: Lectures on algebraic quantum ﬁeld theory. in: The algebraic
+theory of superselection sectors. Kastler, D., ed. Singapore: World Scientiﬁc
+1990
+[29] Baumg¨ artel, H., Wollenberg, M.: Causal nets of operator algebras. Berlin:
+Akademie Verlag 1992
+[30] Kadison, R.V., Ringrose, J.R.: Fundamentals of the theory of operator alge-
+bras, Vol. 2. Orlando: Academic Press 1986
+[31] Buchholz, D.: On the manifestations of particles, in: Mathematical physics
+towards the 21st century. Sen, R.N., Gersten, A., eds. Beer-Sheva: Ben-
+Gurion University Press 1994
+[32] Bogolubov, N.N., Logunov, A.A., Oksak, A.I., Todorov, I.T.: General prin-
+ciples of quantum ﬁeld theory. Dordrecht: Kluwer Academic Publishers 1990
+[33] Strocchi, F.: Selected topics on the general properties of quantum ﬁeld th eory.
+Singapore: World Scientiﬁc 1993
+[34] Fr¨ ohlich, J., Morchio, G., Strocchi, F.: Charged sectors and scattering states
+in quantum electrodynamics. Ann. Phys. (N.Y.) 119 (1979) 241
+[35] Becher, P., Joos, H.: 1+1 dimensional quantum electrodynamics as an il-
+lustration of the hypothetical structure of quark ﬁeld theo ry. in: Proceedings
+of the 5th meeting on fundamental physics. De Guevara, P.L. et al., eds.
+Madrid: J.E.N. 1977
+[36] Haag, R., Narnhofer, H., Stein, U.: On quantum ﬁeld theory in gravitational
+background. Commun. Math. Phys. 94 (1984) 219
+46
+
+=== page 47 ===
+[37] Fredenhagen, K., Haag, R.: Generally covariant quantum ﬁeld theory and
+scaling limits. Commun. Math. Phys. 108 (1987) 91
+[38] Heßling, H.: On the quantum equivalence principle. Nucl. Phys. B415 (1994)
+243
+[39] Wollenberg, M.: Scaling limits and type of local algebras over curved space-
+time. in: Operator algebras and topology. Arveson, W.B. et al., eds. Pitman
+Research Notes in Mathematics 270. Harlow: Longman 1992
+[40] O’Neill, B.: Semi-Riemannian geometry. New York: Academic Press 1983
+[41] Kay, B.S.: Linear spin-zero quantum ﬁelds in external gravitational a nd
+scalar ﬁelds II. Commun. Math. Phys. 71 (1980) 29
+[42] Buchholz, D., D’Antoni, C., Longo, R.: Nuclear maps and modular structures
+II. Commun. Math. Phys. 129 (1990) 631
+47

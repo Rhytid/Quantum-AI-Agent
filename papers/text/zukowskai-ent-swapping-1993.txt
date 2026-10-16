@@ -1,0 +1,358 @@
+=== page 1 ===
+VOLUME 71, NUMBER 26 PHYSICAL REVIEW LETTERS 27 DECEMBER 1993
+"Event-Ready-Detectors" Bell Experiment via Entanglement Swapping
+M. Zukowski, ' A. Zeilinger, ' M. A. Horne, and A. K. Ekert'
+Institut fiir Experimentalphysik, Universita tIn'nsbruck, A 602-0 Innsbruck, Austria
+Instytut Fizyki Teoretycznej i Astroftzyki, Uniwersytet Gdanski, PL 80 -952-Gdansk, Poland
+Stonehill College, North Easton, Massachusetts 02357
+Merton College and Physics Department, Oxford University, OXI 4JD Oxford, United Kingdom
+(Received 3 August 1993)
+Using independent sources one can realize an "event-ready" Bell-Einstein-Podolsky-Rosen experi-
+ment in which one can measure directly the probabilities of the various outcomes including nondetection
+of both particles. Our proposal involves two parametric down-converters. Subcoherence-time monitor-
+ing of the idlers provides a noninteractive quantum measurement entangling and preselecting the in-
+dependent signals without touching them. We give the conditions for high fringe visibility and particle
+collection eSciency as required for a Bell test.
+PACS numbers: 03.65.Bz, 42.50.Ar, 42.50.Dv
+Entanglement, which is at the root of Bell's theorem,
+usually is considered to be a consequence of some interac-
+tion of the particles in their common past. In a seminal
+paper Yurke and Stoler [1] have proposed that entangle-
+ment may arise in the coincidence count rates of particles
+originating from independent sources. We will show that
+such a scheme requires precise statements, beyond im-
+mediate intuitive expectation, on the coincidence time
+windows, and that Bell-Einstein-Podolsky-Rosen (EPR)
+phenomena only occur if the emission acts of the indepen-
+dent sources are monitored with time resolution signifi-
+cantly sharper than the coherence time of the radiation
+fed into the interferometric setup. If that condition is
+met one can entangle particles which do not even share
+any common past. This technique, which we call entan-
+glement swapping, leads to a realizable scheme of
+"event-ready detectors. " In such a scheme, which has
+been called for by Bell since 1971 [2], one knows, via
+some initiating event, when a pair has been produced.
+Consequently, one can measure directly the probabilities
+of the various outcomes, including even nondetection of
+the particles [2-4] and thereby directly test Bell's in-
+equality. In existing Bell experiments only relative prob-
+abilities were accessible. Previous event-ready detectors
+[4] were interacting directly with the particles and this
+leads to disentanglement [5].
+Consider Fig. 1. Two independent sources emit one
+pair of entangled photons each. A simplified [6] repre-
+sentation of the resulting four-photon state is the product
+of Jl/2((a&(b)+ (a'))b')) with Jl/2(~c&(d&+ (c'&)d'&).
+The photons in the beams a, a' and b, b' are not entangled
+with photons in the beams c,c' and d, d'. We call the two
+photons in a, a' and d, d' signals and the other two idlers.
+Suppose we register an idler in detector i ~ in coincidence
+with an idler in detector i2. Then, the state of the signals
+collapses into the entangled state Jl/2(~a) ~d'&+ ~a'&~d&).
+This state implies correlations violating Bell's inequality
+in an experimental setup shown by the dashed lines in
+Fig. 1. This entanglement between the signals is a conse-
+quence of both the initial signal-idler entanglements from
+each source and the fact that coincident registration in
+detectors i ~ and i 2 projects the idler photons into the state
+2 ' (~b) ~c')+ ~b') ~c)). The resulting entanglement
+swapping is a noninteractive quantum measurement of
+the signals, without touching them, via interacting with
+the idlers. The experiment can be arranged such that all
+registration events occur outside each other's light cones.
+We mention in passing that registration of the idlers in
+other detectors can collapse the signals into entangled
+states orthogonal to the one discussed above. The now
+entangled signal particles do not share any common past.
+We assume in our discussion that whenever a pair of
+idlers are registered in coincidence at i~ and i2, each
+source contributed only one particle. Of course it is
+equally likely that both particles came from the same
+source. Fortunately in the laboratory these events can be
+cL
+~ HS--
+d+
+j3 f f j2 M
+BS ~
+a+
+FIG. 1. Principle of an event ready Bell-EPR experiment. Two down-conversion sources PDC-I and PDC-II emit a photon pair
+each. The specific geometry of each PDC source is obtainable by a suitable arrangement of mirrors and apertures. The initially in-
+dependent signal photons get entangled by coincident registration of the idlers. (M mirrors; BS beam splitters; f filters; p, 4' local
+phase shifters. )
+003 1-9007/93/7 1 (26)/4287 (4)$06.00
+ 1993 The American Physical Society
+4287
+
+=== page 2 ===
+VOLUME 71, NUMBER 26 PH YSICAL REVI EW LETTERS 27 DECEMBER 1993
+distinguished and excluded because they lead to coin-
+cident signal counts at the same end of Fig. 1. Although
+our experiment depends on accidental coincidences be-
+tween independent sources, we assume the count rates to
+be low enough such that we are not troubled by triple ac-
+cidental emissions. Also, since we are interested in those
+traits of the experiment distinguishing it from the stan-
+dard ones, we assume for most of our discussion perfect
+detectors.
+The meaning of coincident detection in such an experi-
+ment and its implications for Bell s theorem require care-
+ful analysis. Note that even for ideal devices with perfect
+time resolution one always has to impose a finite time
+gate to define two counts as coincident. Furthermore, the
+bandwidth h, n implies that the detection time of a signal
+is determined by the registration time of its idler up to
+around its coherence time T, = I/Aco and vice versa [7].
+Since down-conversion radiation is extremely broadband,
+one defines in a practical experiment the bandwidth
+through apertures and filters. Because of the phase
+matching condition for frequency (essentially, energy
+conservation), the filtering of, say, the idlers also limits
+the bandwidth of the coincident signals. Thus we consid-
+er idler filtering only.
+Consider first (experiment A) the immediate intuitive
+choice to accept as coincident two idlers arriving at the
+detectors i~ and i2 within a time window z;=T,. This
+implies that two signals are within the setup and thus we
+"activate" the signal detectors (this could also be done by
+associating a certain pair of signal detections with a given
+pair of registered idlers via an analysis of the arrival
+times of all photons, long after the actual events). Our
+detectors will sooner or later register both signals. Now,
+a signal caught earlier can be thought with a higher prob-
+ability to be paired with the idler registered earlier.
+Therefore, the larger both the time separation between
+the registrations of the idlers and that between the regis-
+trations of the signals, the more signal path information
+we have. The resulting partial distinguishability of the
+paths taken by the signals leads to a reduction of the
+two pa-rlicle interference contrast T. his reduction keeps
+the experiment from violating Bell s inequality if the visi-
+bility is below 71% [4].
+A possible improvement (experiment B) would be to
+only accept signal detection events in subcoherence-time
+coincidence (a time window sufficiently smaller than the
+coherence time). Then the registration times of the
+idlers, which may still diAer by up to T„do not provide
+information about the paths taken by the signals. This
+implies a very high contrast of the signal fringes. Howev-
+er, such a procedure of postselecting pairs beyond the
+analyzers only retains a small subset of the full ensemble.
+Within the full ensemble, Bell's inequality will not be
+violated because of the large number of rejected pairs.
+And within the subset, a testable inequality cannot be de-
+rived without some auxiliary assumption.
+To overcome the problems of experiments A and B let
+us impose subcoherence-time coincidence (experiment C)
+solely on the registration of the idlers. This implies high
+visibility: the idlers are registered within such a narrow
+time window that we have no signal path information.
+The signal coincidence window could substantially exceed
+T„and it actually should in order to register almost all
+signal pai rs, associated with these subcoherence-time
+idlers. Thus this experiment using a preselection pro-
+cedure can test Bell's inequality, with no problems besides
+the imperfections of the setup. The ensemble of particles
+(signal detection events) of the Bell experiment is defined
+now by the subcoherence-time coincident detections of
+the idlers, prior to any interaction of the signals with the
+phase shifters, beam splitters, and detectors. This pro-
+cedure is a realization of Bell's dream of an experiment
+with event-ready detectors [2,4]: Our subcoherence-time
+coincident registration of the idlers "activates" the signal
+detectors.
+We now turn to a quantitative analysis of the experi-
+ments A, B, and C. The two-photon state produced by
+PDC-I, which we consider to incorporate also the idler
+filters, can be described as [8]
+r
+41/2 dc' dco; A(cU + Co; ro&)f(ai;;raf, +co)(lai a) le, b)+ lai a')l ai, b'))
+where, e.g. , la~. , a& (lai;, b)) describes the signal (idler) of
+l
+frequency co, (ro;) in beam a (b), and co~ is the pump fre-
+quency. The function A(ai, +co; — co~) reflects the phase
+matching condition, and in practice can be replaced by
+Dirac's delta function. By f(co;;rof, Leo) we denote the
+transmission function of a filter of central frequency cof.
+A similar state describes the emission by source II.
+The detection of an idler in i ] at t] and of another one
+in i 2, at t2, causes a wave packet collapse into the entan-
+gled state of the signals
+l q &
+=JI /2 ( l r 2, a ) l i i, d') + l r i, a')
+l r 2, d ) ) .
+The ket lt~, a& is fdroA(ro, ti)h(rd)leo, a&, where
+4 (co, r )) =exp[ i (cop — co)—r i]
+describes the amplitude to find a photon (here an idler)
+with frequency co& — m at time t ~ and the function
+h (co) =Nf(co~ — ro;cof, d ro), N is a normalization con-
+stant. The surprising feature of l+) is that, as we shall
+see below, despite being maximally entangled it leads to
+the Bell theorem only provided lr ~
+— t2l is sufficiently
+smaller than T,.
+Subsequently at some instant t we register a signal
+emitted by PDC-I. We check whether the signal emitted
+by PDC-II and detected at t' satisfies lt — r'l ( r, . The
+quantum prediction for the probability p(i,j l~p, p';r„r;)
+of having counts both in beam a; and d, (i,j = ~ ) within
+z„provided ~e have detected t~o idlers in i t and i2
+
+=== page 3 ===
+VOLUME 71, NUMBER 26 P H YSICAL REVI EW LETTERS 27 DECEMBER 1993
+within ~t ~
+— t2~ & z;, is given by
+ti ts f+ OO
+dz' dz dr~2 [H(t' — t~)H(t — t2)+ije ' ~+~ H(t — t~)H(r' — r2)]~
+OO
+where z =r' — r, z'=t
+&
+— t2, the symbol ij equals + for i =j and — otherwise, and H(t) denotes the normalized Fourier
+transform of h(co). Let P(z, ~z;) be the conditional probability of registering the event-ready prepared signal pair at
+any two detectors within z„provided both idlers were detected within z;, and V(z„z;) be the signals fringes visibility
+under these conditions. Then
+V(z„z;)P(z, i z;) ~ dz'„dz dr H(t+ z)H(t+ z')H*(l)H (t+ z+ z') (3)
+where the equality holds if the phase of H(t) is a linear
+function of t.
+Let us introduce for f(co;;nif, hni) an approximated
+Fabry-Perot function (ro; — ruf+i Aru/2) ' [9]. The
+Fourier integrals of the spectral functions h(ni) can then
+be approximated by extending their range to negative fre-
+quencies. The Fourier transform H(t) reads (d, ni) '~
+xexp[ Abbot/2 — t—(ni~ — waif)k]e(t), where e{r) is the
+step function. Thus, our specific choice of f (and hence
+/t) ensures that this approximation does not imply a loss
+of causality in the description of the filters. The coin-
+cidence gates can be expressed in the natural units
+5';=z;/T, and T, =z,/T, . For finite z, the probability
+P(z, ~z;) then reads 1 — sinhV';exp( — 5', )/'T; for
+( z„and it is [V', — exp( — 7';) sinhT, ]/7'; for z; & z, .
+In general one has
+1 (i.e., for ultracoincident idlers), and T, much bigger
+than 1.
+Let us now consider Bell's inequality in the form [2]
+Ehv(kl gl)+Ehv(42~42)+Ehv(42~PI) Ehv(41~42) — 2 ~
+(5)
+where the correlation function Eh„(p, p') is defined as
+p~)ijph„(i,j ~p, p';z„z;), and ph„(i,j ~p, p';z„z;) in turn is
+any local realistic prediction for the probability that the
+detectors a; and d~ fire (under the conditions specified by
+z, and z;). The definition of Eh„must include the fact
+that some signals may not fit into the required time gate
+z, . Following [2,4] we let the result be ij = ~ 1 if the
+signals were detected within i„or 0 if a signal photon
+from an event ready pair arrived too late.
+The quantum prediction for the correlation function for
+the specific time gates reads V(z„z;)P(z,~z;) cos(p
++p'). Thus, the product V(z„z;)P(z,~z;) gives the
+modulation amplitude of the quantum correlation func-
+tion. Bell s inequality (4) is only violated if
+(4)
+The actual form of the expressions is a consequence of
+the specific f chosen. Nevertheless, one can show that
+any sensible filter function gives qualitatively similar re-
+sults: The expression can have high numerical value
+(above 0.71) only provided T; is su%ciently smaller than
+V(z„z;)P(z, ~z;) & Jl/2 =0.707.
+[1 — exp( — T;)][1 — exp( '7,)]—V(z„z;)P(z, ~z;) =
+I
+~~
+~~
+0.8
+B ir
+~~i Theorem
+No Violation of
+Bell's Inequality
+CD
+G5
+CD
+(3
+2-.9OC:
+C3
+0
+L
+CD
+0 0 1 2
+eorem
+4 5
+Signal Coincidence Gate z, /T,
+FIG. 2. Boundary of the experimental parameters (6) neces-
+sary to violate Bell's inequality (for our model of the filter).
+06
+0
+n 0.4
+~~
+LL
+0.2
+0 0.2 0.4 0.6 0.8 1
+Signal Acceptance Probability
+FIG. 3. Two-photon interference visibility versus signal ac-
+ceptance probability, which is defined as the square root of the
+probability P(z, ~i
+)tzo register both signals within z, given
+both idlers were registered within ~;. The three curves are ob-
+tained by sweeping r, from 0 to ~ with fixed r;. Note that ul-
+tracoincident idlers are necessary to violate Bell's inequality.
+4289
+
+=== page 4 ===
+VOLUME 71, NUMBER 26 PH YSICAL REVIEW LETTERS 27 DECEMBER 1993
+In Fig. 2 we show the region of time gates implied by (4)
+and (6). Violation of Bell's inequality occurs only if both
+(a) the idlers are detected in subcoherence-time coin-
+cidence and (b) the signal coincidence window is sig-
+nificantly longer than T,. The specific details of the
+interdependence of the signal fringe visibility V(r„r;)
+and the signal acceptance probability, defined as
+[P(z,
+~ r;)] 'i, can be seen in Fig. 3.
+Like all experiments testing local realism performed so
+far, the ones proposed here also would sufI'er from a finite
+detector e%ciency and an abundance of instrumental im-
+perfections which lower the visibility. Of course, if the
+detector e%ciency is not su%ciently high, one must resort
+to some auxiliary assumption such as fair sampling, as in
+the past. Nevertheless, if there are some limitations in-
+trinsic to the setup, we must work in a very sharp
+subcoherence-time regime (r; && T,).
+Finally, it has not escaped our attention that Using a
+similar technique one can obtain a source exhibiting
+Greenberger, Horne, and Zeilinger (GHZ) correlations.
+We also note that subcoherence-time coincidence is a
+general requirement in experiments involving Bell mea-
+surements of particles from different sources, e.g., in
+quantum "teleportation" [10].
+In conclusion, we remark that such an experiment with
+event-ready registration of independent photons might be
+a further step toward a definitive test against local real-
+ism.
+We would like to thank Gregg 3aeger, Abner Shimony,
+Tycho Sleator, and Harald Weinfurter for useful com-
+ments and discussions. This work has been supported by
+the Austrian Science Foundation FWF, Project No. S
+6502 (Schwerpunkt Quantenoptik), and the U.S. Nation-
+al Science Foundation, Grant No. PHY92-13964.
+[1] B. Yurke and D. Stoler, Phys. Rev. A 46, 2229 (1992);
+for the GHZ case: Phys. Rev. Lett. 68, 1251 (1992).
+[2] J. S. Bell, Speakable and Unspeakable in Quantum
+Mechanics (Cambridge University, Cambridge, 1988),
+pp. 29 and 105.
+[3] A. Garg and N. D. Mermin, Phys. Rev. D 35, 3638
+(1987).
+[4] J. F. Clauser and A. Shimony, Rep. Prog. Phys. 41, 1881
+(1978).
+[5] Yet note that one of the arrangements proposed by Yurke
+and Stoler [1] can be run in an event-ready mode.
+[6] The fully symmetrized state gives the same final results.
+[7] S. Friberg, C. K. Hong, and L. Mandel, Phys. Rev. Lett.
+54, 2011 (1985); M. Horne, A. Shimony, and A. Zeil-
+inger, in Quantum Coherence, edited by J. Anandan
+(World Scientific, Singapore, 1990).
+[8] C. K. Hong and L. Mandel, Phys. Rev. A 31, 2409
+(1985); M. Zukowski, Phys. Lett. A 150, 136 (1990).
+[9] J. H. Eberly and K. Wodkiewicz J. Opt. Soc. Am. 67,
+1252 (1977).
+[101 C. H. Bennett, G. Brassard, C. Crepeau, R. Jozsa, A.
+Peres, and W. K. Wooters, Phys. Rev. Lett. 70, 1895
+(1993).
+4290

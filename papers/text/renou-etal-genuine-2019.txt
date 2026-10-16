@@ -1,0 +1,2140 @@
+=== page 1 ===
+Genuine quantum nonlocality in the triangle network
+Marc-Olivier Renou, 1 Elisa B¨ aumer,2 Sadra Boreiri, 3 Nicolas Brunner, 1 Nicolas Gisin, 1 and Salman Beigi 4
+1D´ epartement de Physique Appliqu´ ee, Universit´ e de Gen` eve, CH-1211 Gen` eve, Switzerland
+2Institute for Theoretical Physics, ETH Zurich, Wolfgang-Pauli-Str. 27, 8093 Z¨ urich, Switzerland
+3School of Computer and Communication Sciences,
+cole Polytechnique Fdrale de Lausanne, CH-1015 Lausanne, Switzerland
+4School of Mathematics, Institute for Research in Fundamental Sciences (IPM), Tehran, Iran
+(Dated: 14 May 2019)
+Quantum networks allow in principle for completely novel forms of quantum correlations. In
+particular, quantum nonlocality can be demonstrated here without the need of having various input
+settings, but only by considering the joint statistics of ﬁxed local measurement outputs. However,
+previous examples of this intriguing phenomenon all appear to stem directly from the usual form
+of quantum nonlocality, namely via the violation of a standard Bell inequality. Here we present
+novel examples of “quantum nonlocality without inputs”, which we believe represent a new form of
+quantum nonlocality, genuine to networks. Our simplest examples, for the triangle network, involve
+both entangled states and joint entangled measurements. A generalization to any odd-cycle network
+is also presented. Finally, we conclude with some open questions.
+I. INTRODUCTION
+Bell’s theorem is arguably among the most important
+results in the foundations of quantum theory [1]. It also
+had a major inﬂuence on the development of quantum
+information science [2], and led recently to the so-called
+device-independent paradigm [3–6].
+In his seminal work, Bell demonstrated that two dis-
+tant observers, performing local measurements on a
+shared entangled state, can establish strong correlations
+which cannot be explained in any physical theory satisfy-
+ing a natural principle of locality. These nonlocal quan-
+tum correlations can be demonstrated experimentally us-
+ing Bell inequalities. Recently, long-awaited loophole-
+free tests of quantum nonlocality were ﬁnally reported,
+FIG. 1. The triangle network features three observers (green
+circles), connected by three independent bipartite sources (red
+ovals). Here the sources distribute local variables (i.e. shared
+randomness).
+providing the basis for the implementation of device-
+independent quantum information protocols [7–9].
+An interesting direction is to understand quantum non-
+locality in scenarios involving more than two observers.
+The standard approach to this problem (referred to as
+multipartite Bell nonlocality) considers three (or more)
+distant observers sharing an entangled state distributed
+by a common source, and leads to interesting new eﬀects;
+see e.g. [10] for a review. This represents the simplest
+generalization of quantum nonlocality to the multipartite
+case, and most of the concepts and tools developed for
+bipartite nonlocality can generally be directly extended
+here.
+Recently, a completely diﬀerent approach to multipar-
+tite nonlocality was proposed [11–13], focusing on quan-
+tum networks. Here, distant observers share entangle-
+ment distributed by several sources which are assumed
+to be independent from each other. By performing joint
+entangled measurements (such as the well-known Bell
+state measurement used in quantum teleportation [14]),
+observers may correlate distant quantum systems and
+establish strong correlations across the entire network.
+Typically, each source connects here only a strict sub-
+set of the observers. It turns out that this situation is
+fundamentally diﬀerent from standard multipartite non-
+locality, and allows for radically novel phenomena. As
+regards correlations, it is now possible to witness quan-
+tum nonlocality in experiments where all the observers
+perform a ﬁxed measurement, i.e. they receive no in-
+put [12, 13, 20–23]. This eﬀect of quantum nonlocality
+without inputs is remarkable, and radically departs from
+previous forms of quantum nonlocality.
+So far, however, all known examples of quantum nonlo-
+cality without inputs can be traced back to standard Bell
+inequality violation. This naturally leads to the question
+of whether completely novel forms of quantum nonlocal-
+ity, genuine to the network conﬁguration, could arise.
+Here we address this question, by presenting an instance
+of quantum nonlocality in the triangle network, which we
+arXiv:1905.04902v1  [quant-ph]  13 May 2019
+
+=== page 2 ===
+2
+argue is fundamentally diﬀerent from previously known
+forms of quantum nonlocality. In particular, our con-
+struction crucially relies on the combination of shared
+entangled states and joint entangled measurements per-
+formed by the observers. We present several generaliza-
+tions of our main result, in particular to any cycle net-
+work featuring an odd number of parties. We conclude
+with a discussion and comment on the main open ques-
+tions.
+II. SCENARIO AND MAIN RESUL T
+We consider the so-called triangle quantum network
+sketched in Fig. 1. It features three observers (Alice,
+Bob and Charlie). Every pair of observers is connected by
+a (bipartite) source, providing a shared physical system
+(represented e.g. by a classical variable or by a quantum
+state). Importantly, the three sources are assumed to be
+independent of each other. Hence, the three observers
+share no common (i.e. tripartite) piece of information.
+Based on the received physical resources, each observer
+provides an output (a, b and c, respectively). Note that
+the observers receive no input in this setting, contrary
+to standard Bell nonlocality tests. The statistics of the
+experiment are thus given by the joint probability distri-
+bution P (a,b,c ).
+Characterizing the set of distributions P (a,b,c ) that
+can be obtained from physical resources (in particular
+classical or quantum) is a highly non-trivial problem.
+The main diﬃculty stems from the assumption that the
+sources are independent. This makes the set of pos-
+sible distributions P (a,b,c ) non-convex, and standard
+methods used in Bell nonlocality are thus completely un-
+adapted to this problem. Strong bounds on the limits of
+classical correlations are thus still missing, which in turn
+renders the discussion of quantum nonlocality in the tri-
+angle network challenging.
+Here we follow a diﬀerent approach in order to present
+instances of quantum nonlocality in the triangle network.
+Speciﬁcally, we ﬁrst construct explicitly a family of quan-
+tum distributionsPQ(a,b,c ), using both entangled quan-
+tum states (distributed by each of the three sources),
+and entangled joint measurements performed by each ob-
+server. Then we show that these quantum distributions
+cannot be reproduced by any “trilocal” model, i.e. a lo-
+cal model “a la Bell” where all three sources are assumed
+to be independent from each other. Formally, we prove
+that
+PQ(a,b,c )⁄= (1)∫
+dα
+∫
+dβ
+∫
+dγPA(a|β,γ )PB(b|γ,α )PC(c|α,β )
+where α ∈ X, β ∈ Y and γ ∈ Z represent the
+three local variables distributed by each source and
+PA(a|β,γ ),PB(b|γ,α ),PC(c|α,β ) represent arbitrary de-
+terministic response functions for Alice, Bob and Charlie.
+Our proof does not rely on the violation of some Bell-type
+inequality, but is based on a logical contradiction. More
+precisely, we ﬁrst identify a certain number of necessary
+properties that any trilocal model should have in order
+to reproduce PQ(a,b,c ), and then show that these prop-
+erties cannot all be satisﬁed at the same time.
+Let us now construct explicitly our quantum distribu-
+tions PQ(a,b,c ). Each source produces the same pure
+maximally entangled state of two qubits,
+|ψγ⟩AγBγ
+=|ψα⟩BαCα =|ψβ⟩CβAβ
+= 1√
+2(|00⟩ +|11⟩).
+Note that each party receives two independent qubit sub-
+systems; for instance Alice receives subsystems Aβ and
+Aγ. Next, each party performs a projective quantum
+measurement in the same basis. In the following, we use
+the basis (a set depending on one real parameteru) given
+by
+|↑⟩ =|01⟩ | χ0⟩ =u|00⟩ +v|11⟩
+|↓⟩ =|10⟩ | χ1⟩ =v|00⟩− u|11⟩ (2)
+with u2 +v2 = 1 and 0 <v <u< 1. For Alice, we label
+it{|φa⟩AβAγ} for φa∈{↑ ,↓,χ 0,χ 1} and adopt similar
+notations for Bob and Charlie. Remark that only two
+out of the four states in that basis are entangled. The
+statistics of the experiment are given by
+PQ(a,b,c ) =|⟨φa|⟨φb|⟨φc||ψγ⟩|ψα⟩|ψβ⟩| 2,
+where we did not specify the Hilbert spaces supporting
+the states. Note that when evaluating PQ(a,b,c ), one
+should be attentive to which Hilbert space support each
+state and measurements.
+We now state the main result of this letter:
+Theorem 1. The quantum distribution PQ(a,b,c ) can-
+not be reproduced by any classical trilocal model (in the
+sense of Eq. (1)) when u2
+max < u2 < 1, where u2
+max =
+−3+(9+6
+√
+2)2/3
+2(9+6
+√
+3)1/3 ≈ 0.785
+We now sketch the proof; all details are given in Ap-
+pendix A. The main idea is that the quantum distribu-
+tionPQ(a,b,c ) features a certain number of speciﬁc con-
+straints. Indeed, one has that
+PQ(a =↑,b =↑) =PQ(a =↓,b =↓) = 0 (3)
+Symmetric relations are obtained by permuting the par-
+ties. Also, the number of parties that have an output in
+χ ={χ0,χ 1} must be odd. Moreover, introducing the
+notation u0 =−v1 = u and v0 = u1 = v (such that
+|χt⟩ =ut|00⟩ +vt|11⟩) we have that
+PQ(χi,↑,↓) = 1
+8u2
+i, PQ(χi,↓,↑) = 1
+8v2
+i, (4)
+PQ(χi,χj,χk) = 1
+8(uiujuk +vivjvk)2 (5)
+
+=== page 3 ===
+3
+FIG. 2. Step 1 shows that any trilocal model compatible
+with the quantum distributionPQ(a,b,c ) must have a speciﬁc
+structure. Speciﬁcally, for each source, the classical variable
+set can be divided into two equal weight (i.e. P (α ∈ X0) =
+... = 1/2) disjoint subsets containing all output information
+on the coarse grained distribution where χ = {χ0,χ 1} group
+together two outputs. For instance, whenα ∈X0,β ∈Y1 and
+γ ∈ Z0, the outputs must be a =↓ for Alice, b = χ for Bob,
+c =↓ for Charlie. Note that the ordering is important.
+and similar relations by permuting the parties. These
+four properties are essentially all we need. Indeed, for
+some speciﬁc choice of the measurement parameter u,
+no trilocal model can be compatible with all these four
+constraints at once. We prove by contradiction, assuming
+a trilocal model, in two successive steps where we identify
+conditions that this trilocal model reproducingPQ(a,b,c )
+should fulﬁll, to ﬁnally arrive at a contradiction.
+Step 1. Here we consider the coarse graining of the out-
+put set {↑,↓,χ ={χ0,χ 1}}. We show that the sources
+sets can be partitioned in two subsets of equal weight
+X =X0∐X1,Y =Y0∐Y1,Z =Z0∐Z1 such that upon
+receivingβ and γ, Alice outputs (i) a =↑ if she receives
+β∈Y0 and γ∈Z1, (ii) a =↓ if she receives β∈Y1 and
+γ∈Z0, (iii)a =χ otherwise (similarly for Bob, Charlie,
+see Fig. 2).
+Proof. See Appendix A, it relies on (3),(4) and (5).
+Step 2. Let us introduce the following probability distri-
+bution
+q(i,j,k,t ) := (6)
+4p(a =χi,b =χj,c =χk, (α,β,γ )∈ (Xt,Yt,Zt)).
+The following marginal distributions of q(i,j,k,t ) satisfy:
+q(i,j,k ) =
+∑
+t
+q(i,j,k,t ) = 1
+2(uiujuk +vivjvk)2, (7)
+q(i,t = 0) =
+∑
+j,k
+q(i,j,k,t = 0) = 1
+2u2
+i, (8)
+and similar constraints on q(i,t = 1), q(j,t ) and q(k,t ).
+Proof. From Step 1, one can see that all parties output
+χ iﬀ (α,β,γ )∈ (Xt,Yt,Zt) with t = 0 or t = 1. This
+ensures that q(i,j,k,t ) is properly normalized. (7) is
+straightforward from (5). (8) can be deduced from Step
+1 and the fact that Alice’s output must be independent
+of α (see App. A for a more detailed proof).
+At this point we arrive at a contradiction. Indeed,
+if a trilocal model existed, one should be able to deﬁne
+a distribution q(i,j,k,t ) that is compatible with all its
+marginals, in particular those marginals discussed above.
+However, this is not possible for all values of the param-
+eter u (which quantiﬁes the degree of entanglement of
+measurement χ0,χ 1), speciﬁcally when 0, 785≈ u2
+max <
+u2 < 1. This concludes the proof.
+A natural question is whether the distribution PQ is
+trilocal when u2≤ u2
+max. In Appendix D we show that
+this is the case, by constructing an explicit trilocal model
+for u2 =u2
+max (up to machine precision). We conjecture
+thatPQ remains trilocal up to u2 <u 2
+max. Note that this
+can be proven for the case u2 = 1/2. Here the trilocal
+model is obtained from Step 1, with χ replaced by a
+uniformly random choice between χ0 and χ1.
+Before entering a more general discussion about the
+implications of Theorem 1 and some natural open ques-
+tions, we now brieﬂy present several generalizations of
+the result.
+III. GENERALISA TIONS
+The ﬁrst extension considers the same scenario as in
+Theorem 1, with the diﬀerence that all sources now pro-
+duce the same general entangled two-qubit pure states
+λ0|00⟩ +λ1|11⟩ where λ2
+0 +λ2
+1 = 1. We consider the
+same measurements (2). In this case, Theorem 1 can be
+extended, with the condition that umax(λ0) ≲u< 1 (see
+Appendix A for details). Interestingly, the lower bound
+umax(λ0) takes its lowest value for non-maximally entan-
+gled states (λ0 =
+√
+2/3). In this case, we ﬁndumax(λ0) =√
+2/3, implying that the projective joint measurement
+must feature non-maximally entangled states.
+A second generalization considers the triangle network
+with higher dimensional quantum systems. Speciﬁcally,
+all three sources now produce a maximally entangled
+two-qutrit state, i.e. |φ3⟩ = (|00⟩ +|11⟩ +|22⟩)/
+√
+3.
+Each party performs the same joint entangled projec-
+tive measurement, with nine outcomes, labeled by a∈
+
+=== page 4 ===
+4
+{˜0, ˜1, ˜2,χ↑
+0,χ↑
+1,χ↑
+2,χ↓
+0,χ↓
+1,χ↓
+2} for Alice. The projectors
+are on the states
+⏐⏐˜0
+⟩
+:=|00⟩,
+⏐⏐˜1
+⟩
+:=|11⟩,
+⏐⏐˜2
+⟩
+:=|22⟩,⏐⏐⏐χ↑
+i
+⟩
+=η01
+i |01⟩ +η02
+i |02⟩ +η12
+i |12⟩,
+⏐⏐⏐χ↓
+i
+⟩
+=η10
+i |10⟩ +η20
+i |20⟩ +η21
+i |21⟩.
+where the coeﬃcients {η01
+i ,η 02
+i ,η 12
+i } and{η10
+i ,η 20
+i ,η 21
+i }
+are real and chosen such that the nine vectors form an
+orthonormal basis. Similarly to Theorem 1, one can show
+that for an appropriate choice of these parameters, the
+resulting quantum distribution is incompatible with any
+trilocal model (see Appendix B).
+A third generalization explores networks beyond the
+triangle. Speciﬁcally, we prove a generalization of Theo-
+rem 1 for anyN−cycle network, withN being odd. Here
+all N sources produce a maximally entangled two-qubit
+state, and all parties perform the same joint measure-
+ment, as in Eq. (2). We show that for any N, the quan-
+tum distribution is incompatible with any N-local model
+(i.e. a straightforward generalization from Eq. (1)) when
+the measurement parameter u goes asymptotically to 1.
+Our approach cannot be directly adapted to even cycles.
+IV. DISCUSSION
+We presented novel examples of quantum nonlocality
+without inputs, mainly for the triangle network. We be-
+lieve that these examples represent a form of quantum
+nonlocality that is genuine to the network conﬁguration,
+in the sense that it is not a consequence of standard forms
+of Bell nonlocality. These examples fundamentally diﬀer
+from the one presented by Fritz in [13], relying on the
+violation of a standard bipartite Bell inequality. Let us
+ﬁrst brieﬂy review it.
+Fritz’s example can be viewed as a standard Bell test,
+embedded in the triangle network. Consider that Alice
+and Bob share a two-qubit Bell state, with the goal of vi-
+olating the CHSH Bell inequality. Testing the CHSH in-
+equality requires of course local inputs for both Alice and
+Bob. Although the triangle network features no explicit
+inputs, here eﬀective inputs are provided by the two ad-
+ditional sources: the source connecting Alice and Charlie
+(resp. Bob and Charlie) provides a shared uniformly ran-
+dom bit, which is used as Alice’s (resp. Bob’s) input for
+the CHSH test. All parties output the “input bits” he
+receives. The correspondence between these outputs en-
+sures that Alice’s (resp. Bob’s) output only depends on
+the source she (resp. he) shares with Charlie. Finally, Al-
+ice and Bob both additionally output the output of their
+local measurement performed on the shared Bell state.
+If this quantum distribution could be reproduced by a
+trilocal model, it would follow that local correlations can
+violate the CHSH inequality, which is impossible.
+Let us comment on some signiﬁcant diﬀerences be-
+tween Fritz’s construction and our example of Theorem
+1. First, our construction has a high level of symmetry
+(all sources distribute the same entangled state and all
+measurements are the same) with only four outputs per
+party. In particular, it involves an entangled state for
+each source, whereas the example of Fritz requires en-
+tanglement for only one source (it can be symmetrized,
+but at the cost of adding new outputs). Moreover, our
+construction appears to rely on the use of joint measure-
+ments with entangled eigenstates, while Fritz’s model
+uses only separable measurements. Hence Fritz’s con-
+struction could be obtained from PR-boxes [28]. As the
+equivalent of joint measurements does not exist for PR-
+boxes [29, 30], we believe that our example cannot be
+obtained from PR-boxes.
+Note that all the above arguments are only based on
+qualitative and intuitive arguments. We have no formal
+proof that in order to obtain the distribution PQ(a,b,c )
+one actually requires all states to be entangled and/or
+joint entangled measurements. In fact, even formalizing
+the problem is diﬃcult, any progress in this direction
+would be interesting. An idea would be to use the no-
+tion of “self-testing” [26], for instance by proving that
+all shared quantum states must be two-qubit Bell states
+and/or that all local measurements must feature speciﬁc
+entangled eigenstates [31, 32].
+Another important aspect of our construction that
+must be discussed is noise tolerance. As such, Theorem
+1 clearly applies only to the exact quantum distribution
+PQ(a,b,c ), i.e. in the noiseless case. The trilocal set be-
+ing topologically closed, it is clear that PQ(a,b,c ) must
+have a certain (possibly very weak) robustness to noise:
+when adding a suﬃciently small amount of local noise
+to PQ(a,b,c ), one should still obtain a quantum distri-
+bution that is incompatible with any trilocal model. A
+promising method would be to consider the qutrit exam-
+ple, the proof of which involves the Finner inequality that
+allows in principle for the presence of noise. However we
+did not succeed in obtaining reasonable noise tolerance
+of our result so far. Other methods could also help, such
+as the “inﬂation” technique [18] 1. This could provide a
+nonlinear Bell inequality violated by our example.
+The possibility of generating randomness from quan-
+tum nonlocality without inputs is a further interesting
+question. In particular, it seems very likely that our
+quantum distribution PQ(a,b,c ) contains some level of
+intrinsic randomness. It would be interesting to see
+how this randomness could be quantiﬁed in a device-
+independent manner (still assuming independence of the
+sources).
+Acknowledgements.—We thank Alex Pozas and Elie
+Wolfe for discussions. We acknowledge ﬁnancial sup-
+1 The inﬂation method consists of a sequence of tests of rapidly
+increasing computational complexity. For the ﬁrst tests in the
+sequence, implementable on a computer, it appears that even
+the nonlocality of PQ(a, b, c) cannot be detected. Nevertheless,
+as inﬂation is known to converge in the limit [27], this is still an
+interesting possibility to explore.
+
+=== page 5 ===
+5
+port from the Swiss national science foundation (Starting grant DIAQ, NCCR-QSIT).
+[1] J. S. Bell, Physics 1, 195–200 (1964).
+[2] A. Ekert, Phys. Rev. Lett. (1991).
+[3] J. Barrett, L. Hardy, A. Kent, Phys. Rev. Lett. (2005).
+[4] A. Ac´ ın, N. Brunner, N. Gisin, S. Massar, S. Pironio, and
+V. Scarani, Phys. Rev. Lett. 98, 230501 (2007).
+[5] R. Colbeck, PhD Thesis, Univ. of Cambridge (2007).
+[6] S. Pironio, A. Ac´ ın, S. Massar, A. Boyer de la Giroday,
+D. N. Matsukevich, P. Maunz, S. Olmschenk, D. Hayes,
+L. Luo, T. A. Manning, and C. Monroe, Nature 464,
+1021 (2010).
+[7] B. Hensen, H. Bernien, A. E. Drau, A. Reiserer, N. Kalb,
+M. S. Blok, J. Ruitenberg, R. F. L. Vermeulen, R. N.
+Schouten, C. Abelln, W. Amaya, V. Pruneri, M. W.
+Mitchell, M. Markham, D. J. Twitchen, D. Elkouss, S.
+Wehner, T. H. Taminiau, and R. Hanson, Nature 526,
+682686 (2015).
+[8] L. K. Shalm et al., Phys. Rev. Lett. 115, 250402 (2015).
+[9] M. Giustina et al., Phys. Rev. Lett. 115, 250401 (2015).
+[10] N. Brunner, D. Cavalcanti, S. Pironio, V. Scarani, and
+S. Wehner, Rev. Mod. Phys. 86, 419 (2014).
+[11] C. Branciard, N. Gisin and S. Pironio, Phys. Rev. Lett.
+104, 170401 (2010).
+[12] C. Branciard, D. Rosset, N. Gisin, and S. Pironio, Phys.
+Rev. A 85, 032119 (2012).
+[13] T. Fritz, New J. Phys. 14, 103001 (2012).
+[14] C. H. Bennett, G. Brassard, C. Crepeau, R. Jozsa, A.
+Peres and W. K. Wootters, Phys. Rev lett. 70, 1895
+(1993).
+[15] R. Chaves, T. Fritz, Phys. Rev. A 85, 032113 (2012).
+[16] D. Rosset, C. Branciard, T. J. Barnea, G. P¨ utz, N. Brun-
+ner, and N. Gisin, Phys. Rev. Lett. 116, 010403 (2016).
+[17] R. Chaves, Phys. Rev. Lett. 116, 010402 (2016).
+[18] E. Wolfe, R. W. Spekkens, and T. Fritz,
+arXiv:1609.00672.
+[19] M.-X. Luo, Phys. Rev. Lett. 120, 140402 (2018).
+[20] N. Gisin, arXiv:1708.05556.
+[21] T. Fraser, E. Wolfe, Phys. Rev. A 98, 022113 (2018).
+[22] N. Gisin, Entropy 21, 325 (2019).
+[23] M.O. Renou, Y. Wang, S. Boreiri, S. Beigi, N. Gisin, and
+N. Brunner, arXiv:1901.08287.
+[24] D. Rosset, N. Gisin, E. Wolfe, arXiv:1709.00707 (2017).
+[25] J. F. Clauser, M. A. Horne, A. Shimony, and R. A. Holt,
+Phys. Rev. Lett. 23, 880 (1969).
+[26] D. Mayers and A. Yao, Self testing quantum apparatus,
+Quant. Inf. Comp. 4, 273 (2004).
+[27] M. Navascues, E. Wolfe, arXiv:1707.06476 (2017).
+[28] S. Popescu and D. Rohrlich, Found. Phys.24, 379 (1994).
+[29] J. Barrett, Phys. Rev. A 75, 032304 (2007).
+[30] A. J. Short, S. Popescu, N. Gisin, Phys. Rev. A 73,
+012101 (2006).
+[31] M. O. Renou, J. Kaniewski, and N. Brunner, Phys. Rev.
+Lett. 121, 250507 (2018).
+[32] J.-D. Bancal, N. Sangouard, and P. Sekatski, Phys. Rev.
+Lett. 121, 250506 (2018).
+Appendix A: Proof of main result
+In this section, we provide a complete proof of Theorem 1. We directly prove the generalized result where the shared
+sources are non maximally entangled states: Alice, Bob and Charlie now share general two-qubit pure entangled states
+|ψ⟩ = λ0|00⟩ +λ1|11⟩ where λ0,λ 1 are real and λ2
+0 +λ2
+1 = 1. The measurement performed by the parties are as in
+the main text, namely projective in the basis
+|↑⟩ =|01⟩ | χ0⟩ =u0|00⟩ +v0|11⟩
+|↓⟩ =|10⟩ | χ1⟩ =u1|00⟩ +v1|11⟩ (A1)
+with real number u = u0 = −v1, v = u1 = v0, u2 +v2 = 1. For symmetry reason, we assume w.l.o.g. that
+0<v ≤u< 1.
+The global quantum state shared by the parties is given by
+|ψABC⟩ =λ3
+0|000000⟩ +λ3
+1|111111⟩ +λ2
+0λ1 (|100001⟩ +|000110⟩ +|011000⟩) +λ0λ2
+1 (|100111⟩ +|111001⟩ +|011110⟩)
+=λ3
+0 (u|χ0⟩ +v|χ1⟩)⊗3 +λ3
+1 (v|χ0⟩− u|χ1⟩)⊗3 +λ2
+0λ1
+(
+u(|↑↓χ0⟩ +|↓χ0↑⟩ +|χ0↑↓⟩) +v(|↑↓χ1⟩ +|↓χ1↑⟩
++|χ1↑↓⟩)
+)
++λ0λ2
+1
+(
+v(|↓↑χ0⟩ +|↑χ0↓⟩ +|χ0↓↑⟩)−u(|↓↑χ1⟩ +|↑χ1↓⟩ +|χ1↓↑⟩)
+)
+.
+From this last equation, we can determine a certain number of crucial properties of the distribution PQ(a,b,c ). First,
+note that the number of parties that output χ (i.e. either χ0 or χ1) must be odd. Second, we observe that
+PQ(a =↑,b =↑) =PQ(a =↓,b =↓) = 0. (A2)
+Moreover,
+PQ(a =↑,b =↓) =PQ(b =↑,c =↓) =λ4
+0λ2
+1 and PQ(c =↓,a =↑) =λ2
+0λ4
+1. (A3)
+
+=== page 6 ===
+6
+We have other similar relations by permuting the parties. Finally, we have that
+PQ(χi,↑,↓) =λ4
+0λ2
+1u2
+i, PQ(χi,↓,↑) =λ2
+0λ4
+1v2
+i (A4)
+PQ(χi,χj,χk) = (λ3
+0uiujuk +λ3
+1vivjvk)2. (A5)
+We can now prove the following generalization of Theorem 1:
+Theorem 1. There exists no trilocal model reproducing PQ(a,b,c ), whenever u2
+max(λ0)<u 2 < 1 (see Fig. 3), where
+umax(λ0) is implicitly deﬁned by the constraint:
+3(λ3
+0u2v−λ3
+1uv2)2− 3u2(λ6
+0 +λ6
+1) + 2(λ6
+1 + (λ3
+0u3 +λ3
+1v3)2) +λ6
+0 + (λ3
+0v3−λ3
+1u3)2≥ 0. (A6)
+The proof of Theorem 1 follows from two steps. We ﬁrst assume, by contradiction, that a classical 3-local strategy
+exists. In Step 1, we consider the behavior for which the two outputs χ0,χ 1 are grouped into a single output χ.
+We show that in that case, one only needs one bit of information about each of the local hidden variables to ﬁnd
+the outputs. Using this restriction and exploiting relations (A4), (A5), Step 2 shows that those restrictions can be
+exploited to compute marginals of a probability distribution grouping outputs and hidden variables. For a good choice
+of measurement basis, those marginals are incompatible.
+Step 1. We consider the coarse graining of the output set {↑,↓,χ ={χ0,χ 1}}. The sources sets can be partitioned
+in two subsets
+X =X0∐X1, Y =Y0∐Y1, Z =Z0∐Z1, (A7)
+(withP (X0) =P (Y0) =P (Z0) =λ2
+0,P (X1) =P (Y1) =P (Z1) =λ2
+1), such that the sets from which the local variables
+α, β and γ are taken determine all outputs. More precisely, Alice answers
+(i) a =↑ iﬀ she receives β∈Y0 and γ∈Z1,
+(ii) a =↓ iﬀ she receives β∈Y1 and γ∈Z0,
+(iii) a =χ otherwise,
+and similarly for Bob and Charlie (with a direct orientation of the cycle, see Fig. 2).
+Proof. Let us deﬁne the sets
+X0 ={α|∃ γ s.t. b(γ,α ) =↓}, X 1 ={α|∃ γ s.t. b(γ,α ) =↑},
+X′
+0 ={α|∃ β s.t. c(α,β ) =↑}, X ′
+1 ={α|∃ β s.t. c(α,β ) =↓},
+Y0 ={β|∃ α s.t. c(α,β ) =↓}, Y 1 ={β|∃ α s.t. c(α,β ) =↑},
+Y′
+0 ={β|∃ γ s.t. a(β,γ ) =↑}, Y ′
+1 ={β|∃ γ s.t. a(β,γ ) =↓},
+Z0 ={γ|∃ β s.t. a(β,γ ) =↓}, Z 1 ={γ|∃ β s.t. a(β,γ ) =↑},
+Z′
+0 ={γ|∃ α s.t. b(γ,α ) =↑}, Z ′
+1 ={γ|∃ α s.t. b(γ,α ) =↓}.
+Note that (A2) directly implies that:
+X0∩X′
+1 =X′
+0∩X1 = ø, Y 0∩Y′
+1 =Y′
+0∩Y1 = ø, Z 0∩Z′
+1 =Z′
+0∩Z1 = ø. (A8)
+We also haveX =X′
+0∪X1. By contradiction, assume α∗ /∈X′
+0∪X1. Then, for all β,γ , b(γ,α∗)⁄=↑ andc(α∗,β )⁄=↑.
+As the number of χ is odd, with (A2), we deduce that for all β,γ , a(β,γ )⁄=↓ which is absurd, as Alice answers ↓
+sometimes. With similar proofs, considering (A8), we obtain:
+X0∐X′
+1 =X′
+0∐X1 =X, Y 0∐Y′
+1 =Y′
+0∐Y1 =Y, Z 0∐Z′
+1 =Z′
+0∐Z1 =Z. (A9)
+Next, we show that ø = X0∩X1. The proof goes also by contradiction. Assume that α∗∈ X0∩X1: there exist
+γ1,γ 2 such that b(γ1,α∗) =↓ and b(γ2,α∗) =↑. Take any β∈ Y . As b(γ1,α∗) =↓, by (A2), we have c(α∗,β )⁄=↓.
+Similarly, asb(γ2,α∗) =↑ we havec(α∗,β )⁄=↑. Hence c(α∗,β ) =χ. As the number of χ is odd, we can conclude with
+(A2) that a(β,γ 1) =↑ and a(β,γ 2) =↓. Consider now any α∈ X. As a(β,γ 1) =↑, with (A2), we have c(α,β )⁄=↑.
+As a(β,γ 2) =↓, with (A2), we have c(α,β )⁄=↓. Hence c(α,β ) = χ. Remember this is valid for any α,β . As in the
+setup Charlie does not answer χ all the time, this is a contradiction, which ﬁnishes the proof. With similar proofs
+and considering (A9), we obtain:
+X0 =X′
+0, X ′
+1 =X1, Y 0 =Y′
+0, Y ′
+1 =Y1, Z 0 =Z′
+0, Z ′
+1 =Z1. (A10)
+
+=== page 7 ===
+7
+Hence:
+a(β,γ ) =↑ iﬀ β∈Y0 =Y′
+0,γ ∈Z1 =Z′
+1, a (β,γ ) =↓ iﬀ β∈Y1 =Y′
+1,γ ∈Z1 =Z′
+1,
+b(γ,α ) =↑ iﬀ γ∈Z0 =Z′
+0,α∈X1 =X′
+1, b (γ,α ) =↓ iﬀ γ∈Z1 =Z′
+1,α∈X0 =X′
+0,
+c(α,β ) =↑ iﬀ α∈X0 =X′
+0,β∈Y1 =Y′
+1, c (α,β ) =↓ iﬀ α∈X1 =X′
+1,β∈Y0 =Y′
+0.
+It remains now to compute the probabilities of the diﬀerent subsets. Note that:
+P (a =↑,b =↓) =P (X0)P (Y0)P (Z1)
+P (c =↓,a =↑) =P (X1)P (Y0)P (Z1)
+P (b =↑,c =↓) =P (X1)P (Y0)P (Z0)
+Using (A3) we can conclude that P (X0) = P (Y0) = P (Z0) = λ2
+0 and P (X1) = P (Y1) = P (Z1) = λ2
+1, which ﬁnishes
+the proof of Step 1.
+Step 2. Let us introduce
+q(i,j,k,t ) :=p
+(
+a =χi,b =χj,c =χk, (α,β,γ )∈Xt×Yt×Zt|(α,β,γ )∈X0×Y0×Z0∪X1×Y1×Z1
+)
+= 1
+λ6
+0 +λ6
+1
+p(a =χi,b =χj,c =χk, (α,β,γ )∈Xt×Yt×Zt). (A11)
+q(i,j,k,t ) is a probability distribution. Moreover, the following marginal distributions of q(i,j,k,t ) satisfy:
+q(i,j,k ) =
+∑
+t
+q(i,j,k,t ) = (λ3
+0uiujuk +λ3
+1vivjvk)2
+λ6
+0 +λ6
+1
+(A12)
+q(i,t = 0) = λ6
+0
+λ6
+0 +λ6
+1
+u2
+i q(i,t = 1) = λ6
+1
+λ6
+0 +λ6
+1
+v2
+i (A13)
+q(j,t = 0) = λ6
+0
+λ6
+0 +λ6
+1
+u2
+j q(j,t = 1) = λ6
+1
+λ6
+0 +λ6
+1
+v2
+j (A14)
+q(k,t = 0) = λ6
+0
+λ6
+0 +λ6
+1
+u2
+k q(k,t = 1) = λ6
+1
+λ6
+0 +λ6
+1
+v2
+k (A15)
+Proof. The parties all answer χ iﬀ (α,β,γ ) are either in X0×Y0×Z0 or in X1×Y1×Z1. Hence q(i,j,k,t ) is a
+probability distribution.
+(A12) follows directly from Eq. (A5). As q(i,j,k,t ) is a probability distribution, (A13) can be deduced from (A11)
+and the fact that Alice’s answer is independent of the value of α:
+q(i,t = 0) = 1
+λ6
+0 +λ6
+1
+p(a =χi, (α,β,γ )∈ (X0,Y 0,Z 0)) = 1
+λ6
+0 +λ6
+1
+P (X0)
+P (X1)p(a =χi, (α,β,γ )∈ (X1,Y 0,Z 0)) = λ6
+0
+λ6
+0 +λ6
+1
+u2
+i,
+where we used (A4) and the fact that P (X0) =λ2
+0 andP (X1) =λ2
+1 for the last equality. We can compute q(i,t = 1),
+(A14) and (A15) in a similar manner.
+We are in position to conclude the proof. Indeed, the marginal conditions given above are incompatible when u is
+chosen to be large enough, as given in Fig. 3. We have:
+Step 3 (Theorem 1.). There exists no trilocal model reproducingPQ(a,b,c ), whenever u2
+max(λ0)<u 2 < 1 (see Fig. 3),
+whereumax(λ0) is implicitly deﬁned by the constraint (A24).
+Proof. Let us introduce a new probability distribution ˜q, the symmetrization of q overi,j,k :
+˜q(i,j,k,t ) = 1
+6 (q(i,j,k,t ) +q(j,k,i,t ) +q(k,i,j,t ) +q(i,k,j,t ) +q(k,j,i,t ) +q(j,i,k,t )). (A16)
+Clearly, ˜q still satisﬁes the same constraints as q given in Step 2. Let ξijk := ˜q(i,j,k,t = 0)− ˜q(i,j,k,t = 1). We have
+˜q(i,j,k,t = 0) = 1
+2 (˜q(i,j,k ) +ξijk), ˜q(i,j,k,t = 1) = 1
+2 (˜q(i,j,k )−ξijk). (A17)
+
+=== page 8 ===
+8
+FIG. 3. Values of the squared measurement parameter u2, as a function of the squared degree of entanglement λ2
+0 of the shared
+states, for which the quantum distribution PQ(a,b,c ) can be proven to admit no trilocal model. Note that in this plot we also
+considered u<v .
+For simplicity, we write ξ0 := ξ000, ξ1 := ξ100 = ξ010 = ξ001, ξ2 := ξ110 = ξ101 = ξ011 and ξ3 := ξ111. Hence, with
+(A12), we can write the marginals
+˜q(k,t = 0) = 1
+2
+∑
+i,j
+((λ3
+0uiujuk +λ3
+1vivjvk)2
+λ6
+0 +λ6
+1
++ξijk
+)
+= 1
+2
+
+λ6
+0u2
+k +λ6
+1v2
+k
+λ6
+0 +λ6
+1
++
+∑
+ij
+ξijk
+
+
+˜q(k,t = 1) = 1
+2
+∑
+i,j
+((λ3
+0uiujuk +λ3
+1vivjvk)2
+λ6
+0 +λ6
+1
+−ξijk
+)
+= 1
+2
+
+λ6
+0u2
+k +λ6
+1v2
+k
+λ6
+0 +λ6
+1
+−
+∑
+ij
+ξijk
+
+,
+As∑
+ijξij0 =ξ0 + 2ξ1 +ξ2,∑
+ijξij1 =ξ1 + 2ξ2 +ξ3, we deduce
+ξ0 = λ6
+0u2−λ6
+1v2
+λ6
+0 +λ6
+1
+− 2ξ1−ξ2 =u2− λ6
+1
+λ6
+0 +λ6
+1
+− 2ξ1−ξ2 (A18)
+ξ3 = λ6
+0v2−λ6
+1u2
+λ6
+0 +λ6
+1
+−ξ1− 2ξ2 = λ6
+0
+λ6
+0 +λ6
+1
+−u2−ξ1− 2ξ2. (A19)
+We have the positivity conditions
+0≤ ˜q(0, 0, 0, 1) = (λ3
+0u3 +λ3
+1v3)2
+2(λ6
+0 +λ6
+1) − ξ0
+2, 0≤ ˜q(1, 1, 1, 0) = (λ3
+0v3−λ3
+1u3)2
+2(λ6
+0 +λ6
+1) + ξ3
+2 (A20)
+hence
+ξ2≥u2− λ6
+1 + (λ3
+0u3 +λ3
+1v3)2
+(λ6
+0 +λ6
+1) − 2ξ1, ξ 2≤ λ6
+0 + (λ3
+0v3−λ3
+1u3)2
+2(λ6
+0 +λ6
+1) − u2
+2 − ξ1
+2, (A21)
+leading to
+ξ1≥u2− 2(λ6
+1 + (λ3
+0u3 +λ3
+1v3)2) +λ6
+0 + (λ3
+0v3−λ3
+1u3)2
+3(λ6
+0 +λ6
+1) . (A22)
+Finally, we use the positivity condition
+0≤ ˜q(0, 0, 1, 1) = (λ3
+0u2v−λ3
+1uv2)2
+2(λ6
+0 +λ6
+1) − ξ1
+2 (A23)
+to get
+3(λ3
+0u2v−λ3
+1uv2)2− 3u2(λ6
+0 +λ6
+1) + 2(λ6
+1 + (λ3
+0u3 +λ3
+1v3)2) +λ6
+0 + (λ3
+0v3−λ3
+1u3)2≥ 0. (A24)
+This last inequality implicitly deﬁnes umax(λ0), which is plotted in Fig. 3.
+
+=== page 9 ===
+9
+Appendix B: Generalisation to qutrits
+In this section, we state and give the proof of a generalization of the previous example to the qutrit case.
+Now Alice, Bob and Charlie share two-qutrit maximally entangled states |ψ⟩ = 1√
+3(|00⟩ +|11⟩ +|22⟩). Each party
+performs the same joint entangled measurement, with nine outcomes denoted by k∈{ ˜0, ˜1, ˜2,χ↑
+i,χ↓
+j} with i,j = 0..2.
+The corresponding eigenstates are given by
+⏐⏐˜0
+⟩
+:=|00⟩,
+⏐⏐˜1
+⟩
+:=|11⟩,
+⏐⏐˜2
+⟩
+:=|22⟩,⏐⏐⏐χ↑
+i
+⟩
+=η01
+i |01⟩ +η02
+i |02⟩ +η12
+i |12⟩,
+⏐⏐⏐χ↓
+i
+⟩
+=η10
+i |10⟩ +η20
+i |20⟩ +η21
+i |21⟩,
+where the coeﬃcients{η01
+i ,η 02
+i ,η 12
+i } and{η10
+i ,η 20
+i ,η 21
+i } are real and chosen such that the eigenstates{
+⏐⏐⏐χ↑
+i
+⟩
+}i=0..2 and
+{
+⏐⏐⏐χ↓
+i
+⟩
+}i=0..2 each form an orthonormal basis. This implies that the η−matrices are both orthonormal, meaning that
+their inverse matrices are their transposed matrices and therefore |01⟩ =∑
+iη01
+i
+⏐⏐⏐χ↑
+i
+⟩
+etc.
+The global quantum state shared by the parties is given by
+|ψABC⟩ = 1
+3
+√
+3
+(⏐⏐˜0
+⟩
+A
+⏐⏐˜0
+⟩
+B
+⏐⏐˜0
+⟩
+C +
+⏐⏐˜1
+⟩
+A
+⏐⏐˜1
+⟩
+B
+⏐⏐˜1
+⟩
+C +
+⏐⏐˜2
+⟩
+A
+⏐⏐˜2
+⟩
+B
+⏐⏐˜2
+⟩
+C
++
+⏐⏐˜0
+⟩
+A|01⟩B|10⟩C +
+⏐⏐˜0
+⟩
+A|02⟩B|20⟩C +
+⏐⏐˜1
+⟩
+A|12⟩B|21⟩C
++|10⟩A
+⏐⏐˜0
+⟩
+B|01⟩C +|20⟩A
+⏐⏐˜0
+⟩
+B|02⟩C +|21⟩A
+⏐⏐˜1
+⟩
+B|12⟩C
++|01⟩A|10⟩B
+⏐⏐˜0
+⟩
+C +|02⟩A|20⟩B
+⏐⏐˜0
+⟩
+C +|12⟩A|21⟩B
+⏐⏐˜1
+⟩
+C
++
+⏐⏐˜1
+⟩
+A|10⟩B|01⟩C +
+⏐⏐˜2
+⟩
+A|20⟩B|02⟩C +
+⏐⏐˜2
+⟩
+A|21⟩B|12⟩C
++|01⟩A
+⏐⏐˜1
+⟩
+B|10⟩C +|02⟩A
+⏐⏐˜2
+⟩
+B|20⟩C +|12⟩A
+⏐⏐˜2
+⟩
+B|21⟩C
++|10⟩A|01⟩B
+⏐⏐˜1
+⟩
+C +|20⟩A|02⟩B
+⏐⏐˜2
+⟩
+C +|21⟩A|12⟩B
+⏐⏐˜2
+⟩
+C
++|01⟩A|12⟩B|20⟩C +|10⟩A|02⟩B|21⟩C +|02⟩A|21⟩B|10⟩C
++|20⟩A|01⟩B|12⟩C +|12⟩A|20⟩B|01⟩C +|21⟩A|10⟩B|02⟩C
+)
+
+=== page 10 ===
+10
+|ψABC⟩ = 1
+3
+√
+3
+(⏐⏐˜0
+⟩
+A
+⏐⏐˜0
+⟩
+B
+⏐⏐˜0
+⟩
+C +
+⏐⏐˜1
+⟩
+A
+⏐⏐˜1
+⟩
+B
+⏐⏐˜1
+⟩
+C +
+⏐⏐˜2
+⟩
+A
+⏐⏐˜2
+⟩
+B
+⏐⏐˜2
+⟩
+C
++
+∑
+j,k
+(η01
+j η10
+k +η02
+j η20
+k )
+⏐⏐˜0
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
++η12
+j η21
+k
+⏐⏐˜1
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
++
+∑
+k,i
+(η01
+k η10
+i +η02
+k η20
+i )
+⏐⏐˜0
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
+⏐⏐⏐χ↓
+i
+⟩
+A
++η12
+k η21
+i
+⏐⏐˜1
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
+⏐⏐⏐χ↓
+i
+⟩
+A
++
+∑
+i,j
+(η01
+i η10
+j +η02
+i η20
+j )
+⏐⏐˜0
+⟩
+C
+⏐⏐⏐χ↑
+i
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
++η12
+i η21
+j
+⏐⏐˜1
+⟩
+C
+⏐⏐⏐χ↑
+i
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
++
+∑
+j,k
+η10
+j η01
+k
+⏐⏐˜1
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
++ (η20
+j η02
+k +η21
+j η12
+k )
+⏐⏐˜2
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
++
+∑
+k,i
+η10
+k η01
+i
+⏐⏐˜1
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
+⏐⏐⏐χ↑
+i
+⟩
+A
++ (η20
+k η02
+i +η21
+k η12
+i )
+⏐⏐˜2
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
+⏐⏐⏐χ↑
+i
+⟩
+A
++
+∑
+i,j
+η10
+i η01
+j
+⏐⏐˜1
+⟩
+C
+⏐⏐⏐χ↓
+i
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
++ (η20
+i η02
+j +η21
+i η12
+j )
+⏐⏐˜2
+⟩
+C
+⏐⏐⏐χ↓
+i
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
++
+∑
+i,j,k
+η01
+i η12
+j η20
+k
+⏐⏐⏐χ↑
+i
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
++η10
+i η02
+j η21
+k
+⏐⏐⏐χ↓
+i
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
++
+∑
+i,j,k
+η02
+i η21
+j η10
+k
+⏐⏐⏐χ↑
+i
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
+⏐⏐⏐χ↓
+k
+⟩
+C
++η20
+i η01
+j η12
+k
+⏐⏐⏐χ↓
+i
+⟩
+A
+⏐⏐⏐χ↑
+j
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
++
+∑
+i,j,k
+η12
+i η20
+j η01
+k
+⏐⏐⏐χ↑
+i
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
++η21
+i η10
+j η02
+k
+⏐⏐⏐χ↓
+i
+⟩
+A
+⏐⏐⏐χ↓
+j
+⟩
+B
+⏐⏐⏐χ↑
+k
+⟩
+C
+)
+.
+From this last equation, we can determine a certain number of crucial properties of the distribution PQ(a,b,c ). We
+observe that
+1
+33 =PQ(˜0, ˜0, ˜0) =
+√
+PQ(a = ˜0)PQ(b = ˜0)PQ(c = ˜0) =
+√( 1
+32
+)3
+. (B1)
+Moreover,
+for i⁄=j,PQ(a = ˜i,b = ˜j) = 0 (B2)
+p(b = ˜0,c∈χ↓) = 0 (B3)
+p(c∈χ↓,a = ˜2) = 0 (B4)
+We have other similar relations by permuting the parties. Finally, we have that
+PQ(a =χ↑
+i,b = ˜1) = 1
+33
+(
+η01
+i
+)2
+, PQ(c = ˜1,a =χ↑
+i ) = 1
+33
+(
+η12
+i
+)2
+(B5)
+PQ(a =χ↑
+i,b =χ↓
+j,c = ˜0) = 1
+33 (η01
+i η10
+j +η02
+i η20
+j )2. (B6)
+We now can prove the following Theorem:
+Theorem 2. For some choice of {
+⏐⏐⏐χ↑
+i
+⟩
+,
+⏐⏐⏐χ↓
+i
+⟩
+}, the quantum distribution PQ(a,b,c ) is incompatible with any trilocal
+model.
+Again, the proof of Theorem 2 follows from two similar steps. In Step 1, we consider the behavior for which the outputs
+{χ↑
+i} and{χ↓
+i} are grouped together into two outputsχ↑ andχ↓. We show that in that case, one only needs one trit of
+information about each of the local hidden variables to ﬁnd the outputs. Using this restriction and exploiting relation
+(B5), (B6), Step 2 shows that those restrictions can be exploited to compute marginals of a probability distribution
+grouping outputs and hidden variables. For a good choice of measurement basis, those marginals are incompatible.
+Step 1. We consider the coarse graining of the output set {˜0, ˜1, ˜2,χ↑,χ↓}. The sources sets can be partitioned in
+three subsets
+X =X0∐X1∐X2, Y =Y0∐Y1∐Y2, Z =Z0∐Z1∐Z2, (B7)
+
+=== page 11 ===
+11
+(with P (X0) =··· =P (Z2) = 1/3) such that the sets from which the local variables α, β and γ are taken determines
+all outputs. More precisely, Alice answers
+(i) a = ˜i if she receives β∈Yi and γ∈Zi, for ˜i∈{ ˜0, ˜1, ˜2},
+(ii) a =χ↑ if she receives β∈Yj and γ∈Zk with j <k,
+(iii) a =χ↓ if she receives β∈Yj and γ∈Zk with j >k,
+and similarly for Bob and Charlie (with a direct orientation of the cycle).
+Proof. We ﬁrst recall the Finner inequality. It is shown in [23] that any probability distribution admitting a classical
+model (it is also valid for a quantum or a “boxworld” model) satisﬁes the Finner inequality. More precisely, considering
+outputs for each party called 0 here after, we have
+P (000)≤
+√
+PA(0)PB(0)PC(0). (B8)
+The equality condition is obtained iﬀ there exist three subsets X0⊂ X,Y 0⊂ Y,Z 0⊂ Z such that A answers 0 iﬀ
+β∈ Y0,γ ∈ Z0, B answers 0 iﬀ γ∈ Z0,α ∈ X0 and C answers 0 iﬀ α∈ X0,β ∈ Y0. In that case PA(0) = p(β∈
+Y0)p(γ∈Z0),PB(0) =p(γ∈Z0)p(α∈X0),PC(0) =p(α∈X0)p(β∈Y0).
+In our case, (B1) shows equality in the Finner inequality for the outputs ( ˜0, ˜0, ˜0), hence we can introduce the
+corresponding sets X0,Y 0,Z 0. Similarly, sets X1,Y 1,Z 1,X 2,Y 2,Z 2 can be introduced. Each of these sets have a
+probability 1/3, and (B2) implies that they are disjoint. Hence we have (B7) and (i). Moreover, if α∈ X0,β ∈ Y1,
+(B3) implies that c(α,β )∈χ↑. If α∈X1,β ∈Y2, (B4) implies that c(α,β )∈χ↑. Lastly, if α∈X0,β ∈Y2, (B3) (as
+well as (B4)) implies that c(α,β )∈χ↑. Hence, by symmetry, we have (ii) and (iii).
+Step 2. Let us introduce
+q(i,j,t ) :=p
+(
+a =χ↑
+i,b =χ↓
+j,c = ˜0,γ ∈Zt|α∈X0,β∈Y0,γ ∈Z1∪Z2
+)
+= 33
+2 p
+(
+a =χ↑
+i,b =χ↓
+j,c = ˜0,γ ∈Zt) (B9)
+q(i,j,t ) is a probability distribution. Moreover, the following marginal distributions of q(i,j,t ) satisfy:
+q(i,j ) =
+∑
+t
+q(i,j,t ) = 1
+2(η01
+i η10
+j +η02
+i η20
+j )2, (B10)
+q(i,t = 1) =1
+2(η01
+i )2, q (i,t = 2) = 1
+2(η02
+i )2, (B11)
+q(j,t = 1) =1
+2(η10
+j )2, q (j,t = 2) = 1
+2(η20
+j )2. (B12)
+Proof. Note that when α∈ X0,β ∈ Y0,γ ∈ Z1∪Z2, we get a∈ χ↑,b ∈ χ↓,c = ˜0. Thus q(i,j,t ) is a probability
+distribution.
+(B10) follows directly from (B6). As q(i,j,t ) is a probability distribution, (B11) can be deduced from Step 1, (B10)
+and the fact that Alice’s answer is independent of the value of α:
+q(i,t = 1) = 33
+2 p(a =χ↑
+i,c = ˜0,γ ∈Z1)) = 33
+2 p(a =χ↑
+i,α∈X0,β∈Y0,γ ∈Z1)
+= 33
+2 p(a =χ↑
+i,α∈X1,β∈Y0,γ ∈Z1) = 33
+2 p(a =χ↑
+i,b = ˜1) = 1
+2
+(
+η01
+i
+)2
+The other marginal is simply given by
+q(i,t = 2) =q(i)−q(i,t = 1) = 1
+2
+((
+η01
+i
+)2
++
+(
+η02
+i
+)2)
+− 1
+2
+(
+η01
+i
+)2
+= 1
+2
+(
+η02
+i
+)2
+,
+where we used in the second equality that ∑
+j
+(
+η10
+j
+)2
+=∑
+j
+(
+η20
+j
+)2
+= 1 and ∑
+jη10
+j η20
+j = 0 due to orthonormality.
+This proves (with symmetric arguments) Step 2.
+
+=== page 12 ===
+12
+We are in position to conclude the proof. Indeed, all we need now is to solve a Linear Programming problem. More
+precisely, the question is:
+For all{η01
+i ,η 02
+i ,η 12
+i } and{η10
+i ,η 20
+i ,η 21
+i } such that the{
+⏐⏐⏐χ↑
+i
+⟩
+} and
+⏐⏐⏐χ↓
+i
+⟩
+} form an orthonormal basis, does there exist
+a probability distribution q(i,j,t ) (linear conditions of positive coeﬃcients summing to one) such that the marginal
+conditions (which are linear) (B10), (B11) and (B12) are satisﬁed? In the following, we only exhibit one example for
+which this problem admits no solution, obtaining the following:
+Step 3 (Theorem 2.). Consider
+⏐⏐⏐χ↑
+0
+⟩
+= 1√
+3|01⟩ + 1√
+2|02⟩ + 1√
+6|12⟩,
+⏐⏐⏐χ↓
+0
+⟩
+=
+√
+2
+5|10⟩ +
+√
+3
+5|20⟩,
+⏐⏐⏐χ↑
+1
+⟩
+= 1√
+3|01⟩− 1√
+2|02⟩ + 1√
+6|12⟩,
+⏐⏐⏐χ↓
+1
+⟩
+=
+√
+3
+5|10⟩−
+√
+2
+5|20⟩
+⏐⏐⏐χ↑
+2
+⟩
+= 1√
+3|01⟩− 2 1√
+6|12⟩,
+⏐⏐⏐χ↓
+2
+⟩
+=|21⟩
+and
+⏐⏐⏐χ↑
+2
+⟩
+,
+⏐⏐⏐χ↓
+2
+⟩
+chosen such that the {
+⏐⏐⏐χ↑
+i
+⟩
+} and
+⏐⏐⏐χ↓
+i
+⟩
+} form an orthonormal basis. There exists no trilocal model
+reproducing the correspondingPQ(a,b,c ).
+Proof. Following Step 2, we ﬁnd:
+q(i = 0,j = 0) = 5/12, q (i = 0,j = 1) = 0, q (i = 0,j = 2) = 0,
+q(i = 1,j = 0) = 1/60, q (i = 1,j = 1) = 2/5, q (i = 1,j = 2) = 0,
+q(i = 2,j = 0) = 1/15, q (i = 2,j = 1) = 1/10, q (i = 2,j = 2) = 0
+q(i = 0,t = 1) = 1/6, q (i = 1,t = 1) = 1/6, q (i = 2,t = 1) = 1/6,
+q(i = 0,t = 2) = 1/4, q (i = 1,t = 2) = 1/4, q (i = 2,t = 2) = 0,
+q(j = 0,t = 1) = 1/5, q (j = 1,t = 1) = 3/10, q (j = 2,t = 1) = 0,
+q(j = 0,t = 2) = 3/10, q (j = 1,t = 2) = 1/5, q (j = 2,t = 2) = 0.
+LetMt, for t = 1, 2, be the 3× 3 matrix whose (i,j )-th entry equals q(i,j,t ) (for 0≤i,j ≤ 2). Then the i-th row sum
+ofMt equalsq(i,t ), its j-th column sum is q(j,t ) and the (i,j )-th entry ofM1 +M2 equalsq(i,j ). Since q(j = 2) = 0,
+the last column of bothM1,M 2 is zero. Also, since q(i = 0,j = 1) = 0, the (0, 1) entry of bothM1,M 2 is zero. Finally
+sinceq(i = 2,t = 2) = 0 the last row ofM2 vanishes. Given these the other entries of M2 will be determined uniquely;
+since there is only one non-zero entry in the second column of M2, we must have [M2](1,1) = q(j = 1,t = 2) = 1/5.
+By similar reasons the other two non-zero entries of M2 can be determined. Moreover since M1 +M2 is known, M1
+can also be found. We obtain:
+M1 =
+
+
+1
+6 0 0
+− 1
+30
+1
+5 0
+1
+15
+1
+10 0
+
+, M 2 =
+
+
+1
+4 0 0
+1
+20
+1
+5 0
+0 0 0
+
+.
+We see that this implies that q(i = 1,j = 0,k = 1) =−1/30 is negative, which is absurde, hence we have Theorem
+2.
+Appendix C: Generalisation to odd-cycle networks
+We now give a generalization of Theorem 1 to any odd-cycle network. Here, we consider N odd and parties
+A1,...,A N sharing maximally entangled qubit states in a cycle. The measurement performed by the parties are as in
+the main text, namely projective in the basis
+|↑⟩ =|01⟩ | χ0⟩ =u0|00⟩ +v0|11⟩
+|↓⟩ =|10⟩ | χ1⟩ =u1|00⟩ +v1|11⟩ (C1)
+
+=== page 13 ===
+13
+with real numbers u =u0 =−v1, v =v0 =u1, u2
+0 +v2
+0 = 1.
+LetPQ(a1,...,a N) be the corresponding probability distribution. It satisﬁes several properties. First, note that the
+number of parties that output χ (i.e. either χ0 or χ1) must be odd. Second, we observe that
+PQ(ak =↑,ak+1 =↑) =PQ(ak =↓,ak+1 =↓) = 0. (C2)
+Finally, we have that
+PQ(χi,↑,↓,↑,...↑,↓) = 1
+2Nu2
+i, (C3)
+PQ(a1 =χi1,a 2 =χi2,...,a N =χiN ) = 1
+2N
+(
+ui1ui2...u iN +vi1vi2...v iN
+)2
+, (C4)
+with other similar relations by permuting the parties. We have the following
+Theorem 3. Foru asymptotically close to 1, there exists no N-cycle classical model reproducing PQ(a1,...,a N).
+The proof, in two steps, is similar to the one of Theorem 1. We ﬁrst assume, by contradiction, that a classical
+N-local strategy exists. In Step 1, we consider the behavior for which the two outputs χ0,χ 1 are grouped into a single
+output χ. We show that in that case, one only needs one bit of information about each of the local hidden variables
+to ﬁnd the outputs. Using this restriction and exploiting relations (C3), (C4), Step 2 shows that those restrictions
+can be exploited to compute marginals of a probability distribution grouping outputs and hidden variables. For a
+good choice of measurement basis, those marginals are incompatible.
+We note αk−1∈ Xk−1 and αk∈ Xk the two sources placed just before and after party Ak, where the order is
+deﬁned by a positive orientation of the cycle (where the indices are deﬁned modulo N, see Fig. 4).
+Step 1. We consider the coarse graining of the output set {↑,↓,χ ={χ0,χ 1}}. The sources sets can be partitioned
+in two subsets
+Xk =Xk
+0∐Xk
+1, (C5)
+(withP (Xk
+0 ) =P (Xk
+1 ) = 1/2), such that the sets from which the local variables {αk} are taken determines all outputs.
+More precisely,Ak answers
+(i) ak =↑ if she receives αk−1∈Xk−1
+0 and αk∈Xk
+1 ,
+(ii) ak =↓ if she receives αk−1∈Xk−1
+1 and αk∈Xk
+0 ,
+(iii) ak =χ otherwise.
+Proof. It can be proven similarly to the proof of Step 1 of Theorem 1.
+Step 2. Let us introduce
+q(i1,i 2,...,i N,t ) :=p
+(
+a1 =χi1,a 2 =χi2,...,a N =χiN, (∀1≤k≤N,αk∈Xk
+t )
+|(∀1≤l≤N,αl∈Xl
+0) or (∀1≤l≤N,αl∈Xl
+1)
+)
+(C6)
+= 2N−1p
+(
+a1 =χi1,a 2 =χi2,...,a N =χiN, (∀1≤k≤N,αk∈Xk
+t )
+)
+(C7)
+q(i1,i 2,...,i N,t ) is a probability distribution. Moreover, the following marginal distributions of q(i1,i 2,...,i N,t )
+satisfy:
+q(i1,i 2,...,i N) = 1
+2
+(
+ui1ui2...u iN +vi1vi2...v iN
+)2
+(C8)
+q(ik,t = 0) = 1
+2u2
+ik q(ik,t = 1) = 1
+2v2
+ik (C9)
+for 1≤k≤N.
+
+=== page 14 ===
+14
+Proof. (C4) direclty implies (C8).
+To prove (C9), we consider for simplicity the case in which k = 1. We have
+q(i1,t = 0) =
+∑
+i2,i3,...,iN∈{0,1}
+q(i1,i 2,...,i N,t = 0) = 2N−1p
+(
+a1 =χi1,∀1≤k≤N :αk∈Xk
+0
+)
+= 2N−1p
+(
+a1 =χi1,∀(k odd,l even, 1≤k,l≤N) :αk∈Xk
+0,αl∈Xl
+1
+)
+= 2N−1p(a1 =χi1,∀(k odd,l even, 2≤k,l≤N) :ak =↓,al =↑)
+= 2N−1 1
+2Nu2
+i1 = 1
+2u2
+i1,
+where we used that A1 is independent from the sources which are not connected to him in the third equality, and
+(C3) for the last. Fig. 4 shows this step for the pentagon scenario. Similarly, we have q(ik,t = 0) = 1
+2u2
+ik and
+FIG. 4. Assigning αks to X k
+0 s and X k
+1 s in the pentagon scenario (N = 5) to calculate q(i1,t = 0).
+q(ik,t = 1) = 1
+2v2
+ik for 1≤k≤N.
+We now prove the theorem
+Step 3 (Theorem 3.) . For u asymptotically close to 1, there exists no N-cycle classical model reproducing
+PQ(a1,...,a N).
+Proof. Let ξi1i2...iN be real numbers such that
+q(i1,i 2,...,i N,t = 0) = 1
+2
+(
+(ui1ui2...u iN )2 +ui1ui2...u iNvi1vi2...v iN +ξi1i2...iN
+)
+(C10)
+Fromq(i1,i 2,...,i N) =q(i1,i 2,...,i N,t = 0) +q(i1,i 2,...,i N,t = 1) and Eq.(C8) we have
+q(i1,i 2,...,i N,t = 1) = 1
+2
+(
+(vi1vi2...v iN )2 +ui1ui2...u iNvi1vi2...v iN−ξi1i2...iN
+)
+(C11)
+Using (C9) and the fact that u2
+0 +u2
+1 =v2
+0 +v2
+1 = 1 and u0v0 +u1v1 = 0 we ﬁnd that
+∑
+i2...iN
+ξi1i2...iN = 0, ∀i1∈{ 0, 1} (C12)
+
+=== page 15 ===
+15
+We deﬁne:
+˜q(i1,i 2,...,i N,t ) = 1
+N!
+∑
+σ∈SN
+q(iσ(1),iσ(2),...,i σ(N ),t )
+˜ξ(i1,i 2,...,i N,t ) = 1
+N!
+∑
+σ∈SN
+ξ(iσ(1),iσ(2),...,i σ(N ),t ),
+where SN is the set of permutations of 1,...,N . Note that ˜q and ˜ξ are also probability distributions satisfying (C10),
+(C11), and (C12). Let Sd be the set of all binary strings of length N withd number of one (|Sd| =
+(N
+d
+)
+). By deﬁnition
+of ˜q we have ˜q(r,t ) = ˜q(s,t ) for r,s∈Sd. We call it Qd(t). In a similar manner, we deﬁne ξd(t) = ˜ξ(s,t ) for s∈Sd.
+From (C10) and (C11), for all 0 ≤d≤N we have:
+Qd(0) = 1
+2(u2(N−d)v2d + (−1)duNvN +ξd)
+Qd(1) = 1
+2(v2(N−d)u2d + (−1)duNvN−ξd)
+As we assume these probabilities come from a local hidden variable model, there should exist ξ0,...,ξ N s.t. Qd(t)≥
+0, ∀ 0≤d≤N, t∈{ 0, 1}. Hence, we have:
+v2(N−d)u2d + (−1)duNvN≥ξd≥−u2(N−d)v2d− (−1)duNvN
+We considerv =ϵ and u =
+√
+1−ϵ2 and an asymptotically small ϵ> 0. The Nth-order approximation (in terms of ϵ)
+of these bounds implies
+for 0≤d≤ (N− 1)/2 : (−1)dϵN≥ξd, (C13)
+for (N + 1)/2≤d≤N : ξd≥ (−1)d+1ϵN, (C14)
+as N is odd. Let M = (N− 1)/2. From (C12) we have
+Γ0 =
+(2M
+0
+)
+ξ0 +
+(2M
+1
+)
+ξ1 +
+(2M
+2
+)
+ξ2 +··· +
+(2M
+2M
+)
+ξ2M = 0,
+Γ1 =
+(2M
+0
+)
+ξ1 +
+(2M
+1
+)
+ξ2 +
+(2M
+2
+)
+ξ3 +··· +
+(2M
+2M
+)
+ξ2M +1 = 0.
+We now consider linear combination of these two last equations. Consider
+0 =βΓ1−γΓ0 =−
+M∑
+i=0
+((2M
+i
+)
+γ−
+( 2M
+i− 1
+)
+β
+)
+ξi +
+2M +1∑
+j=M +1
+(( 2M
+j− 1
+)
+β−
+(2M
+j
+)
+γ
+)
+ξj, (C15)
+where we take the convention
+( 2M
+2M +1
+)
+=
+(2M
+−1
+)
+= 0. Consider now some β >0,γ >0 such that
+(2M
+M
+)
+γ−
+( 2M
+M− 1
+)
+β≥ 0 and
+(2M
+M
+)
+β−
+( 2M
+M− 1
+)
+γ≥ 0. (C16)
+This clearly exists (e.g. for β,γ almost equal as
+(2M
+M
+)
+>
+( 2M
+M−1
+)
+), and implies for 0≤i≤M andM + 1≤j≤ 2M + 1,
+(2M
+i
+)
+γ−
+( 2M
+i− 1
+)
+β≥ 0 and
+( 2M
+j− 1
+)
+β−
+(2M
+j
+)
+γ≥ 0.
+Now, by using the inequalities (C13) and (C14) in (C15) we have:
+0≥
+
+−
+M∑
+i=0
+(−1)i
+((2M
+i
+)
+γ−
+( 2M
+i− 1
+)
+β
+)
+−
+2M +1∑
+j=M +1
+(−1)j
+(( 2M
+j− 1
+)
+β−
+(2M
+j
+)
+γ
+)
+ϵ2M +1 +O(ϵ2M +2)
+≥
+
+γ
+
+
+2M +1∑
+j=M +1
+(−1)j
+(2M
+j
+)
+−
+M∑
+i=0
+(−1)i
+(2M
+i
+)
+ +β
+
+
+M∑
+i=0
+(−1)i
+( 2M
+i− 1
+)
+−
+2M +1∑
+j=M +1
+(−1)j
+( 2M
+j− 1
+)
+
+
+ϵ2M +1 +O(ϵ2M +2)
+
+=== page 16 ===
+16
+Hence, we have
+0≥ (γ−β)AϵN +O(ϵN +1), (C17)
+where
+A =−
+M∑
+i=0
+(−1)i
+(2M
+i
+)
++
+2M∑
+i=M +1
+(−1)i
+(2M
+i
+)
+= (−1)M +1
+(2M
+M
+)
+.
+Hence forN≡ 1 (mod 4), A< 0, and for N≡ 3 (mod 4), A> 0. Considering β >γ forN≡ 1 (mod 4), and β <γ
+for N≡ 3 (mod 4), such that (C16) is satisﬁed (which always exists), we have ( γ−β)A> 0, (C17) does not hold for
+suﬃciently small ϵ> 0. Therefore we obtain a contradiction, which proves Theorem 3.
+Appendix D: T rilocal model
+Here, we construct a trilocal model for the quantum distribution PQ(a,b,c ) considering maximally entangled states
+for the sources (i.e.λ2
+0 =λ2
+1 = 1/2) and measurements given byu2 =u2
+max = −3+(9+6
+√
+2)2/3
+2(9+6
+√
+3)1/3 . That is, the measurement
+parameter is chosen as to saturate the bound given in Theorem 1.
+The constraint (A12), (A13), (A14), (A15) over q(i,j,k,t ) found in Step 2 write:
+q(i,j,k ) = 1
+2(uiujuk +vivjvk)2, (D1)
+q(i,t = 0) = 1
+2u2
+i, q (i,t = 1) = 1
+2v2
+i, (D2)
+q(j,t = 0) = 1
+2u2
+j, q (j,t = 1) = 1
+2v2
+j, (D3)
+q(k,t = 0) = 1
+2u2
+k, q (k,t = 1) = 1
+2v2
+k. (D4)
+For a trilocal strategy satisfying Step 1, we write P0 ={p0(i,j,k )} (resp. P1 ={p1(i,j,k )}) the output distributions
+obtained when the hidden variables are uniformly taken in the sets X0,Y 0,Z 0 (resp. X1,Y 1,Z 1). Of course, when a
+trilocal strategy satisfying Step 1 exists and gives PQ, the distribution q(i,j,k,t ) given by q(i,j,k,t ) = 1/2 pt(i,j,k )
+satisﬁes (D1), (D2), (D3), (D4).
+Conversely, assume we have P0 ={p0(i,j,k )} and P1 ={p1(i,j,k )} such that q(i,j,k,t ) = 1/2 pt(i,j,k ) satisﬁes
+those four equations. Then it can be seen easily (by computing the output distribution) that the strategy where each
+party outputs as follows:
+1.↑,↓ according to Step 1.
+2. according to the strategy for P0 when they receive local variables in sets with same subscript 0,
+3. according to the strategy for P1 when they receive local variables in sets with same subscript 1,
+is a valid strategy which gives PQ.
+We now show that this is feasible for the case u2 = u2
+max. There, it is suﬃcient to consider symmetric q (in our
+notations,q = ˜q). The constraints derived on q in Appendix A indicate that q(0, 0, 0, 1) =q(0, 0, 1, 1) =q(1, 1, 1, 0) =
+0. Hence we introduce the following symmetric strategies for Pt, t = 0, 1:
+• Fort = 0 the local variables take value in{0, 1, 2}, with distribution κ0,κ 1,κ 2 whereκ1 = (1−u2
+max)/(2κ0) and
+κ2 = 1−κ0−κ1. A party outputs χ1 if and only if he receives the trits 0 , 1 or 1, 0.
+• Fort = 1 the local variables take value in {0, 1}, with distribution τ0,τ 1 with τ1 = 1−τ0. A party outputs χ0
+if and only if he receives the trits 0 , 1 (i.e. 0 from the left and 1 from the right).
+Using the symbolic computation software Mathematica, we see that there exist κ0,τ 0 such that the corresponding
+P0 ={p0(i,j,k )}, P1 ={p1(i,j,k )} are such that with q(i,j,k,t ) = 1/2 pt(i,j,k ), q satisfy the four equations (D1),
+(D2), (D3), (D4). For t = 0 we where not able to analytically simplify the expressions and our claim rely on numerical
+approximation. For t = 1, our claim can be veriﬁed analytically.

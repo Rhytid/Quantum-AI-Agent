@@ -1,0 +1,1227 @@
+=== page 1 ===
+arXiv:2002.12614v2  [quant-ph]  30 Jun 2020
+UNBOUNDED BELL VIOLA TIONS FOR QUANTUM GENUINE
+MUL TIP AR TITE NON-LOCALITY
+ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+Abstract. The violations of Bell inequalities by measurements on quan tum states
+give rise to the phenomenon of quantum non-locality and expr ess the advantage of
+using quantum resources over classical ones for certain inf ormation-theoretic tasks.
+The relative degree of quantum violations has been well stud ied in the bipartite sce-
+nario and in the multipartite scenario with respect to fully local behaviours. However,
+the multipartite setting entails a more complex classiﬁcat ion in which diﬀerent no-
+tions on non-locality can be established. In particular, ge nuine multipartite non-local
+distributions apprehend truly multipartite eﬀects, given that these behaviours cannot
+be reproduced by bilocal models that allow correlations amo ng strict subsets of the
+parties beyond a local common cause. We show here that, while in the so-called corre-
+lation scenario the relative violation of bilocal Bell ineq ualities by quantum resources is
+bounded, i.e. it does not grow arbitrarily with the number of inputs, it turns out to be
+unbounded in the general case. We identify Bell functionals that take the form of non-
+local games for which the ratio of the quantum and bilocal val ues grows unboundedly
+as a function of the number of inputs and outputs.
+1. Introduction
+Bell’s theorem establishes that correlations among the res ults of spatially separated
+measurements on composite quantum systems are incompatibl e with a local variable
+model [5]. Besides its crucial implications in the foundati ons of quantum mechanics, this
+phenomenon, known as quantum non-locality, is behind many important applications in
+quantum information theory, such as quantum cryptography [ 15, 1, 33], communication
+complexity [9], randomness expansion [28] and randomness a mpliﬁcation [11, 17]. The
+simplest scenario that enables quantum non-locality consi ders two isolated parties and
+has been thoroughly studied over the last three decades (see e.g. the review [7]). How-
+ever, multipartite scenarios have a greater complexity and oﬀer a much richer source of
+correlations. The potential applications of these phenome na in the context of quantum
+networks or many-body physics has triggered notable intere st in the study of quantum
+non-locality in the multipartite setting in the last years.
+The most natural extension of the notion of locality to the mu ltipartite domain is that
+of full locality, in which the only source of correlations am ong the parties is a local com-
+mon cause. However, the veriﬁcation of non-fully-local cor relations does not necessarily
+imply non-locality shared among all parties as this resourc e distributed among just two
+parties can be enough to falsify these models. Thus, as it als o happens in the study of
+quantum entanglement, a notion of genuine multipartite non -locality (GMNL) can be
+established in order to capture the idea that the non-local c orrelations must be truly
+shared among all parties. In particular, in his celebrated p aper [31], Svetlichny proved
+1
+
+=== page 2 ===
+2 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+that there exist tripartite quantum correlations that cann ot be reproduced by a larger
+class of models in which, in addition to the local variable, a rbitrary (even signalling)
+correlations are allowed within a strict subset of the parti es. This idea, which was ex-
+tended to an arbitrary number of parties in [12, 30], leads to the deﬁnition of what we
+will call general bilocal models. The impossibility of such a model to reproduce certain
+correlations thus enables the veriﬁcation of GMNL. Interes tingly, this introduces a rich
+theoretical structure because in these hybrid models one ca n impose diﬀerent conditions
+to the kind of correlations that are allowed within the subse ts of parties [18, 4]. In
+particular, as observed in [16, 3], in certain scenarios all owing for signalling correlations
+in the deﬁnition of bilocality leads to ill-deﬁned resource theories and grandfather-style
+paradoxes. A natural way to get rid of these problems is to con sider bilocal models in
+which correlations among subsets of parties are required to be non-signalling (see e.g.
+[2, 13]). We will refer to these models as non-signalling bil ocal. They introduce an
+alternative weaker notion of GMNL as non-signalling biloca l models are general bilocal
+but not necessarily the other way around.
+One of the main aims in the study of non-locality from an infor mation-theoretical per-
+spective is to identify and quantify possible advantages in the use of quantum non-local
+correlations over local ones. Most of these potential proto cols boil down mathematically
+to linear functionals acting on the space of joint condition al probability distributions
+for the parties and, hence, this leads to the investigation o f quantum violations of Bell
+inequalities. Thus, a natural and often used quantity to und erstand the diﬀerence be-
+tween local and quantum non-local behaviours in a resource- theoretic way is the relative
+ratio of violation optimized over all possible Bell inequal ities, a question that is moreover
+related to classical problems in functional analysis. Moti vated by the seminal work of
+Tsirelson [32], a series of papers have been devoted to study ing the asymptotic behaviour
+of this ratio and have shown that this study is very suitable t o tackle diﬀerent problems
+involving quantum non-locality [8, 19, 20]. In particular, this ﬁnds immediate applica-
+tion to dimension witnesses, communication complexity and entangled games [21, 26].
+In this context, the classical result of Tsirelson [32], whi ch states that the above quantity
+is upper bounded by a universal constant (Grothendieck’s co nstant) when one considers
+two-output correlations independently of the number of inp uts and the Hilbert space
+dimension, can be understood as a limitation of the advantag es of quantum mechanics.
+This motivated the question, posed by Tsirelson himself, of whether a similar result was
+true for tripartite correlations and which was answered in [ 27] in the negative comparing
+non-local and fully local behaviours. In this sense, tripar tite quantum correlations lead
+to unbounded Bell violations over fully local ones, somethi ng that suggests, at least on
+the theoretical level, the idea of “unlimited advantage”. B eyond the two-output corre-
+lation scenario, it is also known that Bell violations are un bounded for general bipartite
+probability distributions (see e.g. [8, 19]).
+According to the more general notions of non-locality descr ibed above that arise in the
+multipartite scenario, one can wonder whether the main resu lt in [27] is still true in this
+context. Thus, the goal of this paper is to study the relative violation of Bell inequalities
+for quantum multipartite behaviours with respect to biloca l ones. Our ﬁrst result is that
+in the two-output correlation scenario, contrary to the ful l-locality case and on the
+analogy of Tsirelson’s result for the bipartite case, there is a universal constant which
+
+=== page 3 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 3
+prevents from having unbounded violations irrespectively of the notion of bilocality used
+(general bilocal models boil down to non-signalling biloca l models in this case). Next,
+we consider the same question for general probability distr ibutions. Our main result is
+that in this case quantum GMNL systems lead to unbounded Bell violations with respect
+to general bilocal models and, hence, with respect to all oth er bilocal models since this
+is the strongest notion of bilocality. In more detail, we pro vide an instance of a Bell
+functional, which happens to be a three-prover one-round ga me, for which the ratio of
+the quantum value over bilocal models grows with the number o f inputs and ouputs.
+Interestingly, for this it is already enough to consider tri partite systems and, hence, the
+result extends trivially to an arbitrary number of parties. Thus, although most of our
+claims are easily generalized to general multipartite syst ems, we stick throughout the
+text to the tripartite case, which has the additional beneﬁt of alleviating considerably
+the notation. The techniques we use are elementary and shoul d be accessible to all
+readers familiar with quantum non-locality. It turns out th at the constraints of the
+bipartite case can be naturally extended to study relative B ell violations in the genuine
+multipartite setting. In particular, the aforementioned g ames that we consider are built
+as tensor products of bipartite games in the ﬂavour of parall el repetition.
+2. General definitions
+We will consider here the standard Bell scenario in which k parties produce outputs
+{ai}k
+i=1 upon receiving inputs {xi}k
+i=1 according to the joint conditional probability dis-
+tribution, also called behaviour,
+(2.1) ( P (a1, · · ·,a k|x1, · · ·,x k))a1,...,ak
+x1,...,xk.
+For simplicity, we will assume that both the input and output alphabets have the
+same cardinality for all parties. We will denote by N the number of possible inputs and
+byK the number of possible outputs. A distribution (2.1) is said to be fully local if
+P (a1, · · ·,a k|x1, · · ·,x k) =
+∑
+λ
+pλP1(a1|x1,λ ) · · ·Pk(ak|xk,λ ),(2.2)
+where (pλ)λ denotes a probability distribution and ( Pi(ai|xi,λ ))xi,ai is a conditional
+probability distribution in the ith party for every value of the local variable λ. We will
+denote by Lk(N,K ) the set of k-partite fully local probability distributions for N inputs
+and K outputs per party. On the other hand, bilocal behaviours adm it a more general
+model of the form
+P (a1, · · ·,a k|x1, · · ·,x k)(2.3)
+=
+∑
+M,λ
+pM,λPM ((ai)i∈M |(xi)i∈M,λ )P ¯M ((ai)i∈ ¯M |(xi)i∈ ¯M,λ ),
+where M runs over all strict non-empty subsets of {1, · · ·,k }, ¯M = {1, · · ·,k } \ M ,
+(pM,λ)λ is a probability distribution ∀M and for each M , PM ((ai)i∈M |(xi)i∈M,λ ) and
+P ¯M ((ai)i∈ ¯M |(xi)i∈ ¯M,λ ) are conditional probability distributions on the parties inM and
+in ¯M respectively for all values of the local variable λ. If no restriction is added to these
+conditional probability distributions for the subsets of p arties, we have Svetlichny’s no-
+tion of bilocality. We will denote the set of such behaviours by BLk
+G(N,K ) and we will
+
+=== page 4 ===
+4 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+refer to them as general bilocal. If, on the other hand, the co nditional probability distri-
+butions for the subsets are required to be non-signalling, w e will refer to these behaviours
+as non-signalling bilocal and we will denote the correspond ing set by BLk
+N S(N,K ). We
+recall that non-signalling conditional probability distr ibutions are such that each party’s
+marginal conditional probability distribution is indepen dent of the other parties’ in-
+puts. That is, a bipartite conditional probability distrib ution P (a,b |x,y ))a,b
+x,y is said to
+be non-signalling if it veriﬁes
+K∑
+a=1
+P (a,b |x,y ) =
+K∑
+a=1
+P (a,b |x′y) for all a,b,y,x ⁄=x′,(2.4)
+K∑
+b=1
+P (a,b |x,y ) =
+K∑
+b=1
+P (a,b |xy′) for all a,b,x,y ⁄=y′.
+These two conditions can be generalized in the obvious way to any number of parties
+and we will denote by N Sk(N,K ) the set of k-partite non-signalling probability distri-
+butions with N inputs and K outputs per party (see [24, Deﬁnition 1] for the explicit
+statement). Finally, a behaviour (2.1) is quantum if
+P (a1, · · ·,a k|x1, · · ·,x k) = ⟨ψ|E1
+a1,x1 ⊗ · · · ⊗Ek
+ak,xk |ψ⟩,(2.5)
+where (Ei
+ai,xi)xi,ai is a family of measurements for the i th-party (that is, for each party
+i Ei
+ai,xi ≥ 0 ∀ai,x i and ∑
+aiEi
+ai,xi = 1l ∀xi) and |ψ⟩ is a k-partite pure quantum state.
+We will denote the set of behaviours of this form by Qk(N,K ).
+There are several known relations among these sets. For inst ance, Lk(N,K ) ⊊
+Qk(N,K ) ⊊ N Sk(N,K ). The ﬁrst strict inclusion is the content of Bell’s theorem while
+the second is due to Tsirelson [32] and Popescu and Rohrlich [ 29]. It readily follows from
+the deﬁnitions that Lk(N,K ) ⊂ BL k
+N S(N,K ) ⊂ BL k
+G(N,K ). Svetlichny’s result states
+that Qk(N,K ) ⊈ BLk
+G(N,K ). Notice that it also holds that BLk
+N S(N,K ) ⊈ Qk(N,K ).
+Given any linear functional M acting on the set of k-partite joint conditional proba-
+bility distributions characterized by real numbers {M a1...ak
+x1...xk } we will write
+⟨M,P ⟩ =
+∑
+a1,...,ak
+∑
+x1,...,xk
+M a1...ak
+x1...xkP (a1, · · ·,a k|x1, · · ·,x k).
+Many information-theoretic problems boil down to optimizi ng a linear functional over
+particular sets of behaviours and, as explained in the intro duction, a good way of un-
+derstanding the relative power as resources of two such sets is to consider the relative
+ratio of violation optimized over all linear functionals. M ore precisely, if A1 and A2 are
+certain sets of behaviours like those deﬁned above and M is a linear functional on them,
+we deﬁne ωAi(M ) = sup P ∈Ai |⟨M,P ⟩|, i = 1, 2 and also
+LV (A1, A2) = sup
+M
+ωA1(M )
+ωA2(M ).(2.6)
+This quantity will be our major object of study here in order t o compare Qk(N,K )
+with the sets of bilocal behaviours. As discussed in the intr oduction, Eq. (2.6) gives a
+quantitative notion of the relative power as a resource of th e behaviours in A1 compared
+to those in A2. This quantiﬁcation is particularly clear when the Bell ine quality M is
+
+=== page 5 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 5
+a two-prover one-round game, where Eq. (2.6) is exactly the q uotient of the winning
+probability of the game by using strategies deﬁned by A1 over the the winning probability
+of the game by using strategies deﬁned by A2.
+We note that, in order for Eq. (2.6) to make sense, we must requ ire that the set A1
+is contained in the aﬃne hull of the set A2 (otherwise, we could ﬁnd examples where
+0 = ωA2(M ) < ωA1(M ), so the quotient is inﬁnity) and we must also deﬁne 0 /0 = 0 if
+we want to allow for general Bell functionals M in the equation. We refer to [19, Section
+5] for a complete study of the geometric interpretation of Eq . (2.6) in the bipartite case.
+On the other hand, this restriction is not needed anymore if w e restrict to the case of
+correlations (see the following section) or to Bell functio nalsM with positive coeﬃcients
+(in particular, two-prover one-round games), since in both cases ωA(M ) > 0 for every
+M , for all the sets A we will consider.
+3. Correlation scenario
+A particularly simple setting that has been thoroughly stud ied in the literature is the
+so-called correlation scenario. This arises when all outpu ts are binary ai ∈ {− 1, 1} ∀i
+(i.e.K = 2) and, instead of considering the full joint conditional p robability distribution
+(2.1), only correlations – that is, expectations over the pr oduct of the outputs – are
+considered. Then, we deﬁne the correlation associated to a b ehaviour (2.1),
+γ = (γx1...xk )x1,...,xk ∈ RN k
+,
+as
+γx1...xk = E[a1...a k|x1,...,x k] =
+∑
+a1,...,ak
+a1 · · ·akP (a1,...,a k|x1,...,x k)
+=P (a1 · · ·ak=1|x1,...,x k) −P (a1 · · ·ak=−1|x1,...,x k).
+We will say that a certain correlation is local (resp. quantu m, non-signalling bilocal,
+general bilocal and non-signalling) if there exists a local (resp. quantum, non-signalling
+bilocal, general bilocal and non-signalling) joint condit ional probability distribution (2.1)
+such that γ is the correlation associated to it. In this way, we will deno te, in correspon-
+dence with the deﬁnitions of the previous section, Lk
+cor(N ) (resp. Qk
+cor(N ), BLk
+cor,N S(N ),
+BLk
+cor,G(N ) and N Sk
+cor(N )) the set of local (resp. quantum, non-signalling bilocal, gen-
+eral bilocal and non-signalling) correlations with N inputs per party.
+It is well known that a given correlation γ is in Lk
+cor(N ) if
+γ ∈ conv{(ax1 · · ·axk )x1,...,xk :axi = ±1,x i = 1, · · ·,N,i = 1, · · ·,k },
+where conv denotes the convex hull. On the other hand, γ is in Qk
+cor(N ) if
+γx1...xk = ⟨ψ|A1
+x1 ⊗... ⊗Ak
+xk |ψ⟩ for every x1,...,x k,
+whereAi
+xi is a norm-one selfadjoint operator for every i and for every xi = 1,...,N and
+|ψ⟩ is a k-partite pure quantum state.
+A characterization of the set N Sk
+cor(N ) can be done by the following lemma (see [14,
+Proposition 1,2] for the proof in the case k = 2)
+Lemma 3.1. Given a correlation γ, it is in N Sk
+cor(N ) if and only if |γx1...xk | ≤ 1 for
+every x1,...,x k.
+
+=== page 6 ===
+6 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+Proof. Proving that |γx1...xk | is less than or equal to 1 if it is in N Sk
+cor(N ) follows from the
+deﬁnition. For the other implication, given a correlation γx1,...,xk satisfying |γx1...xk | ≤ 1
+for every x1,...,x k, consider the probability distribution deﬁned as:
+P (a1,...,a k|x1,...,x k) =
+{ 1+γx1...xk
+2k if a1a2...a k = 1,
+1−γx1...xk
+2k if a1a2...a k = −1.
+This probability distribution can be easily seen to be in N Sk(N, 2) as a consequence
+that for all i we have∑
+ai
+P (a1,...,a k|x1,...,x k)
+=P (a1,..., 1/brac~hti√u√l~ft/brac~hti√downright/brac~hti√downl~ft/brac~hti√u√right
+i
+,...,a k|x1,...,x k) +P (a1,..., −1/brac~hti√u√l~ft/brac~hti√downright/brac~hti√downl~ft/brac~hti√u√right
+i
+,...,a k|x1,...,x k)
+= 1 ±γx1,...,xk
+2k + 1 ∓γx1,...,xk
+2k = 1
+2k−1.
+□
+In particular, notice that Lemma 3.1 implies that correlati ons associated to nonsignalling
+probability distributions are the same as correlations ass ociated to general probability
+distributions. So we have
+BLk
+cor,N S(N ) = BLk
+cor,G(N ).
+Let us then just denote BLk
+cor(N ) in this case.
+In the following proposition we characterize correlations associated to bilocal proba-
+bility distributions. Since we will only consider the case o f tripartite distributions, we
+will restrict to this case. However, this result generalize s to an arbitrary number of
+parties trivially.
+Proposition 3.2. A correlation (γxyz )x,y,z is in BL3
+cor(N ) if and only if
+γ ∈ conv
+{
+(αxycz)x,y,z, (βyzax)x,y,z, (γxzby)x,y,z
+}
+,
+where (αxy)x,y, (βyz )y,z , (γxz)x,z are elements in N S2
+cor(N ) andax,b y,c z = ±1 for every
+x,y,z .
+Proof. An extremal probability distribution P of the set BL3
+G(N, 2) will have one of the
+following forms:
+(Q(a,b |x,y )R(c|z))a,b,c
+x,y,z, (Q(b,c |y,z )R(a|x)))a,b,c
+x,y,z, (Q(a,c |x,z )R(b|y)))a,b,c
+x,y,z,(3.1)
+where in all cases Q and R are general probability distributions. Let us assume that
+this extremal element has the form P = (Q(a,b |x,y )R(c|z))a,b,c
+x,y,z and denote β and α
+the corresponding correlations from the probability distr ibutions (Q(a,b |x,y ))a,b
+x,y and
+(R(c|z))c
+z , respectively. Then, given x,y,z , we have
+γxyz = E[a ·b ·c|x,y,z ] =
+∑
+a,b,c
+abcP (a,b,c |x,y,z ) =
+∑
+a,b,c
+abcQ(a,b |x,y )R(c|z)
+=
+( ∑
+a,b
+abQ(a,b |x,y )
+)( ∑
+c
+cR(c|z)
+)
+= E[a ·b|x,y ]E[c|z] = βxyαz.
+
+=== page 7 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 7
+By deﬁnition, ( βxy)xy is in N S2
+cor whenever Q is in N S2 and, clearly, |E[c|z]| ≤
+1. Since the other two cases in (3.1) are completely analogou s, the result follows by
+convexity. □
+We are now in the position to address the main aim of this secti on: characterize the
+relative Bell violations for the quantum and bilocal sets in the correlation scenario using
+the ﬁgure of merit deﬁned in Eq. (2.6). Before presenting the se results, let us ﬁrst brieﬂy
+recall several known results in this direction. The result o f Tsirelson ([32]) mentioned in
+the introduction states that
+LV
+{
+Q2
+cor(N ), L2
+cor(N )
+)
+≤KG,(3.2)
+for every number of inputs N , where KG denotes the real Grothendieck’s constant. On
+the other hand, it is not diﬃcult to show (see for instance [23 , Ex. 29]) that
+LV
+{
+N S2
+cor(N ), L2
+cor(N )
+)
+≤
+√
+2N,(3.3)
+and that this upper bound is essentially optimal. That is, th ere exitsM0 ∈ RN 2
+such that
+ωN S2
+cor(N )(M0) ≥
+√
+N/2ωL2cor(N )(M0). As mentioned in the introduction, the relative
+violation between the quantum and the fully local set turns o ut to be unbounded as
+shown in [27]. Later, the estimates proved therein were impr oved in [6], by showing that
+LV
+{
+Q3
+cor(N ), L3
+cor(N )
+)
+≥CN
+1
+4,
+whereC is a universal constant. Moreover, it is known that this esti mate is not far from
+being optimal, since the following inequality holds for eve ry N (see [6]):
+LV
+{
+Q3
+cor(N ), L3
+cor(N )
+)
+≤C
+√
+N,
+where C is a universal constant. Note that, throughout this work, C will always denote
+a general constant, not necessarily the same one each time th at it appears.
+It turns out that quantum behaviours cannot lead to an unboun ded violation with
+respect to bilocal behaviours in the correlation scenario, i.e. it cannot hold that
+lim
+N →∞
+LV
+{
+Q3
+cor(N ), BL3
+cor(N )
+)
+= ∞.
+In the following proposition, we show that Tsirelson’s resu lt already prevents from having
+such a behaviour (see item (1) in the following result). We al so analyze the ratio between
+the set of bilocal correlations and the sets of fully local an d quantum correlations.
+Proposition 3.3. Given N , the following inequalities hold:
+(1) LV
+{
+Q3
+cor(N ), BL3
+cor(N )
+)
+≤KG.
+(2) LV
+{
+BL3
+cor(N ), L3
+cor(N )
+)
+≤
+√
+2N . This implies LV
+{
+BL3
+cor(N ), Q3
+cor(N )
+)
+≤
+√
+2N .
+Moreover, the order
+√
+N is optimal in these inequalities, since, in particular,
+LV
+{
+BL3
+cor(N ), Q3
+cor(N )
+)
+≥
+√
+N/ (4KG).
+Proof. To prove (1) consider a general Bell functional M = (Mxyz )N
+x,y,z=1. Then, for a
+given tripartite quantum correlation of the form
+γ =
+(
+⟨ψ|Ax ⊗By ⊗Cz|ψ⟩
+)N
+x,y,z=1
+,
+
+=== page 8 ===
+8 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+we have
+⟨M,γ ⟩ =
+⏐⏐⏐
+∑
+x,y,z
+Mxyz ⟨ψ|Ax ⊗By ⊗Cz|ψ⟩
+⏐⏐⏐ =
+⏐⏐⏐
+∑
+x,y,z
+Mxyz ⟨ψ|Ax ⊗Dyz |ψ⟩
+⏐⏐⏐
+≤KG sup
+ax=±1,byz =±1
+⏐⏐⏐
+∑
+x,y,z
+Mxyzaxbyz
+⏐⏐⏐ ≤KG sup
+δ∈BL3
+cor(N )
+|⟨M,δ ⟩|,
+where in the second equality we have denoted Dyz =By ⊗Cz, which is a self adjoint norm
+one operator, in the ﬁrst inequality we have used Eq. (3.2) an d in the last inequality we
+have used Proposition 3.2.
+To prove (2) consider a generic extremal strategy for the set BL3
+cor(N ), which we will
+assume, without loss of generality, that is of the form
+γ = (γG
+xyγz)N
+x,y,z=1,
+where γG = (γG
+xy)xy ∈ N S 2
+cor(N ). Then,
+⟨M,γ ⟩ =
+⏐⏐⏐
+∑
+x,y,z
+MxyzγG
+xyγz
+⏐⏐⏐ =
+√
+2N
+⏐⏐⏐
+∑
+x,y,z
+Mxyz
+( γG
+xy√
+2N
+)
+γz
+⏐⏐⏐
+=
+√
+2N
+⏐⏐⏐
+∑
+x,y,z
+Mxyz ~γC
+xyγz
+⏐⏐⏐ ≤
+√
+2N sup
+L3cor(N )
+|⟨M,γ ⟩|.
+Here, we have that ( ~γC
+xy)x,y :=
+( γG
+xy√
+2N
+)
+x,y
+∈ L 2
+cor and so
+(
+~γC
+xyγz
+)
+x,y,z
+∈ L 3
+cor. This follows
+from Eq. (3.3). This proves the ﬁrst inequality in (2).
+The second inequality in (2) is straighfordward from the ﬁrs t one and the fact that
+L3
+cor(N ) ⊂ Q 3
+cor(N ).
+Finally, let us show the optimality of the order
+√
+N . To this end consider n such
+that N/2 < 2n ≤ N and let H2n = (hxy)2n
+x,1=1 be a Hadamard matrix, i.e. it has the
+property H2nH T
+2n = 2 n
+/BD
+1. Then, deﬁne the Bell functional M = (Mxyz ) as Mxyz =hxy
+for 1 ≤x,y ≤ 2n,z = 1 and Mxyz = 0 otherwise. We will study the values ωBL3
+cor(N )(M )
+and ωQ3cor(N )(M ).
+The element γ = (γxyz )xyz deﬁned by γxyz =Mxyz for all x,y,z is clearly in BL3
+cor(N )
+(since |γxyz | ≤ 1 for every x, y, z). Then,
+ωBL3
+cor(N )(M ) ≥
+⏐⏐⏐
+∑
+x,y,z
+Mxyzγxyz
+⏐⏐⏐ =
+⏐⏐⏐
+2n
+∑
+x,y=1
+h2
+xy
+⏐⏐⏐ = 2 2n > N 2
+4 .
+On the other hand, for every quantum correlation γ =
+(
+⟨ψ|Ax ⊗By ⊗Cz|ψ⟩
+)N
+x,y,z=1
+,
+we have ⏐⏐⏐
+∑
+x,y,z
+Mxyzγxyz
+⏐⏐⏐ =
+⏐⏐⏐
+∑
+x,y
+hxy⟨ψ|Ax ⊗By ⊗C1|ψ⟩
+⏐⏐⏐ =
+⏐⏐⏐
+∑
+x,y
+hxy⟨ux|vy⟩
+⏐⏐⏐,
+1The restriction on the dimension to be a power of 2 guarantees that a Hadamard matrix exists (see
+e. g. [34]).
+
+=== page 9 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 9
+where we have deﬁned |ux⟩ = Ax ⊗ /BD ⊗C1|ψ⟩ and |uy⟩ = /BD ⊗By ⊗ /BD |ψ⟩. We can now
+apply Eq. (3.2) to upper bound the previous expression by
+KG sup
+ax,by=±1
+⏐⏐⏐
+2n
+∑
+x,y=1
+hxyaxby
+⏐⏐⏐ ≤KG(2n)3/2 ≤KGN 3/2,
+where the last inequality is proved in [23, Ex. 29].
+Since the previous estimate holds for all quantum correlati ons, the upper bound
+ωQ3cor(N )(M ) ≤KGN 3/2 follows. Hence, we deduce
+LV
+{
+BL3
+cor(N ), Q3
+cor(N )
+)
+≥
+√
+N
+4KG
+.
+□
+4. General probability distributions
+The previous section motivates the question of whether we ca n obtain unbounded
+violations of tripartite quantum probability distributio ns over bilocal probability distri-
+butions. As we have seen, this is impossible in the setting of correlations and we want
+to investigate here if
+lim
+N →∞
+K→∞
+LV
+{
+Q3(N,K ), BL3
+A(N,K )
+)
+= ∞, for A = N S or G,
+holds. Note that, according to the comments after Eq. (2.6), the previous question is well
+posed since it is well known that the set of k-partite quantum probability distributions
+is contained in the aﬃne hull of the set of k-partite fully local probability distributions.
+We will show that this is in fact true in the strongest case, A = G, using k-prover one-
+round games, which are particular Bell functionals. Indeed , one such a game is a Bell
+functional whose coeﬃcients are of the form
+Ga1...ak
+x1...xk =π(x1,...,x k)V a1...ak
+x1...xk,(4.1)
+where (π(x1...,x k))x1,...,xk is a probability distribution and V is a predicate function
+taking values one or zero. Note that, in particular, G has non-negative coeﬃcients.
+Games describe a setting where each of k players is asked a certain question xi according
+to the probability distribution π and must answer a certain output ai, being the condition
+of winning the game that the questions and answers verify V a1...ak
+x1...xk = 1. In this context,
+the quantity ωA(G) = sup P ∈A⟨G,P ⟩ represents the winning probability of the game if
+the players are restricted to the use of strategies deﬁned by the set A.
+Nevertheless, for the purpose of this work, we will consider a slightly more general
+deﬁnition for games and we will treat them as functionals G with non negative coeﬃcients
+such that
+∑
+x1,...,xk
+max
+a1,...,ak
+Ga1...ak
+x1...xk ≤ 1 (normalization condition).(4.2)
+Let us ﬁrst recall that, given a bipartite game G = (Gab
+xy)x,y,a,b with N inputs and K
+outputs per party, we denote by G⊗2 the bipartite game with N 2 inputs and K 2 outputs
+
+=== page 10 ===
+10 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+per party, whose coeﬃcients are:
+Ga1a2b1b2
+x1x2y1y2 =Ga1b1
+x1y1Ga2b2
+x2y2.
+That is, Alice’s and Bob’s inputs are ( x1,x 2) and (y1,y 2), respectively, and Alice’s and
+Bob’s outputs are ( a1,a 2) and ( b1,b 2), respectively. This means that the parties are
+playing two instances of the game simultaneously. Studying the classical value G⊗2 for
+a given game G is the core of the results about parallel repetition theorem s, which are
+of great relevance in computer science.
+To make the following result more intuitive, let us explain t hat our aim is to deﬁne a
+tripartite game ~G from a bipartite one G. Although it will not be presented here, the
+ﬁrst (and somehow easiest) construction we considered was b ased on two instances of
+the bipartite game, one for Alice and Bob and the other for Bob and Charlie. In this
+situation, Alice receives input x and she outputs a, Bob receives ( y1,y 2) and outputs
+(b1,b 2) (the ﬁrst is for the game he is playing with Alice and the seco nd, with Charlie)
+and, ﬁnally, Charlie receives input z and outputs c. Then the coeﬃcients have the form:
+~Gab1b2c
+xy1y2z =Gab1
+xy1Gb2c
+y2z.
+In order to ﬁnd an example such that it does not only give unbou nded violations
+between Q3 and BL3
+G, but it is also optimal in some parameters, we will present he re
+another construction using three instead of two instances o f the game. More precisely,
+one instance of the game will be asked to Alice and Bob, anothe r to Bob and Charlie
+and another to Charlie and Alice. Hence, the coeﬃcients of th e new game will have the
+following form:
+ˆGa1a2b1b2c1c2
+x1x2y1y2z1z2 =Ga1b1
+x1y1Ga2c1
+x2z1Gb2c2
+y2z2.
+Theorem 4.1. LetG be a bipartite game with N inputs and K outputs per party. Then,
+the construction of the paragraph above leads to a tripartit e game ˆG with N 2 inputs and
+K 2 outputs per player, such that
+ωQ3( ˆG)
+ωBL3
+G
+( ˆG)
+≥ ωQ2(G)3
+ωL2(G⊗2).(4.3)
+Moreover, if ωQ2(G) is attained with local dimension d, then Eq. (4.3) is attained
+with local dimension d2.
+Proof. To show that ωQ3( ˆG) ≥ ωQ2(G)3, ﬁrst note that there must exist a quantum
+strategy which uses a quantum state |φ⟩ in some Hilbert space H1 ⊗ H2 and POVMs
+{Πa
+x}n
+a=1 and {Λb
+y}n
+b=1 acting on the Hilbert spaces H1 and H2 in such a way that 2:
+⏐⏐⏐
+∑
+x,y,a,b
+Gab
+xy⟨φ|Πa
+x ⊗ Λb
+y|φ⟩
+⏐⏐⏐ =ωQ2(G).
+Then we can consider the tripartite quantum state |ψ⟩ = |φ⟩|φ⟩|φ⟩ ∈
+{
+H1⊗H2
+)
+⊗
+{
+H1⊗
+H2
+)
+⊗
+{
+H1 ⊗ H2
+)
+and we can deﬁne the operators Ea1,a2
+x1,x2 = Π a1
+x1 ⊗ Πa2
+x2,F b1,b2
+y1,y2 = Λ b1
+y1 ⊗ Πb2
+y2
+2Although the value ωQ2 (G) could be not attained, we can ﬁnd a quantum strategy up to arb itrarily
+high precision. We avoid writing inequalities up to ǫ.
+
+=== page 11 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 11
+and Gc1,c2
+z1,z2 = Λ c1
+z1 ⊗ Λc2
+z2. It is clear that {Ea1,a2
+x1,x2}a1,a2, {F b1,b2
+y1,y2 }b1,b2 and {Gc1,c2
+z1,z2}c1,c2 are
+POVMs for all x1, x2, y1, y2, z1, z2. Moreover,
+ωQ3( ˆG) ≥
+∑ ˆGa1a2b1b2c1c2
+x1x2y1y2z1z2⟨ψ|Ea1,a2
+x1,x2 ⊗F b1,b2
+y1,y2 ⊗Gc1,c2
+z1,z2|ψ⟩
+=
+( ∑
+x1,y1,a1,b1
+Ga1b1
+x1y1⟨φ|Πa1
+x1 ⊗ Λb1
+y1|φ⟩
+)
+×
+( ∑
+x2,z1,a2,c1
+Ga2c1
+x2z1⟨φ|Πa2
+x2 ⊗ Λc1
+z1|φ⟩
+)
+×
+( ∑
+y2,z2,b2,c2
+Gb2c2
+y2z2⟨φ|Πb2
+y2 ⊗ Λc2
+z2|φ⟩
+)
+=ωQ2(G)3,
+where the ﬁrst sum runs over all indices.
+Note also that, if we assume dim H1 = dim H2 = d, then, by construction, the local
+dimension of the quantum state |ψ⟩ is d2.
+In order to prove the corresponding upper bound for the class ical value, let us consider
+a bilocal probability distribution P of the form
+{
+P1(a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)P2(c1,c 2|z1,z 2)
+)a1,a2,b1,b2,c1,c2
+x1,x2,y1,y2,z1,z2
+and the other two cases will follow by symmetry.
+First of all, notice that, given a certain positive pointwis e element (f (a2,b 2,x 2,y 2))a2,b2,x2,y2
+such that ∑
+a2,b2f (a2,b 2,x 2,y 2) ≤ 1 for all x2 andy2, we can ﬁnd a probability distribu-
+tion ~P for which all its components are greater than or equal to thos e of f by deﬁning:
+~P (a2,b 2|x2,y 2) =
+{
+f (a2,b 2,x 2,y 2) if 1 ≤a2,b 2 ≤K, (a2,b 2) ⁄= (K,K ),
+1 − ∑
+(a′
+2,b′
+2)⁄=(K,K )f (a′
+2,b ′
+2,x 2,y 2) if a2 =b2 =K.
+Then, using the upper bound for the classical value of G⊗2, we can write
+∑
+x2,z1,a2,c1,y2,z2,b2,c2
+Ga2c1
+x2z1Gb2c2
+y2z2f (a2,b 2,x 2,y 2)P (c1,c 2|z1,z 2)(4.4)
+≤
+∑
+x2,z1,a2,c1,y2,z2,b2,c2
+Ga2c1
+x2z1Gb2c2
+y2z2
+~P (a2,b 2|x2,y 2)P (c1,c 2|z1,z 2) ≤ωL2(G⊗2 ).
+Hence, we have
+⟨ ˆG,P ⟩ =
+∑
+Ga1b1
+x1y1Ga2c1
+x2z1Gb2c2
+y2z2P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)P (c1,c 2|z1,z 2)
+(4.5)
+=
+∑
+x2,z1,a2,c1,y2,z2,b2,c2
+Ga2c1
+x2z1Gb2c2
+y2z2
+( ∑
+x1,y1,a1,b1
+Ga1b1
+x1y1P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)
+)
+P (c1,c 2|z1,z 2)
+=
+∑
+x2,z1,a2,c1,y2,z2,b2,c2
+Ga2c1
+x2z1Gb2c2
+y2z2f (a2,b 2,x 2,y 2)P (c1,c 2|z1,z 2) ≤ωL2(G⊗2 ),
+where the ﬁrst sum runs over all indices, we have deﬁned
+f (a2,b 2,x 2,y 2) =
+∑
+x1,y1,a1,b1
+Ga1b1
+x1y1P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)
+
+=== page 12 ===
+12 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+and the last inequality in Eq. (4.5) follows from Eq. (4.4) an d the fact that ∑
+a2,b2f (a2,b 2,x 2,y 2) ≤
+1 for all x2 and y2. To show this last claim, ﬁx x2 and y2, and write
+∑
+a2,b2
+∑
+x1,y1,a1,b1
+Ga1b1
+x1y1P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)
+=
+∑
+x1,y1,a1,b1
+Ga1b1
+x1y1
+∑
+a2,b2
+P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)
+≤
+∑
+x1,y1
+max
+a1,b1
+Ga1b1
+x1y1
+∑
+a1,a2,b1,b2,
+P (a1,a 2,b 1,b 2|x1,x 2,y 1,y 2)
+=
+∑
+x1,y1
+max
+a1,b1
+Ga1b1
+x1y1 ≤ 1,
+because of Eq. (4.2). □
+There are two interesting applications of the previous theo rem. The ﬁrst one comes
+from the application to pseudotelepathy games. That is, tho se bipartite games which
+can be won perfectly with quantum strategies but not with cla ssical ones (as it is, for
+instance, the magic square game [10]). As a consequence, our construction leads to the
+existence of pseudotelepathy against bilocality.
+Corollary 4.2. LetG be a pseudotelepathy game. Applying the construction of Theo rem
+4.1 we obtain a tripartite game ˆG such that ωQ3( ˆG) = 1 and ωBL3
+G
+( ˆG)< 1.
+The second, and more important, application is to obtain an u nbounded violation
+between tripartite quantum and bilocal conditional probab ility distributions. For that
+purpose we will use the Khot-Vishnoi game , GKV or KV game [22], which we brieﬂy
+explain here. For any n = 2l withl ∈ N and everyη ∈ [0, 1
+2 ] we consider the group {0, 1}n
+and the Hadamard subgroup H. Then, we consider the quotient group G = {0, 1}n/H
+which is formed by 2n
+n cosets [x] each with n elements. The questions of the games
+(x,y ) are associated to the cosets whereas the answers a and b are indexed in [ n]. The
+referee chooses a uniformly random coset [ x] and one element z ∈ { 0, 1}n according to
+the probability distribution pr(z(i) = 1) = η, pr((z(i) = 0) = 1 −η independently of
+i. Then, the referee asks question [ x] to Alice and question [ x ⊕z] to Bob. Alice and
+Bob must answer one element of their corresponding cosets an d they win the game if
+and only if a ⊕b = z. Although the KV game is not a two-prover one-round game in
+the sense of Eq. (4.1), it is very easy to see that it veriﬁes th e normalization condition
+given in Eq. (4.2).
+Hence, the Khot-Vishnoi game has N = 2 n/n inputs and K = n outputs per player
+and it can be proved ([8, Theorem 7]) that
+ωL2(GKV ) ≤C/n and ωQ2(GKV ) ≥D/ ln2n,(4.6)
+for some universal constants C and D.
+The next lemma is necessary in order to apply the Khot-Vishno i to Theorem 4.1 and
+it essentially shows that the classical value of the game is m ultiplicative.
+Lemma 4.3. LetGKV be the Khot-Vishnoi game. Then,
+ωL2(G⊗2
+KV ) ≤C 1
+n2,
+
+=== page 13 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 13
+whereC is a universal constant.
+Proof. The proof of this result follows exactly the same steps as in t he proof of [8,
+Theorem 4.1]. As it is explained there, a deterministic stra tegy (which corresponds to
+an extremal classical probability distribution) can be ide ntiﬁed with a couple of boolean
+functions A,B : {0, 1}n → {0, 1} such that each of them veriﬁes that, restricted to each
+coset [x] (see explanation of the game right before this lemma), take s value one for one
+of the elements and zero for the rest. Then, the winning proba bility of the game can be
+written as
+nEuEz[A(u)B(u ⊕z)],
+whereu is sampled uniformly at random in {0, 1}n andz ∈ {0, 1}n is sampled pointwise
+independently according to the probability distribution pr(z(i) = 1) = η, pr((z(i) =
+0) = 1 −η. We ﬁx here η = 1/2 − 1/ logn. Then, Cauchy-Schwarz inequality followed
+by a use of the hypercontractive inequality lead to the class ical upper bound stated in
+Eq. (4.6).
+In the case of G⊗2
+KV , a deterministic strategy can be identiﬁed with a couple of b oolean
+functions A,B : {0, 1}2n = {0, 1}n × {0, 1}n → { 0, 1} such that each of them veriﬁes
+that, restricted to each pair [ x] × [y], takes value one for one of the elements and zero
+for the rest. Then, the key point is that sampling u = (u1,u 2) so that ui is sampled
+uniformly in {0, 1}n for i = 1, 2 is the same as sampling u uniformly in {0, 1}2n. At
+the same time, since z is sampled pointwise independently, we can sample in the for m
+z = (z1,z 2) where zi ∈ { 0, 1}n is sampled as in the single game for i = 1, 2. Then, the
+winning probability of the game can be written as
+n2Eu1,u2Ez1,z2[A(u1,u 2)B((u1,u 2) ⊕ (z1,z 2))] = n2EuEz[A(u)B(u ⊕z)].
+Then, doing the same computations as in the proof of [8, Theor em 4.1] we obtain the
+bound n2{1
+n2
+)1/(1−η) ≤C/n2. This concludes the proof. □
+Corollary 4.4. The KV game leads to a tripartite game ˆG with (2n/n)2 inputs and n2
+outputs per player, such that
+ωQ3( ˆG)
+ωBL3( ˆG)
+≥C n2
+ln6n,(4.7)
+and the quantum lower bound in the previous equation is attai ned with a quantum state
+of local dimension n2.
+Moreover, this estimate is essentially optimal in the numbe r of outputs and in the local
+dimension of the Hilbert space.
+First, this shows that tripartite quantum probability dist ributions can lead to un-
+bounded violations with respect to bilocal ones. As we have s een in the previous section,
+this is in hard contrast with the case of correlations. But, s econd, this also proves opti-
+mality in the following sense. Once we have an example in whic h there exists unbounded
+violations, a natural question is how far our example is from the best possible construc-
+tion. That is, does Corollary 4.4 provide the best possible v iolation as a function of the
+number of inputs and outputs? In fact, when comparing quantu m distributions with
+local (or bilocal) distributions, the amount of violations must be seen as a function of
+three parameters: number of inputs N , number of outputs K and the local dimension
+
+=== page 14 ===
+14 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+of the Hilbert space d used in the quantum distribution. As an example of this, in th e
+bipartite scenario, it can be seen ([19, 26]) that
+LV (Q2, L2) ≤C min{N,K,d },(4.8)
+whereC is a universal constant. Interestingly, the KV game provide s an example which
+is essentially optimal (up to logarithmic factors) in the nu mber of outputs and in the
+dimension d, since the estimate in Eq. (4.6) for ωQ2(GKV ) is attained by using the
+maximally entangled state in dimension n. It is not known if the upper bound O(N )
+can be attained, being
+√
+N the best lower bound as a function of the number of inputs
+(see [19] for the corresponding game).
+Corollary 4.4 shows optimality in terms of the number of outp uts and dimension of
+the Hilbert space. It follows from the following two lemmas:
+Lemma 4.5. Given a tripartite game G. If we denote by ωQ3
+d
+(G) the quantum value of
+G when at least one of the player is restricted to local dimensi on d, then
+ωQ3
+d
+(G) ≤dω BL3
+G
+(G).
+Lemma 4.6. Given a tripartite game G with K outputs per player. Then,
+ωQ3(G) ≤Kω BL3
+G
+(G).
+Proof of Lemma 4.5. The proof can be obtained from a slight modiﬁcation of the com -
+ments below [26, Proposition 5.2]. Indeed, let us ﬁx a quantu m distribution P which is
+deﬁned by a quantum state |ψ⟩ ∈ Cd ⊗ Cn ⊗ Cm and some POVMs {Πa
+x}a, {Λb
+y}b and
+{Υc
+z}c acting on Cd, Cn and Cm respectively, for every x,y,z . Then, from the Schmidt
+decomposition, we deduce that the state |ψ⟩ can be written as
+|ψ⟩ =
+d∑
+i=1
+λi|fi⟩|gi⟩,
+where ∑
+i |λi|2 = 1, and |fi⟩ and |gi⟩ are orthonormal systems in the unit ball of Cd and
+Cnm respectively. Then, we have
+|⟨G,P ⟩| =
+⏐⏐⏐
+∑
+x,y,z,a,b,c
+Gabc
+xyz ⟨ψ|Πa
+x ⊗ Λb
+y ⊗ Υc
+z|ψ⟩
+⏐⏐⏐
+≤
+∑
+i,j
+|λi||λj|
+∑
+x,y,z,a,b,c
+Gabc
+xyz |⟨fi|Πa
+x|fj⟩||⟨gi|Λb
+y ⊗ Υc
+z|gj⟩|
+≤d max
+i,j
+∑
+x,y,z,a,b,c
+Gabc
+xyz |⟨fi|Πa
+x|fj⟩||⟨gi|Λb
+y ⊗ Υc
+z|gj⟩|,
+where we have used the well known fact ∑d
+i=1 |λi| ≤
+√
+d
+( ∑d
+i=1 |λi|2
+) 1
+2
+.
+Now, as it is shown in the comments below [26, Proposition 5.2 ], Cauchy-Schwarz
+inequality implies that for every i and j, and for every x, y and z, we have
+∑
+a
+|⟨fi|Πa
+x|fj⟩| ≤ 1 and
+∑
+b,c
+|⟨gi|Λb
+y ⊗ Υc
+z|gj⟩| ≤ 1.
+Hence, we deduce that ⟨G,P ⟩ ≤dω BL3
+G
+(G), which concludes the proof. □
+
+=== page 15 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 15
+Proof of Lemma 4.6. Notice that given a tripartite game G = (Gabc
+xyz )x,y,z,a,b,c , we can
+deﬁne three diﬀerent bipartite games G1, G2 and G3 in which one party receives two
+inputs and gives two outputs. Put diﬀerently, we join Alice an d Bob for G1, Bob and
+Charlie forG2 and Charlie and Alice for G3. In case that the maximum value for ωBL3
+G
+(G)
+is attained for a bilocal probability distribution of the fo rm (P (a,b |x,y )P (c|z))abc
+xyz , then
+this probability distribution can be seen as a local biparti te probability distribution in
+the scenario where Alice and Bob are joint, and it will give th e maximum value for the
+bipartite game G1. As the other cases are similar we can say that:
+ωBL3
+G
+(G) = max {ωL2(G1),ω L2(G2),ω L2(G3)}.(4.9)
+Then, the upper bound we want to show follows from the known es timate for bipartite
+games (see comments below [26, Proposition 4.5])
+ωQ2(G) ≤ min{K1,K 2}ωL2(G).
+Indeed, according to our hypothesis, the functionals G1, G2 and G3 from G have K
+outputs for one player and K 2 outputs for the other player. Then, for every i = 1, 2, 3,
+we have
+ωQ3(G) ≤ωQ2(Gi) ≤ min{K,K 2}ωL2(Gi) = Kω L2(Gi),
+which, according to Eq. (4.9) gives the desired upper bound. □
+5. Conclusions
+In this work we have extended the study of relative Bell viola tions of quantum re-
+sources over local and fully local ones to the genuinely mult ipartite scenario by comparing
+the power of quantum strategies over bilocal models. We have considered ﬁrst the cor-
+relation scenario, where we have found that, as in the bipart ite case, the ratio of Bell
+violation of quantum behaviours over bilocal ones is upper b ounded by Grothendieck’s
+constant for any number of inputs and, hence, there cannot be unbounded Bell viola-
+tions. Since not all bilocal correlations are reproducible by quantum models, we have
+also investigated the relative power of the former over the l atter. We have shown that
+this ratio is upper bounded by O(
+√
+N ) and that this order is optimal. Next, we have
+considered the case of general conditional probability dis tributions. Contrary to the
+previous case, we have obtained here that quantum strategie s lead to unbounded Bell
+violations over general bilocal behaviours. In order to do s o, we have proved that if
+one considers tensor products of bipartite games the ratio o f the quantum value over
+the general bilocal value is related to the ratio of the quant um and local values for the
+bipartite game. This has allowed us, by considering explici t games such as the Khot-
+Vishnoi game, to establish that there exist games for which t he ratio of the quantum
+and general bilocal values grows unboundedly with the numbe r of inputs and outputs.
+We moreover have proven that for a particular choice of games the given estimate of the
+asymptotic behaviour of this ratio is essentially optimal i n the number of outputs and
+in the dimension of the Hilbert space.
+It might be worth mentioning that the above games require a la rge number of inputs,
+i.e. exponential in the obtained violation. Random constru ctions of Bell functionals
+(see [25, 26] for some surveys on this topic) could be used to s how that there exist
+Bell inequalities in which the number of inputs and outputs g row polynomially with the
+
+=== page 16 ===
+16 ABDERRAM ´AN AMR 1, CARLOS PALAZUELOS 1,3, AND JULIO I. DE VICENTE 2
+amount of violation. This, however, is a non-constructive p rocedure and would come at
+the expense of not identifying an explicit Bell functional f or this task.
+It should be noticed that the two results about the ratio of Be ll violations of quantum
+behaviours over bilocal ones – boundedness in the correlati on setting and unbounded-
+ness in the general case – hold irrespectively of whether we c onsider general bilocal or
+non-signalling bilocal models. In the ﬁrst case, this holds because both sets of models
+happen to coincide in the correlation scenario, as discusse d in Sec. 3. In the second case,
+unboudedness with respect to general bilocal behaviours au tomatically implies the same
+with respect to non-signalling bilocal behaviours due to th e fact that this latter set is
+included in the former. Thus, our result can also be understo od as showing an unlim-
+ited advantage of GMNL quantum behaviours irrespective of t he underlying deﬁnition
+of bilocality. As mentioned in the introduction, the correl ations contained in general
+bilocal models might be so strong that lead to undesirable un physical eﬀects in certain
+scenarios and this has motivated to consider more constrain ed hybrid models. Despite
+this fact, not only general bilocal models are unable to simu late all quantum behaviours
+as proven by Svetlichny in [31], but our results show that qua ntum-mechanical resources
+can be, in a certain sense, unboundedly better than this stro ngest form of bilocality.
+acknowledgment
+This research was funded by the Spanish MINECO through Grant No. MTM2017-
+88385-P, MTM2017-84098-P, MTM2014-54240-P and by the Comu nidad de Madrid
+through grant QUITEMAD-CM P2018/TCS4342. We also acknowle dge funding from
+SEV-2015-0554-16-3.
+References
+[1] Ac ´ ın A, Brunner N, Gisin N, Massar S, Pironio S and Scaran i V 2007 Phys. Rev. Lett. 98 230501
+[2] Almeida M L, Cavalcanti D, Scarani V and Ac ´ ın A 2010 Phys. Rev. A 81 052111
+[3] Bancal J-D, Barrett J, Gisin N and Pironio S 2013 Phys. Rev. A 88 014102
+[4] Bancal J-D, Branciard C, Gisin N and Pironio S 2009 Phys. Rev. Lett. 103 090503
+[5] Bell J S 1964 Physics 1 195
+[6] Briet J and Vidick T 2013 Comm. Math. Phys. 321 181-207
+[7] Brunner N, Cavalcanti D, Pironio S, Scarani V and Wehner S 2014 Rev. Mod. Phys. 86 419
+[8] Buhrman H, Regev O, Scarpa G and de Wolf R 2012 Theory Comput. 8 623-645
+[9] Cleve R and Buhrman H 1997 Phys. Rev. A 56 1201
+[10] Cleve R, Hoyer P, Toner B and Watrous J 2004 Proc. 19th IEEE CCC 236-249
+[11] Colbeck R and Renner R 2012 Nature Phys. 8 450
+[12] Collins D, Gisin N, Popescu S, Roberts D and Scarani V 200 2 Phys. Rev. Lett. 88 170405
+[13] Curchod F J, Almeida M L and Ac ´ ın A 2019 New J. Phys. 21 023016
+[14] Degorre J, Kaplan M, Laplante S and Roland J 2009 Mathematical Foundations of Computer Science
+270-281
+[15] Ekert A K 1991 Phys. Rev. Lett. 67 661
+[16] Gallego R, W¨ urﬂinger L E, Ac ´ ın A and Navascu´ es M 2012Phys. Rev. Lett. 109 070401
+[17] Gallego R, Masanes Ll, de la Torre G, Dhara C, Aolita L and Ac ´ ın A 2013Nature Comm. 4 2654
+[18] Jones N S, Linden N and Massar S 2005 Phys. Rev. A 71 042329
+[19] Junge M and Palazuelos C 2011 Comm. Math. Phys. 306 695-746
+[20] Junge M, Palazuelos C, P´ erez-Garc ´ ıa D, Villanueva I and Wolf M M 2010 Comm. Math. Phys. 300
+715-739
+[21] Junge M, Palazuelos C, P´ erez-Garc ´ ıa D, Villanueva I a nd Wolf M M 2010 Phys. Rev. Lett. 104
+170405
+
+=== page 17 ===
+UNBOUNDED BELL VIOLATIONS FOR QUANTUM GENUINE MULTIPARTIT E NON-LOCALITY 17
+[22] Khot S and Vishnoi N 2005 Proc. 46th IEEE FOCS 53-62
+[23] Lami L, Palazuelos C and Winter A 2018 Commun. Math. Phys. 361 661-708
+[24] Lancien C and Winter A 2016 Chicago J. Theor. Comput. Sci. 11
+[25] Palazuelos C 2018 Found. Physics 48 857-885
+[26] Palazuelos C and Vidick T 2016 J. Math. Phys. 57 015220
+[27] P´ erez-Garc ´ ıa D, Wolf M M, Palazuelos C, Villanueva I and Junge M. 2008 Comm. Math. Phys. 279
+455-486
+[28] Pironio S, Ac ´ ın A, Massar S, Boyer de la Giroday A, Matsu kevich D N, Maunz P, Olmschenk S,
+Hayes D, Luo L, Manning T A and Monroe C 2010 Nature 464 1021
+[29] Popescu S and Rohrlich D 1994 Found. Phys. 24 379
+[30] Seevinck M and Svetlichny G 2002 Phys. Rev. Lett. 89 060401
+[31] Svetlichny G 1987 Phys. Rev. D 35 3066
+[32] Tsirelson B S 1993 Hadronic J. Supp. 8(4), 329-345
+[33] Vazirani U and Vidick T 2014 Phys. Rev. Lett. 113 140501
+[34] Weisstein E W, MathWorld–A Wolfram Web Resource http://mathworld.wolfram.com/HadamardMatrix.html.
+(1) Departamento de An ´alisis Matem ´atico y Matem ´atica Aplicada, Universidad Com-
+plutense de Madrid, Plaza de Ciencias 3, 28040 Madrid, Spain
+(2) Departamento de Matem ´aticas, Universidad Carlos III de Madrid, A vda. de la Uni-
+versidad 30, 28911 Legan ´es, Madrid, Spain
+(3) Instituto de Ciencias Matem ´aticas (ICMAT), C/ Nicol ´as Cabrera, Campus de Canto-
+blanco, 28049 Madrid, Spain
+E-mail address, 1: abamr@ucm.es
+E-mail address, 2: carlospalazuelos@mat.ucm.es
+E-mail address, 3: jdvicent@math.uc3m.es

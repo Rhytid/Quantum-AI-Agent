@@ -1,0 +1,77 @@
+% qmacros.sty — notation for ClaudeMath quantum write-ups.
+% The latex-translator agent must use ONLY these macros plus standard amsmath/amssymb/amsthm.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qmacros}[2026/10/14 ClaudeMath quantum macros]
+\RequirePackage{amsmath,amssymb,amsthm,mathtools,bm,dsfont}
+\RequirePackage{url}
+\urlstyle{tt}
+% File paths: breakable at / _ - (write underscores raw, NOT as \_): \file{scratch/q_foo.py}
+\DeclareUrlCommand\file{\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
+
+% --- Dirac notation
+\newcommand{\ket}[1]{\left\lvert #1 \right\rangle}
+\newcommand{\bra}[1]{\left\langle #1 \right\rvert}
+\newcommand{\braket}[2]{\left\langle #1 \middle\vert #2 \right\rangle}
+\newcommand{\ketbra}[2]{\ket{#1}\!\bra{#2}}
+\newcommand{\proj}[1]{\ketbra{#1}{#1}}
+\newcommand{\expval}[2][]{\left\langle #2 \right\rangle_{#1}}       % \expval{A} or \expval[\rho]{A}
+\newcommand{\matel}[3]{\left\langle #1 \middle\vert #2 \middle\vert #3 \right\rangle}
+
+% --- Operators and spaces
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\ptr}[1]{\Tr_{#1}}                % partial trace over subsystem #1
+\newcommand{\id}{\mathds{1}}   % amssymb's \mathbb has no digits; dsfont's \mathds does
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\Lin}{\mathcal{L}}                % \Lin(\Hil): linear operators
+\newcommand{\Dens}{\mathcal{D}}               % \Dens(\Hil): density operators
+\newcommand{\Bnd}{\mathcal{B}}                % \Bnd(\Hil): bounded operators
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\dg}{^{\dagger}}
+\newcommand{\comm}[2]{\left[ #1, #2 \right]}
+\newcommand{\acomm}[2]{\left\{ #1, #2 \right\}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\tnorm}[1]{\norm{#1}_{1}}         % trace norm
+\newcommand{\op}[1]{\hat{#1}}
+
+% --- Paulis and gates
+\newcommand{\PX}{\sigma_x}
+\newcommand{\PY}{\sigma_y}
+\newcommand{\PZ}{\sigma_z}
+\newcommand{\CNOT}{\mathrm{CNOT}}
+
+% --- Information quantities
+\newcommand{\Fid}{F}
+\newcommand{\Ent}{S}                           % von Neumann entropy
+\newcommand{\Chan}{\Phi}
+
+% --- Theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- Provenance tags (mirror the workspace labels; \usepackage[notags]{qmacros} hides them)
+\newif\ifq@tags \q@tagstrue
+\DeclareOption{notags}{\q@tagsfalse}
+\ProcessOptions\relax
+\newcommand{\qtag}[1]{\ifq@tags\textsuperscript{\scriptsize[#1]}\fi}
+\newcommand{\paper}{\qtag{Paper}}
+\newcommand{\own}{\qtag{Own reasoning}}
+\newcommand{\computed}{\qtag{Computed}}
+\newcommand{\leanok}{\qtag{Lean-verified}}
+\newcommand{\unsure}[1]{\ifq@tags\textbf{[Unsure: #1]}\fi}
+
+\endinput

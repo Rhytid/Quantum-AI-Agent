@@ -1,0 +1,1360 @@
+=== page 1 ===
+DOI: 10.1007/s10701-005-7353-4
+Foundations of Physics, Vol. 35, No. 11, November 2005 (© 2005)
+Quantum Pseudo-Telepathy
+Gilles Brassard, 1,∗ Anne Broadbent, 1,† and Alain Tapp 1,‡
+Received April 22, 2005
+Quantum information processing is at the crossroads of physics, mathematics
+and computer science. It is concerned with what we can and cannot do with
+quantum information that goes beyond the abilities of classical information pro-
+cessing devices. Communication complexity is an area of classical computer
+science that aims at quantifying the amount of communication necessary to
+solve distributed computational problems. Quantum communication complexity
+uses quantum mechanics to reduce the amount of communication that would
+be classically required. Pseudo-telepathy is a surprising application of quantum
+information processing to communication complexity. Thanks to entanglement,
+perhaps the most nonclassical manifestation of quantum mechanics, two or more
+quantum players can accomplish a distributed task with no need for communi-
+cation whatsoever , which would be an impossible feat for classical players. After
+a detailed overview of the principle and purpose of pseudo-telepathy, we pres-
+ent a survey of recent and not-so-recent work on the subject. In particular ,
+we describe and analyse all the pseudo-telepathy games currently known to the
+authors.
+KEY WORDS: entanglement; nonlocality; Bell’s theorem; quantum infor-
+mation processing; quantum communication complexity; pseudo-telepathy .
+1D´epartement IRO, Universit ´e de Montr ´eal, C.P . 6128, succursale centre-ville, Montr ´eal,
+Qu´ebec, Canada H3C 3J7; e-mail: {brassard, broadbea,tappa }@iro.umontreal.ca.
+∗Supported in Part by Canada’s Natural Sciences and Engineering Research Council
+(NSERC), the Canada Research Chair programme and the Canadian Institute for
+Advanced Research (CIAR).
+†Supported in part by a scholarship from Canada’s NSERC.
+‡Supported in part by Canada’s NSERC, Qu ´ebec’s Fonds de recherche sur la nature et les
+technologies (FQRNT), the CIAR and the Mathematics of Information Technology and
+Complex Systems Network (MITACS).
+1877
+0015-9018/05/1100-1877/0 © 2005 Springer Science+Business Media, Inc.
+
+=== page 2 ===
+1878 Brassard, Broadbent, and Tapp
+1. INTRODUCTION
+1.1. Quantum Nonlocality
+Albert Einstein was convinced that the physical world is local and
+realistic. By local, he meant that no action performed at some location A
+could have an effect at some other remote location B in a time faster than
+that required by light to travel from A to B. In particular, instantaneous
+action at a distance sould be impossible. By realistic, he meant that mea-
+surements could only reveal “elements of reality” that were already pres-
+ent in the system being measured. He attributed Heisenberg’s uncertainty
+relations to the fact that any measurement of a particle’s position, no mat-
+ter how subtle, would disturb its momentum, and vice versa, and therefore
+one could never know both position and momentum simultaneously with
+arbitrary precision.
+But Niels Bohr said no. In his interpretation of quantum mechanics,
+Heisenberg’s uncertainty relations are unavoidable because it is impossi-
+ble for a particle to have both its position and momentum simultaneously
+deﬁned with arbitrary precision. It is the act of measuring one or the other
+that makes it come to existence. How could you disturb that which does
+not even exist in the ﬁrst place? Y ou cannot deny Einstein’s realism more
+strongly than this!
+In an attempt to “prove” his point, Einstein wrote a famous paper in
+1935 with Boris Podolsky and Nathan Rosen. (1) In that paper, they intro-
+duced the notion of quantum entanglement, according to which it would
+be possible in some cases to determine the position or the momentum of
+a particle without in any way interacting with it. Based on the locality
+assumption, they concluded that both position and momentum had to be
+simultaneously well-deﬁned for that particle, contradicting Bohr’s view .
+In a curious turn of history, John Bell proved three decades later that
+the entanglement phenomenon predicted by Einstein, Podolsky and Rosen
+entails statistics that would be impossible to explain by any local realistic
+theory whatsoever.(2) In other words, Einstein’s argument had backﬁred,
+with entanglement becoming the most convincing argument in favour of
+Bohr’s view! Despite appearances, quantum mechanics does not really con-
+tradict the locality assumption of Einstein: It is still the case that no
+action performed at A can have an instantaneous observable effect at B.
+But it certainly does contradict realism.
+It remained to perform actual experiments, which was done in the
+1980s and sure enough the predictions of quantum mechanics came
+true.(3−5) Subsequent experiments were conclusively conducted by Nicolas
+Gisin and collaborators over more than 10 km of distance between points
+
+=== page 3 ===
+Quantum Pseudo-Telepathy 1879
+A and B,(6) and even in relativistic settings in which both detectors, each
+in its own inertial reference frame, are ﬁrst to do the measurement. (7) To
+get a convincing experimental demonstration that the physical world is not
+local realistic, we must make a large number of careful experiments and
+collect signiﬁcant statistical evidence that such data would be overwhelm-
+ingly unlikely in a classical local realistic world. Moreover, the apparatus
+must be sufﬁciently accurate to rule out a variety of loopholes that would
+make a classical “explanation” possible again—more on this issue in Secs.
+1.3 and 1.4.
+Despite David Mermin’s heroic effort at explaining Bell’s theorem, (8)
+it is not so easy to convey the signiﬁcance of these experiments to a non-
+scientist because nontrivial probabilistic arguments are involved. It would
+be much nicer to exhibit an observable behaviour that is obviously impos-
+sible in any classical world so dear to Einstein. 2 A signiﬁcant step in
+the right direction was taken by Daniel Greenberger, Michael Horne and
+Anton Zeilinger, (9) and later by Lucien Hardy, (10) when they introduced
+quantum phenomena that can be shown to be classically impossible with-
+out resorting to probabilities: A classical contradiction results from what
+is and what is not possible in the observed behaviour, not from the spe-
+ciﬁc probabilities of various events. These phenomena have been called by
+such names as “Bell’s theorem without inequalities”. It is our belief that
+pseudo-telepathy—which is the topic of this survey—takes another step in
+this direction, even though the Greenberger–Horne–Zeilinger conundrum
+(but not Hardy’s (11)) can be interpreted as an early instance of pseudo-
+telepathy .
+It is important to mention a common misconception in reasoning
+about experimental realizations of Bell’s theorem without inequalities. T oo
+often, we read that they allow to rule out local realism in a single run :
+“ The quantum nonlocality can thus, in principle, be manifest in a single
+run of a certain measurement”. (12) The fallacy here is that if the players
+(classical or quantum) win for a single run, we cannot conclude anything:
+they could have been lucky at guessing. As Asher Peres wrote, about those
+who made this mistake: “The list of authors is too long to give explicitly,
+and it would be unfair to give only a partial list”. (13)
+1.2. Pseudo-Telepathy
+Consider two parties, whom we shall call Alice and Bob. They claim
+to be endowed with telepathic powers. T o convince scientists Xavier and
+2 For a quantum physicist, even relativity belongs to classical physics.
+
+=== page 4 ===
+1880 Brassard, Broadbent, and Tapp
+Table I. Example of a Game
+Round Xavier Y olande
+1 Lion Giraffe
+2 Tiger Tiger
+3 Hyena Elephant
+4 Crocodile Alligator
+5 Platypus Platypus
+··· ··· ···
+Y olande, they agree to play the following game. First, Xavier and Y olande
+secretly decide on two lists of animals, such as that shown in Table I.
+Then, Xavier takes Alice far away from Bob and Y olande. At predeter-
+mined times, Xavier and Y olande name animals from their lists to Alice
+and Bob. For example, Xavier and Y olande simultaneously say “lion” and
+“giraffe”, respectively . Without consulting each other, Alice and Bob must
+immediately decide whether or not they were presented with the same ani-
+mal; in this case, they should both answer “no!”. If Alice and Bob succeed
+systematically in a sufﬁciently long sequence of trials, Xavier and Y olande
+will conclude that Alice and Bob are able to communicate somehow . But
+if communication is classically impossible because Alice and Bob are sufﬁ-
+ciently far apart that a signal from Alice going at the speed of light would
+not reach Bob in time to inﬂuence his answer (and vice versa from Bob to
+Alice), then Xavier and Y olande would be forced into believing that Alice
+and Bob are able to communicate in a way unknown to (classical) physics.
+In this case, telepathy would not seem to be worse than any other esoteric
+“explanation”, would it?
+It turns out that quantum mechanics cannot help Alice and Bob win
+this animal-guessing game. (Otherwise, a solution to this game could be
+harnessed to provide faster-than-light signalling.) But there are other sim-
+ilar games that are equally impossible for classical players, yet they can
+be won systematically, without any communication, provided Alice and
+Bob share prior entanglement. This is the phenomenon we call “pseudo-
+telepathy” because it would appear as magical as “true” telepathy to a
+classical physicist, yet it has a perfectly scientiﬁc explanation: quantum
+mechanics.
+There are several reasons to be interested in pseudo-telepathy games.
+• Some of these games are conceptually very simple. Their classi-
+cal impossibility can be explained in a few minutes to any rea-
+
+=== page 5 ===
+Quantum Pseudo-Telepathy 1881
+sonably intelligent person. This makes their quantum possibility all
+the more impressive. The best examples in this category are the
+Mermin-GHZ game and the magic square game, described in Secs.
+3 and 5, respectively .
+• If implemented successfully, any one of these games would provide
+extremely convincing evidence that classical physics does not rule
+the world for anyone who is already convinced that faster-than-light
+signalling is impossible (and therefore that it is not because Alice
+and Bob are able to communicate, however covertly, that they win
+the game systematically).
+• The theoretical and experimental study of pseudo-telepathy has the
+potential to provide the ﬁrst loophole-free demonstration that the
+physical world cannot be local realistic.
+• In introducing the broader ﬁeld of quantum communication com-
+plexity in 1993, Andrew Y ao asked if quantum mechanics could
+be used to reduce the amount of communication required to solve
+some distributed computational tasks, but he could not answer
+the question. (14) Surprisingly, a pseudo-telepathic version of this
+question had already been solved 10 years previously (15) by Peter
+Heywood and Michael Redhead 3—see Sec. 2. Please consult Ref. 16
+for a survey of quantum communication complexity and its inter-
+play with pseudo-telepathy .
+W e are now ready to give a formal deﬁnition of pseudo-telepathy . For
+the sake of simplicity, we deﬁne it in the context of two players, Alice and
+Bob. The generalization to multi-party settings is obvious.
+A two-party game is deﬁned as a sextuple G =⟨X, Y, A, B, P, W⟩,
+where X, Y , A and B are sets, P ⊆ X × Y and W ⊆ X × Y × A × B.I t
+is convenient to think of X and Y as the input sets, A and B as the
+output sets, P as a predicate on X × Y known as the promise, and W
+as the winning condition , which is a relation between inputs and outputs
+that has to be satisﬁed by Alice and Bob whenever the promise is ful-
+ﬁlled. [In the generalization to 3 parties, we use X, Y , Z as input sets
+and A, B, C (for Charlie) as output sets; P and W are changed accord-
+ingly . In the n-party generalization, we use X = X1 × X2 ×···× Xn and
+A = A1 × A2 ×···× An as input and output sets, respectively, P becomes
+a predicate on X and W becomes a relation on X × A.]
+3 One could argue that pseudo-telepathy games do not solve Y ao’s problem as stated and
+therefore the ﬁrst solution to Y ao’s problem came as late as 1997.
+
+=== page 6 ===
+1882 Brassard, Broadbent, and Tapp
+At the outset of the game, Alice and Bob are allowed to discuss strat-
+egy and exchange any amount of classical information, including the value
+of random variables. This is carried out in secret of Xavier and Y olande.
+If Alice and Bob are quantum players, they are also allowed to share
+unlimited amounts of entanglement. Xavier and Y olande are also allowed
+to discuss strategy in secret of Alice and Bob. Then, Alice and Bob are
+separated and they will not be allowed to communicate any further until
+the game is over. In each round of the game, Alice and Bob are presented
+by Xavier and Y olande with inputs x ∈ X and y ∈ Y , respectively . The task
+of Alice and Bob is to produce outputs a ∈ A and b ∈ B, respectively . W e
+say that Alice and Bob win the round if either (x, y) ⁄∈ P (the promise does
+not hold) or ( x,y,a,b) ∈ W . The pairs (x, y) and (a, b) are called the
+question and the answer for this round, respectively . Any question (x, y) is
+said to be legitimate if it belongs to P , and any answer (a, b) is said to be
+appropriate if ( x,y,a,b) ∈ W . W e say that Alice and Bob win the game if
+they keep winning round after round. Finally, we say that Alice and Bob
+have a winning strategy if they are mathematically certain to win the game
+as long as they have not exhausted all the classical information and quan-
+tum entanglement (if any) shared at the outset of the game. Please note
+the difference between winning the game and having a winning strategy:
+no matter how many rounds Alice and Bob have won, only statistical evi-
+dence can be gathered by Xavier and Y olande towards the hypothesis that
+they indeed have a winning strategy, but a single lost round sufﬁces to dis-
+credit any claim to a winning strategy . (See Sec. 1.3 for practical consid-
+erations.)
+T o continue our earlier example from Table I, X and Y would be non-
+trivial sets of animal names, A = B ={ yes, no}, P = X × Y (which is to
+say that all questions are legitimate) and ( x,y,a,b) ∈ W if and only if
+either x = y and a = b = yes or x ⁄= y and a = b = no. In the ﬁrst round,
+for instance, Xavier and Y olande ask the question (lion, giraffe) and Alice
+and Bob should provide the answer ( no, no). As we said before, this game
+does not admit a winning strategy, be it classical or quantum, but Alice
+and Bob could still win by being exponentially lucky in the number of
+rounds.
+Finally, we say that a game exhibits pseudo-telepathy if it does not
+admit a winning strategy whenever Alice and Bob are restricted to being
+classical players, yet it does admit a winning strategy provided quantum
+players Alice and Bob share a sufﬁcient supply of entanglement.
+W e can quantify the quantumness of a pseudo-telepathy game by how
+bad classical players would be at it. This is interesting because the harder
+a pseudo-telepathy game is for classical players, the more convincing it is
+when quantum players win it round after round. A more subtle reason to
+
+=== page 7 ===
+Quantum Pseudo-Telepathy 1883
+be interested in this issue is that quantum players will not be perfect in
+real life: it is unavoidable that they will lose a few rounds now and then.
+But if they are still better at the game than any classical player could be,
+the main purpose of proving that the world cannot be local realistic will
+still be fulﬁlled. This is how we hope to use pseudo-telepathy games to cir-
+cumvent the various loopholes that have plagued until now every attempt
+at reaching this holy grail. (17−20)
+A classical strategy is deterministic if there exist two functions f : X → A
+and g : Y → B such that Alice and Bob systematically output f( x) and
+g(y) on inputs x and y, respectively . The success of a deterministic strat-
+egy is deﬁned by the proportion of legitimate questions on which it pro-
+vides an appropriate answer. Given a game G,w el e t ~ω(G) stand for the
+maximum success proportion, over all possible deterministic strategies, for
+classical players that play game G.
+~ω(G) = max
+f,g
+#{(x, y) ∈ P | (x, y, f (x), g(y))∈ W}
+#P (1.1)
+Classical players can implement probabilistic strategies when they are
+allowed to toss local coins and share random variables. In that case, we
+are interested in the probability that the strategy succeeds on given ques-
+tions. W e shall judge the merit of a probabilistic strategy by its perfor-
+mance on the worst possible legitimate question. More precisely, we say
+that a probabilistic strategy is successful with probability p if it produces
+an appropriate answer with probability at least p on all legitimate ques-
+tions. Note that any deterministic strategy that does not win the game
+with certainty is “successful” with probability zero since there is at least
+one legitimate question on which it fails systematically . Given a game G,
+we let ω(G) stand for the maximum success probability, over all possible
+probabilistic strategies, for classical players that play game G. Formally,
+given a strategy s and a legitimate question (x, y), let Pr s(win | (x, y))
+denote the probability that strategy s provides an appropriate answer on
+that question. By deﬁnition,
+ω(G) = max
+s
+min
+(x,y)∈P
+Prs(win | (x, y)). (1.2)
+The next theorem provides a simple yet important relation between
+the maximum success proportion for deterministic strategies and the max-
+imum success probability for probabilistic strategies. But ﬁrst we need a
+technical proposition.
+
+=== page 8 ===
+1884 Brassard, Broadbent, and Tapp
+Proposition 1. Let G be a game. Consider any probabilistic strategy s.I f
+the questions are asked uniformly at random among all legitimate questions,
+the probability that the players win using s is ~ω(G) at best.
+Proof. W e consider a general probabilistic strategy s, which is a
+probability distribution over a ﬁnite set of deterministic strategies, say
+{s1,s 2,...s m}. Let Pr (si) be the probability that strategy si be chosen, and
+let pi ⩽ ~ω(G) be the success proportion of strategy si . The probability that
+the players win the game according to strategy s is
+m∑
+i=1
+pi Pr(si) ⩽ ~ω(G)
+m∑
+i=1
+Pr(si) = ~ω(G) . (1.3)
+Theorem 2. For any game G, ω(G) ≤ ~ω(G).
+Proof. Consider any probabilistic strategy s that is successful with
+maximal probability ω(G). By deﬁnition of ω(G), given any legitimate
+question (x, y),P r s(win | (x, y)) /greaterorequalslantω(G). If the question is chosen uni-
+formly at random, the probability q of winning the game using strategy
+s is
+q =
+∑
+(x,y)∈P
+Prs(win | (x, y))
+#P /greaterorequalslant
+∑
+(x,y)∈P
+ω(G)
+#P = ω(G) . (1.4)
+By proposition 1, ~ω(G) /greaterorequalslantq, and since q /greaterorequalslantω(G), then ~ω(G) /greaterorequalslantω(G).
+The next observation is useful to determine values and bounds on
+~ω(G) and ω(G).
+Lemma 3. Let G be a game whose set of legitimate questions is P .I fi t
+does not admit a classical winning strategy, then
+ω(G) ⩽ ~ω(G) ⩽ #P − 1
+#P . (1.5)
+Proof. Since ~ω(G) is the maximum success proportion, over all possi-
+ble deterministic strategies, for classical players that play game G,i ti st h e
+ratio of some integer to the total number P of legitimate questions. Since
+the game does not admit a classical winning strategy, this ratio is not 1.
+
+=== page 9 ===
+Quantum Pseudo-Telepathy 1885
+The next best alternative, which may or may not be achievable by some
+deterministic strategy, would be that ~ω(G) = (#P − 1)/#P . The Lemma
+follows from Theorem 2.
+1.3. How Convincing Can Actual Experiments Be?
+A major motivation for studying pseudo-telepathy games is that
+their physical implementation could provide increasingly convincing and
+loophole-free demonstrations that the physical world is not local realistic.
+After establishing that a given game is indeed a pseudo-telepathy game,
+the ideal experiment would consist in implementing the quantum winning
+strategy and running it on a signiﬁcant number of rounds until either:
+• the players lose even a single round, in which case the predictions
+of quantum mechanics have been shown to fail, demonstrating that
+quantum mechanics must be wrong, and it is back to the drawing
+board; or
+• the players win systematically enough rounds to rule out (with high
+conﬁdence) classical local realistic theories because classical strate-
+gies would be overwhelmingly unlikely to perform ﬂawlessly .
+Of course, physical realizations of quantum winning strategies for
+pseudo-telepathy games will never be perfect. Disavowing one hundred
+years of quantum mechanics on a single failure—as we light-heartedly sug-
+gested above—would be foolish! W e should be content as long as real-life
+experiments allow Alice and Bob to win substantially more often than any
+classical players could hope to do, except with overwhelmingly small prob-
+ability . W e expound on this issue in the next section.
+But even an unfailing sequence of wins would not be entirely con-
+vincing if the experiment is not performed with extreme care. There are
+many ways in which unscrupulous Alice and Bob—or an incredibly devi-
+ous Nature out to fool us into believing in quantum mechanics—could
+provide classical (local, realistic) players with a winning strategy despite
+the mathematical proofs that this is impossible! Before they can be used
+to rule out classical theories beyond any reasonable doubt, pseudo-telepa-
+thy experiments must fulﬁl the following conditions simultaneously .
+• It must be physically impossible for Alice and Bob to communi-
+cate between the time they receive the question and the time they
+have to produce the answer. No amount of shielding can achieve
+this requirement. For instance, it would be unscientiﬁc to claim it
+
+=== page 10 ===
+1886 Brassard, Broadbent, and Tapp
+impossible for Alice to have a means to modulate neutrinos and for
+Bob to detect them, however unlikely . The only known law of phys-
+ics that can be used to enforce this restriction is the fact that infor-
+mation cannot be signalled faster than the speed of light. Hence,
+Alice and Bob must be sufﬁciently far apart, their questions must
+be asked with near-perfect simultaneity, and they must be requested
+to answer very quickly .
+• It must be impossible for Alice and Bob to know ahead of time
+what the questions will be. W e must ﬁrst come to grip with the
+fact that there is no way to enforce this condition if the universe is
+purely deterministic. In the view of Laplace, nothing prevents Alice
+and Bob from analysing the entire state of the universe with enough
+precision to be able to predict with certainty what questions Xavier
+and Y olande will ask. This would allow Alice and Bob to conspire
+together and decide on their answers before they are separated,
+and Xavier and Y olande would be none the wiser. Unfortunately,
+there is no resolution to this problem: no pseudo-telepathy exper-
+iment will ever convince a determinism-addict that classical physics
+is wrong.
+• Following up on the previous point, the questions must be chosen
+at random by Xavier and Y olande after they have separated to
+go with Alice and Bob, respectively . Indeed, we said earlier that
+“Xavier and Y olande are also allowed to discuss strategy in secret
+of Alice and Bob”. But no laws of physics can guarantee them
+unconditional secrecy (not even quantum cryptography!) if they
+choose their questions ahead of time. Therefore, each round must
+begin with Xavier and Y olande choosing their questions purely at
+random, independently from one another. The entire round, includ-
+ing registering Alice’s and Bob’s answers, must take place in less
+time than it takes light to travel between Alice and Bob. This brings
+up a subtle point: given that Xavier and Y olande cannot prepare
+their questions together, there can be no guarantee that the prom-
+ise will be fulﬁlled. After they meet again, Xavier and Y olande will
+have to apply post-selection to their data to keep only the answers
+to legitimate questions. It follows that it is desirable for pseudo-
+telepathy games to have a high density of legitimate questions.
+• And ﬁnally, the last condition to rule out classical local realistic
+theories is that Xavier and Y olande’s post-selected data must show
+that appropriate answers were provided on legitimate questions sig-
+niﬁcantly more often by Alice and Bob than could be expected by
+any possible classical process.
+
+=== page 11 ===
+Quantum Pseudo-Telepathy 1887
+1.4. Imperfect Detectors
+Several reasons could explain an incorrect answer provided by the
+physical implementation of a mathematically proven quantum winning
+strategy: (1) quantum mechanics is incorrect, (2) Alice and Bob are unable
+to keep high-grade entanglement for a macroscopic amount of time,
+(3) the unitary quantum process to which they subject their entanglement
+after receiving their questions (see all the following sections) is imperfect,
+and/or (4) the ﬁnal measurement that should reveal the classical answer
+goes wrong.
+Here we concentrate on the last possibility . W e ask how bad can the
+detectors be to allow nevertheless for an outcome that would be classically
+impossible (in probability), provided everything else is perfect in the exper-
+iment. For this purpose, we must distinguish between two different types
+of imperfections in detectors: noise and inefﬁciency .
+• A noisy detector may register the wrong result. This causes Alice
+or Bob to output a bit that is the complement of what she or he
+should have produced according to the protocol. 4 In most pseudo-
+telepathy games, a single error of this sort will result in an inappro-
+priate answer to a legitimate question. But it is often the case that
+two wrongs make a right.
+• An inefﬁcient detector may fail to register an outcome at all. When
+this happens, the qubit that was supposed to be measured is usu-
+ally lost forever, and there is nothing the unlucky party can do
+to recover the information (without communicating with the other
+party). But at least, contrary to the case of noisy detectors, that
+party knows that there is a problem.
+• Of course, real detectors can be both noisy and inefﬁcient.
+In each case, the relevant issue is to determine the level of imperfection
+detectors can have, and still allow Alice and Bob to accomplish a task that
+would exceed the capabilities of classical players.
+1.4.1. Noisy Detectors
+For simplicity, let us assume that all the detectors are independent
+and that they all have the same error probability . Let p stand for the
+4 In some pseudo-telepathy games, such as the impossible colouring game of Sec. 2, the
+expected output is not a bit string. The notion of noisy detector must be modiﬁed
+accordingly .
+
+=== page 12 ===
+1888 Brassard, Broadbent, and Tapp
+probability for each detector to perform correctly, and therefore each bit
+of the answer is ﬂipped with probability 1 − p, independently from one
+another. For any given pseudo-telepathy game, this entails a probability
+for quantum players to provide inappropriate answers to legitimate ques-
+tions. If that probability exceeds the error probability that can be reached
+by some classical strategy, the quantum implementation becomes worth-
+less. This gives rise to a threshold that depends on the pseudo-telepathy
+game being played.
+Deﬁnition 1. Consider a pseudo-telepathy game G. We deﬁne p∗(G) as
+the maximum value of p for which a classical strategy can succeed as well
+as an implementation of the best possible quantum strategy that has to deal
+with detectors that give the correct answer with probability p.
+Unfortunately, the exact value of p∗(G) is unknown for most games.
+1.4.2. Inefﬁcient Detectors
+If a detector fails to respond to Alice or Bob, one approach would
+be to ignore the problem and output a random bit. This would be a way
+to turn inefﬁcient detectors into noisy ones. But a much better solution is
+to allow the parties to admit ignorance. When a party’s detector fails to
+register the result of a measurement, this party simply outputs ⊥. In this
+context, we must redeﬁne slightly the notion of a game. The output sets
+A and B are augmented with this new symbol ⊥. W e say that the players
+win if the question is not legitimate or if their answer is appropriate, it’s a
+draw if at least one player outputs ⊥ on a legitimate question, and they
+lose otherwise. The key observation is that if detector inefﬁciency is the
+only imperfection in the quantum players’ implementation, they will either
+win or draw, but they will never lose a round.
+Of course, to be fair, we must allow classical players to output ⊥ as
+well. This makes it possible for classical players to have an error-free strat-
+egy, in which they never lose, at the expense of occasional draws. Imple-
+mentations of quantum strategies are interesting only if the occurrence of
+⊥ is smaller than with the best error-free classical strategy . Whether or
+not this is possible depends on the efﬁciency η of the detectors, which is
+assumed to be the same, independently, for each detector.
+Deﬁnition 2. Consider a pseudo-telepathy game G. We deﬁne η∗(G) as
+the maximum value of η for which an error-free classical strategy can win at
+
+=== page 13 ===
+Quantum Pseudo-Telepathy 1889
+least as often as an implementation of the best quantum strategy that uses
+detectors of efﬁciency η.
+Parameter η∗(G) has been analysed for more games than p∗(G) because
+it bears direct relevance to the widely studied “detection loophole”, (18,20) but
+nevertheless its exact value is also mostly unknown.
+1.5. Outline of the Paper
+After this Introduction, the rest of the paper provides a system-
+atic survey of all the pseudo-telepathy games known to the authors. W e
+assume that the reader is already familiar with the basic principles of
+quantum information processing. (21) The games are presented in chrono-
+logical order of discovery . Each game is deﬁned by the task that the play-
+ers must accomplish in order to win, then a quantum winning strategy is
+described, and the impossibility of a classical winning strategy is discussed.
+Additional information is provided for some games. Before we conclude
+with open problems in Sec. 9, we have a quick look in Sec. 8 at the small-
+est possible games that exhibit pseudo-telepathy .
+2. IMPOSSIBLE COLOURING GAMES
+In the 1960s, Bell was not alone in proving that Einstein’s realism
+is incompatible with other well-accepted principles. (2) Recall that Bell’s
+argument was to reach a contradiction by accepting also Einstein’s non-
+locality, as well as the predictions of quantum mechanics. At about the
+same time, Simon Kochen and Ernst Specker proved that realism is also
+incompatible with another principle: non-contextuality.(22) Brieﬂy stated,
+non-contextuality is the principle according to which the probability of a
+given outcome in a projective measurement does not depend on the choice
+of the other orthogonal outcomes used to deﬁne that measurement. (T o be
+historically precise, it should be noted that Bell himself published a similar
+idea(23) before Kochen and Specker, (22) but Specker by himself presented
+an earlier proof (24) as early as 1960, and a similar idea goes back to Glea-
+son(25) in 1957.)
+It has been argued that the Kochen–Specker approach is less useful
+than Bell’s because it in inherently counterfactual, and therefore it seems
+impossible to subject it to actual experiments. However, when Kochen–
+Specker is used together with entanglement, Peter Heywood and Michael
+Redhead(15) realized that it can be turned into a testable scenario. A little
+
+=== page 14 ===
+1890 Brassard, Broadbent, and Tapp
+imagination sufﬁces to turn their argument into a pseudo-telepathy game,
+which is probably the ﬁrst such game ever. However, that paper was over-
+looked until recently, which explains why the ﬁrst pseudo-telepathy game
+is often credited to Greenberger, et al .,(9) or to Mermin (26)—see Sec. 3.
+Theorem 4 (Kochen–Specker Theorem) . There exists an explicit, ﬁnite
+set of vectors in R3 that cannot be {0, 1}-coloured so that both of the fol-
+lowing conditions hold simultaneously.
+1. For every orthogonal pair of vectors, at most one is coloured 1.
+2. For every mutually orthogonal triple of vectors, at least one of
+them—and therefore exactly one—is coloured 1.
+We say of any such set of vectors that is has the Kochen–Specker property.
+Originally, Theorem 4 was proved using 117 vectors, (22) but this
+has been reduced to 31 (with 17 orthogonal triples) by Conway and
+Kochen.(27) A Kochen–Specker construction, similar to that of Theorem 4,
+can be obtained in any dimension d/greaterorequalslant3, either by a geometric argument, or
+by extending a construction in dimension d to dimension d+1.(27) Following
+the approach of Ref. 28, we show below that any Kochen–Specker construc-
+tion in any dimension gives rise to a two-party pseudo-telepathy game. Re-
+nato Renner and Stefan W olf have proved a weak converse of this result:
+Any two-party pseudo-telepathy game can be turned into a Kochen–Specker
+construction,(29) but under two conditions: Alice and Bob must share a max-
+imally entangled state (of any dimension) and they are restricted to making
+projective measurements only (not POVMs) on their shared entanglement,
+without the addition of an ancillary system.
+2.1. The Game
+Consider any dimension d /greaterorequalslant3 and let V be a set of vectors in Rd
+with the Kochen–Specker property . In the corresponding impossible col-
+ouring pseudo-telepathy game, Alice receives either an orthogonal pair of
+vectors v1,v 2, or an orthogonal d-tuple of vectors v1,... ,v d . Bob receives
+a single vector v𝓁. All these vectors are taken from V. The promise states
+that v𝓁 is one of Alice’s vectors.
+The challenge that Alice and Bob face is that they must {0, 1}-colour
+the vectors they have received so that (1) two orthogonal vectors are not
+
+=== page 15 ===
+Quantum Pseudo-Telepathy 1891
+both coloured 1, (2) exactly one of Alice’s vectors is coloured 1 if she was
+given d vectors, and (3) Alice and Bob assign the same colour to vector
+v𝓁. Note that it is not necessary for Alice to output the colour of all her
+vectors because she must satisfy conditions (1) and (2). In case she is given
+two vectors as input, she outputs a trit that indicates whether v1 is col-
+oured 1, v2 is coloured 1, or neither; in case she is given d vectors, she
+outputs the a ∈{ 1, 2,... ,d } so that she assigned colour 1 to va .A sf o r
+Bob, his one-bit output b is simply the colour he assigns to vector v𝓁.
+In any case, the winning condition is that Alice and Bob must assign the
+same colour to v𝓁.
+2.2. Quantum Winning Strategy
+The players’ strategy is to share entangled state 1√
+d
+∑ d−1
+j=0 |j⟩|j⟩. After
+receiving their input, Alice and Bob do the following.
+1. If Alice was given only two vectors v1 and v2, she chooses d − 2
+additional vectors v3, ... , vd , not necessarily taken from V, so that
+v1, ... , vd forms an orthogonal d-tuple.
+2. Alice performs a measurement on her share of the entangled state
+in basis Ba ={ |v1⟩,... , |vd⟩} of Rd (after normalization if neces-
+sary). Let k be the result of her measurement. As explained above,
+she produces the appropriate output a, corresponding to assigning
+colour 1 to vector vk .
+3. Bob chooses d − 1 additional vectors w1, ... , wd−1, not necessar-
+ily taken from V, so that v𝓁, w1, ... , wd−1 forms an orthogonal
+d-tuple. He performs a measurement on his share of the entangled
+state in basis Bb ={ |v𝓁⟩, |w1⟩,... , |wd−1⟩}of Rd (after normaliza-
+tion if necessary). He outputs b = 1 if the outcome is v𝓁; he out-
+puts b = 0 otherwise.
+T o show that this quantum strategy works, consider the probability
+that Alice measures vk (k ∈{ 1, 2,... ,d }) and Bob measures v𝓁. Since the
+bases Ba and Bb have real coefﬁcients, we have
+d−1∑
+j=0
+⟨j|vk⟩⟨j|v𝓁⟩=⟨vk|v𝓁⟩. (2.1)
+Therefore, the probability that Alice measures vk and Bob measures v𝓁 is
+
+=== page 16 ===
+1892 Brassard, Broadbent, and Tapp
+⏐⏐⏐⏐⏐⏐
+1√
+d
+d−1∑
+j=0
+⟨j|⟨j|vk⟩|v𝓁⟩
+⏐⏐⏐⏐⏐⏐
+2
+=
+⏐⏐⏐⏐⏐⏐
+1√
+d
+d−1∑
+j=0
+⟨j|vk⟩⟨j|v𝓁⟩
+⏐⏐⏐⏐⏐⏐
+2
+(2.2)
+=
+⏐⏐⏐⏐
+1√
+d
+⟨vk|v𝓁⟩
+⏐⏐⏐⏐
+2
+(2.3)
+=
+{
+1
+d if k = 𝓁
+0i f k ⁄= 𝓁. (2.4)
+It follows that Bob measures v𝓁 if and only if Alice measures v𝓁 as
+well. This proves that Alice and Bob will assign the same colour to the
+vector they have received in common, and therefore their answer will be
+appropriate.
+2.3. Classical Players
+Any classical deterministic winning strategy would correspond pre-
+cisely to a {0, 1}-colouring of the vectors in V that can satisfy simulta-
+neously properties (1) and (2) in the statement of the Kochen–Specker
+theorem. But V was chosen to have the Kochen–Specker property, which
+means that such a colouring cannot exist. It follows that ~ω(G) < 1, and
+by Theorem 2, ω(G) < 1 as well. Therefore, no classical winning strategy
+can exist for this game. The exact success proportion and probability are
+not known precisely, but of course they depend on the speciﬁc Kochen–
+Specker construction that is used. W e conjecture that ~ω(G) and ω(G) can-
+not be made much smaller than 1 with this type of construction.
+2.4. Special Case of the Impossible Colouring Game
+W e have presented a family of pseudo-telepathy games based on the
+Kochen–Specker theorem. It is interesting to mention the particular case
+where d = 3. For the quantum strategy, Alice and Bob share an entangled
+qutrit pair |ψ⟩= 1√
+3|00⟩+ 1√
+3|11⟩+ 1√
+3|22⟩. This entangled state of dimen-
+sion 9 is the smallest possible state that can be used for any two-player
+pseudo-telepathy game(11)—more on this in Sec. 8.
+Independently of the general approach that we described above,
+similar pseudo-telepathy games have been obtained for a speciﬁc
+
+=== page 17 ===
+Quantum Pseudo-Telepathy 1893
+four-dimensional construction (30) and generalized to any dimension. (31)
+See also Ref. 32.
+3. P ARITY GAMES
+This is a family of games for n players, n /greaterorequalslant3, with the property that
+the player’s outputs are single bits, and the winning condition depends on
+their parity .
+3.1. The Game
+The task that the n players face is the following: Each player i
+receives as input a bit-string xi ∈{ 0, 1}𝓁, which is also interpreted as an
+integer in binary, with the promise that ∑ n
+i=1 xi is divisible by 2 𝓁. The
+players must each output a single bit ai and the winning condition is
+n∑
+i=1
+ai ≡
+∑ n
+i=1 xi
+2𝓁 (mod 2). (3.1)
+When restricted to parameters n = 3 and 𝓁= 1, this is what is known
+as the Mermin-GHZ game. It was originally presented as a four-player
+game(9) and later recast with three players. (33) The game was greatly pop-
+ularized by Mermin. (26,34)
+When restricted to 𝓁= 1, but with any number n /greaterorequalslant3 of players, this
+is Mermin’s parity game, introduced in Ref. 35 and recast from a computer
+science point of view in Refs. 36 and 37.
+Finally, by setting 𝓁 =⌈ lg n⌉− 1, still with any number n /greaterorequalslant3o f
+players, we get the extended parity game .(38) (W e use the symbol “lg” to
+denote the base-two logarithm.)
+3.2. Quantum Winning Strategy
+The players’ strategy for any game in this family is to share entangled
+state 1√
+2|0n⟩+ 1√
+2|1n⟩. After receiving his input xi , each player i does the
+following:
+
+=== page 18 ===
+1894 Brassard, Broadbent, and Tapp
+1. apply to his share of the entangled state the unitary transformation
+S deﬁned by
+|0⟩↦→| 0⟩ (3.2)
+|1⟩↦→ eπıxi/2𝓁
+|1⟩, (3.3)
+where we use a dotless ı to denote
+√
+−1 in order to distinguish it
+from index i, which is used to identify a player;
+2. apply the Walsh–Hadamard transform, H , deﬁned as usual by
+|0⟩↦→ 1√
+2|0⟩+ 1√
+2|1⟩ (3.4)
+|1⟩↦→ 1√
+2|0⟩− 1√
+2|1⟩; (3.5)
+3. measure the qubit in the computational basis to obtain ai ;
+4. output ai .
+The resulting state after step 1 is
+1√
+2
+(
+|0n⟩+eπı
+∑ xi
+2𝓁 |1n⟩
+)
+=
+⎧
+⎨
+⎩
+1√
+2|0n⟩+ 1√
+2|1n⟩ if
+∑ xi
+2𝓁 is even
+1√
+2|0n⟩− 1√
+2|1n⟩ if
+∑ xi
+2𝓁 is odd .
+(3.6)
+W e know by the promise that
+∑ xi
+2𝓁 is an integer. Let /Delta1(z)denote the num-
+ber of 1s in binary string z (the Hamming weight of z). It is an easy exer-
+cise to show that the resulting state after step 2 is
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+1√
+2n−1
+∑
+/Delta1(a)even
+|a⟩ if
+∑ xi
+2𝓁 is even
+1√
+2n−1
+∑
+/Delta1(a)odd
+|a⟩ if
+∑ xi
+2𝓁 is odd .
+(3.7)
+Therefore, after the measurement of step 3, the output of step 4 will satisfy
+n∑
+i=1
+ai ≡
+∑ n
+i xi
+2𝓁 (mod 2), (3.8)
+so the players always win.
+
+=== page 19 ===
+Quantum Pseudo-Telepathy 1895
+3.3. Classical Players
+Any winning strategy for the extended parity game yields a winning
+strategy for the parity game. Similarly, a winning strategy for the parity
+game yields a winning strategy for the Mermin-GHZ game. So, by show-
+ing that there is no classical winning strategy for the Mermin-GHZ game,
+we will have established the same result for all three games.
+In the Mermin-GHZ game, consider a deterministic strategy in which
+ax is Alice’s output on input x, and by , cz are deﬁned similarly for Bob
+and Charlie. If Alice, Bob and Charlie receive x = 0, y = 0, z = 0a s
+inputs, for instance, it follows from the winning condition that the sum of
+their outputs a0, b0 and c0 must be even. This gives the ﬁrst of the four
+constraints that correspond to the four legitimate inputs 000 , 011, 101 and
+110. These constraints are summarized below, where the sums are taken
+modulo 2.
+a0 + b0 + c0 ≡ 0
+a0 + b1 + c1 ≡ 1
+a1 + b0 + c1 ≡ 1
+a1 + b1 + c0 ≡ 1
+(3.9)
+If we add the four equations, we obtain a contradiction, since the sum
+on the left-hand side is even and the sum on the right-hand side is odd.
+This proves that there is no classical deterministic winning strategy . It fol-
+lows by Theorem 2 that there is no classical winning strategy . However, it
+is easy to invent a strategy that wins with probability 3/4. It follows from
+Lemma 3 that ~ω(G) = ω(G) = 3/4, where G stands for the Mermin-GHZ
+game.
+Let Gn be Mermin’s parity game with n players. It is proven in
+Ref. 36 that ~ω(Gn) = 1
+2 + 2−⌈n/2⌉. By applying Theorem 2, it follows
+that ω(Gn) ⩽ 1
+2 + 2−⌈n/2⌉. But in fact, this upper-bound is tight: (37,39)
+ω(Gn) = 1
+2 + 2−⌈n/2⌉.
+For the parity game, we also know exact values of p∗ and η∗.(37,39)
+p∗(Gn) =
+⎧
+⎪⎨
+⎪⎩
+1
+2 + 2
+2−3n
+2n if n is even
+1
+2 + 2
+1−3n
+2n if n is odd
+(3.10)
+η∗(Gn) = 1
+2
+n√
+4 (3.11)
+Since lim n→∞ p∗(Gn) = 1
+2 +
+√
+2
+4 = cos2 π/8 ≈ 85%, we conclude that
+if we use detectors that provide the correct answer with a probability
+
+=== page 20 ===
+1896 Brassard, Broadbent, and Tapp
+greater than that, everything else being perfect, and if n is sufﬁciently
+large, we can use game Gn to observe a phenomenon that would be
+statistically impossible to explain in a classical world. Similarly, since
+limn→∞ η∗(Gn) = 1/2, the same conclusion applies provided we have detec-
+tors that are better than 50% efﬁcient.
+Let G′
+n be the extended parity game with n players. It is shown
+in Ref. 38 that η∗(G′
+n) ⩽ 8/n for all n /greaterorequalslant3. Since lim n→∞ η∗(G′
+n) = 0,
+loophole-free experiments of nonlocality are possible with arbitrarily inefﬁ-
+cient detectors! (Of course, as n becomes larger, it becomes increasingly
+difﬁcult to have “everything else being perfect”.) The value of p∗(G′
+n) is
+not known.
+4. DEUTSCH–JOZSA GAMES
+This family of two-player pseudo-telepathy games, based on the
+Deutsch–Jozsa problem,(40) was ﬁrst presented in Ref. 41. These were the
+ﬁrst games explicitly described in terms of pseudo-telepathy .
+4.1. The Game
+Alice and Bob face the following task: given bit strings x and y as
+input, they are requested to output bit strings a and b, respectively, so that
+a = b if and only if x = y. T o prevent the trivial solution a ← x and b ← y,
+the outputs must be exponentially shorter than the inputs. More precisely,
+x and y are strings of length n = 2m, for some parameter m,b u t a and b
+must be strings of length m. As such, this problem cannot be solved even
+with the help of entanglement, but it becomes a pseudo-telepathy game if
+we add the promise that either x and y are identical or that they differ in
+exactly half of the bit positions.
+4.2. Quantum Winning Strategy
+The players’ strategy for any game in this family is to share entan-
+gled state 1√n
+∑ n−1
+j=0 |j⟩|j⟩. Note that this means that Alice and Bob each
+have an m-qubit register. After receiving their inputs x = x0x1 ··· xn−1 and
+y = y0y1 ··· yn−1 (it is more convenient to start the indices at 0), Alice and
+Bob do the following.
+
+=== page 21 ===
+Quantum Pseudo-Telepathy 1897
+1. Alice applies to her quantum register the unitary transformation
+that maps
+|j⟩↦→ (−1)xj |j⟩ (4.1)
+for all j between 0 and n − 1; Bob does the same, but with yj
+instead of xj .
+2. Alice and Bob apply the Walsh–Hadamard transform H⊗m to
+their registers.
+3. Alice and Bob measure their registers in the computational basis.
+The resulting classical strings, a and b, are their ﬁnal output.
+It is straightforward to verify that this quantum strategy wins the game
+with certainty. Please consult Ref. 41 for details.
+4.3. Classical Players
+It follows immediately from Ref. 42 that classical players need to
+communicate at least c 2m bits, for some appropriate positive constant c
+and all sufﬁciently large m, in order to win the Deutsch–Jozsa game with
+parameter m. Therefore, classical players cannot have a winning strategy if
+they are unable to communicate, again provided m is large enough. How-
+ever, this asymptotic result does not help if we want to know which values
+of m yield a pseudo-telepathy game.
+It is easy to design a classical winning strategy for m = 1 and m = 2. It
+is more challenging, but possible, 5 to design one when m = 3. For the case
+m = 4, an argument based on graph theory, as well as a computer-assisted case
+analysis, were used to show that there is no classical winning strategy .(45) More
+recently, Michael Newman proved that for all m /greaterorequalslant4, classical players do not
+have a winning strategy .(43)
+5. THE MAGIC SQUARE GAME
+The magic square game is a two-player pseudo-telepathy game that
+was presented by Padmanabhan Aravind, (46,47) who built on work by Mer-
+min.(48) It is a characteristic of all pseudo-telepathy games that a successful
+implementation of its quantum winning strategy could convince an observer
+that something classically impossible is happening, with no need for the
+5 This result is attributed to Gordon Royle in Ref. 43. See also Ref. 44.
+
+=== page 22 ===
+1898 Brassard, Broadbent, and Tapp
+observer to understand anything about the quantum strategy . But this is rele-
+vant only inasmuch as the observer believes in the classical impossibility,
+which is sometimes hard to prove. The somewhat unique feature of the
+magic square game, among two-party games, is that it is extremely easy
+to show that there cannot be a classical winning strategy (see Sec. 5.3). This
+is what would make a real-life demonstration so marvellously compelling!
+5.1. The Game
+A magic square i sa3 × 3 matrix whose entries are in{0, 1}, with the prop-
+erty that the sum of each row is even and the sum of each column is odd. Such a
+square is magic because it cannot exist! Indeed, suppose we calculate the parity
+of the nine entries. According to the rows, the parity is even, yet according to
+the columns, the parity is odd. This is obviously impossible.
+The task that the players face while playing the game is the follow-
+ing: Alice is asked to give the entries of a row x ∈{ 1, 2, 3} and Bob is
+asked to give the entries of a column y ∈{ 1, 2, 3}. The winning condition
+is that the parity of the row must be even, the parity of the column must
+be odd, and the intersection of the given row and column must agree. It
+is an interesting feature of this game that it does not require a promise:
+all nine possible questions are legitimate.
+5.2. Quantum Winning Strategy
+The quantum winning strategy for the magic square game is not as
+simple as the classical impossibility proof. First, Alice and Bob share the
+entangled state
+|ψ⟩= 1
+2|0011⟩− 1
+2|0110⟩− 1
+2|1001⟩+ 1
+2|1100⟩. (5.1)
+The ﬁrst two qubits belong to Alice and the last two to Bob. Upon receiv-
+ing their inputs x and y, Alice and Bob apply unitary transformations Ax
+and By , respectively, according to the following matrices.
+A1 = 1√
+2
+⎡
+⎢⎣
+ı 001
+0 −ı 10
+0 ı 10
+100 ı
+⎤
+⎥⎦ ,A 2 = 1
+2
+⎡
+⎢⎣
+ı 11 ı
+−ı 1 −1 ı
+ı 1 −1 −ı
+−ı 11 −ı
+⎤
+⎥⎦ ,
+A3 = 1
+2
+⎡
+⎢⎣
+−1 −1 −11
+11 −11
+1 −111
+1 −1 −1 −1
+⎤
+⎥⎦ (5.2)
+
+=== page 23 ===
+Quantum Pseudo-Telepathy 1899
+B1 = 1
+2
+⎡
+⎢⎣
+ı −ı 11
+−ı −ı 1 −1
+11 −ıı
+−ıı 11
+⎤
+⎥⎦ ,B 2 = 1
+2
+⎡
+⎢⎣
+−1 ı 1 ı
+1 ı 1 −ı
+1 −ı 1 ı
+−1 −ı 1 −ı
+⎤
+⎥⎦ ,
+B3 = 1√
+2
+⎡
+⎢⎣
+1001
+−1001
+0110
+01 −10
+⎤
+⎥⎦ (5.3)
+Then, Alice and Bob measure their qubits in the computational basis.
+This provides 2 bits to each player, which are the ﬁrst 2 bits of their
+respective output a and b. Finally, Alice and Bob determine their third
+output bit from the ﬁrst two so that their parity condition is satisﬁed.
+Consider for example inputs x = 2 and y = 3. After Alice and Bob
+apply A2 and B3, respectively, the state evolves to
+(A2 ⊗ B3)|ψ⟩= 1
+2
+√
+2
+[
+|0000⟩−| 0010⟩−| 0101⟩+| 0111⟩
++| 1001⟩+| 1011⟩−| 1100⟩−| 1110⟩
+]
+. (5.4)
+After measurement, Alice and Bob could obtain 10 and 01, for instance.
+In that case, Alice would complete with bit 1 so that her output a = 101
+has even parity and Bob would complete with bit 0 so that his output
+b = 010 has odd parity . Xavier and Y olande will be satisﬁed with the
+answer since both Alice and Bob agree that the third entry of the sec-
+ond row is indeed the same as the second entry of the third column:
+a3 = b2 = 1. It is easy to check that the seven other possible answers that
+Alice and Bob could have given on this example are all appropriate. The
+veriﬁcation that this quantum strategy wins also on the other eight possi-
+ble questions is tedious but straightforward.
+5.3. Classical Players
+The simple proof that a winning classical strategy cannot exist goes
+as follows. A deterministic classical strategy would have to assign deﬁnite
+binary values to each of the nine entries of the magic square, which is
+impossible. Therefore, there can be no deterministic classical winning strat-
+egy . It follows from Theorem 2 that there is no classical winning strategy,
+
+=== page 24 ===
+1900 Brassard, Broadbent, and Tapp
+even probabilistic. Using Lemma 3, it is also straightforward to show that
+~ω(G) = ω(G) = 8/9, where G stands for the magic square game.
+5.4. Related Work
+There are other pseudo-telepathy games that are related to the magic
+square game. Ad ´an Cabello’s game (49,50) does not resemble the magic
+square game on ﬁrst approach. However, closer analysis reveals that the
+two games are totally equivalent! (39)
+Also, Aravind has generalized his own magic square idea (46) t oat w o -
+player pseudo-telepathy game in which the players share n Bell states, n
+being an arbitrary odd number larger than 1.
+6. MATCHING GAMES
+This family of two-player games is a relatively recent development. It
+is based on an observation made by Harry Buhrman in response to a talk
+given by Iordanis Kerenidis at the 2004 W orkshop on Quantum Informa-
+tion Processing,(51) and on Ref. 52.
+Deﬁnition 3. A perfect matching M on {0, 1,... ,m −1}, where m is even,
+is a partition of {0, 1,...m − 1} into m
+2 sets, each of size 2. We deﬁne Mm
+as the set of all perfect matchings on {0, 1,... ,m − 1}.
+6.1. The Game
+In the matching game, Alice receives an m-bit string x = x0x1 ··· xm−1
+as input (again, it is more convenient to start the indices at 0), and Bob
+receives a perfect matching M ∈ Mm. The task that the players face is
+for Alice to output a string a ∈{ 0, 1}⌈lg m⌉, and Bob to output a pair
+{α, β}∈ M as well as a string b ∈{ 0, 1}⌈lg m⌉ such that
+xα ⊕ xβ = (α ⊕ β) · (a ⊕ b) , (6.1)
+where a ⊕ b denotes the bitwise exclusive-or of a and b, and
+u · v = ⨁
+i(ui ∧ vi ) denotes the parity of the bitwise “ and”o f u and v.
+This may seem at ﬁrst to be a very bizarre game, but it is currently
+the only scalable game known—it depends on a parameter m—among
+those that do not require a promise.
+
+=== page 25 ===
+Quantum Pseudo-Telepathy 1901
+6.2. Quantum Winning Strategy
+The quantum players’ strategy is to share entangled state1√m
+∑ m−1
+j=0 |j⟩|j⟩.
+After Alice receives her input x = x0x1 ··· xm−1 and Bob his input M ∈ Mm,
+the players do the following.
+1. Alice applies to her quantum register the unitary transformation
+that maps
+|j⟩↦→ (−1)xj |j⟩ (6.2)
+for all j between 0 and m − 1.
+2. Bob performs a projective partial measurement onto subspaces
+of dimension 2. Each subspace of the measurement is spanned
+by vectors |k⟩ and |𝓁⟩, where {k,𝓁}∈ M. Bob outputs the clas-
+sical outcome of this measurement, which is a pair {α, β}∈ M.
+In addition to producing a classical outcome, the measure-
+ment causes the quantum state shared with Alice to collapse to
+1√
+2(−1)xα |αα⟩+ 1√
+2(−1)xβ |ββ⟩.
+3. Both Alice and Bob perform the Walsh–Hadamard transform
+H⊗⌈lg m⌉.
+4. Alice measures in the computational basis and outputs a, the
+result of her measurement.
+5. Bob measures in the computational basis and outputs b, the result
+of his measurement.
+Details of why this works are left as an exercise.
+6.3. Classical Players
+By reducing the Hidden Matching Problem (38) to the matching game,
+it follows that there is no classical winning strategy for the latter, provided
+m is chosen large enough. Once again, this does not tell us exactly which
+values of m yield a pseudo-telepathy game. For now, we are only able to
+say that there is a trivial classical winning strategy for m = 2.
+7. OTHER GAMES
+W e report brieﬂy on two additional families of pseudo-telepathy
+games.
+
+=== page 26 ===
+1902 Brassard, Broadbent, and Tapp
+The ﬁrst one is due to David DiVincenzo and Asher Peres. (53) By
+exploiting properties of quantum code words for 3, 5, 7 and 9 qubits
+codes, they have given an elegant algebraic way of generating 3, 5, 7 and 9
+player pseudo-telepathy games, where the shared entangled state is a quan-
+tum code word. T o the best of our knowledge, these games are no harder
+to win for classical players than the parity games of Sec. 3 for the same
+number of players.
+The second game is due to Michel Boyer. (54) It is a multi-party
+pseudo-telepathy game for n /greaterorequalslant3 players. Let M be any even number. The
+task that the players face is the following: Each player i receives as input
+an arbitrary integer xi and must output an integer ai between 0 and
+M − 1. The promise is that ∑ xi is even and the winning condition is that
+n∑
+i=1
+ai ≡
+∑ n
+i=1 xi
+2 (mod M). (7.1)
+This game is equivalent to a variant in which each input is a single bit.
+One interest of this game is that the quantum winning strategy uses a
+quantum Fourier transform modulo M. It may be more convenient to take
+M a power of 2.
+8. THE INNER FRONTIER
+Throughout this survey, we have presented several pseudo-telepathy
+games, large and small according to a variety of metrics such as the car-
+dinality of the input sets, of the output sets, and the dimensionality of the
+entangled state that must be shared at the outset of the game. It it interest-
+ing to investigate what are the smallest possible games that exhibit pseudo-
+telepathy .
+Consider two-party pseudo-telepathy games. It is known that no such
+game can exist if Alice and Bob are requested to output a single bit
+each.(28) It follows that the impossible colouring game (Sec. 2) with m = 3
+is minimal in terms of the output size since Alice outputs a trit and
+Bob outputs a bit. Another way of seeing this inner frontier is that the
+Mermin-GHZ game (Sec. 3) is also minimal since it exhibits pseudo-telep-
+athy with a single bit of output per player ... but it involves three players.
+Similarly, two-party pseudo-telepathy games cannot exist if the entan-
+gled state that the quantum players share is of dimension 2 × 3o r
+smaller.(11) It follows that the impossible colouring game with m = 3i s
+again minimal since it makes do with an entangled state of dimension
+3 × 3. Or one could say that it is the Mermin-GHZ game that is again
+
+=== page 27 ===
+Quantum Pseudo-Telepathy 1903
+minimal since it exhibits pseudo-telepathy with a single qubit of entan-
+glement in the hands of each of the three players. In terms of the total
+dimensionality, it is the Mermin-GHZ game that wins the minimalist
+Grand Prize since 8 < 9, where 8 = 2 × 2 × 2 and 9 = 3 × 3.
+9. CONCLUSIONS AND OPEN PROBLEMS
+Einstein, Bohr, Bell, Kochen and Specker were all concerned with
+hidden variables (“elements of reality”). Pseudo-telepathy also deals with
+this issue: it provides alternate versions of Bell’s argument against local
+realistic theories. But it is more than just that. Pseudo-telepathy games
+often provide a more concise and convincing argument than those along
+the lines of Bell. They may also prove useful in devising loophole-free
+experimental tests to rule out local realistic descriptions of the physical
+world.
+The seeds of pseudo-telepathy were sowed more than twenty years
+ago by Heywood and Redhead (Sec. 2). Others followed. By setting these
+experiments in the framework of pseudo-telepathy, we are better able to
+grasp the essence of the arguments, compare them, and improve on previ-
+ous results. For example, it is only recently, and in the context of pseudo-
+telepathy, that it was realized that the two earliest pseudo-telepathy games
+were minimal in term of the number of possible outputs as well as the
+dimensionality of the required entanglement (Sec. 8).
+Several interesting questions are still open. W e have seen in Sec. 1.4
+that noisy and inefﬁcient detectors will unavoidably render the quantum
+players imperfect. For the parity games of Sec. 3, we have given exact val-
+ues or bounds on the efﬁciencies that we can tolerate. In order to devise
+experiments that are less prone to these types of errors, it would be impor-
+tant to have an analysis for each game G that provides exact values of
+p∗(G) and η∗(G). Also, imperfections can arise from the entangled state
+and the unitary evolution of the system. An analysis of these types of
+noise, as well as how the different types interact, would give us the tools
+necessary to devise better experiments.
+Of course, it would be interesting to ﬁnd new pseudo-telepathy games
+or families of games. It would be equally interesting to show how they
+relate to one another. For example, the three games of Sec. 3 can be
+parametrized so that they all fall into the same general description. The
+magic square game (Sec. 5) is equivalent to Cabello’s game. Which other
+games, old or new, are similar? How do they differ?
+The matching games of Sec. 6 come from a one-way communication
+complexity problem. Is it possible to ﬁnd other links between one-way
+
+=== page 28 ===
+1904 Brassard, Broadbent, and Tapp
+communication and pseudo-telepathy? Still concerning the matching game
+Gm with parameter m, it would be interesting to ﬁnd values for ~ω(Gm)
+and ω(Gm) for even m /greaterorequalslant4. There are other games, such as the impos-
+sible colouring games of Sec. 2, the extended parity games of Sec. 3 and
+the Deutsch–Jozsa games of Sec. 4, for which, in general, precise values of
+~ω(G) and ω(G), as a function of the size of the game, are still unknown.
+In Sec. 8, we gave bounds on the dimension of the shared entangled
+state and on the cardinality of the output sets in order for a two-player
+pseudo-telepathy game to exist. Can we ﬁnd similar bounds on the cardi-
+nality of the input sets? Is the magic square game (Sec. 5) optimal in this
+respect?
+Finally, it is not enough to ﬁnd games G that have a small classi-
+cal success proportion ~ω(G) or probability ω(G), or a good tolerance to
+detector noise p∗(G) or inefﬁciencies η∗(G). W e must strive to ﬁnd such
+games that are feasible experimentally . The most simplistic interpretation
+of this condition is that the classical success proportion or probability
+should be small, or the tolerance to detector noise or inefﬁciencies should
+be high, even for small sized entangled quantum systems. W e would like
+to know bounds on what is achievable for pseudo-telepathy games, as well
+as games that reach these bounds. Failing that, it might be possible to ﬁnd
+new pseudo-telepathy games that improve on any of the best known val-
+ues for the above parameters, as a function of the size of the entangled
+quantum state.
+ACKNOWLEDGMENTS
+W e are grateful to Michel Boyer, Richard Cleve, Serge Massar and
+Andr´eM ´ethot for their insightful comments. W e are also grateful to Harry
+Buhrman and Iordanis Kerenidis for sharing their thoughts on the match-
+ing game, and to Michele Mosca, Martin R ¨otteler, Pranab Sen and Chris
+Godsil for their help in ﬁnding references concerning classical players in
+the Deutsch-Jozsa game. W e are especially grateful to Asher Peres for hav-
+ing been an ongoing inspiration for our study of quantum information in
+general and nonlocality in particular, as well as for his excellent book. (27)
+The dear man will be sorely missed by all those who knew him.
+REFERENCES
+1. A. Einstein, B. Podolsky, and N. Rosen, “Can quantum-mechanical description of
+physical reality be considered complete?,” Phys. Rev. 47, 777–780 (1935).
+2. J . S. Bell, “On the Einstein Podolsky Rosen paradox,” Physics 1(3), 195–200 (1964).
+
+=== page 29 ===
+Quantum Pseudo-Telepathy 1905
+3. A. Aspect, P . Grangier, and G. Roger, “Experimental tests of realistic local theories
+via Bell’s theorem,” Phys. Rev. Lett. 47, 460–463 (1981).
+4. A. Aspect, P . Grangier, and G. Roger, “Experimental realization of Einstein–Podolsky–
+Rosen–Bohm gedankenexperiment: A new violation of Bell’s inequalities,” Phys. Rev.
+Lett. 49, 91–94 (1982).
+5. A. Aspect, J . Dalibard, and G. Roger, “Experimental test of Bell’s inequalities using
+time–varying analyzers,” Phys. Rev. Lett. 49, 1804–1807 (1982).
+6. W . Tittel, J . Brendel, H. Zbinden, and N. Gisin, “Violation of Bell inequalities by pho-
+tons more than 10 km apart,” Phys. Rev. Lett. 81(17), 3563–3566 (1998).
+7. H. Zbinden, J . Brendel, N. Gisin, and W . Tittel, “Experimental test of non-local quan-
+tum correlations in relativistic conﬁgurations,” Phys. Rev. A 63, 022111 (2001).
+8. N. D. Mermin, “Bringing home the atomic world: Quantum mysteries for anybody,”
+Am. J. Phys. 49, 940–943 (1981).
+9. D. M. Greenberger, M. A. Horne, and A. Zeilinger, “Going beyond Bell’s theorem,”
+in Bell’s Theorem, Quantum Theory and Conceptions of the Universe , M. Kafatos, ed.
+(Kluwer Academic, Dordrecht, 1989), pp. 69–72.
+10. L. Hardy, “Quantum mechanics, local realistic theories, and Lorentz-invariant realistic
+theories,” Phys. Rev. Lett. 68(20), 2981–2984 (1992).
+11. G. Brassard, A. M ´ethot, and A. Tapp, “Minimum entangled state dimension required
+for pseudo-telepathy,” Quantum Inf. Comp. 5 (4–5), 275–284 (2005).
+12. Z.-B. Chen, J .-W . Pan, Y .-D. Zhang, C. Brukner, and A. Zeilinger, “ All-versus-nothing
+violation of local realism for two entangled photons,” Phys. Rev. Lett. 90, 160408
+(2003).
+13. A. Peres, “Bayesian analysis of Bell inequalities,” Fortschr . Phys. 48(5–7), 531–535
+(2000).
+14. A. C.-C. Y ao, “Quantum circuit complexity,” Proceedings of the 34th Annual IEEE
+Symposium on Foundations of Computer Science , pp. 222–227 (1993).
+15. P . Heywood and M. L. G. Redhead, “Nonlocality and the Kochen–Specker paradox,”
+Found. Phys. 13(5), 481–499 (1983).
+16. G. Brassard, “Quantum communication complexity,” Found. Phys. 33(11), 1593–1616
+(2003).
+17. N. Gisin and H. Zbinden, “Bell inequality and the locality loophole: Active versus
+passive switches,” Phys. Lett. A 264(2–3), 103–107 (1999).
+18. S. Massar, “Nonlocality, closing the detection loophole, and communication complex-
+ity,” Phys. Rev. A 65, 032121 (2002).
+19. J . Barrett, D. Collins, L. Hardy, A. Kent, and S. Popescu, “Quantum nonlocality, Bell
+inequalities and the memory loophole,” Phys. Rev. A 66, 042111 (2002).
+20. S. Massar and S. Pironio, “Violation of local realism versus detection efﬁciency,” Phys.
+Rev. A 68, 062109 (2003).
+21. M. A. Nielsen and I. L. Chuang, Quantum Computation and Quantum Information
+(Cambridge University Press, Cambridge, 2000).
+22. S. Kochen and E. P . Specker, “The problem of hidden variables in quantum mechan-
+ics,” J. Math. Mech. 17, 59–87, (1967).
+23. J . S. Bell, “On the problem of hidden variables in quantum mechanics,” Rev. Mod.
+Phys. 38(3), 447–452 (1966).
+24. E. Specker, “Die Logik nicht gleichzeitig entscheidbarer Aussagen,” Dialectica 14,
+239–246 (1960).
+25. A. Gleason, “Measures on the closed subspaces of a Hilbert space,” J. Math. Mech.
+6, 885–893 (1957).
+26. N. D. Mermin, “Quantum mysteries revisited,” Am. J. Phys. 58(8), 731–734 (1990).
+
+=== page 30 ===
+1906 Brassard, Broadbent, and Tapp
+27. A. Peres, Quantum Theory: Concepts and Methods (Kluwer Academic Publishers,
+Dordrecht, 1993).
+28. R. Cleve, P . Høyer, B. T oner, and J . Watrous, “Consequences and limits of nonlocal
+strategies,” Proceedings of the 19th IEEE Conference on Computational Complexity ,p p .
+236–249 (2004).
+29. R. Renner and S. W olf, “Quantum pseudo-telepathy and the Kochen–Specker the-
+orem,” Proceedings of IEEE International Symposium on Information Theory , p. 322
+(2004).
+30. J . Zimba and R. Penrose, “On Bell non-locality without probabilities: More curious
+geometry,” Stud. Hist. Phil. Sci. 24(5), 697–720 (1993).
+31. P . K. Aravind, “Impossible colorings and Bell’s theorem,” Phys. Lett. A 262(4–5),
+282–286 (1999).
+32. J . E. Massad and P . K. Aravind, “The Penrose dodecahedron revisited,” Am. J. Phys.
+67(7), 631–638 (1999).
+33. D. M. Greenberger, M. A. Horne, A. Shimony, and A. Zeilinger, “Bell’s theorem with-
+out inequalities,” Am. J. Phys. 58(12), 1131–1143 (1990).
+34. N. D. Mermin, “What’s wrong with these elements of reality?,” Phys. Today 43, 9–11
+(1990).
+35. N. D. Mermin, “Extreme quantum entanglement in a superposition of macroscopically
+distinct states,” Phys. Rev. Lett. 65(15), 1838–1849 (1990).
+36. G. Brassard, A. Broadbent, and A. Tapp, “Multi-party pseudo-telepathy,” Proceedings
+of the 8th International Workshop on Algorithms and Data Structures , V olume 2748 of
+Lecture Notes in Computer Science , pp. 1–11 (2003).
+37. G. Brassard, A. Broadbent, and A. Tapp, “Recasting Mermin’s multi-player game into
+the framework of pseudo-telepathy,” Quantum Inf. Comp. 5 (7), (2005).
+38. H. Buhrman, P . Høyer, S. Massar, and H. R ¨ohrig, “Combinatorics and quantum non-
+locality,” Phys. Rev. Lett. 91(4), 047903 (2003).
+39. A. Broadbent, Quantum Pseudo-Telepathy Games, M.Sc. thesis, Universit ´ed e
+Montr´eal, 2004.
+40. D. Deutsch and R. Jozsa, “Rapid solution of problems by quantum computation,”
+Proc. R. Soc. London, Ser . A 439, 553–558 (1992).
+41. G. Brassard, R. Cleve, and A. Tapp, “Cost of exactly simulating quantum entangle-
+ment with classical communication,” Phys. Rev. Lett. 83(9), 1874–1878 (1999).
+42. H. Buhrman, R. Cleve, and A. Wigderson, “Quantum vs. classical communication and
+computation,” Proceedings of the 30th Annual ACM Symposium on Theory of Comput-
+ing, pp. 63–68 (1998).
+43. M. W . Newman, Independent Sets and Eigenspaces, Ph.D. thesis, University of Water-
+loo, 2004.
+44. V . Galliard and S. W olf, “Pseudo-telepathy, entanglement and graph colorings,” Pro-
+ceedings of IEEE International Symposium on Information Theory , p. 101 (2002).
+45. V . Galliard, A. Tapp, and S. W olf, “The impossibility of pseudo-telepathy with-
+out quantum entanglement,” Proceedings of IEEE International Symposium on Infor-
+mation Theory , p. 457 (2003). Full paper available as arXiv:quant-ph/0211011
+(November 2002).
+46. P . K. Aravind, “Bell’s theorem without inequalities and only two distant observers,”
+Found. Phys. Lett. 15(4), 397–405 (2002).
+47. P . K. Aravind, “ Quantum mysteries revisited again ,” Am. J. Phys. 72, 1303–1307 (2004).
+48. N. D. Mermin, “Simple uniﬁed form for the major no-hidden-variables theorems,”
+Phys. Rev. Lett. 65(27), 3373–3376 (1990).
+
+=== page 31 ===
+Quantum Pseudo-Telepathy 1907
+49. A. Cabello, “Bell’s theorem without inequalities and without probabilities for two
+observers,” Phys. Rev. Lett. 86(10), 1911–1914 (2001).
+50. A. Cabello, “ ‘All versus nothing’ inseparability for two observers,” Phys. Rev. Lett.
+87(1), 010403 (2001).
+51. H. Buhrman and I. Kerenidis, January 2004 (private communication).
+52. Z. Bar-Y ossef, T . S. Jayram, and I. Kerenidis, “Exponential separation of quantum and
+classical one-way communication complexity,” Proceedings of the 36th Annual ACM
+Symposium on Theory of Computing , pp. 128–137 (2004).
+53. D. P . DiVincenzo and A. Peres, “Quantum code words contradict local realism,” Phys.
+Rev. A 55(6), 4089–4092, (1997).
+54. M. Boyer, “Extended GHZ n-player games with classical probability of winning tend-
+ing to 0,” available as arXiv:quant-ph/0408090 (August 2004).

@@ -1,0 +1,1226 @@
+=== page 1 ===
+Genuine network quantum nonlocality and self-testing
+Ivan Šupi ´c,1, 2,∗ Jean-Daniel Bancal, 1, 3 Yu Cai,1 and Nicolas Brunner 1
+1Département de Physique Appliquée, Université de Genève, 1211 Genève, Switzerland
+2CNRS, LIP6, Sorbonne Université, 4 place Jussieu, 75005 Paris, France
+3Université Paris-Saclay, CEA, CNRS, Institut de physique théorique, 91191, Gif-sur-Yvette, France
+(Dated: May 27, 2021)
+The network structure offers in principle the possibility for novel forms of quantum nonlocal correlations,
+that are proper to networks and cannot be traced back to standard quantum Bell nonlocality. Here we deﬁne
+a notion of genuine network quantum nonlocality. Our approach is operational and views standard quantum
+nonlocality as a resource for producing correlations in networks. We show several examples of correlations
+that are genuine network nonlocal, considering the so-called bilocality network of entanglement swapping. In
+particular, we present an example of quantum self-testing which relies on the network structure; the considered
+correlations are non-bilocal, but are local according to the usual deﬁnition of Bell locality.
+I. INTRODUCTION
+Discovered by Bell in the 1960s, the phenomenon of quan-
+tum nonlocality has far reaching consequences [1, 2]. Ar-
+guably among the most counterintuitive aspects of quantum
+theory, it also represents a powerful resource for information
+processing, notably in the context of device-independent pro-
+tocols [3–5].
+Quantum nonlocality manifests as strong correlations ob-
+served by distant parties performing local measurements on
+a shared quantum system. This phenomenon relies on the
+shared system to be in an entangled state, and the local mea-
+surements to be incompatible (for each party). In this sense
+nonlocality is based on the judicious combination of sev-
+eral inherently non-classical properties of quantum mechan-
+ics, namely entanglement of quantum states and incompati-
+bility of quantum measurements.
+Recently, growing interest has been devoted to the explo-
+ration of quantum nonlocality in networks; see e.g. [6] for a
+recent review. A general framework has been developed for
+this problem [7–9]. Consider a network with several parties,
+and N sources distributing physical (classical or quantum)
+systems to various subsets of parties. The main idea consists
+in assuming that all the sources of the network are indepen-
+dent from each other. This allows one to deﬁne the notion
+ofN-locality, which can be seen as a natural extension of the
+concept of Bell locality to networks with independent sources.
+Correlations that do not admit an N-local model are termed
+“network nonlocal”. Importantly, whether a given distribu-
+tion is network nonlocal or not depends on the topology of the
+considered network. In particular, for certain networks there
+are correlations that are provably network nonlocal, while the
+same correlation would be local when considering the usual
+Bell scenario, see e.g. [9].
+Quantum theory allows for correlations in networks that are
+not N-local. The ﬁrst examples of “quantum network non-
+locality” have been derived for the scenario of entanglement
+swapping, now also referred to as “bilocality” [7]. In turn, a
+more astonishing effect was discovered, namely that quantum
+∗ ivan.supic@lip6.fr
+network nonlocality can be demonstrated without the need for
+measurement inputs, i.e. each party performs a single ﬁxed
+measurement [8, 9]. This would of course be impossible in
+the standard Bell scenario, and hence appears at ﬁrst sight as
+a novel form of quantum nonlocality proper to networks.
+A ﬁrst example of such “quantum nonlocality without in-
+puts” was proposed by Fritz [8], for the so-called triangle net-
+work. The latter features three parties, each pair of them con-
+nected by a different source. After inspection, it turns out,
+however, that Fritz’s example can be viewed as a clever map-
+ping of the standard Bell CHSH scenario into the triangle net-
+work conﬁguration [10, 11].
+A second example was more recently proposed by Renou
+and co-authors [12], also for the triangle network. The authors
+argued, however, that their example is fundamentally different
+from that of Fritz, and could represent a form of quantum non-
+locality genuine to networks, i.e. that cannot be mapped back
+to any standard Bell scenario. This conjecture relies on the
+observation that their quantum distribution was based on all
+three sources producing an entangled state (contrary to Fritz’s
+example, where only one source needed to produce entangle-
+ment), and all parties performing an entangled measurement
+on their incoming subsystems (again, Fritz’s example uses
+only separable measurements).
+At this point, the main question is thus whether there exists
+indeed a form of quantum nonlocality genuine to networks,
+and how to formalize this concept. This is precisely the goal
+of the present paper. We ﬁrst propose a formal deﬁnition of
+genuine network nonlocality. Our deﬁnition is operational,
+and considers standard Bell nonlocality as a resource. Corre-
+lations that can provably not be obtained by these resources
+are therefore termed genuine network nonlocal. In turn, we
+highlight several examples of this phenomenon. In particu-
+lar, we present a self-testing result for the bilocality network,
+where the observation of speciﬁc quantum correlation certiﬁes
+(up to local isometries) the form of local measurements (in-
+cluding a joint entangled measurement), and the underlying
+entangled states. This example shows that self-testing can be
+enforced by the network structure, in the sense that the quan-
+tum distribution is non-bilocal but can provably not violate
+any standard Bell inequality. We conclude with a perspective
+on future possible developments of these ideas.
+arXiv:2105.12341v1  [quant-ph]  26 May 2021
+
+=== page 2 ===
+2
+M A
+a|x M B1B2
+b|y M C
+c|z
+ρAB1 ρB2C
+x y z
+a b c
+Figure 1. Bilocality (or entanglement swapping) network.
+II. SETTING
+We focus our discussion on a simple tripartite quantum net-
+work, but our analysis can be straightforwardly extended to
+more general networks. The network we consider consists
+of three parties, Alice, Bob and Charlie, and two indepen-
+dent sources (see Fig. 1). This network corresponds to the
+well-known entanglement swapping experiment [13]. Alice
+and Bob share a bipartite quantum state ρAB1, distributed by
+a common source SAB. Similarly, Bob and Charlie share a
+stateρB2C, distributed by a second sourceSBC .
+Each party receives an input (i.e. a choice of measurement
+setting) and outputs the corresponding measurement outcome.
+We denotex,y andz the inputs of Alice, Bob and Charlie re-
+spectively, anda,b andc their outputs. The resulting statistics
+are given by:
+p(abc|xyz) = Tr
+[(
+MA
+a|x⊗MB1B2
+b|y ⊗MC
+c|z
+)
+(ρAB1⊗ρB2C)
+]
+(1)
+where MA
+a|x denotes the operators of Alice’s measurements
+(i.e. the POVM elements), satisfying MA
+a|x ≥ 0 and∑
+aMA
+a|x = 11 for all x, and similarly for Bob’s and Char-
+lie’s measurements. Note that Bob’s measurement acts on
+both subsystems B1 andB2. Also when computing (1), one
+should carefully associate the Hilbert space of the various sub-
+systems.
+Given speciﬁc quantum correlations, one may now ask
+whether they could be reproduced by a classical model. The
+standard approach in nonlocality consists in asking whether
+the distribution admits a decomposition of the form:
+p(abc|xyz) =
+∫
+dλp(λ)p(a|xλ)p(b|yλ)p(c|zλ) (2)
+whereλ denotes the shared classical variable distributed to all
+parties (Alice, Bob and Charlie) with distributionsp(λ). This
+represents the usual deﬁnition of Bell locality for a tripartite
+system, see e.g. [2].
+At this point it is important to realize that comparing quan-
+tum distributions of the form (1) to classical correlations of
+the form (2) is arguably not appropriate. The key point is that
+the underlying network structure is not the same. Indeed, the
+decomposition in Eq. (2) assumes a common shared variable
+distributed to all parties; hence requiring a common source.
+However, this structure does not match the quantum network
+in Fig. 1.
+This observation motivated the authors of Ref. [7] to pro-
+pose an alternative deﬁnition of locality for this problem, tak-
+ing into account the network structure as in Fig. 1. Indeed,
+one should now consider a local model involving two separate
+sources and enforce their independence. Just like the quantum
+state has a product structure, i.e. ρAB1⊗ρB2C, the classical
+model should feature the same structure. This motivates the
+notion of “bilocal” correlations, which take the form:
+p(abc|xyz) =
+∫
+dλp(λ)
+∫
+dµq(µ)p(a|xλ)p(b|yλµ)p(c|zµ)
+(3)
+whereλ andµ denote the two shared variables. Alice and Bob
+have access to λ (distributed by the source SAB), while Bob
+and Charlie have access to µ (via source SBC ). Importantly,
+λ andµ are distributed according to independent probability
+distributionsp(λ) andq(µ).
+There exist quantum correlations of the form (1) that are
+non bilocal, i.e. do not admit a decomposition of the form of
+Eq. (3). A simple (perhaps almost trivial) example consists
+in setting the state ρAB1 to be a maximally entangled two-
+qubit Bell state, and choosing the measurement of Alice to
+be anti-commuting Pauli operators. Choosing Bob’s measure-
+ment to be some appropriate anticommuting Pauli operators
+on the B1 subsystem, and trivial on B2, the resulting distri-
+bution p(abc|xyz) (as given in (1)) will be non-bilocal, no
+matter what stateρB2C is produced by the second source and
+what measurements Charlie performs. This is because, the
+marginal distributionp(ab|xy) =∑
+cp(abc|xyz) violates the
+standard CHSH Bell inequality. This deceptively simple ex-
+ample can be turned into a more elegant form following the
+construction of Fritz [8] by adding a third independent source
+between Alice and Charlie. This results in a scenario with two
+remarkable features: all inputs can be cleverly removed and
+replaced by outputs, hence resulting in the effect of “quantum
+nonlocality without inputs”, and the obtained construction al-
+lows to easily demonstrate the presence of nonlocality in a
+network containing a loop. Nevertheless, one can still argue
+that this instance of network nonlocality has its origins in a
+standard Bell inequality test; see [10, 11] and below.
+Intuitively, however, quantum theory should allow for con-
+ceptually a very different (and possibly stronger) type of cor-
+relations in networks. This is because quantum theory allows
+not only for entangled states, but also for entangled measure-
+ments. Standard Bell tests exploit the entanglement of states,
+but usually do not involve entangled measurements. In con-
+trast, the use of entangled measurements in networks is very
+natural. The combination of entangled states and entangled
+measurements offers the possibility to create strong correla-
+tions across the whole network.
+An interesting, and well-known, example is that of entan-
+glement swapping. TakeρAB1 andρB2C to be two-qubit Bell
+states. Bob performs a joint measurement on both of his quan-
+tum subsystems, the so-called Bell-state measurement, pro-
+jecting the two subsystems B1 and B2 in the basis of four
+maximally entangled Bell states. This has the remarkable ef-
+fect of remotely preparing the systems of Alice and Charlie
+in an entangled state, even though these systems where ini-
+tially fully independent from each other. By performing judi-
+cious local measurements, Alice and Charlie can then observe
+a Bell inequality violation (conditioned on each given output
+
+=== page 3 ===
+3
+of Bob’s measurement). This is known as “event-ready non-
+locality” [13].
+The question of characterizing this stronger form of quan-
+tum correlations proper to networks is our starting point in this
+work. Clearly one needs to go beyond the standard deﬁnition
+of bilocality (and its generalisation to arbitrary networks), as
+the above simple examples demonstrate. In a sense the ques-
+tion is to identify quantum correlations that truly take advan-
+tage of the network structure, and therefore do not reduce to
+standard Bell inequality tests. In the following, we take a ﬁrst
+step in this direction and deﬁne a notion of genuine network
+nonlocality for quantum systems, which we illustrate with ex-
+amples.
+III. DEFINING GENUINE NETWORK NONLOCALITY
+To characterize genuine network nonlocality, we proceed
+by deﬁning the opposite notion, namely correlations that are
+not genuine to a network, in the sense that they can be traced
+back to standard quantum Bell nonlocality. To do so, we
+ask ourselves how to use the resources of standard quantum
+Bell nonlocality in a network conﬁguration. We take a rather
+resource-theoretic approach to this question, and view stan-
+dard quantum nonlocality as “quantum boxes” that can be dis-
+tributed by each source in the network to various subsets of
+parties (see Fig. 2).
+Let us ﬁrst formalize the notion of a quantum box, which
+naturally follows from the standard scenario of Bell nonlo-
+cality. Consider here two distant parties (say Alice and Bob)
+sharing a quantum stateσ. By performing local quantum mea-
+surements on their subsystems (represented by sets of POVMs
+{Nα|X} and{Nβ|Y}, Alice and Bob can establish correla-
+tions of the form:
+p(α,β|X,Y ) = Tr[(Nα|X⊗Nβ|Y )σ] (4)
+whereX andY denote the inputs, and α andβ the outputs.
+We can view this probability distribution as a quantum box; it
+represents a (possibly nonlocal) box shared by Alice and Bob,
+which is realizable in quantum theory. Each party has access
+locally to one end of the box, i.e. a terminal, where they can
+give an input and then receive an output, see Fig. 2a. Note
+these quantum boxes can be viewed as resources, and recent
+works have developed a resource-theoretic framework based
+on these ideas to characterize and quantify Bell nonlocality
+[14]; see also [15, 16] for previous works along these lines.
+Coming back to the network conﬁguration, we can now
+consider that all sources in the network distribute quantum
+boxes to the parties, as shown in Fig. 2b. Each party there-
+fore receives a number of terminals which can be combined.
+As each terminal takes a classical input and delivers a classi-
+cal output, the most general operation can be represented as
+a “wiring” of the terminals. This represents a classical mea-
+surement.
+We now aim to characterize those correlations that can be
+established by using as resources quantum boxes distributed
+across the network, which are then locally combined via clas-
+sical measurement, i.e. wirings. In the bilocality network (our
+focus here), this amounts to assuming that the ﬁrst source dis-
+tributes one (or more) quantum box(es) to Alice and Bob, and
+similarly for the second source connecting Bob and Charlie.
+Hence, each party now receives a number of terminals (each
+one featuring an input and an output), and can use all of them
+in order to produce an output given the received input, as de-
+picted in Fig. 2c. Upon receiving her inputx, Alice chooses a
+wiring for processing her available terminals, in order to pro-
+duce the ﬁnal output a. For instance, in the ﬁgure, Alice re-
+ceives two terminals and starts by inputtingx in the ﬁrst one;
+then she uses the output of the ﬁrst terminal as an input for the
+second one; the ﬁnal output a is then be chosen as the output
+of the second terminal.
+Notably, these wiring operation can have non-trivial effects
+on nonlocality, in particular when applied to boxes that are
+nonlocal, allowing for instance to increase (or distill) nonlo-
+cality [17, 18]. More generally, wiring operations feature a
+rich structure, in particular when three or more terminals are
+available; see e.g. [19, 20]. For instance, the output of the ﬁrst
+terminal may then be used to decide on the order in which the
+next two terminals will be used. Even more possibilities arise,
+when considering a party that receives terminals from more
+than one source. This is the case for the middle party, Bob,
+in the bilocality network. At this point, it is also worth noting
+that it is in general not possible to contract all quantum boxes
+shared by two parties into a single box. This is because the or-
+der in which the boxes are used on one side might be different
+than the order used on the other side.
+We are now ready to state our main deﬁnition. We intro-
+duce the class of “quantum wirable” correlations in a network
+as those that can be obtained when all the sources distribute
+quantum boxes to the parties, and the parties perform arbitrary
+local wiring operations. Formally, such distributions admit a
+decomposition of the form (here stated for the bilocality net-
+work):
+p(a,b,c|x,y,z ) = (5)
+∑
+λ,µ,⃗k,
+⃗l,⃗l′,⃗ m,
+⃗X,⃗Y, ⃗Z,
+⃗ α,⃗β,⃗ γ
+WA(a,⃗k, ⃗X|x,λ )WB(b,⃗l,⃗l′,⃗Y|y,λ,µ )
+×WC(c,⃗ m,⃗Z|z,µ )p(λ)p(µ)
+×p
+⃗k,⃗l
+Q (⃗ α,⃗β|⃗X,⃗Y,λ )p
+⃗l′,⃗ m
+Q (⃗β′,⃗ γ|⃗Y, ⃗Z,µ )
+where
+WA(a,⃗k, ⃗X|x,λ ) =
+n+1∏
+i=1
+Wi
+A(ki,Xi|[X]i−1, [α]i−1) (6)
+with the notation [k]i = {k0,k 1,...,k i}, X0 = x, α0 =
+λ, kn+1 = 0 and a = Xn+1 describes the successive
+wirings of Alice’s n boxes (similarly for WB and WC),
+and p
+⃗k,⃗l
+Q (⃗ α,⃗β|⃗X,⃗Y,λ ) (and similarly p
+⃗l′,⃗ m
+Q (⃗β′,⃗ γ|⃗Y, ⃗Z,µ ))
+are distributions of multiple quantum boxes with interactions
+ordered by⃗k and⃗l:
+p
+⃗k,⃗l
+Q (⃗ α,⃗β|⃗X,⃗Y,λ ) =
+n∏
+i=1
+pQ(αk−1
+i
+,βl−1
+i
+|Xk−1
+i
+,Yl−1
+i
+). (7)
+Here, k and k−1 (similarly for l, l′ and m) satisfy k−1
+i ∈
+{0,...,n },kk−1
+i
+=i, andlil′
+i = 0 for alli = 1,...,n .
+
+=== page 4 ===
+4
+x
+α1
+α2
+x
+a
+y y
+β1
+β3
+β′
+2
+β′
+4
+y
+b
+z
+γ2
+γ1
+z
+c
+λ µ
+(a)
+(b) (c)
+Figure 2. This ﬁgure explains the notion of quantum-wirable correlations. Quantum resources (states and measurements) are shown in blue,
+forming the quantum boxes, while classical information and processing is shown in black. (a) A bipartite quantum box is a device featuring
+two terminals, that receive inputs and produce outputs. The resulting correlations can be nonlocal, hence the quantum box represents the
+basic resource for standard quantum Bell nonlocality. (b) Quantum boxes distributed in a network: each party may have access to one or
+more terminals, performing classical processing on their inputs and outputs via a wiring. Correlations that can be achieved as such are termed
+“quantum-wirable”. (c) An example of a quantum-wirable correlation in the bilocality network: given the shared variables ( λ and/or µ) and
+their respective input, each party chooses a wiring of their terminals; this includes classical pre- and post-processing of the inputs and outputs,
+and the output of one terminal may be used as input to another. Notably, the order in which the terminals are used may be different for each
+party and may depend on the outputs of previous boxes.
+As argued above, such distribution use as main resource
+the quantum boxes (which are possibly nonlocal). The local
+wiring operations are basically classical. One may thus ar-
+gue that such distributions do not leverage the structure of the
+network to extend the nonlocality, and thus that they can be
+traced back to standard Bell nonlocality.
+In our discussion above, we have already encountered an
+example of quantum non-bilocal correlations that are however
+quantum-wirable. The Fritz example is also clearly quantum-
+wirable; see Appendix A.
+We have also already seen examples of quantum correla-
+tions that are provably not quantum-wirable, i.e. do not admit
+a decomposition of the form (5). This is the case for the entan-
+glement swapping experiment discussed above. Indeed, the
+observation of event-ready nonlocality rules out any quantum-
+wirable model. This is because for any distribution of the
+form of (5), the conditioned marginal distributionp(ac|xyzb)
+is necessarily local, i.e. cannot violate any Bell inequality.
+More generally, the use of a wiring at Bob implies that, for
+every measurement y and outcome b, the resulting quantum
+state held by Alice and Charlie must be separable, even though
+all the quantum boxes in the network may feature entangled
+states. Below we present a more interesting example of gen-
+uine network quantum nonlocality, based on the concept of
+self-testing.
+IV . NETWORK SELF-TESTING
+Self-testing refers to the characterization of quantum sys-
+tems in a black-box scenario [21, 22]. In its standard form,
+self-testing involves a quantum Bell experiment. The obser-
+vation of speciﬁc quantum nonlocal correlations (or maximal
+violation of some Bell inequality) can then be used to pre-
+cisely certify the underlying entangled state and local mea-
+surements, up to local isometries.
+Here we present an instance of self-testing in the bilocality
+network. The interesting feature of this example is that the in-
+volved correlations are non-bilocal, but are local following the
+usual deﬁnition of tripartite Bell locality (see below). Hence,
+this represents an example of genuine network quantum non-
+locality which does not rely on event-ready nonlocality.
+Consider both sources producing a Bell pair, i.e. ρAB1 =
+|φ+⟩⟨φ+| andρB2C =|φ+⟩⟨φ+|. Alice and Charlie perform
+the same local measurements, represented by the Pauli observ-
+ableA0 = C0 = σx+σz√
+2 andA1 = C1 = σx−σz√
+2 . Bob applies
+the Bell state measurement. With these resources the parties
+observe correlationsp(abc|xz) with the following properties:
+∑
+ac
+p(abc|xz) = Tr
+[(
+1A⊗MB1B2
+b ⊗ 1C
+)
+(ρAB1⊗ρB2C)
+]
+= 1
+4,
+(8)
+for allb, whereb can have four different values, and thus can
+be represented as two bits b = (b1,b 2). Let us deﬁne the
+state of Alice and Charlie remotely prepared by Bob’s mea-
+surement:
+ϱb =
+TrB1B2
+[(
+1A⊗MB1B2
+b ⊗ 1C
+)
+(ρAB1⊗ρB2C)
+]
+Tr
+[(
+1A⊗MB1B2
+b ⊗ 1C
+)
+(ρAB1⊗ρB2C)
+] (9)
+The statistics of Alice and Charlie, conditioned on Bob’s out-
+
+=== page 5 ===
+5
+put, are given by:
+Tr[(A0⊗ 1)ϱb] = Tr[(A1⊗ 1)ϱb] = 0, (10)
+Tr[(1⊗C0)ϱb] = Tr[(1⊗C1)ϱb] = 0, (11)
+Tr[(A0⊗C0)ϱb] = Tr[(A1⊗C1)ϱb] = (−1)b1δb1b2, (12)
+Tr[(A0⊗C1)ϱb] = Tr[(A1⊗C0)ϱb] = (−1)b1δb11−b2,
+(13)
+whereδjk is the Kronecker delta. We are now in position to
+state our self-testing result:
+Theorem 1. The correlations in Eqs (8) and (10)-(13) imply
+that (i) the two local measurements of both Alice and Charlie
+are anticommuting, (ii) the measurement performed by Bob is
+the Bell-state measurement, and (iii), all states ϱb (as in Eq.
+(9)) are Bell states, i.e. Bob’s measurement remotely steers
+maximally entangled state for Alice and Charlie.
+We now sketch the proof; the full proof is given in Ap-
+pendix B. First, from Jordan’s lemma, we can bring Alice’s
+and Charlie’s measurement observables to a block-diagonal
+form. A block diagonal unitary transformation can rotate Al-
+ice’s observable to a form whereA0 has in every block Pauli’s
+σz, while all blocks of A1 are rotated to the real plane of the
+Bloch sphere. There exists a unitary making the equivalent
+rotation of Charlie’s measurement observables. This allows
+to reduce the problem to an ensemble of qubit states. The
+correlations given in eqs. (10)-(13) imply that one of the two
+following statements must hold: either the pairs of measure-
+ments of Alice and Bob commute, or they anticommute. The
+ﬁrst possibility is ruled out by using the fact that the measure-
+ment correlations {p(abc|xz)} are non-bilocal. Hence, the
+observables of Alice and Charlie are unitarily equivalent to
+σz⊗ 1 andσx⊗ 1. With this insight (10)-(13) imply that for
+every outputb the stateϱb corresponds to a Bell pair in tensor
+product with some junk state (on which the measurements of
+Alice and Charlie act trivially). By tracing out the uncorre-
+lated degrees of freedom we get a quantum channel mapping
+the steered states ϱb to qubit Bell pairs. Finally, this insight
+together with the argument presented in [23] concludes the
+self-testing of Bob’s measurement.
+As mentioned above, an interesting feature of this self-
+testing result is that it relies on the fact that the distribution
+is not bilocal. Indeed, one can readily check that the quantum
+distribution is Bell local in the usual sense, i.e. it admits a
+decomposition of the form (2). This in stark contrast to previ-
+ous self-testing results in networks [23, 24] (and possibly with
+all known self-testing results) which rely on standard Bell in-
+equality violation.
+Moreover, as the measurement performed by Bob must be
+the Bell-state measurement, remotely preparing maximally
+entangled states ϱb for Alice and Charlie, it is clear that the
+quantum distribution is genuine network nonlocal. But since
+the distribution is Bell local it does not feature event-ready
+nonlocality.
+V . DISCUSSION AND OUTLOOK
+We have deﬁned a notion of genuine network quantum non-
+locality. This represents a stronger form of quantum nonlo-
+cality in networks (compared to the previous notion of non-
+bilocality), which can only be obtained from the judicious
+combination of entangled states and non-classical measure-
+ments. Therefore, the nonlocality of such correlations cannot
+be traced back to standard Bell inequality violations, and rep-
+resents a phenomenon that is proper to the network conﬁgu-
+ration. We presented an instance of this effect based on self-
+testing in the bilocality network. Notably, this can be seen as
+a novel form of self-testing, proper to networks, as it relies
+entirely on non-bilocality, and does not involve the violation
+of a standard Bell inequality.
+Our approach (in particular the deﬁnition in Eq. (5)) can be
+readily generalized to more complex networks. A case of par-
+ticular interest is the triangle network. We conjecture that the
+distribution recently proposed by Renou et al. [12] is genuine
+network nonlocal in the sense that we deﬁne, contrary to the
+distribution of Fritz [8] which is quantum-wirable.
+An interesting question is to identify the necessary quan-
+tum resources for demonstrating genuine network nonlocality.
+From our examples, one may think that the presence of an en-
+tangled measurement is necessary. However, this may not be
+the case in general. Indeed, from the deﬁnition of quantum
+wirable correlations in Eq. (5), we see that genuine network
+nonlocality requires the use of a non-classical measurement,
+i.e. not describable as a wiring. Interestingly there exist quan-
+tum measurement that feature only separable eigenstates, but
+yet are non-classical [25]; see also [26]. This effect is known
+as “quanutm nonlocality without entanglement”, It would be
+interesting to see if the use of such a measurement could lead
+to genuine network nonlocality.
+It is worth pointing out that our approach is completely dif-
+ferent from the one taken in a series of recent works [27–
+30]. The latter address a different question, namely they
+aim at characterizing multipartite quantum states (such as
+GHZ states) and their correlations which cannot be obtained
+from unbounded bipartite resources (quantum or even post-
+quantum) distributed in a triangle network. In contrast, our
+work focuses on quantum correlations that are possible in a
+given network structure, but which cannot be decomposed us-
+ing quantum boxes and local wirings.
+Finally, note that one could consider a natural variation
+of our deﬁnition of quantum-wirable correlations to “no-
+signaling-wirable” correlations. That is, one would demand
+a decomposition as in Eq. (5), but where the shared nonlocal
+boxes would no longer need to admit a quantum realization,
+but only satisfy the no-signaling constraints (so-called non-
+signalling or Popescu-Rohrlich boxes [15, 31]). Note that any
+instance of event-ready quantum nonlocality is then already
+an example of a quantum distribution that is not no-signaling-
+wirable [32]. It would be interesting to see if this is also the
+case for our self-testing example.
+Note added. In a recent pre-print Pozas-Kerstjens et al. [33]
+propose a notion of “full network nonlocality” which is dif-
+ferent and complementary to ours. Full network nonlocality,
+
+=== page 6 ===
+6
+which certiﬁes that all sources in the network produce an en-
+tangled state, does not imply genuine network nonlocality (as
+we deﬁne); indeed the presence of entanglement on all links
+can be enforced via standard Bell tests (e.g. CHSH), which
+results in correlations that are quantum-wirable.
+ACKNOWLEDGMENTS
+This work was supported by the Swiss National Sci-
+ence Foundation (project 2000021 192244/1 and NCCR
+SwissMap).
+[1] J. S. Bell. On the Einstein Podolsky Rosen paradox. Physics
+Physique Fizika , 1:195–200, Nov 1964. doi:10.1103/
+PhysicsPhysiqueFizika.1.195.
+[2] Nicolas Brunner, Daniel Cavalcanti, Stefano Pironio, Vale-
+rio Scarani, and Stephanie Wehner. Bell nonlocality. Rev.
+Mod. Phys. , 86:419–478, Apr 2014. doi:10.1103/
+RevModPhys.86.419.
+[3] Antonio Acín, Nicolas Brunner, Nicolas Gisin, Serge Massar,
+Stefano Pironio, and Valerio Scarani. Device-independent secu-
+rity of quantum cryptography against collective attacks. Phys-
+ical Review Letters , 98(23):230501, 2007. doi:10.1103/
+PhysRevLett.98.230501.
+[4] Stefano Pironio, Antonio Acín, Serge Massar, A Boyer
+de La Giroday, Dzimitry N Matsukevich, Peter Maunz,
+Steven Olmschenk, David Hayes, Le Luo, T Andrew Man-
+ning, et al. Random numbers certiﬁed by Bell’s theo-
+rem. Nature, 464(7291):1021–1024, 2010. doi:10.1038/
+nature09008.
+[5] Roger Colbeck. Quantum And Relativistic Protocols F or Se-
+cure Multi-Party Computation. PhD thesis, University of Cam-
+bridge, 2006. arXiv:0911.3814.
+[6] Armin Tavakoli, Alejandro Pozas-Kerstjens, Ming-Xing Luo,
+and Marc-Olivier Renou. Bell nonlocality in networks, 2021.
+arXiv:2104.10700.
+[7] C. Branciard, N. Gisin, and S. Pironio. Characterizing
+the nonlocal correlations created via entanglement swapping.
+Phys. Rev. Lett. , 104:170401, Apr 2010. doi:10.1103/
+PhysRevLett.104.170401.
+[8] Tobias Fritz. Beyond Bell's theorem: correlation scenarios.
+New Journal of Physics , 14(10):103001, oct 2012. doi:
+10.1088/1367-2630/14/10/103001.
+[9] Cyril Branciard, Denis Rosset, Nicolas Gisin, and Stefano Piro-
+nio. Bilocal versus nonbilocal correlations in entanglement-
+swapping experiments. Physical Review A , 85(3), Mar 2012.
+doi:10.1103/physreva.85.032119.
+[10] Thomas C. Fraser and Elie Wolfe. Causal compatibility in-
+equalities admitting quantum violations in the triangle struc-
+ture. Phys. Rev. A , 98:022113, Aug 2018. doi:10.1103/
+PhysRevA.98.022113.
+[11] Ivan Šupi ´c, Jean-Daniel Bancal, and Nicolas Brunner. Quan-
+tum nonlocality in networks can be demonstrated with an
+arbitrarily small level of independence between the sources.
+Phys. Rev. Lett. , 125:240403, Dec 2020. doi:10.1103/
+PhysRevLett.125.240403.
+[12] Marc-Olivier Renou, Elisa Bäumer, Sadra Boreiri, Nicolas
+Brunner, Nicolas Gisin, and Salman Beigi. Genuine quantum
+nonlocality in the triangle network. Physical Review Letters ,
+123(14), Sep 2019. doi:10.1103/physrevlett.123.
+140401.
+[13] M. ˙Zukowski, A. Zeilinger, M. A. Horne, and A. K. Ek-
+ert. “event-ready-detectors” Bell experiment via entanglement
+swapping. Phys. Rev. Lett. , 71:4287–4290, Dec 1993. doi:
+10.1103/PhysRevLett.71.4287.
+[14] Elie Wolfe, David Schmid, Ana Belén Sainz, Ravi Kunjwal,
+and Robert W. Spekkens. Quantifying Bell: the resource theory
+of nonclassicality of common-cause boxes. Quantum, 4:280,
+June 2020. doi:10.22331/q-2020-06-08-280 .
+[15] Jonathan Barrett, Noah Linden, Serge Massar, Stefano Pironio,
+Sandu Popescu, and David Roberts. Nonlocal correlations as an
+information-theoretic resource. Phys. Rev. A , 71:022101, Feb
+2005. doi:10.1103/PhysRevA.71.022101.
+[16] Jonathan Allcock, Nicolas Brunner, Noah Linden, Sandu
+Popescu, Paul Skrzypczyk, and Tamás Vértesi. Closed sets
+of nonlocal correlations. Phys. Rev. A , 80:062107, Dec 2009.
+doi:10.1103/PhysRevA.80.062107.
+[17] Manuel Forster, Severin Winkler, and Stefan Wolf. Distilling
+nonlocality. Phys. Rev. Lett. , 102:120401, Mar 2009. doi:
+10.1103/PhysRevLett.102.120401.
+[18] Nicolas Brunner and Paul Skrzypczyk. Nonlocality distillation
+and postquantum theories with trivial communication complex-
+ity. Phys. Rev. Lett., 102:160403, Apr 2009. doi:10.1103/
+PhysRevLett.102.160403.
+[19] Anthony J Short and Jonathan Barrett. Strong nonlocality:
+a trade-off between states and measurements. New Jour-
+nal of Physics , 12(3):033034, Mar 2010. doi:10.1088/
+1367-2630/12/3/033034.
+[20] Rodrigo Gallego and Leandro Aolita. Nonlocality free wirings
+and the distinguishability between Bell boxes. Physical Re-
+view A, 95(3), Mar 2017. doi:10.1103/physreva.95.
+032118.
+[21] Dominic Mayers and Andrew Yao. Self testing quantum appa-
+ratus. Quantum Info. Comput., 4:273, 2004.
+[22] Ivan Šupi ´c and Joseph Bowles. Self-testing of quantum sys-
+tems: a review. Quantum, 4:337, Sep 2020. doi:10.22331/
+q-2020-09-30-337 .
+[23] Marc Olivier Renou, J˛ edrzej Kaniewski, and Nicolas Brun-
+ner. Self-testing entangled measurements in quantum networks.
+Phys. Rev. Lett. , 121(25):250507, 2018. doi:10.1103/
+PhysRevLett.121.250507.
+[24] Jean-Daniel Bancal, Nicolas Sangouard, and Pavel Sekatski.
+Noise-resistant device-independent certiﬁcation of Bell state
+measurements. Phys. Rev. Lett., 121:250506, Dec 2018. doi:
+10.1103/PhysRevLett.121.250506.
+[25] Charles H. Bennett, David P. DiVincenzo, Christopher A.
+
+=== page 7 ===
+7
+Fuchs, Tal Mor, Eric Rains, Peter W. Shor, John A. Smolin,
+and William K. Wootters. Quantum nonlocality without en-
+tanglement. Phys. Rev. A , 59:1070–1091, Feb 1999. doi:
+10.1103/PhysRevA.59.1070.
+[26] Tamás Vértesi and Miguel Navascués. Certifying entangled
+measurements in known hilbert spaces. Physical Review A ,
+83(6), Jun 2011. doi:10.1103/physreva.83.062112.
+[27] Miguel Navascués, Elie Wolfe, Denis Rosset, and Alejandro
+Pozas-Kerstjens. Genuine network multipartite entanglement.
+Phys. Rev. Lett. , 125:240505, Dec 2020. doi:10.1103/
+PhysRevLett.125.240505.
+[28] Rui Chao and Ben W. Reichardt. Test to separate quantum
+theory from non-signaling theories, 2017. arXiv:1706.
+02008.
+[29] Peter Bierhorst. Ruling out bipartite nonsignaling nonlo-
+cal models for tripartite correlations, 2020. arXiv:2012.
+11132.
+[30] Xavier Coiteux-Roy, Elie Wolfe, and Marc-Olivier Renou. No
+bipartite-nonlocal causal theory can explain nature’s correla-
+tions, 2021. arXiv:2105.09381.
+[31] Sandu Popescu and Daniel Rohrlich. Quantum nonlocality as
+an axiom. F oundations of Physics, 24(3):379–385, 1994. doi:
+10.1007/BF02058098.
+[32] Similarly to the quantum case discussed in the main text, the
+use of a wiring by Bob implies that the remotely prepared cor-
+relations for Alice and Charlie must be local; see e.g. [19].
+[33] Alejandro Pozas-Kerstjens, Nicolas Gisin, and Armin Tavakoli.
+Full network nonlocality, 2021. arXiv:2105.09325.
+[34] J˛ edrzej Kaniewski. Analytic and nearly optimal self-testing
+bounds for the Clauser-Horne-Shimony-Holt and Mermin in-
+equalities. Phys. Rev. Lett. , 117:070402, Aug 2016. doi:
+10.1103/PhysRevLett.117.070402.
+[35] Arthur Fine. Hidden variables, joint probability, and the Bell
+inequalities. Physical Review Letters , 48(5):291, 1982. doi:
+10.1103/PhysRevLett.48.291.
+A
+B C
+SAB SAC
+SBC
+y z
+y b zc
+Figure 3. The underlying quantum network of Fritz’s distribution.
+The distribution is network nonlocal but quantum-wirable.
+Appendix A: The Fritz distribution is quantum-wirable
+In [8], Theorem 2.16, Fritz introduced a nonlocal distribu-
+tion in the triangle network based on CHSH violation. In the
+triangle network, as shown in Fig. 3, two sources SAB and
+SAC send fully correlated classical bits, whileSBC sends the
+maximally entangled states. Alice outputs the two bits that she
+receives, denoted as (y,z )≡ A. Bob (Charlie) performs the
+optimal CHSH measurements, treating y from SAB (z from
+SAC) as the input setting, and outputs two bits (y,b )≡ B
+((z,c )≡ C respectively). The Bell nonlocality of p(bc|yz)
+implies the network nonlocality ofp(ABC).
+However, we can clearly see that this distribution is
+quantum-wirable, since all measurements are separable and
+the output are classical processing of output of quantum
+boxes.
+Appendix B: Proof of Theorem 1
+Jordan’s lemma states that for any two dichotomic observ-
+ables there exist a unitary which transforms both of them to a
+block diagonal form in the same basis, where the blocks are
+of size 2× 2 or 1× 1. In the same way like in [34], we em-
+bed every 1× 1 into a Hilbert space of larger dimension. This
+operation does not affect the correlation probabilities, and it
+simpliﬁes our analysis, as we work with a Jordan decompo-
+sition in which all blocks are of the size 2× 2. Henceforth,
+through a simple basis change, we can bring Alice’s and Char-
+lie’s measurement observables to a block-diagonal form
+VAA0V†
+A =
+⨁
+α
+σα
+z, (B1)
+VAA1V†
+A =
+⨁
+α
+(cosθασα
+z + sinθασα
+x ), (B2)
+VCC0V†
+C =
+⨁
+γ
+σγ
+z, (B3)
+VCC1V†
+C =
+⨁
+γ
+(cosφγσγ
+z + sinφγσγ
+x ), (B4)
+
+=== page 8 ===
+8
+whereθα,φγ∈ [0, 2π) for all α andγ. In turn, this implies
+that we can assume that
+Vϱb1b2V† =
+⨁
+α,γ
+pα,γ
+b1b2
+ϱα,γ
+b1b2
+, (B5)
+whereV =VA⊗VC, without loss of generality.
+The correlations betweenA0 andC0 imply
+Tr[(A0⊗C0)ϱ00] =
+∑
+α,γ
+pα,γ
+00 Tr[(σα
+z ⊗σγ
+z )ϱα,γ
+00 ] (B6)
+= 1 (B7)
+Given that ∑
+α,γpα,γ
+00 = 1 the last equation implies
+Tr[(σα
+z ⊗σγ
+z )ϱα,γ
+0 ] = 1 for all α and γ such that p00 ⁄= 0
+(components of ϱ00 with p00 = 0 are not relevant because
+they do not contribute to the observed statistics). This condi-
+tion imposes the following structure of blocks on the diagonal
+ofVϱ 00V†:
+ϱα,γ
+00 =
+
+
+qα,γ
+00 0 0 rα,γ
+00
+0 0 0 0
+0 0 0 0
+rα,γ
+00
+∗ 0 0 1 −qα,γ
+00
+
+. (B8)
+Given this form of ϱ00 and the fact that Tr [σα
+x ⊗σγ
+zρα,γ
+00 ] =
+Tr[σα
+z ⊗σγ
+xρα,γ
+00 ] = 0 for allα andγ withp00⁄= 0, the corre-
+lations betweenA1 andC1 imply
+Tr[(A1⊗C1)ϱ00] =
+=
+∑
+α,γ
+pα,γ
+00 Tr
+[(
+(cosθασα
+z + sinθασα
+x )⊗
+⊗ (cosφγσγ
+z + sinφγσγ
+x )
+)
+ϱα,γ
+00
+]
+(B9)
+=
+∑
+α,γ
+pα,γ
+00 [cosθα cosφγ + sinθα sinφγ2Re(rα,γ
+00 )]
+= 1. (B10)
+The positivity of the blocks imposes |rα,γ
+00 |2 ≤ qα,γ
+00 (1−
+qα,γ
+00 ), which further implies |rα,γ
+00 | ≤ 1/2 and therefore
+2|Re(rα,γ
+00 )|≤ 1. Hence, the maximal value of the expres-
+sion cosθα cosφγ + sinθα sinφγ2Re(rα,γ
+00 ) for all α and γ
+such thatp00⁄= 0 is equal to 1. The last equation thus implies
+that for everyα andγ withp00⁄= 0 this expression must take
+value 1 since∑
+α,γpα,γ
+00 = 1 . For every α and γ such that
+pα,γ
+00 ⁄= 0, the equation
+cosθα cosφγ + sinθα sinφγ2Re(rα,γ
+00 ) = 1 (B11)
+admits two groups of solutions :
+1. 2Re(rα,γ
+00 ) = 1 andθα = φγ⁄= π or 2Re(rα,γ
+00 ) =−1
+andθα = 2π−φγ⁄=π;
+2. θα =φγ =π and unrestricted value ofrα,γ
+00 .
+Observing the correlations betweenAi andCj for Bob’s out-
+comeb = 11 we come to similar conclusions, i.e, two groups
+of solutions exist which satisfy all reference correlations for
+allα andγ such thatpα,γ
+11 ⁄= 0:
+1. 2Re(rα,γ
+11 ) =−1 andθα =φγ⁄=lπ or 2Re(rα,γ
+11 ) = 1
+andθα = 2π−φγ⁄=π ;
+2. θα =φγ =π and unrestricted value ofrα,γ
+11 .
+Observe now that the unitaryU =⊕γUγ, whereUγ is
+Uγ =
+[
+cos(φγ
+2 ) sin( φγ
+2 )
+− sin(φγ
+2 ) cos( φγ
+2 )
+]
+, (B12)
+induces the following map ˜C0 = UVCC1V†
+CU† = ⨁
+γσγ
+z
+and ˜C1 = UVCC0V†
+CU† = ⨁
+γ(cos(φγ)σγ
+z − sin(φγ)σγ
+x ).
+With this local change of Charlie’s basis the correlations for
+Bob’s outcomeb = 01 are
+Tr[A0⊗ ˜C0 ˜ϱ01] = 1
+Tr[A1⊗ ˜C1 ˜ϱ01] = 1
+Tr[A0⊗ ˜C1 ˜ϱ01] = 0
+Tr[A1⊗ ˜C0 ˜ϱ01] = 0 (B13)
+where ˜ϱ01 = ( 1⊗U)Vϱ 01V†(1⊗U†). The ﬁrst equation
+(B13) implies
+˜ϱα,γ
+01 =
+
+
+˜qα,γ
+01 0 0 ˜ rα,γ
+01
+0 0 0 0
+0 0 0 0
+˜rα,γ∗
+01 0 0 1 − ˜qα,γ
+01
+
+, (B14)
+where ˜ϱα,γ
+01 = ( 1⊗U)Vϱα,γ
+01 V†(1⊗U†). Writing explic-
+itly all the correlations, analogously to the previous cases, we
+again obtain two groups of solutions for allα andγ such that
+pα,γ
+01 ⁄= 0:
+1. 2Re(˜rα,γ
+01 ) = 1 andθα = 2π−φγ⁄=π or 2Re(˜rα,γ
+01 ) =
+−1 andθα =φγ⁄=π;
+2. θα =φγ =π and unrestricted value of ˜rα,γ
+01 .
+Equivalently, for Bob’s outputb = 10 we deﬁne ˜ϱ10 = (1⊗
+U)Vϱ 10V†(1⊗U†) and obtain two groups of solutions for
+allα andγ such thatpα,γ
+10 ⁄= 0:
+1. 2Re(˜rα,γ
+10 ) = 1 andθα = φγ⁄= π or 2Re(˜rα,γ
+10 ) =−1
+andθα = 2π−φγ⁄=π;
+2. θα =φγ =π and unrestricted value of ˜rα,γ
+10 .
+Let us assume the second case solution holds for all outputs
+b, i.e. for all α, γ and b such that pα,γ
+b ⁄= 0 . This implies
+cosθα = cos φγ =±1 for all α and γ such that pα,γ
+b ⁄= 0
+for either of b = 00, 11, 01, 10. In this case measurement
+observablesA0 andA1 are commuting on the support of all
+statesϱb, as well asC0 andC1.
+Suppose Alice and Charlie both perform commuting mea-
+surements. The probability distribution p(a,b,c|x,z ) is then
+such that one can write a parent distributionp(a0,a 1,b,c 0,c 1)
+without inputs, where ax denotes the output a for the setting
+x, and similarly for cz [35]. The distribution p(a,b,c|x,z )
+can then be obtained as a marginal of the parent distribution,
+
+=== page 9 ===
+9
+e.g. by selecting the desired outcome ax as a function of the
+inputx.
+It has been proven by Branciard et al. [9], that one can-
+not generate a non-bilocal distribution in this scenario if Bob
+has no inputs. We present the argument here. Take an arbi-
+trary distributionp(a,b,c ). Due to the bilocality assumption,
+it can be decomposed asp(a,b,c ) =p(a)p(c)p(b|a,c ), where
+we used that p(c|a) = p(c). Now consider that the source
+between Alice and Bob samplesλ from Alice’s marginal dis-
+tributionp(a) and Alice outputsa =λ. Similarly, the source
+between Bob and Charlie samples µ from Charlie’s marginal
+distributionp(c) and Charlie outputs c = µ. Then upon re-
+ceiving λ and µ, Bob can produce an output according to
+p(b|a = λ,c = µ), hence reproducing the arbitrary distri-
+bution p(a,b,c ). Therefore, any local distribution admits a
+bilocal model in absence of inputs for Bob.
+Thus we conclude that if Alice and Charlie’s measurements
+commute, then the resulting statistics admits a bilocal model,
+and can therefore not violate any bilocality inequality. Since
+the correlations we consider maximally violate the bilocality
+inequality from [7] the possibility that both Alice and Charlie
+perform compatible measurements must be discarded.
+Therefore, there must be α and γ such that rα,γ
+b = ±1
+(or ˜rα,γ
+b = ±1). In that case the block ϱα,γ
+b is maximally
+entangled, and thus the full stateϱb is entangled.
+We denote the set of values of α such that there is γ such
+that cos(θα) cos(φγ) = 1 withA′. Similarly deﬁne the set of
+values ofγ such that there isα such that cos(θα) cos(φγ) = 1
+withG′. The sets of all other values of α and γ is de-
+noted withA′′ andG′′, respectively. Without loss of gener-
+ality assume there is pα,γ
+00 ⁄= 0 for α ∈ A′′ and γ ∈ G′′
+such that cos(θα) cos(φγ) ⁄= 1 . There are then two possi-
+bilities, namely θα = φγ ⁄= π implying 2rα,γ
+00 = 1 and
+θα = 2π−φγ ⁄= π implying 2rα,γ
+00 = −1. For the time
+being, we chose the ﬁrst one, and remember that it might as
+well have been the other one, implying that ϱαγ
+00 = Φ−. We
+deal with this other possibility later.
+We thus have 2Re(rα,γ
+00 ) = 1 , which implies also qα,γ
+00 =
+1/2. Hence,
+ϱαγ
+00 = Φ+, (B15)
+for α∈A ′′ and γ∈G ′′. At this stage, we also notice that
+eq. (B10) can only hold if α∈A ′ andγ∈G ′′ orα∈A ′′
+andγ∈G′ impliespα,γ
+00 = 0. Furthermore when α∈A′ and
+γ∈G′,θα⁄=φγ only ifpα,γ
+00 = 0.
+Similarly we see that the correlations between A0 andC0,
+and A1 and C1 allow to conclude that the state ϱ11 has the
+following formϱ11 =⊕pαγ
+11ϱαγ
+11 where for α∈A′′ andγ∈
+G′′
+ϱαγ
+11 = Ψ−. (B16)
+For all the cases when θα = 2π−φγ we have ϱαγ
+11 = Ψ +.
+The analysis of the correlations of the states ϱ01 andϱ10 can
+be done in an equivalent way. For α∈A ′′ andγ∈G ′′ we
+have
+˜ϱα,γ
+01 = Φ−. (B17)
+and ifθα = 2π−φγ then ˜ϱα,γ
+01 = Φ+. Forα∈A′ andγ∈G′′
+orα∈A′ andγ∈G ′′ it holds pα,γ
+01 = 0. By repeating the
+same procedure for the correlations on ϱ10 we obtain that for
+α∈A′′ andγ∈G′′ we have
+˜ϱα,γ
+10 = Ψ+. (B18)
+or if θα = 2π−φγ then ˜ϱα,γ
+10 = Ψ−, while for α∈A′ and
+γ∈G ′′ orα∈A′ andγ∈G ′′ it must be pα,γ
+10 = 0. Let us
+now observe that
+TrB1B2[ϱAB1⊗ϱB2C] =
+∑
+b
+p(b)ϱb. (B19)
+On the left hands side we have the tensor product stateϱA⊗ϱC,
+whereϱA = TrB1
+[
+ϱAB1
+]
+andϱC = TrB2
+[
+ϱB2C]
+. On the right
+hand side we have the state of the form
+⨁
+α∈A′,γ∈G′
+p′
+α,γϱ′
+α,γ
+⨁
+α∈A′′,γ′∈G′′
+p′′
+α,γϱ′′
+α,γ (B20)
+which has a tensor product structure only if p′
+α,γ = 0 for all
+α∈A′ andγ∈G′ orp′′
+α,γ = 0 for allα∈A′′ andγ∈G′′.
+Given that the second case implies that Alice’s and Charlie’s
+measurements are compatible on the support of ϱA and ϱC,
+respectively, for the reasons already explained this cannot be
+the case. A similar argument impedes having θα⁄= φγ when
+α∈A′′ andγ∈G′′, implying that for allα∈A′′ andγ∈G′′
+it must hold θα = φγ ≡ θ. This excludes the possibility
+θα = 2π−φγ, so we have to abandone this possibility. Hence,
+we conclude that Alice’s and Charlie’s measurements on the
+support ofϱA andϱC respectively have the following form:
+VAA1V†
+A =
+⨁
+α
+(cos(θ)σα
+z + sin(θ)σα
+x ) (B21)
+VCC1V†
+C =
+⨁
+γ
+(cos(θ)σγ
+z + sin(θ)σγ
+x ) (B22)
+Now we can return to the measurement statistics
+Tr[A0⊗C1ϱ0] = 0. This implies
+0 = cosθ
+∑
+α,γ
+p′′
+α,γ = cosθ, (B23)
+implying
+VAA1V†
+A =
+⨁
+α
+σα
+x (B24)
+=σx⊗ 1
+VCC1V†
+C =
+⨁
+γ
+σγ
+x (B25)
+=σx⊗ 1
+This implies that on the support of ϱA and ϱC Alice’s and
+Charlie’s measurements, respectively, anticommute. The cor-
+responding Hilbert spaces HA andHC decompose: HA =
+HA′
+⊗HA′′
+andHC =HC′
+⊗HC′′
+, whereHA′
+andHC′
+are
+qubit Hilbert spaces. Finally we notice that since φγ =π for
+allγ the unitaryU simply decomposes asU = ˜U⊗ 1, where
+˜U = 1√
+2
+[
+1 1
+−1 1
+]
+. (B26)
+
+=== page 10 ===
+10
+Furthermore the states have the following form:
+Vϱ 00V† =
+⨁
+α,γ
+Φα,γ
++ = Φ+⊗σ00, (B27)
+Vϱ 11V† =
+⨁
+α,γ
+Ψα,γ
+− = Ψ−⊗σ11, (B28)
+Vϱ 01V† = (1⊗U†)
+⨁
+α,γ
+Φα,γ
+− (1⊗U) (B29)
+= (1⊗U†)Φ−⊗σ01(1⊗U), (B30)
+Vϱ 10V† = (1⊗U†)
+⨁
+α,γ
+Ψα,γ
++ (1⊗U) (B31)
+= (1⊗U†)Ψ+⊗σ10(1⊗U), (B32)
+where σjk are junk states of additional degrees of freedom.
+Let us now deﬁne the CPTP map ΛA :HA −→H A′
+such
+that ΛA(ρ) = TrA′′
+[
+VAρV†
+A
+]
+. Analogously we can deﬁne
+ΛA :HC−→HC′
+such that ΛC(ρ) = TrC′′
+[
+VCρV†
+C
+]
+. With
+these CPTP maps we have:
+ΛA⊗ ΛC(ϱ00) = Φ+, (B33)
+ΛA⊗ ΛC(ϱ11) = Ψ−, (B34)
+ΛA⊗ ΛC(ϱ01) = (1⊗ ˜U†)Φ−(1⊗ ˜U), (B35)
+ΛA⊗ ΛC(ϱ10) = (1⊗ ˜U†)Ψ+(1⊗ ˜U), (B36)
+These equations can be phrased as Step 1 in the proof of self-
+testing theorem of the Bell state measurement in [23]. Since
+Step 2 which completes the proof depends completely on Step
+1, we can use exactly the same methods to show that Bob’s
+measurement can be self-tested to be exactly the Bell state
+measurement.

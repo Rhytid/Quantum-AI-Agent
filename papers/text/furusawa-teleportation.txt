@@ -1,0 +1,1282 @@
+=== page 1 ===
+Physics Reports 443 (2007) 97 – 119
+www.elsevier.com/locate/physrep
+Quantum teleportation for continuous variables and related
+quantum information processing
+Akira Furusawaa,∗, Nobuyuki Takeib
+a Department of Applied Physics, School of Engineering, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-8656, Japan
+bERATO, Japan Science and Technology Agency, Japan
+Accepted 8 March 2007
+Available online 15 March 2007
+editor: J. Eichler
+Abstract
+Quantum teleportation is one of the most important subjects in quantum information science. This is because quantum teleportation
+can be regarded as not only quantum information transfer but also a building block for universal quantum information processing.
+Furthermore, deterministic quantum information processing is very important for efﬁcient processing and it can be realized with
+continuous-variable quantum information processing. In this review, quantum teleportation for continuous variables and related
+quantum information processing are reviewed from these points of view.
+© 2007 Elsevier B.V . All rights reserved.
+PACS: 03.67.Hk; 03.67.Lx; 03.67.Mn
+Contents
+1. Basics of continuous-variable quantum information and quantum optics ....................................................... 98
+2. CV quantum teleportation .............................................................................................. 100
+2.1. Theoretical background of CV quantum teleportation .................................................................. 100
+2.2. CV quantum teleportation experiments .............................................................................. 101
+3. Multipartite quantum entanglement and its application to multiparty quantum teleportation ....................................... 104
+3.1. Sufﬁcient conditions for the existence of multipartite quantum entanglement ............................................... 104
+3.2. Creation of the GHZ type CV tripartite quantum entanglement and realization of a quantum teleportation network ............... 105
+3.3. Quantum telecloning ............................................................................................. 109
+4. Universal CV quantum information processing ............................................................................ 114
+5. Future prospects ...................................................................................................... 118
+Acknowledgements ....................................................................................................... 118
+References .............................................................................................................. 118
+∗ Corresponding author.
+E-mail address: akiraf@ap.t.u-tokyo.ac.jp (A. Furusawa)
+URL: http://www.alice.t.u-tokyo.ac.jp/ (A. Furusawa).
+0370-1573/$ - see front matter © 2007 Elsevier B.V . All rights reserved.
+doi:10.1016/j.physrep.2007.03.001
+
+=== page 2 ===
+98 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+1. Basics of continuous-variable quantum information and quantum optics
+Before explaining the details of quantum teleportation for continuous variables, we will brieﬂy review the basics of
+continuous-variable (CV) quantum information and the related quantum optics.
+There are two types of unit quantum states for quantum information. One is a quantum bit |/afii9852(2)⟩(qubit), which
+is spanned by two orthogonal bases |0⟩and |1⟩and has the form of |/afii9852(2)⟩= c0|0⟩+ c1|1⟩= ∑ 1
+n=0 cn|n⟩(⟨i|j⟩=
+/afii9829ij (i, j = 0, 1), |c0|2 +| c1|2 = 1). Here, the information is contained in c0 and c1. The other is a general quantum
+state |/afii9852⟩, which is spanned by continuous bases |x⟩(x: a real number) and has the form of |/afii9852⟩=
+∫∞
+−∞ dx/afii9852(x)|x⟩
+(⟨x|x′⟩=/afii9829(x − x′), /afii9852(x) =⟨x|/afii9852⟩). This is called CV quantum information. In this form, the information is contained
+in a wave function /afii9852(x). Moreover,|/afii9852⟩can be expanded by discrete bases|n⟩(n = 0, 1, 2,... ) like |/afii9852⟩=∑ ∞
+n=0 cn|n⟩
+and then the information is contained in cn. In this sense, a qubit is included in CV . We concentrate on CV quantum
+information processing in this review.
+We use quantum optics for the realization of CV quantum information processing. In quantum optics, an optical ﬁeld
+is quantized with annihilation and creation operatorsˆa and ˆa†, which are decomposed into quadrature-phase amplitude
+operators ˆx and ˆp in the form of ˆa =ˆx + i ˆp and ˆa† =ˆx − i ˆp with photon-number unit ¯h = 1/2. From the commutation
+relation of ˆa and ˆa†, i.e.,[ˆa, ˆa†]= 1, we can get[ˆx, ˆp]= i/2 and it is the same commutation relationship of position and
+momentum which are canonically conjugate variables. Thus we can treat the quadrature-phase amplitude operators ˆx
+and ˆp as position and momentum.
+For CV quantum information processing, quantum entanglement is one of the most important ingredients. With
+quantum optics, we can easily create it with squeezed states of light[1,2]. Fig. 1 shows one of the examples of creating
+quantum entanglement with squeezed vacua, and the operator description is shown in Fig. 2. Note that the same state
+can be directly created with so-called type-II phase matching of a second order nonlinear crystal [2].
+The output state |EPR ∗⟩AB of the beam splitter is
+|EPR ∗⟩AB = ˆBHBS ˆSA(−r) ˆSB(r)|0⟩A ⊗| 0⟩B
+= exp[r( ˆa†
+A ˆa†
+B −ˆaA ˆaB)]|0⟩A ⊗| 0⟩B, (1)
+where a half-beam-splitter operator ˆBHBS satisﬁes the following relation:
+ˆB†
+HBS
+(ˆaA
+ˆaB
+)
+ˆBHBS = 1√
+2
+(11
+1 −1
+)( ˆaA
+ˆaB
+)
+, (2)
+and the deﬁnition of a squeezing operator is ˆS(r) = exp[ r
+2 (ˆa2 −ˆa†2)] and r is a squeezing parameter.
+Eq. (1) can be simpliﬁed as follows [3]:
+|EPR ∗⟩AB =
+√
+1 − q2
+∞∑
+n=0
+qn|n⟩A ⊗| n⟩B, (3)
+where q =tanh r. From this form, it is obvious that modes A and B are entangled whenq> 0. Moreover, whenr →∞
+so q → 1, the state approaches the Einstein–Podolsky–Rosen (EPR) state, which is deﬁned as a simultaneous eigenstate
+of two commuting operators ˆxA −ˆxB and ˆpA +ˆpB [4]. Note that the eigen values are xA − xB = 0 and pA + pB = 0
+in the present case. The EPR state |EPR⟩AB is represented with continuous bases |x⟩or |p⟩as
+|EPR⟩AB = c
+∫ ∞
+−∞
+dx|x⟩A ⊗| x⟩B
+= c
+∫ ∞
+−∞
+dp|p⟩A ⊗|− p⟩B. (4)
+This type of EPR correlation is experimentally conﬁrmed as shown in Fig. 3 [5]. The EPR beams are created with the
+scheme of Fig. 1. It is clear from the ﬁgure that xA and xB are correlated and pA and pB are anti-correlated. It follows
+that the created state is an approximate EPR state.
+
+=== page 3 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 99
+A
+B
+x
+p
+Fig. 1. Creation of quantum entanglement with squeezed vacua and a half beam splitter. Ellipses denote squeezed vacua.
+Fig. 2. Operator description of Fig. 1. |0⟩denotes an initial vacuum and ˆS(r) denotes a squeezing operator.
+ -4
+ -3
+ -2
+ -1
+0
+1
+2
+3
+4
+0  1  2  3  4  5  6  7  8  9 10
+time (μsec)
+ -4
+ -3
+ -2
+ -1
+0
+1
+2
+3
+4
+0  1  2  3  4  5  6  7  8  9 10
+xp
+A
+A
+B
+B
+time (µsec)
+Fig. 3. Time domain EPR correlation created with two squeezed vacua (squeezing level is ∼− 4 dB) and a half beam splitter [5]. In (a), A and B
+denote xA and xB, and in (b), A and B denote pA and pB, respectively.
+Sufﬁcient criteria for the existence of bipartite quantum entanglement between modes A and B are proposed. One
+of the most convenient criteria for experimentalists is following [6,7].
+/afii9797A,B ≡⟨ [/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB)]2⟩< 1. (5)
+
+=== page 4 ===
+100 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Of course, the left-hand side of Eq. (5) is zero for the ideal EPR state. With this criterion, we can check existence of
+entanglement between modes A and B in the state |EPR ∗⟩AB of Eq. (3). When q> 0, the criterion is satisﬁed and
+there is entanglement between modes A and B.
+2. CV quantum teleportation
+2.1. Theoretical background of CV quantum teleportation
+Quantum teleportation for qubit systems was originally proposed by Bennett et al., in 1993 [8]. Vaidman extended
+the concept to general quantum states, i.e., continuous variables[9]. Braunstein and Kimble proposed the experimental
+scheme with squeezed states [10]. Moreover, the scheme was extended to atomic systems [11–13]. We will brieﬂy
+introduce the Braunstein–Kimble scheme here [14].
+Fig. 4 shows the Braunstein–Kimble scheme of CV quantum teleportation. First Alice and Bob share the entangled
+state |EPR ∗⟩AB created with two squeezed vacua. Then Alice makes joint measurement between modes V and A
+and gets the values of x− and p+, where mode V is an input for teleportation, mode A is one of the EPR beams,
+ˆx− =ˆxV −ˆxA, and ˆp+ =ˆpV +ˆpA. The simultaneous measurement of x− and p+ corresponds to the projection onto
+a simultaneous eigenstate of ˆx− and ˆp+ [14]:
+|x−,p +⟩= 1
+/afii9843
+∞∑
+n=0
+ˆDV(x− + ip+)|n⟩V ⊗| n⟩A, (6)
+where ˆDV(x−+ip+) is a displacement operator in phase space and the deﬁnition isˆDV(x−+ip+)=exp[2i(p+ ˆx−x− ˆp)].
+Before the joint measurement, the overall state is |/afii9852in⟩⊗| EPR ∗⟩AB. Just after the measurement, the overall state
+becomes an inner product of ⟨x−,p +| and |/afii9852in⟩⊗| EPR⟩AB, which is
+|/afii9820(x−,p +)⟩B =
+√
+1 − q2
+/afii9843
+∞∑
+n=0
+qn|n⟩⟨n| ˆD(−x− − ip+)|/afii9852in⟩B. (7)
+When q → 1, ∑ ∞
+n=0 qn|n⟩⟨n| approaches identity ˆI. In this case, the state at Bob|/afii9820(x−,p +)⟩B becomes the displaced
+input state by (−x− − ip+) in phase space.
+Alice sends the information of x− and p+ to Bob and he displaces his state by (x− + ip+) in phase space. When
+q → 1, the state at Bob becomes the input state |/afii9852in⟩. Of course, we cannot get q → 1 because we cannot get inﬁnite
+amount of squeezing. So, in the real experiment, the state at Bob is an approximate state to the input.
+Evaluation of the performance of teleportation is conducted with ﬁdelity F. For pure-state inputs, the ﬁdelity is
+deﬁned as F =⟨/afii9852in|ˆ/afii9845out|/afii9852in⟩, where |/afii9852in⟩is a state vector of an input and ˆ/afii9845out is a density operator of the output. The
+classical limit for a coherent state input isFcoh = 1/2 [15,16]. So experimentalists try to get a better value of the ﬁdelity
+than the classical limit to claim success of teleportation. Another benchmark of the performance of teleportation is
+the ﬁdelity of 2/3 for a coherent state input. Fcoh = 2/3 is referred to as the no cloning limit , because surpassing this
+limit warrants that the teleported state is the best remaining copy of the input state[17]. Moreover, a teleporter surpassing
+Fig. 4. Braunstein–Kimble scheme of CV quantum teleportation.
+
+=== page 5 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 101
+Fcoh = 2/3 enables the transfer of nonclassicality in an input state, where the nonclassicality means a negative part of
+Wigner function for a quantum state like the Schrödinger cat state|/afii9852cat⟩∝| /afii9825⟩−|− /afii9825⟩and a single photon state [18].
+Note that the ﬁdelity F is an input-state dependent measure and we always have to take account of the input state[19].
+For convenience of later use, we introduce the Heisenberg picture of CV quantum teleportation. First of all, Alice
+and Bob share the EPR beams A and B which are created with the scheme shown in Fig. 1. Squeezed vacua (ˆa1, ˆa2)
+are expressed as
+ˆa1 = er ˆx(0)
+1 + ie−r ˆp(0)
+1 ,
+ˆa2 = e−r ˆx(0)
+2 + ier ˆp(0)
+2 , (8)
+where ˆx(0)
+1 , ˆp(0)
+1 , ˆx(0)
+2 , and ˆp(0)
+2 are quadrature-phase amplitudes of initial vacuum states, ⟨(/afii9797ˆx(0)
+1 )2⟩=⟨(/afii9797ˆp(0)
+1 )2⟩=
+⟨(/afii9797ˆx(0)
+2 )2⟩=⟨(/afii9797ˆp(0)
+2 )2⟩=1/4, and r is a squeezing parameter. By combining these two modes with a half beam splitter,
+the two output beams become the EPR beams. Output modes (ˆaA, ˆaB) from the half beam splitter are expressed as
+ˆaA = 1√
+2
+(ˆa1 +ˆa2),
+ˆaB = 1√
+2
+(ˆa1 −ˆa2). (9)
+Thus the output modes (ˆaA =ˆxA + i ˆpA, ˆaB =ˆxB + i ˆpB) show the following correlation:
+ˆxA −ˆxB =
+√
+2e−r ˆx(0)
+2 ,
+ˆpA +ˆpB =
+√
+2e−r ˆp(0)
+1 . (10)
+It is obvious that modes A and B satisfy Eq. (5) and they are entangled when r> 0.
+After combining an input and mode A with a half beam splitter, Alice measures ˆx− = (ˆxin −ˆxA)/
+√
+2 and ˆp+ =
+( ˆpin +ˆpA)/
+√
+2 as shown in Fig. 4. Bob’s mode B before the measurement is ˆxB =ˆxin − (ˆxA −ˆxB) −
+√
+2ˆx− and
+ˆpB=ˆpin+( ˆpA+ˆpB)−
+√
+2 ˆp+. After the Alice’s measurement, operatorsˆx− and ˆp+collapse and reduce to certain values.
+Receiving her measurement results through classical channels, Bob displaces his mode asˆxB →ˆxout =ˆxB +
+√
+2gx x−
+and ˆpB →ˆpout =ˆpB +
+√
+2gpp+. Here gx and gp are information gains of classical channels from Alice to Bob and
+they are usually gx = gp = 1. Thus with Eq. (10) the teleported output mode becomes:
+ˆxout =ˆxin − (ˆxA −ˆxB) =ˆxin −
+√
+2e−r ˆx(0)
+2 ,
+ˆpout =ˆpin + ( ˆpA +ˆpB) =ˆpin −
+√
+2e−r ˆp(0)
+1 . (11)
+For a coherent state input, the teleportation ﬁdelity Fcoh is calculated as [20]:
+Fcoh = 2√
+(1 + 4⟨(/afii9797ˆxout)2⟩)(1 + 4⟨(/afii9797ˆpout)2⟩)
+= 1
+1 + e−2r . (12)
+In the ideal case (r →∞ ), the teleportation is perfect (Fcoh → 1). For the success of teleportation of a coherent state,
+it is sufﬁcient to have r> 0 which gives Fcoh > 1/2. In other words, the success of teleportation means the existence
+of quantum entanglement between modes A and B.
+2.2. CV quantum teleportation experiments
+The Braunstein–Kimble scheme of CV quantum teleportation was experimentally realized by Furusawa et al. at
+Caltech in 1998 and the experimental setup is shown inFig. 5 [20]. The input states were coherent states and the ﬁdelity
+was Fcoh = 0.58 ± 0.02 which is slightly better than the classical limit ofFcoh = 1/2. After the ﬁrst realization, several
+
+=== page 6 ===
+102 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Fig. 5. Experimental realization of CV quantum teleportation [20]. Victor is a veriﬁer who creates an input coherent state with a modulator and
+checks the output states with a homodyne detector. EPR beams are created with two squeezed vacua from an optical parametric oscillator (OPO) and
+a half beam splitter. Alice makes measurements of ˆx− and ˆp+ with homodyne detectors whose local oscillator (LO) are set to x and p quadratures,
+respectively. With the information (electric signals) from Alice, Bob makes displacement operation with two modulators and a high reﬂectance
+mirror.
+0
+5
+10
+15
+20
+0 0.02 0.04 0.06 0.08 0.1
+Noise Power (dB)
+Time (s)
+(i)
+(ii)
+(iii)
+Fig. 6. The measurement results of the teleported state for a coherent state input inx quadrature [23]. Each trace is normalized to the corresponding vac-
+uum noise level. (i) The corresponding vacuum noise level⟨(/afii9797ˆx(0)
+out )2⟩=1/4. (ii) The teleported state for a vacuum input.⟨(/afii9797ˆxout )2⟩=2.82±0.09 dB
+and ⟨(/afii9797ˆpout )2⟩= 2.64 ± 0.08 dB (not shown). With these values, we get Fcoh = 0.70 ± 0.02 by using Eq. (12). (iii) The teleported state for a
+coherent state input with the phase scanned. The measurement frequency is centered at 1 MHz, and the resolution and video bandwidths are 30 kHz
+and 300 Hz, respectively. Traces i and ii are averaged 20 times.
+experimental realizations of CV quantum teleportation of optical ﬁelds have been reported[19,21–23]. The best ﬁdelity
+so far for a coherent state input is Fcoh = 0.70 ± 0.02 which was achieved by Takei et al. at Tokyo in 2005 [23]. The
+experimental result is shown inFig. 6. In the experiment, squeezing level of the initial squeezed vacua was about−4d B
+and it gives the ﬁdelity of Fcoh = 0.72 from Eq. (12). The experimental ﬁdelity of Fcoh = 0.70 ± 0.02 almost agrees
+with the expected value and it follows that the experimental setup is almost ideal and the limiting factor for the ﬁdelity
+is only the squeezing level of the resource of quantum entanglement. So we need more squeezing for getting further
+ﬁdelity. Recently, Suzuki et al. succeeded to get−7 dB of squeezing which is supposed to give the ﬁdelity of 0.83[24].
+
+=== page 7 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 103
+ OPO2 OPO1OPO4
+LO LO
+LO
+ref A EPR1
+Classical Channels
+xp
+Xu Pv
+in
+out
+99/1BS
+OPO3
+LO
+EPR2
+SA
+B
+EOM
+EOM
+PM
+AM
+ALICE
+BOB
+99/1BS
+gx
+gp
+Fig. 7. The experimental setup for teleportation of quantum entanglement or entanglement swapping [23].
+-4.0
+-2.0
+0.0
+2.0
+4.0
+6.0
+0 0.02 0.04 0.06 0.08 0
+Noise Power (dB)
+Time (s)
+0.02 0.04 0.06 0.08 0.1
+Time (s)
+(i)
+(i)
+(ii)
+(ii)
+(iii)
+(iii)
+Fig. 8. Correlation measurement results for EPR2 beams. (a) The measurement results of the reference mode alone. (i)⟨(/afii9797ˆx(0)
+ref )2⟩=⟨(/afii9797ˆp(0)
+ref )2⟩=1/4;
+(ii) ⟨(/afii9797ˆxref )2⟩; (iii) ⟨(/afii9797ˆpref )2⟩. (b) The measurement results of the correlation between the input and reference modes. (i) ⟨(/afii9797ˆx(0)
+ref − /afii9797ˆx(0)
+in )2⟩=
+⟨(/afii9797ˆp(0)
+ref + /afii9797ˆp(0)
+in )2⟩= 1/2; (ii) ⟨(/afii9797ˆxref − /afii9797ˆxin)2⟩; (iii) ⟨(/afii9797ˆpref + /afii9797ˆpin)2⟩. The measurement conditions are the same as those of Fig. 6.
+As pointed out in the previous subsection, the teleportation ﬁdelity of Fcoh = 0.70 ± 0.02 surpasses the no-cloning
+limit. It means that we can teleport nonclassicality of input states. As an example of teleportation of nonclassicality,
+we will show here teleportation of quantum entanglement or entanglement swapping. Fig. 7 shows the setup for
+teleportation of quantum entanglement.
+Two pairs of entangled beams denoted by EPR1 and EPR2 are generated by combining two squeezed vacua at half
+beam splitters. The EPR1 beams consist of modes A and B, and they are utilized as a resource of teleportation. They
+shows the quantum entanglement of /afii9797A,B = 0.42 ± 0.01 < 1, where the deﬁnition of /afii9797A,B is in Eq. (5). It allows us
+to achieve the ﬁdelity of 0 .70 ± 0.01 for a coherent state input. On the other hand, the EPR2 beams consist of two
+subsystems: reference and input. While the reference is kept during a teleportation process, the input is teleported to
+an output station. After the process, success of this protocol is veriﬁed by examining quantum entanglement between
+the reference and the output: /afii9797ref,out < 1.
+Before performing the experiment of teleportation of quantum entanglement, the noise power of each mode for EPR2
+beams and the initial correlation between the modes are measured with homodyne detectors and a spectrum analyzer
+(SA). The results are shown in Fig. 8. For the reference mode, the noise levels of 5.23 ± 0.14 and 4.44 ± 0.14 dB are
+
+=== page 8 ===
+104 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Fig. 9. Correlation measurement results for the output of teleportation of quantum entanglement. (a) The measurement results of the output mode
+alone. (i) ⟨(/afii9797ˆx(0)
+out )2⟩=⟨(/afii9797ˆp(0)
+out )2⟩= 1/4; (ii) ⟨(/afii9797ˆxout )2⟩; (iii) ⟨(/afii9797ˆpout )2⟩. (b) The measurement results of the correlation between the output and
+reference modes. (i)⟨(/afii9797ˆx(0)
+ref − /afii9797ˆx(0)
+out )2⟩=⟨(/afii9797ˆp(0)
+ref + /afii9797ˆp(0)
+in )2⟩=1/2; (ii)⟨(/afii9797ˆxref − /afii9797ˆxout )2⟩; (iii)⟨(/afii9797ˆpref + /afii9797ˆpout )2⟩. The measurement conditions
+are the same as those of Fig. 6.
+obtained for x and p quadratures, respectively (Fig.8a). Similarly, the noise levels for the input mode are 5.19±0.13 and
+4.37 ± 0.14 dB for x and p quadratures (not shown). By making electrical subtraction or summation of the homodyne
+outputs, the noise levels of −3.19 ± 0.13 and −4.19 ± 0.14 dB are observed for x and p quadratures as shown in
+Fig. 8b. From these values, the measured variance of /afii9797ref,in = 0.43 ± 0.01 < 1 is obtained. This result shows the
+existence of quantum entanglement between the input and the reference.
+Then we proceed to the experiment of teleportation of quantum entanglement. The measurement results for the
+output are shown in Fig. 9. Note that the state in the reference mode does not change in the process. For the output
+mode, the noise levels of 6.06 ± 0.12 and 5.47 ± 0.14 dB are obtained for x and p quadratures, respectively (Fig. 9a).
+Because of the imperfect teleportation process, some noises are added to the teleported state, resulting in the larger
+variances than that of the reference.Fig. 9b shows the results of the correlation measurement. The observed noise levels
+are −0.25 ± 0.13 and −0.60 ± 0.13 dB for x and p quadratures, respectively, yielding /afii9797ref,out = 0.91 ± 0.02 < 1. The
+result clearly shows the existence of quantum entanglement between the output and the reference, and also it is a proof
+of success of the teleportation of quantum entanglement.
+3. Multipartite quantum entanglement and its application to multiparty quantum teleportation
+3.1. Sufﬁcient conditions for the existence of multipartite quantum entanglement
+As a natural extension of Eq. (5) to tripartite quantum entanglement, following inequalities are proposed as sufﬁcient
+conditions for the existence of tripartite entanglement[26], where at least two inequalities are satisﬁed for the existence
+of tripartite entanglement.
+I. ⟨[/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB + gC ˆpC)]2⟩< 1,
+II. ⟨[/afii9797(ˆxB −ˆxC)]2⟩+⟨ [/afii9797(gA ˆpA +ˆpB +ˆpC)]2⟩< 1,
+III. ⟨[/afii9797(ˆxC −ˆxA)]2⟩+⟨ [/afii9797( ˆpA + gB ˆpB +ˆpC)]2⟩< 1, (13)
+where ˆxi and ˆpi (i=A, B, C) are quadrature-phase operators for modes A, B, and C, andgi (i=A, B, C) is an arbitrary
+real number.
+
+=== page 9 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 105
+There are two extreme cases of Eqs. (13); one is the case for gA = gB = gC = 0, and the other is the case for
+gA = gB = gC = 1. In the case of gA = gB = gC = 0, Eqs. (13) become
+I. ⟨[/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB)]2⟩< 1,
+II. ⟨[/afii9797(ˆxB −ˆxC)]2⟩+⟨ [/afii9797( ˆpB +ˆpC)]2⟩< 1,
+III. ⟨[/afii9797(ˆxC −ˆxA)]2⟩+⟨ [/afii9797( ˆpC +ˆpA)]2⟩< 1. (14)
+Since these inequalities are the same as Eq. (5) which is a sufﬁcient condition for bipartite quantum entanglement,
+the sufﬁcient condition for tripartite quantum entanglement in Eqs. (14) corresponds to the existence of at least two
+combinations of bipartite quantum entanglement. So in the case for gA = gB = gC = 0, there exist both bipartite and
+tripartite quantum entanglement like the W state of qubit cases [27]. This property is used in quantum telecloning as
+mentioned later.
+On the other hand, in the case of gA = gB = gC = 1, Eqs. (13) become
+I. ⟨[/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩< 1,
+II. ⟨[/afii9797(ˆxB −ˆxC)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩< 1,
+III. ⟨[/afii9797(ˆxC −ˆxA)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩< 1. (15)
+In the case of the left-hand side of Eqs. (15) approaches to zero, the overall state approaches CV version of Greenberger–
+Horn–Zeilinger (GHZ) state [28], which is a simultaneous eigenstate of four commuting operators ˆxA −ˆxB, ˆxB −ˆxC,
+ˆxC −ˆxA, and ˆpA +ˆpB +ˆpC. Here the eigenvalues arexA − xB = 0, xB − xC = 0, xC − xA = 0, and pA + pB + pC = 0
+and then the CV GHZ state is
+|GHZ⟩= c
+∫ ∞
+−∞
+dx|x⟩A ⊗| x⟩B ⊗| x⟩C. (16)
+When the overall state is close to the CV GHZ state, no bipartite quantum entanglement exists and it is a genuine
+tripartitely entangled state. In a quantum teleportation network mentioned later, this property is used intentionally.
+3.2. Creation of the GHZ type CV tripartite quantum entanglement and realization of a quantum teleportation
+network
+Fig. 10 shows an experimental setup for creation of the CV GHZ type state and testing Eqs. (15) [26,29,30]. The
+created state is represented with quadrature-phase operators as follows [30]:
+ˆxA = 1√
+3
+e+r1 ˆx(0)
+1 +
+√
+2
+3 e−r2 ˆx(0)
+2 ,
+ˆpA = 1√
+3
+e−r1 ˆp(0)
+1 +
+√
+2
+3 e+r2 ˆp(0)
+2 ,
+ˆxB = 1√
+3
+e+r1 ˆx(0)
+1 − 1√
+6
+e−r2 ˆx(0)
+2 + 1√
+2
+e−r3 ˆx(0)
+3 ,
+ˆpB = 1√
+3
+e−r1 ˆp(0)
+1 − 1√
+6
+e+r2 ˆp(0)
+2 + 1√
+2
+e+r3 ˆp(0)
+3 ,
+ˆxC = 1√
+3
+e+r1 ˆx(0)
+1 − 1√
+6
+e−r2 ˆx(0)
+2 − 1√
+2
+e−r3 ˆx(0)
+3 ,
+ˆpC = 1√
+3
+e−r1 ˆp(0)
+1 − 1√
+6
+e+r2 ˆp(0)
+2 − 1√
+2
+e+r3 ˆp(0)
+3 . (17)
+where superscript (0) denotes a vacuum, r1, r2, and r3 are squeezing parameters for the respective modes. When r1,
+r2, and r3 go to inﬁnity, the state approaches to the CV GHZ state.
+
+=== page 10 ===
+106 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Fig. 10. Experimental setup for creation of the CV GHZ type state and testing Eq. (15) [26,29,30]. All beam splitters except for BS1 are half beam
+splitters. BS1 is a 1:2 beam splitter.
+Fig. 11 shows examples of the results for the experiments ofFig. 10 reported by Aoki et al. [29]. From these results,
+we can calculate the left-hand sides of Eqs. (15) and get [29]
+I. ⟨[/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩= 0.851 ± 0.062 < 1,
+II. ⟨[/afii9797(ˆxB −ˆxC)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩= 0.840 ± 0.065 < 1,
+III. ⟨[/afii9797(ˆxC −ˆxA)]2⟩+⟨ [/afii9797( ˆpA +ˆpB +ˆpC)]2⟩= 0.867 ± 0.062 < 1. (18)
+From the calculations, we can see the satisfaction of Eqs. (15) and the existence of tripartite entanglement.
+A quantum teleportation network proposed by van Loock and Braunstein is an extended version of Braunstein–Kimble
+scheme of CV quantum teleportation [30]. The essential difference is the requirement for quantum entanglement. For
+Braunstein–Kimble scheme we need to have bipartite quantum entanglement between a sender and a receiver. On
+the other hand, we need to have the CV GHZ type state for the quantum teleportation network, which has tripartite
+entanglement among all three members, but does not have bipartite entanglement between any combinations in the
+network. In the network, a general quantum state is teleported between two members with the help of the third one
+as shown in Fig. 12 [30] . Here three members Alice, Bob, and Claire share the CV GHZ type state. In the case of
+teleportation from Alice to Bob, for example, teleportation does not succeed without the information from Claire,
+because there is no bipartite quantum entanglement between Alice and Bob. The information from Claire must be
+needed for success of teleportation from Alice to Bob in the network.
+
+=== page 11 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 107
+Noise Power (dB)
+0 0.01 0.02 0.03 0.04 0.05
+Time (s)
+-2.5
+-2
+-1.5
+-1
+-0.5
+0
+0.5
+-3
+-2.5
+-2
+-1.5
+-1
+-0.5
+0
+0.5 (i)
+(ii)
+-2.5
+-2
+-1.5
+-1
+-0.5
+0
+0.5 (i)
+(ii)
+(i)
+(ii)
+-2.5
+-2
+-1.5
+-1
+-0.5
+0
+0.5 (i)
+(ii)
+Fig. 11. Examples of the results for the experiments shown in Fig. 10 [29]. (a) ⟨[/afii9797(ˆxA −ˆxB)]2⟩, (b) ⟨[/afii9797(ˆxB −ˆxC)]2⟩, (c) ⟨[/afii9797(ˆxC −ˆxA)]2⟩, (d)
+⟨[/afii9797( ˆpA +ˆpB +ˆpC)]2⟩. (i) no entanglement (all inputs are vacua), (ii) some entanglement (all inputs are squeezed vacua). ⟨[/afii9797(ˆx(0)
+1 −ˆx(0)
+2 )]2⟩=
+⟨[/afii9797(ˆx(0)
+2 −ˆx(0)
+3 )]2⟩=⟨ [/afii9797(ˆx(0)
+3 −ˆx(0)
+1 )]2⟩= 1/2 and ⟨[/afii9797( ˆp(0)
+1 +ˆp(0)
+2 +ˆp(0)
+3 )]2⟩= 3/4.
+Alice Bob
+Claire
+input
+output
+tripartite entanglement
+classical information
+Fig. 12. A quantum teleportation network. Teleportation can be performed between any combinations in the network with the classical information
+from the third member.
+Here we present the experiment of a quantum teleportation network performed by Yonezawa et al. [31]. Fig. 13
+shows the scheme of the experimental setup. The CV GHZ type state is distributed to Alice, Bob, and Claire. Here we
+consider the case of teleportation from Alice to Bob with the help of Claire.
+As the same as Braunstein–Kimble scheme of CV quantum teleportation, Alice measures ˆx− = (ˆxin −ˆxA)/
+√
+2 and
+ˆp+ = ( ˆpin +ˆpA)/
+√
+2 as shown in Fig. 13, where an input mode is represented by (ˆxin, ˆpin) and Alice’s entangled
+
+=== page 12 ===
+108 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Fig. 13. Experimental setup for a quantum teleportation network. This schematic indicates teleportation from Alice to Bob with the help of Claire
+[31]. The information gains gx and gp are set to be one.
+mode is represented by (ˆxA, ˆpA). Claire measures her p quadrature ˆpC. Bob’s mode B before these measurements is
+ˆxB =ˆxin − (ˆxA −ˆxB) −
+√
+2ˆx− and ˆpB =ˆpin + ( ˆpA +ˆpB + gC ˆpC) −
+√
+2 ˆp+ − gC ˆpC, where gC is a information gain
+of the classical channel from Claire to Bob. After the Alice’s and Claire’s measurements, operators ˆx−, ˆp+, and ˆpC
+collapse and reduce to certain values. Receiving their measurement results through classical channels, Bob displace his
+mode as ˆxB →ˆxout =ˆxB +
+√
+2gx x− and ˆpB →ˆpout =ˆpB +
+√
+2gpp+ + gCpC. Here gx and gp are information gains
+of classical channels from Alice to Bob and they are usually gx = gp = 1. Thus with Eq. (17) the teleported output
+mode can be calculated as [30]
+ˆxout =ˆxin − (ˆxA −ˆxB)
+=ˆxin −
+√
+2
+3 e−r2 ˆx(0)
+2 + 1√
+2
+e−r3 ˆx(0)
+3 ,
+ˆpout =ˆpin + ( ˆpA +ˆpB + gC ˆpC)
+=ˆpin + 2 + gC√
+3
+e−r1 ˆp(0)
+1 + 1 − gC√
+6
+er2 ˆp(0)
+2 + 1 − gC√
+2
+er3 ˆp(0)
+3 . (19)
+For a coherent state input and in the case of r1 = r2 = r3 = r, the teleportation ﬁdelity Fcoh is calculated as [30]
+Fcoh = 2√
+(1 + 4⟨(/afii9797ˆxout)2⟩)(1 + 4⟨(/afii9797ˆpout)2⟩)
+= 1
+√
+1 + e−2r
+√
+1 + (2 + gC)2
+6 e−2r + (1 − gC)2
+3 e2r
+. (20)
+In the ideal case (r →∞ ), the teleportation is perfect (Fcoh → 1). In other cases, the ﬁdelity Fcoh is a function of
+the squeezing parameter (r) and the information gain of classical channel from Claire to Bob (gC). Again, the success
+criterion is Fcoh > 1/2.
+Fig. 14 shows experimental results for quantum teleportation from Alice to Bob with the help of Claire [31]. The
+information gain of classical channel from Claire to Bob is gC = 1.02 ± 0.03. The noise level of p quadrature of the
+teleported state for a vacuum input is 3.3 dB higher than the corresponding vacuum noise level as shown in the ﬁgure,
+while that of x quadrature is 3.5 dB (not shown). With these values and Eq. (20), we can get the ﬁdelity of 0.63 beyond
+the classical limit of 1/2. The fact clearly shows the success of teleportation from Alice to Bob with the help of Claire.
+
+=== page 13 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 109
+0
+5
+10
+15
+20
+0 0.02 0.04 0.06 0.08 0.1
+(dB)
+Time(s)
+(i)
+(ii)
+0
+5
+10
+15
+20
+0 0.02 0.04 0.06 0.08 0.1
+Noise Power (dB)
+Time(s)
+(i)
+(ii)
+(iii)
+0
+5
+10
+15
+20
+0 0.02 0.04 0.06 0.08 0.1
+(dB)
+Time(s)
+(i)
+(ii)
+(iii)
+Fig. 14. Experimental results for quantum teleportation from Alice to Bob with the help of Claire [31]. (a) Alice’s measurement results for p
+quadrature. (i) ⟨(/afii9797ˆp(0)
++ )2⟩=1/4 where (0) denotes that every initial state is a vacuum, (ii)⟨( ˆp+)2⟩(=⟨(/afii9797ˆp+)2⟩) for a vacuum input, (iii)⟨( ˆp+)2⟩
+for a coherent state input with the phase scanned. (b) Claire’s measurement results forp quadrature. (i) ⟨(/afii9797ˆp(0)
+C )2⟩=1/4, (ii) ⟨( ˆpC)2⟩(=⟨(/afii9797ˆpC)2⟩)
+for a vacuum input, (c) Measurement results of the teleported state forp quadrature. (i) ⟨(/afii9797ˆp(0)
+out )2⟩=1/4, (ii) ⟨( ˆpout )2⟩(=⟨(/afii9797ˆpout )2⟩) for a vacuum
+input, (iii) ⟨( ˆpout )2⟩for the coherent state input. The measurement conditions are the same as those of Fig. 6.
+The information gain dependences of the ﬁdelity are plotted with the theoretical curves in Fig. 15. Quantum tele-
+portation is performed in three combinations of a sender and a receiver. There are two important points in the ﬁgure.
+One is, of course, quantum teleportation succeeds in three combinations of a sender and a receiver with the quantum
+entanglement. In other words, it is a proof of the existence of the tripartite quantum entanglement in the system. The
+other important point is that the quantum teleportation fails without the information from the third member, which
+corresponds to the case of gi = 0 (i = A, B, C). This fact shows that there is no bipartite quantum entanglement and
+the shared entangled state is CV GHZ type.
+3.3. Quantum telecloning
+Quantum telecloning is an application of another type of tripartite quantum entanglement; the CV W-like state, which
+has bipartite and tripartite quantum entanglement simultaneously.
+Quantum telecloning [32] is a quantum information protocol combining cloning and teleporting into a single new
+primitive. Here the cloning process produces approximate clones beyond the classical limit of ﬁdelity but they never
+reach the perfect ones because of the no-cloning theorem [51]. The protocol offers signiﬁcant technical advantages
+over the two-step local cloning plus teleportation strategy. In particular, in the case of coherent state telecloning, only
+ﬁnite entanglement is required for generating remote clones with optimal ﬁdelity [33].
+In fact, quantum telecloning generalizes quantum teleportation with multiple receivers[32]. In quantum teleportation,
+bipartite quantum entanglement shared by two parties (Alice and Bob) enables them to teleport an unknown quantum
+state from Alice to Bob by communicating only through classical channels as shown in previous subsections. If three
+parties (Alice, Bob, and Claire) share an appropriate tripartite entangled state, Alice is able to teleport an unknown
+
+=== page 14 ===
+110 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+Fig. 15. Information gain dependences of the ﬁdelities [31]. (a) The ﬁdelity of teleportation from Alice to Bob with the help of Claire. (i) The
+teleportation without quantum entanglement (r = 0). (ii) The teleportation with the CV GHZ type tripartite quantum entanglement (r > 0). The
+best ﬁdelity is obtained at gC ≃ 0.9. The solid curves represent the theoretical ones calculated with experimental parameters and Eq. (20). (b) The
+ﬁdelity of teleportation from Alice to Claire with the help of Bob. The best ﬁdelity is obtained at gB ≃ 0.9. (b) The ﬁdelity of teleportation from
+Claire to Bob with the help of Alice. The best ﬁdelity is obtained at gA ≃ 0.9.
+classical information
+tripartite
+entanglement
+Alice
+input
+output
+Bob
+Claire
+Fig. 16. 1 → 2 quantum telecloning. Alice is a sender and Bob and Claire are two receivers.
+quantum state to Bob and Claire simultaneously. This is called ‘1→ 2 quantum telecloning’ (Fig.16). More generally,
+quantum telecloning to an arbitrary number of receivers (1 → n quantum telecloning) can be performed by using
+multipartite quantum entanglement.
+The heart of quantum telecloning is the multipartite quantum entanglement shared among the sender and receivers.
+Without multipartite quantum entanglement, only the corresponding two-step protocol is possible: ﬁrst the sender makes
+clones locally [34], and then sends them to each receiver with bipartite quantum teleportation [10,20] (or vice versa,
+teleporting followed by local cloning). The two-step protocol would require maximal bipartite quantum entanglement for
+optimal ﬁdelity teleportation (which for CV quantum teleportation requires inﬁnite amount of squeezing). Surprisingly,
+
+=== page 15 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 111
+Fig. 17. The experimental setup for quantum telecloning from Alice to Bob and Claire to produce Clone 1 and 2. Modes i and ii are squeezed vacua
+and mode iii is a vacuum. The g’s are normalized information gains of classical channels. AM denotes an amplitude modulator and PM denotes a
+phase modulator. A 99%-reﬂectance beam splitter (denoted 1/99 BS) enables displacement transformations in phase space [20].
+CV quantum telecloning of coherent states requires only ﬁnite squeezing to achieve the same optimal ﬁdelity [33].I n
+fact, the level of squeezing needed for optimal telecloning of coherent states is the reach of current technology[24,25].
+Here we present the experiment of 1 → 2 quantum telecloning of coherent states performed by Koike et al. [35].
+Fig. 17 shows the experimental setup for quantum telecloning from Alice to Bob and Claire to produce clones 1 and 2.
+The scheme for creating the tripartite entanglement for quantum telecloning [33] is shown in the center of Fig. 17.
+Two squeezed vacua are ﬁrst combined with a half beam splitter and then one of the output beams is divided into two
+beams (B,C) with another half beam splitter. The three output modes (ˆxj , ˆpj )( j = A, B, C) are the following:
+ˆxA = 1√
+2
+e+r1 ˆx(0)
+1 + 1√
+2
+e−r2 ˆx(0)
+2 ,
+ˆpA = 1√
+2
+e−r1 ˆp(0)
+1 + 1√
+2
+e+r2 ˆp(0)
+2 ,
+ˆxB = 1
+2 e+r1 ˆx(0)
+1 − 1
+2 e−r2 ˆx(0)
+2 + 1√
+2
+ˆx(0)
+3 ,
+ˆpB = 1
+2 e−r1 ˆp(0)
+1 − 1
+2 e+r2 ˆp(0)
+2 + 1√
+2
+ˆp(0)
+3 ,
+ˆxC = 1
+2 e+r1 ˆx(0)
+1 − 1
+2 e−r2 ˆx(0)
+2 − 1√
+2
+ˆx(0)
+3 ,
+ˆpC = 1
+2 e−r1 ˆp(0)
+1 − 1
+2 e+r2 ˆp(0)
+2 − 1√
+2
+ˆp(0)
+3 . (21)
+Here, modes A and B and modes A and C are bipartitely entangled and modes A, B, and C are tripartitely entangled.
+This can be veriﬁed by applying the sufﬁcient inseparability criteria for a bipartite case Eq. (5) and a tripartite case
+(Eqs. (14)). In the present situation with r1 = r2 = r, the criteria are:
+⟨[/afii9797(ˆxA −ˆxB)]2⟩+⟨ [/afii9797( ˆpA +ˆpB)]2⟩=
+(
+1 −
+√
+2
+2
+)2
+e2r
+2 +
+(
+1 +
+√
+2
+2
+)2
+e−2r
+2 + 1
+4 < 1,
+
+=== page 16 ===
+112 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+⟨[/afii9797(ˆxA −ˆxC)]2⟩+⟨ [/afii9797( ˆpA +ˆpC)]2⟩=
+(
+1 −
+√
+2
+2
+)2
+e2r
+2 +
+(
+1 +
+√
+2
+2
+)2
+e−2r
+2 + 1
+4 < 1. (22)
+The left-hand side of the inequality can be minimized when e−2r = (
+√
+2 − 1)/(
+√
+2 + 1) (−7.7 dB squeezing). By
+using these tripartitely entangled modes, sender Alice can perform quantum telecloning of a coherent state input to two
+receivers Bob and Claire to produce clone 1 and 2 at their sites. In other words, the success of quantum telecloning is
+a sufﬁcient condition for the existence of this type of quantum entanglement.
+The scheme of the quantum telecloning is almost the same as the Braunstein–Kimble scheme of CV quantum
+teleportation. Alice measures ˆx− = (ˆxin −ˆxA)/
+√
+2 and ˆp+ = ( ˆpin +ˆpA)/
+√
+2 as shown in Fig. 17. Bob’s mode B and
+Claire’s mode C before the measurement are:
+ˆxB =ˆxin − (ˆxA −ˆxB) −
+√
+2ˆx−,
+ˆpB =ˆpin + ( ˆpA +ˆpB) −
+√
+2 ˆp+,
+ˆxC =ˆxin − (ˆxA −ˆxC) −
+√
+2ˆx−,
+ˆpC =ˆpin + ( ˆpA +ˆpC) −
+√
+2 ˆp+. (23)
+After the Alice’s measurement, operatorsˆx− and ˆp+ collapse and reduce to certain values. Receiving her measurement
+results through classical channels, Bob and Claire displace his and her modes as ˆxB →ˆ xclone1 =ˆxB +
+√
+2gx x−,
+ˆpB →ˆpclone1 =ˆpB +
+√
+2gpp+, ˆxC →ˆxclone2 =ˆxC +
+√
+2gx x−, and ˆpC →ˆpclone2 =ˆpC +
+√
+2gpp+. Here gx and gp
+are information gains of classical channels from Alice to Bob and Claire, and they are usuallygx = gp = 1. Thus with
+Eq.(21) the telecloned output modes become [33]
+ˆxclone1 =ˆxin − (ˆxA −ˆxB)
+=ˆxin + 1 −
+√
+2
+2 er ˆx(0)
+1 − 1 +
+√
+2
+2 e−r ˆx(0)
+2 + 1√
+2
+ˆx(0)
+3 ,
+ˆpclone1 =ˆpin + ( ˆpA +ˆpB)
+=ˆpin + 1 +
+√
+2
+2 e−r ˆp(0)
+1 − 1 −
+√
+2
+2 er ˆp(0)
+2 + 1√
+2
+ˆp(0)
+3 ,
+ˆxclone2 =ˆxin − (ˆxA −ˆxC)
+=ˆxin + 1 −
+√
+2
+2 er ˆx(0)
+1 − 1 +
+√
+2
+2 e−r ˆx(0)
+2 − 1√
+2
+ˆx(0)
+3 ,
+ˆpclone2 =ˆpin + ( ˆpA +ˆpC)
+=ˆpin + 1 +
+√
+2
+2 e−r ˆp(0)
+1 − 1 −
+√
+2
+2 er ˆp(0)
+2 − 1√
+2
+ˆp(0)
+3 , (24)
+where subscript 3 denotes a vacuum input to the second beam splitter in the tripartite entanglement source in Fig. 17.
+For a coherent state input, the telecloning ﬁdelity Fcoh is again calculated as:
+Fcoh = 2√
+(1 + 4⟨(/afii9797ˆxclone1,2)2⟩)(1 + 4⟨(/afii9797ˆpclone1,2)2⟩)
+= 1
+(
+1 −
+√
+2
+2
+)2
+e2r
+2 +
+(
+1 +
+√
+2
+2
+)2
+e−2r
+2 + 5
+4
+. (25)
+The ﬁdelity can be optimized and Fcoh = 2/3 when e−2r = (
+√
+2 − 1)/(
+√
+2 + 1) (−7.7 dB squeezing). The important
+thing here is that we can get the optimum ﬁdelity of 2/3 with ﬁnite squeezing of −7.7 dB which is achievable with
+
+=== page 17 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 113
+(i)
+(ii)
+(iii)
+(i)
+(ii)
+(iii)
+ 0
+ 5
+ 10
+ 15
+ 20
+ 0  0.02  0.04  0.06  0.08  0.1
+Power (dB)
+Time (sec)
+ 0
+ 5
+ 10
+ 15
+ 20
+ 0  0.02  0.04  0.06  0.08  0.1
+Power (dB)
+ 0
+ 5
+ 10
+ 15
+ 20
+ 0  0.02  0.04  0.06  0.08  0.1
+Power (dB)
+Time (sec)
+(i)
+(ii)
+(iii)
+Time (sec)
+b c
+Fig. 18. Experimental results for quantum telecloning from Alice to Bob and Claire to produce Clone 1 and 2 [35]. All traces are normalized to the
+corresponding vacuum noise levels. (a) Alice’s measurement results forp quadrature. Trace i, the corresponding vacuum noise level⟨(/afii9797ˆp(0))2⟩=1/4.
+Trace ii, the measurement result of a vacuum input⟨( ˆp′+)2⟩where ˆp′+ = ( ˆp(0)
+in +ˆpA)/
+√
+2. Trace iii, the measurement result of a coherent state input
+⟨( ˆp+)2⟩with the phase scanned. (b),(c) The measurement results of the telecloned states at Bob (b) and Claire (c) for p quadratures (x quadratures
+are not shown). Trace i, the corresponding vacuum noise levels. Trace ii, the telecloned states for a vacuum input ⟨(/afii9797ˆpclone1,2)2⟩. Trace iii, the
+telecloned states for a coherent state input. The measurement frequency is centered at 1 MHz, and the resolution and video bandwidths are 30 kHz
+and 300 Hz, respectively. All traces except for trace iii are averaged 20 times.
+current technology [24,25]. Note that the ﬁdelity of 2/3 is called as “no-cloning limit” as mentioned in the previous
+section.
+Fig. 18 shows the results of telecloning experiments [35]. Quantum telecloning is performed for two types of input
+states: a vacuum state and a coherent state that is created by applying electro-optic modulation to a very weak carrier
+beam. Alice’s states are shown in Fig. 18a, and Bob and Claire’s output states are shown in Fig. 18b and c. Trace
+ii of Fig. 18a shows Alice’s p-quadrature measurement for a vacuum input, ⟨( ˆp′
++)2⟩, where ˆp′
++ = ( ˆp(0)
+in +ˆpA)/
+√
+2.
+Note that ⟨ˆp(0)
+in ⟩=⟨ˆpA⟩=0; thus ⟨( ˆp′
++)2⟩=⟨(/afii9797ˆp′
++)2⟩=⟨(/afii9797ˆp+)2⟩, because the vacuum is a zero-amplitude coherent
+state. The noise level is 2 .1 dB higher compared to the vacuum noise level ⟨(/afii9797ˆp(0))2⟩= 1/4, due to the “entangled
+noise” ˆpA. This noise is cancelled to some extent by the tripartite entanglement. Trace iii in Fig. 18a shows Alice’s
+coherent-state input with the phase scanned. Consistent with the above discussion on the variance of a coherent state
+input, the troughs of trace iii are level with trace ii within experimental accuracy. Note that Alice’s 50/50 beam splitter
+reduces the amplitude of the measured state (i.e., the peaks of trace iii) by 3 dB relative to the input state.
+Figs. 18b and c show the measurement results of the telecloned states. Traces ii show the results for a vacuum input,
+⟨(/afii9797ˆp1,2)2⟩. The noise level for clone 1 is 4 .06 ± 0.17 dB and that for clone 2 is 4 .03 ± 0.15 dB. The x-quadratures
+⟨(/afii9797ˆx1,2)2⟩are also measured and 3.74 ± 0.15 dB for clone 1 and 3.79 ± 0.15 dB for Clone 2 (not shown) are obtained.
+
+=== page 18 ===
+114 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+By using these values we can calculate the ﬁdelity from Eq. (25), and ﬁnd F = 0.58 ± 0.01 for both teleclones.
+Since this ﬁdelity exceeds the classical limit of telecloning of 1 /2, 1 → 2 quantum telecloning of coherent states
+is successfully demonstrated. Furthermore, these results are operational evidence for the existence of the tripartite
+quantum entanglement which has bipartite and tripartite quantum entanglement.
+4. Universal CV quantum information processing
+Quantum information processing is represented by a unitary transformation as shown inFig. 19, where |/afii9852(0)⟩is an
+input state, |/afii9852(t)⟩is the output state, and ˆU represents a quantum information processor. The unitary transformation is
+represented by some Hamiltonian ˆH as follows:
+|/afii9852(t)⟩= ˆU|/afii9852(0)⟩= e−i ˆH
+¯h t|/afii9852(0)⟩. (26)
+It follows that we have to prepare arbitrary Hamiltonians for universal quantum information processing. For universal
+CV quantum information processing, it is known that the following ﬁve Hamiltonians are enough to prepare arbitrary
+Hamiltonians [36]:
+(1) 1
+2i (ˆa†
+1 ˆa2 −ˆa1 ˆa†
+2): a beam splitter,
+(2) i(/afii9825ˆa† − /afii9825∗ ˆa): displacement in phase space,
+(3) ˆa† ˆa: phase shift,
+(4) i( ˆa2 −ˆa†2): squeezing,
+(5) ˆa†
+1 ˆa1 ˆa†
+2 ˆa2: optical Kerr effect (This Hamiltonian can be replaced by any third order nonlinear Hamiltonians.)
+The trick is supported by the following relation:
+ei ˆH2/afii9829t ei ˆH1/afii9829t e−i ˆH2/afii9829t e−i ˆH1/afii9829t ∼ e[ ˆH1, ˆH2]/afii9829t2
+. (27)
+From the relation, we can see that when we have two HamiltoniansˆH1 and ˆH2 we can synthesize Hamiltonian i[ ˆH1, ˆH2].
+So we can prepare arbitrary Hamiltonians from the above ﬁve Hamiltonians by using the relation [36].
+The Hamiltonians (1)–(3) are easily prepared in quantum optics experiments. But preparing the Hamiltonians (4)
+and (5) are not easy. Squeezing operation for a vacuum state is not difﬁcult in these days [24], but it is difﬁcult for
+arbitrary input states because of inevitable losses in squeezing process. Also, optical Kerr effect in single-photon level
+is very weak and it is very difﬁcult to use the effect for arbitrary input states. To overcome these difﬁculties, a universal
+squeezer with measurement and feedforward [37] and a cubic phase gate [38] are proposed. Note that the Hamiltonian
+(1)–(4) makes a group on Eq. (27) and the physical operations with these Hamiltonians are calledGaussian operations.
+Similarly, the other physical operations with the Hamiltonian (5) is called non-Gaussian operations. Also, we should
+stress that the most fundamental Gaussian operation is CV quantum teleportation.
+A universal squeezer for arbitrary input states is proposed by Filip et al. [37] and the scheme is shown in Fig. 20.
+In the scheme, an ancillary squeezed vacuum and a beam splitter are used instead of a squeezer for arbitrary input
+states. The scheme is described in the Heisenberg picture as follows. First, we prepare an ancillary squeezed vacuum
+(ˆxa , ˆpa ) = (e−r ˆx(0)
+a ,e r ˆp(0)
+a ) with a vacuum squeezer like an OPO. Then it is combined with an input state (ˆxi , ˆpi ) at
+a beam splitter whose transmission coefﬁcient is T. The output quadratures (ˆx′
+i , ˆp′
+i ) and (ˆx′
+a , ˆp′
+a ) are written as
+ˆx′
+i =
+√
+T ˆxi +
+√
+1 − T ˆxa,
+ˆp′
+i =
+√
+T ˆpi +
+√
+1 − T ˆpa,
+ˆx′
+a =
+√
+T ˆxa −
+√
+1 − T ˆxi ,
+ˆp′
+a =
+√
+T ˆpa −
+√
+1 − T ˆpi . (28)
+We measure the p quadrature of the ancillary mode and perform the feedforward, ˆp′
+i →ˆ p′
+i + g ˆp′
+a with gain g =
+−√(1 − T) / T, so that the residual anti-squeezed noise of the ancillary squeezed vacuum is completely cancelled.
+
+=== page 19 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 115
+Fig. 19. Quantum information processing. |/afii9852(0)⟩is an input state, |/afii9852(t)⟩is the output state, and ˆU represents a quantum information processor.
+Fig. 20. A universal squeezer with measurement and feedforward [37].
+Finally we get the following output quadratures:
+ˆx′
+i =
+√
+T ˆxi +
+√
+1 − T ˆxa,
+ˆp′
+i = 1√
+T
+ˆpi . (29)
+This resulting state is squeezed with respect to the input state, with some additional noise in the squeezed quadrature. This
+additional noise comes from the ancillary squeezed vacuum. In the case ofr →∞ for the ancillary squeezed vacuum,
+the squeezing transformation becomes ideal. Moreover the squeezing degree is controllable through the transmission
+coefﬁcient T. Note that we can never make noise suppression greater than that of the original ancillary squeezed vacuum.
+However, here our purpose is not to obtain a high level squeezing of one quadrature, but to improve the ﬁdelity of the
+transformation in order to achieve tolerant quantum information processing. Realization of the universal squeezer is
+reported by Yoshikawa et al. for coherent state inputs[39].
+A cubic phase gate [38] can replace the ﬁfth Hamiltonian, optical Kerr effect. The action of the gate is following:
+|/afii9852out⟩= exp(i/afii9828ˆx3)|/afii9852in⟩. (30)
+Realization scheme of the cubic phase gate is shown inFig. 21. This scheme consists of four parts of Gaussian operations
+and photon number measurement. The ﬁrst part consists of creation of EPR beams with two squeezed vacua and a beam
+splitter and displacement operation of one of EPR beams. This part can be regarded as the process of CV quantum
+teleportation, because the part includes the essential ingredients for CV quantum teleportation. The second part is a
+squeezer which can be realized with the universal squeezer explained above. In some sense, the universal squeezer can
+also be regarded as the process of CV quantum teleportation, because, in the process, quantum entanglement is created
+between the outputs from the beam splitter and displacement operation is performed according to the measurement
+result for one of the entangled beams.
+The third part of the phase cubic gate is quantum non-demolition (QND) measurement which can be realized by
+using two universal squeezers [40–42] as shown in Fig. 22. From the same reason as the universal squeezer, this QND
+scheme can be regarded as the process of CV quantum teleportation. Similarly, the fourth part is a Gaussian operation
+which can be realized by squeezers and the linear optical elements and can be regarded as the process of CV quantum
+teleportation.
+
+=== page 20 ===
+116 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+exp (iγx3 ) ψ2 22ψ
+Fig. 21. Realization scheme of a cubic phase gate [38]. QND: quantum non-demolition measurement. /afii9828(n) is a squeezing parameter determined by
+the result of photon number measurement.
+SQZ
+SQZ
+BSBS
+SQZ
+SQZ
+BS
+Fig. 22. Realization scheme of quantum nondemolition measurement [40–42]. BS: a beam splitter, SQZ: a squeezer.
+0 0.02 0.04 0.06 0.08 0.1
+Time [s]
+-10
+-5
+0
+5
+10
+15
+(a)
+(d)
+(c)
+(b)
+Relative Level of Quantum Noise [dB]
+Fig. 23. −7.2 dB squeezing [24]. Power levels of quantum noise. (a) shot noise level. (b) LO phase is locked at the squeezed quadrature. (c) LO
+phase is locked at the anti-squeezed quadrature. (d) LO phase is scanned. These are normalized to make the shot noise level 0 dB. All traces except
+for (d) are averaged for 20 times.
+
+=== page 21 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 117
+Fig. 24. Experimental setup for two cascaded quantum teleportation [43].
+Fig. 25. Creation of non-Gaussian states which is called Schrödinger kitten and a single photon state with photon subtraction through photon
+number measurement of a squeezed vacuum [50]. W( x,p ) denotes the Wigner function, ‘Quadrature’ denotes the quadrature-phase amplitude, and
+‘Probability’ denotes the photon number distribution.
+From above consideration, the cubic phase gate can be realized with four cascaded CV quantum teleportation
+and photon number measurement. The teleportation ﬁdelity for coherent state inputs for n cascaded CV quantum
+teleportation is following:
+Fcoh(n) = 1
+1 + ne−2r , (31)
+
+=== page 22 ===
+118 A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119
+which is easily derived from Eq. (12), where r is a squeezing parameter of each squeezed vacuum for a resource of
+quantum entanglement. Since the success criterion forn cascaded CV quantum teleportation isFcoh(n) > 1/2, we need
+at least −6 dB of squeezing (e−2r = 1/4) for success of four cascaded CV quantum teleportation. Nowadays more
+squeezing than −6 dB is reported[24,25] (Fig. 23) and the realization is really promising. This line of experiment, two
+cascaded CV quantum teleportation, is reported by Yonezawa and Furusawa and the experimental setup is shown in
+Fig. 24 [43].
+In addition to the cascaded quantum teleportation experiments, some groups are working on photon number mea-
+surement for non-Gaussian state preparation [44–46]. One of the examples is shown in Fig. 25 [50]. For combining
+this technique with Gaussian operations, especially with CV quantum teleportation experiments, we have to broaden
+the bandwidth of the experiments, because photon number measurements always see the whole bandwidth of the EPR
+beams in contrast with usual CV quantum teleportation experiments which use some particular sidebands. For the
+direction of this research, creation of broad band or time-domain EPR beams is reported and the results are shown in
+Fig. 3 [5]. The time resolution is determined by the bandwidth of the EPR beams.
+Now we have enough bandwidth of the EPR beams, the next step is quantum teleportation of non-Gaussian states and
+then squeezing of a single photon state to create a Schrödinger kitten with a universal squeezer, where a Schrödinger
+kitten is superposition of coherent states as shown in the next section.
+In any case, the cubic phase gate is one of the most promising non-Gaussian operation gates. By using the gate, we
+could accomplish the most fundamental non-Gaussian operation, i.e., entanglement distillation, toward universal CV
+quantum information processing.
+5. Future prospects
+Up to here, we have showed the basics and the recent progress on CV quantum teleportation and related quantum
+information processing. We believe that we will be able to make universal CV quantum information processing in the
+future with the presented techniques here. Moreover, since CV quantum information is higher dimensional version of
+qubits, the success of universal CV quantum information processing means the success of universal qubit quantum
+information processing. For example, we can convert CV quantum information to qubits as follows:
+|0⟩= c(|/afii9825⟩+|− /afii9825⟩),
+|1⟩= c(|/afii9825⟩−|− /afii9825⟩), (32)
+where the important thing here is that |0⟩and |1⟩are orthonormal. Recently, creation of c(|/afii9825⟩−|− /afii9825⟩), so-called
+Schrödinger kitten, with photon subtraction technique is reported [47–50] and the example is shown in Fig. 25.B y
+using this type of qubits, we also will be able to realize universal qubit quantum information processing.
+As mentioned everywhere in this review, the most fundamental quantum information processing is quantum telepor-
+tation. So we should pursuit to improve the performance.
+Acknowledgements
+The authors acknowledge the contributions of the members of Furusawa group at Department of Applied Physics,
+The University of Tokyo, which includes T. Aoki, H. Yonezawa, T. Hiraoka, K. Wakui, S. Koike, K. Yoshino, H.
+Takahashi, G. Takahashi, Y . Takeno, T. Kajiya, J. Yoshikawa, N. Lee, M. Yukawa, J. S. Neergaard-Nielsen, and A.
+Huck. The gratitude is also extended to M. Sasaki, G. Masada, H. J. Kimble, S. L. Braunstein, P. van Loock, and U. L.
+Andersen. This work was partly supported by Japan Science and Technology Agency and the MEXT of Japan.
+References
+[1] M.D. Reid, Phys. Rev. A 40 (1989) 913.
+[2] Z.Y . Ou, S.F. Pereira, H.J. Kimble, K.C. Peng, Phys. Rev. Lett. 68 (1992) 3663.
+[3] D.F. Walls, G.J. Milburn, Quantum Opics, Springer, Berlin, 1994.
+[4] A. Einstein, B. Podolsky, N. Rosen, Phys. Rev. 47 (1935) 777.
+[5] N. Takei, N. Lee, D. Moriyama, J.S. Neergaad-Nielsen, A. Furusawa, Phys. Rev. A 74 (2006) 060 101(R).
+[6] L.-M. Duan, G. Giedke, J.I. Cirac, P. Zoller, Phys. Rev. Lett. 84 (2000) 2722.
+
+=== page 23 ===
+A. Furusawa, N. Takei / Physics Reports 443 (2007) 97 – 119 119
+[7] R. Simon, Phys. Rev. Lett. 84 (2000) 2726.
+[8] C.H. Bennett, G. Brassard, C. Crepeau, R. Jozsa, A. Peres, W.K. Wootters, Phys. Rev. Lett. 70 (1993) 1895.
+[9] L. Vaidman, Phys. Rev. A 49 (1994) 1473.
+[10] S.L. Braunstein, H.J. Kimble, Phys. Rev. Lett. 80 (1998) 869.
+[11] L.-M. Duan, J.I. Cirac, P. Zoller, E.S. Polzik, Phys. Rev. Lett. 85 (2000) 5643.
+[12] B. Julsgaard, A. Kozhekin, E.S. Polzik, Nature 413 (2001) 400.
+[13] J.F. Sherson, H. Krauter, R.K. Olsson, K. Hammerer, I. Cirac, E.S. Polzik, Nature 443 (2006) 557.
+[14] H.F. Hofmann, T. Ide, T. Kobayashi, A. Furusawa, Phys. Rev. A 62 (2000) 062304.
+[15] K. Hammerer, M.M. Wolf, E.S. Polzik, J.I. Cirac, Phys. Rev. Lett. 94 (2005) 150503.
+[16] Input coherent states should be selected randomly from the entire phase space. In the real experiments, however, we cannot do so. We usually
+measure averaged ﬁdelity in real experiments, which is only determined by variances for Gaussian states.
+[17] F. Grosshans, P. Grangier, Phys. Rev. A 64 (2001) 010301(R).
+[18] M. Ban, Phys. Rev. A 69 (2004) 054304.
+[19] N. Takei, T. Aoki, S. Koike, K. Yoshino, K. Wakui, H. Yonezawa, T. Hiraoka, J. Mizuno, M. Takeoka, M. Ban, A. Furusawa, Phys. Rev. A 72
+(2005) 042304.
+[20] A. Furusawa, J.L. SZrensen, S.L. Braunstein, C.A. Fuchs, H.J. Kimble, E.S. Polzik, Science 282 (1998) 706.
+[21] W.P. Bowen, N. Treps, B.C. Buchler, R. Schnabel, T.C. Ralph, H.-A. Bachor, T. Symul, P.-K. Lam, Phys. Rev. A 67 (2003) 032302.
+[22] T.C. Zhang, K.W. Goh, C.W. Chou, P. Lodahl, H.J. Kimble, Phys. Rev. A 67 (2003) 033802.
+[23] N. Takei, H. Yonezawa, T. Aoki, A. Furusawa, Phys. Rev. Lett. 94 (2005) 220502.
+[24] S. Suzuki, H. Yonezawa, F. Kannari, M. Sasaki, A. Furusawa, Appl. Phys. Lett. 89 (2006) 061116.
+[25] Y . Takeno, M. Yukawa, H. Yonezawa, A. Furusawa, Opt. Express 15 (2007) 4321.
+[26] P. van Loock, A. Furusawa, Phys. Rev. A 67 (2003) 052315.
+[27] W. Dür, G. Vidal, J.I. Cirac, Phys. Rev. A 62 (2000) 062314.
+[28] D.M. Greenberger, M.A. Horne, A. Shimony, A. Zeilinger, Am. J. Phys. 58 (1990) 1131.
+[29] T. Aoki, N. Takei, H. Yonezawa, K. Wakui, T. Hiraoka, A. Furusawa, Phys. Rev. Lett. 91 (2003) 080 404.
+[30] P. van Loock, S.L. Braunstein, Phys. Rev. Lett. 84 (2000) 3482.
+[31] H. Yonezawa, T. Aoki, A. Furusawa, Nature 431 (2004) 430.
+[32] M. Murao, D. Jonathan, M.B. Plenio, V . Vedral, Phys. Rev. A 59 (1999) 156.
+[33] P. van Loock, S.L. Braunstein, Phys. Rev. Lett. 87 (2001) 247901.
+[34] U.L. Andersen, V . Josse, G. Leuchs, Phys. Rev. Lett. 94 (2005) 240503.
+[35] S. Koike, H. Takahashi, H. Yonezawa, N. Takei, S.L. Braunstein, T. Aoki, A. Furusawa, Phys. Rev. Lett. 96 (2006) 060504.
+[36] S. Lloyd, S.L. Braunstein, Phys. Rev. Lett. 82 (1999) 1784.
+[37] R. Filip, P. Marek, U.L. Andersen, Phys. Rev. A 71 (2005) 042308.
+[38] D. Gottesman, A. Kitaev, J. Preskill, Phys. Rev. A 64 (2001) 012310.
+[39] J. Yoshikawa, T. Hayashi, T. Akiyama, N. Takei, A. Huck, U.L. Andersen, A. Furusawa, quant-ph/0702049.
+[40] B. Yurke, J. Opt. Soc. Am. B 2 (1985) 732.
+[41] A. LaPorta, R.E. Slusher, B. Yurke, Phys. Rev. Lett. 62 (1998) 28.
+[42] S.F. Pereira, Z.Y . Ou, H.J. Kimble, Phys. Rev. Lett. 72 (1994) 214.
+[43] H. Yonezawa, A. Furusawa, Technical Digest of CLEO/QELS 2006, QFD5.
+[44] E. Waks, E. Diamanti, B.C. Sanders, S.D. Bartlett, Y . Yamamoto, Phys. Rev. Lett. 92 (2004) 113602.
+[45] D. Rosenberg, A.E. Lita, A.J. Miller, S. Nam, R.E. Schwall, IEEE Trans. Appl. Supercond. 15 (2005) 575.
+[46] M. Fujiwara, M. Sasaki, Appl. Phys. Lett. 86 (2005) 111119.
+[47] M. Dakna, T. Anhut, T. Opatrny, L. Knoell, D.-G. Welsch, Phys. Rev. A 55 (1997) 3184.
+[48] A. Ourjoumtsev, R. Tualle-Brouri, J. Laurat, P. Grangier, Science 312 (2006) 83.
+[49] J.S. Neergaard-Nielsen, B.M. Nielsen, C. Hettich, K. MZlmer, E.S. Polzik, Phys. Rev. Lett. 97 (2006) 083604.
+[50] K. Wakui, H. Takahashi, A. Furusawa, M. Sasaki, quant-ph/0609153, Opt. Express 15 (2007) 3568.

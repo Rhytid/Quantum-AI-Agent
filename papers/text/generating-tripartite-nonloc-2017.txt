@@ -1,0 +1,756 @@
+=== page 1 ===
+Quantum Inf Process (2017) 16:28
+DOI 10.1007/s11128-016-1493-7
+Generating tripartite nonlocality from bipartite
+resources
+Zhaofeng Su1
+Received: 21 August 2016 / Accepted: 3 December 2016 / Published online: 20 December 2016
+© Springer Science+Business Media New York 2016
+Abstract Nonlocality is an important resource for quantum information processing.
+Tripartite nonlocality is more difﬁcult to produce in experiments than bipartite ones.
+In this paper, we analyze a simple setting to generate tripartite nonlocality from two
+classes of bipartite resources, namely two-qubit entangled pure states and Werner
+states. Upper bounds on the tripartite nonlocality, characterized by the maximal vio-
+lation of Svetlichny inequalities, are given, and the optimal measurements to achieve
+these bounds are provided.
+Keywords Quantum information · Tripartite nonlocality · Svetlichny inequality ·
+Werner states
+1 Introduction
+Nonlocality is one of the most fundamental characteristics of quantum mechanics. The
+nonlocal quantum correlations existing between spatially separated quantum systems
+have signiﬁcant advantages over classical correlations, thus serving as an indispensable
+resource for quantum information processing. In recent years, many novel applications
+of nonlocality have been developed for quantum computation and quantum commu-
+The author is delighted to thank my supervisor, Professor Yuan Feng, for illuminating discussions. This
+research is partially supported by Chinese Scholarship Council (Grant No. 201206270069) and Australian
+Research Council (Grant No. DP160101652).
+B Zhaofeng Su
+Zhaofeng.su@student.uts.edu.au
+1 Centre for Quantum Software and Information, University of Technology Sydney,
+Sydney, Australia
+123
+
+=== page 2 ===
+28 Page 2 of 13 Z. Su
+nication [ 1], including communication complexity [ 2], quantum cryptography [ 3],
+randomness generation [4], and device-independent quantum computation [5].
+The quantum states which exhibit nonlocal correlations are called nonlocal states.
+The nonlocality of a quantum state can be veriﬁed by Bell-type inequalities which
+give upper bounds on all local correlations that admit a local hidden variable (LHV)
+model [1]. For bipartite quantum systems, a sufﬁcient criterion of being nonlocal is
+the violation of Clauser–Horner–Shimony–Holt (CHSH) inequality [ 6]. Any purely
+entangled two-qubit state violates the CHSH inequality [ 7] while it is not true for
+mixed states. In 1989, Werner found a class of two-qubit states which are entangled
+while admit LHV models [ 8]. In 1995, Horodecki et al. [ 9] developed a complete
+characterization for arbitrary two-qubit systems to violate CHSH inequality.
+Similarly, for tripartite systems the violation of Svetlichny inequality serves as a
+sufﬁcient condition of being nonlocal [ 10]. However, the problem regarding multi-
+partite nonlocality is much more complicated than the bipartite case, and very few
+works were presented in the literature. Even the nonlocality of three-qubit states, the
+simplest multipartite systems, is not well understood. In this special case, Ghose et al.
+derived an analytical expression of nonlocality for the generalized GHZ states and W
+states [11]. Later in 2010, Ajoy and Rungta [12] extended this result to a set of more
+general GHZ-class states and W-class states.
+In experiments, it is much harder to produce entangled tripartite systems than that of
+bipartite systems. To overcome this difﬁculty, Zeilinger et al. [13] proposed a scheme
+of generating tripartite entanglement from bipartite resources. In the experimental
+test of nonlocality in GHZ states, the entanglement preparation can also beneﬁt from
+Zeilinger’s scheme [14]. Note that being entangled is the necessary condition of being
+nonlocal for quantum systems. Therefore, it has practical meaning to generate tripartite
+nonlocal systems from bipartite ones.
+In this paper, we consider a simple setting to generate tripartite nonlocality from
+two classes of bipartite resources, namely two-qubit entangled pure states and Werner
+states. Upper bounds on the tripartite nonlocality, characterized by the maximal vio-
+lation of Svetlichny inequalities, are given, and the optimal measurements to achieve
+these bounds are provided.
+2 Svetlichny inequalities and their maximal violation
+To quantify the nonlocality of three-qubit states, we ﬁrst review Svetlichny inequal-
+ities and then develop a technique of ﬁnding the maximal violation of Svetlichny
+inequalities for a special class of three-qubit (pure or mixed) states. As a by-product,
+we employ this technique to calculate the nonlocality of generalized tripartite GHZ
+states.
+2.1 Svetlichny inequalities
+The nonlocality test scenario for three-qubit systems considered in this paper has
+two projective measurements each with two outcomes on each party. Without loss
+of generality, let the two measurement observables for system A are A = a · σ
+123
+
+=== page 3 ===
+Generating tripartite nonlocality from bipartite resources Page 3 of 13 28
+and A′ = a′ · σ , where a and a′ are three-dimensional unit real row vectors, and
+σ = (σ1,σ 2,σ 3) is the vector of Pauli matrices. Note that each observable is Hermitian
+operator with eigenvalues +1 and −1. Similarly, we have B = b · σ and B′= b′ · σ
+for system B, and C = c · σ and C′= c′ · σ for system C, where b, b′, c, c′ ∈ R3
+are unit vectors. Then, the Svetlichny operator corresponding to A, A′, B, B′, C, C′
+is deﬁned as
+S ≡ (A + A′)⊗(B ⊗ C′+ B′⊗ C) + (A − A′) ⊗ (B ⊗ C − B′⊗ C′).
+If a three-qubit stateρ admits a LHV model, then it satisﬁes the Svetlichny inequality
+tr (Sρ) ≤ 4
+for all possible Svetlichny operators S. Conversely, a three-qubit state which violates
+this inequality for some S is nonlocal. To quantify the nonlocality of a three-qubit
+system, we need to compute the maximum of the so-called Svetlichny value
+Smax(ρ) ≡ max tr (Sρ)
+where the maximization is taken over all possible Svetlichny operators. Thus,
+Smax(ρ) > 4 is a sufﬁcient condition for ρ to be nonlocal. Moreover, Svetlichny
+inequalities are maximally violated by the GHZ state (|000⟩+| 111⟩)/
+√
+2 with the
+maximal Svetlichny value being 4
+√
+2[ 10].
+2.2 Maximal violation of Svetlichny inequalities for general three-qubit states
+Recall that any three-qubit state ρ can be expressed under the Pauli basis as
+ρ = 1
+8
+3∑
+i, j,k=0
+tijk σi ⊗ σ j ⊗ σk
+where tijk = tr (ρσi ⊗ σ j ⊗ σk) ∈ R. For any measurement observables A = a · σ ,
+B = b·σ , and C = c·σ , the expectation of the product of the measurement outcomes
+of ρ is
+tr [ρ (A ⊗ B ⊗ C)] =
+3∑
+i, j,k=1
+ai tijk b j ck =⟨a, Tcb⟩
+where Tc ≡ ∑ 3
+k=1 ck Tk , and for each k, the Pauli coefﬁcients matrix Tk = (tijk ) is a
+3 by 3 real matrix indexed by i and j.H e r e⟨·,·⟩denotes the normal inner product in
+R3, and we abuse the notation slightly by writing Tcb for TcbT .
+Let e and e′ be two orthogonal unit vectors such that a + a′ = 2 cosαe and
+a − a′ = 2s i nαe′ for some α.L e tE ≡ e · σ and E′≡ e′ · σ . Then,
+123
+
+=== page 4 ===
+28 Page 4 of 13 Z. Su
+S(ρ) = 2 cosα tr (E ⊗ (B ⊗ C′+ B′⊗ C)ρ)
++ 2s i nα tr (E′⊗ (B ⊗ C − B′⊗ C′)ρ)
+= 2 cosα⟨e,λ0⟩+ 2s i nα⟨e′,λ1⟩ (1)
+(a)
+≤ 2
+√
+⟨e,λ0⟩2 +⟨e′,λ1⟩2
+≤ 2
+√
+‖λ0‖2 +‖λ1‖2,
+where
+λ0 ≡ Tc′b + Tcb′ (2)
+λ1 ≡ Tcb − Tc′b′. (3)
+Here the inequality (a) comes from the Cauchy–Schwarz inequality. The following
+lemma plays a crucial role in our later discussion.
+Lemma 1 Let ρ be a three-qubit state with the Pauli coefﬁcients matrices T k ,k =
+1, 2, 3. Then,
+Smax(ρ) ≤ max
+b,b′,c,c′
+2
+√
+‖λ0‖2 +‖λ1‖2 (4)
+where λ0 and λ1 are deﬁned in Eqs.( 2) and ( 3). Furthermore, if the maximum on the
+right-hand side of Eq.( 4) can be obtained for some λ0 and λ1 with λ0 ⊥ λ1, then the
+equality holds.
+Proof The upper bound has been proved in Eq.( 1). Suppose there are unit vectors
+b, b′, c, and c′ which achieve the maximum on the right-hand side of Eq.( 4) and
+make λ0 ⊥ λ1. Without loss of generality, we can assume that both λ0 and λ1 are
+nonzero; otherwise, the result holds trivially. Let e = λ0/‖λ0‖, e′ = λ1/‖λ1‖, and
+α such that the equality holds in (a). Then, the equality in Eq.( 4) holds by putting
+a = cos αe + sin αe′ and a′ = cos αe − sin αe′. ⊓⊔
+In the following subsection, we will use Lemma 1 to calculate the maximal
+Svetlichny value of the generalized GHZ states. Application of Lemma1 t oac l a s so f
+mixed three-qubit systems will be shown in Sect. 3.1.
+2.3 Nonlocality of generalized GHZ states
+The Pauli coefﬁcients matrices of the generalized GHZ states
+|Gθ⟩= cos θ|000⟩+ sin θ|111⟩
+are Tk = sin 2θ T′
+k , k = 1, 2, 3, where
+T′
+1 =
+⎛
+⎝
+100
+0 −10
+000
+⎞
+⎠ ,
+123
+
+=== page 5 ===
+Generating tripartite nonlocality from bipartite resources Page 5 of 13 28
+T′
+2 =
+⎛
+⎝
+0 −10
+−100
+00 0
+⎞
+⎠ ,
+T′
+3 =
+⎛
+⎝
+00 0
+00 0
+0 0 cot 2 θ
+⎞
+⎠ .
+Suppose b = (sin β sin η, sin β cos η, cos β), b′ = (sin β′sin η′, sin β′cos η′,
+cos β′), c = (sin γ sin ϕ, sin γ cos ϕ, cos γ) and c′ = (sin γ′sin ϕ′, sin γ′cos ϕ′,
+cos γ′). Then, the vectors λ′
+0 and λ′
+1 corresponding to these parameters are
+λ′
+0 =
+⎛
+⎝
+− sin β′sin γ cos (η′+ ϕ) − sin β sin γ′cos (η + ϕ′)
+− sin β′sin γ sin (η′+ ϕ) − sin β sin γ′sin (η + ϕ′)
+cot 2θ(cos β′cos γ + cos β cos γ′)
+⎞
+⎠
+λ′
+1 =
+⎛
+⎝
+− sin β sin γ cos (η + ϕ) + sin β′sin γ′cos (η′+ ϕ′)
+− sin β sin γ sin (η + ϕ) + sin β′sin γ′sin (η′+ ϕ′)
+cot 2θ(cos β cos γ − cos β′cos γ′)
+⎞
+⎠
+respectively. We further calculate
+‖λ′
+0‖2 +‖λ′
+1‖2
+= cot2 2θ(cos2 β + cos2 β′)(cos2 γ + cos2 γ′)
++ 4s i nβ sin β′sin γ sin γ′sin (η − η′) sin (ϕ − ϕ′)
++ (sin2 β + sin2 β′)(sin2 γ + sin2 γ′)
+≤ cot2 2θ(cos2 β + cos2 β′)(cos2 γ + cos2 γ′)
++ 4| sin β sin β′sin γ sin γ′|+ (sin2 β
++ sin2 β′)(sin2 γ + sin2 γ′)
+≤ cot2 2θ(cos2 β + cos2 β′)(cos2 γ + cos2 γ′)
++ 2(sin2 β + sin2 β′)(sin2 γ + sin2 γ′),
+where the last inequality is from the fact that
+4s i nβ sin β′sin γ sin γ′≤ (sin2 β + sin2 β′)(sin2 γ + sin2 γ′)
+for any β,β ′,γ , and γ′.L e tx ≡ sin2 β + sin2 β′and y ≡ sin2 γ + sin2 γ′. Then,
+‖λ′
+0‖2 +‖λ′
+1‖2
+≤ (2 + cot2 2θ) xy − 2 cot2 2θ( x + y) + 4 cot2 2θ
+≡ f (x, y).
+Note that the function f (x, y) is symmetric with respect to x and y, and if x < y,
+then f (x + ϵ,y − ϵ) > f (x, y) whenever 0 <ϵ< y − x. Thus, f (x, y) reaches its
+123
+
+=== page 6 ===
+28 Page 6 of 13 Z. Su
+maximum at some point withx = y. Inserting x = y into the formula, and noting that
+x, y ∈[ 0, 2],w eh a v e
+f (x, y) ≤
+{ 8 if cot 2 2θ ≤ 2
+4 cot2 2θ if cot 2 2θ> 2,
+where for the above case, the equality holds when x = y = 2, while for the below
+one, it holds when x = y = 0.
+When cot2 2θ ≤ 2, a simple calculation shows that the maximum of‖λ′
+0‖2 +‖λ′
+1‖2
+can be achieved by taking β = β′= γ = γ′= η = ϕ = π/2 while η′= ϕ′= 0. In
+this case, λ′
+0 = (0,−2, 0) and λ′
+1 = (2, 0, 0). Thus, λ′
+0 ⊥ λ′
+1, and by Lemma 1,w e
+derive Smax(Gθ) = 4
+√
+2| sin 2θ|.
+When cot2 2θ> 2, the maximum of‖λ′
+0‖2 +‖λ′
+1‖2 can be achieved by takingβ =
+β′= γ = γ′= 0 while other parameters arbitrarily. In this case,λ′
+0 = (0, 0, 2 cot 2θ)
+andλ′
+1 = (0, 0, 0). Thus,λ′
+0 ⊥ λ′
+1, and by Lemma1, we deriveSmax(Gθ) = 4| cos 2θ|.
+Note that the condition cot 2 2θ> 2 is equivalent to sin 2 2θ< 1
+3 . Therefore, the
+maximal violation of Svetlichny inequalities for the generalized GHZ states is
+Smax(Gθ) =
+{ 4| cos 2θ| if sin 2 2θ< 1
+3
+4
+√
+2| sin 2θ| if sin 2 2θ ≥ 1
+3,
+which coincides the result obtained by Ghose et al. [11].
+3 Generating tripartite nonlocality from bipartite resource
+We analyze in this paper a simple setting, shown in Fig. 1, for generating tripartite
+nonlocality from bipartite resources. Suppose there are three remotely located partic-
+ipants Alice, Bob, and Clare. Alice and Bob each shares a copy of the resource state
+ρ with Clare, denoted as ρAC1 and ρBC2 , respectively.
+Clare then applies a CNOT operation on C1 (the control qubit) and C2 (the target
+qubit) and measures the system C2 with some projective measurement. The tripartite
+nonlocality of the remaining systemsABC 1 will be quantiﬁed by the maximal violation
+of Svetlichny inequalities.
+Fig. 1 Setting for tripartite
+nonlocality generation
+123
+
+=== page 7 ===
+Generating tripartite nonlocality from bipartite resources Page 7 of 13 28
+In the following subsections, two different types of resource states are investigated:
+two-qubit Werner states
+ρW = p|/Phi1⟩⟨/Phi1|+ (1 − p) I
+4 (5)
+where 0 < p < 1 and |/Phi1⟩= (|00⟩+| 11⟩)/
+√
+2, and arbitrarily entangled two-qubit
+pure states with the Schmidt decomposition
+|/Phi1θ⟩= cos θ|00⟩+ sin θ|11⟩, 0 <θ< π
+2 . (6)
+3.1 Werner states as the resource
+Werner states are an important class of quantum states which show that, rather sur-
+prisingly, not all entangled states are nonlocal. This indicates that entanglement and
+nonlocality are different resources. In this subsection, we consider two-qubit Werner
+states as the resource in our setting and analyze the nonlocality of post-measurement
+states.
+Suppose the projective measurement applied by Clare on system C2 is in the fol-
+lowing orthonormal basis
+|ψ0⟩= sin τ|0⟩+ cos τ|1⟩ (7)
+|ψ1⟩= cos τ|0⟩− sin τ|1⟩. (8)
+If the system is projected to |ψ0⟩, the post-measurement state of ABC 1 will be
+ρ0 = 2 trC2 (ρ|ψ0⟩⟨ψ0|)
+where ρ = CNOTC1C2 (ρW ⊗ ρW ). The Pauli coefﬁcients matrices of ρ0 are p2 Tk ,
+k = 1, 2, 3, where
+T1 =
+⎛
+⎝
+10 0
+0 −10
+00s i n 2 τ
+⎞
+⎠ ,
+T2 =
+⎛
+⎝
+0 cos 2 τ 0
+cos 2τ 00
+00 0
+⎞
+⎠
+and T3 = 0. A routine calculation shows that
+‖λ0‖2 +‖λ1‖2
+= cos2 2τ
+(
+b2
+1 + b2
+2 + b′
+1
+2 + b′
+2
+2)(
+c2
+1 + c2
+2 + c′
+1
+2 + c′
+2
+)
++ 2s i n2 2τ
+(
+c2
+1 + c′
+1
+2)
++ 4 cos 2τ
+(
+b′
+1b2 − b1b′
+2
+)(
+c1c′
+2 − c′
+1c2
+)
+.
+123
+
+=== page 8 ===
+28 Page 8 of 13 Z. Su
+Note that the above formula is a homogeneous polynomial of degree 2, and it does not
+depend on b3, b′
+3, c3, and c′
+3. Thus, the maximum of the formula must be obtained at
+some point where b3 = b′
+3 = c3 = c′
+3 = 0. Then,
+max
+b,b′,c,c′
+(‖λ0‖2 +‖λ1‖2) = 4 cos2 2τ + 2m a x
+b,b′,c,c′
+F(λ0,λ1)
+where
+F(λ0,λ1) ≡ sin2 2τ
+(
+c2
+1 + c′
+1
+2)
++ 2 cos 2τ
+(
+b′
+1b2 − b1b′
+2
+)(
+c1c′
+2 − c′
+1c2
+)
+.
+To further optimize F(λ0,λ1), we need the following lemma.
+Lemma 2 F or any x, y ≥ 0 and α, β ∈ R,
+x(cos2 α − sin2 β) + y sin(α − β) ≤
+√
+x2 + y2,
+and the equality holds if and only if | cos 2α|= x√
+x2+y2 and α + β = kπ for some
+integer k.
+Proof Note that
+cos2 α − sin2 β = cos(α + β) cos(α − β).
+The result is then easy from the Cauchy–Schwarz inequality. ⊓⊔
+Let c1 = cos α, c2 = sin α, c′
+1 = cos β, and c′
+2 = sin β. Then,
+F(λ0,λ1)
+≤ sin2 2τ(cos2 α + cos2 β) + 2| cos 2τ|·| sin(α − β)|
+≤ sin2 2τ +
+√
+sin4 2τ + 4 cos2 2τ
+= 2
+where the ﬁrst equality is from the fact thatb′
+1b2 − b1b′
+2 ≤ 1 which is in turn from the
+Cauchy–Schwarz inequality, and the second equality comes from Lemma 2. Further-
+more, it is easy to check that the upper bound is achievable by taking, say,
+c1 = c′
+1 = 1√
+1 + cos2 2τ
+,
+−c2 = c′
+2 = cos 2τ√
+1 + cos2 2τ
+,
+b1 =− b′
+2 = 1,
+b2 = b′
+1 = 0.
+123
+
+=== page 9 ===
+Generating tripartite nonlocality from bipartite resources Page 9 of 13 28
+In this case, we have
+λ0 =
+√
+1 + cos2 2τ( 1, 1, 0),
+λ1 =
+√
+1 + cos2 2τ( 1,−1, 0).
+Thus, λ0 ⊥ λ1, and by Lemma 1,
+Smax(ρ0) = 4 p2√
+1 + cos2 2τ.
+By a similar calculation, we can show that Smax(ρ1) = 4 p2√
+1 + cos2 2τ as well,
+where ρ1 is the post-measurement state of ABC 1 when the system C2 is projected to
+|ψ1⟩.
+If we choose cos τ = 0 or cos τ =± 1, which corresponds to the projective mea-
+surement in the standard basis on system C2, the maximal value 4 p2√
+2 is achieved
+for bothρ0 and ρ1. With this, we have proved the following theorem which is the main
+result of this subsection.
+Theorem 1 Let ρ in Fig. 1 be a Werner state deﬁned in Eq.( 5), and Clare is only
+allowed to perform projective measurement in the X − Z plane. Then, the maximal
+Svetlichny inequality violation of the remaining states satisﬁes
+p0 Smax(ρ0) + p1 Smax(ρ1) ≤ 4 p2√
+2,
+whereρ0 andρ1 are the post-measurement states of system A BC1 with the correspond-
+ing probabilities p0 and p1, respectively. The equality holds when the measurement in
+the standard basis {|0⟩,|1⟩}is applied. Furthermore, in this case the maximal viola-
+tion 4 p2√
+2 is achieved for both measurement outcomes; thus, tripartite nonlocality
+is generated with certainty if p > 2− 1
+4 ≈ 0.8409.
+3.2 Two-qubit pure states as the resource
+Now we turn to the case where an arbitrary two-qubit pure state |/Phi1θ⟩described in
+Eq.(6) serves as the resource in our setting. By applying the CNOT operation, the
+initial state |/Phi1θ⟩AC1 |/Phi1θ⟩BC2 will be transformed to
+|ψ⟩ABC 1C2
+= cos2 θ|0000⟩+ sin2 θ|1110⟩+ sin θ cos θ(|0101⟩+| 1011⟩)
+≡ x0|/Phi10⟩|0⟩+ x1|/Phi11⟩|1⟩
+where x0 =
+√
+cos4 θ + sin4 θ, x1 =
+√
+2 cosθ sin θ, and
+|/Phi10⟩= α0|000⟩+α1|111⟩ (9)
+|/Phi11⟩= (|010⟩+| 101⟩)/
+√
+2( 1 0 )
+123
+
+=== page 10 ===
+28 Page 10 of 13 Z. Su
+with α0 = cos2 θ
+x0 and α1 = sin2 θ
+x0 .
+Suppose Clare measures the system C2 according to the following orthonormal
+basis
+|ϕ0⟩= μ0|0⟩+μ1|1⟩
+|ϕ1⟩= μ1|0⟩−μ0|1⟩
+where μ0,μ 1 ∈ R and μ2
+0 +μ2
+1 = 1. The probability of projecting systemC2 into the
+state |ϕ0⟩is p0 = μ2
+0 x2
+0 + μ2
+1 x2
+1 , and the post-measurement state of system ABC 1 is
+|/Psi10⟩= (μ0 x0|/Phi10⟩+μ1 x1|/Phi11⟩) /√ p0. (11)
+The measurement projects system C2 into |ϕ1⟩with probability p1 = 1 − p0 and the
+state of ABC 1 becomes
+|/Psi11⟩= (μ1 x0|/Phi10⟩−μ0 x1|/Phi11⟩)/√ p1. (12)
+To evaluate the nonlocality of the states in Eqs.(11) and (12), we need a lemma.
+Lemma 3 Let |/Psi1⟩ABC ≡ ω0|/Phi10⟩+ ω1|/Phi11⟩where |/Phi10⟩and |/Phi11⟩are deﬁned in
+Eqs.(9) and ( 10), respectively, ω0,ω 1 ∈ R, and ω2
+0 + ω2
+1 = 1. Then,
+Smax(/Psi1)≤ 4
+√
+2 + 4α0α1 (1 + 2α0α1)
+(
+ω4
+0 − 1
+2α0α1
+ω2
+0
+)
+and the equality holds when
+12
+(
+ω2
+0α0α1 − ω2
+1
+2
+) 2
++ 2ω2
+0ω2
+1(α0 + α1)2 ≥ 1. (13)
+Proof By reordering the systems ABC , the state |/Psi1⟩can be rewritten as
+|/Psi1⟩AC B =| 00⟩(ω0α0|0⟩+ ω1√
+2
+|1⟩) +| 11⟩
+( ω1√
+2
+|0⟩+ω0α1|1⟩
+)
+.
+Let
+U = ω0α0√r σ3 + ω1√
+2r
+σ1
+be a unitary operator, where σ1 and σ3 are Pauli matrices and r = ω2
+0α2
+0 + ω2
+1
+2 . Then,
+(IAC ⊗ UB)|/Psi1⟩AC B = √r|00⟩|0⟩+
+√
+1 − r|11⟩|φ⟩
+123
+
+=== page 11 ===
+Generating tripartite nonlocality from bipartite resources Page 11 of 13 28
+where
+|φ⟩=
+√
+2ω0ω1 (α0 + α1)|0⟩+
+(
+ω2
+1 − 2ω2
+0α0α1
+)
+|1⟩
+2√r(1 − r) .
+Note that local unitary operations do not affect nonlocality. Then, the lemma holds
+from [12]. ⊓⊔
+With Lemma 3, we calculate the quadratic mean1 of the maximal Svetlichny vio-
+lations as
+√
+p0 Smax(/Psi10)2 + p1 Smax(/Psi11)2
+≤ 4
+/radicaltp/radicalvertex/radicalvertex√ 2 + 4α0α1(2α0α1 + 1)
+[
+x4
+0
+(
+μ4
+0
+p0
++ μ4
+1
+p1
+)
+− x2
+0
+2α0α1
+]
+≤ 4
+√
+2 + 2(4α2
+0α2
+1 − 1)x2
+0 = 4
+√
+2s i n2 2θ
+1 + cos2 2θ ,
+where the second inequality comes from the fact that
+μ4
+0
+p0
++ μ4
+1
+p1
+= 1
+x2
+⎡
+⎢⎣
+μ2
+0
+1 +
+(
+μ1 x1
+μ0 x0
+) 2 + μ2
+1
+1 +
+(
+μ0 x1
+μ1 x1
+) 2
+⎤
+⎥⎦
+≤ 1
+x2
+(
+μ2
+0 + μ2
+1
+)
+= 1
+x2 .
+The equality holds when μ2
+0 = 0o r μ2
+0 = 1, which correspond to the projective
+measurement in the standard basis{|0⟩,|1⟩}. In this case, the post-measurement states
+|/Psi10⟩and |/Psi11⟩are exactly |/Phi10⟩and |/Phi11⟩deﬁned in Eqs.(9) and (10), respectively. If
+0.4911 ≈
+√
+1
+2 − 1
+2
+√
+2 −
+√
+3 ≤ cos θ ≤
+√
+1
+2 + 1
+2
+√
+2 −
+√
+3 ≈ 0.8711, then Eq.( 13)
+holds for both |/Psi10⟩and |/Psi11⟩, and the upper bound 4
+√
+2s i n2 2θ
+1+cos2 2θ is obtained.
+We summarize our main result in this section as the following theorem.
+Theorem 2 Let ρ =| /Phi1θ⟩⟨/Phi1θ| in Fig.1 where|/Phi1θ⟩is deﬁned in Eq.(6) with 0.4911 ≤
+cos θ ≤ 0.8711, and Clare is only allowed to perform projective measurement in the
+X − Z plane. Then, the quadratic mean of the maximal Svetlichny inequality violations
+of the remaining states satisﬁes
+√
+p0 Smax(/Psi10)2 + p1 Smax(/Psi11)2 ≤ 4
+√
+2s i n2 2θ
+1 + cos2 2θ ,
+1 For technical reasons, here we consider the quadratic mean, instead of the arithmetic mean as for the
+Werner states case, to quantify the tripartite nonlocality of the remaining states.
+123
+
+=== page 12 ===
+28 Page 12 of 13 Z. Su
+where |/Psi10⟩ and |/Psi11⟩ are the post-measurement states of system A BC 1 with the
+corresponding probabilities p 0 and p 1, respectively. The equality holds when the
+measurement in the standard basis {|0⟩,|1⟩}is applied. Furthermore, in this case we
+have Smax(/Psi11) = 4
+√
+2 and
+Smax(/Psi10) = 4
+√
+2s i n2 2θ
+1 + cos2 2θ . (14)
+Thus, tripartite nonlocality is generated with certainty if
+0.5412 ≈
+√
+2 −
+√
+2
+2 < cos θ<
+√ √
+2
+2 ≈ 0.8409.
+4 Conclusion and future work
+In this paper, we investigate a setting of generating tripartite nonlocality from two
+classes of bipartite resources, namely Werner states and two-qubit pure states. Inter-
+estingly, we ﬁnd in both cases projective measurement according to the standard basis
+{|0⟩,|1⟩}achieves the maximal Svetlichny inequality violation of the remaining states
+(although the criteria are slightly different).
+The setting considered in this paper is, however, still very simple: only a CNOT
+operation on C1 and C2 followed by a projective measurement on C2 is allowed. For
+future work, we are going to further exploit the power of the technique we proposed in
+this paper to derive the maximal Svetlichny violation for other classes of three-qubit
+states. With this, we will be able to include more general measurements and resources
+in our setting than those considered in the current paper. More complicated protocols
+other than the CNOT measurement one can also be examined, which hopefully will
+extend the capability of our setting to generate tripartite nonlocality.
+References
+1. Brunner, N., Cavalcanti, D., Pironio, S., Scarani, V ., Wehner, S.: Bell nonlocality. Rev. Modern Phys.
+86(2), 419–478 (2014)
+2. Buhrman, H., Cleve, R., Massar, S., Wolf, R.D.: Nonlocality and communication complexity. Rev.
+Modern Phys. 82(1), 665–698 (2010)
+3. Bennett, C.H., Brassard, G., Mermin, N.D.: Quantum cryptography without Bells theorem. Phys. Rev.
+Lett. 68(5), 557–559 (1992)
+4. Dhara, C., Prettico, G., Acn, Antonio: Maximal quantum randomness in Bell tests. Phys. Rev. A 88,
+052116 (2013)
+5. Barrett, J., Hardy, L., Kent, A.: No signaling and quantum key distribution. Phys. Rev. Lett.95, 010503
+(2005)
+6. Clauser, J.F., Horne, M.A., Shimony, A., Holt, R.A.: Proposed experiment to test local hidden-variable
+theories. Phys. Rev. Lett. 23(15), 880–884 (1969)
+7. Gisin, N., Peres, A.: Maximal violation of Bell’s inequality for arbitrarily large spin. Phys. Lett. A162,
+15–17 (1992)
+8. Werner, R.F.: Quantum states with Einstein-Podolsky-Rosen correlations admitting a hidden-variable
+model. Phys. Rev. A 40(8), 4277–4281 (1989)
+123
+
+=== page 13 ===
+Generating tripartite nonlocality from bipartite resources Page 13 of 13 28
+9. Horodecki, R., Horocecki, P., Horodecki, M.: Violating Bell inequality by mixed spin-1/2 states:
+necessary and sufﬁcient condition. Phys. Lett. A 200(5), 340–344 (1995)
+10. Svetlichny, G.: Distinguishing three-body from two-body nonseparability by a Bell-type inequality.
+P h y s .R e v .D35(10), 3066–3069 (1987)
+11. Ghose, S., Sinclair, N., Debnath, S., Rungta, P., Stock, R.: Tripartite entanglement versus tripartite
+nonlocality in three-qubit GHZ states. Phys. Rev. Lett. 102, 250404 (2009)
+12. Ajoy, A., Rungta, P.: Svetlichny’s inequality and genuine tripartite nonlocality in three-qubit pure
+states. Phys. Rev. A 81, 052334 (2010)
+13. Zeilinger, A., Horne, M.A., Weinfurter, H., Zukowski, Marek: Three-particle entanglement from two
+entangled pairs. Phys. Rev. Lett. 78(16), 3031–3035 (1997)
+14. Pan, J.W., Bouwmeester, D., Daniell, M., Weinfurther, H., Zeilinger, A.: Experimental test of quantum
+nonlocality in three-photon Greenberger-Horne-Zeilinger entanglement. Nature 403, 515–519 (2000)
+123

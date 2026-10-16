@@ -1,0 +1,1381 @@
+=== page 1 ===
+INSTITUTE FOR     
+QUANTUM STUDIES
+CHAPMAN
+UNIVERSITY
+Quantum Stud.: Math. Found. (2017) 4:225–242
+DOI 10.1007/s40509-016-0097-3
+REGULAR PAPER
+Study of nonclassicality in tripartite correlations beyond
+standard Bell nonlocality paradigm
+C. Jebaratnam
+Received: 15 August 2016 / Accepted: 19 December 2016 / Published online: 6 January 2017
+© Chapman University 2017
+Abstract In the nonsignaling framework, nonclassicality in correlation arising from two spatially separated input-
+output devices gets manifested, solely, through itsnonlocal behavior. Study of correlations based on this said feature
+is commonly known as local-nonlocal paradigm. While in two-party scenario correlations can be of only two types
+either local or nonlocal, the situation gets more involved for multi-party scenario, e.g., for tripartite scenario,
+correlations can be of three types: fully local, two-way local, and genuinely nonlocal. Nonsignaling correlations
+having quantum realization are termed physical. Fully local and certain quantum realizable two-way local tripartite
+correlations always have a quantum realization with tripartite biseparable states if there is no restriction on the local
+Hilbert-space dimensions. In this work, we study the quantum simulation of fully local and two-way local tripartite
+correlations with restricted local Hilbert-space dimensions, in particular we consider C2 ⊗ C2 ⊗ C2 quantum
+systems. Interestingly, in this restricted simulation scenario we ﬁnd that simulation of certain fully local and two-
+way local correlations necessarily requires genuine quantumness in the three qubit states. This, going beyond the
+standard nonlocality paradigm, captures a new notion of genuine nonclassicality even in the fully local and two-way
+local correlations. To explore this newly introduced notion of genuine nonclassicality, we propose two quantities
+of interest, called Svetlichny strength and Mermin strength, and extensively study their properties.
+Keywords Genuine nonlocality · Nonsignaling boxes · Genuine quantum correlations
+1 Introduction
+Correlations in the outcomes of local measurements performed on entangled states are in general incompatible
+with local hidden variable (LHV) models. This feature of quantum correlations is commonly known as nonlocality
+and was ﬁrst pointed out by Bell in his seminal 1964 paper [ 1]. Bell studied such nonlocal correlations in the case
+of bipartite scenario, i.e., for correlations arising from local measurements performed on two spatially separated
+systems. In the multipartite scenario (involving more than two spatially separated systems), the nonlocal behavior
+can be manifested in different ways [ 2]. In particular, for tripartite scenario, Svetlichny showed that quantum
+correlations can have genuine nonlocality in the sense that they cannot be explained by a hybrid local-nonlocal
+C. Jebaratnam ( B)
+S. N. Bose National Centre for Basic Sciences, Block JD, Sector III, Salt Lake, Kolkata 700098, India
+e-mail: jebarathinam@bose.res.in; jebarathinam@gmail.com
+123
+
+=== page 2 ===
+226 C. Jebaratnam
+hidden variable model, and such genuine nonlocality can be witnessed by the violation of a Svetlichny inequality
+(SI) [3].
+It is important to note that though quantum theory (QT) exhibits nonlocal behavior, it does not contradict
+relativistic causality principle (also known as non-signaling (NS) principle). Moreover, QT is not the only NS
+theory that exhibits nonlocality. In a seminal paper [ 4], Popescu and Rohrlich (PR) provided an example of a
+hypothetical correlation that is more nonlocal than QT, but nevertheless, satisﬁes the NS principle. This initiated the
+study of nonlocal correlations in a more general framework than QT known as generalized nonsignaling theories
+(GNST) [ 5,6]. Within the framework of GNST, correlations are treated as arising from “black boxes” which are
+input-output devices. A correlation will be called quantum if it can be realized by a set of local measurements on a
+composite quantum system.
+A bipartite quantum state must be entangled one in order to give rise to nonlocal correlations, i.e., within QT
+entanglement is necessary for exhibiting nonlocality. On the other hand, any local correlation always has a quantum
+realization with some separable quantum state. In recent past it was shown that even mixed separable states can
+have nonclassical correlations [7–9] which motivated the study of quantum correlations beyond entanglement. Such
+correlations are named as quantum discord which has been shown to be useful resource for different information
+theoretic tasks [ 10,11]. Quantum states with zero discord are called classically correlated states which can always
+be written as a convex mixture of some orthonormal product basis states [ 12,13]. V ery recently genuine tripartite
+quantum discord, a generalized measure of genuine tripartite quantum correlations, has been studied in [ 14–16].
+As mentioned earlier, in the tripartite scenario, violation of a SI is sufﬁcient to certify genuine nonlocality in
+a correlation. A correlation can be non-genuine in two ways: either it is fully local or it is two-way local [17]. In
+this tripartite scenario, there are two-way local correlations that violate a Mermin inequality (MI) [ 18]. Note that
+not all two-way local correlations are quantum realizable, whereas all the fully local correlations are quantum [ 17].
+Here our main interest is to study quantum realizable tripartite correlations. The observation of genuine nonlocality
+implies the presence of genuine entanglement in a device-independent (DI) way (i.e., without any assumption on
+the measured system as well as the measurements performed). It is known that the observation of a two-way local
+correlation that violates a MI more than 2
+√
+2 also implies the presence of genuine entanglement in a DI way [19–21].
+Note that all the fully local correlations and two-way local correlations that do not certify genuine entanglement in
+a DI way can be simulated by fully separable and biseparable states respectively [ 2,22].
+Nonlocal cost is a measure of nonlocality which is based on the Elitzur–Popescu–Rohrlich (EPR2) decomposition
+[23]. In the EPR2 approach, a given correlation (box) is decomposed in a convex mixture of a nonlocal part and
+a local part, with the weight of the nonlocal part minimized. For a correlation that violates a SI, the nonlocal cost
+is obtained by minimizing the weight of a pure genuinely nonlocal box known as Svetlichny box. In the case of
+a (quantum realizable) two-way local correlation that violates a MI more than 2
+√
+2, the nonlocal cost is obtained
+by minimizing the weight of a pure nonlocal box which we call Mermin box. In this paper, we call the maximal
+Svetlichny-box weight of a correlation that violates a SI Svetlichny strength (SS) and the maximal Mermin-box
+weight of a correlation that violates a MI Mermin strength (MS).
+The observation that certain fully local correlations have nonzero SS or nonzero MS motivates us to ask whether
+the quantum simulation of these correlations requires genuine quantumness in the states. The answer is no when
+there is no restriction on the local Hilbert-space dimensions. Therefore, we put the constraint that for simulating
+those correlations one cannot use quantum states of arbitrary local Hilbert-space dimensions. More speciﬁcally to
+say we consider only three-qubit quantum systems (i.e., quantum systems with Hilbert space C2 ⊗ C2 ⊗ C2)t o
+simulate the fully local and two-way local tripartite correlations. In this restricted simulation scenario, we ﬁnd the
+following interesting observations:
+(i) certain two-way local correlations cannot be simulated by biseparable states of C2 ⊗ C2 ⊗ C2 systems which
+do not have genuine quantum discord;
+(ii) moreover, there exist two-way local correlations that cannot be simulated with quantum states of C2 ⊗C2 ⊗C2
+systems having genuine quantum discord, rather genuine entanglement is necessary, even if they do not certify
+genuine entanglement in a DI way;
+123
+
+=== page 3 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 227
+(iii) even for simulation of certain fully local correlations by C2 ⊗ C2 ⊗ C2 systems, one requires genuine quantum
+discord states.
+These observations motivate us to characterize the (genuine) nonclassicality present in the local as well as two-way
+local correlations by using the two quantities SS and MS. Our study thus goes beyond the standard locality-
+nonlocality paradigm, since it captures the (genuine) nonclassicality present in the fully local as well as two-way
+local correlations: the quantum states must contain genuine quantum correlations in the form of genuine discord,
+when those correlations are supposed to be simulated by quantum states of restricted local dimensions. For a general
+tripartite NS correlation belonging to Svetlichny polytope, a proper sub-polytope of the full NS polytope, we obtain
+a canonical decomposition with three different boxes: (a) a Svetlichny box which violates the SI maximally, (b) a
+two-way local box that violates the MI maximally, and (c) a box that belongs to a subregion of the two-way local
+polytope. In this decomposition, the weights of the boxes (a) and (b) are called SS and MS respectively. In the
+canonical decomposition, the presence of genuine nonclassicality is manifested in three different ways: when only
+SS is nonzero, or only MS is nonzero, or both SS and MS are nonzero.
+The paper is organized as follows. In Sect.2, we review the geometry of the full tripartite nonsignaling polytope. In
+Sect. 3, we restrict ourselves to the Svetlichny-box polytope and we introduce two notions of genuine nonclassicality,
+namely Svetlichny strength and Mermin strength. In Sect. 4, we analyze genuine nonclassicality of boxes arising
+from three-qubit states with respect to these two notions. Lastly, we present our conclusions in Sect. 5.
+2 Preliminaries
+We consider the following tripartite scenario. Three spatially separated parties, say Alice, Bob, and Charlie, share
+a tripartite NS box with two binary inputs and two binary outputs per party. Let x, y, and z denote the inputs and a,
+b, and c denote the outputs of Alice, Bob, and Charlie respectively, where x, y, z, a, b, c ∈{ 0, 1}. The correlation
+between the outputs is captured by the set of conditional probability distributions (CPDs), P(abc|xyz ). In addition
+to positivity and normalization, the CPDs satisfy NS constraints, that read,
+∑
+a
+P(abc|xyz ) = P(bc|yz) ∀b, c, x, y, z, (1)
+and permutations of the parties, i.e., marginal distribution of any two parties of the box is independent of the input
+chosen by the other party. The set of such NS boxes forms a convex polytopeN in a 26 dimensional space [17]. Any
+box belonging to this polytope can be fully speciﬁed by 6 single-party, 12 two-party and 8 three-party expectations,
+P(abc|xyz ) = 1
+8[1 + (−1)a ⟨Ax⟩+(−1)b ⟨By⟩+(−1)c ⟨Cz⟩
++(−1)a⊕b ⟨Ax By⟩+(−1)a⊕c ⟨Ax Cz⟩+(−1)b⊕c ⟨By Cz⟩
++(−1)a⊕b⊕c ⟨Ax By Cz⟩], (2)
+where ⟨Ax⟩= ∑
+a(−1)a P(a|x), ⟨Ax By⟩= ∑
+a,b(−1)a⊕b P(ab|xy) and the other expectations are similarly
+deﬁned, ⊕ denotes modulo sum 2.
+The set of boxes that can be simulated by a fully LHV model are of the form,
+P(abc|xyz ) =
+∑
+λ
+pλ Pλ(a|x)Pλ(b|y)Pλ(c|z), (3)
+and they form a local polytope [ 24,25] denoted L. Here, λ denotes shared classical randomness which occurs with
+probability pλ. The extremal boxes of L are 64 local vertices which are fully deterministic boxes,
+Pαβγ ϵζ η
+D (abc|xyz ) =
+⎧
+⎪⎪⎨
+⎪⎪⎩
+1, a = αx ⊕ β
+b = γ y ⊕ ϵ
+c = ζ z ⊕ η
+0, otherwise.
+(4)
+123
+
+=== page 4 ===
+228 C. Jebaratnam
+Here, α, β, γ, ϵ, ζ, η∈{ 0, 1}. These deterministic boxes can be written as the product of marginals corresponding
+to each party, i.e., PD(abc|xyz ) = PD(a|x)PD(b|y)PD(c|z). Boxes lying outside L are called nonlocal boxes and
+they cannot be written as a convex mixture of the local deterministic boxes alone.
+In Ref. [26], Pironio et al. found that the full NS polytope N has 53,856 extremal boxes (vertices) which can be
+classiﬁed into 45 different classes of nonlocal vertices and a class comprising local vertices. The vertices in each
+class are equivalent in the sense that they can be converted into each other through local reversible operations (LRO)
+and permutations of the parties. LRO, which are analogous to local unitary operations in quantum theory, include
+local relabeling of the inputs and outputs. For instance, the operations x → x ⊕ 1 and a → a ⊕ αx ⊕ β on Alice’s
+side are local reversible.
+Nonlocal boxes can be classiﬁed into genuinely three-way nonlocal and two-way local boxes. A nonlocal box is
+genuinely three-way nonlocal if and only if (iff) it cannot be simulated by a hybrid local-nonlocal NS model [27],
+P(abc|xyz ) = p1
+∑
+λ
+pλ P AB|C
+λ + p2
+∑
+λ
+qλ P AC|B
+λ + p3
+∑
+λ
+rλ P A|BC
+λ , (5)
+where P AB|C
+λ = Pλ(ab|xy) Pλ(c|z), and, where P AC|B
+λ and P A|BC
+λ are similarly deﬁned. Each bipartite distribution
+in this decomposition can have arbitrary nonlocality consistent with the NS principle.
+The set of boxes that admit a decomposition as in Eq. (5) again forms a convex polytope which is called two-way
+local polytope denoted L2. The extremal boxes of this polytope are the 64 local vertices and 48 two-way local
+vertices which are the bipartite PR-boxes. There are 16 two-way local vertices in which a PR-box [ 4] is shared
+between A and B,
+Pαβγ ϵ
+12 (abc|xyz ) =
+{ 1
+2, a ⊕ b = x · y ⊕ αx ⊕ βy ⊕ γ and o = γ k ⊕ ϵ
+0, otherwise, (6)
+and the other 32 two-way local vertices, Pαβγ ϵ
+13 and Pαβγ ϵ
+23 , in which a PR-box is shared by AC and BC are
+similarly deﬁned. The extremal boxes in Eq. ( 6) can be written in the factorized form, Pαβγ ϵ
+12 (abc|xyz ) =
+Pαβγ
+PR (ab|xy)Pγϵ
+D (c|z), where Pαβγ
+PR (ab|xy) are the 8 PR-boxes given by the relation in Eq. ( 6) and Pγϵ
+D (c|z) =
+δz
+c⊕γ z⊕ϵ. The set of two-way local boxes satisfy, L ⊂ L2 ⊂ N . A three-way nonlocal box cannot be written as a
+convex mixture of the extremal boxes of L2 alone and violates a facet inequality of L2. Bancal et al. [27] found that
+L2 has 185 classes of facet inequalities which include Bell-type inequalities detecting three-way nonlocality.
+In this work, we consider two classes of 3-way nonlocal vertices that belong to the classes 8 and 46 given in the
+table of Pironio et al. [26]. The extremal three-way nonlocal boxes that belong to the class 46 are 16 Svetlichny-boxes
+which are given as follows:
+Pαβγ ϵ
+Sv (abc|xyz ) =
+{ 1
+4, a⊕b⊕c= x · y⊕x · z⊕ y · z⊕αx⊕βy⊕γ z⊕ϵ
+0, otherwise. (7)
+A Svetlichny box, Pαβγ ϵ
+Sv , violates one of the class 185 facet inequalities,
+Sαβγ ϵ=
+∑
+xyz
+(−1)x·y⊕x·z⊕y·z⊕αx⊕βy⊕γ z⊕ϵ⟨Ax By Cz⟩≤ 4, (8)
+to its algebraic maximum of 8. A class 185 facet inequality is known as Svetlichny inequality which detects the
+strongest form of three-way nonlocality [ 3].
+Deﬁnition 1 A NS box is said to exhibit Svetlichny nonlocality if it violates a Svetlichny inequality.
+We will refer to the boxes which do not violate a SI as Svetlichny-local.
+A tripartite NS box is quantum if it can be expressed through the Born’s rule, i.e.,
+P(abc|xyz ) = Tr
+(
+ρ Ma
+Ax ⊗ Mb
+By ⊗ Mc
+Cz
+)
+, (9)
+where ρ is a tripartite quantum state (density matrix) acting on the composite Hilbert space HA ⊗ HB ⊗ HC ,
+123
+
+=== page 5 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 229
+where HK denotes Hilbert space of kth party, and Ma
+Ax , Mb
+By , and Mc
+Cz are the local measurement operators which
+are in general positive operator valued measurements (POVMs). Here dimension of each local Hilbert space HK
+is arbitrary. In the following we consider simulation of boxes P := P(abc|xyz ) ∈ L2 with C2 ⊗ C2 ⊗ C2
+quantum states, i.e., three-qubit states. Interestingly, we ﬁnd that there exist P ∈ L2 which allow a C2 ⊗ C2 ⊗ C2
+quantum simulation only if the quantum states possess some sort of genuine quantum correlations measured in
+terms of genuine quantum discord [ 14–16]. And in this sense we say that the studied correlations contain genuine
+nonclassicality (note that this goes beyond the conventional nonlocality paradigm).
+3 Svetlichny strength and Mermin strength
+In this section, we introduce the quantities Svetlichny strength (SS) and Mermin strength (MS), which can be
+nonzero even for boxes admitting LHV model. In the case of local boxes arising from three-qubit states (i.e., boxes
+which can be simulated by C2 ⊗ C2 ⊗ C2 quantum systems), nonzero SS and nonzero MS characterize genuine
+nonclassicality. Correlations having nonzero SS we call Svetlichny nonclassical and similarly Mermin nonclassical
+whenever MS is nonzero. For the purpose of our study, we restrict ourselves in a subpolytope called Svetlichny-box
+polytope which we describe below.
+3.1 Svetlichny-box polytope
+The Svetlichny-box polytope denoted R has 128 extremal boxes which are the Svetlichny boxes, the bipartite
+PR-boxes and the deterministic boxes. Any box P := P(abc|xyz ) ∈ R can be written as a convex mixture of these
+extremal boxes, i.e.,
+P =
+15∑
+i=0
+pi Pi
+Sv +
+15∑
+i=0
+qi Pi
+12 +
+15∑
+i=0
+ri Pi
+13 +
+15∑
+i=0
+si Pi
+23 +
+63∑
+j=0
+t j P j
+D, (10)
+with ∑
+i pi + ∑
+i qi + ∑
+i ri + ∑
+i si + ∑
+j t j = 1. Here, P j
+D , Pi
+12, and Pi
+Sv are the boxes given in Eqs. ( 4), (6),
+and ( 7), respectively, with i = 23α + 22β + 21γ + 20ϵ and j = 25α + 24β + 23γ + 22ϵ+ 21ζ + 20η.T h e
+Svetlichny-box polytope can be divided into a Svetlichny nonlocal region and the two-way local polytope. We have
+that L ⊂ L2 ⊂ R ⊂ N . Diagrammatically the Svetlichny-box polytope is shown in Fig. 1.
+3.2 Svetlichny strength
+We consider isotropic Svetlichny-box deﬁned as
+P = 2 + abc(−1)xy⊕xz⊕yz⊕x⊕y⊕zμ
+16 ; 0 <μ ≤ 1. (11)
+The above box violates the Svetlichny inequality (given in Eq. ( 8)) for μ> 1
+2 , and for μ ≤ 1
+2 it is fully local as
+in this range the correlation does not violate any Bell inequality 1. This implies that for μ ≤ 1/2, the isotropic
+Svetlichny-box can be decomposed in a convex mixture of the local deterministic boxes alone. However, the box
+(11) can be expressed as the mixture
+P = pSv P0000
+Sv + (1 − pSv)PN ; 0 < pSv ≤ 1, (12)
+with pSv = μ. Here, PN is the maximally mixed box, i.e., PN (abc|xyz ) = 1/8 for all x, y, z, a, b, c. We can see
+that even when the isotropic Svetlichny-box is local, it has nonvanishing Svetlichny-box weight pSv originating
+1 A tripartite correlation P ∈ L2 is nonlocal iff it violates either a MI or a Bell–Clauser–Horne–Shimony–Holt (CHSH) inequality
+[29,30].
+123
+
+=== page 6 ===
+230 C. Jebaratnam
+from Svetlichny nonlocality for any μ> 0 (as it lies on the line segment joining the Svetlichny-box and white
+noise). We call the maximal such irreducible weight of the Svetlichny-box, which occurs above a Svetlichny-local
+box even in the case of two-way local and fully local boxes, Svetlichny strength.
+Consider the modulus of the Svetlichny functions in Eq. ( 8), i.e., Sαβγ := |Sαβγ ϵ|. For any isotropic Svetlichny-
+box,
+P = pSv Pαβγ ϵ
+Sv + (1 − pSv)PN ; 0 < pSv ≤ 1, (13)
+it can be checked that one of the Svetlichny functions Sαβγ (P) = 8 pSv and the others take the value zero. Any
+such isotropic Svetlichny-box is an unequal mixture of the Svetlichny-box Pαβγ ϵ
+Sv and the anti-Svetlichny-box
+Pαβγ ϵ⊕1
+Sv whose uniform mixture gives white noise, i.e., the box can also be decomposed as P = 1+ pSv
+2 Pαβγ ϵ
+Sv +
+1− pSv
+2 Pαβγ ϵ⊕1
+Sv . Thus, we see that nonzero value of the quantity Sαβγ (P) measures the Svetlichny strength of any
+isotropic Svetlichny-box (13).
+By using the Svetlichny functions Sαβγ , we now introduce a quantity denoted G which is deﬁned as
+G := min{G1,..., G9}, (14)
+where G1 := |||S000 − S001|−| S010 − S011|| − ||S100 − S101|−| S110 − S111||| and the other eight Gi are similarly
+deﬁned and can be obtained by interchanging Sαβγ ’s in G1. The quantity G satisﬁes the following properties: (g1)
+positivity, i.e., G ≥ 0, (g2) the bipartite PR-boxes and the deterministic boxes have G = 0, (g3) G is invariant under
+LRO since the set {Gi} is invariant under LRO, and (g4) the algebraic maximum of G is achieved by the Svetlichny
+boxes, i.e., G = 8 for any Svetlichny box.
+By using the quantity G, we will now derive a canonical decomposition for any box P ∈ R. Let a decomposition
+(10)f o r P be
+P =
+15∑
+i=0
+gi Pi
+Sv +
+(
+1 −
+15∑
+i=0
+gi
+)
+PSvL. (15)
+In this decomposition, the Svetlichny-box components are maximized over all possible decompositions such that
+the remaining Svetlichny-local box does not have any Svetlichny-box component. We now express the ﬁrst term
+in the decomposition ( 15) as a sum of the Svetlichny-local boxes, Pi
+SvL, and a residual box, P↑
+Sv (the dominant
+Svetlichny-box), i.e.,
+15∑
+i=0
+gi Pi
+Sv = μP↑
+Sv +
+15∑
+i=1
+pi Pi
+SvL. (16)
+This is done by recursively rewriting the mixture of two different Svetlichny boxes, pP i
+Sv + qP j
+Sv ( p > q), as the
+mixture ( p − q)Pi
+Sv + 2qPSvL, where PSvL ≡ (Pi
+Sv + P j
+Sv)/2 which is Svetlichny-local. Since ﬁnding the above
+residual decomposition is not unique, μ in Eq. ( 16) can take different value for different residual decomposition.
+The evaluation of G1 for the mixture of the Svetlichny-boxes gives,
+G1
+( 15∑
+i=0
+gi Pi
+Sv
+)
+= 8||||g0 − g1|−| g2 − g3|| − ||g4 − g5|−| g6 − g7|||
+−|||g8 − g9|−| g10 − g11|| − ||g12 − g13|−| g14 − g15||||. (17)
+Thus, we see that G(∑ 15
+i=0 gi Pi
+Sv)/8 gives the (minimal) weight of the irreducible Svetlichny-box P↑
+Sv that occurs
+above a Svetlichny-local box. For this reason, among all residual decompositions as in Eq. (16) we take that particular
+decomposition where μ = G(∑ 15
+i=0 gi Pi
+Sv)/8. Plugging this minimal residual decomposition in Eq. ( 15), we get
+the following decomposition:
+P = μP↑
+Sv + (1 − μ)P′
+SvL, (18)
+where P′
+SvL = 1
+1−μ{∑ 15
+i=1 pi Pi
+SvL + (1 − ∑ 15
+i=0 gi)PSvL}. The Svetlichny-local box in the decomposition ( 18)
+does not have any nonzero (irreducible) dominant Svetlichny-box weight, since μ isolates the maximal irreducible
+Svetlichny-box weight of the correlation. Thus, we can state the following canonical decomposition.
+123
+
+=== page 7 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 231
+Svetlichny box
+PR box
+White noise
+Deterministic box
+Fig. 1 A three-dimensional representation of the Svetlichny-box polytope is shown here. The fully deterministic boxes are represented
+by the circular points on the hexadecagon . The bipartite PR-boxes are represented by the circular points on the octagon .T h e circular
+point on the top represents the Svetlichny box. The region that lies above the hexadecagon and below the octagon represents the
+two-way local region. The region below the curved surface contains quantum boxes and the point on this curved surface represents
+the quantum box that achieves maximal Svetlichny nonlocality. The star and square points represent Mermin boxes with maximally
+and nonmaximally mixed bipartite marginals, respectively. The triangular region (shown by dotted lines ) which is a convex hull of
+the Svetlichny box, the Mermin box and white noise illustrates Result 2 in the main text: any point that lies inside the triangle can be
+decomposed into Svetlichny box, the Mermin box and white noise. The circular point at the center of the hexadecagon is the isotropic
+Svetlichny-box with pSv = 1
+2 which can be decomposed as an equal mixture of the 16 deterministic boxes or an equal mixture of two
+Mermin boxes. Note that this ﬁgure is illustrative and inspired by the ﬁgure depicting the PR-box polytope given in Ref. [ 28]; the actual
+polytope is 26-dimensional
+Result 1 Any box P that belongs to the Svetlichny-box polytope has a decomposition of the following form :
+P = μP↑
+Sv + (1 − μ)Pμ=0
+SvL , (19)
+where P↑
+Sv is the dominant Svetlichny-box and P μ=0
+SvL is a Svetlichny-local box which does not have any nonzero
+(irreducible) dominant Svetlichny-box weight. The coefﬁcient μ is called the Svetlichny strength of the correlation.
+The quantity SS is different from nonlocal cost which is the well-known quantiﬁer of nonlocality [ 23,31].
+Whereas in the deﬁnition of nonlocal cost, one has to minimize some particular pure nonlocal box fraction (e.g.,
+for bipartite case PR-box fraction, for tripartite case Svetlichny-box fraction) over all possible decompositions,
+but to ﬁnd SS one has to minimize Svetlichny-box fraction only over all possible residual decompositions as in
+Eq. (16). Since for SS minimization is performed over a restricted set of decompositions in comparison to the case
+of nonlocal cost, SS can be nonzero even when nonlocal cost (in this case Svetlichny-nonlocal cost) of a correlation
+is zero. For instance, the box ( 11) which has Svetlichny-nonlocal cost CSnl (P) = 2 pSv − 1 has SS μ = pSv which
+is nonzero even if the box is fully local.
+Proposition 1 If a box has G = 0, then it necessarily has SS μ = 0.
+Proof The statement of this proposition follows from the fact that for any P as given by the decomposition ( 15),
+SS μ = G(∑ 15
+i=0 gi Pi
+Sv)/8. ⊓⊔
+123
+
+=== page 8 ===
+232 C. Jebaratnam
+It should be noted that there can be boxes which do not have SS, but nevertheless, have G > 0. For those boxes
+which lie on the line segment joining a Svetlichny-box and a Svetlichny-local box with G = 0, the quantities SS
+and G are related to each other as follows.
+Proposition 2 F or any given box P ∈ R which has a decomposition of the form ,
+P = μP↑
+Sv + (1 − μ)PG=0
+SvL , (20)
+the quantities G deﬁned in Eq. (14) and the SS satisfy the relationship G(P) = 8μ.
+Proof The nonextremal boxes in the two-way local polytope can have the following three types of decompositions
+due to the convexity of R: (i) a convex mixture of two G = 0 boxes, (ii) a convex mixture of two G > 0
+boxes, and (iii) a convex mixture of a G > 0 box and a G = 0 box. Since certain convex mixture of the G = 0
+boxes ( G > 0 boxes) have G > 0( G = 0), G is, in general, not linear for the two decompositions (i) and (ii).
+However, G is linear for the decomposition (iii) which implies that the box given by the decomposition ( 20) has
+G(P) = μG(P↑
+Sv) + (1 − μ)G(PG=0
+SvL ) = 8μ. ⊓⊔
+Proposition 3 The Svetlichny strength μ of any box is invariant under LRO and permutations of the parties.
+Proof The statement of this proposition follows from the fact that G is invariant under LRO and permutations of
+the parties. ⊓⊔
+3.3 Mermin strength
+Likewise SS, here we deﬁne another quantity called Mermin strength. For this purpose, we require the Mermin
+inequalities [18,25]. MIs are the Bell-type inequalities which can detect two-way local boxes while SIs fail to do
+so. For the tripartite scenario, MIs are given by,
+Mαβγ ϵ= (α ⊕ β ⊕ γ ⊕ 1)M+
+αβγ ϵ+ (α ⊕ β ⊕ γ) M−
+αβγ ϵ≤ 2, (21)
+where M+
+αβγ ϵ:= (−1)γ⊕ϵ⟨A0 B0C1⟩+(−1)β⊕ϵ⟨A0 B1C0⟩+(−1)α⊕ϵ⟨A1 B0C0⟩+(−1)α⊕β⊕γ⊕ϵ⊕1 ⟨A1 B1C1⟩
+and M−
+αβγ ϵ:= (−1)α⊕β⊕ϵ⊕1 ⟨A1 B1C0⟩+(−1)α⊕γ⊕ϵ⊕1 ⟨A1 B0C1⟩+(−1)β⊕γ⊕ϵ⊕1 ⟨A0 B1C1⟩+(−1)ϵ⟨A0 B0C0⟩.
+By using the modulus of the Mermin functions in Eq. (21), i.e., Mαβγ := |Mαβγ ϵ|, we introduce a quantity denoted
+Q which is deﬁned as
+Q := min{Q1,..., Q9}, (22)
+where Q1 := |||M000 − M001|−| M010 − M011|| − ||M100 − M101|−| M110 − M111||| and the other eight Qi
+are similarly deﬁned and can be obtained by interchanging Mαβγ ’s in Q1. The quantity Q satisﬁes the following
+properties: (q1) positivity, i.e., Q > 0, (q2) Q = 0 for the Svetlichny-boxes, bipartite PR-boxes and deterministic
+boxes, (q3) Q is invariant under LRO since the set {Qi} is invariant under LRO, (q4) the algebraic maximum of
+the quantity Q is 4, and boxes achieving this algebraic maximum value we call Mermin box.A ss h o w ni n[26], the
+box Pmm
+M which is the uniform mixture of the two Svetlichny boxes P0000
+Sv and P1110
+Sv exhibits Greenberger–Horne–
+Zeilinger (GHZ) paradox [ 32]. It turns out that for the box Pmm
+M the quantity Q takes the value 4 (hence it is an
+example of Mermin box) while G = 0 for this box, here the superscript ‘mm’ is used to denote the fact that all the
+bipartite marginals are maximally mixed (mm), i.e., the white noise distribution. We also note that Pmm
+M allows a
+two-way local decomposition given as follows:
+Pmm
+M = 1
+4
+4∑
+λ=1
+Pλ(a|x)Pλ(bc|yz), (23)
+where P1(a|x)=δx
+a⊕x , P2(a|x) = δx
+a⊕x⊕1, P3(a|x) = δx
+a⊕1, P4(a|x) = δx
+a , P1(bc|yz)= P110
+PR (bc|yz), P2(bc|yz) =
+P111
+PR (bc|yz), P3(bc|yz) = P001
+PR (bc|yz) and P4(bc|yz) = P000
+PR (bc|yz). This shows that correlations exhibiting the
+123
+
+=== page 9 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 233
+GHZ paradox are two-way local. 2 However, there also exist Mermin boxes (i.e., boxes with Q = 4) which do not
+have maximally mixed bipartite marginals. One such example is,
+Pnmm
+M = 1
+2
+2∑
+λ=1
+Pλ(a|x)Pλ(bc|yz), (24)
+where P1(a|x) = δx
+a⊕x , P2(a|x) = δx
+a⊕1, P1(bc|yz) = P110
+PR (bc|yz), and P2(bc|yz) = P001
+PR (bc|yz). Likewise the
+fact that a Svetlichny box violates only one of the SIs, a Mermin box violates only one of the MIs.
+We consider isotropic Mermin-box deﬁned as
+P = 1 + abcδx⊕y,zν
+8 ; 0 <μ ≤ 1. (25)
+The above box is two-way local for ν> 1
+2 as it violates the Mermin inequality (given in Eq. ( 21)) in this range, and
+for ν ≤ 1
+2 it is fully local as in this range the correlation does not violate any Bell inequality. This implies that for
+ν ≤ 1/2, the isotropic Mermin-box can be decomposed in a convex mixture of the local deterministic boxes alone.
+However, it can be decomposed in a convex mixture of the Mermin box Pmm
+M = 1
+2(P0000
+Sv + P1110
+Sv ) and white noise
+for any ν> 0 as follows:
+P = pM Pmm
+M + (1 − pM)PN ; 0 < pM ≤ 1, (26)
+with pM = ν. We can see that even when the isotropic Mermin-box is local, it has nonvanishing Mermin-box weight
+pM originating from nonlocality for any μ> 0 (as it lies on the line segment joining the Mermin-box and white
+noise). We call the maximal such irreducible Mermin-box weight, which dominates over a Svetlichny-local/nonlocal
+box even in the case of fully local boxes, Mermin strength. The isotropic Mermin-box has MS ν = pM , whereas
+nonlocal cost [ 31] (in this case Mermin-nonlocal cost) CMnl (P) = (2 pM − 1).
+We are now in a position to obtain a more general version of Result 1.
+Result 2 Any box P ∈ R has a decomposition of the following form :
+P = μP↑
+Sv + νP↑
+GM + (1 − μ − ν) Pμ=ν=0
+SvL , (27)
+where P↑
+GM is a dominant Mermin box which satisﬁes a decomposition in terms of a P mm
+M and 12 different P nmm
+M ’s
+and P μ=ν=0
+SvL is a box which does not have the irreducible dominant Svetlichny-box and Mermin-box weights. As
+already mentioned in Result 1 the coefﬁcient μ is called the Svetlichny strength of the correlation P , and we call
+the coefﬁcient ν the Mermin strength of the given correlation.
+Proof Note that any Svetlichny-local box with SS equals to zero can be decomposed in a convex mixture of a
+dominant Mermin-box and a box which does not have any irreducible dominant Svetlichny-box and Mermin-box
+components as in Eq. ( 48). Thus by decomposing the Svetlichny-local box in the canonical decomposition ( 19)a s
+in Eq. ( 48), we get the decomposition of the form given in Eq. ( 27) with ν = ζ( 1 − μ). ⊓⊔
+Proposition 4 If a box has Q = 0, then it necessarily has Mermin strength ν = 0.
+Proof Notice that for any P as given by the decomposition ( 27), MS ν = (1 − μ)Q(∑ 15
+i=0 wi Pi
+GM)/4, where∑ 15
+i=0 wi Pi
+GM is the term that appears in the decomposition of Pμ=0
+SvL as given in Eq. ( 50). Therefore, boxes with
+Q = 0 necessarily have MS ν = 0. ⊓⊔
+It should be noted that there can be boxes which do not have MS, but nevertheless, have Q > 0. For those boxes
+which lie on the line segment joining a Mermin-box and a Svetlichny-nonlocal/local box with Q = 0, the quantities
+Q and MS are related to each other as follows.
+2 The other 15 two-way local boxes that exhibit the GHZ paradox can be obtained from the box ( 23)b yL R O .
+123
+
+=== page 10 ===
+234 C. Jebaratnam
+Proposition 5 F or any given box P ∈ R which has a decomposition of the form ,
+P = μP↑
+Sv + νP↑
+GM + (1 − μ − ν) Pμ=Q=0
+SvL , (28)
+the quantities Q deﬁned in Eq. (22) and the MS satisfy the relationship Q(P) = 4ν.
+Proof We rewrite any box P ∈ R as given by the decomposition ( 28) as the convex mixture
+P = νP↑
+GM + (1 − ν) PQ=0, (29)
+where PQ=0 := 1
+1−ν ((1 − μ − ν) Pμ=Q=0
+SvL + μP↑
+Sv) which is a Svetlichny-nonlocal/local box with Q = 0. Note
+that the set of Q = 0 boxes is nonconvex, i.e., certain convex combination of the Q = 0 boxes can have Q > 0.
+Also there are Q = 0 boxes which can be written as a convex mixture of two Q > 0 boxes. Thus, Q is not
+linear for these two types of decomposition. However, Q is linear for the decomposition as given in Eq. ( 29) since
+the convex mixture of a Q > 0 box and a Q = 0 box is always a Q > 0 box. Therefore, the box ( 29) has
+Q(P) = νP↑
+GM + (1 − ν)Q(PQ=0) = 4ν. ⊓⊔
+Proposition 6 The Mermin strength ν of any box is invariant under LRO and permutations of the parties.
+Proof The statement of this proposition follows from the fact thatG and Q are invariant under LRO and permutations
+of the parties. ⊓⊔
+With the quantities SS and MS, in the following section we will study the nonclassicality present in two-way
+local and fully local correlations in the restricted local Hilbert-space dimensional quantum simulation of those
+correlations.
+4 Nonclassicality beyond the nonlocality paradigm
+Here we will show that for simulating a tripartite correlation having either nonzero SS or nonzero MS by a three
+qubit quantum state, it requires that the state must possess genuine nonclassicality either in the form of genuine
+discord [14–16] or in the form of genuine entanglement. Before presenting the most general case, we ﬁrst discuss
+two pure case scenarios.
+4.1 GHZ-class states
+The GHZ-class states which have bipartite entanglement between A and B are given as follows:
+|ψgs⟩= cos θ|000⟩+ sin θ|11⟩{cos θ3|0⟩+ sin θ3|1⟩}. (30)
+For this class of states the genuine tripartite entanglement is quantiﬁed by the three-tangle [33], τ3 = (sin 2θ sin θ3)2,
+and the bipartite entanglement is quantiﬁed by the concurrence [34], C12 = sin 2θ cos θ3. To study the nonclassicality
+of boxes arising from this class of states, we restrict ourselves to projective measurements, i.e., Alice, Bob, and
+Charlie perform projective measurements denoted by ˆai.σ , ˆb j.σ , and ˆck.σ respectively on their subsystems. Here,
+ˆai , ˆb j , and ˆck are unit Bloch vectors denoting the measurement directions and σ ={ σ1,σ 2,σ 3}, with {σi}i=1,2,3
+being the Pauli matrices and i, j, k ∈{ 0, 1}.
+Svetlichny nonclassicality Let us choose the following particular measurements: ˆa0 =ˆx, ˆa1 =ˆy; ˆb j = 1√
+2(ˆx +
+(−1) j⊕1 ˆy);ˆ c0 =ˆx, ˆc1 =ˆy. It can be checked that for this particular set of measurements, boxes arising from the
+GHZ-class states satisfy a decomposition of the following form:
+P =
+√τ3√
+2
+P0000
+Sv +
+(
+1 −
+√τ3√
+2
+)
+PG=0
+SvL . (31)
+123
+
+=== page 11 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 235
+The box PG=0
+SvL which has nonmaximally mixed marginals becomes white noise for θ3 = π/2 (the GGHZ states).
+Also tedious but straightforward calculation gives G = 4√2τ3 for these boxes. The correlations ( 31) exhibit
+Svetlichny nonlocality when the three-tangle τ3 > 1/2 and for τ3 ≤ 1/2 it has no genuine nonlocality. Also note
+that these correlations are two-way local for C12 > 1/
+√
+2 and τ3 ≤ 1/2. However for 0 <τ ≤ 1, these correlations
+are Svetlichny nonclassical since they have nonzero SS.
+Mermin nonclassicality Let us choose the following particular measurements: ˆa0 = ˆb0 =ˆc0 =ˆx, ˆa1 = ˆb1 =
+ˆc1 =ˆy. Boxes arising from this set of measurements on the GHZ-class states belong to L2 and they have G = 0
+and Q = 4√τ 3 and it has a decomposition of the form given in Result 2 as follows:
+P = √τ3 PGM +
+(
+1 − √τ3
+)
+PG=Q=0
+L
+= √τ3
+(
+P0000
+Sv + P1110
+Sv
+2
+)
++
+(
+1 − √τ3
+)
+PG=Q=0
+L . (32)
+The box PG=Q=0
+L which in this case is a fully local box and has nonmaximally mixed marginals in general becomes
+white noise for the GGHZ states. These correlations are nonlocal when the three-tangle τ3 > 1/4, otherwise they
+are fully local. However for 0 <τ ≤ 1, these correlations are Mermin nonclassical since they have nonzero MS.
+In Ref. [ 35], the author has derived two tripartite steering inequalities to detect two types of genuine steering
+which are called Svetlichny steering and Mermin steering. It was demonstrated that the correlations which exhibit
+Svetlichny or Mermin steering detect genuine entanglement of C2 ⊗ C2 ⊗ Cd systems. It is noted that the boxes
+(31) exhibit Svetlichny steering for SS μ> 1/2
+√
+2, whereas the boxes ( 32) exhibit Mermin steering for MS
+ν> 1/2. This implies that in this range, genuine entanglement is necessary for simulating these correlations by
+using C2 ⊗ C2 ⊗ C2 systems, even if the boxes ( 31) do not violate the SI and the boxes ( 32) do not violate the MI
+more than 2
+√
+2.
+It is noted that there are correlations arising from the GHZ-class states which exhibit genuine nonlocality, but
+nevertheless, have SS μ = 0 (see Appendix B).
+Svetlichny–Mermin nonclassicality For the state dependent measurement setting ˆa0 =ˆx, ˆa1 =ˆy; ˆb0 =ˆx sin 2θ −
+ˆy cos 2θ , ˆb1 =ˆx cos 2θ +ˆy sin 2θ ; ˆc0 =ˆx, ˆc1 =ˆy, we ﬁnd that the correlations arising from the GGHZ states (i.e.,
+states with θ3 = π/2i nE q .( 30)) admit a decomposition of the form given in Result 2:
+P = G
+8 P0000
+Sv + Q
+4
+(
+P0000
+Sv + P111γ
+Sv
+2
+)
++
+(
+1 − G
+8 − Q
+4
+)
+PN . (33)
+Here,
+G =
+{ 8τ3 when 0 ≤ θ ≤ π
+8
+8√τ3(1 − τ3) when π
+8 ≤ θ ≤ π
+4 ,
+Q = 4
+⏐⏐⏐τ3 −
+√
+τ3(1 − τ3)
+⏐⏐⏐
+and PN is the white noise which has G = Q = 0. In Eq. ( 33), γ = 0f o r0 ≤ θ ≤ π
+8 and γ = 1 otherwise.
+4.2 W-class states
+Consider the W-class states given by the following form:
+|ψw⟩= μ1 |100⟩+μ2 |010⟩+μ3 |001⟩, (34)
+where μi ≥ 0 and ∑ 3
+i=1 μ2
+i = 1. These states have the three-tangle τ3 = 0 and have all the three bipartite concur-
+rences nonzero: C12 = 2μ1μ2, C13 = 2μ1μ3 and C23 = 2μ2μ3. The W-class states have minimal concurrence of
+assistance [36] Ca
+min := min{C12, C13, C23}, which can be considered as a genuine tripartite entanglement measure
+of this class of states. Interestingly, we ﬁnd a relationship between nonzero Svetlichny/Mermin strength of the boxes
+arising from the W-class states and Ca
+min.
+123
+
+=== page 12 ===
+236 C. Jebaratnam
+Svetlichny nonclassicality Consider the following measurements: ˆa0 =ˆz, ˆa1 =ˆx; ˆb j = 1√
+2(ˆz +(−1) j⊕1 ˆx);ˆc0 =
+ˆz, ˆc1 =ˆx. For this setting the correlations arising from the W-class states violate the Svetlichny inequality when
+C12 + C13 + C23 > 2
+√
+2 − 1, showing Svetlichny nonlocality and hence Svetlichny nonclassicality 3. We ﬁnd that
+these correlations satisfy a decomposition of the following form:
+P = Ca
+min√
+2
+P0100
+Sv +
+(
+1 − Ca
+min√
+2
+)
+PG=0
+SvL . (35)
+Straightforward calculation for this correlation gives G = 4
+√
+2Ca
+min which can be nonzero (hence have Svetlichny
+nonclassicality) even when it does not violate a SI.
+Mermin nonclassicality Let us choose the following set of measurements: ˆa0 = ˆb0 =ˆc0 =ˆz, ˆa1 = ˆb1 =ˆc1 =ˆx.
+Correlations arising from this setting for the W-class states exhibit Mermin nonlocality iff C 12 + C13 + C23 > 1.
+For these correlations it turns out that Q = 4Ca
+min and the correlations can be decomposed as
+P = Ca
+min
+[
+P0001
+Sv + P1111
+Sv
+2
+]
++
+(
+1 − Ca
+min
+)
+PQ=0
+SvL . (36)
+In this case we have PQ=0
+SvL ∈ L. As shown for the GHZ-class, here also one can ﬁnd example of boxes arising from
+W-class states having G ⁄= 0 ⁄= Q.
+All the examples discussed above establish the fact that if the correlations arising from three-qubit systems have
+nonzero SS or nonzero MS, then the states would necessarily have genuine quantumness. In what follows, we
+present our main result that shows the converse, i.e., three-qubit states with no genuine quantumness can never give
+rise to correlations having either nonzero SS or nonzero MS.
+4.3 Three-qubit states without genuine quantumness have SS = MS = 0
+Before presenting our result, we ﬁrst brieﬂy discuss about the genuine quantumness of tripartite states. Quantumness
+in states is a vastly studied issue in quantum information theory and commonly captured by the quantity entanglement
+[38]. However, there exist unentangled quantum states that give rise to advantage for certain bipartite quantum
+information tasks [10,11]. This uphold the study of quantumness in states that goes beyond the standard regime of
+entanglement. In the bipartite scenario quantum discord, introduced in [7]( s e ea l s o[9]), is one way to capture such
+quantumness in states. In the multipartite scenario, recently Giorgi et al. [14] generalized the notion of quantumness
+and they deﬁned genuine multipartite quantum discord. The genuine multipartite quantum discord estimates the
+quantum part of genuine multipartite correlations.
+A bipartite quantum state shared by Alice and Bob has zero quantum discord ( A to B) iff it cannot be written
+in the form of classical–quantum (CQ) state, i.e., ρCQ = ∑
+i pi|i⟩A⟨i|⊗ ρ B
+i , where {|i⟩}i is some orthonormal
+basis of Alice’s Hilbert space HA and ρi are arbitrary quantum states [ 12,13]. Quantum–classical (QC) states have
+similar form but with permutation of the parties’ indices A and B. Bipartite states which are neither CQ nor QC are
+called quantum–quantum (QQ) states.
+A tripartite state ρbs is biseparable if it can be written as a convex mixture of the states that are separable with
+respect to some partition, i.e.,
+ρbs =
+∑
+k
+pkρ A
+k ⊗ ρ BC
+k +
+∑
+k
+qkρ AB
+k ⊗ ρC
+k +
+∑
+k
+rkρ AC
+k ⊗ ρ B
+k , (37)
+3 At this point we wish to draw the attention to an interesting observation. Correlation obtained from some particular state and particular
+setting showing optimal Svetlichny nonlocality may not show optimal Svetlichny nonclassicality for the same state with same setting.
+We calculate G for the optimal Svetlichny nonlocal setting for the W-class provided in Ref. [ 37] and ﬁnd that it is less than that of the
+correlations in Eq. ( 35).
+123
+
+=== page 13 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 237
+with ∑
+k pk + ∑
+k qk + ∑
+k rk = 1. Let us consider the set S0 := {ρ A|BC
+sep ,ρ AB|C
+sep ,ρ AC|B
+sep } of the three-qubit states,
+where
+ρ A|BC
+sep =
+∑
+i
+piρ A
+i ⊗ ρ BC
+i , (38)
+with the bipartite marginals Tr B[ρ A|BC
+sep ] and TrC[ρ A|BC
+sep ] are either a CQ state or a QC state; and ρ AB|C
+sep and ρ AC|B
+sep
+are deﬁned analogously. States which are not in this form must have quantum correlation shared among all three
+subsystems. In Ref. [14], Giorgi et al. deﬁned genuine tripartite quantum discord to capture the quantumness shared
+among all the parties. The fully separable states which are CQ states with respect to the bipartite cut A versus BC
+can be decomposed as
+ρ A|BC
+CQ =
+∑
+i
+pi|i⟩A⟨i|⊗ ρ B
+i ⊗ ρC
+i , (39)
+where {|i⟩A}i is some orthonormal basis of Alice’s Hilbert space HA. The QC states ρ AB|C
+QC and ρ AC|B
+QC with respect
+to the other two bipartite cuts are deﬁned similarly. The CQ and QC states deﬁned above do not have nonzero genuine
+quantum discord since one of the subsystems is always classically correlated with the other two subsystems. Notice
+that the set of CQ and QC states forms a proper subset of the set S0 deﬁned above. Let us denote SNG as the set of
+all biseparable states which do not have genuine tripartite quantum correlations and we have that SNG ⊆ S0.W e
+will now demonstrate that the three-qubit states that belong to the set S0 cannot be used to demonstrate nonzero SS
+or nonzero MS.
+A multipartite quantum state is said to possess genuine multipartite correlations when it is nonproduct in every
+bipartite cut [ 39]. From this perspective, genuine multipartite quantum discord was deﬁned to quantify genuine
+multipartite quantum correlations in quantum states [ 14–16]. Analogously, we say that a tripartite box possesses
+genuine tripartite correlations when it cannot be written as a product of marginals corresponding to any two
+parties and the third party, i.e., P(abc|xyz ) ⁄= P(a|x)P(bc|yz), and permutations. It is noted that the boxes
+which have nonzero SS or nonzero MS have genuine tripartite correlations. Therefore, any biseparable state of the
+form ρ = ρAB ⊗ ρC or any other permutation can never give rise to nonzero SS or nonzero MS for all possible
+measurements.
+We are now interested in mixed three-qubit states ρ ∈ S0 which have genuine tripartite correlations. Consider
+the states,
+ρ AB|C
+sep =
+∑
+i
+qiρ AB
+i ⊗ ρC
+i , (40)
+which are the permutation of the states as given in Eq. ( 38). It is noted that in the case of pure genuinely entangled
+states, optimal nonzero SS or nonzero MS is achieved when the number of nonzero Svetlichny functions Sαβγ or
+Mermin functions Mαβγ is minimized over all possible projective measurements that give rise to G > 0o r Q > 0.
+Thus, for the purpose of demonstrating that the states ( 40) cannot give rise to nonzero SS or nonzero MS, we will
+now check whether these states give rise toG > 0o r Q > 0 for the projective measurements that maximize minimal
+number of nonzero Svetlichny functions or nonzero Mermin functions. For the states ( 40), the expectation value
+factorizes as follows:
+⟨Ax By Cz⟩=
+∑
+i
+qi ⟨Ax By⟩i ⟨Cz⟩i . (41)
+This implies that the quantity G1 appearing in the right-hand side of Eq. ( 14) factorizes as follows:
+G1 =
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+000 ⟨C0⟩i + Bi
+111 ⟨C1⟩i
+} ⏐⏐⏐⏐⏐−
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+000 ⟨C0⟩i − Bi
+111 ⟨C1⟩i
+} ⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+−
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+000 ⟨C1⟩i + Bi
+111 ⟨C0⟩i
+} ⏐⏐⏐⏐⏐−
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+000 ⟨C1⟩i − Bi
+111 ⟨C0⟩i
+} ⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+123
+
+=== page 14 ===
+238 C. Jebaratnam
+−
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+010 ⟨C0⟩i + Bi
+100 ⟨C1⟩i
+} ⏐⏐⏐⏐⏐−
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+010 ⟨C0⟩i − Bi
+100 ⟨C1⟩i
+} ⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+−
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+010 ⟨C0⟩i + Bi
+100 ⟨C1⟩i
+} ⏐⏐⏐⏐⏐−
+⏐⏐⏐⏐⏐
+∑
+i
+qi
+{
+Bi
+010 ⟨C1⟩i − Bi
+100 ⟨C0⟩i
+} ⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐
+⏐⏐⏐⏐⏐. (42)
+Here, Bi
+αβγ are the Bell-CHSH operators having the following expressions [ 29,30]:
+Bαβγ := (−1)γ ⟨A0 B0⟩+(−1)β⊕γ ⟨A0 B1⟩
++(−1)α⊕γ ⟨A1 B0⟩+(−1)α⊕β⊕γ⊕1 ⟨A1 B1⟩.
+In Eq. ( 42), Bi
+αβγ and ⟨Cz⟩i are evaluated for ρi
+AB and ρi
+C given in Eq. ( 40). Let us now try to maximize minimal
+number of nonzero Svetlichny functions with respect to ρ AB|C
+sep in which ρi
+AB are QQ states. Since the four Bell-
+CHSH operators Bi
+αβγ in Eq. ( 42) are evaluated for the QQ states, we can ﬁnd suitable projective measurements
+on Alice and Bob’s sides that give rise to nonzero for only one of Bi
+αβγ [40,41]. For some measurements on Alice
+and Bob’s sides that have this property, it is readily seen that G1 = 0 for any choice of measurements on Charlie’s
+side. Therefore, we can conclude that the biseparable states ρ AB|C
+sep do not give rise to nonzero SS for any choice of
+projective measurements.
+To give evidence for the above claim, we consider the following biseparable states which have genuine tripartite
+correlations:
+ρ = p|ψ+⟩AB ⟨ψ+|⊗| 0⟩C⟨0|+ (1 − p)|ψ−⟩AB ⟨ψ−|⊗| + x⟩C⟨+x|, (43)
+where p ≥ 1/2, |ψ+⟩= 1√
+2(|00⟩+|11⟩), |ψ−⟩= 1√
+2(|00⟩−|11⟩) and |+x⟩= 1√
+2(|0⟩+|1⟩). For the above state
+and for the measurements ˆa0 =ˆx, ˆa1 =ˆy; ˆb j = 1√
+2
+(
+ˆx + (−1) j⊕1 ˆy
+)
+on Alice and Bob’s sides, it can be checked
+that the four Svetlichny functions are maximized and the other four are zero and these values give G1 = 0.
+Similarly, it can be demonstrated that MS cannot be nonzero for the states ρ AB|C
+sep as given in Eq. ( 40) in which
+ρi
+AB are QQ states by exploiting the factorization property in Eq. ( 41). Since G and Q are symmetric under the
+permutations of the parties, the states ρ A|BC
+sep and ρ AC|B
+sep which have genuine tripartite correlations and quantum
+correlations between two subsystems do not give rise to G > 0o r Q > 0 for the above type of measurement
+scenario. Thus, we can state the following our main result:
+Result 3 When the measured quantum state is restricted to be that of a three-qubit system , genuine quantumness
+as captured by the notion of genuine quantum discord is necessary for demonstrating nonzero SS or nonzero MS
+for projective measurements.
+Remark 1 Suppose a given biseparable or fully separable state can give rise to nonzero SS or nonzero MS. Then
+the state cannot be written in the form of the separable states in the set S0 and has a decomposition as follows:
+ρ = t1ρ A|BC
+sep + t2ρ AB|C
+sep + t3ρ AC|B
+sep , (44)
+which is a mixture of the separable states in S0 with more than one coefﬁcient t1, t2, t3 nonzero.
+As an illustration, we consider a fully separable state which is neither a CQ state nor a QC state. The state is
+given as follows:
+ρ = 1
+4{Π A
+x+ ⊗ Π B
+x+ ⊗ ΠC
+x+ + Π A
+x+ ⊗ Π B
+y+ ⊗ ΠC
+y−
++Π A
+y+ ⊗ Π B
+y+ ⊗ ΠC
+x− + Π A
+y+ ⊗ Π B
+x+ ⊗ ΠC
+y−}, (45)
+where Πx± =| ±x⟩⟨±x| and Πy± =| ±y⟩⟨±y| are the eigenstates of σx and σy , respectively. For the measurements
+that give rise to the box ( 31), the above state gives rise to the isotropic Svetlichny-box ( 11) with SS μ = 1
+4
+√
+2 .N o t e
+that the state ( 45) admits a decomposition of the form given in Eq. ( 44)a sf o l l o w s :
+ρ = 1
+6{Π A
+x+ ⊗ ρ BC
+1 + Π A
+y+ ⊗ ρ BC
+2 + ρ AC
+1 ⊗ Π B
+x+ + ρ AC
+2 ⊗ Π B
+y+}, (46)
+123
+
+=== page 15 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 239
+where ρ BC
+1 := (Π B
+x+ ⊗ ΠC
+x+ + Π B
+y+ ⊗ ΠC
+y−)/2, ρ BC
+2 := (Π B
+x+ ⊗ ΠC
+y− + Π B
+y+ ⊗ ΠC
+x−)/2, ρ AC
+1 := (Π A
+x+ ⊗ ΠC
+x+ +
+Π A
+y+ ⊗ ΠC
+y−)/2 and ρ AC
+2 := (Π A
+x+ ⊗ ΠC
+y− + Π A
+y+ ⊗ ΠC
+x−)/2 which are all QQ states.
+5 Conclusions
+In this work, we have studied quantum simulation of tripartite correlations with restricted local Hilbert-space
+dimensions, in particular, we have considered C2 ⊗ C2 ⊗ C2 quantum systems. We have proposed two quantities
+of interest, called Svetlichny strength and Mermin strength, which capture genuine nonclassicality in correlations
+beyond the standard nonlocality paradigm. We ﬁnd that in the restricted simulation scenario, fully local and two-
+way local correlations having nonzero Svetlichny strength or nonzero Mermin strength must require the presence
+of genuine quantumness in the three-qubit states that are used to simulate those correlations. For the Svetlichny-
+box polytope which is a proper subpolytope of full tripartite nonsignaling polytope, we have derived a canonical
+decomposition and characterized the scenarios how genuine nonclassicality is manifested in the correlations of
+these canonical form.
+This work motivates an interesting question for future research. In Ref. [35], the author has demonstrated that the
+tripartite correlations which exhibit Svetlichny steering or Mermin steering detect genuine entanglement in a semi-
+device-independent way (i.e., by assuming only the local Hilbert-space dimensions and without any assumptions
+on the measurements performed). Similarly, it would be interesting to show that the two-way local and fully local
+correlations that have nonzero Svetlichny strength or nonzero Mermin strength detect genuine quantum discord in
+a semi-device-independent way.
+Acknowledgements I wish to thank IMSc., Chennai and IISER Mohali for ﬁnancial support, and Dr. Pranaw Rungta for suggesting
+this problem and for many inspiring discussions subsequently. I am thankful to Dr. R. Srikanth and Dr. Manik Banik for valuable
+suggestions and comments, and Dr. K. P . Y ogendran, Dr. Sibasish Ghose, Dr. Prabha Mandayam and Dr. Arul Lakshminarayan for
+discussions. I acknowledge support through the Project SR/S2/LOP-08/2013 of the DST, Govt. of India.
+Appendix A: Derivation of Result 2
+Lemma 1 A two-way local box that has Q = 4 is, in general, a convex combination of a P mm
+M and 12 different
+Pnmm
+M ’s, i.e.,
+PGM = uP mm
+M +
+12∑
+i=1
+vi Pnmm
+Mi . (47)
+All the Mermin-boxes in this decomposition violate the same Mermin inequality as they all have same values for
+⟨Ax By Cz⟩.
+Proof Notice that any convex mixture of the two Mermin boxes given in Eqs. ( 23) and ( 24) has Q = 4. It can be
+checked that there can be four Mermin boxes which are the uniform mixture of two bipartite PR-boxes in Eq. ( 23).
+The permutation of the parties’ indices in these boxes give rise to the another 8 Mermin boxes. Since these 12
+Mermin boxes are equivalent with respect to ⟨Ax By Cz⟩, any convex mixture of these 12 Mermin boxes and the
+Mermin box (23) again has Q = 4. Similarly, any other maximally two-way local box with Q = 4 is, in general, a
+convex mixture of the corresponding 13 Mermin boxes. ⊓⊔
+Lemma 2 Any Svetlichny-local box , Pμ=0
+SvL ∈ L2, which does not have an irreducible dominant Svetlichny-box
+weight can be written as the mixture
+Pμ=0
+SvL = ζ P↑
+GM + (1 − ζ) Pμ=ν=0
+SvL , (48)
+where P μ=ν=0
+SvL is a Svetlichny-local box with irreducible dominant Svetlichny-box and Mermin-box weights equal
+to zero.
+123
+
+=== page 16 ===
+240 C. Jebaratnam
+Proof Since the Mermin-boxes belong to the two-way local polytope, we can express any box Pμ=0
+SvL ∈ L2 as a
+convex mixture of the Mermin-boxes and a Svetlichny-local box that does not have any Mermin-box component,
+Pμ=0
+SvL =
+15∑
+i=0
+ui Pmm
+Mi +
+192∑
+j=1
+v j Pnmm
+M j +
+⎛
+⎝1 −
+15∑
+i=0
+ui −
+192∑
+j=1
+v j
+⎞
+⎠ PSvL. (49)
+It follows from Lemma 1 that the mixture of the Mermin boxes in Eq. ( 49) can be reexpressed as the mixture of the
+16 different PGM’s that have Q = 4. Therefore, we simplify the decomposition ( 49) as follows:
+Pμ=0
+SvL =
+15∑
+i=0
+wi Pi
+GM +
+⎛
+⎝1 −
+15∑
+i=0
+ui −
+192∑
+j=1
+v j
+⎞
+⎠ PSvL. (50)
+We now express the ﬁrst term in the above decomposition as a sum of the local boxes, Pi
+L , and a residual box,
+P↑
+GM (the dominant Mermin-box), i.e.,
+15∑
+i=0
+wi Pi
+GM = ζ P↑
+GM +
+15∑
+i=1
+li Pi
+L. (51)
+This is done by recursively rewriting the mixture of two different Mermin-boxes as the mixture of the single
+Mermin-box and a local box, i.e., pP i
+GM + qP j
+GM = ( p − q)Pi
+GM + 2qP L . Here, p > q and PL := 1
+2(Pi
+GM + P j
+GM)
+which is a local box. Since ﬁnding the above residual decomposition is not unique, ζ in Eq. (51) can take different
+value for different residual decomposition.
+The evaluation of Q1 for the mixture of the Mermin-boxes gives,
+Q1
+( 15∑
+i=0
+wi Pi
+GM
+)
+= 4||||w0 − w1|−| w2 − w3|| − ||w4 − w5|−| w6 − w7|||
+−|||w8 − w9|−| w10 − w11|| − ||w12 − w13|−| w14 − w15||||. (52)
+Thus, Q(∑ 15
+i=0 wi Pi
+GM)/4 gives the (minimal) weight of the irreducible Mermin-box that dominates over a local
+box. For this reason, among all residual decompositions as in Eq. ( 51) we take that particular decomposition
+where ζ = Q(∑ 15
+i=0 wi Pi
+GM)/4. Plugging this minimal residual decomposition in Eq. ( 50), we get the following
+decomposition:
+Pμ=0
+SvL = ζ P↑
+GM + (1 − ζ) P′
+SvL, (53)
+where P′
+SvL = 1
+1−ζ {∑ 15
+i=1 li Pi
+L + (1 − ∑ 15
+i=0 ui − ∑ 192
+j=1 v j)PSvL}. It is obvious that this box does not have any
+nonzero irreducible dominant Mermin-box weight since the maximal irreducible Mermin-box weight is isolated in
+ζ . ⊓⊔
+Appendix B: Limitations of SS and MS as measures of genuine nonclassicality
+Bancal et al. [27] conjectured that all genuinely entangled pure states can give rise to three-way nonlocal correlations.
+Bancal et al. noticed that there are three-way nonlocal correlations arising from the pure three-qubit states which
+do not violate a Svetlichny inequality. This implies that these quantum boxes do not belong to the three-way
+nonlocal region of the Svetlichny-box polytope. In Ref. [ 42], it was shown that all the GGHZ states |ψGGH Z ⟩=
+cos θ |000⟩+ sin θ |111⟩can be used to demonstrate three-way nonlocality, which is witnessed by violation of the
+class 99 facet inequality of L2 given in Ref. [ 27]. Consider the following class 99 facet inequality:
+L99
+2 =⟨A0 B0⟩+⟨A0C0⟩+⟨B1C0⟩+⟨A1 B0C1⟩−⟨A1 B1C1⟩≤ 3. (54)
+123
+
+=== page 17 ===
+Study of nonclassicality in tripartite correlations beyond standard Bell nonlocality paradigm 241
+The violation of this inequality by the GGHZ states is achievable with the measurement setting ˆa0 =ˆz, ˆa1 =ˆx;
+ˆb j = cos tˆz + (−1) j sin t ˆx; ˆc0 =ˆ z, ˆc1 =ˆ x, where cos t = 1/
+√
+1 + sin2 2θ . For this setting, the correlations
+arising from the GGHZ states have L99
+2 = 1 + 2
+√
+1 + sin2 2θ> 3 for any τ3 > 0. For θ = π
+4 (the GHZ state),
+the correlation violates the class 99 facet inequality to its quantum bound of 1 + 2
+√
+2. The box which gives this
+violation can be written as a mixture of the class 8 extremal three-way nonlocal box given in the table of Ref. [ 26]
+and a local box as follows:
+P = 1√
+2
+P8 +
+(
+1 − 1√
+2
+)
+PL. (55)
+Here, P8 is the extremal three-way nonlocal box that belongs to the class 8 and PL is the local box arising from
+the state ρ = ρAC ⊗ 1
+2 , where ρAC = 1
+2 (|00⟩⟨00|+| 11⟩⟨11|) and 1
+2 is the maximally mixed state, for the above
+measurements. Since the three-way nonlocality of the above correlation is due to the class 8 extremal box, it does
+not violate a Svetlichny inequality. Therefore, the box in Eq. ( 55) lies outside the Svetlichny-box polytope and has
+G = Q = 0.
+We also ﬁnd that the correlations ( 35) violate the class 99 facet inequality when C13 + (C12 + C23)/
+√
+2 >
+3 −
+√
+2. Therefore the Svetlichny-local box part in Eq. ( 35), i.e., PG=0
+SvL must have nonzero fraction of class 8
+extremal box. This implies that whenever C13 + (C12 + C23) /
+√
+2 > 3 −
+√
+2 the correlations ( 35) lie outside
+Svetlichny-box polytope and therefore these are the example of correlations P /∈ R but having nonzero SS.
+References
+1. Bell, J.S.: On the Einstein–Podolsky–Rosen paradox. Physics 1, 195 (1964)
+2. Brunner, N., Cavalcanti, D., Pironio, S., Scarani, V ., Wehner, S.: Bell nonlocality. Rev. Mod. Phys. 86, 419–478 (2014)
+3. Svetlichny, G.: Distinguishing three-body from two-body nonseparability by a bell-type inequality. Phys. Rev. D 35, 3066–3069
+(1987)
+4. Popescu, S., Rohrlich, D.: Quantum nonlocality as an axiom. Found. Phys. 24(3), 379–385 (1994)
+5. Masanes, Ll., Acin, A., Gisin, N.: General properties of nonsignaling theories. Phys. Rev. A 73, 012112 (2006)
+6. Popescu, S.: Nonlocality beyond quantum mechanics. Nat. Phys. 10, 264 (2014)
+7. Ollivier, H., Zurek, W.H.: Quantum discord: a measure of the quantumness of correlations. Phys. Rev. Lett. 88, 017901 (2001)
+8. Henderson, L., V edral, V .: Classical, quantum and total correlations. J. Phys. A 34(35), 6899 (2001)
+9. Modi, K., Brodutch, A., Cable, H., Paterek, T., V edral, V .: The classical–quantum boundary for correlations: discord and related
+measures. Rev. Mod. Phys. 84, 1655–1707 (2012)
+10. Cavalcanti, D., Aolita, L., Boixo, S., Modi, K., Piani, M., Winter, A.: Operational interpretations of quantum discord. Phys. Rev.
+A 83, 032324 (2011)
+11. Dakic, B., Lipp, Y .O., Ma, X., Ringbauer, M., Kropatschek, S., Barz, S., Paterek, T., V edral, V ., Zeilinger, A., Brukner, C., Walther,
+P .: Quantum discord as resource for remote state preparation. Nat. Phys. 8, 1745 (2012)
+12. Piani, M., Horodecki, P ., Horodecki, R.: No-local-broadcasting theorem for multipartite quantum correlations. Phys. Rev. Lett.
+100, 090502 (2008)
+13. Daki´c, B., V edral, V ., Brukner,ˇC.: Necessary and sufﬁcient condition for nonzero quantum discord. Phys. Rev. Lett. 105, 190502
+(2010)
+14. Giorgi, G.L., Bellomo, B., Galve, F., Zambrini, R.: Genuine quantum and classical correlations in multipartite systems. Phys. Rev.
+Lett. 107, 190501 (2011)
+15. Zhao, L., Hu, X., Y ue, R.-H., Fan, H.: Genuine correlations of tripartite system. Quantum Inf. Process. 12(7), 2371–2383 (2013)
+16. Beggi, A., Buscemi, F., Bordone, P .: Analytical expression of genuine tripartite quantum discord for symmetrical x-states. Quantum
+Inf. Process. 14(2), 573–592 (2015)
+17. Barrett, J., Linden, N., Massar, S., Pironio, S., Popescu, S., Roberts, D.: Nonlocal correlations as an information-theoretic resource.
+Phys. Rev. A 71, 022101 (2005)
+18. Mermin, N.D.: Extreme quantum entanglement in a superposition of macroscopically distinct states. Phys. Rev. Lett.65, 1838–1840
+(1990)
+19. Seevinck, M., Ufﬁnk, J.: Sufﬁcient conditions for three-particle entanglement and their tests in recent experiments. Phys. Rev. A
+65, 012107 (2001)
+20. Collins, D., Gisin, N., Popescu, S., Roberts, D., Scarani, V .: Bell-type inequalities to detect true n-body nonseparability. Phys. Rev.
+Lett. 88, 170405 (2002)
+21. Bancal, J.-D., Gisin, N., Liang, Y .-C., Pironio, S.: Device-independent witnesses of genuine multipartite entanglement. Phys. Rev.
+Lett. 106, 250404 (2011)
+123
+
+=== page 18 ===
+242 C. Jebaratnam
+22. Donohue, J.M., Wolfe, E.: Identifying nonconvexity in the sets of limited-dimension quantum correlations. Phys. Rev. A92, 062120
+(2015)
+23. Elitzur, A.C., Popescu, S., Rohrlich, D.: Quantum nonlocality for each pair in an ensemble. Phys. Lett. A 162(1), 25–28 (1992)
+24. Fine, A.: Hidden variables, joint probability, and the bell inequalities. Phys. Rev. Lett. 48, 291–295 (1982)
+25. Werner, R.F., Wolf, M.M.: All-multipartite bell-correlation inequalities for two dichotomic observables per site. Phys. Rev. A 64,
+032112 (2001)
+26. Pironio, S., Bancal, J.-D., Scarani, V .: Extremal correlations of the tripartite no-signaling polytope. J. Phys. A 44(6), 065303 (2011)
+27. Bancal, J.-D., Barrett, J., Gisin, N., Pironio, S.: Deﬁnitions of multipartite nonlocality. Phys. Rev. A 88, 014102 (2013)
+28. Acín, A., Gisin, N., Masanes, L.: From bell’s theorem to secure quantum key distribution. Phys. Rev. Lett. 97, 120405 (2006)
+29. Clauser, J.F., Horne, M.A., Shimony, A., Holt, R.A.: Proposed experiment to test local hidden-variable theories. Phys. Rev. Lett.
+23, 880–884 (1969)
+30. Werner, R.F., Wolf, M.M.: Bell inequalities and entanglement. Quantum Inf. Comput. 1, 1 (2001)
+31. Brunner, N., Cavalcanti, D., Salles, A., Skrzypczyk, P .: Bound nonlocality and activation. Phys. Rev. Lett. 106, 020402 (2011)
+32. Greenberger, D.M., Horne, M., Zeillenger, A.: Going beyond Bell’s theorem. In: Kafatos, M. (ed.) Bell’s theorem, quantum theory,
+and conceptions of the universe. Kluwer Academic, Dordrecht (1989)
+33. Coffman, V ., Kundu, J., Wootters, W.K.: Distributed entanglement. Phys. Rev. A 61, 052306 (2000)
+34. Wootters, W.K.: Entanglement of formation of an arbitrary state of two qubits. Phys. Rev. Lett. 80, 2245–2248 (1998)
+35. Jebaratnam, C.: Detecting genuine multipartite entanglement in steering scenarios. Phys. Rev. A 93, 052311 (2016)
+36. Chi, D.P ., Jeong, K., Kim, T., Lee, K., Lee, S.: Concurrence of assistance and Mermin inequality on three-qubit pure states. Phys.
+Rev. A 81, 044302 (2010)
+37. Ajoy, A., Rungta, P .: Svetlichny’s inequality and genuine tripartite nonlocality in three-qubit pure states. Phys. Rev. A 81, 052334
+(2010)
+38. Horodecki, R., Horodecki, P ., Horodecki, M., Horodecki, K.: Quantum entanglement. Rev. Mod. Phys. 81, 865–942 (2009)
+39. Bennett, C.H., Grudka, A., Horodecki, M., Horodecki, P ., Horodecki, R.: Postulates for measures of genuine multipartite correlations.
+Phys. Rev. A 83, 012312 (2011)
+40. Jebaratnam, C.: Canonical decomposition of quantum correlations in the framework of generalized nonsignaling theories.
+arXiv:1407.3170v4
+41. Jebaratnam, C.: Characterizing quantum correlations in the nonsignaling framework. Ph.D. thesis, Indian Institute of Science
+Education and Research Mohali (2016). arXiv:1605.06445
+42. Mukherjee, K., Paul, B., Sarkar, D.: Efﬁcient test to demonstrate genuine three particle nonlocality. J. Phys. A 48(46), 465302
+(2015)
+123

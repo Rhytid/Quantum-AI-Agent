@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+scratch/
+lean/.lake/
+lean/build/
+dist/
+*.aux
+*.log
+*.out
+*.synctex.gz

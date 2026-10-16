@@ -1,0 +1,1250 @@
+=== page 1 ===
+Quantum steering is equivalent to state-preserving conditional
+expectations
+Lauritz van Luijk 1,2, Amine Marrakchi 3, Tobias Osborne 4,
+Alexander Stottmeister 4, and Henrik Wilming 4
+1Perimeter Institute for Theoretical Physics, Waterloo, Ontario, Canada
+2Institute for Quantum Computing, Waterloo, Ontario, Canada
+3Unité de Mathématiques Pures et Appliquées, CNRS - ENS Lyon, Lyon, France
+4Leibniz Universität Hannover, Institut für Theoretische Physik, Appelstraße 2, 30167 Hannover, Germany
+August 12, 2026
+Abstract
+In systems with infinitely many degrees of freedom, fundamental results from quantum information
+theory can fail. An important example is the uniqueness of purifications: Even when two subsystems,
+described by commuting von Neumann algebrasA and B, are tomographically complete, purifications of
+a state onA need not be related by unitaries inB. It was recently shown that this occurs precisely when
+Haag duality fails, i.e., when the commutantB′ is strictly larger thanA. This raises the question of which
+fundamental entanglement properties survive in such a setting. We show that, for a pure global state,
+the ability to steer any ensemble decomposition of the marginal state onA by measurements on B is
+equivalent to the existence of a state-preserving conditional expectation fromB′ onto A. This establishes
+a direct connection between quantum steering and subfactor theory. The key observation is that steering
+is equivalent to the existence of extensions of ensemble decompositions fromA to B′. Working with
+general Jordan algebras, we prove that unital positive maps have state-preserving left inverses if and
+only if ensemble decompositions can be lifted. For the inclusionA ,→ B′, a left inverse is precisely a
+conditional expectation, yielding the characterization above.
+Contents
+1 Introduction and Overview 2
+1.1 Haag duality, finite-index subfactors and two-way steering . . . . . . . . . . . . . . . . . . . . 5
+1.2 Lifting ensembles under general quantum channels . . . . . . . . . . . . . . . . . . . . . . . . 5
+2 Lifting ensembles under positive maps 8
+2.1 JBW*-algebras and normal unital positive maps . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2 Lifting ensembles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3 Steering and the ensemble lifting property 13
+3.1 Characterization of one-way steering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.2 Two-way steering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+A Appendix: Kadison-Schwarz inequality for JB-algebras 20
+1
+arXiv:2608.10783v1  [quant-ph]  11 Aug 2026
+
+=== page 2 ===
+A A
+B
+region A Haag duality preserves ω? obstruction
+surface code (bulk) two disjoint cones fails ✓ ground state —
+rational CFT (boundary) two disjoint intervals fails × vacuum Ω cyclic forA
+Figure 1: Examples; Bulk: A two-dimensional topologically ordered system is divided into a region A
+consisting of two disjoint infinite cones and their complementB. Boundary: A completely rational 1+1-
+dimensional conformal field theory is divided into a regionA consisting of two disjoint intervals and their
+complement B. Haag duality fails in both settings and a normal conditional expectationB′→ A exists,
+so by Theorem B the relevant question is which state is preserved. For the surface code it is the ground
+state; for a completely rational chiral conformal net it cannot be the vacuum, because of the Reeh–Schlieder
+property.
+1 Introduction and Overview
+Entanglement in quantum systems with infinitely many degrees of freedom is receiving increased attention in
+recent time. To obtain mathematically precise results, the subsystems in such systems are typically modeled
+by commuting von Neumann algebrasA,B on a joint Hilbert spaceH. Recent results established clear
+operational interpretations of basic operator algebraic results in terms of entanglement theory [1–8], such
+as the type classification of factors or the notion of Haag duality (A = B′, B′ denoting the commutant of
+B), which was first introduced in algebraic quantum field theory [9], but recently also plays an important
+role in the rigorous understanding of topological quantum order [10–16] and in the study of non-invertible
+symmetries [17, 18].
+In fact, Haag duality is equivalent to a central property in quantum information theory, namely the
+uniqueness of purifications [8]: If a state vector (i.e., unit vector)Ω∈H induces a stateω on A, then every
+other purification Ψ∈H of ω can be approximated by acting with a unitaryu∈ B on Ω if and only if
+A =B′. Uniqueness of purifications (Haag duality) is central to pure state entanglement theory. It is hence
+interesting to ask which operational properties of pure state entanglement remain without it.
+Interestingly, Haag duality can fail even whenA,B are tomographically complete, meaning that cor-
+relation experiments between A and B fully determine every state onH. Tomographic completeness is
+equivalent to saying thatA∨B, the von Neumann algebra generated byA and B, is the full algebra of
+bounded operators, i.e.,A∨B =B(H). Concrete examples are given by the ground states of topologically
+ordered systems whenA consists of two disjoint, infinite cones [19, 20] or in the context of 1+1-dimensional
+conformal field theories, whereA consists of two disjoint intervals of the circle [21], see Figure 1.
+Commutativity of A and B can equivalently be formulated as the inclusionA⊂ B′. Together with
+tomographic completeness, it implies thatA and B are factors (A∩A′ = C):
+A′∩A⊂A′∩B′ = (A∨B)′ =B(H)′ = C. (1)
+Thestatement A′∩B′ = Cmeansthattherearenofullquantumdegreesoffreedomleftoutinthedescription,
+and there are no non-trivial operators inB′ that commute withA. It is thus not obvious what impact the
+remaining operators inB′\A have. In the mathematics literature, an inclusionN⊂M is called irreducible
+if the relative commutantN′∩M is trivial, i.e.,N′∩M = C. Thus, tomographic completeness means that
+A⊂B′ is an irreducible subfactor inclusion. Subfactor inclusions are an extremely rich field of mathematics,
+2
+
+=== page 3 ===
+connecting operator algebras with tensor categories, low-dimensional topology, and mathematical physics
+[22–38].
+Even if Haag duality fails, some structure remains in the examples mentioned above: Namely, there
+typically exists aconditional expectationE :B′→A, i.e., a (normal) unital positive map onB′ such that
+E(abc) =aE(b)c, a,c ∈A,b∈B′. (2)
+Equivalently,E is a (normal) unital positive map with rangeA such thatE2 =E. We say that a stateωB′
+on B′ is E-invariant (or thatE is ωB′-preserving) if ωB′ = ωB′◦E. This means that ωB′ is completely
+specified by its marginalωA on A⊂B′ and E:
+ωB′(b) =ωB′(E(b)) =ωA(E(b)). (3)
+If theB′-marginal ωB′ of a state vectorΩ∈H is invariant under a conditional expectationE : B′→ A,
+we also say thatE is Ω-preserving. Any stateωA on A induces anE-invariant stateωB′ on B′ by setting
+ωB′ =ωA◦E since E2 =E.
+Conditional expectations are central objects in the study of operator algebras. It is well known that ifω
+is a faithful state onB′, then Takesaki’s theorem [39, Thm. IX.4.2] states that anω-preserving conditional
+expectation B′→ A exists if and only if the modular flow ofω leaves A invariant. While central to the
+theory of von Neumann algebras, Takesaki’s theorem does not provide a quantum information-theoretic
+interpretation of anω-preserving conditional expectation. This is all the more so in light of the fact that
+the concept of a conditional probability distribution does not generalize to the quantum setting: There is,
+in general, no “conditional quantum state”. This leads us to ask:
+What are the operational consequences of the existence of anω-preserving conditional expectation?
+The existence of aω-preserving conditional expectation is a statement about the inclusionA⊂ B′ alone,
+independent of the embedding ofB′ inB(H). However, entanglement enters our setting because we assume
+that ω is theB′-marginal of a state vectorΩ∈H . If B′ is a factor not of typeI, then this already implies
+that B and B′ are infinitely entangled for everyΨ∈H [2, 4, 7, 40, 41].
+We will argue below that (quantum)steering provides an operational interpretation of state-preserving
+conditionalexpectations. Toexplainsteering, letusbrieflyrecallthedescriptionofmeasurementsinquantum
+theory. A measurement with finitely many outcomes is described by a finitepositive operator valued measure
+(POVM){ax}x∈X′, which is a collection of positive operators such thatP
+xax = 1. We say that a (finite)
+collection of positive functionals{ωx}x∈X on a von Neumann algebraA is anensemble ifP
+xωx is a state,
+called the “average” state of the ensemble. We often suppress the setX, denoting POVMs and ensembles
+by{ax} and{ωx}, respectively. IfA and B are commuting von Neumann algebras onH and if{bx}x∈X is
+a measurement inB, then, for any normal stateω on B(H), an ensemble{ωA,x} is defined onA by
+ωA,x(a) =ω(abx), a ∈A. (4)
+This ensemble describes the quantum state of the subsystemA conditioned on the outcome of the measure-
+ment onB. One says thatB steers the ensemble{ωA,x} on A using the measurement{bx}. The average
+state of the ensemble onA is always the marginalωA :=ω|A of the global stateω:
+X
+x
+ωA,x =ωA. (5)
+In particular, the average state is independent of the choice of measurement inB. This is known as the
+no-signaling property. IfB can steer each ensemble onA whose average state isωA, we say thatB can steer
+A relative toω. If Ω∈H is a state vector, we will say that steering is possible relative toΩ if it is possible
+relative to the pure stateω =⟨Ω, (· )Ω⟩.
+SupposeB steers an ensemble{ωA,x} onA relative to a stateω using a POVM{bx}⊂ B. By considering
+elements a∈ B′ instead ofA in (4), one obtains an ensemble onB′. The average state of this ensemble is
+ωB′, theB′-marginal ofω, and if we restrict the ensemble toA⊂ B′, we get{ωA,x}. Thus, for B to be
+able to steer an ensemble{ωA,x} onA relative toω it is necessary that an ensemble extension{ωB′,x} onB′
+with average stateωB′ exists. Using the Radon-Nikodym theorem for states on von Neumann algebras, we
+show that this is also sufficient, provided thatω is a pure state. Here and throughout the paper, we restrict
+ourselves to separable Hilbert spaces.
+3
+
+=== page 4 ===
+Lemma A. Let Ω∈H be state vector and let{ωA,x} be an ensemble onA with P
+xωA,x = ωA. The
+following are equivalent:
+(a) B can steer{ωA,x} relative to Ω.
+(b) The ensemble{ωA,x} can be extended to an ensemble onB′ whose average state isωB′, i.e., there
+exists an ensemble{ωB′,x} with ωB′,x|A =ωA,x andP
+xωB′,x =ωB′.
+By Lemma A,B can steerA relative toΩ if and only if the followingensemble extension propertyholds:
+Every ensemble onA with average stateωA can be extended to an ensemble onB′ with average stateωB′.
+Note that the ensemble extension property only depends on the inclusionA⊂ B′ and the statesωB′, but
+not on the given representation on the Hilbert spaceH.
+In a finite-dimensional system withH =HA⊗HB⊗HE, B can steerA (we writeX =B(HX)⊗ 1Xc)
+relative to Ω∈H if and only ifA and E are uncorrelated, i.e.,ρAE = trB|Ω⟩⟨Ω| is a product state. Hence,
+tomographic completeness, which is equivalent to having a trivial environment, i.e.,dimHE = 1, necessarily
+guarantees that steering is possible in both directions relative to any pure state.1 Our main result shows
+that the general case is very different: Tomographic completeness does not guarantee steering, and we will
+see below that it does not imply that one-way steering entails two-way steering.
+Theorem B. Let A,B ⊂ B(H) be commuting factors, let Ω∈H be a state vector. The following are
+equivalent:
+(a) B can steerA relative to Ω;
+(b) every ensemble onA with average stateωA extends to an ensemble onB′ with average stateωB′;
+(c) there exists anΩ-preserving normal conditional expectationE :B′→A, i.e.,ωB′ =ωA◦E.
+The equivalent conditions imply that every normal stateψA on A with suppψA ≲ suppωA has a purification
+Ψ∈H that allowsB to steerA relative to Ψ.
+In fact, we show a slightly stronger version of Theorem B: It is enough to require thatB can steer all
+binary ensembles. The symbol ≲ appearing in the last statement of the Theorem denotes the Murray-von
+Neumann order of projections, essentially askingψA is supported on a smaller subspace thanωA.
+In the case of an irreducible subfactor inclusionA⊂B′, there can exist at most one normal conditional
+expectation B′→A, which is automatically faithful. In this case, ifB can steerA relative to a single state
+vector Ω with faithfulA-marginal, then every stateφA has a purification Φ∈H relative to whichB can
+steerA. All these purifications are related by unitaries inB, since their marginal onB′ is fixed to beφA◦E.
+Weemphasizethatthereexistirreduciblesubfactorinclusionsthatdonotallowforanynormalconditional
+expectation, even in the case of approximately finite-dimensional (also called hyperfinite) factors.2 Thus,
+in principle, there are cases where no state onA allows it to be steered. It would be interesting to know
+whether these can be ruled out on general grounds based on physical assumptions, for example, in many-body
+systems.
+In applications, it is a natural question to ask which states are preserved by the conditional expectation
+B′→A, should one exist at all. For example, in the case of the surface code, in the setup depicted in Fig. 1,
+the ground state is preserved by the conditional expectation from the commutant of the factor associated with
+the orange region onto the factor associated with the turquoise region [20]. However, in the case of rational
+conformal field theories, the restriction of the vacuum state is not preserved, as follows from the observation
+in the next paragraph together with the Reeh-Schlieder property, i.e., the vacuum is cyclic-separating for
+every interval [42–46].
+Indeed, suppose that the inclusionA⊂ B′⊂ B(H) admits a normal conditional expectationB′→ A
+and let Ω∈H be a state vector. IfE preserves the marginalωB′ =⟨Ω,· Ω⟩|B′ then
+E(b′)sA′ =sA′b′sA′, b ′∈B′, (6)
+1Notethatthisisalsotrueforproductstates, sincepurestatesonlyhavetrivialensembles, whereallelementsareproportional
+to the average state.
+2For instance, the irreducible subfactor inclusion of the hyperfinite type III1 factorR∞ into the crossed-productR∞ ⋊ R by
+the modular flow of a faithful normal state [39] does not admit a normal conditional expectation.
+4
+
+=== page 5 ===
+where sA′ = [AΩ]∈ A′ is the cyclic projection ofA relative to Ω, which is also the support projection of
+ωA′.3 Thus, if Ω is cyclic forA (sA′ = 1) we findE = id and henceA =B′.4
+Weleaveasanopenquestiontofindconditionsthata)guaranteetheexistenceofaconditionalexpectation
+B′→A for reasonable bipartitions in quantum spin systems, and b) to find conditions that guarantee that
+the preserved state is the (restriction of) the ground state.
+Under the assumption of tomographical completeness, we generalize our characterization of one-way
+steering to mixed normal statesω on B(H). In addition to a state-preserving conditional expectation, the
+necessary and sufficient condition is that there is a tensor product decompositionpH =H0⊗H 1, where
+p = suppωB, such thatB′p⊂ B(H0)⊗ 1 and ω = ω0⊗ω1 on B(pH) with ω0 a pure state onH0. We
+see that steering relative to mixed states reduces to steering relative to pure states (indeed, in the above
+factorization, only the pure stateω0 is seen by the steering).
+1.1 Haag duality, finite-index subfactors and two-way steering
+Steering is a directed property: IfB can steer byA, it does not automatically follow thatA can steerB.
+Here, we are interested in cases, where two-way steering is possible. There are two variants: (1) the reference
+states can be different for the two directions, and (2) for both directions the same reference state should
+be used. For tomographically complete setups, we show that the first variant is characterized byA⊂ B′
+(equivalently,B⊂A′) being a finite-index subfactor inclusion, while the second variant characterizes Haag
+duality. The latter answers an open question in [47] on the relationship between steering and Haag duality.
+Theorem C. LetA,B⊂B(H) be commuting factors withA∨B =B(H). Then:
+(1) A can steerB relative to a normal stateω and B can steerA relative to a normal stateϕ on B(H) if
+and only if the subfactor inclusionA⊂B′ has finite index:
+[B′ :A]<∞. (8)
+If the equivalent properties hold, the statesω and ϕ can be chosen to be pure.
+(2) A can steerB and B can steerA relative to the same normal stateω on B(H) if and only ifA =B′
+and ω is pure.
+Here, the index refers to the Jones-Kosaki-Longo index [22, 48–52]. We note that, if one drops tomo-
+graphical completeness, then two-way steering may be possible even if the index is infinite[B′ : A] =∞.
+Indeed, take the trivial example A = B = C on an infinite-dimensional Hilbert spaceH and let ω be
+an arbitrary normal state onB(H). Then, A can steer B and B can steer A relative toω, but A̸= B′
+and [B′ : A] = [ B(H) : C] = ∞.5 Item (1) of Theorem C is proved as Proposition 20 and item (2) as
+Proposition 19.
+1.2 Lifting ensembles under general quantum channels
+The lifting property for subalgebra ensembles with a fixed average state considered above can be regarded
+as a special case of a more general property. Consider two pairs(N,ϕ ) and (M,ω ) of von Neumann algebras
+equipped with normal states. Let
+α : (N,ϕ )→ (M,ω ) (9)
+be a state-preserving quantum channel, i.e.,α : N→ M is a normal unital completely-positive map such
+that ϕ = ω◦α. Does every functional dominated byϕ lift to a functional dominated byω under the map
+3To see this, consider a1,a 2 ∈ A and b′ ∈ B′. If ωB′ = ωB′◦ E, we have for any a1,a 2 ∈ A and b′ ∈ B′ (since
+E(a∗
+1b′a2) =a∗
+1E(b′)a2)
+⟨a2Ω,E (b′)a1Ω⟩ =ωB′(a∗
+2E(b′)a1) =ωB′(a∗
+2b′a1) =⟨a2Ω,b′a1Ω⟩. (7)
+4It is well known that ifN⊂M is a finite-index inclusion of typeII1 factors, one can always represent it such thatN is in
+standard form, i.e., admits a cyclic-separating vectorΩN. This does not contradict our statement: In this representation the
+trace-preserving conditional expectationE :M→N does not preserve the marginal ofΩN on M unless N =M.
+5Indeed, ifA = C, then every ensemble{ωA,x} is of the formωA,x =pxωA for a probability distribution{px} and can be
+steered using the POVM{px}⊂ B = C.
+5
+
+=== page 6 ===
+α? In the case thatα is an inclusionA ,→ B′, this question reduces to the ensemble extension property
+considered above.
+Theorem D. Let α : (N,ϕ )→ (M,ω ) be a state-preserving normal unital cp map. Supposeϕ is faithful.
+Then the following are equivalent:
+(a) For every ensemble{ϕx} on N with average stateP
+xϕx = ϕ, there is an ensemble{ωx} on M with
+average stateP
+xωx =ω such thatϕx =ωx◦α.
+(b) For everyϕ1∈N∗ with 0≤ϕ1≤ϕ, there existsω1∈M∗ with 0≤ω1≤ω and ϕ1 =ω1◦α.
+(c) α has a unital completely positive left inverse, i.e., there exists a normal unital completely positive map
+β :M→N with β◦α = id.
+(d) ˆα = Psuppω◦α is a *-isomorphism onto a subalgebraL⊂ Msuppω and this subalgebra admits aω-
+preserving conditional expectationE :Msuppω→L. Here,Psuppω :M→Msuppω is the cut-down onto
+the support corner.
+Let us comment on the easy implications. (a) implies (b) by applying the condition to binary ensembles
+{ϕ1,ϕ−ϕ1}. (d) implies (c) viaβ = ˆα−1◦E◦Psuppω + (1− suppϕ)ω . (d) implies (a) by defining the
+ensemble lifts asωx =ϕx◦β. Using multiplicative domain properties and the theory of Petz dual maps, we
+will then show the missing implications (b)⇒ (c) & (d).
+For the lifting property in the first item to make sense, it is not necessary thatα be completely positive;
+positivity alone suffices. Motivated by this, we prove the theorem more generally in the category of JBW*-
+algebras and normal unital positive maps. Jordan algebras have recently been found to be the natural
+framework to formulate and prove certain results in quantum information theory that do not require complete
+positivity [53–57]. We hope that our more general proof will be of independent interest also from that point
+of view.
+We show that, if one applies Theorem D to the inclusion mapN ,→ M of a subfactor, one can drop
+the support projections in the statement of the theorem. As a consequence, one obtains the following
+state-based/Schrödinger-picture characterization of state-preserving conditional expectations (as opposed to
+Takesaki’s observable-based/Heisenberg-picture theorem):
+Proposition E. LetN⊂M be von Neumann algebras. Letω be a normal state onM and letϕ =ω|N be
+its restriction toN. Supposeϕ has central support1. The following are equivalent:
+(a) For everyϕ1∈N∗ with 0≤ϕ1≤ϕ, there existsω1∈M∗ with 0≤ω1≤ω and ϕ1 =ω1|N.
+(b) There exists a normal conditional expectationE :M→N with ω =ϕ◦E.
+Applying this corollary to the subfactorA⊂B′ discussed in the context of quantum steering, and using
+Lemma A, proves our main result Theorem B.
+The logical dependencies and the organization of the proofs of the stated results are illustrated in Figure
+Fig. 2.
+Acknowledgements. H.W. would like to thank Pieter Naaijkens and Daniel Wallick for discussions on
+state-preserving conditional expectations in many-body systems. We acknowledge the help of Claude Code
+to derive the Kadison-Schwarz inequality for general JB-algebras as well as for proof checking.
+Funding. Research at Perimeter Institute and the University of Waterloo is supported in part by the
+Government of Canada through the Department of Innovation, Science and Economic Development and by
+the Province of Ontario through the Ministry of Colleges and Universities.
+Funded by the European Union. Views and opinions expressed are however those of the authors only
+and do not necessarily reflect those of the European Union or the European Research Council Executive
+Agency. Neither the European Union nor the granting authority can be held responsible for them. This
+work is supported by an ERC grant (ERC StG LargEnt, 101219447, DOI:10.3030/101219447).
+Funded by zukunft.niedersachsen, the joint science funding program of the Lower Saxony Ministry of
+Science and Culture and the Volkswagen Foundation.
+6
+
+=== page 7 ===
+Kadison–Schwarz inequality
+(Proposition 22)
+self-polar forms
+and Petz dual maps commutant Radon–Nikodym theorem
+Lemmas 2 and 5
+Petz duality: lifting⇔
+β onto [0, 1]; arrows reverse
+Lemmas 1 and 4
+multiplicative domains:
+β onto [0, 1]⇒ β = ˆβ◦E
+Theorem D (= Theorem 3)
+ensembles lift⇔ α has a state-preserving left inverse
+Lemma 7
+A′ can steerA relative to every state vector
+Lemma A (= Corollary 8)
+steering⇔ extension of ensembles toB′
+Lemma 11
+factorization of projections by
+the relative commutant
+Lemma 10
+extending conditional
+expectations from corners
+Proposition E (= Corollary 12)
+ensemble extension property⇔ state-preserving E :M→N
+Theorem B (= Theorem 9)
+B can steerA relative to Ω⇔ there is anΩ-preserving conditional expectationB′→A
+Proposition 14 (via Lemmas 15 to 17)
+one-way steering: mixed-to-pure state reduction
+Proposition 19
+two-way steering with a single state
+⇔ A =B′ and purity
+Proposition 20 (via Lemma 21)
+two-way steering
+⇔ [B′ :A]<∞
+Theorem C
+characterizations of two-way steering: Haag duality (one state), finite index (two states)
+Figure 2: The figure provides an overview of the logical dependencies and the proof structure of the results
+stated in the introduction. The left-hand column is the general theory of Section 2, which is carried out for
+normal unitalpositive maps between JBW*-algebras. the right-hand column provides the basic observations
+on steering. Theorem B combines the two: Lemma A turns steering into the ensemble extension property,
+Proposition E turns the latter into a state-preserving conditional expectation. Both items of Theorem C
+come out of Theorem B via the reduction of mixed states to pure ones.
+Contributions and assistance by large-language models (LLMs). The initial idea for this paper
+arose around discussions between LvL, AS and HW. LvL conjectured the equivalence of the ensemble exten-
+sion property with the existence of a state-preserving CE and realized the connection of ensemble extensions
+to steering. TJO contributed a first handwritten (how quaint!) argument for a finite-dimensional case. This
+was then extended by LvL, AS and HW to a class of von Neumann algebras. AM found a much cleaner,
+multiplicative domain-based argument, which extended the results to arbitrary von Neumann algebras. LvL
+observed that the proof applied almost verbatim to the case of JBW* algebras. TJO utilized Claude Fable
+5 and GPT 5.5 to formalize the arguments in the paper, which exposed a small gap in the proof, which was
+closed by LvL, AS and HW. HW worked with Claude Opus 4.8 to prove the Kadison-Schwarz inequality for
+JB algebras, which we assumed to be in the literature but could not find. The steering-related statements
+were shown by LvL, AS and HW, with LLMs used for proof checking and to realize that Lemma 21 is true.
+LLMs were occasionally used by LvL, AS and HW to review various topics in subfactor theory. All references
+in the bibliography were inserted manually. LLMs were also used for grammar checking and creating an
+initial version of Fig. 2.
+7
+
+=== page 8 ===
+2 Lifting ensembles under positive maps
+We begin by proving a generalized version of Theorem D which holds for maps that are merely positive
+instead of being completely positive. Instead of assuming von Neumann algebras, we allowN and M to
+be JBW*-algebras. In the setting of a completely positive map between von Neumann algebras, our proof
+immediately spits out the completely positive version of the theorem.
+2.1 JBW*-algebras and normal unital positive maps
+We choose the complex setting of JBW*-algebras instead of the real setting of JBW-algebras to smoothen
+the transition to the setting of von Neumann algebras. We refer to [58] for the definition and basic properties
+of JBW*-algebras. However, let us briefly recall a few key facts.
+A JBW*-algebra is in particular a unitalJordan *-algebra, i.e., a complex vector spaceM closed under
+a conjugate-linear involution∗ and carrying a commutative, but possibly non-associative, bilinear product
+(a,b )7→ a◦b fulfilling (a◦b)∗ = a∗◦b∗ and the Jordan identity a◦ (b◦a2) = (a◦b)◦a2 on self-adjoint
+elements a,b ∈ M. Here, we already took the liberty to writea2 = a◦a. A useful algebraic tool is the
+Jordan triple-product{abc} = (a◦b)◦c +a◦ (b◦c)− (a◦c)◦b.
+In addition, a JBW*-algebra has analytical properties: It comes with a norm, turning it into the Jordan
+analog of a C*-algebra (called a JB*-algebra), and with a (necessarily unique) Banach space predual, making
+it the Jordan version of a von Neumann algebra. To avoid technicalities, we will only consider JBW*-algebras
+(and von Neumann algebras) with separable predual. The weak* topology induced by the predualM∗ of a
+JBW*-algebra M is called the ultraweak topology. For every self-adjoint elementa of a JBW*-algebraM,
+the JBW*-subalgebraW∗(a)⊂M that is generated bya is an abelian von Neumann algebra. A self-adjoint
+element a∈ M is positive if it is positive as an element ofW∗(a), or equivalently, it is positive if it is the
+square a =b2 of some other self-adjoint elementb∈M.
+Every von Neumann algebraM is a JBW*-algebra with producta◦b = 1
+2(ab +ba). A weakly closed,
+*-invariant unital subspaceN ⊂ M of a von Neumann algebra is a JBW*-algebra (in fact, a so-called
+JW*-algebra) if it is closed under the Jordan product. For instance, ifϑ is an anti-automorphism on a von
+Neumann algebra M, then its fixed point spaceN ={a∈ M : ϑ(a) = a} is a JBW*-algebra. In a von
+Neumann algebra, the Jordan triple is simply the symmetrized product{abc} = 1
+2(abc +cba). In particular,
+{aba} is justaba. We refer to [58] for more examples.
+The self-adjoint part of JBW*-algebra is a JBW-algebra and, by Wright’s Theorem [59], every JBW*-
+algebras arises by complexifying a JBW-algebra, see [58, Sec. 3.8]. While most of the literature is written for
+JBW-algebras, the results that we reference follow by elementary complexification from the stated results
+for JBW-algebras. The one exception is the Kadison-Schwarz inequality for unital positive maps between
+JBW-algebras, proven in the appendix.
+We consider normal unital positive mapsα :N→M between JBW*-algebrasN andM. Here, normality
+means thatα is continuous for the respective ultraweak topologies. In particular, this includes normal J*-
+homomorphisms. Here, a normal J*-homomorphism (resp. J*-isomorphism) between JBW*-algebras is a
+normal *-preserving Jordan homomorphism (resp. isomorphism) between Jordan *-algebras.6
+The theory of multiplicative domains for completely positive maps rests on the (Kadison-)Schwarz in-
+equality, which fails for general positive maps. There is, however, a generalization, called theJordan-Schwarz
+inequality, which is valid for normal unital positive maps between JBW*-algebras and which allows for a gen-
+eralization of multiplicative domains to the setting of normal unital positive maps between JBW*-algebras:
+Lemma 1. Letα :N→M be a normal unital positive map between JBW*-algebras. Then
+α(a)◦α(a∗)≤α(a◦a∗), a ∈N. (10)
+If MD(α) is the set of elementsa∈N for which (10) holds with equality, then:
+1. a∈ MD(α) if and only ifα(a◦b) =α(a)◦α(b) for allb∈N;
+2. MD(α) is a JBW*-subalgebra ofN.
+6In the case of J*-isomorphisms, normality is automatic. Indeed, as for *-isomorphisms between von Neumann algebras, this
+follows from the uniqueness of the predual [58, Thm. 4.16].
+8
+
+=== page 9 ===
+Proof. We follow [60, Prop. 2.1.5, Prop. 2.1.7], where the corresponding statements are proved for C*-
+algebras. First, consider a self-adjoint elementa∈ N. Then by the Kadison-Schwarz inequality for unital
+positive maps between JB-algebras shown in Proposition 22 of the appendix, we haveα(a2)≥α(a)2. Now
+consider a general elementa∈N and setb =a +a∗ and c =i(a−a∗). Then
+4α(a◦a∗) =α(b2) +α(c2)≥α(b)2 +α(c)2 = 4α(a)◦α(a∗), (11)
+showing Eq. (10).
+Item 1: First note that MD(α) is closed under adjoints. Now let a∈ MD(α), b∈ N and t∈ R be
+self-adjoint and apply the Jordan-Schwarz inequality to the elementta +b to get
+2tα (a◦b) +α(b2)≥ 2tα (a)◦α(b) +α(b)2. (12)
+Dividing by 2t and taking the limitst→±∞ we find
+α(a◦b)≥α(a)◦α(b)≥α(a◦b). (13)
+This shows Item 1 for self-adjoint elements, but the argument extends to generalb∈ N by linearity: Let
+a =b +ic∈ MD(α) with b,c∈Nsa. Sinceα(a◦a∗) =α(a)◦α(a∗) it follows that
+ 
+α(b2)−α(b)2
++
+ 
+α(c2)−α(c)2
+= 0. (14)
+Since both summands are positive by Eq. (10), we find thatb,c∈ MD(α). By linearity, this shows Item 1
+for general arguments.
+Item 2: Since α is a normal positive map and since multiplication by a fixed element is ultraweakly
+continuous, MD(α)⊂ N is a unital, ultraweakly closed, *-invariant subspace. We have to show that it is
+closed under the Jordan product. By polarization, it suffices to show thatMD(α) contains the square of
+each hermitian element. By (10), this amounts to showingα(a2)2 = α(a4) for a = a∗∈ MD(α). Iterating
+the first item, we have
+α(a4) =α(a◦a3) =α(a)◦α(a3) =α(a)◦ (α(a)◦α(a2)) =α(a)◦ (α(a)◦α(a)2) =α(a)4. (15)
+Thus, by (10), we have
+α(a4)≥α(a2)2≥α(a)4 =α(a4). (16)
+Therefore, equality holds everywhere, so thatα(a2)2 =α(a4). This provesa2∈ MD(α).
+We refer to the JBW*-subalgebraMD(α)⊂N as themultiplicative domainof α. In the literature, this
+name is usually reserved for completely positive maps.7 We use for general positive maps since, ifα is a
+completely positive between von Neumann algebras,MD(α) is exactly the multiplicative domain in the usual
+sense (in particular, it is a von Neumann subalgebra).
+SupposeN⊂M are JBW*-algebras. A (normal)conditional expectationofM ontoN is a normal unital
+positive mapE : M→ N with E|N = id. In the literature, the term conditional expectation is sometimes
+reservedforassociativeoperatoralgebras. UsingtheterminthebroadercontextofJBW*-algebrasisjustified
+by Tomiyama’s theorem [62], which implies that a conditional expectation in our sense is also a conditional
+expectation in the usual sense wheneverM and N are von Neumann algebras.
+Next, we need the concept ofself-polar forms, introduced by Woronowicz in [63], and studied in the
+context of JBW*-algebras in [64]. For a normal positive sesquilinear forms on a JBW*-algebra M, we
+denote byΓs the anti-linear positive mapM→M∗ given byΓs(x) =s(x,· ). A (normal) self-polar form on
+a JBW*-algebra is a normal positive sesquilinear forms :M×M→ R with the following properties:
+(i) s(x,y )≥ 0 for all 0≤x,y∈M,
+(ii) Γs([0, 1]) = [0, Γs(1)].
+7For instance, Størmer refers toMD(α) as the “definite set” ofα [60, 61].
+9
+
+=== page 10 ===
+If s is a self-polar form such thats(1, 1) = 1, thenω = Γs(1) defines a normal state onM. Conversely, it is
+shown in [64] that for every normal stateω, there is a unique self-polar forms with Γs(1) = ω, where the
+uniqueness is a consequence of Woronowicz’s maximum principle [63].
+Wedenotethisself-polarformby sω andset Γω := Γsω. Therestrictionof sω toMsuppω isnon-degenerate.
+Therefore, Γω restricts to an anti-linear order isomorphism betweenMsuppω and span [0,ω ].
+In particular, if ω is faithful, then Γω is an order isomorphism ofM and span [0,ω ]. When M is a
+von Neumann algebra in standard representation, the self-polar form can be expressed using the GNS
+representation with respect toω as
+sω(a,b ) =⟨ξω,bJωaξω⟩, a,b ∈M. (17)
+Using HaagerupLp-spaces, it may be written assω(a,b ) = tr(a∗ω1/2bω1/2), and the mapΓω may be written
+as Γω =ω1/2(· )ω1/2, where we identifyL1(M) with M∗.
+We can now define Petz dual maps [65–69] for maps between JBW*-algebras. Letα : (N,ϕ )→ (M,ω )
+be a state-preserving normal unital positive map between JBW*-algebras. Supposeϕ is faithful (ω need not
+be faithful). Then the dual map ofα is the state-preserving normal unital positive mapβ : (M,ω )→ (N,ϕ)
+defined by
+β = (Γϕ)−1◦α∗◦ Γω. (18)
+This is well-defined since the pre-adjoint mapα∗ takes [0,ω ] = Γω([0, 1]M) into [0,ϕ ]. The definition is best
+understood through the following commutative diagram:
+M N
+span [0,ω ] span [0,ϕ ]
+β
+Γω
+α∗
+(Γϕ)−1 (19)
+The equation definingβ may also be written as
+sω(x,α (y)) =sϕ(β(x),y ), x ∈M, y∈N. (20)
+We note that ifω is faithful, then β is a faithful map. Indeed, let 0≤ x∈ M with β(x) = 0 . Then
+α∗(Γω(x)) = Γϕ(β(x)) = 0. Evaluating this functional at1∈N and using thatα is unital gives
+ω(x) = Γω(x)(1) = Γω(x)(α(1)) =α∗(Γω(x))(1) = 0, (21)
+so thatx = 0 by faithfulness ofω. Next, we mention functorial properties of the Petz dual.
+Lemma 2. Let (L,χ ), (N,ϕ ), (M,ω ) be pairs of JBW*-algebras with faithful normal states.
+1. SupposeM,N are von Neumann algebras. Letα : (N,ϕ )→ (M,ω ) be a state-preserving normal unital
+positive map, and letβ : (M,ω )→ (N,ϕ ) be its Petz dual. Thenα is completely positive if and only if
+β is.
+2. Letα : (N,ϕ )→ (M,ω ) be a state-preserving normal unital positive map, and letβ : (M,ω )→ (N,ϕ )
+be its Petz dual Then the Petz dual ofβ is α.
+3. Let α1 : (N,ϕ )→ (L,χ ), α2 : (L,χ )→ (M,ω ) be state-preserving normal unital positive maps. Let
+β1,β 2 be their Petz dual maps. Then the Petz dual map ofα =α2◦α1 is β =β1◦β2.
+4. Letα : (N,ϕ )→ (M,ω ) be a state-preserving J*-isomorphism. Then its Petz dual is its inverseα−1.
+5. If N⊂M and ifE :M→N is a conditional expectation withω =ϕ◦E, then the Petz dual ofE is
+the embeddingι :N ,→M.
+10
+
+=== page 11 ===
+Proof. Item 1 follows from the definition of the Petz dual and the fact that a normal linear mapα :M→N
+between von Neumann algebras is completely positive if and only if its predualα∗ : N∗→ M∗ is. Items 2
+and 3 follow directly from the definition of the Petz dual. Item 4: Ifα is a J*-isomorphism,s :=sω(α×α)
+is a self-polar form withΓs(1) = ϕ. Woronowicz’s maximum principle ensuressω◦ (α×α) = sϕ [63]. This
+is equivalent toΓϕ = α∗◦ Γω◦α. Hence, α−1 = (Γϕ)−1◦α∗◦ Γω and the right-hand side is precisely the
+Petz dual ofα. Item 5: Note that the assumption ofω = ϕ◦E implies ω|N = ϕ. As shown [70, Proof of
+Thm. 4.2, (i)⇒(ii)], one hassϕ◦ (E×E) =sω. Thus, we have
+Γω =E∗◦ Γϕ◦E (22)
+By composing withι from the right and usingE◦ι = id, we getΓω◦ι =E∗◦ Γϕ. Therefore,
+(dual map ofE) = (Γω)−1◦E∗◦ Γϕ = (Γω)−1◦ Γω◦ι =ι. (23)
+ThethirditeminLemma2canbesummarizedbysayingthatpassingtoPetzdualspreservescommutative
+diagrams (but reverses arrows):
+(N,ϕ ) (M,ω )
+(L,χ )
+α
+α1 α2 ←→
+(N,ϕ ) (M,ω )
+(L,χ )
+β
+β1 β2 (24)
+To treat cases where the states are not faithful, we need to consider corners of JBW*-algebras. Ife∈M
+is a projection, the cornereMe is the linear hull of elements0≤ a≤ e. Equivalently, it is set of elements
+{eae}≡ eae,a∈M (note that≡ is an actual equality ifM is a subalgebra of a von Neumann algebra). The
+corner is itself a JBW*-algebra with the operations inherited fromM.
+2.2 Lifting ensembles
+An ensemble on a JBW*-algebraM is a collection{ωx}x∈X of normal positive linear functional0≤ωx∈M∗
+such thatP
+xωx(1) = 1. In this case,P
+xωx is a normal state onM, called the average state of the ensemble.
+We often suppress the index setX, which will always be finite or countably infinite.
+If e is a projection in a JBW*-algebraM, we denote byPe the cut-down mapx7→exe onto the corner
+eMe⊂M. Ife = suppω is the support projection of a normal stateω, we denote the corresponding corner
+byMsuppω.
+Theorem 3. Let ω and ϕ be normal states on JBW*-algebrasM and N, respectively. Letα : (N,ϕ )→
+(M,ω ) be a state-preserving normal unital positive map. The following are equivalent:
+(a) For every ensemble{ϕx} on N with average stateP
+xϕx = ϕ, there is an ensemble{ωx} on M with
+average stateP
+xωx =ω such thatϕx =ωx◦α.
+(b) for everyϕ1∈N∗ with 0≤ϕ1≤ϕ, there existsω1∈M∗ with 0≤ω1≤ω and ϕ1 =ω1◦α.
+(c) there exists a state-preserving normal unital positive mapβ : (M,ω )→ (N,ϕ ) such thatPsuppϕ◦β◦
+α|Nsuppϕ = idNsuppϕ;
+(d) ˆα = Psuppω◦α|Nsuppϕ is a J*-isomorphism ofNsuppϕ onto a JBW*-subalgebraL⊂ Msuppω, which
+admits aω-preserving normal conditional expectationE :Msuppω→L.
+IfM andN are von Neumann algebras and ifα is completely positive, thenβ can be chosen to be completely
+positive,L is a von Neumann algebra andˆα is a *-isomorphism.
+We begin by characterizing normal unital positive maps that have right inverses. We will then use Petz
+duality to obtain a characterization of maps with left inverses.
+11
+
+=== page 12 ===
+Lemma 4. Letβ :M→N be a faithful normal unital positive map between JBW*-algebras. The following
+are equivalent:
+(a) β maps [0, 1]M onto [0, 1]N;
+(b) The restriction ˆβ =β|MD(β) to the multiplicative domainMD(β) is a J*-isomorphism ontoN;
+(c) β admits a normal unital positive right inverse.
+If these hold, thenE = ˆβ−1◦β is a conditional expectation onto the multiplicative domainMD(β). Thus,β
+factorizes into a conditional expectation part and an isomorphism part:
+β = ˆβ◦E. (25)
+IfM,N are von Neumann algebras andβ is completely positive, then the equivalent properties guarantee that
+ˆβ is a *-isomorphism.
+Proof. For notational ease, setD = MD(β). The implication (c)⇒ (a) is clear.
+(a)⇒ (b): Letp∈N be a projection and leth∈ [0, 1]M be such thatβ(h) =p. By the Jordan-Schwarz
+inequality (see Lemma 1), we havep =β(h)≥β(h2)≥β(h)2 =p2 =p =β(h). This impliesβ(h)2 =β(h2),
+and hence,h∈ D. Since p was arbitrary, we conclude that the J*-homomorphismˆβ = β|D is surjective.8
+Since β is faithful, ˆβ is faithful, and hence, injective. Therefore,ˆβ is a J*-isomorphism ontoN.
+(b)⇒ (c): Denote the embedding mapD ,→ M by ι. We claim that the normal unital positive map
+γ =ι◦ ˆβ−1 :N→D→M is a right inverse forβ. Indeed, we have(β◦γ)◦ ˆβ =β◦ι◦ ˆβ−1◦ ˆβ =β◦ι = ˆβ.
+Since ˆβ is surjective by assumption, this showsβ◦γ = id.
+We show the last claim: SetE = ˆβ−1◦β :M→D. By definition, this is a normal unital positive map,
+which satisfiesE|D = ˆβ−1◦β|D = ˆβ−1◦ ˆβ = idD. Thus,E is a conditional expectation ontoD, and we have
+ˆβ◦E = ˆβ◦ ( ˆβ−1◦β) =β.
+Lemma 5. Let α : (N,ϕ )→ (M,ω ) be a state-preserving normal unital positive map, whereω and ϕ are
+both faithful. Letβ : (M,ω )→ (N,ϕ ) be the Petz dual ofα. The following are equivalent:
+(a) For every0≤ϕ1≤ϕ, there is a0≤ω1≤ω such thatϕ1 =ω1◦α;
+(b) β maps [0, 1]M onto [0, 1]N.
+Proof. The first item can be rephrased by saying that the pre-adjoint mapα∗ maps [0,ω ] onto [0,ϕ ]. Since
+Γω is a order isomorphism between[0, 1]M and [0,ω ] and analogously forΓϕ, the order interval-surjectivity
+of α∗ is equivalent to the order interval-surjectivity ofβ = (Γϕ)−1◦α∗◦ Γω.
+Proof of Theorem 3.(a)⇒ (b): Consider the ensemble{ϕ1,ϕ−ϕ1}.
+(b)⇒ (c) and (d): We first give a proof under the additional assumption thatω and ϕ are faithful. Let
+β be the dual map ofα : (N,ϕ )→ (M,ω ). Then α and β are faithful. By Lemma 5,β maps [0, 1]M onto
+[0, 1]N. We denote its multiplicative domain byD. Applying Lemma 4 toβ, it follows that ˆβ = β|D is a
+J*-isomorphism ontoN and thatE = ˆβ−1◦β is a normal conditional expectation ofM onto D such that
+β = ˆβ◦E. We note thatϕ◦ ˆβ =ω|D and therefore
+ω =ϕ◦β =ϕ◦ ˆβ◦E =ω|D◦E. (26)
+Therefore, we have a commutative diagram of state-preserving maps
+(M,ω ) (N,ϕ )
+(D,ω|D)
+β
+E ˆβ (27)
+8Sincep was arbitrary, the range of the J*-homomorphismˆβ =β|D contains every projection ofN. As ˆβ is normal, its range
+is an ultraweakly closed JBW*-subalgebra ofN, and since a JBW*-algebra is generated by its projections, the surjectivity of
+ˆβ follows.
+12
+
+=== page 13 ===
+Since the states involved are all faithful, we can consider the dual maps. By Lemma 2, this preserves
+commutativity of diagrams. By definition, the dual map ofβ isα, and, by Item 4 of Lemma 2, the dual map
+of ˆβ is the J*-isomorphism ˆβ−1 of N onto D. The dual map ofE is the embeddingι :D ,→M. Thus, we
+arrive at the following commutative diagram of state-preserving maps
+(M,ω ) (N,ϕ )
+(D,ω|D)
+α
+ˆβ−1ι (28)
+This shows that α = ι◦ ˆβ−1 is a J*-isomorphism onto the JBW*-subalgebraD ⊂ M, which admits a
+ω-preserving conditional expectationE. Moreover
+β◦α =β◦ι◦ ˆβ−1 = ˆβ◦ ˆβ−1 = idN. (29)
+The general case, where the states are not necessarily faithful, follows by applying the solution of the
+faithful case to the map ˆα = Psuppω◦α|Nsuppϕ between the support cornersNsuppϕ and Msuppω of the
+two states. If M,N are von Neumann algebras and ifα is completely positive, the constructions above
+automatically ensure thatD is a von Neumann algebra, thatβ is completely positive (see Lemma 2), and
+that ˆα is a *-isomorphism.
+(d)⇒ (c): Consider the unital positive map β = ˆα−1◦E◦Psuppω + (1− suppϕ)·ω. Then, since
+Psuppϕ(1− suppϕ) = 0, E◦ ˆα = ˆα, andPsuppϕ|Nsuppϕ = idNsuppϕ, we have
+Psuppϕ◦β◦α|Nsuppϕ =Psuppϕ◦ ˆα−1◦E◦Psuppω◦α|Nsuppϕ + 0
+= ˆα−1◦E◦ ˆα
+= ˆα−1◦ ˆα
+= idNsuppϕ. (30)
+Moreover, sinceω◦ ˆα =ϕ|Nsuppϕ, it follows thatϕ◦ ˆα−1 =ω|L. Henceϕ◦ ˆα−1◦E =ω◦E =ω|Msuppω and
+we get
+ϕ◦β =ϕ◦ ˆα−1◦E◦Psuppω +ϕ(1− suppϕ)ω =ω|Msuppω◦Psuppω + 0 =ω. (31)
+(c)⇒ (a): Set ωx =ϕx◦β =ϕx◦Psuppϕ◦β. Then{ωx} is an ensemble with average stateω. Indeed,
+sinceβ is state-preserving, we haveP
+xωx =ϕ◦β =ω. SinceP
+xωx◦α =ϕ, we haveωx◦α≤ϕ and hence
+ωx◦α =ωx◦α◦Psuppϕ. Therefore, usingPsuppϕ◦β◦α|Nsuppϕ = idNsuppϕ, we find
+ωx◦α =ωx◦α◦Psuppϕ =ϕx◦ (Psuppϕ◦β◦α)◦Psuppϕ =ϕx◦Psuppϕ =ϕx. (32)
+3 Steering and the ensemble lifting property
+Having established the general lifting property for positive maps and its connection to conditional expecta-
+tions, we now turn to the application to steering. Recall that a POVM in a von Neumann algebraM is a
+collection{ax}x∈X of positive elements0≤ ax such thatP
+xax = 1. We often suppress the index setX,
+which is always assumed to be finite or countably infinite set.
+Definition 6. Let A,B ⊂B(H) be commuting von Neumann algebras. Letω be a normal state onB(H).
+We say thatB can steer an ensemble{ωA,x} on A relative toω if there exists a POVM{bx}⊂ B such that
+ωA,x =ω((· )bx)|A for allx∈X. (33)
+If this holds for all ensembles onA whose average state isωA, we say thatB can steerA relative toω.
+13
+
+=== page 14 ===
+Note that whether steering is possible relative toω depends only on the restriction of the state to the
+von Neumann algebraA∨B generated byA and B.
+As an application of the commutant Radon-Nikodym theorem, we find that steering is always possible if
+A and B are commutants of each other:
+Lemma 7. Let Ω∈H be a state vector, and letA⊂B(H) be a von Neumann algebra, thenA′ can steerA
+relative to Ω.
+Proof. Denote by p = [AΩ] ∈ A′ the projection onto the cyclic subspaceK = pH of Ω relative to A
+and set π(a) = pap = ap. Then (π,K, Ω) is the GNS triple of ωA. By the Radon-Nikodym theorem,
+there is a POVM{ˆbx}⊂ π(A)′ = (Ap)′ = p(A′)p = pA′p⊂ A′ such that ωA,x =⟨Ω, (·)ˆbxΩ⟩. Setting
+bx = ˆbx +ωA,x(1)(1−p)∈A′ we find thatP
+xbx =p + (1−p) = 1 and, since (1−p)Ω = 0,
+⟨Ω,abxΩ⟩ =⟨Ω,aˆbxΩ⟩ =ωA,x(a), a ∈A.
+As a direct consequence, we obtain the equivalence of steering and ensemble extension (this is Lemma A
+in Section 1):
+Corollary 8. Let Ω∈H be a state vector and let{ωA,x} be an ensemble onA with P
+xωA,x = ωA. The
+following are equivalent:
+(a) B can steer{ωA,x} relative to Ω.
+(b) The ensemble{ωA,x} can be extended to an ensemble onB′ whose average state isωB′, i.e., there
+exists an ensemble{ωB′,x} with ωB′,x|A =ωA,x andP
+xωB′,x =ωB′.
+Proof. If{bx}⊂ B is a POVM such thatωA,x(a) =⟨Ω,abxΩ⟩, a∈A, then an ensemble extension is given
+by ωB′,x(b′) = ⟨Ω,b′bxΩ⟩. Conversely, if{ωB′,x} is an ensemble extension, then, by Lemma 7, there is a
+POVM{bx}⊂ B, such thatωB′,x(b′) =⟨Ω,b′bxΩ⟩, b′∈B′. Thus,B can steer the ensemble{ωB′,x} on B′
+relative to Ω. Hence,B can also steer the restricted ensemble{ωA,x} on A relative to Ω.
+3.1 Characterization of one-way steering
+In this section we characterize one-way steering. We begin by proving Theorem B, which we restate here for
+convenience:
+Theorem 9. Let A,B ⊂ B(H) be commuting factors, let Ω∈ Hbe a state vector. The following are
+equivalent:
+(a) B can steerA relative to Ω;
+(b) every ensemble onA with average stateωA extends to an ensemble onB′ with average stateωB′;
+(c) there exists anΩ-preserving normal conditional expectationE :B′→A, i.e.,ωB′ =ωA◦E.
+The equivalent conditions imply that every normal stateψA on A with suppψA ≲ suppωA has a purification
+Ψ∈H that allowsB to steerA relative to Ψ.
+We need the following lemma that allows us to extend corner-conditional expectations in inclusions of
+von Neumann algebras. In the following, ifp∈ B(H) is a projection andN ⊂ B(H) is a von Neumann
+algebra, we set
+cN(p) := inf{e∈ Proj(N) :e≥p} (34)
+and callcN(p) the cover of p in N. We callzN(p) := cZ(N)(p)∈ Z(N) the central coverof p in N. Note,
+thatzN(p) =zN′(p). The central support of a normal stateϕ on a von Neumann algebraM is central cover
+of the supportsuppϕ in M.
+Lemma 10. LetN⊂M be von Neumann algebras.
+14
+
+=== page 15 ===
+(i) Letp∈N be a projection with central cover 1. Then, every normal conditional expectationE :pMp→
+pNp extends to a normal conditional expectationF :M→N.
+(ii) Lete∈N′∩M be a projection with central cover1 in N, i.e., the only central projectionf∈N with
+f ≥ e is f = 1. Then, every normal conditional expectationE : eMe → eN extends to a normal
+conditional expectationF :M→N in the sense thateF (x) =E(x) for allx∈eMe.
+Proof. (i): Because the central cover ofp is 1, we can construct, using Murray-von Neumann comparison
+theory, a mutually orthogonal family of projections(pn)n∈N inN withPpn = 1,p1 =p, andpn ≲p (cp. [71,
+Prop. III.1.1.6]). For eachn∈ N, letvn be a partial isometry withv∗
+nvn = pn and vnv∗
+n≤ p. Note that
+vnxv∗
+m∈pMp for allx∈M. Define
+F (x) =
+X
+n,m
+v∗
+nE(vnxv∗
+m)vm.
+Clearly F is normal, F|pMp = E, and F 2 = F. Moreover, if x∈ N, then vnxv∗
+m ∈ pNp and we have
+F (x) =P
+n,mv∗
+nvnxv∗
+mvm =x. Thus,F is a normal conditional expectation ontoN, which extendsE.
+(ii): Since the central cover ofe in N is 1, the cut-down (or induction) mapIe :N→eN, a7→ea, is a
+*-isomorphism [72, Prop. 3.14]. We defineF asF =I−1
+e ◦E◦Pe, wherePe is the cut-down mapM→eMe.9
+By definition,F is normal, unital and completely positive. It satisfiesF|N = id since
+F (a) =I−1
+e (E(eae)) =I−1
+e (ea) =a, a ∈N. (35)
+Finally,eF (x) =Ie(F (x)) =E(exe) for everyx∈M, i.e.,eF (x) =E(x) forx∈eMe, which establishes the
+claim.
+Lemma 11. N ⊂ M be von Neumann algebras letq∈ N, p∈ M be projections withp≤ q. Suppose
+that the restriction of the normal unital completely positive mapqNq → pMp, a7→ pap, is injective and
+multiplicative. Thenp =qe for some projectione∈N′∩M. Moreover, ifq has central cover1 in N, then
+the central cover ofp in eN is e, and the central cover ofe in N is 1.
+Proof. Set R =N′∩M and noteq∈R′. By assumption,pep is a projection for every projectione∈qNq.
+Thus, p commutes with every projection inqNq, and therefore with all ofqNq. Since p∈ qMq (because
+p≤q), p∈ (qNq )′∩qMq =qN′q∩qMq =qR. Since the cut-downR→qR is a normal *-homomorphism,
+the central coverzR(q)∈ Z(R) of q lets us restrictR∋ r7→ qrq = qr to a *-isomorphismzR(q)R∼= qR.
+Thus, we obtain a unique elementf∈zR(q)R such thatqf =p, and we sete =fzR(q) + (1−zR(q))∈R.
+Clearly, we haveqe =qf =p.
+Now suppose thatzN(q) = 1. Let c∈ Z(N) be a projection withc≥ p. Then (1−c)p = 0, so that
+p(q(1−c))p = 0. Since the cut-down mapqMq→pMp, a7→pap, is injective onqNq and q(1−c)∈qNq,
+this impliesq(1−c) = 0, so thatc = 1 since zN(q) = 1 in N. Thus, the N-central cover ofp is 1. Since
+ep =p, this implies thatp has eN-central covere, and thate has N-central cover1.
+We can now prove Proposition E:
+Corollary 12. Let N⊂ M be von Neumann algebras. Letω be a normal state onM and letϕ = ω|N be
+its restriction toN. Supposeϕ has central support1. Then, the following are equivalent:
+(a) for everyϕ1∈N∗ with 0≤ϕ1≤ϕ, there existsω1∈M∗ with 0≤ω1≤ω and ω1|N =ϕ1;
+(b) there is anω-preserving normal conditional expectationE :M→N, i.e.,ω =ϕ◦E.
+Proof. As before, (b)⇒ (a) follows by settingω1 =ϕ1◦E.
+(a)⇒ (b): Set sM = suppω, sN = suppϕ, and notesM≤ sN. We apply Theorem 3 to the inclusion
+map α = ι : N ,→ M. By assumption item (a) of Theorem 3 holds, and we may evaluate item (b) of the
+theorem. The map ˆα : sNNsN → sMMsM, sNasN 7→ sMasM, is a multiplicative and injective normal
+9Note thatPe is anN-bimodule map.
+15
+
+=== page 16 ===
+completely positive map onto its rangesMNsM (=L in the notation of Theorem 3). By Lemma 11, there
+is a projectione∈N′∩M such that
+sM =sNe. (36)
+Since, by assumption,sN has central cover 1, the lemma also implies thatsM haseN-central covere, ande
+has N-central cover1. Hence, we havesMNsM =sM(eN)sM, sM∈eN, and, by Theorem 3, there exists a
+normal conditional expectation
+F :sMMsM =sM(eM)sM→sM(eN)sM =sMNsM, (37)
+preserving the cut-down ofω by sM. We apply Lemma 10 twice to extendF to a conditional expectation
+of M onto N: As noted, the central cover ofsM in eN is e. Thus, the first item of Lemma 10, extendsF
+to a normal conditional expectation ˆF : eM→ eN. Since e has central cover1 in N, the second item of
+Lemma 10, gives a normal conditional expectationE : M → N such thateE(x) = ˆF (x), x∈ eMe. By
+construction, E preservesω.
+We can now prove Theorem 9:
+Proof of Theorem B.The equivalence (a) and (b) is shown in Corollary 8.
+(c)⇒ (b): From a given ensemble{ωA,x} on A with average stateωA, we get an ensemble{ωB′,x} on
+B′ with average stateωB′ via ωB′,x =ωA,x◦E.
+(b)⇒ (c): In particular, binary ensembles extend. Hence, for everyϕA∈A∗ with 0≤ϕA≤ωA, there
+exists an extensionϕB′∈ (B′)∗ with 0≤ϕB′≤ωB′. Thus, the claim follows from Corollary 12.
+We show the final statement in the theorem. LetsX = suppωX, X = A,B′, and notesA≥ sB′. Let
+e = suppE∈ A′∩B′, and assume first thatsuppψA≤ sA. We note thatsB′ = sAe = [BΩ] is a cyclic
+projection in B′. Then, any projection p∈ B′ with p≤ sB′ is also cyclic inB′ (with generating vector
+pΩ) [73, Prop. 5.5.9]. By assumption,(suppψA)e is cyclic inB′, because (suppψA)e≤sAe, and, therefore,
+ψA◦E is a vector state ofB′ [74, Prop. 7.2.7]. Since cyclicity of projections is preserved under Murray-von
+Neumann equivalence, the claim follows.
+Remark 13.We note that the application of Theorem 3 in the proof of Theorem B only needs the existence
+of ensemble extensions of arbitrary binary ensembles. Hence, item (b) of Theorem B may be weakened to
+only the case of binary ensembles.
+We now make use of Theorem 9 to study steering for mixed states in the irreducible case, i.e., when
+A∨B =B(H). The result shows that, in the irreducible setting, steering in mixed states always reduces to
+steering in pure states.
+Proposition 14. Let A,B be commuting factors onH with A∨B = B(H), let ω be a normal state on
+B(H). Letp = supp(ωB)∈B. The following are equivalent:
+(a) B can steerA relative toω;
+(b) There is anω-preserving normal conditional expectationE : B′→ A and there is a tensor product
+decompositionpH =H0⊗H 1 such thatB′p⊂B(H0)⊗ 1 and ω =ω0⊗ω1 on B(pH) with ω0 pure.
+The following lemma is inspired by an argument in [75].
+Lemma 15. LetN⊂M be an irreducible subfactor. LetF :M⊗B(K)→N⊗ 1 be a normal conditional
+expectation. Then, there is a normal conditional expectationE : M→ N and a normal stateσ on B(K)
+such that
+F =E⊗σ. (38)
+Proof. Let σ be the state defined byσ(y) = F (1⊗y), y∈ B(K), and letE : M→ N be the conditional
+expectation defined byE(x) = F (x⊗ 1), x∈ M. Given 0≤ y∈ B(K), consider the normal completely
+positive mapFy = F (·⊗ y) : M→ N. The bimodule property ofF implies thatFy is a bimodule map,
+i.e., Fy(axb) = aFy(x)b, x∈ M, a,b ∈ N, hence an operator-valued weight. Irreducibility ensures that all
+operator-valued weightsM→ N are proportional [76, Cor. 12.13]. Thus,Fy∝ E. Evaluating on 1∈ M,
+gives Fy = σ(y)E. Hence, F (x⊗y) = Fy(x) = σ(y)E(x) for allx∈ M, 0≤ y∈ B(K). By linearity, the
+positivity assumption ony can be dropped.
+16
+
+=== page 17 ===
+Lemma 16. LetM be a factor on a Hilbert spaceH and letω be a normal state onB(H) whose marginal
+on M is faithful. The following are equivalent:
+(a) There exists a purificationΩ∈H⊗K of ω that is uncorrelated betweenM′ and the purifying system
+K, i.e., fora∈M, b∈M′, c∈B(K), one has
+⟨Ω, (a⊗ 1)Ω⟩ =ω(a), ⟨Ω, (b⊗c)Ω⟩ =ω(b)⟨Ω, (1⊗c)Ω⟩. (39)
+(b) There is a tensor product decompositionH =H0⊗H 1 such thatM′⊂ B(H0)⊗ 1 and ω = ω0⊗ω1
+with ω0 a pure state onB(H0).
+Proof. (a)⇒ (b): Letσ be the normal state induced byΩ onK. SinceωM is faithful onM, Ω is cyclic for
+M′⊗B(K). Therefore, the given representation is a GNS representation of the product stateωM′⊗σ on
+M′⊗B(K). Consider GNS representation the(Hσ,πσ, Ωσ) of (B(K),σ ). Using the fact thatB(K) is of type
+I, we take(Hσ,πσ, Ωσ) to be of the form
+Hσ =H1⊗K, H1 = supp(σ)K, π σ(c) = 1⊗c, c ∈B(K). (40)
+Given the GNS representation(H0,π 0, Ω0) of (M′,ωM′) and the uniqueness of the GNS representation of
+ωM′⊗σ, there is a canonical unitaryU :H⊗K→H 0⊗H 1⊗K defined by
+UΩ = Ω0⊗ Ω1, U (b⊗c)U∗ =π0(b)⊗ 1H1⊗c, b ∈M′, c∈B(K). (41)
+In particular,U(1H⊗c)U∗ = 1H0⊗H1⊗c,c∈B(K), so thatU must be of the formU =V⊗1K for a unitary
+V :H→H 0⊗H1. Suppressing the unitaryV, we haveH =H0⊗H1 andM′ =π0(M′)⊗1H1⊂B(H0)⊗1H1,
+as required. SinceΩ = Ω0⊗ Ω1, we have
+ω =⟨Ω0,· Ω0⟩⊗ ω1, (42)
+with ω1 =⟨Ω1,· Ω1⟩|B(H1)⊗1. Thusω factorizes and its reduction toB(H0)⊗ 1 is pure.
+(b)⇒ (a): Similar to preceding step, we purify the stateω1 on B(H) by a vectorΩ1∈H 1⊗K for some
+Hilbert spaceK, and we letΩ0∈H 0 be a state vector implementing the pure stateω0. Let Ω = Ω0⊗ Ω1∈
+H0⊗ (H1⊗K ) =H⊗K . Then Ω purifies ω, and is uncorrelated betweenM′⊗ 1K⊂B(H0)⊗ 1H1⊗K and
+1H⊗B(K)⊂ 1H0⊗B(H1⊗K ).
+Lemma 17.LetA,B be commuting factors onH,ω be a normal state onB(H), and setp = supp(ωB)∈B.
+Then the following are equivalent:
+(a) B can steerA relative toω onH.
+(b) pBp can steerAp relative toω on pH.
+Proof. The claim is immediate from the following two observations: 1) Forp≥ supp(ω), we haveω =pωp
+andA∼=Ap becausep∈A′. This gives a bijective correspondence between normal positive linear functionals
+ψA onA and those onAp byψA(a) :=ψAp(ap), and we haveωAp = (pωp)Ap = (pωp)A =ωA. 2) Any POVM
+{pbxp} in pBp can be completed to a POVM{bx} in B by adding a POVM{bc
+x} in (1−p)B(1−p), i.e.,
+bx =pbxp +bc
+x.
+The cut-down byp = supp(ωB) also leaves the steering capability ofA unchanged:
+Lemma 18.LetA,B be commuting factors onH, letω be a normal state onB(H), and setp = supp(ωB)∈
+B. ThenA can steerB relative toω onH if and only ifAp can steerpBp relative toω on pH.
+Proof. Since supp(ωB) =p, restriction gives a bijection between ensembles onB with average stateωB and
+ensembles onpBp with average stateωpBp. Since p∈ B⊆ A′ and A is a factor, the cut-downA→ Ap is
+a normal∗-isomorphism, so{ax}7→{ axp} is a bijection between POVMs inA and POVMs inAp. Finally,
+p≥ suppω givesω =pωp and hence, fora∈A and b∈B,
+ω(bax) =ω
+ 
+(pbp)(axp)
+
+, (43)
+so the two steering conditions correspond to each other under these bijections.
+17
+
+=== page 18 ===
+Proof of Proposition 14.(a)⇒ (b): LetK be a Hilbert space and letΩ∈H⊗K be a state vector purifying
+the stateω onB(H). ForM⊂B(H⊗K ), denote byωM the restriction of⟨Ω, (· )Ω⟩. We also writeωB(H)
+instead ofω for the state onB(H) to avoid confusion with the pure state induced byΩ on B(H⊗K ). Set
+ˆA =A⊗ 1, ˆB =B⊗ 1. By Definition 6, ˆB can steer ˆA relative to Ω if and only ifB can steerA relative to
+ωB(H).
+Since ˆB can steer ˆA relative to Ω, there exists anΩ-preserving conditional expectationF : ˆB′ = B′⊗
+B(K)→ ˆA =A⊗1. By Lemma 15, there is a normal stateσ onB(K) such thatF =E⊗σ withE :B′→A
+an ωB(H)-preserving conditional expectation, showing the first part of (b).F being Ω-preserving implies
+σ =ωB(K) and
+ωB′⊗B(K) =ωB′⊗ωB(K). (44)
+Applying Lemma 16 toM =pBp on pHimplies the claim.
+(b)⇒ (a): By Lemma 17,B can steerA relative toω if and only ifpBp can steerAp relative to the cut-
+down stateωB(pH) =pωp. Sincep commutes with the factorsB′ andA, we have isomorphismsB′p→B′ and
+A→ Ap. The givenωB(H)-preserving conditional expectationE induces anωB(pH)-preserving conditional
+expectation Ep : B′p→ Ap acting asEp(bp) = E(b)p for b∈ B′. Now, let Ω1∈H 1⊗K be a purification
+of ω1, let Ω0∈H 0 be the vector implementingω0 and write σ =⟨Ω1,· Ω1⟩|B(K). Set Fp = Ep⊗σ and
+ˆBp =pBp⊗ 1, ˆAp =Ap⊗ 1⊂B(pH⊗K ). Then ( ˆBp)′ =B′p⊗B(K) and
+⟨Ω,· Ω⟩| ˆB′p
+=ωB′p⊗σ. (45)
+Thus, Fp is an Ω0⊗ Ω1-preserving conditional expectation ˆB′
+p→ ˆAp, which implies Item (a) by Lemma 17
+and Theorem 9.
+3.2 Two-way steering
+In the following we assume thatA⊂B′ is an irreducible subfactor inclusion. The question we ask is: IfB
+can steerA relative to a stateω onB(H), canA also steerB relative toω? The following proposition shows
+that this is in general not the case. In fact, we see that two-way steering relative to the same stateω is true
+if and only if Haag duality holds and the stateω is pure.
+Proposition 19. LetA,B ⊂B(H) be commuting factors withA∨B =B(H) and letω be a normal state
+on B(H). Then the following are equivalent:
+(a) A and B can steer each other relative toω;
+(b) A =B′ and ω is a pure state.
+The proof of the proposition requires the following elementary observation: SupposeE : M→ N is a
+normal conditional expectation andωN a normal state onN. Then
+supp(ωN◦E) = supp(ωN)· suppE. (46)
+To see this, writes = supp(ωN◦E),sN = supp(ωN), and e = supp E. Since ωN(E(s)) = 1 , we have
+E(s)≥sN. Similarly, we havee≥s since ωN(E(e)) = 1. The bimodule property ofE implies e∈N′∩M
+andωN(E(esN)) =ωN(E(e)sN) = 1, hences≤esN≤sN. SinceE is a positive map, this impliesE(s)≤sN
+and henceE(s) =sN. Sinceese =s, we thus findE(esN−s) =E(e(esn−s)e) = 0. SinceE is faithful on
+eMe we finds =esN.
+Proof. The implication (b)⇒ (a) is shown in Lemma 7.
+(a)⇒ (b): We first prove the case whereω =⟨Ω,· Ω⟩ is a pure state. By the stated assumptions, there
+exists anωB′-preserving conditional expectationE :B′→A and anωA′-preserving conditional expectation
+F :A′→B. We writesX = suppωX = [X′Ω]. By (6), we have
+sA′A =sA′E(B′) =sA′B′sA′. (47)
+18
+
+=== page 19 ===
+Next, note that the conditional expectationF is faithful. Indeed, by the bimodule property, the support
+projection of a conditional expectation is an element of the relative commutant, which is trivialA′∩B′ = C.
+Thus, we havesA′ = supp(ωB◦F ) = supp(ωB)· suppF =sB, givingsA′ =sB∈B. Therefore, (47) gives
+sBA =sBB′, (48)
+which impliesA =B′ since A and B′ are factors.
+Now letω be a general normal state onB(H). We write p = supp(ωB). By Proposition 14, we have
+pH =H0⊗H 1 with
+Ap =A0⊗ 1, pBp =B0⊗B(H1), A 0∨B0 =B(H0), pωp =ω0⊗ω1, (49)
+withω0 =⟨Ω0,· Ω0⟩ for someΩ0∈H 0. Sincepωp is faithful onpBp, it follows thatω1 is faithful onB(H1).
+Thus, either dimH1 = 1 or there is an ensemble{ω1,x} with average stateω1 that is non-trivial, where we
+say that an ensemble in trivial if each of its elements is proportional to the average state. By assumption,
+A can steerB, which implies thatAp =A0⊗ 1 can steerpBp =B0⊗B(H1) by Lemma 18. Sincepωp is a
+product state, every ensemble that can be steered byAp⊂B(H0)⊗ 1 must restrict to a trivial ensemble on
+B(H1). Hence, dimH1 = 1, so thatpH =H0, Ap = A0, pBp = B0, A0∨B0 = B(H0), andpΩ0 = Ω0. It
+follows thatA0 andB0 can steer each other relative toΩ0. Hence, the solution to the pure state case above
+implies Ap =A0 =B′
+0 = (pBp)′ =B′p. Sincep∈B⊆A′, we concludeA =B′.
+A more nuanced picture emerges once we allowA and B to steer each other relative to possibly distinct
+states, in which case a clear connection to the (Jones-Kosaki-Longo) index[B′ : A] emerges [22, 48–51].
+The crucial fact that we need is that for an irreducible subfactor inclusionN ⊂ M the index [M : N] is
+finite if and only if there exist (necessarily unique) normal faithful conditional expectationsE : M → N
+and E′ : N′→ M′ (this is an immediate consequence of Haagerup’s Cocyle Radon-Nikodym theorem for
+operator-valued weights [77, Thm. 6.5]).10.
+Proposition 20. Let A,B ⊂ B(H) be commuting factors withA∨B = B(H). Then the following are
+equivalent:
+(a) [B′ :A]<∞;
+(b) B can steerA relative to a state vectorΨ∈H and A can steerB relative to a state vectorΦ∈H ;
+(c) B can steerA relative to normal stateψ on B(H) and A can steerB relative to a normal stateϕ on
+B(H);
+If the equivalent conditions hold, we can haveΨ = Φ if and only ifA =B′.
+To prove the proposition we use the following lemma:
+Lemma 21. Let N⊂ M be an irreducible subfactor inclusion with normal faithful conditional expectation
+E :M→N represented on a Hilbert spaceH. Then there exists a state vectorΦ∈H whose marginal states
+fulfill φM =φN◦E.
+Proof. If M has type I, thenM =N and E = id, so that every state vectorΦ∈H works. IfM has type II
+with normal semifinite faithful traceτ, then a normal stateφ onM has a representation as a vector state if
+and only ifdimMHφ≤ dimMH, whereHφ is the GNS representation ofφ. We can phrase this condition as
+τ(suppφ)≤ dimMH.11 Now consider a finite projectione∈N with τ(e)≤ dimMH and the normal state
+φN = τ(e· )/τ(e) on N. Set φ = φN◦E. Then, φ has a vector representativeΦ∈H because, by (46),
+suppφ = supp(φN)· (suppE) =e. IfM has type III, thenM is in standard form and every normal stateφ
+onM has a vector state representativeΦ∈H . We can thus pick any normal state onφN onN and consider
+the invariant stateφ =φN◦E.
+10For an irreducible inclusion, if[M : N] = ∞ and a normal conditional expectationE : M→ N exists, then no normal
+conditional expectation exists fromN′ to M′ (this is also a direct consequence of [77, Thm. 6.5])
+11This follows from viewingHφ asL2(M) supp(φ) and usingdimM(L2(M)e) =τ(e) for any projectione∈M (and similarly
+forH).
+19
+
+=== page 20 ===
+Proof of Proposition 20.(b)⇒(c)isclear. (c) ⇒(a): ByProposition14, thereexistconditionalexpectations
+E : B′→ A and E′ : A′→ B. By the irreducibility of the inclusionA⊂ B′, all operator-valued weights
+of B′ onto A are proportional [77, 78]. Hence, one hasE−1∝ E′, whereE−1 denotes the operator-valued
+weight dual toE [48]. Hence, one hasE−1(1)<∞, i.e., the index is finite [48].
+(a)⇒ (b): If the index is finite, there exist conditional expectationsE :B′→A and E′ :A′→B. By
+Lemma 21 there exist state vectorsΦ, Ψ∈H whose induced states are invariant under the given conditional
+expectations.
+The statement thatΨ = Φ if and only ifA =B′ is the content of Proposition 19.
+A Appendix: Kadison-Schwarz inequality for JB-algebras
+In this appendix we provide a short, self-contained proof of the Kadison-Schwarz inequality for JB-algebras,
+because we could not find an explicit proof in the literature. JB-algebras are norm-complete, real Jordan
+algebras, and can be thought of as the self-adjoint, Jordan-algebraic version of abstract C* algebras. In
+particular, JBW-algebras are JB-algebras. We refer to [58] for details. The generalization to the complex
+case is contained in Lemma 1. In the following, letN and M be JB-algebras.
+Proposition 22(Kadison-Schwarz inequality for JB-algebras). Ifφ :N→M is a unital positive map, then
+φ(a2)≥φ(a)2, a ∈N. (50)
+The proof has four main ingredients. The first is that positivity is an intrinsic property:
+Lemma 23. Let N0⊂ N be a JB-subalgebra containing1 and x∈ N0. Then x≥ 0 in N0 if and only if
+x≥ 0 in N.
+Proof. The spectrumσ(x) is defined relative to the associative subalgebraC(x)⊂N0, generated byx. Since
+x≥ 0 is equivalent toσ(x)⊂ [0,∞), positivity is independent of the ambient algebra.
+The second is theShirshov-Cohn theorem, stating that a JB-algebra generated by two elements (and the
+unit) is automatically a JC-algebra, i.e., isomorphic to a norm-closed Jordan algebra inB(H)sa with product
+a◦b = 1
+2(ab +ba) (see, for example, [58, Thm. 7.2.5]). The third ingredient is the following observation. For
+x∈N set
+Ux(b) = 2x◦ (x◦b)−x2◦b. (51)
+In the case of a JC-algebra (and hence in the case of C*-algebras) this simply amounts toUx(b) =xbx.
+Lemma 24. Let 0≤b∈N. ThenUx(b)≥ 0 for allx∈N.
+Proof. Let N0 be the JB-subalgebra generated byx,b, 1. By the Shirshov-Cohn theorem we may assume
+N0⊂ B(H)sa. By Lemma 23 it suffices to showUx(b)≥ 0 when viewed as element ofB(H)sa. But then
+Ux(b) =xbx. Sincex =x∗ and b≥ 0 it follows thatUx(b)≥ 0.
+The final ingredient is an algebraic identity which only uses bilinearity of the Jordan product and the
+fact thatx◦ 1 =x.
+Lemma 25. Letb1,...,b n∈N satisfyP
+ibi = 1, letλ1,...,λ n∈ R and set
+b =
+nX
+i=1
+λibi, c =
+nX
+i=1
+λ2
+ibi. (52)
+Then c−b2 =Pn
+i=1Uλi1−b(bi).
+Proof. Set xi =λi1−b. Direct computation shows that
+Uxi(bi) = 2xi◦ (xi◦bi)−x2
+i◦bi =λ2
+ibi− 2λi(b◦bi) + 2b◦ (b◦bi)−b2◦bi. (53)
+Summing overi yieldsP
+iUxi(bi) =c−b2.
+20
+
+=== page 21 ===
+Corollary 26. Letφ :N→M be a unital positive map. Lete1,...,e n∈N be orthogonal projections withP
+iei = 1, λ1,...,λ n∈ R, and puta =P
+iλiei. Thenφ(a)2≤φ(a2).
+Proof. Set bi =φ(ei)≥ 0. Since a2 =P
+iλ2
+iei we haveb :=φ(a) =P
+iλibi and c :=φ(a2) =P
+iλ2
+ibi. By
+Lemma 25 we have
+φ(a2)−φ(a)2 =c−b2 =
+nX
+i=1
+Uλi1−b(bi). (54)
+Since bi≥ 0, we find thatφ(a2)−φ(a)2≥ 0 by Lemma 24.
+Proof of Proposition 22.We first prove the statement for JBW-algebras and then lift it to the case of JB-
+algebras. So letN,M be JBW-algebras. Fixa∈N and consider the JBW-subalgebraW (a) generated bya
+and 1. For anyε >0 there are real numbersλ1,...,λ n and orthogonal projectionse1,...,e n∈W (a) such
+that∥a−aε∥< ε, whereaε =P
+iλiei (see, e.g., [58, Prop. 4.2.3]). Then∥a2−a2
+ε∥≤∥ a−aε∥∥a +aε∥≤
+ε(2∥a∥ +ε). Choosing a null-sequenceϵn and settingan :=aϵn we find (sinceφ is norm-bounded)
+φ(a2
+n)−φ(an)2−→φ(a2)−φ(a)2, n →∞, (55)
+in norm. Sinceφ(a2
+n)−φ(an)2≥ 0 by Corollary 26 and since the cone of positive operators is norm-closed,
+the result for JBW-algebras follows.
+Now let N,M be JB-algebras. Then the biduals N∗∗,M∗∗ are JBW-algebras containing N and M
+as subalgebras, respectively [58, Thm. 4.4.3]. The bidual mapφ∗∗ : N∗∗→ M∗∗ is unital and positive.
+Since positivity is intrinsic, we can apply our result for JBW-algebras and conclude that it holds for JB-
+algebras.
+Remark 27. Using the Kadison-Schwarz inequality for JB-algebras, one sees that the Jordan-Schwarz
+inequality (10) holds for positive unital maps between JB*-algebras (the same proof as in Lemma 1 applies).
+As a consequence, Lemma 1 generalizes fully to JB or JB*-algebra.
+21
+
+=== page 22 ===
+References
+[1] S. J. Summers and R. Werner. “Maximal Violation of Bell’s Inequalities Is Generic in Quantum Field
+Theory”. In:Communications in Mathematical Physics110.2 (June 1, 1987), pp. 247–259.issn: 1432-
+0916. doi: 10.1007/BF01207366.
+[2] R. Verch and R. F. Werner. “Distillability and positivity of partial transposes in general quantum field
+systems”. In:Reviews in Mathematical Physics17.5 (June 2005), pp. 545–576.issn: 0129-055X. doi:
+10.1142/S0129055X05002364.
+[3] M. Keyl, T. Matsui, D. Schlingemann, and R. F. Werner. “Entanglement, Haag-duality and Type
+Properties of Infinite Quantum Spin Chains”. In:Reviews in Mathematical Physics18.09 (Oct. 2006),
+pp. 935–970. issn: 0129-055X, 1793-6659. doi: 10 . 1142 / S0129055X0600284X. arXiv: math - ph /
+0604071.
+[4] J. Crann, D. W. Kribs, R. H. Levene, and I. G. Todorov. “State Convertibility in the von Neumann
+Algebra Framework”. In:Communications in Mathematical Physics378.2 (Sept. 1, 2020), pp. 1123–
+1156. issn: 1432-0916. doi: 10.1007/s00220-020-03803-3.
+[5] L. van Luijk, A. Stottmeister, R. F. Werner, and H. Wilming.Embezzlement of entanglement, quantum
+fields, and the classification of von Neumann algebras. June 4, 2024. doi: 10.48550/arXiv.2401.
+07299. arXiv: 2401.07299.
+[6] L. van Luijk, A. Stottmeister, R. F. Werner, and H. Wilming. “Relativistic Quantum Fields Are
+Universal Entanglement Embezzlers”. In:Physical Review Letters133.26 (Dec. 31, 2024), p. 261602.
+doi: 10.1103/PhysRevLett.133.261602.
+[7] L. van Luijk, A. Stottmeister, R. F. Werner, and H. Wilming. “Pure State Entanglement and von
+Neumann Algebras”. In: Communications in Mathematical Physics 406.12 (Oct. 30, 2025), p. 296.
+issn: 1432-0916. doi: 10.1007/s00220-025-05465-5.
+[8] L. van Luijk, A. Stottmeister, and H. Wilming. “Uniqueness of Purifications Is Equivalent to Haag
+Duality”. In:Physical Review Letters136.4 (Jan. 30, 2026), p. 040203.doi: 10.1103/d7nm-gx37.
+[9] R. Haag. Local Quantum Physics. Berlin, Heidelberg: Springer, 1996.isbn: 978-3-540-61049-6 978-3-
+642-61458-3. doi: 10.1007/978-3-642-61458-3.
+[10] P. Naaijkens. “Anyons in Infinite Quantum Systems : QFT in D=2+1 and the Toric Code”. Radboud
+Universiteit Nijmegen, 2012.
+[11] P. Naaijkens. “Haag Duality and the Distal Split Property for Cones in the Toric Code”. In:Letters
+in Mathematical Physics101.3 (Sept. 1, 2012), pp. 341–354.issn: 1573-0530. doi: 10.1007/s11005-
+012-0572-7.
+[12] L. Fiedler and P. Naaijkens. “Haag Duality for Kitaev’s Quantum Double Model for Abelian Groups”.
+In: Reviews in Mathematical Physics27.09 (Oct. 2015), p. 1550021.issn: 0129-055X. doi: 10.1142/
+S0129055X1550021X.
+[13] Y. Ogata. “A Derivation of Braided C*-Tensor Categories from Gapped Ground States Satisfying the
+Approximate Haag Duality”. In:Journal of Mathematical Physics63.1 (Jan. 1, 2022), p. 011902.issn:
+0022-2488, 1089-7658. doi: 10.1063/5.0061785.
+[14] C. Jones, P. Naaijkens, D. Penneys, D. Wallick, and M. Izumi. “Local Topological Order and Boundary
+Algebras”. In: Forum of Mathematics, Sigma13 (2025), e135. issn: 2050-5094. doi: 10.1017/fms.
+2025.16.
+[15] Y. Ogata, D. Pérez-García, and A. Ruiz-de-Alarcón. Haag Duality for 2D Quantum Spin Systems.
+Sept. 28, 2025. doi: 10 . 48550 / arXiv . 2509 . 23734. arXiv: 2509 . 23734 [math-ph]. url: http :
+//arxiv.org/abs/2509.23734 (visited on 09/30/2025). Pre-published.
+[16] P. Naaijkens, D. Penneys, and D. Wallick. Local Topological Order, Haag Duality, and Reflection
+Positivity. May 11, 2026.doi: 10.48550/arXiv.2605.10693 . arXiv: 2605.10693 [math-ph] . url:
+http://arxiv.org/abs/2605.10693 (visited on 05/13/2026). Pre-published.
+22
+
+=== page 23 ===
+[17] S.-H. Shao, J. Sorce, and M. Srivastava. Additivity, Haag Duality, and Non-Invertible Symmetries.
+Mar. 26, 2025. doi: 10 . 48550 / arXiv . 2503 . 20863. arXiv: 2503 . 20863 [hep-th]. url: http : / /
+arxiv.org/abs/2503.20863 (visited on 03/28/2025). Pre-published.
+[18] D. Harlow, S.-H. Shao, J. Sorce, and M. Srivastava.Disjoint Additivity and Local Quantum Physics.
+Sept. 3, 2025.doi: 10.48550/arXiv.2509.03589. arXiv:2509.03589 [hep-th]. url: http://arxiv.
+org/abs/2509.03589 (visited on 09/05/2025). Pre-published.
+[19] P. Naaijkens. “Kosaki-Longo Index and Classification of Charges in 2D Quantum Spin Models”. In:
+Journal of Mathematical Physics54.8 (Aug. 16, 2013), p. 081901.issn: 0022-2488. doi: 10.1063/1.
+4818272.
+[20] L. Fiedler, P. Naaijkens, and T. J. Osborne. “Jones Index, Secret Sharing and Total Quantum Dimen-
+sion”. In:New Journal of Physics19.2 (Feb. 20, 2017), p. 023039.issn: 1367-2630.doi: 10.1088/1367-
+2630/aa5c0c. arXiv: 1608.02618 [math-ph, physics:quant-ph] .
+[21] Y. Kawahigashi, R. Longo, and M. Müger. “Multi-Interval Subfactors and Modularity of Representa-
+tions in Conformal Field Theory”. In:Communications in Mathematical Physics219.3 (2001). arXiv:
+math/9903104, pp. 631–669.issn: 0010-3616. doi: 10.1007/PL00005565.
+[22] V. F. R. Jones. “Index for Subfactors”. In: Inventiones mathematicae 72.1 (Feb. 1, 1983), pp. 1–25.
+issn: 1432-1297. doi: 10.1007/BF01389127.
+[23] V. F. R. Jones. “A Polynomial Invariant for Knots via von Neumann Algebras”. In:Bulletin of the
+American Mathematical Society12.1 (1985), pp. 103–111.issn: 1088-9485, 0273-0979.doi: 10.1090/
+S0273-0979-1985-15304-2.
+[24] E. Witten. “Quantum field theory and the Jones polynomial”. In:Communications in Mathematical
+Physics 121.3 (Sept. 1989). ISBN: 0010-3616, pp. 351–399.doi: 10.1007/BF01217730.
+[25] V. G. Turaev. Quantum Invariants of Knots and 3-Manifolds. en. Publication Title: Quantum In-
+variants of Knots and 3-Manifolds. De Gruyter, Apr. 2010.isbn: 978-3-11-022184-8. doi: 10.1515/
+9783110221848.
+[26] V. F. R. Jones. “Hecke Algebra Representations of Braid Groups and Link Polynomials”. In: The
+Annals of Mathematics126.2 (Sept. 1987), p. 335.issn: 0003486X. doi: 10.2307/1971403. JSTOR:
+1971403.
+[27] V. Jones and V. S. Sunder. Introduction to Subfactors. 1st ed. Cambridge University Press, May 15,
+1997. isbn: 978-0-521-58420-3 978-0-511-56621-9.doi: 10.1017/CBO9780511566219.
+[28] M. Freedman, A. Kitaev, M. Larsen, and Z. Wang. “Topological quantum computation”. en. In:Bulletin
+of the American Mathematical Society40.1 (2003), pp. 31–38. issn: 0273-0979, 1088-9485. doi: 10.
+1090/S0273-0979-02-00964-3.
+[29] Y. Kawahigashi. “Subfactor theory and its applications: Operator algebras and quantum field theory”.
+In: (Oct. 4, 2005).doi: 10.1090/trans2/215/06.
+[30] R. Longo. “Index of subfactors and statistics of quantum fields. I”. In:Communications in Mathematical
+Physics 126.2 (Dec. 1, 1989), pp. 217–247.issn: 1432-0916. doi: 10.1007/BF02125124.
+[31] R. Longo. “Index of subfactors and statistics of quantum fields. II”. In:Communications in Mathemat-
+ical Physics130.2 (June 1, 1990), pp. 285–309.issn: 1432-0916. doi: 10.1007/BF02473354.
+[32] R. Longo and K.-H. Rehren. “Nets of subfactors”. In: Reviews in Mathematical Physics 07.4 (May
+1995), pp. 567–597.issn: 0129-055X. doi: 10.1142/S0129055X95000232.
+[33] Z. Wang. Topological Quantum Computation. en. Vol. 112. CBMS Regional Conference Series in Math-
+ematics. American Mathematical Society, Apr. 2010.isbn: 978-0-8218-4930-9 978-0-8218-8339-6 978-
+1-4704-1570-9. doi: 10.1090/cbms/112.
+[34] Z. Liu and F. Xu. “Jones-Wassermann subfactors for modular tensor categories”. In: Advances in
+Mathematics 355 (Oct. 2019), p. 106775.issn: 0001-8708. doi: 10.1016/j.aim.2019.106775.
+23
+
+=== page 24 ===
+[35] M. Bischoff, Y. Kawahigashi, R. Longo, and K.-H. Rehren. Tensor Categories and Endomorphisms
+of von Neumann Algebras: With Applications to Quantum Field Theory. Vol. 3. SpringerBriefs in
+Mathematical Physics. Cham: Springer International Publishing, 2015.isbn: 978-3-319-14300-2 978-3-
+319-14301-9. doi: 10.1007/978-3-319-14301-9.
+[36] Y. Kawahigashi. “Conformal field theory, tensor categories and operator algebras”. en. In:Journal of
+Physics A: Mathematical and Theoretical48.30 (July 2015), p. 303001.issn: 1751-8121.doi: 10.1088/
+1751-8113/48/30/303001.
+[37] S. Hollands. “Anyonic Chains – α-Induction – CFT – Defects – Subfactors”. en. In:Communications
+in Mathematical Physics(Dec. 2022). issn: 1432-0916. doi: 10.1007/s00220-022-04581-w.
+[38] Y.Kawahigashi.“Thezipperconditionfor4-tensorsintwo-dimensionaltopologicalorderandthehigher
+relative commutants of a subfactor arising from a commuting square”. en. In:Letters in Mathematical
+Physics 116.2 (Mar. 2026), p. 36.issn: 1573-0530. doi: 10.1007/s11005-026-02069-5.
+[39] M. Takesaki. Theory of Operator Algebras II. Red. by J. Cuntz and V. F. R. Jones. Vol. 125. Ency-
+clopaedia of Mathematical Sciences. Berlin, Heidelberg: Springer, 2003.isbn: 978-3-642-07689-3 978-
+3-662-10451-4. doi: 10.1007/978-3-662-10451-4.
+[40] M. Keyl, D. Schlingemann, and R. F. Werner. Infinitely Entangled States. Dec. 2, 2002. doi: 10 .
+48550/arXiv.quant-ph/0212014. arXiv: quant-ph/0212014. url: http://arxiv.org/abs/quant-
+ph/0212014 (visited on 09/20/2024). Pre-published.
+[41] L. van Luijk. “Entanglement in von Neumann algebraic quantum information theory”. In: Leibniz
+University Hanover PhD thesis (2025).doi: 10.15488/19655.
+[42] H. Reeh and S. Schlieder. “Bemerkungen zur unitäräquivalenz von lorentzinvarianten feldern”. de.
+In: Il Nuovo Cimento (1955-1965)22.5 (Dec. 1961), pp. 1051–1068.issn: 1827-6121. doi: 10.1007/
+BF02787889.
+[43] H. J. Borchers. “On the Converse of the Reeh-Schlieder Theorem”. en. In:Communications in Mathe-
+matical Physics10.4 (Dec. 1968), pp. 269–273.issn: 0010-3616, 1432-0916.doi: 10.1007/BF03399501.
+[44] R. Brunetti, D. Guido, and R. Longo. “Modular structure and duality in conformal quantum field
+theory”. In:Communications in Mathematical Physics156.1 (Sept. 1993). arXiv: funct-an/9302008v1,
+pp. 201–219. issn: 0010-3616. doi: 10.1007/BF02096738.
+[45] F. Gabbiani and J. Fröhlich. “Operator algebras and conformal field theory”. In:Communications in
+Mathematical Physics155.3 (Aug. 1993), pp. 569–640.issn: 0010-3616. doi: 10.1007/BF02096729.
+[46] K. Fredenhagen and M. Jörß. “Conformal Haag–Kastler nets, pointlike localized fields and the existence
+of operator product expansions”. In:Commun. Math. Phys.176.3 (1996), pp. 541–554.issn: 0010-3616.
+doi: 10.1007/BF02099249.
+[47] L. van Luijk, R. Schwonnek, A. Stottmeister, and R. F. Werner. “The Schmidt Rank for the Commuting
+OperatorFramework”.In: Communications in Mathematical Physics405.7(June18,2024),p.152. issn:
+1432-0916. doi: 10.1007/s00220-024-05011-9.
+[48] H. Kosaki. “Extension of Jones’ Theory on Index to Arbitrary Factors”. In: Journal of Functional
+Analysis 66.1 (Mar. 1986), pp. 123–140.issn: 00221236. doi: 10.1016/0022-1236(86)90085-6.
+[49] R. Longo. “Index of Subfactors and Statistics of Quantum Fields. I”. In:Communications in Mathe-
+matical Physics126.2 (Dec. 1, 1989), pp. 217–247.issn: 1432-0916. doi: 10.1007/BF02125124.
+[50] R. Longo. “Index of Subfactors and Statistics of Quantum Fields II.” In:Communications in Mathe-
+matical Physics130.2 (June 1, 1990), pp. 285–309.issn: 1432-0916. doi: 10.1007/BF02473354.
+[51] H. Kosaki and R. Longo. “A Remark on the Minimal Index of Subfactors”. In:Journal of Functional
+Analysis 107.2 (Aug. 1, 1992), pp. 458–470.issn: 0022-1236. doi: 10.1016/0022-1236(92)90118-3.
+[52] F. Hiai. “Minimizing Indices of Conditional Expectations onto a Subfactor”. en. In: Publications of
+the Research Institute for Mathematical Sciences24.4 (Aug. 1988), pp. 673–678.issn: 0034-5318. doi:
+10.2977/prims/1195174872.
+[53] P. E. Frenkel. “Integral formula for quantum relative entropy implies data processing inequality”. In:
+7 (Sept. 7, 2023).doi: 10.22331/q-2023-09-07-1102.
+24
+
+=== page 25 ===
+[54] A.Müller-HermesandD.Reeb.“MonotonicityoftheQuantumRelativeEntropyUnderPositiveMaps”.
+In:Annales Henri Poincaré18.5(May2017),pp.1777–1788. issn:1424-0637,1424-0661. doi: 10.1007/
+s00023-017-0550-9. arXiv: 1512.06117.
+[55] L. van Luijk and H. Wilming. Sufficiency and Petz recovery for positive maps. Apr. 9, 2026. doi:
+10.48550/arXiv.2604.08380. arXiv: 2604.08380.
+[56] K.Sonoda,H.Arai,andM.Hayashi. Hypothesis testing and Stein’s lemma in general probability theories
+with Euclidean Jordan algebra and its quantum realization. May 5, 2025. arXiv:2505.02487[quant-
+ph].
+[57] N. Galke, L. van Luijk, and H. Wilming. “Sufficiency of Rényi Divergences”. In:IEEE Transactions on
+Information Theory 70.7 (July 2024). Conference Name: IEEE Transactions on Information Theory,
+pp. 5057–5076. issn: 1557-9654. doi: 10.1109/TIT.2024.3376395.
+[58] H. Hanche-Olsen and E. Størmer. Jordan Operator Algebras. Pitman Advanced Pub. Program, 1984.
+isbn: 978-0-273-08619-2.
+[59] J. D. M. Wright. “JordanC∗-algebras.” In:Michigan Mathematical Journal24.3 (Jan. 1977), pp. 291–
+302. issn: 0026-2285, 1945-2365.doi: 10.1307/mmj/1029001946.
+[60] E. Størmer. Positive Linear Maps of Operator Algebras. Springer Monographs in Mathematics. Berlin,
+Heidelberg: Springer, 2013. isbn: 978-3-642-34368-1 978-3-642-34369-8. doi: 10.1007/978- 3- 642-
+34369-8.
+[61] E. Størmer. “Multiplicative Properties of Positive Maps”. In:Mathematica Scandinavica100.1 (2007),
+pp. 184–192. issn: 0025-5521.
+[62] J. Tomiyama. “On the projection of norm one in W*-algebras”. In:Proceedings of the Japan Academy
+33.10 (Jan. 1957), pp. 608–612.issn: 0021-4280. doi: 10.3792/pja/1195524885.
+[63] S. L. Woronowicz. “Selfpolar forms and their applications to the C*-algebra theory”. In:Reports on
+Mathematical Physics6.3 (Dec. 1, 1974), pp. 487–495.issn: 0034-4877.doi: 10.1016/S0034-4877(74)
+80012-1.
+[64] U. Haagerup and H. Hanche-Olsen. “Tomita-Takesaki Theory for Jordan Algebras”. In: Journal of
+Operator Theory11.2 (1984). Publisher: Theta Foundation, pp. 343–364.issn: 0379-4024.
+[65] L. Accardi and C. Cecchini. “Conditional expectations in von Neumann algebras and a theorem of
+Takesaki”. In:Journal of Functional Analysis45.2 (Feb. 1, 1982), pp. 245–273.issn: 0022-1236. doi:
+10.1016/0022-1236(82)90022-2.
+[66] D. Petz. “A dual in von Neumann algebras with weights”. In:The Quarterly Journal of Mathematics
+35.4 (Dec. 1, 1984), pp. 475–483.issn: 0033-5606. doi: 10.1093/qmath/35.4.475.
+[67] D. Petz. “Sufficiency of channels over von Neumann algebras”. In:The Quarterly Journal of Mathe-
+matics 39.1 (Mar. 1, 1988), pp. 97–108.issn: 0033-5606. doi: 10.1093/qmath/39.1.97.
+[68] M. Ohya and D. Petz.Quantum Entropy and Its Use. Springer Berlin, Heidelberg, 1993.isbn: 978-3-
+540-54881-2.
+[69] A. Jenčová and D. Petz. “Sufficiency in Quantum Statistical Inference”. In:Communications in Mathe-
+matical Physics263.1 (Apr. 1, 2006), pp. 259–276.issn: 1432-0916. doi: 10.1007/s00220-005-1510-
+7.
+[70] U. Haagerup and E. Størmer. “Positive projections of von Neumann algebras onto JW-algebras”. In:
+Reports on Mathematical Physics. Proceedings of the XXVI Symposium on Mathematical Physics 36.2
+(Oct. 1, 1995), pp. 317–330.issn: 0034-4877. doi: 10.1016/0034-4877(96)83628-7.
+[71] B. Blackadar. Operator Algebras. Red. by J. Cuntz and V. F.R. Jones. Vol. 122. Encyclopaedia of
+Mathematical Sciences. Berlin, Heidelberg: Springer, 2006.isbn: 978-3-540-28486-4. doi: 10.1007/3-
+540-28517-2.
+[72] S ,. Strătilă and L. Zsidó.Lectures on von Neumann algebras. en. Second edition. Cambridge - IISc
+series. Cambridge ; New York, NY: Cambridge University Press, 2019.isbn: 978-1-108-49684-1. doi:
+10.1017/9781108654975.
+25
+
+=== page 26 ===
+[73] R. V. Kadison and J. R. Ringrose.Fundamentals of the Theory of Operator Algebras, vol I. Boston,
+MA: Birkhäuser, 1992.isbn: 978-1-4612-7738-5. doi: 10.1007/978-1-4612-2968-1.
+[74] R. V. Kadison and J. R. Ringrose.Fundamentals of the Theory of Operator Algebras, vol II. Boston,
+MA: Birkhäuser, 1992.isbn: 978-1-4612-7738-5. doi: 10.1007/978-1-4612-2968-1.
+[75] B. Shi, K. Kato, and I. H. Kim. “Fusion Rules from Entanglement”. In:Annals of Physics418 (July
+2020), p. 168164.issn: 00034916. doi: 10.1016/j.aop.2020.168164.
+[76] Ş. V. Strătilă. Modular Theory in Operator Algebras. Cambridge IISc Series. Cambridge: Cambridge
+University Press, 2020.isbn: 978-1-108-48960-7. doi: 10.1017/9781108489607.
+[77] U. Haagerup. “Operator valued weights in von Neumann algebras, II”. In:Journal of Functional Anal-
+ysis 33.3 (Sept. 1, 1979), pp. 339–361.issn: 0022-1236. doi: 10.1016/0022-1236(79)90072-7.
+[78] U. Haagerup. “Operator valued weights in von Neumann algebras, I”. In:Journal of Functional Analysis
+32.2 (May 1, 1979), pp. 175–206.issn: 0022-1236. doi: 10.1016/0022-1236(79)90053-3.
+26

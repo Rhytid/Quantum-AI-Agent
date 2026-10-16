@@ -1,0 +1,1096 @@
+=== page 1 ===
+A two-player dimension witness based on embezzle-
+ment, and an elementary proof of the non-closure of
+the set of quantum correlations
+Andrea Coladangelo
+Computing and Mathematical Sciences, Caltech
+acoladan@caltech.edu
+We describe a two-player non-local game, with a ﬁxed small number of
+questions and answers, such that an ϵ-close to optimal strategy requires an
+entangled state of dimension 2Ω(ϵ−1/8). Our non-local game is inspired by the
+three-player non-local game of Ji, Leung and Vidick [JLV18]. It reduces the
+number of players from three to two, as well as the question and answer set
+sizes. Moreover, it provides an (arguably) elementary proof of the non-closure
+of the set of quantum correlations, based on embezzlement and self-testing.
+In contrast, previous proofs [Slo19, DPP17, MR18] involved representation
+theoretic machinery for ﬁnitely-presented groups andC∗-algebras.
+1 Introduction
+A non-local game consists of a one-round interaction between a trusted referee, or ver-
+iﬁer, (who asks questions) and two or more spatially isolated players, or provers (who
+provide answers). The players are cooperating to win the game, but spatial isolation pre-
+vents them from communicating. Bell’s theorem [Bel64], a landmark result in physics,
+asserts that there exist games for which players who share entanglement can outperform
+players who do not, the most famous example being the CHSH game [CHSH69]. The
+most immediate application of non-local games is to “test quantumness”: a referee who
+observes a winning probability in a non-local game which exceeds what is attainable
+classically can have high conﬁdence that the players (or devices) she is interacting with
+were sharing entanglement. A more reﬁned analysis of non-local games allows the ref-
+eree to obtain more precise characterizations of the devices involved. For example, in
+some cases, the referee might be able to infer that the devices must sharehigh-dimensional
+entanglement [BPA+08]. In special cases, the referee might even be able to completely
+characterize the quantum state inside the devices and the measurements that they are
+performing (up to local isometries and some small error) [MY04, MYS12, CGS17].
+In this work, we focus on the study of non-local games as witnesses of high-
+dimensional entanglement. This has had on the one hand fruitful applications in quan-
+tum cryptography, and on the other it has shed light on foundational questions in the
+theory of entanglement. Before proceeding further, we clarify that when we use the term
+non-local game we do not restrict ourselves to games with a binary outcome (“win” or
+”lose”), but rather we consider games speciﬁed by an arbitrary function V taking values
+in R which determines the players’ score as a function of questions and answers. There is
+a natural one-to-one correspondence between such non-local games and Bell inequalities.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 1
+arXiv:1904.02350v3  [quant-ph]  13 Jun 2020
+
+=== page 2 ===
+Certifying high-dimensional entanglement - previous work and state of the art
+Non-local games with the property that a lower bound on the score provides a lower
+bound on the dimension of the players’ quantum systems are referred to as dimension
+witnesses. The study of games (or correlations) with such a property was initiated by
+Brunner et al. [BPA +08], who coined the term. In this work, we focus on dimension
+witnesses that can certify entanglement of arbitrarily high dimension.
+The ﬁrst example of a game which cannot be won perfectly with any ﬁnite amount
+of entanglement was proposed by Leung, Toner and Watrous [LTW13], and is intimately
+connected to our result. The game that they introduced is not a non-local game in the
+usual sense, since it involves quantum questions and answers. However, it has the prop-
+erty that in order to succeed with high probability, the players have to perform a coher-
+ent state exchange which requires them to share an embezzling state of high dimension.
+More precisely, the game forces the two players to coherently transform a product state
+of two qubits into an EPR pair, using only local operations. This task is, of course, im-
+possible to perform exactly, but can be performed to arbitrarily high precision if the two
+players share an auxiliary entangled state of sufﬁciently high dimension (referred to as
+an embezzling state).
+Subsequently, several examples of dimension witnesses for entanglement of arbitrar-
+ily high dimension have been proposed over the years consisting of non-local games with
+classical questions and answers [BBT11, Slo11, BNV13, MV14, CRSV18, CN16, Col17,
+CS17a, NV17, CS17b]. However, all of these examples involvefamilies of non-local games
+whose questions and answers increase as the witnessed dimension increases. For some
+time, it was an open question to determine whether there exists a non-local game, with a
+ﬁnite number of questions and answers, whose optimal value cannot be attained by any
+ﬁnite-dimensional strategy (in the tensor product model), but which can be attained in
+the limit of ﬁnite-dimensional strategies. This question was answered recently by Slofstra
+in a sequence of two breakthrough works [Slo20, Slo19], where he introduces novel tech-
+niques based on the representation theory of ﬁnitely-presented groups. Slofstra’s result
+implies that the set of quantum correlations is not closed.
+An alternative proof of the latter result was given subsequently by Dykema, Paulsen
+and Prakash [DPP17], and more recently by Musat and Rørdam [MR18], using techniques
+based on the representation theory of C∗-algebras. The games constructed in [DPP17]
+and [MR18] have signiﬁcantly smaller question and answer set sizes, namely 5 and 2.
+In contrast, a more recent result by Coladangelo and Stark [CS18] gives an exam-
+ple of a point in the set of quantum correlations on question sets of size 5 and answer
+sets of size 3 which cannot be attained using ﬁnite-dimensional entanglement but can be
+attained exactly using inﬁnite-dimensional entanglement, in the tensor product model.
+This asserts that the the setCq of quantum correlations attainable with ﬁnite-dimensional
+entanglement is strictly contained in the set Cqs of correlations attainable with possibly
+inﬁnite-dimensional entanglement.
+All of the above results are not explicit or quantitative about the tradeoff between
+winning probability (or expected score in the game) and the dimension required to attain
+it. What we desire from a dimension witness is a quantitative statement of the following
+form: if the players’ score isϵ-close to optimal, then their strategy has dimension at least
+f(ϵ), wheref(ϵ) is a function that tends to inﬁnity as ϵtends to zero. In [SV18], Slofstra
+and Vidick analyze such a tradeoff for the machinery introduced by Slofstra in [Slo20],
+and they relate such tradeoff to a quantity called the hyperlinear proﬁle of a group. In a
+subsequent work [Slo18], Slofstra provides a ﬁnitely-presented group whose hyperlinear
+proﬁle is at least subexponential. As a corollary, this yields a two-player non-local game,
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 2
+
+=== page 3 ===
+with question and answer sets of ﬁnite size, with the property that a1−ϵwinning proba-
+bility requires dimension at least2Ω(ϵ−c) to attain for some constant 0<c< 1. The caveat
+of such a non-local game is that its description is quite involved and the size of question
+and answer sets is large. Moreover, it is not clear whether a winning probability of 1
+in the game can be attained in the limit of ﬁnite-dimensional strategies or not (although
+it can be attained in the commuting-operator model). These caveats not only make an
+experimental demonstration of such a dimension witness infeasible, but, more impor-
+tantly, they somewhat conceal what is truly happening behind the scenes: the resulting
+non-local game, although remarkable for its behaviour, does not arguably provide much
+intuition about what is causing the exponential blow-up of the dimension.
+A much simpler game with a similar exponential tradeoff between optimality and di-
+mension, and without this caveat, but involving three players, was proposed recently by
+Ji, Leung and Vidick [JLV18]. Their work constitutes, in some sense, a return to the orig-
+inal ideas of Leung, Toner and Watrous’coherent state-exchange game [LTW13], which
+are cleverly translated to a setting in which all questions and answers are classical. At
+the heart of the three-player non-local game of Ji, Leung and Vidick is the idea of dele-
+gating the actions of the quantum veriﬁer of the coherent state-exchange game to a third
+player. By combining different non-local tests, the veriﬁer is still able, using only classical
+communication, to enforce that two of the three players must be performing a coherent
+state-exchange which involves a high-dimensional embezzling state as a resource.
+Our result In this work, we show, strikingly, that the third player is not required. We
+design a much more direct two-player non-local game with an (improved) exponential
+trade-off between optimality and dimension: one of the key ideas is the introduction
+of a simple additional sub-test which can guarantee the coherence of a state-exchange
+between the two players even in the absence of a “physical” third register that forces
+coherence, like in the games of [LTW13] and [JLV18]. Our result is the following:
+Theorem 1.(informal) There exists a two-player non-local game on question sets of size
+5 and 6, and answer sets of size3, with the property that:
+•(completeness) For anyϵ >0, there exists a strategy of dimension2O(ϵ−1) that is
+ϵ-close to optimal.
+•(soundness) Anyϵ-close to optimal strategy has at least2Ω(ϵ−1/8) dimension.
+Our game can be thought of as a direct de-quantization of the coherent state-exchange
+game. It is by far the simplest non-local game (in terms of question and answer set size)
+with such an exponential tradeoff. For a comparison, even with three players, the ques-
+tion and answer sets are of size 12 and 8 respectively in [JLV18].
+Our game provides a new proof of the non-closure of the set of quantum correlations.
+However, strikingly, compared to the proofs in [Slo19], [DPP17] and [MR18], our proof is
+arguably elementary, and does not involve any representation-theoretic machinery. We
+point out, additionally, that an exponential tradeoff between optimality and dimension
+does not hold for the game in [DPP17], where a strategy of dimension 1/poly(ϵ) can be
+ϵ-close to optimal (and we suspect that this is also the case for the game in [MR18]).
+Next, we sketch the main ideas in the design of our two-player non-local game.
+1.1 A sketch of our two-player non-local game
+For ease of exposition, we will leave states unnormalized in this introduction.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 3
+
+=== page 4 ===
+Our game consists of sub-tests (a), (b) and (c), executed by the veriﬁer with equal
+probability:
+(a) A non-local game G3-CHSH whose unique optimal strategy requires the provers to
+share the state|00⟩+|11⟩+|22⟩.G3-CHSH is an instance (ford = 3) of a more general
+family of non-local games from [Col18].G3-CHSH contains a special “computational
+basis” question for Alice which requires her to measure her half of the state in the
+computational basis.
+(b) The well-known “tilted CHSH” non-local game, which we denote by GtCHSH
+[AMP12, BP15]. This requires, for the appropriate choice of parameters, that the
+provers share the state |00⟩+
+√
+2|11⟩. GtCHSH contains a special “computational
+basis” question for Bob, which requires him to measure in the computational basis.
+(c) A sub-test in which Alice is asked the “computational basis” question from (a), and
+Bob is asked the “computational basis” question from (b). Alice and Bob win if:
+either they both answer “0”, or they both answer different from “0”.
+The intuition behind the game is the following: Alice and Bob could share the state
+(|00⟩+|11⟩+|22⟩)AB⊗(|00⟩+
+√
+2|11⟩)A’B’. This would allow them to win parts (a)
+and (b) optimally, but they would fail in part (c). The power of part (c) is that Alice is
+uncertain about whether she is being asked a question from part (a) or (c), and Bob is
+uncertain about whether he is being asked a question from part (b) or (c). Magically,
+the condition of part (c) is sufﬁcient to enforce that Alice and Bob cannot keep the two
+optimal states from part (a) and (b) into two separate registers, but rather they should
+coherently transform one into the other in order to achieve consistency in answering part
+(c). This coherent transformation is what requires an exponentially growing amount of
+entanglement dimension to perform to increasing precision. We refer the reader to section
+3 for a formal description of our game.
+Outline Section 2 covers some preliminaries: 2.1 introduces some notation, 2.2 intro-
+duces non-local games, 2.3 gives two important examples of non-local games which are
+used as sub-tests in our non-local game, and 2.4 brieﬂy introduces embezzlement. Section
+3 describes our non-local game. Section 4 covers completeness: we give a family of strate-
+gies that approximates arbitrarily well the optimal value in our non-local game. Section
+5 covers soundness: we show that any close to optimal strategy requires a lot of entan-
+glement. Section 6 brieﬂy discusses how our non-local game implies the non-closure of
+the set of quantum correlations.
+2 Preliminaries
+2.1 Notation
+For some unitary U, δ >0, states|ψ⟩,|φ⟩, we write |ψ⟩≈U,δ|φ⟩if‖U|ψ⟩−|φ⟩‖≤δ,
+where‖·‖is the Euclidean norm. We write|ψ⟩≈δ|φ⟩if‖|ψ⟩−|φ⟩‖≤δ. Let σx,σy,σz
+be the Pauli matrices.
+2.2 Non-local games
+Deﬁnition 1(Non-local game). A non-local gameG is a tupleG = (X,Y,A,B,D,V ),
+whereX,Y,A,B are sets,D is a distribution overX×Y, andV :X×Y×A×B→R.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 4
+
+=== page 5 ===
+X andY are referred to as question sets, andA andB as answer sets. V is referred to
+as the scoring function.
+We denote by D(x,y ) the probability of outcome x,y according to distribution D.
+Note that we use the termnon-local game to refer to games in which the scoring functionV
+can take any real value, not just values in{0, 1}like is sometimes the case in the literature.
+With this nomenclature, non-local games and Bell inequalities are equivalent.
+Deﬁnition 2(Quantum strategy for a non-local game). A quantum strategy for a non-
+local gameG = (X,Y,A,B,D,V ) is a triple
+(
+|Ψ⟩∈HA⊗HB,{Pa
+x :a∈A}x∈X,{Qb
+y :b∈B}y∈Y
+)
+,
+whereHA,HB are Hilbert spaces,{Pa
+x :a∈A}x∈Xis a set of projective measurements on
+HA, and{Qb
+y :b∈B}y∈YonHB.
+Deﬁnition 3(Value of a quantum strategy in a game). LetG = (X,Y,A,B,D,V ) be a
+non-local game, andS = (|Ψ⟩∈HA⊗HB,{Pa
+x :a∈A}x∈X,{Qb
+y :b∈B}y∈Y) a quantum
+strategy forG. The value ofS in G is
+ω(S,G ) :=
+∑
+x∈X,y∈Y
+D(x,y )·V (x,y,a,b )·⟨Ψ|Pa
+x⊗Qb
+y|Ψ⟩
+Note that the valueω(S,G ) corresponds to the expected score of strategyS in gameG,
+assuming that questions are distributed according toD, and that the score is determined
+by the functionV .
+Deﬁnition 4(Quantum value of a game). The quantum value ω∗(G) of a game G =
+(X,Y,A,B,D,V ) is deﬁned as follows:
+ω∗(G) := sup
+S
+ω(S,G ),
+where the supremum is taken over all quantum strategies forG.
+Since the closure of the set of ﬁnite-dimensional quantum correlations contains the
+set of inﬁnite-dimensional quantum correlations [SW08], it does not matter whether the
+supremum in the deﬁnition of ω∗is taken over ﬁnite or inﬁnite-dimensional strategies
+(i.e. whetherHA andHB are ﬁnite or inﬁnite-dimensional).
+Finally, we introduce some terminology which we will primarily employ in section 6.
+Deﬁnition 5(Correlation). Given setsX,Y,A,B, a (bipartite) correlation is a collection
+{p(a,b|x,y ) : a∈A,b ∈B}(x,y)∈X×Y, where eachp(·,·|x,y ) is a probability distribution
+overA×B.
+Deﬁnition 6(Correlation induced by a quantum strategy). Given a quantum strategy
+S = (|Ψ⟩∈HA⊗HB,{Pa
+x : a∈A}x∈X,{Qb
+y : b∈B}y∈Y) for a non-local gameG =
+(X,Y,A,B,D,V ), the correlation induced byS is{p(a,b|x,y ) : a∈A,b ∈B}(x,y)∈X×Y
+where, for alla,b,x,y,
+p(a,b|x,y ) =⟨Ψ|Pa
+x⊗Qb
+y|Ψ⟩.
+Deﬁnition 7(Value of a correlation in a game). LetG = (X,Y,A,B,D,V ) be a non-local
+game, andp ={p(a,b|x,y ) :a∈A,b∈B}(x,y)∈X×Ya correlation. The valueω(p,G ) of p
+in G is deﬁned as
+ω(p,G ) :=
+∑
+x∈X,y∈Y
+D(x,y )·V (x,y,a,b )·p(a,b|x,y ).
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 5
+
+=== page 6 ===
+Clearly, if p is the correlation induced by a quantum strategy S for game G, then
+ω(p,G ) =ω(S,G ).
+We note that quantum strategies can also be considered separately from non-local
+games (i.e. without specifying any distributionD or scoring functionV ). We then denote
+byCq (resp. Cqs) the set of correlations induced by a ﬁnite-dimensional (resp. possibly
+inﬁnite-dimensional) quantum strategy. We denote by Cqa the closure of Cq, which by
+[SW08] is known to also be the closure ofCqs.
+2.3 Useful examples of non-local games
+In this section, we describe two families of non-local games which we will employ as
+sub-tests in our non-local game.
+Tilted CHSH We introduce the tilted CHSH inequality [AMP12], which is a building
+block for the non-local game in this work. First, we recall the CHSH inequality. It states
+that for binary observablesA0,A 1 on Hilbert spaceHA and binary observablesB0,B 1 on
+Hilbert spaceHB together with a product state|φ⟩=|φA⟩⊗|φB⟩, we have
+⟨φ|A0B0 +A0B1 +A1B0−A1B1|φ⟩≤2, (1)
+where the maximum is achieved (for example setting all observables to identity). How-
+ever, if instead of the product state |φ⟩we allow an entangled state |ψ⟩, then the right-
+hand side of the inequality increases to2
+√
+2. This maximum requires a maximally entan-
+gled pair of qubits to achieve. In this work, we would like to use an inequality that re-
+quires a non-maximally entangled state to achieve the maximum; this is the tilted CHSH
+inequality. Given a real parameterβ∈[0, 2), for a product state|φ⟩=|φA⟩⊗|φB⟩,
+⟨φ|βA0 +A0B0 +A0B1 +A1B0−A1B1|φ⟩≤2 +β. (2)
+For entangled|ψ⟩, we have instead that
+⟨ψ|βA0 +A0B0 +A0B1 +A1B0−A1B1|ψ⟩≤
+∑
+8 + 2β2. (3)
+The maximum in the tilted CHSH inequality is attained by the following strategy:
+Deﬁnition 8(Ideal strategy for tilted CHSH). Given parameterβ∈[0, 2), letθ∈(0, π
+4 ]
+be such thatsin 2θ=
+∑
+4−β2
+4+β2, µ= arctan sin 2θ, andα= tanθ. Deﬁne theα-tilted Pauli
+operators as
+σz
+α:= cosµσz + sinµσx, andσx
+α:= cosµσz−sinµσx. (4)
+The ideal strategy for tilted CHSH with parameterβ(i.e. achieving maximal violation of
+(3)) consists of the joint state|Ψ⟩= cosθ(|00⟩+α|11⟩) and observablesA0,A 1 andB0,B 1
+with A0 =σz, A1 =σx, B0 =σz
+αand B1 =σx
+α.
+βand αare related by an invertible function, and αis typically the parameter of
+interest, so we choose to denote bytCHSH(α) the tilted CHSH game whose ideal state is
+|Ψ⟩= cosθ(|00⟩+α|11⟩).
+We can equivalently formulate the tilted CHSH inequality as a non-local game, as
+follows:
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 6
+
+=== page 7 ===
+Deﬁnition 9(Tilted CHSH as a non-local game). Forα∈(0, 1], the tilted CHSH game
+GtCHSH(α) is
+GtCHSH(α) = (X,Y,A,B,D,V tCHSH(α)), (5)
+whereX,Y,A,B ={0, 1},D is uniform onX×Y, andVtCHSH(α) = (−1)a⊕b−xy+δ{x=y=0}·
+β·(−1)a, whereβand αare related as in Deﬁnition 8.
+Proposition 1 (Quantum value of the tilted CHSH game). Forα∈(0, 1], the value of
+GtCHSH(α) is ω∗
+tCHSH(α) := 1
+4·
+√
+8 + 2β2, whereβand αare related as in Deﬁnition 8.
+Proof. Notice that for any strategyS, the valueω(S,GtCHSH(α)) takes precisely the form
+of the LHS of (3) (upon associating, for each observable in (3), the projection onto the
++1-eigenspace with answer 0 and the projection onto the−1-eigenspace with answer 1,
+and up to a factor of1
+4 from sampling the questions uniformly).
+In other words, the LHS of the tilted CHSH inequality and the value of the tilted
+CHSH game are equivalent reformulations of one another. The following theorem asserts
+a robust self-testing result for tilted CHSH, i.e. that any strategy that attains a value close
+to the quantum value of the game, must be close to the ideal strategy of Deﬁnition 8 (in
+the following statement we only write down the conditions that we make use of later).
+Theorem 2 (Self-testing with tilted CHSH ([YN13, BP15])). Let α∈(0, 1]. Maximal
+value in GtCHSH(α) self-tests the ideal strategy of Deﬁnition 8 with robustnessO(√ϵ),
+i.e. for any strategy S = (|Ψ⟩∈HA⊗HB,{Pa
+x},{Qb
+y}) with value ω(S,GtCHSH(α)) >
+ω∗
+tCHSH(α)−ϵthere exists a local unitaryU and an auxiliary state|aux⟩such that:
+• |Ψ⟩≈U,O(ϵ1/2)
+1√
+1+α2 (|00⟩+α|11⟩)⊗|aux⟩
+•P 0
+0|Ψ⟩≈U,O(ϵ1/2)
+1√
+1+α2|00⟩⊗|aux⟩
+The last condition means that the ﬁrst player’s measurement on question “0” is equiv-
+alent (up to a change of basis) to a computational basis measurement.
+For clarity of notation and exposition in later sections, it is convenient for us to deﬁne
+the game G∼tCHSH(α), for α∈(0, 1]. This is an equivalent version of GtCHSH(α) with the
+only difference that the scoring function isV∼tCHSH(α) := (−1)a⊕b−xy−δ{x=y=0}·β·(−1)a
+(notice the minus sign). It is easy to see that this game is equivalent to the original tilted
+CHSH up to a ﬂip of the answer labels (so in particular ω∗
+tCHSH(α) = ω∗
+∼tCHSH(α)). The
+corresponding version of Theorem 2 forG∼tCHSH(α) is as follows:
+Theorem 3. Let α∈(0, 1]. Maximal value inG∼tCHSH(α) self-tests the ideal strategy of
+Deﬁnition 8 with robustnessO(√ϵ), i.e. for any strategyS = (|Ψ⟩∈HA⊗HB,{Pa
+x},{Qb
+y})
+with valueω(S,G∼tCHSH(α))>ω∗
+∼tCHSH(α)−ϵthere exists a local unitaryU and an auxil-
+iary state|aux⟩such that:
+• |Ψ⟩≈U,O(ϵ1/2)
+1√
+1+α2 (α|00⟩+|11⟩)⊗|aux⟩
+•P 0
+0|Ψ⟩≈U,O(ϵ1/2)
+α√
+1+α2|00⟩⊗|aux⟩
+To provide a little more insight, the reason why we introduce this equivalent version
+of tilted CHSH is the following. A building block in our non-local game will be a game
+that self-tests the state 1√
+5
+(
+|00⟩+
+√
+2|11⟩
+)
+, i.e. the ideal state for tilted CHSH with α=√
+2. However, the parameter αin the tilted CHSH game is required to be in (0, 1]. Of
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 7
+
+=== page 8 ===
+course, the point is that the tilted EPR pair with α=
+√
+2 is equivalent, up to a σx on
+both tensor factors, to the tilted EPR pair with α= 1√
+2. The alternative version of tilted
+CHSH from Theorem 3 ensures that the answer labels are naturally consistent with the
+self-tested state being 1√
+5
+(
+|00⟩+
+√
+2|11⟩
+)
+rather than 1√
+5
+(
+|11⟩+
+√
+2|00⟩
+)
+.
+This is a notational choice that simpliﬁes the description of our non-local game in
+Section 3.
+GeneralizationofCHSHself-testingstatesoflocaldimension d There is a family
+of non-local games, parametrized by d ≥2 ∈N, which generalizes the CHSH game
+[Col18]. The games in this family have the property that, for the game with parameter
+d, maximal score in the game self-tests the maximally entangled state of local dimension
+d. Each of the games in this family is a 2-player game in which question sets are of size
+2+1d>2 and 2+2·1d>2, and answer sets are of sized. Whend = 2, the game coincides with
+the usual CHSH game. We denote by Gd-CHSH the game in the family with parameter d.
+We do not describe this family of games in full detail here (for details we refer to [Col18]).
+We will just recall the self-testing properties of the game that we need in the following
+theorem, and describe the ideal strategy for the case of d = 3 (we will use G3-CHSH later
+as a sub-test in our non-local game).
+Theorem 4([Col18]). There exists a family of non-local games{Gd-CHSH}d≥2∈N with the
+following properties:
+•Question sets are:
+–X =Y ={0, 1}, ford = 2
+–X ={0, 1, 2},Y ={0, 1, 2, 3}, ford> 2.
+Answer sets areA =B ={0, 1,..,d−1}. For alld, the distribution over questions
+is uniform. Denote byVd-CHSH the scoring function forGd-CHSH.
+•(Self-testing) Letω∗
+d-CHSH be the value of the game with parameterd. There exists
+a constantC >0 such that the following holds. Any strategyS = (|Ψ⟩,{Pa
+x},{Qb
+y})
+with value ω(S,Gd-CHSH)≥ω∗
+d-CHSH−ϵ, for some 0 < ϵ <C
+d3, is such that there
+exists a local unitaryU and an auxiliary state|aux⟩such that:
+–|Ψ⟩≈U,O(d6ϵ1/8)
+1√
+d
+∑d−1
+i=0|ii⟩⊗|aux⟩
+–Pi
+0|Ψ⟩≈U,O(d6ϵ1/8)
+1√
+d|ii⟩⊗|aux⟩.
+Again, the last condition means that the ﬁrst player’s measurement on question “ 0”
+is equivalent (up to a change of basis) to a computational basis measurement.
+Next, we describe the ideal strategy forG3-CHSH. First, we ﬁx some notation.
+We deﬁne an isometryV : (C2)A→(C3) ˜A as follows:
+V|0⟩=|1⟩, V|1⟩=|2⟩ (6)
+For an operatorO on C2, we writeV (O) to refer to the pushforwardVOV †ofO along
+V . For example, V (σz) =|1⟩⟨1|−|2⟩⟨2|. If O has +1, 0,−1 eigenvalues, we writeO+ for
+the projection onto the +1 eigenspace andO−for the projection onto the−1 eigenspace.
+One can check that with this notationO =O+−O−. We use the notation⨁Ai to denote
+the direct sum of observables Ai. IfHA≈C3, we still write σz
+A to mean σz
+A =|0⟩⟨0|A−
+|1⟩⟨1|A. On the other hand, in accordance with the notation above, we write V (σz)A to
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 8
+
+=== page 9 ===
+meanV (σz)A =|1⟩⟨1|−|2⟩⟨2|. We adopt an analogous notation for all other Paulis and
+tilted Paulis, and projections onto their eigenspaces. (We will make use of the α-tilted
+Paulisσz
+α,σx
+αfrom Deﬁnition 8).
+Deﬁnition 10(Ideal strategy for G3-CHSH [Col18]). The ideal strategy forG3-CHSH is
+(|Ψ⟩,{Pa
+x},{Qb
+y}), where|Ψ⟩= 1√
+3(|00⟩+|11⟩+|22⟩), and the ideal measurements are
+described in Tables 1 and 2.
+Table 1: Alice’s ideal measurements for G3-CHSH. The entry in cell x,a is the projector P a
+x .
+x
+a 0 1 2
+0 |0⟩⟨0|˜A |1⟩⟨1|˜A |2⟩⟨2|˜A
+1 (σx)+ (σx)− |2⟩⟨2|
+2 |0⟩⟨0|[V (σx)]+ [V (σx)]−
+Table 2: Bob’s ideal measurements for G3-CHSH. The entry in cell y,b is the projector P b
+y .
+y
+b 0 1 2
+0 (σz
+α=1)+ (σz
+α=1)− |2⟩⟨2|
+1 (σx
+α=1)+ (σx
+α=1)− |2⟩⟨2|
+2 |0⟩⟨0|[V (σz
+α=1)]+ [V (σz
+α=1)]−
+3 |0⟩⟨0|[V (σx
+α=1)]+ [V (σx
+α=1)]−
+We emphasize, as it will be important later, that both the ideal strategies forGtCHSH(α)
+andGd-CHSH include a computational basis measurement for the ﬁrst player on question
+“0”.
+2.4 Embezzlement
+The phenomenon ofembezzlement was ﬁrst discovered by van Dam and Hayden [vDH03].
+A family of embezzling states can be used to coherently transform a product state into an
+EPR pair (or viceversa). The ﬁdelity of this transformation increases with the dimension
+of the embezzling state.
+Deﬁnition 11(Embezzlement). Let{|Γd⟩}d∈N be a collection of states, where|Γd⟩ ∈
+(C2)⊗d
+A′⊗(C2)⊗d
+B′. We say that{|Γd⟩}d∈N is an “embezzling family” if there exist unitaries
+WAA′on C2
+A⊗(C2)⊗d
+A′and WBB′on C2
+B⊗(C2)⊗d
+B′such that
+‖WAA′⊗WBB′|EPR⟩AB|Γd⟩A′B′−|11⟩AB|Γd⟩A′B′‖=O
+( 1√
+d
+)
+.
+Example 1. Let|Γd⟩= 1√Nd
+∑d
+j=1|11⟩⊗j
+A′B′|EPR⟩⊗(d−j)
+A′B′, whereNd is a normalizing con-
+stant. Then, the family of states{|Γd⟩}is an embezzling family. The unitariesWAA′and
+WBB′are the “left-shift” unitaries, which act onC2
+A⊗(C2)⊗d
+A′and C2
+B⊗(C2)⊗d
+B′respec-
+tively, by shifting by one to the left each of thed + 1 qubit registers. It is easy to check
+that the family of states{|Γd⟩}d∈N satisﬁes Deﬁnition 11.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 9
+
+=== page 10 ===
+3 Our non-local game
+The following is our non-local game. We describe it informally ﬁrst, and then we give a
+precise description in Fig. 1. We refer to Alice and Bob as the two players in our non-local
+game.
+The non-local game consists of three tests, run with equal probability.
+(a) In the ﬁrst test, the veriﬁer sends both players questions from the game G3-CHSH,
+and they obtain a score according to its scoring function.
+(b) In the second test, the veriﬁer sends both players questions from the (ﬂipped) tilted
+CHSH gameG∼tCHSH( 1√
+2). Importantly, their roles are also switched: Alice is sent
+the questions of player 2 inG∼tCHSH( 1√
+2), and Bob the questions of player 1. They
+obtain a score according to the scoring function ofG∼tCHSH( 1√
+2).
+(c) In the third test, Alice receives the “computational basis” question (question “ 0”
+of the ﬁrst player) from the game G3-CHSH, and Bob receives the “computational
+basis” question (question “0” of the ﬁrst player) from the game G∼tCHSH( 1√
+2). The
+players’ score is 1 if: Alice answers 0 if and only if Bob answers 0. They score 0
+otherwise.
+The intuition behind this game is the following.
+If Alice and Bob’s strategy attains anϵ-close to optimal expected score overall (where
+optimally here means playing perfectly in all three tests), then it must attain a 3ϵ-close
+to optimal expected score in each of the three tests. By the self-testing result of Theorem
+4, in order to play 3ϵ-close to optimally in (a), the players need to be sharing a state
+close to a maximally entangled state of qutrits, up to a local isometry, and moreover
+one of Alice’s measurements is a “computational basis” measurement. By Theorem 3,
+in order to play 3ϵ-close to optimally in (b), Alice and Bob must be measuring a state
+close to a tilted EPR pair with ratio 1√
+2, up to a local isometry. Moreover one of Bob’s
+measurements must be a “computational basis” measurement. Crucially, Alice cannot
+distinguish her question in (c) from a “computational basis” question in (a), while Bob
+cannot distinguish his question in (c) from a “computational basis” question in (b). In
+order to play close to optimally in(c), Alice and Bob’s computational basis measurements
+need to satisfy a consistency condition. It is this consistency condition that forces the two
+players to “agree” on a computational basis element |00⟩∈C3
+A⊗C3
+B, and to perform a
+coherent state exchange such that:
+1√
+3(|00⟩+|11⟩+|22⟩)AB↦→1√
+3(|00⟩+
+√
+2|11⟩)AB, (7)
+with|00⟩AB↦→|00⟩AB and 1√
+2(|11⟩+|22⟩)AB↦→|11⟩AB. The LHS of(7) is the state that the
+players need in order to play part (a) perfectly, while the RHS is the state that they need
+to play part (b) perfectly. Part (c) ensures that players have to “agree” on the term |00⟩,
+and this enforces that they must perform coherently the exchange in(7) to high accuracy
+if they are to perform well in all three parts.
+Next, we give a precise description of our non-local game Gemb. We denote by Vemb
+its scoring function. Recall that V3-CHSH andV∼tCHSH( 1√
+2) are the scoring functions for
+gamesG3-CHSH andG∼tCHSH( 1√
+2) respectively.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 10
+
+=== page 11 ===
+Question sets: X :=
+(
+{“3-CHSH”}×{0, 1, 2}
+)
+∪
+(
+{“∼tCHSH( 1√
+2)”}×{0, 1}
+)
+, and
+Y :=
+(
+{“3-CHSH”} × {0, 1, 2, 3}
+)
+∪
+(
+{“∼tCHSH( 1√
+2)”} × {0, 1}
+)
+. Answer sets:
+A =B ={0, 1, 2}.
+The game consists of the following three parts, executed with equal probability.
+(a) Pick uniformly randomx′∈{0, 1, 2}and y′∈{0, 1, 2, 3}. Send x = (“3-CHSH”,x′)
+to Alice andy = (“3-CHSH”,y′) to Bob. Leta and b be the players’ answers. The
+players’ score isVemb(a,b,x,y ) =V3-CHSH(a,b,x′,y′).
+(b) Pick uniformly randomx′∈{0, 1}and y′∈{0, 1}. Send x = (“∼tCHSH( 1√
+2)”,x′)
+to Alice andy = (“∼tCHSH( 1√
+2)”,y′) to Bob. Leta and b be the players’ answers.
+The players’ score isVemb(a,b,x,y ) =V∼tCHSH( 1√
+2 )(b,a,y′,x′) (notice that the roles
+of the two players is switched in the last expression).
+(c) Send questionx = (“3-CHSH”, 0) to Alice, and questiony = (“∼tCHSH( 1√
+2)”, 0) to
+Bob. Leta and b be the players’ answers. Their score is
+Vemb(a,b,x,y ) =
+{
+1, if (a,b )∈{(0, 0)}∪({1, 2}×{1, 2})
+0, otherwise
+Figure 1: Our non-local game Gemb
+Proposition 2. The value of the non-local game Gemb of Fig. 1 is ω∗(Gemb) =
+1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1).
+Proof. Clearly,ω∗≤1
+3(ω∗
+3-CHSH+ω∗
+∼tCHSH( 1√
+2 )+1). Otherwise, therewouldexistastrategy
+S such that the valueω(S,Gemb)> 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1). This would imply that
+at least one of the following holds:
+•The restriction ofS to part (a) has value greater thanω∗
+3-CHSH.
+•The restriction ofS to part (b) has value greater thanω∗
+∼tCHSH.
+•The restriction ofS to part (c) has value greater than1.
+All three of the above are clearly impossible.
+On the other hand, we will construct in the next section a sequence of strategies whose
+value inG gets arbitrarily close to 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1). This completes the
+proof.
+4 Completeness
+In this section, we describe a family of strategies whose value in our non-local gameGemb
+gets arbitrarily close to 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1) (which also completes the proof of
+Proposition 2). A strategy in the family is parametrized by d∈N. The provers start with
+the state 1√
+3(|00⟩+|11⟩+|22⟩) ˜A ˜B⊗|Γd⟩A′B′ (8)
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 11
+
+=== page 12 ===
+where|Γd⟩is an embezzling state. We give ﬁrst an informal description of the ideal
+measurements, and we follow this by a formal description.
+• Upon receiving a question with preﬁx “3-CHSH”, Alice and Bob perform the corre-
+sponding ideal measurement for3-CHSH. In particular on question (“3-CHSH”, 0),
+Alice measures her half of the state in(8) in the computational basis.
+• Upon receiving a question with preﬁx “ ∼tCHSH( 1√
+2)”, Alice and Bob ﬁrst ap-
+ply embezzling unitaries W ˜AA′and W ˜BB′respectively, such that (approximately)
+1√
+2(|11⟩+|22⟩)↦→|11⟩and|00⟩↦→|00⟩. So the resulting state is
+√
+2
+3
+( 1√
+2|00⟩+|11⟩
+)
+˜A ˜B
+⊗|Γd⟩A′B′. (9)
+They then perform the corresponding ideal measurements for∼tCHSH( 1√
+2) on reg-
+isters ˜A, ˜B (where Alice takes the role of the second player, and Bob takes the role
+of the ﬁrst player). In particular, on question (“∼tCHSH( 1√
+2)”, 0), Bob measures his
+half of the state in(9) in the computational basis.
+A key observation is that when Alice and Bob are asked questions (“3-CHSH”, 0) and
+(∼“tCHSH(1√
+2)”, 0) respectively, then it is straightforward to see that, if they follow the
+above strategy, they reply with answers (a,b ) which attain a score of 1 in part (c) of Fig.
+1, i.e. (a,b )∈{(0, 0)}∪({1, 2}×{1, 2}).
+Next, we deﬁne the players’ ideal measurements precisely. Recall the isometry V :
+C2→C3 deﬁned in subsection 2.3 as follows:
+V|0⟩=|1⟩, V|1⟩=|2⟩ (10)
+Recall also the notation introduced in subsection 2.3 along with V . In particular, we
+write V (O) to refer to the pushforward VOV †of O along V . For O an operator with
++1, 0,−1 eigenvalues, we write O+ for the projection onto the +1 eigenspace and O−
+for the projection onto the −1 eigenspace. If HA≈C3, we still write σz
+A to mean σz
+A =
+|0⟩⟨0|A−|1⟩⟨1|A. On the other hand, in accordance with the notation above, we write
+V (σz)A to meanV (σz)A =|1⟩⟨1|A−|2⟩⟨2|A.
+Let{|Γd⟩ABA′B′}be the embezzling family from Example 1, and WAA′: ( C2)A⊗
+(C2)⊗d
+A′→(C2)A⊗(C2)⊗d
+A′, WBB′: ( C2)B⊗(C2)⊗d
+B′→(C2)A⊗(C2)⊗d
+A′be the left-shift
+unitaries over thed + 1 qubit registers. Deﬁne ˜W ˜AA′: (C3) ˜A⊗(C2)⊗d
+A′→(C3) ˜A⊗(C2)⊗d
+A′
+as
+˜W ˜AA′=
+(
+|0⟩⟨0|˜A⊗IA′
+)
+⊕[(V⊗I)WAA′(V†⊗I)],
+and deﬁne ˜W ˜BB′analogously.
+The following is the family of ideal strategies for Gemb achieving a value arbitrarily
+close to 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1).
+Deﬁnition 12(Ideal strategy forGemb). The family of ideal strategies is{Sd}d∈N, with
+Sd = (|Ψd⟩,{Pa
+x},{Qb
+y}), where
+|Ψd⟩= 1√
+3(|00⟩+|11⟩+|22⟩) ˜A ˜B⊗|Γd⟩A′B′,
+and the ideal measurements are described in Tables 3 and 4.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 12
+
+=== page 13 ===
+Table 3: Alice’s ideal measurements for Gemb. The entry in cell x,a is the projector P a
+x (tensored
+identities are implied where omitted, and Prest completes the set of orthogonal projections in a row).
+x
+a 0 1 2
+(“3-CHSH”,0) |0⟩⟨0|˜A |1⟩⟨1|˜A |2⟩⟨2|˜A
+(“3-CHSH”,1) (σx)+
+˜A (σx)−
+˜A |2⟩⟨2|˜A
+(“3-CHSH”,2) |0⟩⟨0|˜A [V (σx)]+
+˜A [V (σx)]−
+˜A
+(“∼tCHSH( 1√
+2), 0) W†
+˜AA′([σx(σz
+α= 1√
+2
+)−σx] ˜A⊗IA′)W ˜AA′W†
+˜AA′([σx(σz
+α= 1√
+2
+)+σx] ˜A⊗IA′)W ˜AA′ Prest
+(“∼tCHSH( 1√
+2), 1) W†
+˜AA′([σx(σx
+α= 1√
+2
+)−σx] ˜A⊗IA′)W ˜AA′W†
+˜AA′([σx(σx
+α= 1√
+2
+)+σx] ˜A⊗IA′)W ˜AA′ Prest
+Table 4: Bob’s ideal measurements for Gemb. The entry in cell y,b is the projector P b
+y (tensored
+identities are implied where omitted, and Prest completes the set of orthogonal projections in a row).
+y
+b 0 1 2
+(“3-CHSH”,0) (σz
+α=1)+
+˜B (σz
+α=1)−
+˜B |2⟩⟨2|˜B
+(“3-CHSH”,1) (σx
+α=1)+
+˜B (σx
+α=1)−
+˜B |2⟩⟨2|˜B
+(“3-CHSH”,2) |0⟩⟨0|˜B [V (σz
+α=1)]+
+˜B [V (σz
+α=1)]−
+˜B
+(“3-CHSH”,3) |0⟩⟨0|˜B [V (σx
+α=1)]+
+˜B [V (σx
+α=1)]−
+˜B
+(“∼tCHSH( 1√
+2), 0) W†
+˜BB′([σx(σz)−σx] ˜B⊗IB′)W ˜BB′W†
+˜BB′([σx(σz)+σx] ˜B⊗IB′)W ˜BB′ Prest
+(“∼tCHSH( 1√
+2), 1) W†
+˜BB′([σx(σx)−σx] ˜B⊗IB′)W ˜BB′W†
+˜BB′([σx(σx)+σx] ˜B⊗IB′)W ˜BB′ Prest
+Note that the ideal operators for the equivalent version of tilted CHSH from Theorem
+3 are the same as for the original tilted CHSH of Deﬁnition 9, except conjugated by σx
+(i.e. the answers are ﬂipped).
+Proposition 3 (Completeness). Let{Sd}d∈N be the family of strategies from Deﬁnition
+12, andGemb the non-local game from Fig. 1. Then,ω(Sd,Gemb) =ω∗(Gemb)−O( 1
+d).
+Proof. The value of strategySd in part (a) is exactlyω∗
+3-CHSH. This is because the starting
+state is the ideal state forω∗
+3-CHSH and measurements are the ideal ones from Deﬁnition 10.
+The value in part (b) isω∗
+∼tCHSH( 1√
+2 )−O( 1
+d). This is because the joint state resulting from
+the embezzling transformation has ﬁdelity1−O( 1
+d) with the ideal state for∼tCHSH( 1√
+2)
+(from Theorem 3), and the measurements for part (b) are also ideal. The value in part (c)
+is easily seen to be exactly1. Thus,ω(Sd,Gemb) = 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1)−O( 1
+d).
+Together with the upper bound in the proof of Proposition 2, this completes the proof of
+Proposition 2 (i.e.ω∗(Gemb) = 1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1)), and givesω(Sd,Gemb) =
+1
+3(ω∗
+3-CHSH +ω∗
+∼tCHSH( 1√
+2 ) + 1)−O( 1
+d), as desired.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 13
+
+=== page 14 ===
+5 Soundness
+Theorem 5. There exists a constantC > 0 such that any quantum strategyS for the
+game Gemb of Fig. 1 with valueω(S,Gemb)≥ω∗(Gemb)−ϵ, for some 0 < ϵ < C, must
+have dimension 2Ω(ϵ−1/8).
+The proof of Theorem 5 can be broken down into two parts:
+(i) First, we will show that performing well in parts(a), (b) and (c) of the game imposes
+a certain structure on the strategy of the provers.
+(ii) Second, we show that such a structured strategy can be used to play well also in
+the “coherent state exchange” game of Leung, Toner and Watrous [LTW13]. This
+reduction allows us to translate the lower bounds on the dimension of an approx-
+imately optimal strategy in the “’coherent state exchange” game to lower bounds
+on the dimension of an approximately optimal strategy for our game.
+Proof of Theorem 5.Let
+(
+|ψ⟩∈HA⊗HB,{Pa
+x},{Qb
+y}
+)
+be a strategy whose value inGemb
+is ϵ-close toω∗(Gemb) = 1
+3(w∗
+3CHSH +w∗
+2CHSH + 1). This implies that, for each part of the
+game, the strategy’s expected score is3ϵ-close to optimal. From each part we deduce the
+following:
+(a) From Theorem 4 (the cased = 3), upon picking an appropriate constantC > 0,
+there exists a local unitaryU :HA⊗HB→(C3)A1⊗(C3)B1⊗HA′⊗HB′, and an
+auxiliary state|aux⟩∈HA′⊗HB′such that
+–|ψ⟩≈U,O(ϵ1/8)
+1√
+3(|00⟩+|11⟩+|22⟩)⊗|aux⟩
+–P 0
+(“3-CHSH”,0)|ψ⟩≈U,O(ϵ1/8)
+1√
+3|00⟩⊗|aux⟩
+(b) From Theorem 3, there exists a local unitaryU′:HA⊗HB→(C2)A2⊗(C2)B2⊗
+HA′′⊗HB′′, and an auxiliary state|aux′⟩∈HA′′⊗HB′′such that
+–|ψ⟩≈U′,O(ϵ1/2)
+1√
+3(|00⟩+
+√
+2|11⟩)⊗|aux′⟩
+–Q0
+(“∼tCHSH( 1√
+2)”,0)|ψ⟩≈U′,O(ϵ1/2)
+1√
+3|00⟩⊗|aux′⟩
+(c) P 0
+(“3-CHSH”,0)|ψ⟩≈O(ϵ1/2)Q0
+(“∼tCHSH( 1√
+2)”,0)|ψ⟩
+Notice that(a),(b),(c) =⇒the local unitary˜U := (U′)(U)−1 : (C3)A1⊗(C3)B1⊗HA′⊗
+HB′→(C2)A2⊗(C2)B2⊗HA′′⊗HB′′is such that
+1√
+3(|00⟩+|11⟩+|22⟩)⊗|aux⟩≈˜U,O(ϵ1/8)
+1√
+3(|00⟩+
+√
+2|11⟩)⊗|aux′⟩, (11)
+and moreover 1√
+3|00⟩⊗|aux⟩≈˜U,O(ϵ1/8)
+1√
+3|00⟩⊗|aux′⟩. (12)
+(11) and (12) immediately imply that
+1√
+2(|11⟩+|22⟩)⊗|aux⟩≈˜U,O(ϵ1/8)|11⟩⊗|aux′⟩. (13)
+We claim that the local unitary˜U can be used to approximately win the “coherent state
+exchange” game of Leung, Toner and Watrous [LTW13]. More precisely, since Equation
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 14
+
+=== page 15 ===
+(13) is O(ϵ1/8)-approximate (with respect to Euclidean norm), we claim that one can
+construct a strategy which employs ˜U, and in which the provers’ initial state is|aux⟩,
+which wins the game of [LTW13] with probability1−O(ϵ1/4). Assuming this claim is
+true, the rest of the proof is straightforward: it was shown in [LTW13] that the winning
+probability of any strategy in the “coherent state exchange game” is upper bounded by
+1− 1
+32 log2(3d), whered is the dimension of the states used; this implies that it must be
+1
+32 log2(3d) =O(ϵ1/4) =⇒d = 2Ω(ϵ−1
+8 ).
+To conclude the proof of Theorem 5, we prove the above claim.
+The “coherent state exchange” game of [LTW13] between a quantum referee and two
+non-communicating provers, proceeds as follows:
+•The referee initializes a qubit registerR and qutrit registersS and T in the state
+1√
+2(|0⟩R|00⟩ST +|1⟩R|φ+⟩ST), (14)
+where|φ+⟩= 1√
+2(|00⟩+|11⟩). The referee sends registersS and T to Alice and Bob
+respectively.
+•The referee receives single-qubit registersA and B from Alice and Bob respectively.
+The triple(R, A, B) is measured with projective measurement{Π 0, Π 1}, whereΠ 0 =
+I−|γ⟩⟨γ|and Π 1 =|γ⟩⟨γ|, and|γ⟩= 1√
+2(|000⟩+|111⟩).
+Consider the following strategy of the provers for this game. They start by sharing the
+state|aux⟩∈HA′⊗HB′. Upon receiving the qutrit registersS and T of the state (14),
+they apply ˜U to registers (C3)S⊗(C3)T⊗HA′⊗HB′(up to relabelling registersA1 and
+B1 as S and T), obtaining a state in (C2)A2⊗(C2)B2⊗HA′′⊗HB′′. Equations (12)
+and (13) imply that the resulting state on registersR,A 2,B 2,A′′,B′′is O(ϵ1/8)-close to
+1√
+2(|000⟩+|111⟩)⊗|aux′⟩. And hence the state onR,A 2,B 2 isO(ϵ1/8)-close to the desired
+state (in Euclidean norm). Qubit registersA2 and B2 are then sent back to the referee
+as A and B. Converting the O(ϵ1/8)-closeness to a probability of winning in the game,
+gives a lower bound of1−O(ϵ1/4), and thus concludes the proof. We remark that the
+self-testing arguments applied in this proof also hold when the uncharacterized strategy
+of the provers is not a priori assumed to be ﬁnite-dimensional, but is instead allowed to
+inﬁnite-dimensional (on separable Hilbert spaces).
+6 Non-closure of the set of quantum correlations
+A corollary of Proposition 3 and Theorem 5 (completeness and soundness for our game)
+is that the set Cqs of quantum correlations induced by, possibly inﬁnite-dimensional,
+quantum strategies (in the tensor product model) is not closed, i.e. Cqs ⁄= Cqa, where
+the latter is the closure. For precise deﬁnitions of these sets see [CS18]. We use super-
+scripts to denote question and answer set sizes. For instance Cm,n,r,s
+qs is on question sets
+of sizem,n and answer sets of sizer,s .
+Corollary 1.C5,6,3,3
+qs ⁄=C5,6,3,3
+qa .
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 15
+
+=== page 16 ===
+Proof. In the proof of Theorem 5, we argued that any strategy with valueω∗(Gemb)−ϵ
+in our gameGemb can be used to construct a strategy that embezzles an EPR pair into a
+product state, up toO(ϵ1/8) error in Euclidean norm. This implies that no strategy has
+value exactlyω∗(Gemb). Suppose otherwise for a contradiction. Then, by the reduction
+in the proof of Theorem 5, we can construct a strategy that wins the game of [LTW13]
+with probability 1. From [LTW13], this is known to imply existence of a strategy that
+embezzles perfectly (the argument that shows this implication in [LTW13] is phrased for
+ﬁnite-dimensional strategies, but it holds also for inﬁnite-dimensional ones). A perfect
+embezzling strategy consists of a state|Ψ⟩∈HA′⊗HB′and a local unitaryU =UAA′⊗
+UBB′such thatU|φ+⟩AB⊗|Ψ⟩A′B′=|00⟩AB⊗|Ψ⟩A′B′. Since Schmidt coeﬃcients are
+preserved under local unitaries, it is clear that, whatever the Schmidt coeﬃcients of|Ψ⟩
+are, the Schmidt coeﬃcients of the LHS and RHS are diﬀerent. This gives a contradiction.
+On the other hand, Proposition 3 gives a sequence of strategies whose value tends
+to ω∗(Gemb). If one considers the sequence of correlations induced by such strategies,
+it is clear that such a sequence has a limit, and that the limiting correlation has value
+ω∗(Gemb). Such a limiting correlation is thus inC5,6,3,3
+qa but not inC5,6,3,3
+qs .
+We emphasize that strictly stronger separations (for question sets of size 5 and an-
+swer sets of size 2) are known [DPP17, MR18]. The latter appeared after the original
+breakthrough proof of Slofstra, for much larger question and answer sets [Slo19]. What
+stands out about our proof is that, unlike all previous proofs, it does not involve any
+representation theoretic machinery.
+Acknowledgements
+The author thanks William Slofstra and Thomas Vidick for useful comments on an ear-
+lier version of this paper. The author also thanks the latter for helpful discussions. The
+author thanks Vern Paulsen for a useful email exchange about the game in [DPP17]. The
+author was supported by the Kortschak Scholars program and AFOSR YIP award num-
+ber FA9550-16-1-0495.
+References
+[AMP12] Antonio Acín, Serge Massar, and Stefano Pironio. Randomness versus non-
+locality and entanglement. Physical Review Letters , 108(10):100402, 2012.
+doi:https://doi.org/10.1103/PhysRevLett.108.100402.
+[BBT11] Jop Briët, Harry Buhrman, and Ben Toner. A generalized grothendieck
+inequality and nonlocal correlations that require high entangle-
+ment. Communications in mathematical physics , 305(3):827–843, 2011.
+doi:https://doi.org/10.1007/s00220-011-1280-3.
+[Bel64] John S. Bell. On the Einstein-Podolsky-Rosen paradox. Physics, 1:195–200,
+1964. doi:https://doi.org/10.1103/PhysicsPhysiqueFizika.1.195.
+[BNV13] Nicolas Brunner, Miguel Navascués, and Tamás Vértesi. Dimension witnesses
+and quantum state discrimination. Physical review letters, 110(15):150501, 2013.
+doi:https://doi.org/10.1103/PhysRevLett.110.150501.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 16
+
+=== page 17 ===
+[BP15] Cédric Bamps and Stefano Pironio. Sum-of-squares decomposi-
+tions for a family of clauser-horne-shimony-holt-like inequalities and
+their application to self-testing. Physical Review A , 91(5):052111, 2015.
+doi:https://doi.org/10.1103/PhysRevA.91.052111.
+[BPA+08] Nicolas Brunner, Stefano Pironio, Antonio Acin, Nicolas Gisin,
+André Allan Méthot, and Valerio Scarani. Testing the dimen-
+sion of hilbert spaces. Physical review letters , 100(21):210503, 2008.
+doi:https://doi.org/10.1103/PhysRevLett.100.210503.
+[CGS17] Andrea Coladangelo, Koon Tong Goh, and Valerio Scarani. All pure bipar-
+tite entangled states can be self-tested. Nature communications, 8:15485, 2017.
+doi:https://doi.org/10.1038/ncomms15485.
+[CHSH69] John F Clauser, Michael A Horne, Abner Shimony, and Richard A Holt. Pro-
+posed experiment to test local hidden-variable theories. Physical review letters,
+23(15):880, 1969. doi:https://doi.org/10.1103/PhysRevLett.23.880.
+[CN16] Matthew Coudron and Anand Natarajan. The parallel-repeated magic square
+game is rigid. arXiv preprint arXiv:1609.06306, 2016.
+[Col17] Andrea Coladangelo. Parallel self-testing of (tilted) epr pairs via copies of
+(tilted) chsh and the magic square game. Quantum Information & Computation,
+17(9-10):831–865, 2017. doi:https://doi.org/10.26421/QIC17.9-10.
+[Col18] Andrea Coladangelo. Generalization of the clauser-horne-
+shimony-holt inequality self-testing maximally entangled states
+of any local dimension. Physical Review A , 98(5):052115, 2018.
+doi:https://doi.org/10.1103/PhysRevA.98.052115.
+[CRSV18] Rui Chao, Ben W Reichardt, Chris Sutherland, and Thomas Vidick. Test for a
+large amount of entanglement, using few measurements. Quantum, 2:92, 2018.
+doi:https://doi.org/10.22331/q-2018-09-03-92.
+[CS17a] Andrea Coladangelo and Jalex Stark. Robust self-testing for linear constraint
+system games. arXiv preprint arXiv:1709.09267, 2017.
+[CS17b] Andrea Coladangelo and Jalex Stark. Separation of ﬁnite and inﬁnite-
+dimensional quantum correlations, with inﬁnite question or answer sets.arXiv
+preprint arXiv:1708.06522, 2017.
+[CS18] Andrea Coladangelo and Jalex Stark. Unconditional separation of ﬁnite and
+inﬁnite-dimensional quantum correlations. arXiv preprint arXiv:1804.05116 ,
+2018.
+[DPP17] Ken Dykema, Vern I Paulsen, and Jitendra Prakash. Non-closure of the set
+of quantum correlations via graphs. Communications in Mathematical Physics ,
+pages 1–18, 2017. doi:https://doi.org/10.1007/s00220-019-03301-1.
+[JLV18] Zhengfeng Ji, Debbie Leung, and Thomas Vidick. A three-player coherent
+state embezzlement game. arXiv preprint arXiv:1802.04926, 2018.
+[LTW13] Debbie Leung, Ben Toner, and John Watrous. Coherent state exchange in
+multi-prover quantum interactive proof systems. Chicago Journal of Theoretical
+Computer Science, 11(2013):1, 2013. doi:https://doi.org/10.4086/cjtcs.2013.011.
+[MR18] Magdalena Musat and Mikael Rørdam. Non-closure of quantum correlation
+matrices and factorizable channels that require inﬁnite dimensional ancilla.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 17
+
+=== page 18 ===
+arXiv preprint arXiv:1806.10242 , 2018. doi:https://doi.org/10.1007/s00220-
+019-03449-w.
+[MV14] Laura Manˇ cinska and Thomas Vidick. Unbounded entanglement in nonlo-
+cal games. International Colloquium on Automata, Languages, and Programming ,
+pages 835–846, 2014. doi:https://doi.org/10.1007/978-3-662-43948-7_69.
+[MY04] Dominic Mayers and Andrew Yao. Self testing quantum appa-
+ratus. Quantum Information & Computation , 4(4):273–286, 2004.
+doi:https://doi.org/10.26421/QIC4.4.
+[MYS12] Matthew McKague, Tzyh Haur Yang, and Valerio Scarani. Robust self-testing
+of the singlet. Journal of Physics A: Mathematical and Theoretical , 45(45):455304,
+2012. doi:https://doi.org/10.1088/1751-8113/45/45/455304.
+[NV17] Anand Natarajan and Thomas Vidick. A quantum linearity test for ro-
+bustly verifying entanglement. In Proceedings of the 49th Annual ACM
+SIGACT Symposium on Theory of Computing , pages 1003–1015. ACM, 2017.
+doi:https://doi.org/10.1145/3055399.3055468.
+[Slo11] William Slofstra. Lower bounds on the entanglement needed to play
+xor non-local games. Journal of Mathematical Physics , 52(10):102202, 2011.
+doi:https://doi.org/10.1063/1.3652924.
+[Slo18] William Slofstra. A group with at least subexponential hyperlinear proﬁle.
+arXiv preprint arXiv:1806.05267, 2018.
+[Slo19] William Slofstra. The set of quantum correlations is not closed. In
+Forum of Mathematics, Pi , volume 7. Cambridge University Press, 2019.
+doi:https://doi.org/10.1017/fmp.2018.3.
+[Slo20] William Slofstra. Tsirelson’s problem and an embedding theorem for groups
+arising from non-local games. Journal of the American Mathematical Society ,
+33(1):1–56, 2020. doi:https://doi.org/10.1090/jams/929.
+[SV18] William Slofstra and Thomas Vidick. Entanglement in non-local games and
+the hyperlinear proﬁle of groups. In Annales Henri Poincaré, volume 19, pages
+2979–3005. Springer, 2018. doi:https://doi.org/10.1007/s00023-018-0718-y.
+[SW08] Volkher B Scholz and Reinhard F Werner. Tsirelson’s problem. arXiv preprint
+arXiv:0812.4305, 2008.
+[vDH03] Wim van Dam and Patrick Hayden. Universal entanglement transfor-
+mations without communication. Physical Review A , 67(6):060302, 2003.
+doi:https://doi.org/10.1103/PhysRevA.67.060302.
+[YN13] Tzyh Haur Yang and Miguel Navascués. Robust self-testing of unknown
+quantum systems into any entangled two-qubit states. Physical Review A ,
+87(5):050102, 2013. doi:https://doi.org/10.1103/PhysRevA.87.050102.
+Accepted in Quantum 2020-05-08, click title to verify. Published under CC-BY 4.0. 18

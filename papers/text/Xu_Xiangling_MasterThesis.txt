@@ -1,0 +1,3865 @@
+=== page 1 ===
+ETH Library
+Quantum Nonlocality in Bilocal
+Networks: An Operator Algebraic
+Perspective
+Master Thesis
+Author(s):
+Xu, Xiangling
+Publication date:
+2023-05-25
+Permanent link:
+https://doi.org/https://doi.org/10.3929/ethz-b-000613670
+Rights / license:
+In Copyright - Non-Commercial Use Permitted
+This page was generated automatically upon download from the ETH Zurich Research Collection.
+For more information, please consult the Terms of use.
+
+=== page 2 ===
+Quantum Nonlocality in Bilocal
+Networks: An Operator Algebraic
+Perspective
+Thesis for MSc ETH Mathematics
+Xiangling Xu ( 许湘灵)
+25th May, 2023
+Supervisor: Prof. Dr. Marc-Olivier Renou
+Oﬃcial Supervisor: Prof. Dr. Renato Renner
+Institute for Theoretical Physics, ETH Z¨ urich
+
+=== page 3 ===
+Abstract
+In this thesis, we explore the applications of the theory of operator
+algebras, such as C∗-algebras and von Neumann algebras, in quantum
+physics with a focus on the quantum bilocal network scenario. Origi-
+nating from Heisenberg’s picture, the theory of operator algebras has
+become a fruitful ﬁeld and a powerful mathematical tool in the study of
+quantum systems. Quantum nonlocality is essential for understanding
+the foundations of quantum mechanics, and quantum correlations in
+network scenarios provide a robust framework for its investigation.
+We combine the algebraic perspective with the study of quantum non-
+locality to analyse the quantum bilocal network scenario, involving
+three parties, Alice, Bob, and Charlie, arranged linearly. In this scenario,
+two independent quantum sources are present, one shared between
+Alice and Bob, and the other shared between Bob and Charlie. Recent
+developments from [57, Renou & Xu, arXiv:2210.09065] and [35, Ligthart
+& Gross, arXiv:2212.11299] demonstrate the applicability of operator
+algebras in this context, offering a deeper understanding of quantum
+nonlocality in network settings.
+This thesis serves as a reference for results in the theory of operator
+algebras relevant to the study of quantum nonlocality, introducing
+notable results and attempting to draw connections between them. By
+building upon the ﬁndings of the two papers mentioned above, the
+thesis highlights the potential of these abstract mathematical tools in
+uncovering new insights into quantum mechanics and motivates further
+research in the ﬁeld using an operator algebraic perspective.
+i
+
+=== page 4 ===
+Acknowledgements
+First and foremost, I wish to express my heartfelt gratitude to Prof. Marc-
+Olivier Renou. Marco has been an outstanding supervisor, guiding me
+into the captivating world of quantum information theory, an insightful
+mentor on my academic path, a stimulating colleague for intellectual
+discussions, and a cherished friend in life. I count myself truly fortunate
+to have such an encouraging future PhD supervisor, and I eagerly
+anticipate the next three years at Inria, working closely with Marco as
+his PhD student.
+My appreciation extends to Prof. Renato Renner and the Quantum
+Information Theory Group at ETH Z ¨urich for graciously agreeing to
+supervise this thesis formally. In addition, I am indebted to all the
+professors and lecturers I have encountered at ETH Z ¨urich and the
+University of Toronto. Their guidance has not only broadened my
+knowledge but also, more importantly, fostered my curiosity for lifelong
+learning.
+I wish to acknowledge my dear friends from the physics program during
+my bachelor’s degree at the University of Toronto. Together, we shared
+conversations spanning the vastness of the cosmos to the simplicity of
+everyday life in McLennan. As we all continue to walk the daring path
+of academia, their camaraderie and mutual encouragement are truly
+inspiring.
+A gentle mention goes to the delightful Janine Alina Gugger, whose in-
+ﬁnite kindness and warmth have made this foreign land of Switzerland
+feel more like home, providing me with the strength and courage to
+persevere and forge ahead.
+Lastly, I offer my sincerest thanks to my family for their steadfast
+support. Their unconditional encouragement of my endeavours has
+emboldened me to pursue my aspirations and soar without constraints.
+I wish to share a poem by Nalan Xingde that echoes my sentiments in
+our native language, which I have translated to the best of my ability:
+山一程，水一程，身向榆关那畔行，夜深千帐灯。
+风一更，雪一更，聒碎乡心梦不成，故园无此声。
+Mountains stretch a journey, waters span a journey,
+Toward Yu Pass I tread, a myriad of lamps in deepest night.
+Wind whispers through a watch, snow ﬂurries through a watch,
+Shattering dreams, in my hometown such sounds are scarce.
+ii
+
+=== page 5 ===
+Contents
+Contents iii
+1 Introduction 1
+1.1 Thesis outline . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Contribution and discussion . . . . . . . . . . . . . . . . . . . . 4
+2 Algebraic structures in quantum mechanics 6
+2.1 C∗-algebras prelimnary . . . . . . . . . . . . . . . . . . . . . . . 7
+2.1.1 Selected C∗-algebra objects . . . . . . . . . . . . . . . . 9
+2.1.2 Commutative Gelfand–Naimark Theorem . . . . . . . 10
+2.2 States and representations of C∗-algebras . . . . . . . . . . . . 11
+2.2.1 States . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.2.2 Representations . . . . . . . . . . . . . . . . . . . . . . . 13
+2.2.3 Gelfand–Naimark–Segal (GNS) construction . . . . . . 15
+2.2.4 Structure of C∗-algebras . . . . . . . . . . . . . . . . . . 18
+2.3 von Neumann algebras . . . . . . . . . . . . . . . . . . . . . . . 19
+2.3.1 Deﬁnitions and basic properties . . . . . . . . . . . . . 19
+2.3.2 Afﬁliated unbounded self-adjoint operators . . . . . . 21
+2.3.3 Factors and structures of von Neumann algebras . . . 22
+2.3.4 Superselection rules . . . . . . . . . . . . . . . . . . . . 23
+2.4 Composite systems and independent subsystems . . . . . . . 24
+2.4.1 Sptial and maximal tensor products of C∗-algebras . . 25
+2.4.2 States on tensor products of C∗-algebras . . . . . . . . 27
+2.4.3 Tensor products of von Neumann algebras . . . . . . . 27
+2.4.4 Independent subsystems . . . . . . . . . . . . . . . . . 28
+2.5 Algebraic formulation of quantum theory . . . . . . . . . . . . 29
+3 Basics of quantum nonlocal correlations 31
+3.1 Nonlocal correlations . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.1.1 Tsirelson’s problem . . . . . . . . . . . . . . . . . . . . . 34
+iii
+
+=== page 6 ===
+Contents
+3.1.2 Geometry of the correlation sets . . . . . . . . . . . . . 34
+3.1.3 The CHSH game . . . . . . . . . . . . . . . . . . . . . . 35
+3.2 Navascu ´es-Pironio-Ac´ın (NPA) hierarchy . . . . . . . . . . . . 36
+3.2.1 Moment matrix and necessity of the hierarchy . . . . . 37
+3.2.2 Sufﬁciency of the hierarchy . . . . . . . . . . . . . . . . 39
+3.2.3 Stopping criteria . . . . . . . . . . . . . . . . . . . . . . 41
+3.2.4 Semi-deﬁnite Programs . . . . . . . . . . . . . . . . . . 42
+4 Algebraic approaches to quantum bilocal scenarios 43
+4.1 Bilocal quantum correlations with generalised NPA hierarchies 45
+4.1.1 Generalising NPA hierarchy for tripartite case . . . . . 45
+4.1.2 Key concepts in factorisation bilocal NPA hierarchy . . 46
+4.1.3 Convergence of factoristaion bilocal NPA hierarchy . . 47
+4.1.4 Remarks on factorisation bilocal NPA hierarchy . . . . 49
+4.2 Algebraic insights into quantum bilocal network . . . . . . . . 51
+4.2.1 Models for quantum bilocal scenario . . . . . . . . . . 51
+4.2.2 Equivalence of bilocal models . . . . . . . . . . . . . . 53
+4.2.3 Bilocal Tsirelson’s Problem . . . . . . . . . . . . . . . . 56
+4.3 Quantum inﬂation technique in bilocal scenario . . . . . . . . 56
+Bibliography 59
+A Selected functional analysis concepts for quantum mechanics 65
+A.1 Banach spaces and Banach algebras . . . . . . . . . . . . . . . 65
+A.1.1 Metrics, norms, inner products, and completeness . . 65
+A.1.2 Basic notions of Banach spaces . . . . . . . . . . . . . . 67
+A.1.3 Banach algebras and specturm . . . . . . . . . . . . . . 69
+A.2 Spectral Theorem for bounded self-adjoint operators . . . . . 71
+A.2.1 Spectrum of Hilbert space operators . . . . . . . . . . . 71
+A.2.2 Projector-valued measures (PVMs) and integration . . 72
+A.2.3 Spectral Theorem . . . . . . . . . . . . . . . . . . . . . . 74
+A.3 Hilbert space operator topologies . . . . . . . . . . . . . . . . . 75
+A.4 Important theorems in functional analysis . . . . . . . . . . . 76
+A.4.1 Three cornerstones in functional analysis . . . . . . . . 77
+A.4.2 Banach–Alaoglu and Krein–Milman Theorems . . . . . 78
+iv
+
+=== page 7 ===
+Chapter 1
+Introduction
+The study of quantum mechanics has led to the development of two alterna-
+tive formulations, namely Schr ¨odinger’s picture and Heisenberg’s picture.
+Schr ¨odinger’s picture, introduced by Schr¨odinger in 1926, is based on wave
+functions representing quantum states, which evolve with time according
+to the Schr ¨odinger equation [59]. In contrast, Heisenberg’s picture, intro-
+duced by Heisenberg in 1925, employs the concept of matrices representing
+observables, with the quantum states seemingly absent [26].
+Von Neumann initially demonstrated the equivalence of these two seemingly
+different formulations in 1927 [43, 48]. Building upon the operator algebra
+ideas inherent in Heisenberg’s matrix mechanics, von Neumann, in collab-
+oration with Murray in the 1930s, deepened the understanding through a
+series of works [39, 40, 41, 44, 45, 46, 47, 49], which laid the groundwork for
+the theory of operator algebras. This theory was later developed further by
+Gelfand, Naimark, and Segal [23, 60].
+In 1947, Segal’s paper [61] marked another turning point in the relationship
+between operator algebras and mathematical quantum physics, introducing
+the concept of C∗-algebras to the ﬁeld. Since then, the theory of operator
+algebras has become a powerful tool, ﬁnding applications in quantum sta-
+tistical mechanics [11, 24], quantum ﬁeld theory [3, 24], and even giving
+rise to the ﬁeld of noncommutative geometry [18] with potential applica-
+tions in quantum ﬁeld theory, quantum gravity, and string theory [5, 19, 37,
+62, 65]. The algebraic perspective has proven invaluable in describing and
+analysing quantum systems, showcasing the profound interplay between
+operator algebras and quantum mechanics.
+In 1935, the EPR paradox, proposed by Einstein, Podolsky, and Rosen, ques-
+tioned the completeness of quantum mechanics and introduced the concept
+of entanglement [20]. Building on the idea of entanglement, in 1964, Bell
+introduced the concept of nonlocality by proving Bell’s theorem [7], which
+1
+
+=== page 8 ===
+showed that quantum mechanics inherently exhibits nonlocal correlations
+that cannot be explained by local hidden variable theories. This result re-
+vealed that nonlocality is a fundamental feature of quantum mechanics and
+has led to a plethora of applications, such as quantum cryptography [1, 2, 6,
+71], randomness [17, 51], and quantum device certiﬁcation [4, 36, 66].
+In particular, understanding the set of probability distributions feasible by
+quantum theory in any given setup is crucial in the study of quantum
+nonlocality. In the standard Bell scenario (see, e.g., Figure 3.2 and 4.1), where
+multiple parties share one quantum source, one can approximate the set of
+feasible quantum correlations from within by considering all possible Hilbert
+spaces and operators. On the other hand, the seminal paper by Navascu ´es,
+Pironio, and Ac ´ın [42] provides an outer approximation of the quantum
+set, introducing the NPA hierarchy—a convergent hierarchy of semi-deﬁnite
+programs (SDP) that can be solved by computers [70, 75].
+More recently, there has been growing interest in studying network scenarios
+involving multiple independent quantum sources [9, 22, 54, 55, 68]. These
+scenarios provide new insights into the foundations of quantum mechanics
+and can help to understand quantum correlations in more complex set-
+tings [15, 16, 27, 67]. The bilocal scenario [10], which is the simplest network
+scenario involving three parties sharing two independent quantum sources
+(see Figure 4.2), is a prime candidate for investigation [53, 56, 73].
+In order to characterise the set of quantum correlations feasible in these more
+complex quantum network scenarios, various methods were considered. For
+example, the quantum inﬂation technique [74], which involves duplicating
+quantum sources in an inﬂated network so that the additional symmetries can
+be exploited to characterise network correlations. In the bilocal scenario, the
+scalar extension hierarchy is introduced to linearise factorisation constraints
+and achieve a tighter approximation than the standard NPA hierarchy [52].
+A nonlinear generalisation of the NPA hierarchy is investigated in [57] to
+study the bilocal scenario, further formalising the scalar extension hierarchy.
+Subsequently, the Positivstellens¨atze of state polynomials are proven, gener-
+alising the scalar extension polynomials in [57] and leading to convergent
+SDP hierarchies capable of probing network scenarios [32]. In addition to
+addressing the open questions posed in [57], the authors of [35] demon-
+strate the convergence of the inﬂation-NPA hierarchy in the bilocal scenario.
+Throughout these advancements, the algebraic aspects of quantum theory
+naturally surface and prove to be essential.
+Motivated by these developments, this thesis aims to integrate the algebraic
+perspective of quantum mechanics with the study of quantum nonlocality
+in quantum network scenarios, establishing a foundation for future research
+and uncovering potential connections and insights.
+2
+
+=== page 9 ===
+1.1. Thesis outline
+1.1 Thesis outline
+This thesis is divided into four main chapters and an appendix, providing a
+comprehensive treatment of the relevant concepts and techniques in operator
+algebras and their application to quantum nonlocality.
+In Chapter 2, surveying across [8, 11, 30, 33, 38], we delve into the algebraic
+formulation of quantum mechanics, examining the underlying algebraic
+structures and their applications. This chapter begins with an introduction to
+the theory of C∗-algebras, which models physical observables and provides
+a powerful abstraction for quantum mechanics. We then explore (algebraic)
+states and representations of C∗-algebras, allowing us to associate abstract
+algebras with concrete Hilbert spaces and their bounded operators through
+the Gelfand-Naimark-Segal (GNS) construction. Following this, we inves-
+tigate von Neumann algebras, a more specialised subclass of C∗-algebras
+with unique properties that are particularly relevant to quantum theory.
+Superselection rules, which are important physical phenomena restricting
+feasible observables, are brieﬂy introduced after the von Neumann–Murray
+decomposition theorem. Next, composite systems and independent sub-
+systems are discussed, where the notion of tensor product of C∗-algebras
+and von Neumann algebras are examined. Finally, the chapter concludes by
+presenting the algebraic quantum postulates A’–C’ based on Heisenberg’s
+picture to contrast the standard quantum postulates A–C.
+Chapter 3 provides an overview of quantum correlations, focusing on nonlo-
+cal correlations in the context of two-player nonlocal games. We discuss the
+geometry of correlation sets [12], the CHSH game [14], and Tsirelson’s prob-
+lem [21, 58, 69]. Moreover, we introduce the Navascu ´es-Pironio-Ac´ın (NPA)
+hierarchy [42], a powerful technique for analysing quantum correlations and
+characterising the set of feasible quantum correlations. This chapter serves as
+a foundation for understanding the signiﬁcance and implications of quantum
+correlations for the subsequent chapter.
+In Chapter 4, we apply the mathematical formalism introduced in previous
+chapters to study quantum nonlocality, speciﬁcally focusing on the quantum
+bilocal network scenario, which involves a line arrangement of three parties,
+namely Alice, Bob, and Charlie, who share two independent quantum sources
+as in Figure 4.2. The chapter discusses the factorisation bilocal NPA hierarchy
+and its convergence to a relaxation of tensor bilocal quantum correlations [57].
+Furthermore, the chapter explores algebraic insights into the quantum bilocal
+network, discussing alternative models and their equivalence, as well as
+addressing the bilocal Tsirelson’s problem [35]. Although relevant, the
+primary focus of the chapter is not on scalar extension [52, 57], inﬂation
+technique [34, 35, 74], and Positivstellens ¨atze of state polynomials [32], thus
+we only brieﬂy mention these topics in remarks.
+3
+
+=== page 10 ===
+1.2. Contribution and discussion
+In Appendix A, we provide an overview of the basics of functional analysis
+based on [8, 30, 33, 38], including Banach spaces and Banach algebras, the
+Spectral Theorem for bounded self-adjoint operators, Hilbert space operator
+topologies, and important theorems in functional analysis. This appendix
+serves as a preparation for Chapter 2 and includes some key functional
+analysis results that are ubiquitous in quantum mechanics.
+1.2 Contribution and discussion
+This thesis serves as a reference for results in the theory of operator algebras
+relevant to the study of quantum nonlocality, introducing notable results and
+attempting to draw connections between them. While the main contribution
+is not the original application of operator algebras to quantum bilocal network
+scenarios, it does summarise two recent works [35, 57] in the same notation,
+highlighting the signiﬁcance of these works in solving problems in the
+bilocal scenario with new insights. The thesis emphasises the value of
+algebraic insights in understanding quantum nonlocality and showcases
+the usefulness of operator algebras in providing a deeper understanding
+of quantum mechanics and its underlying structure. Therefore, the thesis’
+contribution is mainly in surveying various publications and making the
+connections between these works more explicit.
+Potential future research directions include incorporating the existing meth-
+ods in further investigation of bilocal quantum scenarios, and the develop-
+ment of algebraic models for more general quantum networks and their
+implications in quantum foundations. Among many possibilities, there are:
+• One of the open problems is the convergence of the scalar extension
+technique [52] in the bilocal scenario, as attempted in [57, Appendix C]
+without a full resolution. The recent work on Positivstellens ¨atze of state
+polynomials [32] seems to provide insights from the primal point of
+view, and understanding it in the context of the dual perspective [57]
+might be the key.
+• The generalisation of the algebraic formulation to more general quan-
+tum network scenarios is a promising direction. In particular, one can
+consider the quantum inﬂation technique [74], which is a powerful
+method for characterising correlations in general network scenarios.
+Therefore, it would be interesting to explore the convergence of the
+quantum inﬂation-NPA hierarchy to alternative quantum models in
+generalised networks.
+In summary, this thesis presents a comprehensive exploration of the algebraic
+perspective in quantum mechanics and its applications in understanding
+quantum correlations and the bilocal network scenario. Serving as a refer-
+ence for quantum nonlocality studies, the thesis connects recent works and
+4
+
+=== page 11 ===
+1.2. Contribution and discussion
+highlights the signiﬁcance of algebraic insights. Furthermore, it lays the
+groundwork for future research directions, such as investigating bilocal quan-
+tum scenarios and developing algebraic models for more general quantum
+networks. In conclusion, this thesis offers insights from theory of operator
+algebras into the current understanding of quantum correlations and may
+serve as a basis for further exploration in this ﬁeld.
+5
+
+=== page 12 ===
+Chapter 2
+Algebraic structures in quantum
+mechanics
+In this chapter, we delve into the algebraic formulation of quantum mechanics,
+a complementary perspective to the traditional Schr ¨odinger’s picture. By
+examining the underlying algebraic structures of quantum mechanics, we
+gain insights and discover numerous applications.
+Primarily based on [8, 11, 30, 33, 38], we begin with an introduction to
+C∗-algebras, which model physical observables. Following this, we explore
+(algebraic) states, representations, and the Gelfand-Naimark-Segal (GNS)
+construction, which associates abstract algebras with concrete Hilbert spaces
+and their bounded operators. Subsequently, we discuss von Neumann alge-
+bras, a specialized subclass with properties particularly relevant to quantum
+theory. The chapter also investigates superselection rules and their impli-
+cations for quantum theory, as well as the notion of tensor products in the
+algebraic framework, essential for multipartite quantum systems. Finally,
+we conclude the chapter by contrasting algebraic quantum postulates with
+standard quantum postulates, highlighting their differences and similarities.
+To provide context for the forthcoming algebraic deﬁnitions, we present
+the standard formulation of postulations in quantum theory, namely the
+Schr ¨odinger’s Hilbert space–vector state approach. For the purposes of this
+thesis, we will not consider the evolution of quantum systems, thus focusing
+on a framework that omits this aspect. The following discussion assumes
+ﬁnite-dimensionality for simplicity and draws on the classical reference for
+quantum information theory [50].
+Deﬁnition 2.1 A density operator (or density matrix) ρ on a Hilbert spaceH is
+a positive operator that is normalised. That is, ⟨ϕ|ρ|ψ⟩≥ 0 for any|ϕ⟩ ,|ψ⟩∈H
+and Tr(ρ) = 1. The set of all density operators S(H) is called the state space.
+6
+
+=== page 13 ===
+2.1. C∗-algebras prelimnary
+We say that ρ is a pure state if it is an extreme point of the state space, i.e. an
+element ofP (H) = ex(S(H)), otherwise it is a mixed state.
+From the deﬁnition, it is clear that the state space S(H) is convex, and with
+the (ﬁnite-dimensional) spectral theorem, we conclude that any pure state
+assumes the form|ϕ⟩⟨ϕ|, where|ϕ⟩∈H is a normalised vector.
+The postulates, modulo the evolutionary aspect, are as follows:
+A An isolated physical system S is described by a density operator ρ on
+some Hilbert spaceH.
+B An observable of the system S is represented by a self-adjoint operator
+O = ∑x Px onH, where each x is an eigenvalue and Px is the (orthogo-
+nal) projector onto the respective eigenspace. Each eigenvalue x of O
+corresponds to a possible measurement outcome, with the probability
+of observing x given by the Born’s rule:
+p(x) = Tr(ρPx) = Trρ(Px). (2.1)
+Finally, the post-measurement state is given by
+ρ′ = PxρPx
+Trρ(Px). (2.2)
+C The composite system is described by the tensor product of the state
+space of its component system. That is, if we have two systems rep-
+resented by HA,HB with states ρA, ρB, then the joint state space is
+HA⊗H B with the joint state ρA⊗ ρB.
+With respect to the standard quantum postulates A–C, goal of this chapter is
+to develop the necessary notions for the algebraic quantum postulates A’–C’
+in Section 2.5.
+2.1 C∗-algebras prelimnary
+Theory of C∗-algebra was developed with the aim of modelling physical
+observables, and is a powerful abstraction that happens to be a speacial case
+of Banach algebras; see A.1 for more detailed deﬁnition of Banach spaces
+and algebras. We refer to [11, 33] for this section.
+Deﬁnition 2.2 1. An involution on an algebra A is a real linear map † : A→
+A, α↦→ α†, such that for α, β∈ A and a, b∈ C,
+(a) α†† = α
+(b) (αβ)† = β†α†
+7
+
+=== page 14 ===
+2.1. C∗-algebras prelimnary
+(c) (aα + bβ)† = a†α† + b†β†.
+2. A∗-algebra A is an algebra equipped with an involution. A subset B⊂ A is
+self-adjoint if it is closed under involution
+3. A Banach algebra is a Banach space A that is also an algebra such that
+‖αβ‖≤‖ α‖‖β‖ (2.3)
+for any α, β∈ A.
+4. A C∗-algebra A is a Banach∗-algebra satisfying
+‖α†α‖ =‖α‖2 (2.4)
+for any α∈ A.
+We note that
+‖α†‖ =‖α‖. (2.5)
+Since‖α‖2 =‖α†α‖≤‖ α†‖‖α‖ implies‖α‖≤‖ α†‖, and the same argument
+shows another side of the inequality.
+We motivate the deﬁnition of C∗-algebras with the following examples.
+Example 2.3 1. Consider the set of all bounded operatorsB(H) of some Hilbert
+spaceH. It is an ∗-algebra with the usual composition and the usual adjoint
+operator †, equipped with the operator norm
+‖α‖ = sup
+|ϕ⟩∈H,‖|ϕ⟩‖=1
+{‖α|ϕ⟩‖}. (2.6)
+We check the C∗-algebra property that
+‖α‖2 = sup
+‖|ϕ⟩‖=1
+{‖α|ϕ⟩‖2}
+= sup
+‖|ϕ⟩‖=1
+{⟨ϕ|α†α|ϕ⟩}
+≤ sup
+‖|ϕ⟩‖=1
+{‖α†α|ϕ⟩‖}
+=‖α†α‖≤‖ α†‖‖α‖ =‖α‖2.
+(2.7)
+2. The spaceB0(H) of all compact operators with all operations inherited from
+B(H) is a C∗-algebra. It is uniformly closed, as the uniform limit of a set of
+compact operators is again compact, and is a two-sided ideal in B(H) that is
+not unital ifH is inﬁnite-dimensional.
+8
+
+=== page 15 ===
+2.1. C∗-algebras prelimnary
+3. The space C0(X) of all continuous functions f : X→ C vanishing at inﬁnity
+(i.e. for any ε > 0 there exists a compact set K⊂ X such that| f (x)| < ε
+for all x∈ K), where X is a locally compact space, is a commutative C∗-
+algebra. It is a commutative∗-algebra with the usual pointwise addition, scalar
+multiplication, and pointwise function multiplication, and the ∗-structure
+comes from the usual complex conjugation †. We introduce the sup norm
+‖ f‖ = sup
+x∈X
+{| f (x)|} (2.8)
+and one can check‖ f f †‖ = supx∈X{| f (x)|2} =‖ f‖2.
+Example 2.3.(2) above shows that the C∗-algebra A does not need to admit
+a unit in general. However, there is a procedure (cf. [11, Proposition 2.1.5])
+to embed them into a larger unital algebra ˜A ={(a, α)| a∈ C, α∈ A, in
+which the algebraic rules are (a, α) + (b, β) = ( a + b, α + β), (a, α)† = ( a†, α†),
+and (a, α)(b, β) = ( ab, aβ + bα + αβ). The norm of the enlarged algebra is
+‖(a, α)‖ = supβ∈A,‖β‖=1{‖aβ + αβ‖}. For the scope of this thesis, we consider
+only unital C∗-algebras.
+2.1.1 Selected C∗-algebra objects
+Recall that the residue ρ(α) of α∈ A is the subset of C such that 1− λα
+is invertible, and the spectrum σ(α) = C\ ρ(α); see Appendix A.1.3 and
+Appendix A.2.1. We introduce some special classes of elements.
+Deﬁnition 2.4 An element of some unital C∗-algebra, α∈ A, is
+1. normal if αα† = α†α;
+2. self-adjoint if α† = α;
+3. isometry if α†α = 1;
+4. unitary if αα† = 1 = α†α;
+5. positive if α is self-adjoint and σ(α)⊂ [0, ∞), denoted as α≥ 0.
+The signiﬁcance of these operators is that their spectrum has special proper-
+ties; see Theorem A.13.
+We observe that α∈ A is positive iff α = β†β for some β∈ A. Positive
+operators are signiﬁcant in the theory of C∗-algebras, as they provide the
+notion of comparing different elements, underpin the notion of square root
+of operators, and give unique decompositions of self-adjoint operators (cf. [8,
+Chapter II.3.1] and [11, Chapter 2.2.2].
+Finally, we include the deﬁnitions of homomorphisms and isomorphisms.
+9
+
+=== page 16 ===
+2.1. C∗-algebras prelimnary
+Deﬁnition 2.5 1. A∗-morphisms (homomorphism) between the C∗-algebra
+A, B is a linear map Φ : A→ B such that
+Φ(αβ) = Φ(α)Φ(β), Φ(α†) = Φ(α)†. (2.9)
+2. An isomorphism Φ : A→ B is an invertible homomorphism.
+Any ∗ -morphisms preserve positivity (i.e. α ≥ 0 then Φ(α) ≥ 0) and
+are continuous with ‖Φ(α)‖≤‖ α‖. A subtler fact is that any C∗-algebra
+isomorphism is also an isometry (injectivity is already enough). Analogously
+to other branches of algebra, the image of Φ(A) is a closed C∗-subalgebra of
+B, and the kernal ker Φ is an ideal of A; see [33, Theorem C.62].
+Deﬁnition 2.6 Let A be a Banach algebra (in particular a C∗-algebra). A left
+(right) ideal in A is a closed linear subspace J such that for any α∈ A, β∈ J, the
+element αβ∈ J (βα∈ J). An ideal is a two-sided ideal (both left and right).
+2.1.2 Commutative Gelfand–Naimark Theorem
+In fact, Example 2.3.(3) has more signiﬁcance as it captures the structure of
+commutative C∗-algebras.
+Theorem 2.7 (Gelfand–Naimark theorem, commutative case) Every commu-
+tative C∗-algebra A is isomorphic to the space C0(X) of complex-valued continuous
+functions on some locally compact space X. The isomorphism is unique up to
+homeomorphisms.
+The proof is technical and less relevant to the main theme of this thesis;
+we present only the main ideas of this theorem. Let A be a commutative
+C∗-algebra.
+1. The space X can be taken to be the Gelfand spectrum Σ(A), which is the
+set of all characters on A. A character1 ω : A→ C is a nonzero linear
+map satisfying
+ω(αβ) = ω(α)ω(β) (2.10)
+for all α, β.
+2. The isomorphism is given by the Gelfand transform A→ C0(Σ(A)),
+which maps each α∈ A to a function ˆα : Σ(A)→ C deﬁned by
+ˆα(ω) = ω(α). (2.11)
+3. We endow X = Σ(A) with Gelfand topology , which is the weakest
+topology on Σ(A) making all functions ˆα continuous. With Gelfand
+topology, Σ(A) is compact iff it is unital, otherwise it is locally compact.
+1For commutative C∗-algebra, the notions of characters and pure states (discussed in later
+section) are equivalent.
+10
+
+=== page 17 ===
+2.2. States and representations of C∗-algebras
+Example 2.8 We provide a simple example with a ﬁnite space X ={1,··· , N}
+and the space of complex-valued continuous functions C(X) = C0(X). Obviously
+C(X)≃ CN with the identiﬁcation f ∼ diag ( f (1),··· , f (n)).
+For each x∈ X, it can be checked that the evaluation map evx∈ C0(X), evx( f ) =
+f (x), is a character, while a more involved proof of the maximality of the kernel
+of ev : x↦→ evx shows that every character must be an evaluation map. Hence
+Σ(C0(X)) ={evx| x∈ X}≃ X.
+Finally, it is clear that the Gelfand transform reads f ↦→ ˆf , where ˆf (evx) =
+evx( f ) = f (x). We observe an isomorphism between f : x↦→ f (x) and ˆf : evx↦→
+f (x).
+This correspondence, often referred to as Gelfand duality, is crucial for
+connecting abstract commutative C∗-algebras with more concrete spaces
+of continuous functions, where geometrical structures can be recovered by
+studying spectral objects. The generalisation of this idea to noncommutative
+cases has led to a fruitful ﬁeld called noncommutative geometry [65].
+2.2 States and representations of C∗-algebras
+In this section, we delve into one of the more important deﬁnitions, namely
+the (algebraic) states on C∗-algebras, which are abstract generalisations of
+density operators in the Schr ¨odinger picture. Furthermore, states allow us to
+associate abstract C∗-algebras with concrete Hilbert spaces and their bounded
+operators through the renowned Gelfand–Naimark–Segal (GNS) construction.
+Using representation theory and GNS construction, we can investigate the
+structure of C∗-algebras beyond the scope of the Gelfand–Naimark theorem
+for commutative C∗-algebras.
+From now on, we focus on unital C∗-algebras for the sake of simplicity. The
+general cases can be dealt with unitalisation and use of approximate units.
+This section is jointly referenced from [8, 11, 30, 33, 38].
+2.2.1 States
+Let us begin with the abstraction of the usual quantum states.
+Deﬁnition 2.9 (Algebraic states) A (algebraic) state on a unital C∗-algebra A
+is a linear functional ω : A→ C that is
+• positive: ω(α†α)≥ 0 for all α∈ A;
+• normalised2: ω(1) = 1.
+2This deﬁnition relies on the existence of an identity. In general, the normalisation
+condition reads‖ω‖ = 1, where the norm of the space A∗ of linear functionals is deﬁned
+by‖ω‖ = sup‖α‖=1{|ω(α)|}.
+11
+
+=== page 18 ===
+2.2. States and representations of C∗-algebras
+The state spaceS(A) is the set of all states on A. The pure state spaceP (A) is
+the extreme boundary of the state space ex(S(A)) with elements called pure states.
+More explicitly, suppose that a state ω = tω1 + (1− t)ω2, for some t∈ [0, 1] and
+states ω1, ω2. Then ω is pure iff ω = ω1 = ω2.
+From the deﬁnition it is immediate that the state space S(A) is convex.
+Moreover, by the Banach–Alaoglue Theorem A.24 we further conclude that
+S(A) is a compact convex subset of A∗ relative to the weak-∗ topology. Then
+the application of Krein–Milman Theorem A.26 leads to the following result;
+observe the analogy of this result with the usual notion pure-state/mixed-
+state in Deﬁnition 2.1.
+Theorem 2.10 Consider a unital C∗-algebra A with the state spaceS(A) and the
+pure state spaceP (A). ThenP (A)⁄= ∅ andS(A) = co(P (A)).
+That is, pure states on A always exist and all states on A can be approximated by a
+sequence of probability mixtures (i.e., convex combinations) of pure states.
+Physically, given a self-adjoint α∈ A, the value of ω(α) should be interpreted
+as the expectation value of the observable α in the state ω. Similarly, for a
+projector PE given by a projector-valued measure (PVM) X→ A as in Deﬁni-
+tion A.14, ω(PE) is to be understood as the probability of observing the event
+E, where X is some measure space and E is a Borel set [38, Chapter 8.2.3].
+For a more extensive discussion of PVMs, see Appendix A.2.2.
+Example 2.11 Consider a Hilbert spaceH with the C∗-algebraB(H) .
+1. The formula ω(α) = ⟨ϕ|α|ϕ⟩ deﬁnes a state ω onB(H), where|ϕ⟩∈H
+is a normalised vector. The state ω is, in fact, pure and any pure state also
+assumes this form. Similarly, any density operator gives rise to an algebraic
+state using the formula ω(α) = Tr(ρα).
+That is, any density operator deﬁnes an algebraic state ω.
+2. Let us assume thatH is ﬁnite-dimensional. Given any state ω, we deﬁne the
+matrix ρ through ρij = ω(Eji), where Eji is the matrix with 0 everywhere but
+1 at the (j, i)-th entry.
+We show that ρ is indeed a density operator. Indeed, for any matrix α we check
+Tr(ρα) = ∑
+i,j
+ρij αji = ∑
+i,j
+ω(Eji)αji = ω(∑
+i,j
+Ejiαji) = ω(α), (2.12)
+recovering the formula in the previous example. Then ρ is normalised consid-
+ering α = 1H, and it is positive since⟨ϕ|ρ|ϕ⟩ = ω(|ϕ⟩⟨ϕ|)≥ 0.
+The example above shows that in a ﬁnite-dimensional Hilbert space, algebraic
+states and the usual quantum states are equivalent to each other. This
+realisation is sufﬁcient for many applications in quantum information theory.
+However, this is in general not the case.
+12
+
+=== page 19 ===
+2.2. States and representations of C∗-algebras
+Remark 2.12 The notion of algebraic state is weaker than the usual quantum states.
+We deﬁne a state ω onB(H) as a normal state if it is induced by a density operator
+ρ through ω(α) = Tr(ρα). Then there are algebraic states that are not normal.
+Nonnormal states are typically difﬁcult to express explicitly, similar to pathological
+examples of continuity and differentiability in analysis. Nevertheless, one can attempt
+to gain further insight with measure theory. If we ﬁx a PVM P : X→B (H) as in
+Deﬁnition A.14, then a state ω deﬁnes a measure µ : X→ R through the formula
+µ(E) = ω(PE) for any set E⊂ X.
+Recall that a measure µ is additive if for any ﬁnite family of disjoint sets E1,··· , EN,
+we have µ(∪iEi) = ∑i µ(Ei), and is σ-additive (resp. completely additive) if we
+can generalise this to a countable (resp. uncountable) disjoint union. It should
+then be noted that, in general, algebraic states induce additive measures that are not
+necessarily σ-additive or completely additive [38]. On the other hand, the measures
+induced by normal states are completely additive [30].
+We present technical results found in [11, Lemma 2.3.10] and [8, II.6.3.3] that
+are useful for the construction of GNS, providing further insight into the
+relationship between states and observable quantities in quantum systems.
+Lemma 2.13 (Cauchy–Schwarz inequality) If ω : A→ C is a positive linear
+functional (in particular a state) on a unital ∗-algebra A (in particular a C∗-algebra
+state), then
+(a) ω(α†β) = ω(α†β)†,
+(b)|ω(α†β)|≤ ω(α†α)ω(β†β),
+(c)|ω(β†αβ)|≤‖ α‖ω(β†β),
+(d) and ω(α†) = ω(α)†.
+Lemma 2.14 Let α∈ A be a self-adjoint element. Then there exists a pure state ω
+such that|ω(α)| =‖α‖
+2.2.2 Representations
+In the discussion of normality in Remark 2.12, we have to work with a
+concrete Hilbert space as opposed to abstract C∗- algebras. To overcome this,
+we introduce the notion of representation.
+Deﬁnition 2.15 A representation of a C∗-algebra A is a pair (H, π), whereH
+is a Hilbert space, and π : A→B (H) is a ∗-morphism. Moreover, we have the
+following:
+1. A representation (H, π) is faithful if π is injective, whence A≃ π(A).
+2. A nonzero representation (H, π) is nondegenerate if for|ψ⟩∈H and all
+α∈ A\{ 0}, π(α)|ψ⟩ = 0 implies|ψ⟩ = 0.
+13
+
+=== page 20 ===
+2.2. States and representations of C∗-algebras
+3. A vector |ϕ1⟩ ∈ His cyclic for π if the closure of π(A)|ϕ1⟩ equals to
+H. A cyclic representation is a triple (H, π,|ϕ1⟩), where (H, π) is a
+representation, and|ϕ1⟩ is cyclic for π.
+4. Let (Hx, πx)x∈I be a family of representations of A, indexed by a possibly
+uncountable set I. The direct sum representation 3 (H =⊕x∈IHx, π =
+⊕x∈Iπx) is deﬁned by
+(π(α)|ψ⟩)x = πx(α)|ψx⟩ ,
+for all α∈ A and|ψ⟩∈H .
+5. Two representations (H1, π1) and (H2, π2) of A are unitarily equivalent if
+there exists a unitary u :H1→H 2 such that uπ1(α)u† = π2(α) for each
+α∈ A.
+We observe that cyclic representations are automatically nondegenerate, via
+a proof by contradiction with the orthogonality argument.
+Remark 2.16 From now on, we use the “hat” notation to distinguish elements α in
+the abstract C∗-algebra and concrete operators ˆα inB(H). Furthermore, if there is
+no ambiguity in the represented Hilbert spaceH, we write π in place of (H, π) and
+denote π(α) = ˆα.
+The faithfulness is important since it is equivalent to π being norm-preserving
+(‖π(α)‖ =‖ˆα‖ =‖α‖) and to positive deﬁniteness preserving ( π(α) > 0 for
+all α > 0) [11, Proposition 2.3.3].
+Any cyclic representation, as mentioned, is nondegenerate. We observe a
+“converse statement” relating these notions to direct sum representations.
+Proposition 2.17 Any nondegenerate representation (H, π) of a C∗-algebra A is a
+direct sum of cyclic representations of A.
+Proof We provide a sketch as the construction will be useful later. Using
+Zorn’s lemma, we deﬁne a maximal family of nonzero vectors (ϕx
+1)x∈I in
+H such that (
+⟨
+ϕy
+1
+⏐⏐ π(α)†)(π(β)|ϕx
+1⟩) = 0, for all α, β∈ A whenever x⁄= y.
+Then, for each x∈ I, deﬁneHx as the closure of π(A)|ϕx
+1⟩ inH and πx as
+the restriction toHx. This leads to the cyclic representation (Hx, πx,|ϕx
+1⟩) for
+each x∈ I. □
+We end the section by introducing the notion of irreducibility.
+Deﬁnition 2.18 Let (H, π) be a representation of A.
+3A ﬁnite direct sum of Hilbert space is deﬁned the usual way, and inﬁnite direct sum is
+deﬁned as a direct limit. Thus, each ψ∈H takes the form|ψ⟩ = (|ψx⟩)x∈I where|ψx⟩∈H x.
+It can be checked that the map π deﬁned this way is indeed a representation, see [33, p.
+694-695] and [11, 45]
+14
+
+=== page 21 ===
+2.2. States and representations of C∗-algebras
+1. A closed subspaceH′ is invariant under π of π(α)H′⊂H′ for all α∈ A.
+We then say that the restriction π′ onH′ is a subrepresentation (H′, π′) of
+(H, π).
+2. A representation (H, π) of A is irreducible if the only closed invariant
+subspaces are{0} andH, or equivalently, (H, π) admits no proper non-
+trivial subrepresentation.
+Denote the commutant of S⊂B (H) by S′ ={ˆα| [ˆα, ˆβ] = 0,∀ ˆβ∈ S}. We
+have the following characterisations of irreducibility [33, Theorem C.90].
+Theorem 2.19 (Schur’s Lemma) For a representation (H, π) of A, the following
+conditions are equivalent:
+1. (H, π) is irreducible;
+2. π(A)′ = C1H;
+3. π(A)′′ =B(H)
+4. Every vector in H is cyclic for π.
+2.2.3 Gelfand–Naimark–Segal (GNS) construction
+We have discussed the properties of representations of C∗-algebra, now we
+show explictly the existence with Gelfand–Naimark–Segal (GNS) construction
+since they are important to the discussion in the latter chapters.
+Theorem 2.20 (Gelfand–Naimark–Segal construction) Let ω be a state on the
+C∗-algebra A. Then there exists a unique (up to unitary equivalence) cyclic represen-
+tation (Hω, πω) of A and a cyclic vector|ϕω
+1⟩ such that
+ω(α) =⟨ϕω
+1|π(α)|ϕω
+1⟩ =⟨ϕω
+1|ˆα|ϕω
+1⟩ (2.13)
+for all α∈ A. Consequently,|ϕω
+1⟩ is a unit vector.
+The triple (Hω, πω,|ϕω
+1⟩) is often referred to as GNS representation, and the
+subscripts/superscripts ω are often omitted if the context is clear.
+Proof The proof is consisted of four steps.
+Step 1. We ﬁrst construct the Hilbert spaceHω as the completion of the quotient
+space A/Nω with respect to the state-induced inner product.
+• Deﬁning Nω ={α∈ A| ω(α∗α) = 0}, we claim that Nω is a left
+ideal. Indeed, letting α∈ Nω and β∈ A, we use the Cauchy-
+Schwarz lemma 2.13 to compute
+0≤ ω((βα)†(βα))≤ ω(α∗α)ω(β∗β) = 0 (2.14)
+which implies that βα∈ Nω.
+15
+
+=== page 22 ===
+2.2. States and representations of C∗-algebras
+• Deﬁne a pre-inner product on A× A by mapping (α, β) to ω(β†α).
+The hermitian property and positivity of this pre-inner product
+can be attributed to the Cauchy-Schwarz lemma 2.13 once more.
+However, it may not be positive deﬁnite, since there may be some
+α∈ A with α⁄= 0 but ω(α†α) = 0. But then this α belongs to Nω
+by deﬁnition.
+• Therefore, for the quotient space A/Nω where the equivalence
+class of each α∈ A is denoted by [α] = |ϕω
+α⟩ =|ϕω
+α+ν⟩∀ν∈ Nω,
+we have constructed a well-deﬁned inner product by
+⟨ϕω
+α|ϕω
+β⟩ = ω(α†β). (2.15)
+The completion of A/Nω relative to this inner product is the
+Hilbert spaceHω that we wish.
+Step 2. Next, we construct the representation πω : A→ B(H) as the left-
+multiplication
+πω(α)
+⏐⏐⏐ϕω
+β
+⟩
+=
+⏐⏐⏐ϕω
+αβ
+⟩
+. (2.16)
+• We begin by considering the map πω(α) : A/Nω→ A/Nω deﬁned
+by the same formula. Then for any |ϕω
+α⟩ ∈ A/Nω, it is well-
+deﬁned since Nω is a left-ideal and its ∗-morphism properties can
+be checked directly.
+• It is also bounded (hence continuous), since
+‖‖‖πω(α)
+⏐⏐⏐ϕω
+β
+⟩‖‖‖
+2
+=⟨ϕω
+β|ϕω
+β⟩
+= ω(β†α†αβ)≤‖ α‖2ω(β†β)
+=‖α‖2⟨ϕω
+β|ϕω
+β⟩ =‖α‖2
+‖‖‖
+⏐⏐⏐ϕω
+β
+⟩‖‖‖
+2
+(2.17)
+by Lemma 2.13.
+• By continuity, we extend πω(α) : A/Nω→ A/Nω to an operator
+inB(Hω). Thus, we check πω : A→B (H) is indeed a representa-
+tion.
+Step 3. We set the cyclic vector to be the equivalence class of the identity
+[1] =|ϕω
+1⟩. With this we recover the desired equation⟨ϕω
+1|π(α)|ϕω
+1⟩ =
+⟨ϕω
+1|ϕω
+α⟩ = ω(α). To see the cyclicity, note that A/Nω ={|ϕω
+α⟩| α∈
+A} ={π(α)|ϕω
+1⟩| α∈ A}.
+Step 4. It remains to show the uniqueness, that is, suppose that there is another
+cyclic representation (H, π,|ψ⟩) satisfying Equation 2.13, then there
+exists a unitary operator u :Hω→H such that
+uπω(α)u† = π(α) and u|ϕω
+1⟩ =|ψ⟩ (2.18)
+16
+
+=== page 23 ===
+2.2. States and representations of C∗-algebras
+for all α∈ A.
+To this end, we simply deﬁne u :Hω→H by
+uπω(α)|ϕω
+1⟩ = π(α)|ψ⟩ , (2.19)
+which is well-deﬁned and isometric as it preserves the scalar product,
+⟨ϕω
+1|(uπω(α))†(uπω(β))|ϕω
+1⟩Hω =⟨ψ|π(α)†π(β)|ψ⟩H (2.20)
+= ω(α†β) =⟨ϕω
+1|πω(α)†πω(β)|ϕω
+1⟩Hω. (2.21)
+As an isometry, it can be extended by continuity from A/Nω toHω,
+then a direct density argument shows that it is the desired unitary. □
+One nice feature of GNS representations is that they relate irreducibility to
+the purity of states on A.
+Theorem 2.21 (Irreducibility and purity of GNS representations) Let ω be
+a state on A and let (H, π,|ϕω
+1⟩) be its GNS representation. Then the representation
+(H, π,|ϕω
+1⟩) is irreducible iff the state ω is pure.
+Proof For the “⇒” direction we refer to the proofs of [11, Theorem 2.3.19]
+or [8, II.6.4.], which relies on the Cauchy–Schwarz inequality for positive
+functionals and the property of a densely deﬁned bounded sesquilinear form.
+The converse direction is a nice exercise of Schur’s lemma and the concept
+of commutant. Suppose, for contradiction, that there exists a non-trivial
+orthogonal projector P onto the commutant πω(A)′, i.e. P⁄= 0, 1. Therefore,
+the commutativity implies P|ϕω
+1⟩⁄= 0⁄= ( 1− P)|ϕω
+1⟩.
+With commutativity, we deﬁne
+λ =‖P|ϕω
+1⟩‖ =⟨ϕω
+1|P|ϕω
+1⟩
+ω1(α) = ω(Pα)
+λ =⟨ϕω
+1|Pπ(α)P|ϕω
+1⟩
+λ
+ω1(α) = ω((1− P)α)
+1− λ =⟨ϕω
+1|(1− P)π(α)(1− P)|ϕω
+1⟩
+1− λ ,
+(2.22)
+which we can check ω1, ω2 are states and ω = λω1 + (1− λ)ω2. It follows
+from the purity assumption that ω = ω1 = ω2.
+In particular, we have
+⟨ϕω
+1|π(α)λ|ϕω
+1⟩ =⟨ϕω
+1|Pπ(α)P|ϕω
+1⟩ =⟨ϕω
+1|π(α)P|ϕω
+1⟩. (2.23)
+By cyclicity we conclude that P|ϕω
+1⟩ = λ|ϕω
+1⟩, which implies either λ = 0 or
+λ = 1 as P is projector. But then either P|ϕω
+1⟩ = 0 or (1− P)|ϕω
+1⟩ = 0, which
+is a contradiction. □
+17
+
+=== page 24 ===
+2.2. States and representations of C∗-algebras
+Remark 2.22 Suppose that we have a density operator ρ on some Hilbert spaceH
+that is not pure, in the sense of standard quantum theory. Deﬁne the corresponding
+algebraic state ω onB(H) by ω(ˆα) = Tr(ρˆα) and construct a GNS representation
+(Hω, πω,|ϕω
+1⟩). Then we obtain a pure state |ϕω
+1⟩ such that Tr(ρˆα) =⟨ϕω
+1|ˆα|ϕω
+1⟩.
+It is tempted to conclude that “a mixed state is transformed into a pure state”.
+However, such naive deduction is incorrect, for there is no such transformation. First,
+|ϕω
+1⟩ lives in a different Hilbert spaceHω. Moreover, there is no spatial isomorphism
+u :H→H ω with uˆαu−1 = πω(ˆα) such that u−1|ϕω
+1⟩∈H . To see this, we
+note that ω is not pure, as its corresponding ρ is already not extremal in a smaller
+set (than in the space of algebraic states). But then the representation of B(H) in
+itself by inclusion is irreducible, while the representation πω must be reducible by
+Theorem 2.21, and therefore no such isomorphism can exist.
+GNS construction associates each abstract C∗-algebra with a very concrete
+Hilbert space. However, we observe that the representation πω is not nec-
+essarily faithful, yet physically meaningful representations are generally
+expected to be faithful [38, Remark 8.8].
+2.2.4 Structure of C∗-algebras
+Any Hilbert space operator spaceB(H) is trivially isomorphic to a C∗-algebra
+(i.e. itself). We now demonstrate that the converse is also true, that is, any
+C∗-algebra is isomorphic to a closed ∗-algebra inB(H) thanks to the GNS
+construction. The following theorem can be seen as an noncommutative
+analogy to Gelfand–Naimark Theorem 2.7.
+Theorem 2.23 (Gelfand–Naimark theorem, general case) Each C∗ algebra A
+is isomorphic to a norm-closed ∗-algebra inB(H) for some Hilbert spaceH. Equiva-
+lently, there exists a faithful representation π : A→B (H).
+Proof By the GNS construction theorem 2.20, for any state ω on A, there
+exists a cyclic representation (Hω, πω) of A such that ω(α) =⟨ϕω
+1|πω(α)|ϕω
+1⟩
+for all α∈ A. But πω is not faithful.
+Consider the direct sum representation
+(H =⊕ω∈P (A), π =⊕ω∈P (A)πω) (2.24)
+summing over the GNS representations of all pure states ω∈P (A) on A.
+We claim that the direct sum representation (H, π) is faithful, which is what
+we need.
+We now show that this representation is faithful. Suppose, for contradction,
+that there exists a nonzero α∈ A such that π(α) = 0. Then, for all states ω
+on A, we have πω(α) = 0. This implies that
+ω(α†α) =⟨ϕω
+1|π(α†α)|ϕω
+1⟩ =⟨ϕω
+1|π(α†)π(α)|ϕω
+1⟩ = 0. (2.25)
+18
+
+=== page 25 ===
+2.3. von Neumann algebras
+However, since α⁄= 0, we have α†α⁄= 0, which contradicts Lemma 2.14 that
+there should exist at least one pure state |ω(α)| =‖α‖⁄ = 0. □
+2.3 von Neumann algebras
+C∗-algebras offer a powerful abstraction in the study of quantum mechanics,
+yielding numerous results. However, their limitations call for a more spe-
+cialised subclass: von Neumann algebras. While C∗-algebras are closed in
+the uniform topology, it is often too restrictive; weak topology arises more
+naturally in quantum theory, and von Neumann algebras are both strongly
+and weakly closed. Furthermore, unbounded operators, abundant in quan-
+tum theory, are challenging to handle within C∗-algebras due to domain
+changes induced by adjoint operations. In contrast, von Neumann algebras
+can model unbounded operators through associated PVMs. Also, the von
+Neumann–Murray factor classiﬁcation provides valuable structural insights.
+Finally, the special structure of von Neumann algebras enables concepts such
+as superselection rules to be easily modelled.
+This section is mainly based on the discussion in [38, Chapter 6].
+2.3.1 Deﬁnitions and basic properties
+Recall that for a set of operator M ⊂ B(H) of some Hilbert space, its
+commutant is denoted by M′ ={ˆα∈B (H)| [ˆα, ˆβ] = 0,∀ ˆβ∈ M}. We begin
+by including some basic facts about commutants from [38, Proposition 6.3].
+Proposition 2.24 The commutant M′ of M⊂B (H) satisﬁes the following proper-
+ties:
+(a) If M is closed under the involution †, then M′ is a C∗-subalgebra;
+(b) M′ is closed in both weak and strong topologies;
+(c) M′ = (( M′)′)′, hence no more new information above the second commutant.
+As mentioned before, the weak operator topology arises much more naturally
+from quantum theory, rooted from the convergence of matrix elements of
+quantum operators. We shall model such a feature with the following
+deﬁnition.
+Deﬁnition 2.25 A von Neumann algebra A is a unital ∗-subalgebra ofB(H)
+that is weakly closed. The center of a von Neumann algebra M is the set Z(M) =
+M∩ M′, that is, it contains all operators in M that commute with every element of
+M.
+Now we introduce the bicommutant theorem, which is central in the study
+of von Neumann algebras.
+19
+
+=== page 26 ===
+2.3. von Neumann algebras
+Theorem 2.26 (von Neumann bicommutant theorem) Let M be a unital ∗-
+subalgebra ofB(H), then the following conditions are equivalent:
+(a) M = M′′;
+(b) M is weakly closed, i.e. a von Neumann algebra;
+(c) M is strongly closed.
+Therefore, one other common deﬁnition for von Neumann algebras is that
+they are the algebras that equal their double commutants.
+Remark 2.27 We discuss some examples of von Neumann algebras.
+1. We note that the space of all bounded operators B(H) is a von Neumann
+algebra, as it is clearly weakly closed. Alternatively, we can think of B(H)
+as having a trivial representation onH, which is irreducible. Then Schur’s
+lemma 2.19 indicates thatB(H) =B(H)′′ and hence it is a von Neumann
+algebra.
+2. If M is a subset ofB(H) closed under involution, then its commutant M′ is a
+von Neumann algebra. Indeed, by Proposition 2.24.(c), we have (M′)′′ = M′
+which proves the claim.
+3. As claimed in the introductory text of this section, von Neumann algebras are
+a special subclass of C∗-algebras. They are even unital. To see this, given any
+von Neumann algebra we know that M = ( M′)′, then Proposition 2.24.(a)
+implies that M is a C∗-subalgebra. It must contain the unit since 1∈ M′ and
+thus 1∈ M′′ = M.
+4. An arbitrary intersection of von Neumann algebras is again a von Neumann
+algebra, see [38, Remark 6.6].
+5. Given any M⊂B (H) closed under involution, the smallest von Neumann
+algebra containing M is precisely the bicommutant M′′. Indeed, suppose
+that we have a von Neumann algebra A⊃ M, then A′⊂ M′ and so A =
+A′′⊃ M′′. Consequently, M′′ is the intersection of all von Neumann algebras
+containing M.
+The last remark above inspires the following deﬁnition.
+Deﬁnition 2.28 The von Neumann algebra generated by M⊂B (H) is the
+double commutant M′′.
+Next, we discuss the notion of isomorphism of von Neumann algebras.
+Deﬁnition 2.29 Two von Neumann algebras M1⊂B (H1) and M2⊂B (H2) for
+some Hilbert spacesH1,H2 are isomorphic (or quasi equivalent) if there exists a
+unital∗-isomorphism between Φ : M1→ M2.
+They are completely isomorphic if the isomorphism Φ is a homeomorphism for
+both weak and strong topolgies.
+20
+
+=== page 27 ===
+2.3. von Neumann algebras
+They are spatially isomorphic if there exists a surjective linear isometry V :H1→
+H2 such that the map ˆα↦→ V ˆαV−1 is surjective, for ˆα∈ M1. The map is also a
+complete isomorphism.
+We remark that any unital∗-isomorphisms between von Neumann algebras
+are norm-preserving [38, Proposition 6.9].
+2.3.2 Aﬃliated unbounded self-adjoint operators
+We now discuss how von Neumann algebras are adapted to unbounded
+self-adjoint operators, which are quite standard in quantum theory. For this,
+let us further extend our notion of commutant.
+Recall that, for a general self-adjoint operator ˆα, the (unbounded version
+of) Theorem A.16 indicates the existence of a spectral PVM P(ˆα) such that
+ˆα =∫
+σ(ˆα) λdP(ˆα)(λ).
+Deﬁnition 2.30 Let R be a set of (possibly unbounded) self-adjoint operators onH.
+(a) The commutant R′ of R is deﬁned as the commutant (as in the previous
+subsection) of the set of all spectral measures P (ˆα) of every ˆα∈ R.
+(b) The von Neumann algebra generated by R is R′′ = ( R′)′, where the inner′
+is as in (a) and the outer ′ is as in the previous subsection.
+(c) Let M be a von Neumann algebra, a self-adjoint operator ˆα : D(ˆα)→H ,
+where the domain D(A)⊂H , is said to be afﬁliated to M if its PVM P(ˆα)
+also lie in M.
+Note that each self-adjoint element ˆα in the set R is afﬁlated to the genreated
+von Neumann algebra R′′, since P(ˆα) commutes with all self-adjoint operators
+inB(H) that also commute with ˆα, it speciﬁcally commutes with any operator
+inB(H) that commutes with ˆα, as they admit decomposition into self-adjoint
+operators.
+Finally, we observe that for any (unbounded) self-adjoint operatorˆα : D(ˆα)→
+H can be written as
+ˆα|v⟩ = lim
+n→∞
+ˆαn|v⟩ = lim
+n→∞
+(∫
+[−n,n]∩σ(ˆα)
+λdP(ˆα)(λ)|v⟩
+)
+(2.26)
+by the spectral theorem. Note that the operators ˆαn are in the spaceB(H),
+and so ˆα is a strong limit of bounded operators with respect to its domain.
+With a bit more work, it can be shown that if ˆα is afﬁliated to a von Neumann
+algebra, then all ˆαn belongs to the algebra [38, Proposition 6.12].
+Proposition 2.31 A self-adjoint operator ˆα : D(ˆα)→H afﬁlated to a von Neu-
+mann algebra M is a strong limit (with respect to D(ˆα)) of a sequence of self-adjoint
+operator in M. Moreover, ˆα∈ M if D(ˆα) =H.
+21
+
+=== page 28 ===
+2.3. von Neumann algebras
+Proposition 2.31 enables us to study unbounded self-adjoint operators afﬁ-
+lated to a given von Neumann algebra more easily, as a limit of the elements
+of the von Neumann algebra itself.
+2.3.3 Factors and structures of von Neumann algebras
+One feature of von Neumann algebras is that they have many projectors
+(in fact, they are generated by them) [33, Appendix C.21]. The study of
+these projectors leads to the concept of factors which are the “irreducible”
+components in von Neumann algebras. Factors are the building blocks of the
+von Neumann-Murray decomposition theorem.
+Deﬁnition 2.32 A von Neumann algebra M is called a factor if it has a trivial
+center, that is, Z(M) = M∩ M′ = C.
+Von Neumann and Murry classiﬁed factors based on the properties of their
+minimal projectors: type I, type II, and type III. While type I factors are easier
+to describe, it would be hard to deﬁne the other two rigorously without a
+long setup beyond the scope of this thesis, as they are less relevant to the
+elementary quantum theory.
+• Type I factors: A von Neumann algebra is a Type I factor if it contains a
+minimal projection. These factors can be further divided into Type I n
+factors, where n is the dimension of the central projections, while Type
+I∞ is inﬁnite-dimensional.
+Examples of Type I factors include the algebra of all bounded operators
+on a Hilbert space,B(H). Additionally, a factor is of type I if and only
+if it is isomorphic to some B(H) [38, Chapter 6.1.4].
+• Type II factors: A von Neumann algebra is a Type II factor if it has
+no minimal projections but has projections equivalent to the identity.
+Type II factors are also divided into Type II 1 and Type II ∞. Type II 1
+factors have a unique, normalised, ﬁnite trace, while Type II ∞ factors
+have traces that are only semiﬁnite. Type II factors often arise in the
+context of inﬁnite tensor products of Hilbert spaces and crossed product
+constructions.
+• Type III factors: A von Neumann algebra is a Type III factor if it has no
+minimal projections and no projections equivalent to the identity. Type
+III factors can be further divided into subtypes based on their modular
+theory properties. Although very abstract, type III factors play a crucial
+role in extended quantum thermodynamical systems and in algebraic
+quantum ﬁeld theory [11, 25].
+The von Neumann-Murray decomposition theorem serves as a crucial tool
+for breaking down a general von Neumann algebra into a direct integral of
+22
+
+=== page 29 ===
+2.3. von Neumann algebras
+factors. This decomposition can include a combination of various types of
+factors, with their distribution determined by a measure on an index set Γ.
+This inﬂuential theorem ensures us to comprehend the fundamental structure
+of von Neumann algebras more efﬁciently [11, 30].
+2.3.4 Superselection rules
+The entire framework of von Neumann algebras (and C∗-algebras) is built on
+the concept of modeling quantum observables. However, in reality, not all
+self-adjoint operators can be considered as observables.
+A well-known example is the electrical charge observable, which commutes
+with all other observables. As a result, since all quantum systems possess
+electrical charges, any physically viable observable must be able to commute
+with the electrical charge observable. Self-adjoint operators that do not com-
+mute with electrical charges cannot be physical. This constraint on physically
+permissible observables (and therefore states) is known as a superselection
+rule.
+There are additional superselection rules in physics, though they vary greatly
+in nature, such as integer/semi-integer angular momenta and Bargmann’s
+superselection rule on mass in non-relativistic physics.
+An operator ˆα has a pure spectrum if every point in its spectra σ(ˆα) is solely a
+limit point of the eigenvectors, and the continuous spectrum has no internal
+points; see Appendix A.2.1.
+Deﬁnition 2.33 (Superselection rule) Given a von Neumann algebraM⊂B (H),
+we say that there are (abelian discrete) superselection rules if there is a ﬁnite set
+O ={Q1, . . . ,Qn} such that
+1. M = O′ ={Q1, . . . ,Qn}′,
+2. the superselection charges Q1, . . ., Qn are self-adjoint operators with com-
+muting PVMs and pure point spectra.
+For a more compact notation of the next result, denote the Cartesian product
+of the spectrum of Qk by σ(O) = σp(Q1)×···× σp(Qn) with the element
+⃗q = (q1, . . . ,qn).
+Proposition 2.34 Let M be a von Neumann algebra with superselection rules
+O ={Q1, . . . ,Qn}. Then the following holds.
+1.H admits a orthogonal decomposition into superselection (or coherent)
+sectorsH⃗q,
+H =
+⨁
+⃗q∈σ(O)
+H⃗q, (2.27)
+23
+
+=== page 30 ===
+2.4. Composite systems and independent subsystems
+where the superselection sectorsH⃗q are invariant and irreducible under the
+action of M.
+2. The algebra M admits a direct decomposition
+M =
+⨁
+⃗q∈σ(O)
+M⃗q (2.28)
+where M⃗q ={ˆα|H⃗q :H⃗q→H ⃗q| ˆα∈ M} =B(H).
+3. The representations of M⃗q onH⃗q with distinct ⃗q are not unitarily equivalent.
+Superselection rules lead to a direct sum structure, partitioning the von
+Neumann algebra into superselection sectors where physical pure states
+reside. Within each superselection sector, we encounter the simpler scenario
+where every self-adjoint operator is an observable. In this context, the
+superselection charges merely act as ﬁxed parameters.
+It is worth noting that the requirement of a pure spectrum is essential for
+achieving a direct sum decomposition. Allowing for a continuous spectrum
+with a nonempty interior would result in a direct integral decomposition,
+making the physical meaning ambiguous [38, Remark 6.33].
+Lastly, we highlight the signiﬁcance of superselection in quantum nonlocality.
+For instance, [72] examines the superselection rule of particle numbers in a
+bipartite system. They construct separable states that cannot be prepared
+locally, as the states supposedly prepared locally are invalidated by the
+superselection rule.
+2.4 Composite systems and independent subsystems
+Composite systems and independent subsystems are vital in quantum infor-
+mation. Therefore, we dedicate this section exclusively to this topic and draw
+from [8, 33, 38] for our discussion.
+In quantum theory, the standard approach to describe the composition of
+two systems represented byHA andHB involves the tensor product space
+HA⊗H B. However, in general,HA⊗H B does not naturally form a Hilbert
+space since it is not complete. Despite this, one can verify that the form
+deﬁned by⟨ϕ1⊗ ψ1|ϕ2⊗ ψ2⟩HA⊗HB =⟨ϕ1|ϕ2⟩A⟨ψ1|ψ2⟩B is an inner product
+onHA⊗H B. Consequently, the completion HA⊗HB with respect to this
+inner product becomes a Hilbert space. Moreover, this completion of Hilbert
+spaces is both canonical and unique [33, Appendix C.13].
+On the other hand, when working with tensor products of C∗-algebras,
+there is an “embarrassment of riches” [33, Appendix C.13], meaning there are
+numerous norms available to complete a tensor product of C∗-algebras. As a
+24
+
+=== page 31 ===
+2.4. Composite systems and independent subsystems
+result, the notions of system composition and independence become much
+more intricate.
+Conversely, when examining a global physical system, it is often valuable to
+understand its subsystems, which may be spatially or causally independent
+of one another. However, due to the more complex algebraic structures, the
+notion of independent subsystems becomes increasingly delicate. We will
+explore various notions of independence and their related results within the
+framework of von Neumann algebras.
+2.4.1 Sptial and maximal tensor products of C∗-algebras
+Deﬁnition 2.35 Let A and B be C∗-algebras, the algebraic tensor product A⊙ B
+is a∗-algebra with multiplication
+(α1⊗ β1)(α2⊗ β2) = α1α2⊗ β1β2 (2.29)
+and involution (α⊗ β)† = α†⊗ β†. The vector space structure is from the usual
+tensor product.
+If γ is a norm on A⊙ B, then the completion with respect to γ is denoted as A⊗γ B.
+Equivalently, algebraic tensor products can be deﬁned through a universal
+property, and a standard exercise shows the equivalence [33, Appendix C.13].
+Note that if πA and πB are representations of A and B onHA andHB,
+then one can deﬁne a representation πA⊗ πB of A⊙ B using the formula
+(πA⊗ πB)(α⊗ β) = πA(α)⊗ πB(β). Moreover, if both πA and πB are faithful,
+then πA⊗ πB is faithful [8, I.2.5.5].
+We now introduce two important norms.
+Deﬁnition 2.36 Let A and B be C∗-algebras and consider an arbitrary element
+∑n
+i=1 αi⊗ βi∈ A⊙ B.
+1. The spatial norm (or minimal norm) is deﬁned by
+‖‖‖‖‖
+n
+∑
+i=1
+αi⊗ βi
+‖‖‖‖‖
+min
+= sup
+‖‖‖‖‖(πA⊗ πB)(
+n
+∑
+i=1
+αi⊗ βi)
+‖‖‖‖‖
+B(HA⊗HB)
+, (2.30)
+where the supremum is taken over all representations πA : A→B (HA) of
+A and πB B→B (HB) of B. The completion with respect to this norm is
+spatial tensor product (or minimum tensor product), and is denoted by
+A⊗min B.
+2. The maximal norm is deﬁned by
+‖‖‖‖‖
+n
+∑
+i=1
+αi⊗ βi
+‖‖‖‖‖
+max
+= sup
+‖‖‖‖‖π(
+n
+∑
+i=1
+αi⊗ βi)
+‖‖‖‖‖
+B(H)
+, (2.31)
+25
+
+=== page 32 ===
+2.4. Composite systems and independent subsystems
+where the supremum is taken over every representation π : A→B (H). The
+completion with respect to this norm is maximal tensor product, denoted by
+A⊗max B.
+Clearly, a maximal tensor product space contains the respective spatial tensor product
+space, and the maximal norm is indeed larger than the spatial norm since the former
+supremum is a relaxation of the latter.
+The spatial tensor product gets its name from being generated through tensor
+product representations of Hilbert spaces, which can be interpreted as spatial
+separation. In elementary quantum theory, the minimal completion seems
+more physical, given its connection with tensor products of Hilbert spaces.
+The fact that the spatial norm is the smallest of all possible norms on A⊙ B
+is highly nontrivial, as discussed in [8, II.9.5].
+Conversely, the maximal tensor product’s maximality is almost inherent due
+to the inequality‖α⊗ β‖≤‖ α‖‖β‖ [33, Lemma C.96]. Moreover, the maximal
+tensor product corresponds to the commutative quantum model. In other
+words, instead of requiring two independent parties to be separated by a
+tensor product, we only demand commutativity between their measurements.
+(It is worth noting that the commutative quantum model plays a signiﬁcant
+role in Chapter 3 and Chapter 4.) This is due to the following universality
+result.
+Theorem 2.37 Let π be a nondegenerate representation of C∗-algebras A⊙ B on
+a Hilbert spaceH. Then there exist unique nondegenerate representations πA of A
+and πB of B onH, such that
+π(α⊗ β) = πA(α)πB(β) = πB(β)πA(α) (2.32)
+for all α∈ A and β∈ B.
+Remark 2.38 Due to its importance in the physical interpretation of different norms,
+we summarise the discussion that precedes Theorem 2.37 in the case when A and
+B are both unital. Then, for any norm γ, there are natural embeddings A ↪→
+A⊗ 1B⊂ A⊗γ B and B ↪→ 1A⊗ B⊂ A⊗γ B.
+Therefore, A⊗min B can be described as the universal unital C∗-algebra acting on
+HA⊗H B that is generated by unital copies of A and B, which act onHA andHB,
+respectively. And A⊗max B is generated by unital copies of A and B that commute
+with each other.
+We note that both spatial and maximal tensor products are associated [8,
+II.9.2.6]. But alsoB(H)⊗minB(H)⁄=B(H)⊗maxB(H) in general [29]. Only
+a very special (and important) class of C∗-algebras can have unique tensor
+product norms.
+26
+
+=== page 33 ===
+2.4. Composite systems and independent subsystems
+Deﬁnition 2.39 A C∗-algebra A is nuclear if for any C∗-algebra B, we have
+A⊗min B = A⊗max B. Consequently, the algebraic tensor product A⊙ B admits
+a unique norm since all norms γ coincide.
+Examples of nuclear C∗-algebra include any commutative C∗-algebras [33,
+Proposition C.100] and any ﬁnite-dimensional C∗-algebras [33, Proposi-
+tion C.101].
+2.4.2 States on tensor products of C∗-algebras
+We now introduce the notion of states on algebraic tensor products of unital
+algebras and results from [33] that provide connections to different tensor
+products.
+Deﬁnition 2.40 Let A and B be unital C∗-algebras. The state ω on A⊙ B is a
+positive linear functional (positivity in the usual sense for elements in A⊙ B) and
+ω(1A⊗ 1B) = 1.
+The state space is denoted byS(A⊙ B).
+The following result suggests that the maximal product is more natural in
+describing states on tensor product spaces.
+Proposition 2.41 Let A and B be unital C∗-algebras. Then each state ω on A⊙ B
+is continuous with respect to the maximal norm‖·‖max, and therefore can be extended
+to a state on the maximal tensor product A⊗max B. Hence, we have the identiﬁcation
+S(A⊙ B) =S(A⊗max B). (2.33)
+On the other hand, product states can be identiﬁed with the state of the
+spatial tensor products (therefore any norms γ).
+Proposition 2.42 Let ωA and ωB be states on A and B, respectively. Then the
+product state ωA⊗ ωB, deﬁned by
+ωA⊗ ωB(∑
+i
+αi⊗ βi) = ∑
+i
+ωA(αi)ωB(βi), (2.34)
+is continuous with respect to the spatial norm‖·‖min, and can therefore be extended
+to a state on A⊗min B. Consequently, we have the analogous result for any norm γ.
+2.4.3 Tensor products of von Neumann algebras
+We quickly mention the tensor products of von Neumann algebras. For von
+Neumann algebras M1, M2 on Hilbert spacesHA,HB, the algebraic tensor
+product MA⊙ MB acts naturally onHA⊗H B. Then as noted by [8, III.1.5.4]
+the spatial tensor product analogy is given by the weak closure
+MA⊗MB = ( MA⊙ MB)′′. (2.35)
+27
+
+=== page 34 ===
+2.4. Composite systems and independent subsystems
+The commutant theorem for tensor products[8, III.4.5.8], which is a very profound
+result, shows that
+(MA⊗MB)′ = M′
+A⊙ M′
+B. (2.36)
+There are also analogous notions of the maximal tensor product (the binormal
+tensor product) and of the nuclearity (semi-discreteness); see [8, IV .2].
+2.4.4 Independent subsystems
+In elementary quantum theory, two independent subsystems are modeled by
+the tensor product of two distinct Hilbert spaces, which, along with Born’s
+rule, implies statistical independence. However, this is not generally true in
+the algebraic framework, where one begins with the entire system and then
+deﬁnes the subsystem within it. In the following discussion, we work with
+von Neumann algebras, focusing on the case of two subsystems for simplicity
+(the general case can be derived through inductive argument).
+Deﬁnition 2.43 (Independent subsystems) Suppose that there is a physical sys-
+tem with two subsystems.
+1. There exists a von Neumann algebra M onH describe the total system and
+the subsystems are described by von Neumann algebras MA, MB⊂ M.
+2. The subsystems are compatible with each other in the sense that [MA, MB] =
+0.
+3. There are different notions of how these subsystems are independent of each
+other:
+(a) (W∗-independence) For any two independent states on the different
+subsystems, there exists a total state encapsulates them. Mathematically,
+any normal states ρ on MA and σ on MB admit a common extension
+τ on (MA∪ MB)′′ such that Tr(τ ˆα) = Tr(ρˆα) and Tr
+(
+τ ˆβ
+)
+= Tr
+(
+σ ˆβ
+)
+for any ˆα∈ MA and ˆβ∈ MB.
+(b) (Statistical independence) In additionally to W∗-independence, τ fur-
+ther satisﬁes the factorisation condition Tr(τ ˆαβ) = Tr(ρˆα) Tr
+(
+σ ˆβ
+)4. In
+this case, τ is the product state of ρ and σ.
+In the above deﬁnition, we abuse the notation of normal states and their
+associated density operators. The notion of W∗-independence gives the
+following result.
+Proposition 2.44 Under the hypothesis of W∗ independent subsystems (i.e., 1, 2,
+and 3.(a) of Deﬁnition 2.43), there is a natural unital∗-algebra isomorphism between
+4A necessary condition for statistical independence is the algebraic independence, that is, if
+ˆα ˆβ = 0 then either ˆα = 0 or ˆβ = 0 [38, Chapter 6.4.1].
+28
+
+=== page 35 ===
+2.5. Algebraic formulation of quantum theory
+the∗-algebra generated by ﬁnite linear combinations of ﬁnite products of elements
+in MA and MB to the algebraic tensor product MA⊙ MB, given by ϕ the unique
+linear extension of ˆα ˆβ↦→ ˆα⊗ ˆβ.
+Moreover, if MA, MB, and M are factors, the result can be strengthened: the
+weakly continuous extension Φ of ϕ is an isomorphism between (MA∪ MB)′′ and
+MA⊗MB.
+We note that W∗-independence does not force a tensor factorisation of the
+underlying Hilbert spaceH, and hence is not statistically independent. This
+is different from the usual notion of independence in elementary quantum
+theory. But there is a special case discovered by von Neumann and Murray,
+which is fundamental to the discussion of Tsirelson’s problem [58, 69].
+Proposition 2.45 Suppose that MA⊂B (H) is a type I factor and MB = M′
+A.
+Then there exist Hilbert spacesHA,HB and an isomorphism u :H→H A⊗H B
+such that uMAu−1 = B(HA)⊗C1B and uMBu−1 = C1A⊗B(HB). Conse-
+quently MA and MB are statistically independent of each other.
+If one replaces the type I condition in Proposition 2.45, then MA and MB fail
+to be statistically independent but only W∗-independent [38, Chapter 6.4.2].
+However, type III factors naturally appear in more general frameworks such
+as quantum ﬁeld theory, and hence we need a generalisation to model
+statistical independence. One generalisation is as follows.
+Deﬁnition 2.46 Two commuting von Neumann algebras MA and MB satisfy split
+property if there exists a type I factor R such that MA⊂ R and MB⊂ R′.
+Proposition 2.47 If two commuting von Neumann algebras MA and MB satisfy
+the split property, then there exist Hilbert spaces Hi and faithful representations
+πi : Mi→B (Hi), where i = A, B, such that (MA∪ MB)′′ is spatially isomorphic
+to πA(MA)⊗πB(MB). The isomorphism is the linear extension of the map ˆα ˆβ↦→
+πA(ˆα)⊗ πB( ˆβ) where ˆα∈ MA and ˆβ∈ MB.
+The statistical independence is then implied by Proposition 2.47. Moreover,
+one can improve Proposition 2.47 to an “if and only if statement” by imposing
+normality on πi [38, Proposition 6.50].
+2.5 Algebraic formulation of quantum theory
+We summarise the chapter by providing algebraic quantum postulates, mod-
+ulo the symmetry and evolutionary aspect, in correspondence to the usual
+postulates A–C in Schr ¨odinger picuture, in the beginning of the chapter.
+A’ A physical system S is described by the self-adjoint elements of some
+(generally abstract) unital C∗-algebra AS (Deﬁnition 2.2), which are the
+observables, and a algebraic state ωS on AS (Deﬁnition 2.9).
+29
+
+=== page 36 ===
+2.5. Algebraic formulation of quantum theory
+Recall that the notion of algebraic states is strictly more general than
+density operators; see Remark 2.12. In addition, the GNS construction
+Theorem 2.20 bridges the usual postulate by the unique (up to unitary
+transformation) cyclic representation (HS, πS,
+⏐⏐ϕS
+1
+⟩
+).
+B’ For any observable O∈ AS, ω(O) can be understood as the expectation
+value of O. Similarly, for any PVM P : X→ AS (as in Deﬁnition A.14),
+where X is the measure space and each Borel set E⊂ X is an event E,
+ω(PE) can be understood as the probability of observing the event E.
+See [38, Chapter 8.2.3] which justiﬁes this probabilistic interpretation
+by addressing the potential problem.
+C’ The composition of the systems is handled by some sort of tensor products.
+Which sort depends on the underlying algebras of observable (e.g. C∗-
+algebras or von Neumann algebras) and the types of state (e.g., normal
+or algebraic) under what kind of independence (e.g. W∗ or statistical);
+see Section 2.4.
+Due to the existence of many possible norms for tensor products of
+C∗-algebras, there are many possibilities in deﬁning the composed
+systems depending on the speciﬁc problem that one wishes to address.
+The complication of the Postulate C’ has direct consequence to Chapter 4,
+when we try to model independent quantum sources in network scenario.
+30
+
+=== page 37 ===
+Chapter 3
+Basics of quantum nonlocal
+correlations
+In this chapter, we provide an overview of quantum correlations and present
+the relevant methods used in their study. We begin by introducing the
+concept of nonlocal correlations within the framework of two-player nonlocal
+games, drawing on the work presented in [12]. Subsequently, we discuss
+the Navascu´es–Pironio–Ac´ın (NPA) hierarchy [42], a powerful technique to
+analyse quantum correlations and characterise the set of feasible quantum
+correlations. This background information lays the foundation for a deeper
+understanding of the signiﬁcance and implications of quantum correlations
+for the content in Chapter 4.
+3.1 Nonlocal correlations
+In this section, we introduce the concept of nonlocal correlations by consider-
+ing a two-player nonlocal game, as described in [12].
+A typical two-player nonlocal game (see Figure 3.1) involves spatially sep-
+arated players, Alice and Bob, who receive inputs x and y from a referee.
+These inputs are chosen independently and uniformly at random from sets
+of possible inputs X and Y, respectively. Based on their inputs, Alice and
+Bob must produce outputs a and b from their respective output sets A and
+B. Prior to the game, Alice and Bob can establish a strategy, represented
+by the conditional probability ⃗P = p(ab|xy), but they are not allowed to
+communicate during the game. Their goal is to satisfy a speciﬁc condition
+determined by a predicate V(ab|xy), which takes the value 1 if they win and
+0 otherwise. This predicate depends on their outputs a and b, as well as their
+inputs x and y.
+Nonlocal games serve as a powerful conceptual tool for studying quantum
+nonlocality, providing an intuitive understanding of nonlocal correlations.
+31
+
+=== page 38 ===
+3.1. Nonlocal correlations
+Referee
+Alice Bob
+x y
+a b
+Figure 3.1: The diagram of a typical two-player nonlocal game, where Alice and Bob are spatially
+separated and receive inputs x and y from a referee, chosen independently and uniformly at
+random from a set of possible inputs, X and Y respectively. Based on their inputs, they must
+produce outputs a and b, respectively, from their respective output sets A and B. Before the game,
+Alice and Bob are allowed to determine a strategy, represented by the conditional probability
+⃗P ={p(ab|xy)}, but they cannot communicate during the game. The players win the game if
+their outputs satisfy a certain condition determined by a predicate V(ab|xy), which takes the
+value 1 if they win and 0 otherwise.
+Consequently, we will explore the operational and physical interpretations
+of non-signaling correlations, local correlations, and quantum correlations
+within the framework of two-player nonlocal games. This framework allows
+for straightforward generalisation to more complex scenarios.
+Non-signaling correlations
+A correlation ⃗P = p(ab|xy) is said to be non-signaling if the marginal
+probabilities of Alice’s and Bob’s outputs are independent of the other
+player’s input. Formally, the non-signaling condition is given by:
+∑
+b∈B
+p(ab|xy) = p(a|x) ∀a∈ A, x∈ X, y∈ Y, (3.1)
+∑
+a∈A
+p(ab|xy) = p(b|y) ∀b∈ B, x∈ X, y∈ Y. (3.2)
+The set of all non-signaling correlations is denoted by NS . This con-
+dition ensures that information cannot be transmitted instantaneously
+between the two players, in accordance with the non-signaling principle
+of relativity.
+Local correlations
+A local correlation is one that can be modelled using a shared (hidden)
+random variable λ∈ Λ with a probability distribution q. The local
+model can be described as follows:
+p(ab|xy) =
+∫
+Λ
+Pλ(λ)p(a|x, λ)p(b|y, λ), (3.3)
+where p(a|x, λ) and p(b|y, λ) are conditional probability distributions
+for Alice and Bob, respectively. The set of all local correlations is
+32
+
+=== page 39 ===
+3.1. Nonlocal correlations
+Alice
+HA,{ ˆAa|x}
+x
+a
+Bob
+HB,{ ˆBb|y}
+y
+b
+τ
+Figure 3.2: This ﬁgure illustrates the standard Bell scenario, where two parties, Alice and Bob,
+share a quantum state τ. Alice receives input x and produces output a, with a PVM ˆAa|x acting
+on her Hilbert space HA. Similarly, Bob receives input y and produces output b, with a PVM
+ˆBb|y acting on his Hilbert space HB.
+denoted byL. Local correlations have an interpretation as classical cor-
+relations that can be explained by a local hidden variable. Operationally,
+Alice will choose her answer a based on input x and randomness λ.
+We note that the local assumption does not violate the no-communication
+rule of the game, since the additional Λ only provides information to
+Alice and Bob, but does not allow one to send information to the
+other. Also, any local correlation is non-signaling yet there exists non-
+signaling correlation that is not local (e.g. PR box), hence the strict
+inclusionL ⊊NS .
+Quantum correlations
+It is possible that Alice and Bob have access to some quantum devices
+and design their strategy around them. In this case, they share a global
+state τ∈B (HA⊗H B), and for each input x and y, they perform PVMs
+{ ˆAa|x}⊂B (HA) and{ ˆBb|y}⊂B (HB) on the state τ. Their outputs a
+and b depend on the measurement outcomes. This is known as the Bell
+scenario; see Figure 3.2.
+Then by quantum theory, the (tensor) quantum correlation is given by:
+p(ab|xy) = Tr
+(
+τ( ˆAa|x⊗ ˆBb|y)
+)
+, (3.4)
+The set of all quantum correlations is denoted by Q.
+Alternatively, one may relax the requirement that Alice and Bob’s
+Hilbert space are spatially separated. That is, the share state τ is instead
+on a global Hilbert space H, and the PVMs { ˆAa|x},{ ˆBb|y} act on the
+sameH as well. Instead of being separated by a tensor product, we
+impose only the commutation relation [ ˆAa|x, ˆBb|y] = 0. The commutator
+quantum correlation is given by:
+p(ab|xy) = Tr
+(
+τ( ˆAa|x ˆBb|y)
+)
+, (3.5)
+The set of all commutator quantum correlations is denoted by Q′.
+33
+
+=== page 40 ===
+3.1. Nonlocal correlations
+3.1.1 Tsirelson’s problem
+Clearly,Q ⊂ Q′ since [ ˆAa|x⊗ 1B, 1A⊗ ˆBb|y] = 0. The converse, that is,
+whether the inclusion is strict, is known as the Tsirelson’s problem [58, 69],
+turns out to be a highly nontrivial problem that is equivalent to the Kirchberg
+conjecture and the Connes’ embedding conjecture [21]. Although it is proven
+by Tsirelson himself [58, 69] that if the Hilbert spaces HA,HB are ﬁnte-
+dimensional then the two sets coincide, the general case is only recently
+disproved by [28] (indirectly, and a more intuitive counterexample is still
+absent).
+The discussion of Tsirelson’s problem is very interesting and highly relevant
+to the theory of operator algebras through its equivalence to the celebrated
+Connes’ embedding conjecture. Unfortunately, we have to skip the discussion
+due to the scope of this thesis.
+We nonetheless present the ﬁnite-dimensional Tsirelson’s theorem.
+Theorem 3.1 (Tsirelson) Given a Hilbert spaceH, let{ ˆAa|x},{ ˆBb|y} be two ﬁnite
+mutually commuting sets of positive operators in B(H), each generating a ﬁnite-
+dimensional von Neumann algebraA andB. Let ⃗Q ={q(ab|xy)} be a probability
+distribution associated with{ ˆAa|x},{ ˆBb|y} and a global state τ.
+Then there exist Hilbert spaces HA,HB, such that { ˆAa|x} can be mapped into
+B(HA) and{ ˆBb|y} can be mapped into B(HB) via injective ∗-homomorphisms.
+That is, extending these homomorphisms to the tensor product space HA⊗H B, we
+have
+{ ˆAa|x}↦→{ ˆAa|x⊗ 1B}
+{ ˆBb|y}↦→{ 1A⊗ ˆBb|y}.
+Moreover, there exists a state τ′ onHA⊗H B recovering the probability distribution
+⃗Q with the operators{ ˆAa|x⊗ 1B} and{1A⊗ ˆBb|y}, namely,
+q(ab|xy) = Trτ
+(
+ˆAa|x ˆBb|y
+)
+= Trτ′
+(
+ˆAa|x⊗ ˆBb|y
+)
+The proof technique is known as the ”doubling the centre”, we refer to [58]
+and [57, Appendix H] for a proof. (Moreover, [57, Appendix H] asks for
+a generalisation to bilocal scenario which is later shown in [35], see Sec-
+tion 4.2.3.)
+3.1.2 Geometry of the correlation sets
+From the deﬁnitions above, it follows that L⊆Q⊂Q ′⊆NS 1. It can be
+shown that both the local correlationsL and non-signaling correlationsNS
+1One may also impose the ﬁnite-dimensionality in the deﬁnition of Q, but it turns out
+both deﬁnitions have the same closure; see [58, 63].
+34
+
+=== page 41 ===
+3.1. Nonlocal correlations
+NS
+L
+Q
+Q′
+Bell inequality
+Figure 3.3: A sketch demonstrating the relations between the local L (dark gray), quantumQ
+(light blue), commutator quantum Q′ (dark blue), and non-signaling NS (light gray) sets of
+correlations. Both L abdNS are polytopes, while Q andQ′ are only convex in general. The
+setsQ andQ′ do not coincide necessarily, but they do agree in ﬁnite dimension due to Tsirelson’s
+Theorem 3.1. The hyperplane separating L andQ is a Bell inequality.
+are in fact polytopes [12], i.e. can be deﬁned as the convex combination
+of a ﬁnite number of extremal points. On the other hand, the quantum
+correlationsQ andQ′ are convex, but not polytopes.
+The hyperplane separation theorem implies that, if a correlation ⃗Q /∈K ,
+whereK = L,Q,Q′,NS , then there exists a hyperplane separating the
+correlation ⃗Q and the setK. Namely, there exists an equality of the form
+∑
+a,b,x,y
+sab|xy p(ab|xy)≤ Sk (3.6)
+satisﬁed by all ⃗P∈K but not ⃗Q. Inequalities of this type are the well-known
+Bell inequalities, which indicate if a given correlation belongs to a speciﬁc set
+of correlations, and there can be many Bell inequalities depending on the
+speciﬁc problem. See Figure 3.3 for a pictorial illustration.
+3.1.3 The CHSH game
+Perhaps one of the most famous two-player nonlocal games is the Clauser-
+Horne-Shimony-Holt (CHSH) game [14], which we introduce to highlight
+the concept of nonlocal correlations.
+In the CHSH game, we have A = B = X = Y ={0, 1} and the winning
+condition is given by V(a, b|x, y) = 1 if a⊕ b = xy, where⊕ denotes the
+bitwise exclusive OR operation (XOR), and 0 otherwise.
+The CHSH inequality is an example of a Bell inequality that is derived from
+the CHSH game. It can be expressed in terms of the correlation function
+⟨ax, by⟩ = ∑a,b(−1)a⊕bp(ab|xy). The famous CHSH inequality states that for
+35
+
+=== page 42 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+any local hidden variable model (i.e. any local correlation), the following
+inequality holds:
+|S| =|⟨a0b0⟩ +⟨a0b1⟩ +⟨a1b0⟩−⟨ a1b1⟩|≤ 2. (3.7)
+It can be shown that the winning probability of a given strategy ⃗P is related
+to the value S, that is,
+pwin = 1
+2 (1 + S
+4 ). (3.8)
+It follows from the CHSH inequality that Alice and Bob can win at best 75%
+of the time using only the classical strategies (i.e., local correlations). The
+strategy that saturates the upper bound is the deterministic strategy.
+For quantum correlations, it is known that the CHSH inequality can be
+violated up to a certain limit. The Tsirelson bound states that for any quantum
+strategy, the following inequality holds:
+|S| =|⟨a0b0⟩ +⟨a0b1⟩ +⟨a1b0⟩−⟨ a1b1⟩|≤ 2
+√
+2. (3.9)
+(We refer to [66] for a proof using the self-testing technique.) Therefore,
+the Tsirelson bound implies that with the access to quantum devices, Alice
+and Bob can do better than with only classical apparatus, with a winning
+probability of at most≈ 86%!
+The Tsirelson bound can be saturated using a maximally entangled state. For
+instance, consider the Bell state
+|Ψ⟩ = 1√
+2
+(|01⟩−|10⟩). (3.10)
+Then, Alice measures the Pauli matrix Z when x = 0 and the Pauli matrix X
+when x = 1. For Bob, he measures (Z + X)/
+√
+2 if y = 0 and (Z− X)/
+√
+2 if
+y = 1. One can check that this is indeed the optimal quantum strategy.
+Finally, we consider a strategy called PR box , that is, ⃗P = p(ab|xy) =
+1/2δa⊕b,xy. By construction, Alice and Bob win with certainty using this
+strategy. One can easily check that the PR box is non-signaling and |S| = 4,
+violating the quantum bound. Hence, such correlation cannot be of quantum
+origin.
+3.2 Navascu´ es-Pironio-Ac ´ ın (NPA) hierarchy
+Understanding sets of nonlocal correlations is crucial to investigate the
+nonlocal nature of quantum theory, as well as to certify the feasibility of a
+given probability distribution ⃗P with respect to a speciﬁed causal structure.
+36
+
+=== page 43 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+Q1Q2Q3···Q Q′
+Figure 3.4: A pictorial representation of the NPA hierarchy as an outer approximation of the
+(tensor) quantum set Q, represented by the dashed ellipse. Each ellipse Qn represents the
+n-th level of relaxation/approximation provided by the NPA hierarchy. As the level increases,
+the approximation becomes more accurate and eventually converges towards the commutator
+quantum setQ′, which is a relaxation/outer approximation of the quantum set Q. Moreover by
+Tsirelson’s Theorem 3.1, Q andQ′ agrees in ﬁnite dimension, whence the hierarchy converges to
+the quantum set.
+Identifying Bell inequalities is essential for characterising sets of correlations
+in quantum systems. For local correlations, this task is relatively easier since
+the set of correlations forms a polytope, which has a well-deﬁned structure
+amenable to analysis. However, when it comes to quantum correlations, the
+situation becomes much more challenging, as the set of correlations is only
+convex yet no longer a polytope.
+Inner approximations of quantum correlations can be obtained relatively eas-
+ily by sampling over all Hilbert spaces and operators, which provides a lower
+bound for the Bell inequalities. Nevertheless, for outer approximations or
+upper bounds, the task is more intricate. One powerful technique for tackling
+this issue is the Navascu´es-Pironio-Ac´ın (NPA) hierarchy [42], which provides
+a systematic approach to approximate the set of quantum correlations from
+the outside. Furthermore, the NPA hierarchy can be employed to determine
+whether a given probability distribution ⃗P is compatible with a speciﬁed
+causal structure. It is shown by [42] that a correlation ⃗Q is a commutator
+quantum correlation (inQ′) if and only if it passes all NPA hierarchy tests.
+See Figure 3.4 for a sketch of the NPA hierarchy as an outer approximation of
+the feasible quantum set. We also refer to [13] for a comprehensive discussion
+from the viewpoint of theory of noncommuting polynomials optimisation.
+3.2.1 Moment matrix and necessity of the hierarchy
+Now, let us recall the standard bipartite Bell scenario as in Figure 3.2 and
+suppose that we have a quantum correlation ⃗P∈Q . Therefore, we have
+PVMs{ ˆAa|x} and{ ˆBb|y} and a global quantum density operator τ such that
+p(ab|xy) = Tr
+(
+τ ˆAa|x ˆBb|y
+)
+. (Note that here and below we abuse the notation
+by omitting⊗1B and 1A⊗).
+37
+
+=== page 44 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+We now ﬁx the notation. For each ˆAa|x, ˆBb|y, we associate with a formal letter
+Aa|x, Bb|y and impose the algebraic relations satisﬁed by the PVMs to the
+formal letters:
+A2
+a|x = Aa|x, B2
+b|y = Bb|y (3.11)
+[Aa|x, Bb|y] = 0 (3.12)
+A†
+a|x = Aa|x, B†
+b|y = Bb|y. (3.13)
+The operator † is the involution on the letters that represents the complex
+conjugation of the measurement operators. A product of multiple letters (i.e.,
+a monomial in letters) is a word, usually denoted by bolded Greek letter ω, ν.
+A word consisting only of Aa|x (resp. Bb|y) is denoted by α (resp. β). And we
+write 1 for the empty word. Hence, any word admits a unique decomposition
+ω = αβ where no letter is squared. Therefore, the equality of two words is
+checked in their minimal form, and the length of a word, denoted by |ω|, is
+the number of letters of ω in its minimal form. For any formal word ω, we
+use the “hat” notation ˆω to represent the corresponding product of PVMs.
+Then for each n≥ 2, one can construct the moment matrix Γn of order n:
+
+
+1 Aa|x Bb|y Aa|x Aa′|x′ Aa|xBb|y ···
+1 1 Tr
+(
+τ ˆAa|x ˆBb|y
+)
+(Aa|x)† Tr
+(
+τ ˆAa|x ˆBb|y
+)
+(Bb|y)† Tr
+(
+τ ˆBb|y
+)
+(Aa|x Aa′|x′ )† Tr
+(
+τ ˆAa′|x′ ˆAa|x ˆBb|y
+)
+(Aa|xBb|y)†
+...
+
+
+,
+(3.14)
+where each entry is indexed by words in Aa|x, Bb|y with length≤ n, and the
+tensor products between ˆAa|x, ˆBb|y are omitted for simplicity. In other words,
+we construct the moment matrix via the formula
+Γn
+ω,ν = Tr
+(
+τ ˆω† ˆν
+)
+. (3.15)
+Observe that by construction, for all n≥ 2, the moment matrix satisﬁes the
+following properties:
+(i) (normalised) Γn
+1,1 = 1;
+(ii) (positive semi-deﬁnite) Γn≽ 0;
+(iii) (Hankel condition) Γn
+ω′,ν′ = Γn
+ω,ν whenever ω′†ν′ = ω†ν.
+(iv) (Compatibility) Γn
+1,Aa|xBb|y
+= p(ab|xy).
+38
+
+=== page 45 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+We say that the correlation ⃗P passes the n-th order NP A hierarchy testif there
+exists a moment matrix Γn that satisﬁes the properties (i)–(iv).
+Note that we have established the necessity of the NPA hierarchy, that is, if a
+given correlation ⃗Q is an element ofQ, then ⃗Q passes all levels of the NPA
+hierarchy tests (i.e. for all n there exists a moment matrix Γn). Equivalently, if
+at some n the correlation ⃗Q does not admit a moment matrix Γn, then ⃗Q /∈Q .
+For each n, certifying the existence of a moment matrix Γn can be casted as
+a semi-deﬁnite programming (SDP), which can be solved by computers in
+polynomial time; see Section 3.2.4 for a brief introduction. Thus, we have
+found a practical method to check whether a given correlation ⃗Q is a (tensor
+or commutator) quantum correlation.
+The exact same argument works for ⃗Q ∈ Q′ the commutator quantum
+correlations.
+3.2.2 Suﬃciency of the hierarchy
+While the necessity is clear, is the NPA hierarchy sufﬁcient? That is, if a
+correlation ⃗Q passes the NPA hierarchy test for all n, does it mean that ⃗Q is a
+quantum correlation? The answer is deﬁnitive, but rather than being a tensor
+quantum correlation, ⃗Q is a commutator quantum correlation inQ′.
+Theorem 3.2 (NPA hierarchy is sufﬁcient) Let ⃗Q be a bipartite probability dis-
+tribution. If ⃗Q passes the NP A hierarchy test at all levels (that is, it admits a
+compatible moment matrix Γn for each n≥ 2), then ⃗Q∈Q′.
+With the observation we made above, it follows that ⃗Q∈Q′ if and only if ⃗Q
+passes all NPA hierarchy tests.
+Proof We only provide a short sketch here; see [42] for the original proof. In
+fact, the proof is nothing more than a generalised GNS construction.
+First, we wish to construct an inﬁnite matrix Γ that acts as the algebraic state
+in GNS construction. It can be shown that |Γn
+ω,ν|≤ 1 and realise that each Γn
+can be seen as an element in l∞(N) (see Example A.5). Then the sequence
+(Γn) is contained in the unit ball l∞(N) of with respect to the sup norm.
+We may then apply the Banach–Alaoglu Theorem A.24 to ﬁnd a convergent
+subsequence of (Γnk ) with the weak-∗ limit Γ, which is what we want. The
+weak-∗ convergence in fact implies the pointwise convergence
+lim
+k
+Γnk
+ω,ν = Γω,ν. (3.16)
+Next, there are two ways to obtain the GNS construction. The original
+proof [42] applies the sequential Cholesky decomposition to realise the
+39
+
+=== page 46 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+moment matrix as a Gram matrix
+Γω,ν =⟨ϕω|ϕν⟩, (3.17)
+with respect to an inﬁnite family of vectors {|ϕω⟩} on all words. Then the
+Hilbert space can be deﬁned as the closure of the span of {|ϕω⟩}.
+Alternatively, but also equivalently, one may note that the linear functional L
+evaluating the set of all words, deﬁned as L(ω†ν) = Γω,ν, is analogous to an
+algebraic state. Except that an algebraic state is deﬁned over a C∗-algebra,
+while the set of all words is at best a ∗-algebra. Nevertheless, one can use the
+notion of archemedean modules to check that the set NL ={ω| L(ω†ω) = 0}
+is a left-ideal; see [13, Theorem 1.27]. After this technical difﬁculty, the rest
+of the arguments in the proof of the GNS reconstruction Theorem 2.20 follow
+through, and we obtain a cyclic representation (H, π,|ϕ1⟩), where we denote
+by π(ω) = ˆω the operator acting by left multiplication on the equivalent
+classes of all words.
+The representation π respects all the algebraic relations of ω, particularly the
+commutation relation between α and β. To see this, we check that
+⟨ϕω|[ ˆAa|x, ˆBb|y]|ϕν⟩ =⟨ϕω|π([Aa|x, Bb|y])|ϕν⟩ = 0. (3.18)
+Then, since the set{|ϕω⟩} is dense inH, the commutator
+[ ˆAa|x, ˆBb|y] = 0 (3.19)
+in the weak-∗ topology.
+In particular, we have a density operator τ =|ϕ1⟩⟨ϕ1| such that
+ˆω|ϕν⟩ = π(ω)|ϕν⟩ =|ϕων⟩ (3.20)
+Tr
+(
+τ ˆω† ˆν
+)
+=⟨ϕ1| ˆω† ˆν|ϕ⟩ =⟨ϕω|ϕν⟩ = Γω,ν (3.21)
+which implies q(ab|xy) = Γ1,Aa|xBb|y = Tr
+(
+τ ˆAa|x ˆBb|y
+)
+. Observe that we have
+constructed a Hilbert spaceH, a density operator τ, and mutually commuting
+PVMs{ ˆAa|x},{Bb|y} that can recover the given probability correlation ⃗Q by
+Born’s rule. That is, ⃗Q∈Q′. □
+Finally, denote the Qn to be the set of all correlations ⃗Q passes all NPA
+hierarchy at level 2, 3, . . ., n Then Theorem 3.2 implies the inclusionsQ2⊂
+Q3 ⊂ . . .Q′ and∪nQn =Q′, which is exactly the pictorial sketch as in
+Figure 3.4.
+40
+
+=== page 47 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+3.2.3 Stopping criteria
+Although Theorem 3.2 provides an excellent theoretical result, computers
+cannot handle inﬁnite levels of calculation. In practice, we want to determine
+the stopping criteria for our NPA hierarchy, meaning the conditions under
+which the hierarchy is sufﬁcient at a ﬁnite level n. Interestingly, a stopping
+criterion at a ﬁnite level corresponds to a ﬁnite-dimensional quantum system,
+where the concepts of tensor quantum correlations and commutator quantum
+correlations align according to Tsirelson’s theorem 3.1.
+We present a simpliﬁed (compared to the original paper) rank-loop deﬁnition
+presented in [57] that turns out to be our stopping criteria.
+Deﬁnition 3.3 Given N ≥ 2, the moment matrix ΓN satisﬁes the rank-loop
+condition if rank(ΓN−1) = rank(ΓN−1).
+Theorem 3.4 A bipartite probability distribution ⃗Q admits a ﬁnite-dimensional
+commutator quantum realisation if and only if there exists an N≥ 2 such that ΓN
+admits a rank-loop.
+It follows that if ⃗Q admits a moment matrix ΓN with a rank-loop for some N, ⃗Q is
+also a tensor quantum correlation.
+Proof We only provide a sketch, and refer to [42, Theorem 10] or [57, Theo-
+rem 3.3] for a more detailed proof.
+The “⇒” direction is easy. With a quantum representation of dimension d we
+construct the moment matrix Γn for any n the usual way (Equation 3.15. Then
+rank(Γn) is an increasing sequence ( Γn−1 is a submatrix Γn) and is upper
+bounded by d, which implies the rank-loop.
+For the converse, suppose that we have ΓN with rank-loop. Then we analo-
+gously use the Cholesky decomposition to write ΓN
+ω,ν =⟨ϕω|ϕν⟩ for a ﬁnite
+family of vectors{|ϕω⟩}|ω|≤N. Then we deﬁne a ﬁnite-dimensional Hilbert
+space
+H = Span{| ϕω⟩}|ω|≤N = Span{| ϕω⟩}|ω|≤N−1 , (3.22)
+where the second equality holds due to the rank-loop condition.
+The only difference from having only a ﬁnite matrix ΓN appears when
+one attempts to show [ ˆAa|x, ˆBb|y] = 0. This is because the key equation
+⟨ϕω|[ ˆAa|x, ˆBb|y]|ϕν⟩ = 0 does not make sense for ω and ν of length N, and
+in general, one cannot conclude [ ˆAa|x, ˆBb|y] = 0 without checking the inner
+product over all Span{| ϕω⟩}|ω|≤N. But thanks to the rank loop, not being
+able to check long words is no longer problematic as it is enough to check
+words of length≤ N− 1, for which the equation is well-deﬁned.
+41
+
+=== page 48 ===
+3.2. Navascu ´es-Pironio-Ac´ın (NPA) hierarchy
+It follows that the cyclic representation (H, π,|ϕ1⟩) is the desired ﬁnite-
+dimensional (commutator) quantum representation. Then Tsirelson’s Theo-
+rem 3.1 shows the second claim. □
+3.2.4 Semi-deﬁnite Programs
+As mentioned earlier, the search for compatible moment matrices Γn associ-
+ated with a given probability distribution can be cast as a semi-deﬁnite program
+(SDP). We provide a concise introduction to the basics of SDP based on [42,
+Appendix A]. We refer to [70, 75] for more complete information.
+SDP deals with the optimisation of a linear function subject to linear matrix
+inequality constraints. A general SDP problem can be written in the following
+primal form:
+maximise⟨C, X⟩
+subject to⟨Ai, X⟩ = bi, i = 1, . . . ,m,
+X≽ 0,
+(3.23)
+where C and Ai are Hermitian matrices, X is the optimisation variable,
+and⟨A, B⟩ = Tr(AB) denotes the trace inner product. The notation X≽ 0
+indicates that X is a positive semi-deﬁnite matrix.
+The dual form of the SDP problem can be written as:
+minimise bTy
+subject to C−
+m
+∑
+i=1
+yiAi≽ 0, (3.24)
+where y is the vector of dual variables.
+The duality condition in SDP establishes a relationship between primal and
+dual problems. In many cases, the optimal values of the primal and dual
+problems are equal, indicating that the duality condition holds. For the
+NPA hierarchy, this condition is satisﬁed, allowing us to treat the NPA
+hierarchy as an SDP problem. The duality condition enables the use of
+efﬁcient algorithms to ﬁnd the moment matrices associated with the NPA
+hierarchy. Numerical packages such as SeDuMi [64] have been developed to
+solve these optimisation problems effectively.
+42
+
+=== page 49 ===
+Chapter 4
+Algebraic approaches to quantum
+bilocal scenarios
+In this chapter, we turn our attention to the application of the mathematical
+formalism introduced in Chapter 2 to study quantum nonlocality, with a
+particular focus on the quantum bilocal scenario. With the rising interest in
+network scenarios, where distant parties have access to multiple independent
+sources, characterising the quantum correlations feasible for a given network
+has become an important area of research for investigating quantum nonlo-
+cality. Unlike the standard Bell scenario (see Figure 4.1), where every party
+has access to a common quantum source, network scenarios, where distant
+parties have access to multiple independent sources, have garnered increasing
+interest in recent years. The bilocal scenario illustrated in Figure 4.2, in which
+Alice
+HA,{ ˆAa|x}
+x
+a
+Bob
+HB,{ ˆBb|y}
+y b
+Charlie
+HC,{ ˆCc|z}
+z
+cτ
+Figure 4.1: This ﬁgure illustrates the standard tripartite Bell scenario, where three parties, Alice,
+Bob, and Charlie, share a quantum state τ. Alice receives input x and produces output a, with a
+PVM ˆAa|x acting on her Hilbert space HA. Similarly, Bob receives input y and produces output
+b, with a PVM ˆBb|y acting on his Hilbert space HB. Charlie receives input z and produces output
+c, with a PVM ˆCc|z acting on his Hilbert space HC.
+43
+
+=== page 50 ===
+Alice
+HA,{ ˆAa|x}
+x
+a
+Bob
+HBL⊗H BR,{ ˆBb|y}
+y b
+Charlie
+HC,{ ˆCc|z}
+z
+c
+ρ σ
+Figure 4.2: This ﬁgure illustrates the quantum bilocal scenario, where three parties, Alice, Bob,
+and Charlie, are involved in two independent quantum sources, ρ shared between Alice and Bob,
+and σ shared between Bob and Charlie. Denote the global state τ = ρ⊗ σ. Alice receives input
+x and produces output a, with a PVM ˆAa|x acting on her Hilbert space HA. Bob has a tensor
+product Hilbert space HBL⊗H BR, with a PVM ˆBb|y acting on it. Charlie receives input z and
+produces output c, with a PVM ˆCc|z acting on his Hilbert space HC. The shared quantum states
+ρ and σ allow for correlations between the outcomes of Alice and Bob, and Bob and Charlie,
+respectively. Alice and Charlie’s measurements are uncorrelated, which is represented by the
+factorisation condition Tr
+(
+τ( ˆAa|x⊗ ˆCc|z)
+)
+= Tr
+(
+ρ ˆAa|x
+)
+Tr
+(
+σ ˆCc|z
+)
+= Tr
+(
+τ ˆAa|x
+)
+Tr
+(
+τ ˆCc|z
+)
+.
+three parties Alice, Bob, and Charlie are arranged in a line and Alice and
+Bob share one source while Bob and Charlie share another, represents the
+simplest network scenario. This setup also has practical applications, such as
+entanglement swapping. Thus, understanding the bilocal scenario is crucial
+for studying more general network scenarios.
+In standard quantum theory, the bilocal quantum correlations in Figure 4.2
+can be formalised as follows.
+Deﬁnition 4.1 (Tensor bilocal quantum correlation) The tripartite probability
+distribution ⃗P is said to be a tensor bilocal quantum correlation if there are
+(a) a composite Hilbert space HA⊗H BL⊗H BR⊗H C,
+(b) two pure density operators ρ onHA⊗H BL and σ onHBR⊗H C,
+(c) PVMs { ˆAa|x} act onHA,{ ˆBb|y} act onHBL⊗H BR, and{ ˆCc|z} act onHC,
+such that p (abc|xyz) = Tr
+(
+(ρ⊗ σ)( ˆAa|x⊗ ˆBb|y⊗ ˆCc|z)
+)
+.
+To characterise the set of tensor bilocal quantum correlations in Deﬁnition 4.1,
+several methods have been proposed to address this issue, such as the
+scalar extension [52] (which is applicable to the bilocal scenario but lacks a
+proof of convergence), the inﬂation technique [74] (a more general method),
+and the SDP hierarchy of state polynomials in [32] that seems to approach
+44
+
+=== page 51 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+the optimisation problem from a primal perspective. In this chapter, we
+introduce [57] and [35], which provide methods to characterise the quantum
+correlations in the bilocal scenario. The algebraic perspective introduced in
+Chapter 2 proves to be a powerful tool for gaining a deeper understanding
+of these scenarios and elucidating the rich structure of quantum nonlocality
+in network settings.
+For simplicity, in this chapter we omit the tensor product signs when the
+context is clear, e.g. ˆAa|x ˆBb|y ˆCc|z instead of ˆAa|x⊗ ˆBb|y⊗ ˆCc|z with the natural
+identiﬁcation.
+4.1 Bilocal quantum correlations with generalised NPA
+hierarchies
+In this section we introduce selected results from [57].
+4.1.1 Generalising NPA hierarchy for tripartite case
+In order to characterise the set in Deﬁnition 4.1, one may consider the
+NPA hierarchy-type argument in Section 3.2. We extend the notation in
+Section 3.2.1 to the tripartite scenario: in addition to monomials α, β in
+Aa|x, Bb|y, we consider one more set of formal letters Cc|z associated with
+Charlie’s PVM ˆCc|z and denote monomials in Cc|z by γ. Analogously, we
+impose C2
+c|z = Cc|z, C†
+c|z = Cc|z, and commutation relations [α, β] = [ α, γ] =
+[β, γ] = 0. Then any word ω admits a unique decomposition ω = αβγ.
+Analogously, for each n≥ 3, any tensor tripartite quantum correlation ⃗P
+gives rise to a n-th order moment matrix Γn
+
+
+1 Aa|x Bb|y Cc|z Aa|x Aa′|x′ Aa|xBb|y ···
+1 1 Tr
+(
+τ ˆAa|x ˆBb|y
+)
+(Aa|x)† Tr
+(
+τ ˆAa|x ˆBb|y
+)
+(Bb|y)†
+(Cc|z)† Tr
+(
+τ ˆAa|x ˆBb|y ˆCc|z
+)
+(Aa|x Aa′|x′ )† Tr
+(
+τ ˆAa′|x′ ˆAa|x ˆBb|y
+)
+(Aa|xBb|y)†
+···
+
+
+,
+(4.1)
+which is labelled by formal monomials in {Aa|x, Bb|y, Cc|z} of length at most
+n.
+However, this direct generalisation of the moment matrix is too relaxed,
+in the sense that the resulting hierarchy converges only to the commutator
+45
+
+=== page 52 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+tripartite Bell scenario in Figure 4.1 rather than some relaxation of the bilocal
+quantum scenario in Figure 4.2. In fact, this claim holds for any multipartite
+Bell scenario. To prove the claim, one note that the proof of Theorem 3.2 can
+be straightforwardly generalised to the case of having more sets of formal
+letters.
+4.1.2 Key concepts in factorisation bilocal NPA hierarchy
+To obtain a tighter approximation to the set of tensor quantum bilocal corre-
+lations, the authors of [57] consider the factorisation constraints
+Tr(τ ˆα ˆγ) = Tr(τ ˆα) Tr(τ ˆγ), (4.2)
+which corresponds to the fact that Alice and Charlie’s measurements are
+uncorrelated in a bilocal quantum network, and impose them to the standard
+NPA moment matrices.
+Deﬁnition 4.2 (Factorisation bilocal NPA hierarchy) Fix n∈ N, n≥ 3, let
+Γn be a square matrix indexed by all words ω in formal letters Aa|x, Bb|y, Cc|z of
+length≤ n. We say that Γn is a factorisation bilocal moment matrix of order n if
+(i) (normalised) Γn
+1,1 = 1;
+(ii) (positive semi-deﬁnite) Γn≽ 0;
+(iii) (Hankel condition) it satisﬁes all the linear constraints
+Γn
+ω,ν = Γn
+ω′,ν′ (4.3)
+whenever ω†ν = ω′†ν′;
+(iv) (factorisation) it satisﬁes the additional factorisation constraints
+Γn
+α,γ = Γn
+α,1· Γn
+1,γ, (4.4)
+where α is any monomial in A a|x and γ is any monomial in C c|z.
+Furthermore, given a tripartite probability distribution ⃗Q, the factorisation moment
+matrix is compatible to ⃗Q if
+(v) (compatibility) Γn
+1,Aa|xBb|yCc|z
+= q(abc|xyz).
+For each n≥ 3, we say that ⃗Q passes the n-th order factorisation bilocal NPA
+hierarchy if for there exists a factorisation bilocal moment matrix Γn compatible to
+⃗Q, that is, satisfying properties (i)–(v).
+It is clear that the factorisation bilocal NPA hierarchy provides an outer
+approximation to Deﬁnition 4.1 that is more restrictive than the standard
+46
+
+=== page 53 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+NPA hierarchy. However, the question remains as to what set does this
+hierarchy converge to.
+To this end, the authors of [57] propose the following relaxation of tensor
+quantum bilocal correlations by considering only the algebraic relations
+among all mathematical objectives in Deﬁnition 4.1.
+Deﬁnition 4.3 (Renou–Xu model) A tripartite probability distribution ⃗Q is said
+to be a Renou–Xu commutator bilocal quantum correlation if there are
+(a) a Hilbert space H,
+(b) a pure density operator τ onH,
+(c) two commuting projectors ρ and σ (possibly inﬁnite trace) onH,
+(d) PVMs { ˆAa|x},{ ˆBb|y}, and{ ˆCc|z} onH,
+such that
+(i) τ = ρ· σ = σ· ρ,
+(ii) [ ˆAa|x, ˆBb|y] = [ ˆBb|y, ˆCc|z] = [ ˆCc|z, ˆAa|x] = 0,
+(iii) [ ˆAa|x, σ] = [ ρ, ˆCc|z] = 0,
+with q(abc|xyz) = Trτ
+(
+ˆAa|x ˆBb|y ˆCc|z
+)
+for all ˆAa|x, ˆBb|y, ˆCc|z.
+4.1.3 Convergence of factoristaion bilocal NPA hierarchy
+Factorisation bilocal hierarchy indeed converges to the set of Renou–Xu
+commutator bilocal quantum correlations.
+Theorem 4.4 (Factorisation bilocal NPA hierarchy is convergent) Let ⃗Q be
+a tripartite probability distribution. Then ⃗Q passes the factorisation bilocal NP A
+hierarchy for all orders iff ⃗Q is a Renou–Xu commutator bilocal quantum correlation.
+Proof The proof is based on [57, Appendix B.1].
+(⇐) We ﬁrst show the easy direction. Given any n≥ 3 and assume that we
+have a Renou–Xu commutator bilocal quantum correlation ⃗Q, and suppose
+that the pure density operator τ = ρ· σ =|ϕ1⟩⟨ϕ1|. Then, with the usual
+notation, we may deﬁne the moment matrix Γn by
+Γn
+ω,ν = Tr
+(
+τ ˆω† ˆν
+)
+. (4.5)
+It remains to check that Γ satisﬁes properties (i)–(v) of Deﬁnition 4.2. Indeed,
+(i), (iii), and (v) clearly hold by construction. Positivity (ii) holds due to
+47
+
+=== page 54 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+the fact that Γn is a Gram matrix. We check factorisation constraints (iv) by
+computing
+Tr
+(
+τ ˆα†τ ˆγ
+)
+= Tr
+(
+ρσ ˆα†ρσ ˆγ
+)
+= Tr
+(
+ρˆα†σρσ ˆγ
+)
+= Tr
+(
+ˆα†σρσ ˆγρ
+)
+= Tr
+(
+ˆα†σρσρ ˆγ
+)
+= Tr
+(
+ˆα†τ2 ˆγ
+)
+= Tr
+(
+τ ˆα† ˆγ
+)
+,
+(4.6)
+where commutativity and trace cyclicity are considered. It follows that
+Γn
+α,γ = Tr(τ ˆα ˆγ) = Tr
+(
+τ ˆα†τ ˆγ
+)
+=⟨ϕ1|ˆα†|ϕ1⟩⟨ϕ1| ˆγ|ϕ1⟩ = Γn
+α,1Γn
+1,γ,
+(4.7)
+as desired.
+(⇒) For the sufﬁciency of the hierarchy, we ﬁrst construct a GNS represen-
+tation (H, π,|ϕ1⟩ =
+⏐⏐v00⟩
+). This is completely analogous to the proof of
+Theorem 3.2 for the convergence of the standard NPA hierarchy, so we omit
+the details. In short, the representation π, with π(ω) = ˆω, respects all the
+commutation relations of α, β, γ. We also obtain the pure density operator
+τ =|ϕ1⟩⟨ϕ1| =|v00⟩⟨v00| such that
+ˆω|ϕν⟩ = π(ω)|ϕν⟩ =|ϕων⟩ (4.8)
+Tr
+(
+τ ˆω† ˆν
+)
+=⟨ϕ1| ˆω† ˆν|ϕ⟩ =⟨ϕω|ϕν⟩ = Γω,ν. (4.9)
+To ﬁnish the proof, it remains to construct the commuting projectors ρ, σ
+in Deﬁnition 4.3. Deﬁne HABL = Span{P({ˆα})}P as the subspace gener-
+ated by polynomials in ˆα, which is nonempty due to
+⏐⏐v00⟩
+=|ϕ1⟩∈ HABL.
+Then, from
+⏐⏐v00⟩
+, apply Gram–Schmidt procedure to obtain an orthogonal
+basis{Pi({ˆα})
+⏐⏐v00⟩
+=
+⏐⏐vi0⟩
+, i∈ I} for a countable set I. Analogously, we
+deﬁne HBRC = Span{Q({ ˆγ})}Q with the orthogonal basis{Qj({ ˆγ})
+⏐⏐v00⟩
+=⏐⏐v0j⟩
+, j∈ J} for a countable set J.
+We claim that⟨vi0|v0j⟩ = 0 for all i∈ I\{ 0} and j∈ J\{ 0}. Indeed, assume
+that Pi({ˆα}) = ∑ˆα pi
+ˆα ˆα and Qj({ ˆγ}) = ∑ ˆγ qj
+ˆγ ˆγ, for some real coefﬁcients pi
+ˆα
+and qj
+ˆγ. We calculate, by orthogonality and linearity,
+⟨vi0|v0j⟩ =⟨v00|Pi({ˆα})†· Qj({ ˆγ})|v00⟩
+= ∑
+ˆα, ˆγ
+(pi
+ˆα)†qj
+ˆγ·⟨ v00|ˆα† ˆγ|v00⟩
+48
+
+=== page 55 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+= ∑
+ˆα, ˆγ
+(pi
+ˆα)†qj
+ˆγ· Γ∞
+α,γ
+= ∑
+ˆα, ˆγ
+(pi
+ˆα)†qj
+ˆγ· Γ∞
+α,1· Γ∞
+1,γ
+= ∑
+ˆα, ˆγ
+(pi
+ˆα)†qj
+ˆγ·⟨ v00|ˆα†|v00⟩⟨v00| ˆγ|v00⟩
+=⟨v00|Pi({ˆα})†|v00⟩⟨v00|Qj({ ˆγ})|v00⟩
+=⟨vi0|v00⟩⟨v00|v0j⟩ = 0.
+Now we deﬁne ρ, σ to be projectors on HBRC and HABL, respectively. Con-
+cretely, they are written as
+ρ = ∑
+j
+|v0j⟩⟨v0j| (4.10)
+σ = ∑
+i
+|vi0⟩⟨vi0|. (4.11)
+Then ρ· σ = ∑ij|v0j⟩⟨v0j|·| vi0⟩⟨vi0| =|v00⟩⟨v00| = τ = σ· ρ by the claim.
+Finally, we show [ρ, ˆγ]. Since the support of [ρ, ˆγ] is contained in HBRC and
+for all j, j′∈ J, we have
+⟨v0j|[ ˆγ, ρ]|v0j′
+⟩ = ∑
+k
+⟨v0j| ˆγ|v0k⟩⟨v0k|v0j′
+⟩− ∑
+k
+⟨v0j|v0k⟩⟨v0k| ˆγ|v0j′
+⟩
+=⟨v0j| ˆγ|v0j′
+⟩−⟨ v0j| ˆγ|v0j′
+⟩ = 0,
+(4.12)
+it follows that [ρ, ˆγ] = 0. Note that a similar argument shows that [ˆα, σ] = 0,
+which completes the proof. □
+A stopping criterion of the factorisation bilocal NPA hierarchy is also shown.
+Theorem 4.5 (Stopping criteria) Let ⃗Q be a tripartite probability distribution.
+Then ⃗Q admits a compatible factorisation bilocal moment matrix Γn with rank-loop
+iff ⃗Q admits a ﬁnite-dimensional Renou–Xu commutator bilocal quantum represen-
+tation, where the rank-loop condition is a direct generalisation of Deﬁnition 3.3.
+Proof This is completely analogous to the stopping criterion of the stan-
+dard NPA hierarchy in Theorem 3.4, hence we skip the proof; see [57, Ap-
+pendix B.2] for details. □
+4.1.4 Remarks on factorisation bilocal NPA hierarchy
+We now discuss some open questions from [57].
+Tsirelson’s problem in bilocal scenario
+We observe that the set of tensor bilocal quantum correlations in Deﬁni-
+tion 4.1 is contained within the set of Renou–Xu commutator bilocal
+49
+
+=== page 56 ===
+4.1. Bilocal quantum correlations with generalised NPA hierarchies
+quantum correlations. However, the converse containment, as in the
+Bell scenario, has been proven to be false [28]. The authors of [57]
+leave open the question of whether a bilocal version of Tsirelson’s theo-
+rem 3.1 exists, that is, if these two sets coincide under the condition of
+ﬁnite-dimensionality. This is later proven to be true by [35], as we will
+see in Section 4.2.3.
+Theorem 4.4 offers an appealing theoretical result that outlines a hierar-
+chy of increasingly tight outer approximations to tensor bilocal quan-
+tum correlations. Speciﬁcally, if the stopping criteria in Theorem 4.5 are
+met, then by bilocal Tsirelson’s Theorem 4.12, the factorisation bilocal
+quantum scenario converges to the set of (ﬁnite-dimensional) tensor
+bilocal quantum correlations. However, this hierarchy’s drawback is
+that it incorporates the nonlinear constraints in Equation 4.4, making it
+unsolvable by SDP .
+Scalar extension hierarchy
+In an effort to ﬁnd a linear hierarchy equivalent to the factorisation
+bilocal NPA hierarchy, [57] formalised the concept of scalar extension,
+initially proposed in [52], using scalar extension polynomials . Scalar
+extension involves introducing a new set of scalar operators, denoted by
+ˆκα for each ˆα, which commute with all other operators and are expected
+to be scalar operators Tr(τ ˆα)1H. The factorisation constraint can then be
+linearised as the equation Tr(τ ˆα ˆγ) = Tr(τ ˆκα ˆγ) = Tr(τ Tr(τ ˆα)1H ˆγ) =
+Tr(τ ˆα) Tr(τ ˆγ).
+Using the corresponding commuting scalar letters κα, [57, Appendix C]
+introduces a linear hierarchy called scalar extension bilocal hierarchy with
+these new linearised factorisation constraints. However, the commuta-
+tivity of κα does not guarantee that their GNS reconstructed operators
+ˆκα will be scalar multiples of the identity; see [57, Remark C.2]. Since
+factorisation constraints do not generally hold, the scalar extension
+bilocal hierarchy does not coincide with the factorisation bilocal NPA
+hierarchy.
+Nonetheless, a group of mathematicians later demonstrated Positivstel-
+lens¨atze of state polynomials[32], which are a generalisation of scalar
+extension polynomials. The Positivstellens ¨atze lead to a convergent
+SDP hierarchy that appears to imply the equivalence of the scalar ex-
+tension NPA hierarchy with the factorisation NPA hierarchy, possibly
+with some extra conditions 1.
+1Understand the implication of[32] in the context of [57] is still an ongoing work for the
+author of the thesis.
+50
+
+=== page 57 ===
+4.2. Algebraic insights into quantum bilocal network
+4.2 Algebraic insights into quantum bilocal network
+In this section, we explore an alternative perspective in modelling the quan-
+tum bilocal scenario, referencing the content of [35] and building on the
+ideas presented in [57]. By adopting an operator algebraic approach and
+taking advantage of the powerful tools introduced in Chapter 2, we aim to
+answer some open questions posed in [57], such as the bilocal Tsirelson’s
+problem. This change in perspective highlights the effectiveness of the al-
+gebraic approach in quantum information theory, and it justiﬁes the effort
+we have invested in developing the mathematical formalism in Chapter 2.
+In the following, we delve into the details of this algebraic modelling of
+the quantum bilocal scenario and discuss the insights it provides into the
+underlying structure of quantum nonlocality in network settings.
+4.2.1 Models for quantum bilocal scenario
+We introduce several models for the quantum bilocal scenario in [35]. For
+easier reference, we ﬁrst recall the tensor quantum bilocal correlations from
+Deﬁnition 4.1 and the Renou–Xu model 4.3.
+Deﬁnition 4.6 (Tensor bilocal model) The tripartite probability distribution ⃗P
+is said to be a tensor bilocal quantum correlation if there are
+(a) a composite Hilbert space HA⊗H BL⊗H BR⊗H C,
+(b) two pure density operators ρ onHA⊗H and σ onHBR⊗H C,
+(c) PVMs { ˆAa|x} overHA,{ ˆBb|y} overHBL⊗H BR, and{ ˆCc|z} overHC,
+such that p (abc|xyz) = Tr
+(
+(ρ⊗ σ)( ˆAa|x ˆBb|y ˆCc|z)
+)
+.
+Deﬁnition 4.7 (Renou–Xu model) A tripartite probability distribution ⃗Q is said
+to be a Renou–Xu commutator bilocal quantum correlation if there are
+(a) a Hilbert space H,
+(b) a pure density operator τ onH,
+(c) two commuting projectors ρ and σ (possibly inﬁnite trace) onH,
+(d) PVMs { ˆAa|x},{ ˆBb|y}, and{ ˆCc|z} onH,
+such that
+(i) τ = ρ· σ = σ· ρ,
+(ii) [ ˆAa|x, ˆBb|y] = [ ˆBb|y, ˆCc|z] = [ ˆCc|z, ˆAa|x] = 0,
+(iii) [ ˆAa|x, σ] = [ ρ, ˆCc|z] = 0,
+with q(abc|xyz) = Trτ
+(
+ˆAa|x ˆBb|y ˆCc|z
+)
+for all ˆAa|x, ˆBb|y, ˆCc|z.
+51
+
+=== page 58 ===
+4.2. Algebraic insights into quantum bilocal network
+We note that the above two deﬁnitions are formulated with concrete Hilbert
+spaces and density operators in mind, that is, they both assume Schr¨odinger’s
+picture and stick to postulates A–C in Chapter 2. Now we instead take
+Heisenberg’s picture and use A’–C’ to introduce another bilocal model 2
+in [35].
+Deﬁnition 4.8 (Algebraic commutator bilocal model) The tripartite probabil-
+ity distribution ⃗Q is said to be an algebraic commutator bilocal quantum corre-
+lation if there are
+(a) a background C∗-algebra D,
+(b) C∗-algebras A, B, C⊂ D that are multually commuting,
+(c) the PVMs { ˆAa|x}⊂ A,{ ˆBb|y}⊂ B,{ ˆCc|z}⊂ C,
+(d) an algebraic state τ on D satisfying factorisation constraints
+τ(ˆα ˆγ) = τ(ˆα)τ( ˆγ), (4.13)
+for any α∈ A, γ∈ C,
+such that q(abc|xyz) = τ( ˆAa|x ˆBb|y ˆCc|z).
+Note that the global C∗-algebras D can be an abstract algebra in general.
+Finally, we introduce a mixed model that bridges the algebraic formulation
+with the usual tensor formulation. Albeit contrasting to the tensor bilocal
+quantum model, the mixed model does not require spatial separation between
+Alice and Bob, Bob and Charlie, respectively.
+Deﬁnition 4.9 (Mixed bilocal model) The tripartite probability distribution ⃗Q
+is said to be a mixed bilocal quantum correlation if there are
+(a) Hilbert spaces HABL,HBRC,
+(b) C∗-algebras A, BL ⊂ B(HABL ), BR, C ⊂ B(HBRC) that are mutually
+commuting,
+(c) PVMs { ˆAa|x}⊂ A,{ ˆBb|y}⊂ BL⊗BR,{ ˆCc|z}⊂ C,
+(d) density operators ρ onHABL and σ onHBRC,
+such that p (abc|xyz) = Tr
+(
+(ρ⊗ σ)( ˆAa|x⊗ ˆBb|y⊗ ˆCc|z)
+)
+.
+2In this thesis, we omit [35, Deﬁnition 5], referred to as the “commuting observables
+model” in the original paper. Our focus is solely on the “algebraic commutator bilocal model”,
+which the original paper terms the “reduced model” in [35, Corollary 6]. This notational
+difference should be taken into account when comparing the two sources.
+52
+
+=== page 59 ===
+4.2. Algebraic insights into quantum bilocal network
+4.2.2 Equivalence of bilocal models
+One of the key results in [35] is the equivalence of the alternative models
+introduced in the previous section.
+Theorem 4.10 (Equivalence of bilocal models) The Renou–Xu model in Deﬁ-
+nition 4.7, the algebraic commutator bilocal model in Deﬁnition 4.8, and the mixed
+bilocal model in Deﬁnition 4.9 are equivalent to each other.
+We dedicate the remainder of this section to the proof of Theorem 4.10, which
+is a consequence of the following result.
+Theorem 4.11 Let A, B, C be mutually commuting C∗-subalgebras of some global
+C∗-algebra D and let τ be an algebraic state on D that factorises, i.e.
+τ(ˆα ˆγ) = τ(ˆα)τ( ˆγ) (4.14)
+for any ˆα∈ A, ˆγ∈ C.
+Relative to the state τ, consider its GNS representations (HABL, πA,
+⏐⏐ϕA
+1
+⟩
+) of A and
+(HBRC, πC,
+⏐⏐ϕC
+1
+⟩
+) of C. Deﬁne BL as the commuter of πA(A) inHABL and BR as
+the commuter of πC(C) inHBRC.
+Then there exists a completely positive unital map Λ : B→ BL⊗BR such that
+τ(ˆα ˆβ ˆγ) = Tr
+(
+(|ϕA
+1⟩⟨ϕA
+1|⊗| ϕC
+1⟩⟨ϕC
+1|)πA(ˆα)Λ( ˆβ)πC( ˆγ)
+)
+. (4.15)
+We remark that the choice of notation HABL andHBRC in Theorem 4.11 is
+deliberate, since they in fact coincide with the subspaces HABL andHBRC
+constructed in the proof of Theorem 4.4. This observation motivates the
+following proof in [35].
+Proof (of Theorem 4.4) Considering the GNS representation (HD, πD,
+⏐⏐ϕD
+1
+⟩
+)
+of D relative to τ, we prove the theorem in three steps.
+Step 1. We construct an isometric embedding V :HABL⊗H BRC→H D such
+that
+V
+⏐⏐⏐ϕA
+1
+⟩
+⊗
+⏐⏐⏐ϕC
+1
+⟩
+=
+⏐⏐⏐ϕD
+1
+⟩
+(4.16)
+V(πA(ˆα)⊗ πC( ˆγ))V† = πD(ˆα ˆγ). (4.17)
+Indeed, with the factorisation constraint of τ, we calculate
+⟨
+ϕA
+1
+⏐⏐⏐⊗
+⟨
+ϕC
+1
+⏐⏐⏐ πA(ˆα)⊗ πC( ˆγ)
+⏐⏐⏐ϕA
+1
+⟩
+⊗
+⏐⏐⏐ϕC
+1
+⟩
+= τ(ˆα)τ( ˆγ) = τ(ˆα ˆγ) =⟨ϕD
+1|πD(ˆα ˆγ)|ϕD
+1⟩,
+(4.18)
+which implies
+⏐⏐ϕD
+1
+⟩
+and
+⏐⏐ϕA
+1
+⟩
+⊗
+⏐⏐ϕA
+1
+⟩
+induce the same cyclic representa-
+tions of AC. Then the existence of V is due to the uniqueness statement
+in Theorem 2.20.
+53
+
+=== page 60 ===
+4.2. Algebraic insights into quantum bilocal network
+We note that
+V†V = 1HABL⊗HBRC, VV † = P∈B (HD), (4.19)
+where P is a projector onto πD(AC)
+⏐⏐ϕD
+1
+⟩
+⊂H D.
+Step 2. We show that
+V†πD(B)V⊂ BL⊗BR. (4.20)
+To this end, we use Step 1 to compute, for any ˆα∈ A, ˆβ∈ B, ˆγ∈ C,
+[V†πD( ˆβ)V, πA(ˆα)⊗ πC( ˆγ)]
+= [V†πD( ˆβ)V, V†VπA(ˆα)⊗ πC( ˆγ)V†V]
+= V†[πD( ˆβ), VπA(ˆα)⊗ πC( ˆγ)V†]
+= V†[πD( ˆβ), πD(ˆα ˆγ)]V = 0,
+(4.21)
+which implies that V†πD(B)V ⊂ (πA(A)⊙ πC(C))′. Recall Deﬁni-
+tion 2.35 that⊙ is the algebraic tensor product.
+Then, by Proposition 2.24, Bicommutant Theorem 2.26, and the commu-
+tant theorem for tensor products in Section 2.4.3, we check that
+(πA(A)⊙ πC(C))′ = ( πA(A)⊗πC(C))′
+= ( πA(A)′′⊗πC(C)′′)′
+= πA(A)′′′⊗πC(C)′′′
+= πA(A)′⊗πC(C)′ = BL⊗BR.
+(4.22)
+Thus, Equation 4.20 follows.
+Step 3. We deﬁne the map Λ : B→ BL⊗BR using the formula
+Λ( ˆβ) = V†πD( ˆβ)V, (4.23)
+which due to Step 2 has the correct range. Then, a straightforward
+calculation using the results in Step 1 shows that
+⟨
+ϕA
+1
+⏐⏐⏐
+⟨
+ϕC
+1
+⏐⏐⏐ πA(ˆα)Λ( ˆβ)πC( ˆγ)
+⏐⏐⏐ϕA
+1
+⟩⏐⏐⏐ϕC
+1
+⟩
+=
+⟨
+ϕA
+1
+⏐⏐⏐
+⟨
+ϕC
+1
+⏐⏐⏐ (V†V)πA(ˆα)(V†πD( ˆβ)V)πC( ˆγ)(V†V)
+⏐⏐⏐ϕA
+1
+⟩⏐⏐⏐ϕC
+1
+⟩
+=
+⟨
+ϕD
+1
+⏐⏐⏐ (VπA(ˆα)V†)πD( ˆβ)(VπC( ˆγ)V†)
+⏐⏐⏐ϕD
+1
+⟩
+=
+⟨
+ϕD
+1
+⏐⏐⏐ πD(ˆα)πD( ˆβ)πD( ˆγ)
+⏐⏐⏐ϕD
+1
+⟩
+= τ(ˆα ˆβ ˆγ),
+(4.24)
+which completes the proof. □
+54
+
+=== page 61 ===
+4.2. Algebraic insights into quantum bilocal network
+Now we prove the main theorem.
+Proof (of Theorem 4.10)
+Step 1 Observe that the equivalence of the Renou–Xu model (Deﬁnition 4.7)
+and the algebraic commutator bilocal model (Deﬁnition 4.8) is a direct
+consequence of Theorem 4.4 of convergence of factorisation bilocal NPA
+hierarchy.
+Indeed, given a tripartite probability distribution ⃗Q that admits alge-
+braic commutator bilocal model, we use the algebraic state τ to deﬁne,
+for any n≥ 3, the factorisation bilocal moment matrix by
+Γn
+ω,ν = τ( ˆω† ˆν). (4.25)
+Properties (i)–(iv) of Deﬁnition 4.2 hold since τ is an algebraic state, see
+Deﬁnition 2.9.
+For the converse, suppose that ⃗Q is a Renou–Xu commutator bilocal
+quantum correlation. By Theorem 4.4 and its proof, there exists a
+“limit factorisation bilocal moment matrix” Γ compatible with ⃗Q. Then
+using Equation 4.25 again we deﬁne an operator τ : ABC→ C. The
+deﬁning properties of factorisation bilocal moment matrices lead to the
+conclusion that τ is indeed the desired algebraic state that factorises.
+Step 2 The most difﬁcult part of this proof is the fact that the algebraic com-
+mutator bilocal model implies the mixed bilocal model 3. But we have
+done all the hard work in the proof of Theorem 4.11.
+Indeed, given an algebraic commutator bilocal correlation ⃗Q, we apply-
+ing Theorem 4.11. In the notation of Theorem 4.11, we have foundHABL,
+HBRC, BL, BR for the mixed model. Deﬁne πA(A), πC(C) as Amix, Cmix,
+respectively. In addition, we identify the PVMs in the mixed model
+with πA( ˆAa|x), Λ( ˆBb|y), πC( ˆCc|z). The independent density operators
+are ρ =|ϕA
+1⟩⟨ϕA
+1| and σ =|ϕC
+1⟩⟨ϕC
+1|.
+Step 3 Finally, the fact that the mixed model implies the algebraic commutator
+bilocal model is trivial. It also implies the Renou–Xu model by identify-
+ing the projector ρ with|ϕA
+1⟩⟨ϕA
+1|⊗ 1BRC and σ with 1ABL⊗| ϕC
+1⟩⟨ϕC
+1|,
+note the analogy with the proof of Theorem 4.4. □
+3In fact, [57, Appendix H] encountered this problem, but the authors were unable to ﬁnd
+a way to obtain a spatial separation (tensor product) through purely algebraic relations. It
+was not until the shift towards an algebraic perspective in [35] that such a separation became
+clear.
+55
+
+=== page 62 ===
+4.3. Quantum inﬂation technique in bilocal scenario
+4.2.3 Bilocal Tsirelson’s Problem
+Finally, we come back to the bilocal Tsirelson’s problem that is asked initially
+in [57, Appendix H], for which we brieﬂy discuss in Section 4.1.4, and answer
+afﬁrmatively with the following theorem.
+Theorem 4.12 (Bilocal Tsirelson) Let ⃗Q be a tripartite probability distribution
+and suppose that the C∗-algebras A, C generated by the PVMs of Alice and Charlie
+are ﬁnite-dimensional (note that no assumption is made on Bob’s PVM). Then the
+following statements are equivalent:
+(i) ⃗Q is compatible with the tensor bilocal quantum model;
+(ii) ⃗Q is compatible with the Renou–Xu bilocal quantum model;
+(iii) ⃗Q is compatible with the algebraic bilocal quantum model;
+(iv) ⃗Q is compatible with the mixed bilocal quantum model;
+(v) ⃗Q admits a factorisation bilocal moment matrix with rank-loop.
+Proof Note that (ii)–(iv) are equivalent due to Theorem 4.10, and (ii) is
+equivalent to (v) according to Theorem 4.5. Clearly (i) implies (iv). Thus, we
+only need to show that (iv) implies (i).
+Assume that ⃗Q admits a mixed bilocal quantum model with ﬁnite-dimensional
+A, C. As in the proof of Theorem 4.11, we conclude thatHABL,HBRC are ﬁnite-
+dimensional. Then apply Tsirelson’s Theorem 3.1 toA, BL onHABL and BR, C
+onHBRC, respectively. We obtain the Hilbert spacesHA,HBL,HBR,HC, and
+the injective∗-homomorhpismsHABL→H A⊗H BL andHBRC→H BR⊗H C.
+It is then straightforward to check that the identiﬁcation under the two ∗-
+homomorphisms leads to tensor bilocal quantum model. See [35, Lemma 13]
+for more details. □
+4.3 Quantum inﬂation technique in bilocal scenario
+In the second part of [35], beyond the equivalence statement of various
+models in the bilocal quantum scenario, it is demonstrated that two other
+SDP hierarchies, namely the polarisation and inﬂation hierarchies, converge
+to the bilocal scenario. While a comprehensive discussion of this topic
+requires much more background, which is beyond the scope of this thesis,
+we provide a high-level overview in this section.
+The quantum inﬂation technique, proposed in [74], is utilised to characterise
+quantum network scenarios. The core concept of the quantum inﬂation
+technique involves introducing m copies of the associated Hilbert spaces and
+independent quantum sources for each m≥ 2. The inﬂated system exhibits
+numerous symmetries, which allow quantum de Finetti-style arguments to
+56
+
+=== page 63 ===
+4.3. Quantum inﬂation technique in bilocal scenario
+Figure 4.3: Adapted from [57, Figure 2], a visual representation of the inﬂation technique in the
+bilocal scenario (for simplicity, inputs x, y, z and outputs a, b, c are not shown). Suppose we have
+a distribution ⃗P obtained in the bilocal scenario; we can then imagine a new setup where the
+sources are duplicated, and each party receives extra inputs i; j, k; and l. The parties perform
+the measurements from the original scenario on the copies of the states associated with these
+additional inputs. In this example, Alice measures Aa|x on her share of state ρ1 using the new
+operator A1
+a|x. Bob measures operator B12
+b|y on his shares of states ρ1 and σ2, and Charlie measures
+C1
+c|z on his share of state σ1. Notice that in this case, Charlie’s measurement is independent
+of the others, which should result in a factorisation in the measurement outcome. Since the
+states and PVMs are duplicates, the behavior should be invariant under the S2× S2 permutation
+group. Lastly, if all parties measure all diagonal operators, i.e., Alice measures A1
+a|x and A2
+a|x,
+Bob measures B11
+b|y and B22
+b|y, and Charlie measures C1
+c|z and C2
+c|z, we expect the probability to
+factorise along the diagonal and is consistent with the pre-inﬂated probability distribution.
+linearise all possible factorisation constraints. As an example, [34] presents
+a convergence argument that requires the introduction of an additional
+Schmidt rank. Inﬂation technique appears to provide tighter approximations
+in more general network scenario. For instance, it can be used to detect the
+infeasibility of the shared random bit distribution in the triangle quantum
+scenario, while other methods such as scalar extension hierarchy is trivial in
+triangle network [57, Appendix E.2]
+In the bilocal scenario, the inﬂation technique is thoroughly formalised
+in [57, Section 4.1]. Suppose that we have a distribution ⃗P obtained in the
+bilocal scenario. We can then consider a new setup in which the sources
+are duplicated, and each party receives extra inputs: i for Alice, j and k for
+Bob, and l for Charlie. The parties then perform the measurements from the
+original scenario on the copies of the states associated with these additional
+inputs.
+For example, we consider Figure 4.3, adapted from [57, Figure 2], showcasing
+the inﬂated bilocal network at level m = 2. In this case, Alice measures Aa|x
+on her share of state ρ1 using the new operator A1
+a|x. Bob measures with
+operator B12
+b|y on his shares of states ρ1 and σ2, while Charlie measures C1
+c|z
+on his share of state σ1. It is important to note that in this case, Charlie’s
+57
+
+=== page 64 ===
+4.3. Quantum inﬂation technique in bilocal scenario
+measurement is independent of the others, resulting in a factorised behaviour.
+Also, since acting on different copies, PVMs with nonoverlapping indices
+should commute with each other.
+As the states and PVMs are duplicates in the inﬂation technique, the mea-
+surement outcomes exhibit a certain symmetry under permutation. This
+symmetry arises because when measuring the same state or PVM, regardless
+of the copy, the measurement outcomes should be identical. For instance,
+when Alice and Bob measure states ρ1, they should obtain the same out-
+comes when they instead measure state ρ2 together, which corresponds to a
+S2 permutation on index i for Alice and j for Bob. Similarly, the measurement
+outcomes should be invariant under the permutation of the input index k
+for Bob and l for Charlie. Therefore, in the case where there are two copies,
+this results in an S2× S2 permutation group symmetry. The ﬁrst S2 corre-
+sponds to the permutation of indices for Alice and Bob, while the second S2
+corresponds to the permutation of indices for Bob and Charlie. (In a more
+general setting with m copies, the group symmetry extends to an Sm× Sm
+permutation group.)
+In addition, when all parties measure all diagonal operators (i.e., Alice
+measures A1
+a|x and A2
+a∗|x∗
+, Bob measures B11
+b|y and B22
+b∗|y∗
+, and Charlie measures
+C1
+c|z and C2
+c∗|z∗
+), we expect the probability to factorise as
+p(a1a2
+∗b11b22
+∗ c1c2
+∗|x1x2
+∗y11y22
+∗ c1c2
+∗)
+= p(a1b11c1|x1y11c1)p(a2
+∗b22
+∗ c2
+∗|x2
+∗y22
+∗ c2
+∗)
+= p(abc|xyz)p(a∗b∗c∗|x∗y∗z∗),
+(4.26)
+which is compatible with the pre-inﬂated probability distribution.
+With the additional operators Ai
+a|x, Bjk
+b|y, Cl
+c|z, a new type of moment matrix can
+be deﬁned by incorporating all symmetric constraints and new commutation
+relations. This results in an inﬂation-NP A hierarchythat is SDP .
+Building on the results from [34], it is shown in [35] that the inﬂation NPA
+hierarchy converges to commutator bilocal quantum sets in the bilocal sce-
+nario without requiring Schmidt rank. Furthermore, the convergence of a
+subcase of the inﬂation hierarchy, referred to as the polarization hierarchy,
+is also demonstrated. In the polarization hierarchy, instead of considering
+two inputs j, k for Bob, only one input j is considered, along with a smaller
+symmetric group Sm for each inﬂation level m ≥ 2. That is, both SDP
+hiearchies—inﬂation and polarisation—completely characterise the commu-
+tator relaxation of the tensor bilocal quantum set.
+58
+
+=== page 65 ===
+Bibliography
+[1] A. Ac´ın, N. Brunner, N. Gisin, S. Massar, S. Pironio, and V . Scarani,
+“Device-independent security of quantum cryptography against collec-
+tive attacks”, Physical Review Letters, vol. 98, no. 23, p. 230 501, 2007.
+[2] A. Ac´ın, N. Gisin, and L. Masanes, “From bell’s theorem to secure quan-
+tum key distribution”, Physical review letters, vol. 97, no. 12, p. 120 405,
+2006.
+[3] H. Araki, “ C∗-algebra approach in quantum ﬁeld theory”, Physica
+Scripta, vol. 24, no. 5, p. 881, 1981.
+[4] R. Arnon-Friedman, R. Renner, and T. Vidick, “Simple and tight device-
+independent security proofs”, SIAM Journal on Computing, vol. 48, no. 1,
+pp. 181–225, 2019.
+[5] P . Aschieri, M. Dimitrijevi´c, F. Meyer, and J. Wess, “Noncommutative
+geometry and gravity”, Classical and Quantum Gravity , vol. 23, no. 6,
+p. 1883, 2006.
+[6] J. Barrett, L. Hardy, and A. Kent, “No signaling and quantum key
+distribution”, Physical review letters, vol. 95, no. 1, p. 010 503, 2005.
+[7] J. S. Bell, “On the einstein ppodolsky rosen paradox”, Physics Physique
+Fizika, vol. 1, no. 3, p. 195, 1964.
+[8] B. Blackadar, Operator algebras: theory of C*-algebras and von Neumann
+algebras. Springer Science & Business Media, 2006, vol. 122.
+[9] C. Branciard, N. Gisin, and S. Pironio, “Characterizing the nonlocal
+correlations created via entanglement swapping”, Physical review letters,
+vol. 104, no. 17, p. 170 401, 2010.
+[10] C. Branciard, D. Rosset, N. Gisin, and S. Pironio, “Bilocal versus non-
+bilocal correlations in entanglement-swapping experiments”, Physical
+Review A, vol. 85, no. 3, p. 032 119, 2012.
+59
+
+=== page 66 ===
+Bibliography
+[11] O. Bratteli and D. W. Robinson, Operator algebras and quantum statistical
+mechanics: Volume 1: C*-and W*-Algebras. Symmetry Groups. Decomposition
+of States. Springer Science & Business Media, 2012.
+[12] N. Brunner, D. Cavalcanti, S. Pironio, V . Scarani, and S. Wehner, “Bell
+nonlocality”, Rev. Mod. Phys. , vol. 86, pp. 419–478, 2 Apr. 2014. doi:
+10.1103/RevModPhys.86.419. [Online]. Available: https://link.aps.
+org/doi/10.1103/RevModPhys.86.419.
+[13] S. Burgdorf, I. Klep, J. Povh, et al., Optimization of polynomials in non-
+commuting variables. Springer, 2016, vol. 2.
+[14] J. F. Clauser, M. A. Horne, A. Shimony, and R. A. Holt, “Proposed
+experiment to test local hidden-variable theories”, Phys. Rev. Lett. ,
+vol. 23, pp. 880–884, 15 Oct. 1969. doi: 10 . 1103 / PhysRevLett . 23 .
+880. [Online]. Available: https : / / link . aps . org / doi / 10 . 1103 /
+PhysRevLett.23.880.
+[15] X. Coiteux-Roy, E. Wolfe, and M.-O. Renou, “Any physical theory of
+nature must be boundlessly multipartite nonlocal”, Physical Review A,
+vol. 104, no. 5, p. 052 207, 2021.
+[16] X. Coiteux-Roy, E. Wolfe, and M. -O. Renou, “No bipartite-nonlocal
+causal theory can explain nature’s correlations”, Physical review letters,
+vol. 127, no. 20, p. 200 401, 2021.
+[17] R. Colbeck and R. Renner, “Free randomness can be ampliﬁed”, Nature
+Physics, vol. 8, no. 6, pp. 450–453, 2012.
+[18] A. Connes, J. Cuntz, M. A. Rieffel, and G. Yu, “Noncommutative
+geometry”, Oberwolfach Reports, vol. 10, no. 3, pp. 2553–2629, 2014.
+[19] A. Connes and M. Marcolli, Noncommutative geometry, quantum ﬁelds
+and motives. American Mathematical Soc., 2019, vol. 55.
+[20] A. Einstein, B. Podolsky, and N. Rosen, “Can quantum-mechanical
+description of physical reality be considered complete?”, Physical review,
+vol. 47, no. 10, p. 777, 1935.
+[21] T. Fritz, “Tsirelson’s problem and kirchberg’s conjecture”,Reviews in
+Mathematical Physics, vol. 24, no. 05, p. 1 250 012, 2012.
+[22] T. Fritz, “Beyond bell’s theorem: Correlation scenarios”, New Journal of
+Physics, vol. 14, no. 10, p. 103 001, 2012.
+[23] I. Gelfand and M. Neumark, “On the imbedding of normed rings into
+the ring of operators in hilbert space”, Matematicheskii Sbornik, vol. 12,
+no. 2, pp. 197–217, 1943.
+[24] R. Haag, Local quantum physics: Fields, particles, algebras. Springer Science
+& Business Media, 2012.
+[25] H. Halvorson and M. M ¨uger, “Algebraic quantum ﬁeld theory”, arXiv
+preprint math-ph/0602036, 2006.
+60
+
+=== page 67 ===
+Bibliography
+[26] W. Heisenberg, ¨Uber Quantentheoretische umdeutung Kinematischer und
+mechanischer Beziehungen. Springer, 1985.
+[27] J. Henson, R. Lal, and M. F. Pusey, “Theory-independent limits on cor-
+relations from generalized bayesian networks”, New Journal of Physics,
+vol. 16, no. 11, p. 113 043, 2014.
+[28] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen, “Mip*=re”, Com-
+munications of the ACM, vol. 64, no. 11, pp. 131–138, 2021.
+[29] M. Junge and G. Pisier, “Bilinear forms on exact operator spaces and
+B(H)⊗ B(H)”, Geometric & Functional Analysis GAFA , vol. 5, no. 2,
+pp. 329–363, 1995.
+[30] R. V . Kadison and J. R. Ringrose,Fundamentals of the theory of operator
+algebras. Volume II: Advanced theory. Academic press New York, 1986.
+[31] I. Klep, V . Magron, and J. Volˇciˇc, “Optimization over trace polynomials”,
+in Annales Henri Poincar´ e, Springer, vol. 23, 2022, pp. 67–100.
+[32] I. Klep, V . Magron, J. Vol ˇciˇc, and J. Wang, “State polynomials: Pos-
+itivity, optimization and nonlinear bell inequalities”, arXiv preprint
+arXiv:2301.12513, 2023.
+[33] K. Landsman, Foundations of quantum theory: From classical concepts to
+operator algebras. Springer Nature, 2017.
+[34] L. T. Ligthart, M. Gachechiladze, and D. Gross, “A convergent inﬂation
+hierarchy for quantum causal structures”,arXiv preprint arXiv:2110.14659,
+2021.
+[35] L. T. Ligthart and D. Gross, “The inﬂation hierarchy and the polariza-
+tion hierarchy are complete for the quantum bilocal scenario”, arXiv
+preprint arXiv:2212.11299, 2022.
+[36] D. Mayers and A. Yao, “Quantum cryptography with imperfect appa-
+ratus”, in Proceedings 39th Annual Symposium on Foundations of Computer
+Science (Cat. No. 98CB36280), IEEE, 1998, pp. 503–509.
+[37] J. Moffat, “Noncommutative quantum gravity”,Physics Letters B, vol. 491,
+no. 3-4, pp. 345–352, 2000.
+[38] V . Moretti, Fundamental Mathematical Structures of Quantum Theory .
+Springer, 2019.
+[39] F. J. Murray and J. von Neumann, “On rings of operators”, Annals of
+Mathematics, pp. 116–229, 1936.
+[40] F. J. Murray and J. von Neumann, “On rings of operators. ii”, Trans-
+actions of the American Mathematical Society , vol. 41, no. 2, pp. 208–248,
+1937.
+[41] F. J. Murray and J. von Neumann, “On rings of operators. iv”, Annals
+of Mathematics, pp. 716–808, 1943.
+61
+
+=== page 68 ===
+Bibliography
+[42] M. Navascu´es, S. Pironio, and A. Ac ´ın, “A convergent hierarchy of
+semideﬁnite programs characterizing the set of quantum correlations”,
+New Journal of Physics, vol. 10, no. 7, p. 073 013, 2008.
+[43] J. von Neumann, Mathematische Grundlagen der Quantenmechanik. Springer-
+Verlag, 2013, vol. 38.
+[44] J. von Neumann, “On inﬁnite direct products”, Compositio mathematica,
+vol. 6, pp. 1–77, 1939.
+[45] J. von Neumann, “On rings of operators. iii”, Annals of Mathematics ,
+pp. 94–161, 1940.
+[46] J. von Neumann, “On rings of operators. reduction theory”, Annals of
+Mathematics, pp. 401–485, 1949.
+[47] J. von Neumann, “ ¨Uber funktionen von funktionaloperatoren”, Annals
+of Mathematics, pp. 191–226, 1931.
+[48] J. von Neumann, “Wahrscheinlichkeitstheoretischer aufbau der quan-
+tenmechanik”, Nachrichten von der Gesellschaft der Wissenschaften zu
+G¨ ottingen, Mathematisch-Physikalische Klasse, vol. 1927, pp. 245–272, 1927.
+[49] J. von Neumann, “Zur algebra der funktionaloperationen und theo-
+rie der normalen operatoren”, Mathematische Annalen, vol. 102, no. 1,
+pp. 370–427, 1930.
+[50] M. A. Nielsen and I. L. Chuang, Quantum Computation and Quantum
+Information: 10th Anniversary Edition. Cambridge University Press, 2010.
+doi: 10.1017/CBO9780511976667.
+[51] S. Pironio, A. Ac´ın, S. Massar, A. B. de La Giroday, D. N. Matsukevich,
+P . Maunz, S. Olmschenk, D. Hayes, L. Luo, T. A. Manning, et al., “Ran-
+dom numbers certiﬁed by bell’s theorem”, Nature, vol. 464, no. 7291,
+pp. 1021–1024, 2010.
+[52] A. Pozas-Kerstjens, R. Rabelo, Ł. Rudnicki, R. Chaves, D. Cavalcanti, M.
+Navascu´es, and A. Ac´ın, “Bounding the sets of classical and quantum
+correlations in networks”, Phys. Rev. Lett., vol. 123, p. 140 503, 14 Oct.
+2019. doi: 10 . 1103 / PhysRevLett . 123 . 140503. [Online]. Available:
+https://link.aps.org/doi/10.1103/PhysRevLett.123.140503.
+[53] M. O. Renou, J. Kaniewski, and N. Brunner, “Self-testing entangled
+measurements in quantum networks”, Physical review letters, vol. 121,
+no. 25, p. 250 507, 2018.
+[54] M.-O. Renou, E. B ¨aumer, S. Boreiri, N. Brunner, N. Gisin, and S. Beigi,
+“Genuine quantum nonlocality in the triangle network”, Physical review
+letters, vol. 123, no. 14, p. 140 401, 2019.
+[55] M.-O. Renou and S. Beigi, “Nonlocality for generic networks”, Physical
+Review Letters, vol. 128, no. 6, p. 060 401, 2022.
+62
+
+=== page 69 ===
+Bibliography
+[56] M.-O. Renou, D. Trillo, M. Weilenmann, T. P . Le, A. Tavakoli, N. Gisin,
+A. Ac´ın, and M. Navascu´es, “Quantum theory based on real numbers
+can be experimentally falsiﬁed”, Nature, vol. 600, no. 7890, pp. 625–629,
+2021.
+[57] M.-O. Renou and X. Xu, “Two convergent npa-like hierarchies for the
+quantum bilocal scenario”, arXiv preprint arXiv:2210.09065, 2022.
+[58] V . B. Scholz and R. F. Werner, “Tsirelson’s Problem”, arXiv e-prints,
+arXiv:0812.4305, arXiv:0812.4305, Dec. 2008. arXiv: 0812.4305 [math-ph].
+[59] E. Schr ¨odinger, “Quantisierung als eigenwertproblem”, Annalen der
+physik, vol. 385, no. 13, pp. 437–490, 1926.
+[60] I. Segal, “Irreducible representations of operator algebras”, Bulletin of
+the American Mathematical Society, vol. 53, no. 2, pp. 73–88, 1947.
+[61] I. E. Segal, “Postulates for general quantum mechanics”, Annals of
+Mathematics, pp. 930–948, 1947.
+[62] N. Seiberg and E. Witten, “String theory and noncommutative geome-
+try”, Journal of High Energy Physics, vol. 1999, no. 09, p. 032, 1999.
+[63] W. Slofstra, “The set of quantum correlations is not closed”, in Forum
+of Mathematics, Pi, Cambridge University Press, vol. 7, 2019, e1.
+[64] J. F. Sturm, “Using sedumi 1.02, a matlab toolbox for optimization over
+symmetric cones”, Optimization Methods and Software, vol. 11, no. 1-4,
+pp. 625–653, 1999. doi: 10.1080/10556789908805766 . eprint: https:
+//doi.org/10.1080/10556789908805766 . [Online]. Available: https:
+//doi.org/10.1080/10556789908805766.
+[65] W. van Suijlekom,Noncommutative Geometry and Particle Physics, ser. Math-
+ematical Physics Studies. Springer Netherlands, 2014, isbn: 9789401791625.
+[Online]. Available:https://books.google.ch/books?id=6PcsBAAAQBAJ.
+[66] I. ˇSupi´c and J. Bowles, “Self-testing of quantum systems: A review”,
+Quantum, vol. 4, p. 337, 2020.
+[67] I. ˇSupi´c, J. Bowles, M.-O. Renou, A. Ac´ın, and M. J. Hoban, “Quantum
+networks self-test all entangled states”, Nature Physics, pp. 1–6, 2023.
+[68] A. Tavakoli, A. Pozas-Kerstjens, M. -X. Luo, and M. -O. Renou, “Bell
+nonlocality in networks”, Reports on Progress in Physics, vol. 85, no. 5,
+p. 056 001, 2022.
+[69] B. Tsirelson, Bell inequalities and operator algebras, 2006. [Online]. Avail-
+able: https://www.tau.ac.il/ ~tsirel/Research/bellopalg/main.
+html.
+[70] L. Vandenberghe and S. Boyd, “Semideﬁnite programming”, SIAM
+review, vol. 38, no. 1, pp. 49–95, 1996.
+63
+
+=== page 70 ===
+Bibliography
+[71] U. Vazirani and T. Vidick, “Fully device independent quantum key
+distribution”, Communications of the ACM, vol. 62, no. 4, pp. 133–133,
+2019.
+[72] F. Verstraete and J. I. Cirac, “Quantum nonlocality in the presence of
+superselection rules and data hiding protocols”, Physical review letters,
+vol. 91, no. 1, p. 010 404, 2003.
+[73] M. Weilenmann and R. Colbeck, “Self-testing of physical theories, or, is
+quantum theory optimal with respect to some information-processing
+task?”, Physical Review Letters, vol. 125, no. 6, p. 060 406, 2020.
+[74] E. Wolfe, A. Pozas-Kerstjens, M. Grinberg, D. Rosset, A. Ac ´ın, and
+M. Navascu´es, “Quantum inﬂation: A general approach to quantum
+causal compatibility”, Phys. Rev. X, vol. 11, p. 021 043, 2 May 2021. doi:
+10.1103/PhysRevX.11.021043 . [Online]. Available: https://link.
+aps.org/doi/10.1103/PhysRevX.11.021043.
+[75] H. Wolkowicz, R. Saigal, and L. Vandenberghe, Handbook of semideﬁnite
+programming: theory, algorithms, and applications . Springer Science &
+Business Media, 2012, vol. 27.
+64
+
+=== page 71 ===
+Appendix A
+Selected functional analysis concepts
+for quantum mechanics
+Functional analysis during its development has deep roots in mathematical
+physics, and in return has been fundamental to the development of physics,
+for example quantum mechanics.
+Based on [8, 30, 33, 38], this appendix provides a brief review of the basics on
+inﬁnite-dimensional Banach spaces, spectral theorem for bounded self-adjoint
+operators, roundup of Hilbert space operator topologies, and some important
+functional analysis results that are essential to Quantum Mechanics and the
+theory of operator algebra in the main text. Due to the focus of this thesis, in
+this appendix the proofs are generally omitted.
+A.1 Banach spaces and Banach algebras
+The central mathematical object in Quantum Mechanics, Hilbert spaces, is a
+subclass of its more general counterpart, Banach spaces. Analogously, Banach
+algebras include the subclass C∗-algebras, which is the main object we treat
+in operator algebras for Quantum Mechanics.
+A.1.1 Metrics, norms, inner products, and completeness
+We start with the well-known deﬁnition of metrics, norms, and inner prod-
+ucts.
+Deﬁnition A.1 Let V be a vector space and denote v, w, u∈ V as arbitrary ele-
+ments with c∈ C.
+1. A metric on V is a function d : V× V→ R+ such that we have:
+(a) d (v, w)≤ d(v, u) + d(u, w) (triangular inequality);
+65
+
+=== page 72 ===
+A.1. Banach spaces and Banach algebras
+(b) d (v, w) = d(w, v) (symmetry);
+(c) d (v, w) = 0 iff v = w (positive deﬁniteness).
+2. A norm on V is a function‖·‖ : V→ R+ such that
+(a)‖v + w‖≤‖ v‖ +‖w‖ (triangle inequality);
+(b)‖cv‖ =|c|‖v‖ (homogeneity);
+(c)‖v‖ = 0 iff v = 0 (positive deﬁniteness).
+3. A sesquilinear form on V is a map⟨·|·⟩ : V× V→ C, (v, w)↦→⟨ v|w⟩,
+such that it is anti-linear in its ﬁrst argument and linear in its second argument.
+Moreover:
+(a) a hermitian form on V is a sesquilinear form such that⟨v|w⟩ =⟨w|b⟩†;
+(b) a pre-inner product is a positive hermitian form, that is,⟨v|v⟩≥ 0;
+(c) an inner product is a positive deﬁnite hermitian form, that is,⟨v|v⟩ = 0
+iff v = 0.
+As this thesis focusses on physical aspects, we use † to refer to the action
+of conjugate transposition, which coincides with complex conjugation in
+C. Similarly, we adopt the Dirac bra-ket notation for sesquilinear forms,
+identifying f ∈ V with| f⟩, therefore, for any map α : V→ V we denote
+⟨v|αw⟩ =⟨v|α|w⟩.
+We state the following well-known Cauchy–Schwarz inequality satisﬁed by any
+pre-inner products
+|⟨v|w⟩|2≤⟨ v|v⟩⟨w|w⟩. (A.1)
+The proof of the inequality is elementary. It can be straightforwardly checked
+that any inner product induces a norm via
+‖v‖ =
+√
+⟨v|v⟩, (A.2)
+and any norm induces a metric by
+d(v, w) =‖v− w‖. (A.3)
+The following deﬁnition classiﬁes norms.
+Deﬁnition A.2 Two norms‖·‖ and‖·‖′ are said to be equivalent if there exist
+constants m, M > 0 such that for all v∈ V,
+m‖v‖′≤‖ v‖≤ M‖v‖.
+66
+
+=== page 73 ===
+A.1. Banach spaces and Banach algebras
+For the purpose of this appendix, we shall work with normed vector spaces
+(V,‖·‖), so let us deﬁne the notion of convergence and completeness for
+normed vector spaces. The deﬁnitions for metric spaces are easily generalised
+with the equations above.
+Deﬁnition A.3 Consider the sequence (vn) in a vector space with the norm(V,‖·‖).
+1. We say that vn→ v for some v∈ V, or vn converges to v in norm, when
+limn→∞‖vn− v‖ = 0.
+2. We say that (vn) is a Cauchy sequence if‖vn− vm‖→ 0 whenever n, m→
+∞.
+3. We say that V is complete if every Cauchy sequence in V converges (to some
+element in V).
+We note that two equivalent norms of some vector space induce the same
+topology, and the notions of convergence and completeness are the same.
+A.1.2 Basic notions of Banach spaces
+Now we are ready for the following deﬁnition.
+Deﬁnition A.4 A Banach space is a vector space equipped with a norm that is
+also complete. A Hilbert space is a vector space equipped with inner product that is
+completed with respect to the induced norm; equivalently, a Hilbert space is a Banach
+space equipped with inner product-induced norm.
+Example A.5 Finite-dimensional cases are well-examined in linear algebra, and we
+present some important inﬁnite-dimensional examples.
+• One example of Banach spaces is
+l p(N) =
+
+
+ f : N→ C|‖ f‖p =
+(
+∑
+x∈N
+| f (x)|p
+)1/p
+< ∞
+
+
+ (A.4)
+for 1≤ p < ∞ and
+l∞(N) =
+{
+f : N→ C|‖ f‖∞ = sup
+x∈N
+{| f (x)|} < ∞
+}
+. (A.5)
+The requirement that p≥ 1 is due to Minkowski inequality, otherwise‖·‖ p
+fails to satisfy triangular inequality. We also remark that l2(N) is in fact a
+Hilbert space with the usual inner product that is ubiquitous in Quantum
+Mechanics.
+67
+
+=== page 74 ===
+A.1. Banach spaces and Banach algebras
+• Recall the notion of measure spaces (X, Σ, µ), where X is a set, Σ⊂P (X)
+is a σ-algebra1, and µ : Σ→ [0, ∞] is a measure 2. Consider the norm for
+measurable functions3,4 f : X→ C
+‖ f‖p =
+(∫
+X
+dµ| f|p
+)1/p
+(A.6)
+for 1≤ p < ∞ and
+‖ f‖ess
+∞ ={t∈ [0, ∞]| µ({x∈ X|| f (x)| > t}) = 0} . (A.7)
+Then the following sets
+Lp(X) =
+{
+f : X→ C|‖ f‖p < ∞
+}
+(A.8)
+L∞(X) ={ f : X→ C|‖ f‖ess
+∞ < ∞} , (A.9)
+where 1≤ p < ∞, with pointwise operation and the respective norms deﬁned
+above, are Banach spaces. Similarly to the discrete case, p = 2 gives the
+usual inner product on the space of functions and is a Hilbert space commonly
+appearing in physics.
+• Let C(X) denote the set of all continuous functions f : X→ C for some
+locally compact space X. Then C0(X), the subset of C(X) with functions
+vanish at inﬁnity, and Cb(X), the subset of C(X) with bounded functions, are
+Banach spaces with the sup-norm‖·‖∞.
+As in the last example, let us consider the morphisms between Banach spaces.
+Deﬁnition A.6 Let V, W be Banach spaces, a morphism α : V → W is a
+bounded linear map, that is,
+‖αv‖W≤ C‖v‖V
+for all v∈ V and some constant C > 0. The set of all morphisms α : V→ W is
+denoted byB(V, W). In particular, a morphism α∈B (V, V) =B(V) is said to be
+an operator on V, and an element ϕ∈B (V, C) is said to be a functional on V.
+For any α∈B (V, W), deﬁne the norm 5
+‖α‖ = sup
+v∈V,‖v‖V≤1
+{‖αv‖W}, (A.10)
+1A σ-algebra of subsets of X, Σ, contains the whole set X, and is closed under set
+completement and arbitrary unions,
+2That is, µ(∪n An) = ∑n µ(An) for a countable disjoint union of An∈ Σ. In particular,
+(X, Σ, µ) is said to be a probability measure if µ(X) = 1.
+3Maps such that the preimage of any measurable set is again measurable.
+4Recall also the integral of a positive measurable function f : X→ C can be deﬁned as the
+supremum of suitable simple functions, and any measurable functions can be decomposed
+into sum of positive functions.
+5When for operators, i.e. V=W, this is equivalent to the usual operator norm.
+68
+
+=== page 75 ===
+A.1. Banach spaces and Banach algebras
+which we can directly check it is a norm as the notation suggested. Note that
+the equation in Deﬁnition A.6 is equivalent to the condition that‖α‖ < ∞, we
+also remark that it is straightforward to check the equivalence to continuity
+with respect to the norm-induced topology. Using a standard analysis
+argument [33, Theorem B.33], we can check thatB(V, W) is complete with
+respect to the norm ‖·‖, and with the natural pointwise linear structure it
+follows thatB(V, W) is also a Banach space.
+We ﬁnally introduce the notion of isometric isomorphism, which is widely
+used in quantum mechanics. Note that the following deﬁnition can actually
+be generalised to normed spaces.
+Deﬁnition A.7 Let V, W be Banach spaces. An isometry ˆu : V→ W is a linear
+map satisfying, for all v∈ V,
+‖ ˆuv‖W =‖v‖V.
+An isometric isomorphism ˆu : V→ W is a surjective isometry.
+One can clearly see that the isometric condition implies both boundedness
+and injectivity, and hence any isometric isomorphism ˆu : V→ W is a bijective
+morphism inB(V, W). The (non-trivial) facts that the set-theoretical inverse
+ˆu−1 : W→ V belongs toB(W, V) and is isometric require a corollary of the
+famous open mapping theorem (see Theorem A.18 and Corollary A.19).
+A.1.3 Banach algebras and specturm
+For the space of bounded operators B(V), in addition to being a Banach
+space, there is a natural algebraic structure induced by composition. This
+leads to the following deﬁnition.
+Deﬁnition A.8 A vector space A over C is an algebra if it is equipped with an
+associative and distributive multiplication law such that for each pair α, β∈ A we
+have the product αβ∈ A.
+The algebra A is unital if it has a unit 1 such that 1α = α for any α∈ A
+A unital algebra A is a Banach algebra, if it has a norm such that
+‖αβ‖≤‖ α‖‖β‖ (A.11)
+for all α, β∈ A, and it is a Banach space with respect to this norm.
+Note that the requirement of being unital is not essential, and a standard
+procedure can be applied to adjoin an identity to the algebra [11, Proposi-
+tion 2.1.5]. For our purposes, it is enough to consider the unital case.
+Therefore, the space of bounded operatorsB(V) is an example of a Banach
+algebra Additionally, the C0(X) and Cb(X) discussed in the previous section
+69
+
+=== page 76 ===
+A.1. Banach spaces and Banach algebras
+are also Banach algebras, where the algebraic structure comes from pointwise
+multiplication.
+We now seek a generalisation of the concept of eigenvalues to Banach algebras.
+Indeed, if α∈B (V) for some ﬁnite-dimensional vector space, then λ is an
+eigenvalue iff α− λ1V is not invertible, leading to the following deﬁnition.
+Deﬁnition A.9 The specturm of α∈ A is deﬁned as the set
+σ(α) ={λ∈ C| α− λ1 not invertible in A} .
+The complement ρ(α) = C\ σ(α) is called resolvent.
+Note that while the eigenvalues of a are always in the spectrum σ(α), the
+converse is not always true, as shown in the following example.
+Example A.10 Given L2([0, 1]) with respect to the Lebesgue measure, we consider
+the associated position operator ˆx∈B (L2([0, 1])) in QM such that ( ˆx f)(x) =
+x f(x).
+Suppose that f∈ L2([0, 1]) is an eigenfunction of ˆx, then the eigenequation ( ˆx f) =
+λ f implies that f = 0 except for x = λ. But then f is 0 almost every, hence
+f = 0 in L2([0, 1]). We comment that many physics textbooks claim that δx,
+“misleadingly” called Dirac-delta functions, are the eigenfunctions for ˆx. However,
+note that δx /∈ L2([0, 1]) but instead is of a more general class, namely distribution.
+Nevertheless, we claim that the spectrum σ( ˆx) = [ 0, 1]. To this end, we ﬁrst assume
+λ∈ (0, 1), the situation in which λ = 0, 1 can be checked with a natural modiﬁcation
+of the following argument. Deﬁne a sequence fn =√nχ[λ−1/2n,λ+1/2n] in L2([0, 1]),
+where χA denotes the characteristic function of the subset A, assuming that the
+ﬁrst n0 of the sequence is sufﬁciently large. We note that with the ‖ fn‖2 = 1 and
+‖( ˆx− λ1) fn‖2 =
+√
+3/6n. These fn can be thinked of as a sequence of “approximate
+unit eigenvector” converging to the Dirac-delta “function” δλ.
+Next, for contradiction, suppose α is an inverse of ˆx− λ1, then
+1 =‖1 fn‖2 =‖α( ˆx− λ1) fn‖2≤‖ α‖2‖( ˆx− λ1) fn‖2 =‖α‖2
+√
+3/6n, (A.12)
+whence‖α‖2≥ 2
+√
+3n for any n and hence α is unbounded.
+Finally, assume λ /∈ [0, 1], then g(x) = ( x− λ)−1 is a continuous function in [0, 1].
+Then αg( f ) = g f is a bounded operator, and the inverse to ˆx− λ1.
+This example actually demonstrates the difference between two different
+types of spectrum, namely point spectrum (the usual eigenvalues) vs. con-
+tinuous spectrum (the example above). We remark that while the proper
+eigenvectors to points in the continuous spectrum do not exist, it is a mathe-
+matical fact that they can be approximated arbitrarily well, and the sequence
+fn constructed above is an example. We introduce the last deﬁnition of this
+section.
+70
+
+=== page 77 ===
+A.2. Spectral Theorem for bounded self-adjoint operators
+Deﬁnition A.11 For α∈ A, the spectral radius of α is r(α) = supλ∈σ(α){|λ|}.
+A.2 Spectral Theorem for bounded self-adjoint opera-
+tors
+We recall that in the ﬁnite-dimension case when H = Cn,B(H) = Matn(C),
+the spectral Theorem of linear algebra states that for any self-adjoint matrix
+A∈ Matn(C), i.e. A† = A, we have
+A = ∑
+i
+λi|vi⟩⟨vi|, (A.13)
+where for each i, λi is an eigenvalue with eigenvector vi and|vi⟩⟨vi| is
+the orthogonal projector on vi. This theorem is immensely powerful in
+mathematics, and it is fundamental to quantum theory’s postulation for
+observable and their corresponding measurements.
+In this section we seek a generalisation in inﬁnite-dimensional Hilbert space
+setting. For simplicity, we consider the Spectral Theorem for bounded self-
+adjoint operators inB(H) of some Hilbert spaceH.
+A.2.1 Spectrum of Hilbert space operators
+Let us resume the discussion of point spectrum vs. continuous spectrum
+in Appendix A.1.3 and focus on the case of Hilbert space operators. In fact,
+there is one more type of spectrum called the residue spectrum.
+Deﬁnition A.12 Let α be an operator (possibly unbounded) in the Hilbert space H.
+The resolvent of α is
+ρ(α) ={λ∈ C| (α− λ1) is injective, range (α− λ1) =H,
+(α− λ1)−1 is bounded},
+where· indicates the topological closure and range indicates the range of the corre-
+sponding operator.
+The spectrum σ(α) = C\ ρ(α) consists of three pairwise disjoint parts:
+1. The point spectrum σp(α), where α− λ1 is not injective;
+2. the continuous spectrum σc(α), where α− λ1 is injective, range (α− λ1) =
+H, but (α− λ1)−1 is not bounded;
+3. the residue spectrum σr(α), where α− λ1 is injective but range (α− λ1)⁄=
+H.
+Recall that an operator α∈B (H) is:
+71
+
+=== page 78 ===
+A.2. Spectral Theorem for bounded self-adjoint operators
+• self-adjoint if⟨αv|w⟩ =⟨v|α⟩ (α† = α);
+• unitary if α†α = αα† = 1H;
+• normal if α†α = αα†.
+We note that self-adjointness implies normality and so is unitary condition.
+In addition, any operator admits a self-adjoint decomposition, α = ˆβ + i ˆγ,
+where ˆβ = ( α + α†)/2 and ˆγ = ( α− α†)/2i.
+We state the properties of spectrum for these special types of operator.
+Theorem A.13 Consider α∈B (H) for some Hilbert spaceH. If α is normal (in
+particular self-adjoint or unitary), then
+(a) σr(α) = σr(α†) = ∅.
+(b) σp(α) = σp(α†)†; i.e. αv = λv iff α†v = λ†v for v⁄= 0.
+(c) σc(α) = σc(α†)†
+(d) the eigenvectors corresponding to the distinct eigenvalues are orthogonal.
+Moreover, σ(α)⊂ R if α is self-adjoint and σ(α)⊂{ z∈ C|| z|} if α is unitary.
+In other words, a normal operator behaves as what we expect for operators
+in ﬁnite dimension, other than the existence of continuous spectral. The prop-
+erties of spectrum of self-adjoint operators are important for the following
+discussion.
+A.2.2 Projector-valued measures (PVMs) and integration
+We now deﬁne the general notion of projector-valued measures, which are
+very ubiquitous quantum theory. Recall that an operator P∈B (H) is an
+orthogonal projector when P2 = P and P† = P.
+Denote B(σ(α)) the Borel σ-algebra6 of the spectrum of α. We wish to
+construct a map P :B(σ(α))→B (H) that allows us to ﬁnd a projector onto
+the subspace VE⊂H of “generalised eigenvectors” of α associated with a
+given subset E⊂ σ(α). This motivates the following deﬁnition.
+Deﬁnition A.14 LetH be a Hilbert space and Σ(X) be a σ-algebra on some set X.
+A projector-valued measure (PVM) is a map P : Σ(X)→B (H) that satisﬁes the
+following properties:
+(a) P (E) := PE is an orthogonal projector for all E∈ Σ(X);
+(b) P (∅) = 0 and P(X) = PX = 1H;
+(c) P E∩F = PEPF;
+6That is, the smallest σ-algebra that contains all open sets in σ(α)
+72
+
+=== page 79 ===
+A.2. Spectral Theorem for bounded self-adjoint operators
+(d) for (Ei) a countable pairwise disjoint family in Σ(X),
+P∪iEi ϕ = ∑
+i
+PEi ϕ
+for all ϕ∈H .
+Note that we recover the familiar notion of PVMs in quantum information
+theory if we take X to be a ﬁnite set.
+We now motivate the deﬁnition of integratal with respect to PVMs. Fix a PVM
+P : Σ(X)→B (H), note that for any ϕ, ψ∈H , the map µP
+ϕ,ψ : Σ(X)→ C,
+µP
+ϕ,ψ(E) :=⟨ϕ|PE|ψ⟩, is a complex measure. Moreover, µP
+ϕ,ϕ is a real measure.
+Suppose that s = ∑k skχEk is a simple function 7, where sk∈ C and Ek are
+pairwise disjoint. If we deﬁne
+∫
+X
+s(λ)dP(λ) =
+∫
+X ∑
+k
+skχEkdP = ∑
+k
+skPEk, (A.14)
+it can then be shown
+∫
+X
+sdµP
+ϕ,ψ = ∑
+k
+skµP
+ϕ,ψ(Ek) =⟨ϕ| ∑
+k
+skPEk|ψ⟩ =⟨ϕ|
+∫
+X
+s(λ)dP(λ)|ψ⟩. (A.15)
+By generalising simple functions to general measurable functions, Equa-
+tion A.15 leads to the integration machinery required for Spectral Theorem.
+Theorem A.15 (PVM integral operator) Let P : Σ(X)→B (H) be a PVM and
+let f : X→ C be a bounded 8 measurable function. Recall the complex measure
+deﬁned by µP
+ϕ,ψ : Σ(X)→ C, µP
+ϕ,ψ(E) :=⟨ϕ|PE|ψ⟩.
+Then there exists a unique bounded operator ofH, denoted as
+∫
+X
+f (λ)dP(λ)∈B (H).
+The operator satisﬁes the following:
+(a)
+⟨ϕ|
+∫
+X
+f (λ)dP(λ)|ψ⟩ =
+∫
+X
+f (λ)dµP
+ϕ,ψ(λ). (A.16)
+(b)
+‖‖‖‖
+∫
+X
+f (λ)dP(λ)
+‖‖‖‖≤‖ f‖∞. (A.17)
+7A simple function is a ﬁnite linear combination of characteristic functions.
+8We may substitute boundedness to essential boundedness relative to the induced measure
+of P, this generalisation is omitted for our purposes.
+73
+
+=== page 80 ===
+A.2. Spectral Theorem for bounded self-adjoint operators
+(c) For the characteristic function χE we have
+∫
+X
+χEdP = PE (A.18)
+for all E∈ Σ(X), and in particular
+∫
+X 1dP = 1H.
+(d) Its adjoint operator is given by
+(
+∫
+X
+f (λ)dP(λ))† =
+∫
+X
+f (λ)†dP(λ). (A.19)
+Furthermore, the map f ↦→∫
+X f (λ)dP(λ) satisﬁes the following properties:
+(i) (Continuity) Let f and fn be bounded measurable functions and assume that
+‖ f‖∞,‖ fn‖∞≤ M < ∞ for all n∈ N. If fn→ f pointwise as n→ ∞, then
+(∫
+X
+fndP
+)
+ϕ→
+(∫
+X
+f dP
+)
+ϕ (A.20)
+as n→ ∞, for any ϕ∈H .
+(ii) (Ring homomorphism) For f , g measurable bounded and a , b∈ C, we have
+∫
+X
+(a f + bg)dP = a
+∫
+X
+f dP + b
+∫
+X
+gdP, (A.21)
+∫
+X
+f dP·
+∫
+X
+f dP =
+∫
+X
+f· gdP. (A.22)
+Observe that (b) and (ii) of Theorem A.15 imply that, for a simple function
+∑k skχEk, we have
+∫
+X ∑
+k
+skχEkdP = ∑
+k
+skPEk, (A.23)
+agreeing with the motivational discussion precedes the theorem.
+A.2.3 Spectral Theorem
+With the technical tools introduced, we ﬁnally can state the celebrated Spectral
+Theorem for bounded self-adjoint operators on Hilbert spaces.
+Theorem A.16 (Spectral Theorem, bounded self-adjoint operators) For any
+self-adjoint α∈B (H) on a Hilbert space H, there exists a unique PVM P(α) :
+B(σ(α))→BH such that
+α =
+∫
+σ(α)
+λdP(α)(λ). (A.24)
+Moreover, we have criteria for distinguishing the types of spectrum:
+74
+
+=== page 81 ===
+A.3. Hilbert space operator topologies
+(a) λ∈ σp(α) iff P(α)({λ})⁄= 0. P(α)({λ}) is the orthogonal projector onto the
+λ-eigenspace. (This situation occurs particularly when λ is an isolated point
+of σ(α).)
+(b) λ∈ σc(α) iff P(α)({λ}) = 0 but P(α)(E)⁄= 0 for any open set E⊂ R
+containing λ.
+The general version for unbounded self-adjoint operators is similar, albeit
+one needs to be careful with the domain
+We conclude the section with an even nicer version of spectral theorem for
+compact self-adjoint operator which is very useful to Quantum Mechanics.
+Recall that a compact operator on normed spaces α : V→ W if for any bounded
+sequence (vn) in V, the sequence (αvn) contains a convergent subsequence.
+Any compact operator is automatically bounded and hence continuous.
+Theorem A.17 (Spectral Theorem, compact self-adjoint operators) Let α∈
+B(H) be a compact self-adjoint operator. Then there exists an orthonormal eigenbasis
+(vx)x∈I of α, with the associated eigenvalues (λx)x∈I. Moreover, for all ϕ∈H , it
+holds that
+αϕ =
+(
+∑
+x∈I
+λx|vx⟩⟨vx|
+)
+ϕ = ∑
+x∈I
+λx⟨vx|ϕ⟩vx. (A.25)
+One straightforward application of Theorem A.15 and Spectral Theorem is to
+justify the following common manipulation of the time evolution operator of
+a given Hamiltonian
+e−it ˆH/¯h ϕk = e−itλk/¯h ϕk, (A.26)
+where λk is an eigenvalue with eigenvector ϕk, assuming that (ϕk) forms an
+orthonormal basis.
+We note that quantum operators in general are not compact. Even more
+unfortunately, boundedness is not guaranteed for quantum operators. To
+cover the unbounded case, a technique calledfunctional calculus is required [38,
+Chapter 3.2–3.3].
+A.3 Hilbert space operator topologies
+The study of functional analysis requires extensive consideration on the
+topological structures of inﬁnite-dimensional vector spaces. In particular,
+it is crucial to understand the interplay between algebraic structures and
+topological structures in the study of operator algebras and their application
+in Quantum Mechanics. In this section, we introduce some of the more
+75
+
+=== page 82 ===
+A.4. Important theorems in functional analysis
+relevant topologies for the space of bounded linear operators B(H) given a
+Hilbert spaceH, among others that we omit.
+We ﬁrst recall that the operator norm on B(H) is given by
+‖α‖ = sup
+ϕ∈H,‖ϕ‖=1
+{‖αϕ‖} (A.27)
+for any α∈B (H).
+• The uniform operator topology onB(H), also known as the norm topology,
+is induced by the operator norm on B(H). A sequence of operators
+(αn) inB(H) converges to α uniformly if‖αn− α‖→ 0 as n→ ∞.
+• The strong operator topology onB(H) is induced by a family of semi-
+norms pϕ for each ϕ∈H , where pϕ(α) =‖αϕ‖. Equivalently, it is the
+coarsest topology such that the evaluation map α↦→ αϕ is continuous
+for any ﬁxed ϕ∈H .
+A sequence (αn) inB(H) converges to α strongly if‖(αn− α)ϕ‖→ 0 as
+n→ ∞ for any ϕ∈H .
+• The weak operator topology onB(H) is induced by a family of semi-
+norms pϕ,ψ for each ϕ, ψ∈H , where pϕ,ψ(α) = ⟨ϕ|αψ⟩ =⟨ϕ|α|ψ⟩.
+Equivalently, it is the weakest topology so that the functionals pϕ,ψ are
+continuous for all ϕ, ψ∈H .
+A sequence αn inB(H) converges to α weakly if|⟨ϕ|(αn− α)|ψ⟩|→ 0
+as n→ ∞ for any ϕ, ψ∈H .
+• We consider the topological dual ofB(H).
+B(H)∗ ={ f :B(H)→ C| f is linear and continuous} (A.28)
+The weak-∗ topology onB(H)∗ is the weakest topology such that all
+functionals inB(H)∗ are continuous.
+A sequence of functionals fn inB(H)∗ converges to f weakly if fn(α)→
+f (α) as n→ ∞ for any α∈B (H).
+We note the deﬁnition of weak-∗ topology can be easily generalised to
+the dual V∗ of any normed vector space V.
+Note that uniform convergence implies strong convergence, and strong
+convergence implies weak convergence [38, Chapter 3.5].
+A.4 Important theorems in functional analysis
+Let us now turn our attention to Hilbert spaces. We present the three pillars in
+functional analysis, namely, the Open Mapping Theorem, the Hahn–Banach
+76
+
+=== page 83 ===
+A.4. Important theorems in functional analysis
+Theorem, and the Banach–Steinhaus Theorem. Although they do not have
+very explicit associations with our main text, they are fundamental to many
+results and notions in functional analysis.
+Then we preceed to the discussion of the Banach–Alaoglu theorem, the Krein–
+Milman theorem which are highly relevant to noncommutative polynomial
+optimisation and NPA hierarchy [13, 31, 42, 57].
+A.4.1 Three cornerstones in functional analysis
+Let us start with the Open Mapping Theorem, we say that a map α∈B (V, W)
+between two Banach spaces is open if it maps open sets to open sets.
+Theorem A.18 (Open Mapping) If V, W are Banach spaces and α∈B (V, W)
+is surjective, then α is open.
+A corollary is important for the notion of isometric isomorphism.
+Corollary A.19 The set-theoretical inverse α−1 of a bijective morphism α∈B (V, W)
+is linear and bounded, i.e. α−1∈B (W, V).
+Another consequence is the well-known Closed Graph Theorem, which provides
+the criterion for when a linear map is bounded. Deﬁne the graph of a linear
+map α : V→ W as graph(α) ={(v, αv)| v∈ V}⊂ V⊕ W.
+Theorem A.20 For α : V→ W, the graph graph(α) is closed (relative to the
+induced norm of V⊕ W) iff α is bounded, i.e. α∈B (V, W).
+In general, a topological vector space is endowed with a Hausdorff topology
+such that vector addition and scalar multiplication are continuous. The
+second fundamental result is the Hahn–Banach Theorem, which deals with
+the extensions of functionals on real topological vector spaces.
+We say that a map p : V→ R is a sublinear functional if
+p(v + w)≤ p(v) + p(w); p(tv) = tp (v),
+for all v, w∈ V and t∈ R. Simple examples of sublinear functionals include
+norms and seminorms (norms without positive deﬁniteness).
+Theorem A.21 (Hanh–Banach) Consider V a real topological vector space with a
+sublinear functional p, and let W⊂ V be a linear subspace. Suppose there is a linear
+map ϕW : W→ R dominated by p on W (i.e. ϕW(w)≤ p(w) for all w∈ W).
+Then ϕW admits a linear extension ϕ : V→ R which is also dominated by p on V.
+We remark that the proof for inﬁnite-dimensional case of Hahn–Banach
+theorem requires Zorn’s Lemma, and the theorem can be generalised to the
+complex number.
+77
+
+=== page 84 ===
+A.4. Important theorems in functional analysis
+Corollary A.22 Let V be a normed vector space with subspace W. Then each linear
+functional ϕW∈ W∗ admits an extension ϕ∈ V∗.
+An important application of the Hahn–Banach Theorem to Krein–Milman
+Theorem, which we shall discuss later.
+We ﬁnally turn to the Banach–Steinhaus Theorem, also known as Uniform
+Boundedness Principle , which asserts that pointwise boundedness implies
+norm boundedness. This result is crucial since this fact is taken as granted
+by physicists in their works.
+Theorem A.23 (Banach–Steinhaus) Let V, W be Banach spaces, and let X be an
+arbitrary index set to the family (αx) of operators inB(V, W). If the family (αx) is
+pointwise bounded
+sup
+x∈X
+{‖αxv‖}≤ ∞
+for any v∈ V, then it is also uniformly bounded
+sup
+x∈X
+{‖αx‖}≤ ∞.
+A.4.2 Banach–Alaoglu and Krein–Milman Theorems
+Recall the weak-∗ topology of any given normed space (Appendix A.3).
+Theorem A.24 (Banach–Alaoglu) Let V be a normed vector space, then any
+closed d-ball
+B∗
+d ={ϕ∈ V∗|‖ ϕ‖≤ d}
+in the dual V∗ is compact in the weak-∗ topology. More generally, let U⊂ V be a
+neighbourhood of 0, then the set
+B∗
+U ={ϕ∈ V∗|| ϕ(u)|∀ u∈ U}
+is weak-∗ compact.
+Another observation with Banach–Alaoglu Theorem leads to the conclusion
+that the state spaces in quamtum theory are weak-∗ compact.
+We now turn to another important result for our main text, which requires
+some elementary deﬁnitions on convexity, which is also pivotal for quantum
+theory.
+Deﬁnition A.25 Consider a vector space (real or complex) V.
+1. A subset K⊂ V is convex if one has tv + (1− t)w∈ K whenever v, w∈ K
+and t∈ [0, 1]; the sum of the form tv + (1− t)w for is called a convex
+combination of v and w.
+78
+
+=== page 85 ===
+A.4. Important theorems in functional analysis
+2. The boundary ex(K) of the convex set K contains the extreme points of K,
+that is, if any x∈ ex(K) is a non-trivial convex combination (i.e. t⁄= 0, 1) of
+some v, w∈ K, then we must have x = v = w.
+3. The convex hull of a subset X⊂ V is the smallest convex set containing X,
+denoted by co(X). Equivalently, co(X) = {tx + (1− t)y| x, y∈ X, t∈
+[0, 1]}.
+We state the Krein–Milman Theorem, whose proof relies on the Hahn–Banach
+Theorem.
+Theorem A.26 (Krein–Milman) Suppose V is a normed vector space and K⊂ V
+is an nonempty compact convex subset. Then ex(K) is nonempty, and all points in
+K lie in the topological closure of the convex hull of its extreme points. That is,
+K = co(ex(K)).
+Note that we can applied Krein–Milman Theorem to the dual V∗ as well.
+Combining this observation and Banach–Alaoglu Theorem, the nonemptiness
+assertion indicates the abundance of pure states in quantum theory, while
+the rest of the statement shows the connection between mixed states and
+pure states.
+79
+
+=== page 86 ===
+Declaration of originality 
+ 
+The signed declaration of originality is a component of every semester paper, Bachelor’s thesis, 
+Master’s thesis and any other degree paper undertaken during the course of studies, including the 
+respective electronic versions. 
+ 
+Lecturers may also require a declaration of originality for other written papers compiled for their 
+courses. 
+__________________________________________________________________________ 
+ 
+I hereby confirm that I am the sole author of the written work here enclosed and that I have compiled it 
+in my own words. Parts excepted are corrections of form and content by the supervisor. 
+ 
+Title of work (in block letters): 
+ 
+ 
+ 
+Authored by (in block letters): 
+For papers written by groups the names of all authors are required. 
+ 
+Name(s): First name(s): 
+   
+   
+   
+   
+   
+ 
+With my signature I confirm that 
+− I have committed none of the forms of plagiarism described in the ‘Citation etiquette’ information 
+sheet. 
+− I have documented all methods, data and processes truthfully. 
+− I have not manipulated any data. 
+− I have mentioned all persons who were significant facilitators of the work. 
+ 
+I am aware that the work may be screened electronically for plagiarism. 
+ 
+Place, date Signature(s) 
+   
+   
+   
+   
+   
+  
+ For papers written by groups the names of all authors are 
+required. Their signatures collectively guarantee the entire 
+content of the written paper. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zurich02.052023 XianglingXu24thEx
+Xu Xiangling
+Quantum Nonlocality in Bilocal Networks: An Operator Algebraic Perspective

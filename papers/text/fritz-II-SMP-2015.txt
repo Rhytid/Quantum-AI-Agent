@@ -1,0 +1,2402 @@
+=== page 1 ===
+Digital Object Identiﬁer (DOI) 10.1007/s00220-015-2495-5
+Commun. Math. Phys. 341, 391–434 (2016) Communications in
+Mathematical
+Physics
+Beyond Bell’s Theorem II: Scenarios with Arbitrary
+Causal Structure
+Tobias Fritz1
+Perimeter Institute for Theoretical Physics, Waterloo, Canada.
+E-mail: tfritz@perimeterinstitute.ca
+Received: 30 May 2014 / Accepted: 7 August 2015
+Published online: 5 November 2015 – © Springer-V erlag Berlin Heidelberg 2015
+Abstract: It has recently been found that Bell scenarios are only a small subclass of
+interesting setups for studying the non-classical features of quantum theory within space-
+time. We ﬁnd that it is possible to talk about classical correlations, quantum correlations
+and other kinds of correlations on any directed acyclic graph, and this captures various
+extensions of Bell scenarios that have been considered in the literature. From a con-
+ceptual point of view, the main feature of our approach is its high level of uniﬁcation:
+while the notions of source, choice of setting and measurement all play seemingly dif-
+ferent roles in a Bell scenario, our formalism shows that they are all instances of the
+same concept of “event”. Our work can also be understood as a contribution to the sub-
+ject of causal inference with latent variables. Among other things, we introduce hidden
+Bayesian networks as a generalization of hidden Markov models.
+Contents
+1. Introduction ................................. 3 9 1
+2. What is Causal Structure? .......................... 3 9 7
+3. Correlations ................................. 3 9 9
+4. Classical Correlations ............................ 4 0 2
+5. Correlations Within Any Theoretical Framework .............. 4 1 1
+6. Quantum Correlations ............................ 4 1 9
+7. Classical Correlations as Hidden Bayesian Networks ............ 4 2 3
+References ..................................... 4 3 2
+1. Introduction
+Bell’s discovery of “quantum nonlocality” [ 1,2] has maybe been one of the most inﬂu-
+ential discoveries in theoretical physics over the past ﬁfty years. Not only has it been a
+vexing challenge and a source of philosophical discussion for many physicists interested
+
+=== page 2 ===
+392 T. Fritz
+time
+space
+sx y
+a b
+Fig. 1. Causal structure of the two-party Bell scenario [ 1]
+time
+space
+a b
+s
+x y
+a b
+Fig. 2. Causal structure of Popescu’s scenario [ 8]
+in the foundations of quantum theory, it has also led more recently to the development
+of new information processing protocols whose performance and security rely crucially
+on violations of Bell inequalities [ 3–6].
+Over the course of time, it has been realized that Bell’s gedankenexperiment, whose
+causal structure is illustrated in Fig. 1, is only one of many possible setups in which
+the non-classicality of quantum theory manifests itself in correlations between differ-
+ent observations distributed in spacetime. Generalizations of Bell’s original idea include
+Svetlichny’s extension from a two-party scenario to a many-party scenario [7], Popescu’s
+“hidden nonlocality” [8], which modiﬁes the Bell scenario by including additional pre-
+selection measurements (Fig. 2), and the “bilocality” scenario of Branciard, Gisin and
+Pironio [9] (Fig. 3). Subsequently, we proposed a general deﬁnition of what constitutes
+a correlation scenario, showed how this deﬁnition comprises two-party and many-party
+Bell scenarios, the bilocality scenario, and many new ones (like Fig. 4), about which we
+also derived some ﬁrst results [ 10]. Most recently, Gallego, Würﬂinger, Chaves, Acín
+and Navascués have considered “sequential correlation scenarios” [ 11], which extend
+Popescu’s idea by adding an additional choice of measurement setting (Fig. 5).
+The purpose of this present paper is threefold:
+(a) We propose a general deﬁnition of a class of gedankenexperiments, in which one
+can talk about classical correlations, quantum correlations and the like, and which
+comprises all the above scenarios as particular instances. We provide deﬁnitions of
+classical and quantum correlations and show that they correspond to the usual ones
+
+=== page 3 ===
+Beyond Bell’s Theorem 393
+time
+space
+sx t
+a b c
+zy
+Fig. 3. Causal structure of Branciard–Gisin–Pironio’s “bilocality” scenario [ 9]
+time
+space
+a b c
+x y z
+Fig. 4. The triangle scenario from [10] in our present deﬁnition. In this two-dimensional drawing, the causal
+structure may look contrived; but in a three- or four-dimensional spacetime, the events can be arranged in
+such a way that the causal structure is indeed the one induced from the lightcones, for example by spatially
+arranging all six events as the vertices of a regular hexagon, while x, y and z happen at a suitably earlier time
+than a, b and c
+time
+space
+a b
+s
+x y
+x y
+a b
+Fig. 5. Causal structure of the two-party sequential correlation scenario with sequences of two measure-
+ments [11]
+
+=== page 4 ===
+394 T. Fritz
+in the case of a Bell scenario. Moreover, we prove some very general technical
+results about classical correlations.
+(b) We point out that our deﬁnition achieves a new level of uniﬁcation: there is no dis-
+tinction whatsoever between a “source”, a “choice of measurement setting” and a
+“measurement”. All three concepts are subsumed by our notion of event, as illus-
+trated in the Bell scenario of Fig. 1. A pair of events may or may not be connected
+by a causal link drawn as an arrow pointing from one event to the other. We think
+of an event as a measurement apparatus located at a speciﬁc point in spacetime
+which probes and potentially modiﬁes the outside world and outputs a classical
+outcome. There are two ways to interpret the causal links: one can either think of
+them as representing a theoretical hypothesis about which events inﬂuence which
+other ones, or alternatively as physical systems propagating between the events—
+exactly as in Hardy’s operator-tensor formulation of quantum theory [12]. Both
+of these interpretations are equally viable, since the underlying mathematics is the
+same.
+(c) The ﬁrst interpretation connects nicely with the third purpose of this paper: our def-
+initions and results can also be understood as a contribution to the subject ofcausal
+inference [13]. Typically, in causal inference one starts with a joint probability
+distribution of a ﬁnite number of random variables and then asks which underlying
+causal structures, describing which variables inﬂuence which other ones, may have
+generated the given joint distribution. With our deﬁnitions, the notion of hidden
+variable or latent variable [13] becomes central to causal inference. The basic
+idea is as follows: let us assume that the joint probability distribution that we start
+with represents the distributions of outcomes of probings of a physical system at
+various points in spacetime, as outlined above. At each of these points, we sample
+the system, but we do not know whether the information that we obtain by that sam-
+pling is a complete representation of the state of the system at that particular point
+in spacetime. In other words, it may be that there is some “hidden information”
+propagating through that point in spacetime, while not being revealed by the prob-
+ing. This seems like a reasonable assumption to make when dealing with systems
+for which we are uncertain whether our theoretical description is complete. We
+imagine that this applies in particular to biological systems, whose functioning can
+rarely be comprehensively understood; but it also applies to fundamental physics,
+as exempliﬁed by Einstein’s conviction that quantum mechanics was “incomplete”
+and hidden variables had to be introduced that would describe additional degrees
+of freedom that were hitherto unknown [ 14]. To summarize, we believe that any
+reasonable generalization of Bell scenarios needs to consider hidden variables not
+only behind events representing sources of (entangled) particles, but behind every
+spacetime event relevant to the gedankenexperiment. For the standard Bell sce-
+nario of Fig. 1 and its many-party extensions, we will see in Propositions 3.3, 4.3
+and 6.5 that the resulting formalism is equivalent to the conventional one.
+Connections between causal inference and Bell’s theorem have previously been
+pointed out by Wood and Spekkens [ 15]. Similar connections have also been ex-
+plored by Henson et al. [ 16] and were also hinted at in our previous paper [ 10].
+Most recently, they are being actively investigated by Chaves, Gross and collabo-
+rators [17–20].
+Summary and statement of results. Now that the main ideas have been explained, we
+outline in more detail our deﬁnitions and results, the proofs of which will sometimes
+
+=== page 5 ===
+Beyond Bell’s Theorem 395
+constitute a technical tour de force. We suspect that some of our results may seem quite
+intuitive and unsurprising, but, as the technical difﬁculty of the proofs will demonstrate,
+they are non-trivial. In fact, despite sustained efforts, we have not achieved perfect rigor
+in all our arguments; the corresponding arguments are marked as “ Sketch of proof ”
+rather than “Proof”. We challenge any skeptical reader to ﬁnd simpler and completely
+rigorous proofs.
+We start out in Sect. 2 by discussing the relevant notion of causal structure, which
+is given by the concept of directed acyclic graph , just as in the subject of Bayesian
+networks and causal inference [ 13]. This graph describes which events have a direct
+inﬂuence on which other ones through causal links. During the course of our investiga-
+tions, it will turn out that it is sufﬁcient to know which events have a direct or indirect
+inﬂuence on which other ones, and it is not necessary to distinguish between a direct
+and an indirect causal link. In fact, Theorem 5.3 shows that only the partial order (or
+equivalently, causal set ) induced by the graph needs to be known in order to discuss
+classical, quantum and other correlations on the given causal structure.
+Section 3 continues by introducing the notion of correlation on a given causal struc-
+ture. Roughly, a correlation is a joint distribution over the outcome variables situated at
+the events which makes two variables independent as soon as they have disjoint causal
+past. This formalizes Reichenbach’s common cause principle “no correlation with-
+out causation” [ 21] in our framework. On a given causal structure, these independence
+conditions constitute a minimal set of requirements that one would expect an observed
+joint probability distribution to satisfy, assuming that it arises from that causal structure.
+This is analogous to the no-signalling condition in a Bell scenario, which is likewise a
+minimal requirement for a conditional distribution P(ab|xy) to be regarded as poten-
+tially physical. As shown in Proposition 3.5, our deﬁnition essentially reduces to the
+no-signalling assumption in the case of a Bell scenario.
+Then, in Sect. 4, we introduce hidden variables. A given correlation, as in the previous
+paragraph, is a classical correlation if it can be explained in terms of hidden variables
+being passed along the causal links and being processed at the nodes. This formalizes
+the above idea of causal inference with hidden variables: one asks which observational
+results are compatible with the given causal structure, while permitting unobserved in-
+formation to propagate along the causal links. A given joint distribution is compatible
+with the causal structure in this sense if and only if it is a classical correlation. It is an
+essential feature of our deﬁnitions and results that we do not restrict a hidden variable
+to have a ﬁnite domain, but allow for it to live on an arbitrary measurable space. The
+measure-theoretical background necessary for dealing with hidden variables with arbi-
+trary domain is outlined in Appendix A. We show in Proposition 4.2 that every classical
+correlation is in fact a correlation. Our further results, in parts quite difﬁcult to prove, are
+the following: Proposition 4.3 characterizes classical correlations in a Bell scenario as
+those whose associated conditional distribution is “local” in the conventional sense [ 2].
+Theorem 4.4 then shows that any classical correlation on any causal structure can be ap-
+proximated arbitrarily well by other classical correlations for which the hidden variables
+take on only ﬁnitely many values; the proof relies on some auxiliary measure-theoretical
+results derived in Appendix B. Towards the end of the section, Conjecture 4.5, together
+with its partial proof, concerns the question whether one can assume without loss of
+generality that the information processing from incoming to outgoing hidden variables
+at each event with incoming hidden variables is deterministic.
+Motivated by the question of how to deﬁne quantum correlations within our formal-
+ism, Sect. 5 discusses the general properties that a theoretical framework must satisfy in
+
+=== page 6 ===
+396 T. Fritz
+order for a corresponding notion of correlation within that framework to exist. We ﬁnd
+that, if a framework for physical theories is given by a symmetric monoidal category C
+satisfying suitable additional conditions, then there exists a notion of “ C-correlation”.
+We explain how classical correlations are an instance of this general construction. In
+complete generality, Theorem 5.3 shows that the set of C-correlations only depends on
+the causal structure as a partially ordered set instead of all the details of a directed graph.
+Building on these considerations, we deﬁne quantum correlations in Sect. 6.W e
+hypothesize in Conjecture 6.4 that every classical correlation is a quantum correlation,
+but due to the technical challenges involved, we can only offer a partial proof. Then,
+Proposition 6.5 shows how our deﬁnition of quantum correlation corresponds to the
+conventional one in the case of Bell scenarios.
+Finally, Sect. 7 discusses another point of view on classical correlations. By analogy
+with hidden Markov models, we introduce hidden Bayesian networks. The main result
+here is Theorem 7.3, which shows that a given joint probability distribution over the
+outcome variables is a classical correlation if and only if it can be modelled by a hidden
+Bayesian network.
+Terminology and notation. We collect here the relevant notation that we use for graphs
+G = (V, E). All the graphs G that we consider are directed acyclic graphs as in
+Deﬁnition 2.2, and hence we usually omit the qualiﬁers “directed acyclic” and simply
+refer to G as a graph.
+While we always think of the nodes v ∈ V as events in spacetime, we mostly call
+them “nodes” rather than “events”, and regard these two terms as essentially synonymous.
+Similarly, we usually speak of “edges” e ∈ E rather than “causal links”, although we
+think of the edges as causal links along which physical systems propagate (With the
+exception of the edges of the hidden Bayesian networks of Sect. 7, which we do not
+interpret like this).
+For nodes v ∈ V and edges e ∈ E, we put
+src(e) := source node of e
+tar(e) := target node of e
+pa(v) := parent nodes of v ={ u ∈ V | u → v}
+ch(v) := children nodes of v ={ w ∈ V | v → w}
+pst(v) := causal past of v ={ u ∈ V | u →···→ v}
+We can also apply each of these functions to sets of edges (respectively nodes), in which
+case we put pa(U) := ⋃
+v∈U pa(v), and similarly for the other functions. See Sect. 2 for
+more detail on all of this.
+In order to keep the notation from being too confusing, we distinguish between a
+node and the corresponding outcome variable it carries. If v ∈ V is a node, then the
+outcome variable at v is denoted o[v], and P(o[v]) is its distribution. This notation is
+unfortunately somewhat unusual, since in the Bell scenario of Fig. 1 we need to denote
+e.g. the outcome of Alice by “ o[a]” instead of the conventional “ a”, but it will help to
+keep things clear.
+Disclaimer . The deﬁnitions proposed in the present paper are not intended to be ﬁnal or
+conclusive in any sense. Rather, they constitute only one possible approach for general-
+izing Bell scenarios to arbitrary causal structures, and we expect that other deﬁnitions
+are possible and potentially useful [ 16]. It may also be desirable to have deﬁnitions that
+
+=== page 7 ===
+Beyond Bell’s Theorem 397
+even allow for the consideration of indeﬁnite causal structure [ 22], although we do not
+know how to achieve this. Further investigations will have to tell which deﬁnitions are
+the most adequate and useful; the only thing that seems certain at the present time is
+that Bell scenarios constitute only a small subclass of all conceivable scenarios, and that
+there are many other interesting ones that one can consider [ 10,16].
+A potentially problematic aspect of our approach is this: in order to observe the joint
+probability distribution of outcomes of probings in an experimental situation, one needs
+to gather statistics, i.e., repeat the experiment many times with independent trials.T h i s
+independence assumption of trials goes somewhat against the spirit of allowing hidden
+variables wherever conceivable, and might be hard to justify in certain applications,
+e.g., in neurophysiology, where the neurons may also store hidden information between
+the trials. At present, we do not know under which conditions this independence assump-
+tion can be relaxed, but the results of Bierhorst [ 23] for the case of the Bell scenario are
+encouraging.
+2. What is Causal Structure?
+Our goal is to study correlations between different observations conducted on a collection
+of systems and to determine which causal structures between these observations are
+compatible with these correlations. So we ﬁrst need to discuss what the term “causal
+structure” actually means. Generally, a causal structure is deﬁned on a collection of
+events V , and the function of a causal structure is to clarify which events may inﬂuence
+which other ones. Whenever event v may inﬂuence event w, we write v → w. Upon
+taking the events to be nodes and regarding the inﬂuence relations v → w as edges, we
+therefore obtain a directed graph G = (V, E), i.e. a set of nodes V together with a
+set of directed edges E ⊆ V × V , which becomes the mathematical model of a causal
+structure. If there is no causal link from v to w, then we write v ⁄→ w. We will always
+assume that V is ﬁnite, and then so is E; it is probably possible to relax this assumption,
+albeit at the cost of additional technical challenges. Any edge e ∈ E is necessarily of
+the form v → w for a unique pair of nodes v,w ∈ V , which we call the source and
+target of e and also denote by src (e) and tar(e).F o rv ∈ V , we write
+in(v) := { e ∈ E | tar(e) = v }
+for the collection of incoming edges at v, and similarly
+out(v) := { e ∈ E | src(e) = v }
+for the outgoing edges at v. The upcoming acyclicity condition of Deﬁnition 2.2 will
+guarantee that these two sets are disjoint. In Sect. 7, we will use similar concepts for
+nodes: the set
+pa(v) := { u ∈ V | u → v }
+is the collection of parents of v, while
+ch(v) := {w ∈ V | v → w }
+are its children.
+We typically think of the events or nodes of G as points in spacetime, and there
+is an edge or causal link v → w if w lies in the future lightcone of v. However, our
+
+=== page 8 ===
+398 T. Fritz
+mathematical results are completely general and do not depend on this interpretation. In
+particular, we are conﬁdent that other ways for obtaining candidate causal structures are
+feasible and interesting, in particular in applications to mathematical modelling in other
+ﬁelds like biology or climate science. In these situations, it will often be the case that
+it is not known which events can inﬂuence which other ones, and therefore the causal
+structure is not known in advance. Applying our formalism to these cases is nevertheless
+possible by ﬁrst choosing some “trial” causal structures and then asking, for each of
+these, whether it is compatible with the given observations or not. We do not subscribe
+to any particular method for ﬁnding such trial causal structures; doing so is up to the user
+of our formalism. It should be an interesting challenge to come up with algorithms for
+doing so, possibly in analogy with the standard causal inference algorithms commonly
+used [13, p. 50ff].
+In general, even if u ⁄→ w, it may be possible that there is an indirect causal link
+from u to w proceeding through other nodes:
+Deﬁnition 2.1. A directed path from u ∈ V to w ∈ V is a ﬁnite sequence of nodes
+v1,...,v n ∈ V with u → v1 →···→ vn → w.
+We use the shorthand u ↝ w for the existence of a directed path from u to w, and
+u ⁄↝ w for the absence of any such directed path. In the conventional formalism of
+Bayesian networks [13], no information can propagate along indirect causal links since
+the intermediate nodes “screen off” any potential indirect inﬂuence of u on w, and hence
+the outcome variable o[u] may become conditionally independent of o[w] given o[v]
+(whether this happens depends on the overall structure of the graph). For us, this is no
+longer the case: the outcome variable o[v] living on an intermediate node v constitutes
+merely a probing of the environment without the guarantee that it faithfully represents
+all information propagating through v, and hence we cannot expect o[v] to screen off
+any correlations between o[u] and o[w].
+The additional property enjoyed by “ ↝”i s transitivity:
+u ↝ v, v ↝ w /equal1⇒u ↝ w.
+This makes sense if one interprets “ u ↝ v”a s“ u is in the causal past of v”. So the
+information carried by ↝ is exactly that of a partially ordered set, which for us plays
+a rôle similar to that of a causal set [24]. Due to the frequent occurrence of the concept,
+we introduce a special notation for the causal past,
+pst(v) := {v }∪{ u ∈ V | u ↝ v } .
+It is important to note that we consider every node itself to be a member of its causal
+past.
+A condition that any reasonable causal structure should satisfy is that there are no
+causal loops, i.e. that no event can inﬂuence itself in any non-trivial way:
+Deﬁnition 2.2 (e.g. [13]). A directed acyclic graph is a directed graph with v ⁄↝ v for
+all v ∈ V .
+Note that this deﬁnition is sensible only if we do not allow paths of length zero in
+Deﬁnition 2.1.
+For example, Figs. 1, 2, 3, 4 and 5 depict directed acyclic graphs. Acyclicity means
+that there is no directed sequence of edges which returns to its starting point. In particular,
+no node has a self-loop.
+
+=== page 9 ===
+Beyond Bell’s Theorem 399
+The particular causal structure considered by Bell [ 1] is the one of Fig. 1.I ti s
+worth noting that the ﬁve nodes of that ﬁgure are normally considered to play very
+different roles: s represents a source emitting particle pairs or other physical systems,
+one in each direction. It is usually not considered to yield an outcome o[s], although it
+almost certainly does in any actual experiment, where the outcome o[s] in any given run
+will be one of “successfully produced an entangled particle pair” or “failed to produce
+an entangled particle pair”. The nodes x and y stand for a choice of measurement
+randomly selected by an agent (or by an apparatus, in most actual experiments) with
+values o[a] and o[b]. Finally, the events a and b represent the execution of these chosen
+measurements on the systems emitted by the source which produce outcomes o[a] and
+o[b]. However, this categorization of the events into three different kinds is completely
+superﬂuous: one can consider all ﬁve variableso[s], o[x], o[y], o[a], o[b] to be outcomes
+of observations, which are (probabilistic) functions of the values of the incoming hidden
+variables propagating along the incoming causal links (if any), and emitting hidden
+variables along the outgoing causal links (if any). Here, the “hidden variables” may be
+classical, quantum or other kinds of systems; we will show later that in this picture, our
+corresponding deﬁnitions of classical and quantum correlations coincide precisely with
+the usual ones [ 2].
+So, generalizing and reinterpreting some of Bell’s work is what we set out to do in
+this paper. The questions that naturally arise are of this kind: under which conditions can
+a given correlation be explained in terms of hidden variables on a given causal structure?
+We are not able to answer this question in this paper and we suspect that it is in general
+very difﬁcult, but we provide a set of basic deﬁnitions and results for considering it.
+3. Correlations
+So what are these “correlations” between observations which we were talking about?
+As mentioned before, we imagine that at every node v ∈ V , there is an outcome o[v]
+describing the result of the corresponding observation and taking values in a ﬁnite set
+of possible values denoted Ov . It takes a concrete value in each run of the experiment,
+but possibly not the same value in each run, so that it needs to be described in terms
+of a probability distribution over outcomes. We also write o[V] for the vector or tuple
+(o[v])v∈V consisting of all the outcomes o[v] for all nodes v ∈ V . In each run of the
+experiment, we obtain one concrete tuple of values for o[V], so that we obtain a prob-
+ability distribution P(o[V]), which is a joint distribution of all the individual outcome
+variables o[v].I f U ⊆ V is any subset of the nodes, then we similarly use notation like
+o[U] and P(o[U]) for the corresponding tuples and their observed distribution.
+Now, under which condition is a given joint distributionP(o[V]) explainable in terms
+of hidden variables on a given causal structure? This is a very difﬁcult question in general
+and we are very far from having an answer, but there is an obvious necessary condition:
+if two subsets V1, V2 ⊆ V have distinct causal past, then o[V1] and o[V2] should be
+independent. More generally:
+Deﬁnition 3.1. P(o[V]) is acorrelation if for any collection of subsetsV1,..., Vm ⊆ V
+with disjoint causal past, i.e. pst(Vi) ∩ pst(Vj) =∅ for i ⁄= j, the distribution factors as
+P(o[V1] ... o[Vm]) = P(o[V1])... P(o[Vm]). (3.1)
+This is the basic necessary condition that we will use. From now on, we restrict
+our considerations to those joint distributions P(o[V]) that are correlations. No other
+
+=== page 10 ===
+400 T. Fritz
+joint distributions of outcomes will be considered on a given causal structure. When we
+deﬁne classical correlations, it will be our ﬁrst result (Proposition4.2) to show that every
+classical correlation is actually a correlation, and similarly in the quantum case.
+In deriving the concrete form of the constraints ( 3.1) for a given (candidate) causal
+structure, it is sufﬁcient to postulate ( 3.1) only for m = 2, i.e. when one only considers
+two sets U and W with disjoint causal past, in which case the condition is
+P(o[U]o[W]) = P(o[U]) P(o[W]). (3.2)
+The reason for the equivalence is that one can derive ( 3.1) from this assumption recur-
+sively. For example, for three sets V1, V2, and V3 with disjoint causal past, one gets
+P(o[V1]o[V2]o[V3]) = P(o[V1]o[V2 ∪ V3])
+(3.2)
+= P(o[V1]) P(o[V2 ∪ V3])
+= P(o[V1]) P(o[V2]o[V3])
+(3.2)
+= P(o[V1]) P(o[V2]) P(o[V3]).
+Here, the second equation uses the fact that V1 and V2 ∪ V3 have disjoint causal past,
+which follows from the assumption that all the Vi have pairwise disjoint causal past.
+Moreover, in (3.2) it is enough to consider those U and W which are maximal in the
+sense that there is no node outside of these sets which could be added to either of them,
+while still preserving the condition of disjoint past. The reason for this equivalence is
+that for any pair U, W , there is a maximal one U′, W′with U ⊆ U′and W ⊆ W′.N o w
+the assumption
+P(o[U′]o[W′]) = P(o[U′]) P(o[W′])
+implies the desired Eq. ( 3.3) upon taking the marginal of both sides over all those
+variables which are contained in U′or W′, but not in U or W . Note that maximality
+requires in particular that pst(U) = U and pst(W) = W , since otherwise U or W could
+be enlarged. Thereby, we have shown:
+Proposition 3.2. P(o[V]) is a correlation if and only if for any maximal pair of subsets
+U, W ⊆ V with pst(U) ∩ pst(W) =∅ , one has
+P(o[U]o[W]) = P(o[U]) P(o[W]). (3.3)
+For any given causal structure, it is instructive to write down a minimal set of con-
+ditions on P(o[V]) which guarantee that it is a correlation. We now carry this out in
+the familiar case of a Bell scenario. Instead of considering only the 2-party scenario of
+Fig. 1, we generalize it to the n-party Bell scenario in which the two “arms” {a, x}
+and {b, y} are replaced by an arbitrary number of arms {a1, x1},..., {an, xn}.M o r ep r e -
+cisely, the n-party Bell scenario has 2 n + 1 nodes: a “source” s, “settings” x1,..., xn
+and “outcomes” a1,..., an . For each party i we have s → ai and xi → ai , and there
+are no other edges. Our ﬁrst result about the n-party Bell scenario is that correlations on
+this causal structure can be characterized like this:
+Proposition 3.3. In the n-party Bell scenario, P is a correlation if and only if it satisﬁes
+the free will equation
+P(o[x1 ... xn s]) = P(o[x1]) ... P(o[xn]) P(o[s]) (3.4)
+and the no-signalling equation
+P(o[a1 ... ZZai ... an x1 ... xn s]) = P(o[xi])P(o[a1 ... ZZai ... an x1 ... ZZxi ... xn s])
+(3.5)
+for every party i = 1,..., n.
+
+=== page 11 ===
+Beyond Bell’s Theorem 401
+If one makes use of (3.4), then the no-signalling Eq. (3.5) can be seen to be equivalent
+to the more conventional form
+P(o[a1 ... ZZai ... an]| o[x1 ... xn s]) = P(o[a1 ... ZZai ... an]| o[x1 ... ZZxi ... xn s]),
+which is usually interpreted as stating that the conditional probability on the left is inde-
+pendent of the particular value of o[xi]. Also, it is usually assumed in the Bell scenario
+that the source s does not have an outcome; in our formalism, this corresponds to taking
+the source’s outcome o[s] to be always the same. In an actual experiment, however,
+the source typically does have an outcome, corresponding to whether it successfully
+produced the required pair of entangled particles or not. In this sense, our approach
+automatically treats a Bell scenario in a more realistic manner than is usually done. An-
+other difference is that a correlation in our approach does include chosen probabilities
+P(o[xi]) for the “settings” o[xi]. Again, this seems more realistic to us: in an actual
+experiment, the o[xi] have particular distributions, and these are even relevant in practi-
+cal information processing applications like device-independent randomness expansion,
+where strong limitations on the P(o[xi]) need to be imposed [ 6]. Another example is
+device-independent quantum key distribution [ 4], where protocol performance also de-
+pends on the P(o[xi]), even in such a way that highly non-uniform distributions are
+optimal.
+Proof. We begin with the “only if” part. To establish ( 3.4) from the assumption that
+P(o[V]) is a correlation, use
+V1 ={ x1},..., Vn ={ xn}, Vn+1 ={ s}
+in (3.1). To establish (3.5), put similarly
+V1 ={ xi}, V2 ={ a1 ... ZZai ... an x1 ... ZZxi ... xn s}.
+In both cases, it is straightforward to check that the condition of having disjoint causal
+past holds.
+For the “if” part, suppose ( 3.4) and ( 3.5) hold. Thanks to Proposition 3.2, it sufﬁces
+to check the correlation condition for two maximal disjoint-past sets U and W .B y
+pst(U) ∩ pst(W) =∅ , at least one of pst (U) and pst(W) does not contain s; without
+loss of generality, we take this to be U . Therefore, by maximality, s must be contained
+in W . Then since U and W have disjoint causal past, U cannot contain s or any ai ,s o
+U ={ xi | i ∈ I } for some I ⊆{ 1,..., n}. Again by maximality, we conclude that
+W ={ ai, xi | i ⁄∈ I }∪{ s }. If we write ¯I := {1,..., n}\I , then the equation that we
+have to derive from ( 3.4) and ( 3.5)i st h a t
+P(o[a¯I xI x ¯I s]) = P(o[xI ]) P(o[a¯I x ¯I s]),
+for an arbitrary set of parties I ⊆{ 1,..., n}. This equation can be interpreted as the
+analogue of (3.5) in which the individual party i is replaced by the set I . That this indeed
+follows from the assumptions is analogous to a well-known fact in the conventional
+formalism of no-signaling boxes, where no-signaling across a bipartition I vs ¯I follows
+from no-signaling with respect to each party individually [25]. With our deﬁnitions, this
+derivation can be carried out by induction on the size of I :i f I contains just one party,
+then our target equation coincides with the assumption ( 3.5). For the induction step, we
+
+=== page 12 ===
+402 T. Fritz
+assume that the equation holds for I and prove that it also holds for I ∪{ j } in place of
+I , where j is an arbitrary party not in I . This works as follows:
+P(o[a¯I\{ j} xI∪{ j} x ¯I\{ j}s]) = P(o[a¯I\{ j} xI x ¯I s])
+= P(o[xI ]) P(o[a¯I\{ j} x ¯I s])
+(3.5)
+= P(o[xI ]) P(o[x j]) P(o[a¯I\{ j} x ¯I\{ j}s])
+(3.4)
+= P(o[xI∪{ j}]) P(o[a¯I\{ j} x ¯I\{ j}s]),
+as was to be shown. Here, the second step uses the induction assumption, marginalized
+over o[a j]. The third and fourth steps use similar marginalizations of ( 3.5) and ( 3.4).
+⊓⊔
+Finally, it is worth noting that the set of all correlations on a given graph G does not
+depend on all details of the graph itself, but only on the partial order “↝” induced by G,
+as discussed in Sect. 2. The reason is that in order to apply Deﬁnition 3.1, all that one
+needs to know about the causal structure is which events lie in the causal past of which
+other ones.
+4. Classical Correlations
+As discussed in the introduction and the previous section, we want to assume that every
+node v ∈ V carries a random variable o[v], which represents the outcome of some
+probing of spacetime conducted at v. The basic assumption that we make is that these
+probings may not constitute a complete and faithful representation of the physical sys-
+tems propagating through these events, and in addition the observations may modify
+those systems in an unknown and arbitrary manner. More concretely, it could be the
+case that there are additional “hidden variables” necessary to describe the systems under
+consideration, and the observations only reveal partial information about the values of
+these hidden variables. We believe that this is a hypothesis which naturally arises in many
+situations in the sciences: for example, we can measure action potentials in a biological
+neural network and try to infer the causal structure from the correlations behind these
+action potentials, but how would we know that there is no other form of information be-
+ing transmitted between the neurons? If we measure a certain number of meteorological
+parameters in the atmosphere at different points in space and time, how can we be sure
+that we are not missing relevant information like the concentration of a certain aerosol,
+which may have a crucial effect on cloud formation? For these reasons, we allow for the
+propagation of hidden information and for the possibility that the observations modify
+this hidden information in an unknown manner.
+There are two ways to make this idea precise:
+• The hidden variables live on the edges of the graph.
+This is the approach that we pursue in this section. The local structure of a node v is
+illustrated in Fig. 6: the ingoing edges e ∈ E carry hidden variables λe, which deter-
+mine the outcome o[v] and the outgoing hidden variables via a certain conditional
+distribution P(o[v]λout(v)|λin(v)).1 In terms of a computational interpretation, the
+node v operates like an information processing gate taking the incoming hidden
+variablesλin(v) and turning them into outgoing hidden variablesλout(v) together with
+1 Here, we also write λout(v) as shorthand for the tuple of variables (λe)e∈out(v) etc.
+
+=== page 13 ===
+Beyond Bell’s Theorem 403
+v
+λout(v)
+...
+λin(v)
+...
+Fig. 6. Intended local structure of a node v
+an outcome o[v]. In terms of a physical interpretation, we think that it is appropriate
+to have the hidden variables live on the edges: after all, a hidden variable is supposed
+to represent the state of a physical system, and since we interpret our causal struc-
+tures in terms of spacetime pictures, these physical systems should be described by
+their one-dimensional worldlines. Since we allow the systems to be modiﬁed in an
+arbitrary way by the observations, the conditional distribution P(o[v]λout(v)|λin(v))
+may be completely arbitrary. In particular, the outgoing systems may be of a dif-
+ferent kind than the incoming ones, and we do not make any sort of “noninvasive-
+ness” assumption [ 26], and hence our formalism does not comprise Leggett–Garg
+scenarios.
+• The hidden variables live on the nodes of the graph.
+We develop this approach in Sect.7 and show it to be equivalent to the previous one.
+While it is less susceptible to a physical or information processing interpretation, it is
+very natural from the mathematical point of view and ﬁts in nicely with the standard
+approach to causal inference in terms of Bayesian networks [13]. It captures the idea
+of assuming that there may be hidden information “behind” each node.
+We now develop the ﬁrst approach in some detail.
+Deﬁnition 4.1. P(o[V]) is a classical correlation if for every e ∈ E there is a hidden
+variable λe given in terms of a probability space (Xe,/Sigma1e), and for every v ∈ V there is
+a conditional distribution
+P(o[v]λout(v)|λin(v)) (4.1)
+such that
+P(o[V]) =
+∫
+λE
+∏
+v∈V
+P(o[v]λout(v)|λin(v)). (4.2)
+There are many possible variations on this deﬁnition having to do with the precise
+mathematical deﬁnitions used in the case that the hidden variables may take inﬁnitely
+many values, which we explicitly allow. The deﬁnitions that we work with are explained
+in Appendix A; we will not consider other possible deﬁnitions in this work. We suspect
+that the set of classical correlations does not depend on which deﬁnitions are used, but
+we do not have a proof of this. The readers not interested in non-discrete hidden variables
+may want to restrict themselves to taking the Xe to be ﬁnite or countable sets.
+Some further explanation of ( 4.2) is in order. For any concrete value of the tuple of
+outcomes o[V], the right-hand side evaluates to a non-negative number as follows. Any
+P(o[v]λout(v)|λin(v)) is a λin(v) -dependent subnormalized measure on the product space
+Xout(v) = ∏
+e∈out(v) Xe. The product in (4.2) hence yields a measure on the total product
+
+=== page 14 ===
+404 T. Fritz
+space X E = ∏
+e∈E Xe. Integrating this measure results in a number, corresponding to its
+normalization, which is the joint probability of getting the joint outcome o[V]. Strictly
+speaking, making sense of this product of conditional distributions and the integral
+requires the methods of Sect. 5, since it is not obvious how to show that the integrand
+does indeed deﬁne a measure. We ignore this technical point for the time being.
+As the terminology suggests, a classical correlation is indeed a correlation in the
+sense of Sect. 3.
+Proposition 4.2. If P (o[V]) is a classical correlation , then it is a correlation.
+Proof. It is already non-trivial to verify that P(o[V]) is actually a probability distribu-
+tion, i.e. satisﬁes the normalization equation ∑
+o[V] P(o[V]) = 1.
+We start by showing that if U ⊆ V is some set of nodes with pst (U) = U , then the
+marginal P(o[U]) of ( 4.2) can be computed like this:
+P(o[U]) =
+∫
+λout(U)
+∏
+v∈U
+P(o[v]λout(v)|λin(v)). (4.3)
+Here, out(U) = ⋃
+v∈U out(v), so that the integration variablesλout(U) comprise all those
+λe with src(e) ∈ U . This formula should make intuitive sense: in order to determine
+the distribution of outcomes in pst (U) = U , it should be sufﬁcient to consider only the
+nodes and edges in U itself, since no other events or hidden variables can inﬂuence the
+variables in U .
+We prove (4.3) by induction on the size of V\U . The base case is U = V ,f o rw h i c h
+the formula is precisely the deﬁnition (4.2). For the induction step, we need to prove that
+the formula holds for a given U with pst(U) = U , when assuming that it holds for all
+bigger U′in place of U which likewise satisfy pst (U′) = U′. For the given U , we can
+choose a node w with pa(w) ⊆ U ; upon putting U′:= U ∪{ w}, it is then guaranteed
+that pst(U′) = U′as well. We therefore obtain, by the induction assumption,
+P(o[U]) =
+∑
+o[w]
+P(o[U]o[w])
+=
+∑
+o[w]
+∫
+λout(U)∪out(w)
+P(o[w]λout(w)|λin(w))
+∏
+v∈U
+P(o[v]λout(v)|λin(v))
+=
+∫
+λout(U)
+∫
+λout(w)
+∑
+o[w]
+P(o[w]λout(w)|λin(w))
+∏
+v∈U
+P(o[v]λout(v)|λin(v))
+=
+∫
+λout(U)
+( ∏
+v∈U
+P(o[v]λout(v)|λin(v))
+) ∫
+out(w)
+∑
+o[w]
+P(o[w]λout(w)|λin(w))
+=
+∫
+λout(U)
+∏
+v∈U
+P(o[v]λout(v)|λin(v)).
+Here, in the last step we have used the normalization of probability for the conditional
+distribution P(o[v]λout(v)|λin(v)), which states precisely that the integral-sum on the
+right evaluates to 1.
+This completes the proof of ( 4.3). In the special case U =∅ , the right-hand side
+of ( 4.3) is an empty product and therefore evaluates to 1, which proves that P(o[V]) is
+indeed a probability distribution.
+
+=== page 15 ===
+Beyond Bell’s Theorem 405
+To keep the notation simple, we prove the “binary” correlation equation ( 3.3) with
+the assumption pst(U) = U and pst(W) = W , which we already know to sufﬁce. Then
+we have pst(U ∪ W) = pst(U) ∪ pst(W) = U ∪ W , and therefore we obtain by ( 4.3),
+P(o[U]o[W]) =
+∫
+λout(U∪W)
+∏
+v∈U∪W
+P(o[v]λout(v)|λin(v))
+=
+∫
+λout(U)
+∫
+λout(W)
+⎛
+⎝ ∏
+v∈U
+P(o[v]λout(v)|λin(v))
+⎞
+⎠ ·
+⎛
+⎝ ∏
+v∈W
+P(o[v]λout(v)|λin(v))
+⎞
+⎠
+=
+⎛
+⎝
+∫
+λout(U)
+∏
+v∈U
+P(o[v]λout(v)|λin(v))
+⎞
+⎠ ·
+⎛
+⎝
+∫
+λout(W)
+∏
+v∈W
+P(o[v]λout(v)|λin(v))
+⎞
+⎠
+= P(o[U]) P(o[W]),
+as was to be shown. ⊓⊔
+In the case of Bell scenarios, classical correlations correspond exactly to those con-
+ditional probability distributions that are usually called “local” [ 2]:
+Proposition 4.3. In the n-party Bell scenario , P is a classical correlation if and only if
+it satisﬁes the free will equation (3.4), and the corresponding conditional probabilities
+are of the form
+P(o[a1 ... an]|o[x1 ... xn s]) =
+∫
+λ
+P(o[a1]|o[x1]λ) ··· P(o[an]|o[xn]λ)P(λ|o[s])
+(4.4)
+for some single hidden variable λ living on some measurable space (X,/Sigma1).
+Here, we implicitly also assume that only those values of o[xi] and o[s] are consid-
+ered for which P(o[xi])> 0 and P(o[s])> 0, since otherwise conditioning on these
+variables would not make sense.
+Proof. We begin with the “only if” part. To establish ( 4.4) for a given classical correla-
+tion, we deﬁne the conditional distributions occurring on the right-hand side of ( 4.4)b y
+identifying λ := λout(s) and putting
+P(λ|o[s]) := P(o[s]λout(s))
+P(o[s]) ,
+P(o[ai]|o[xi]λout(s)) :=
+∫
+λxi →ai
+P(o[ai]|λs→ai λxi →ai )P(o[xi]λxi →ai )
+P(o[xi])
+where the (conditional) distributions in the numerators of the right-hand sides are all
+part of the given data which realizes P as a classical correlation, while those in the
+denominators are marginals thereof. Using the free will equation ( 3.4), we have
+P(o[a1 ... an]|o[x1 ... xn s]) = P(o[a1 ... an x1 ... xn s])
+P(o[x1])··· P(o[xn])P(o[s]) (4.5)
+which, when the numerator is expanded using ( 4.2), gives (4.4).
+Now for the “if” part. Suppose (3.4) and (4.4) hold. We establish that this is a classical
+correlation as follows. Let each λs→ai be a copy of λ.L e t P(sλout(s)) := P(λ|s) P(s).
+We takeλxi →ai to be o[xi] itself, meaning that P(o[xi]λxi →ai ) := P(o[xi])·δo[xi ],λxi →ai .
+Finally, let P(o[ai]|λxi →ai λs→ai ) := P(o[ai]|o[xi]λ). Multiplying ( 4.4)b y( 3.4) then
+gives (4.2). ⊓⊔
+
+=== page 16 ===
+406 T. Fritz
+A similar argument will work in the quantum case; see Proposition 6.5.
+Bell scenarios have the desirable feature that the resulting conditional distributions
+of the form ( 4.4) form a convex polytope known as the local polytope [2]. Checking
+whether a given correlation is classical then simply boils down to asking whether the
+associated conditional distribution lies in the local polytope. However, for general causal
+structures, determining whether a given correlation is classical is a very difﬁcult problem.
+A good example is the triangle scenario displayed in Fig. 4, which has been studied
+in [ 10,16,17] for the special case that the outcomes o[x], o[y] and o[z] on the ﬁrst
+layer of nodes are deterministic variables. In this situation, the only known generally
+applicable conditions for a correlation to be classical are certain entropic inequalities;
+see [10, Lemma 2.14] and [ 17, Sec. VII.B]. One of the problematic aspects is that the
+set of classical correlations is not convex. In fact, this already holds in the case of a Bell
+scenario: although the set of classical correlations is a convex polytope on the level of
+the conditional distributions ( 4.4), convexity fails as soon as one works in the space of
+“unconditional” distributions P(o[a1 ... an x1 ... xn s]).
+So it is an important problem to understand the structure of classical correlations
+better. One relevant question is whether one can bound the maximally necessary sizes of
+the hidden variable spaces (Xe,/Sigma1e) in terms of the number of outcomes of each o[v].I n
+Bell scenarios, this was shown to be possible by Fine [27], and it again has to do with the
+fact that the associated conditional distributions form a convex polytope. But in general,
+it is not even clear whether one must allow the hidden variable spaces (Xe,/Sigma1e) to be
+continuous or even bigger than continuous in order to obtain all classical correlations.
+What we have been able to prove is that ﬁnite hidden variable spaces are sufﬁcient at
+least in an approximate sense:
+Theorem 4.4. If P (o[V]) is a classical correlation on an arbitrary causal structure G
+and ε> 0, then there is another classical correlation P ′(o[V]) on G with |P(o[V]) −
+P′(o[V])| <ε for any value of o [V] and such that the probability spaces (X′
+e,/Sigma1′
+e)
+occurring in the hidden variable model for P ′are all ﬁnite.
+It remains open whether this also holds without the approximation, i.e. whether any
+classical correlation can be exactly represented in terms of ﬁnite hidden variable spaces.
+We suspect that this is not the case, but we do not have any examples. If one generalizes
+our deﬁnitions to the case of countably inﬁnite G, as we do informally in the discussion
+opening Sect. 7, then there are well-known examples [ 28, Sec. 3.6].
+Proof. We construct, for every δ> 0, a classical correlation P′
+δ realized by hidden
+variables with only ﬁnitely many values such that |P(o[V]) − P′
+δ(o[V])| converges to
+0a s δ → 0. We perform this construction by induction on |V|, the number of nodes of
+the given graph.
+For |V|= 1, we have no edges and therefore no hidden variables. Hence we can
+simply put P′
+δ(o[V]) := P(o[V]) for any δ, and there is nothing to prove.
+For the induction step, we start with a graph G = (V, E) and a classical correlation
+P(o[V]) realized by hidden variables λe as in the classical correlation equation ( 4.2),
+where the hidden variable spaces (Xe,/Sigma1e) may be of arbitrary size. We then choose a
+node w ∈ V with out(w) =∅ ; such a node exists by the assumptions of ﬁniteness and
+acyclicity. Taking out the nodew together with all the edges with targetw gives a smaller
+graph to which the induction hypothesis can be applied, but we need to be careful to do
+this in the right way. Before doing so, we need a bit more preparation.
+We ﬁrst consider the conditional distributionP(o[w]|λin(w)) at the chosen nodew.W e
+choose a ﬁnite subset of [0, 1] such that any number in [0, 1] has distance at most δ from
+
+=== page 17 ===
+Beyond Bell’s Theorem 407
+this ﬁnite subset. Then we can replace the given conditional distribution P(o[w]|λin(w))
+by a perturbation ˆPδ(o[w]|λin(w)) which only takes values in this ﬁnite subset and such
+that
+| ˆPδ(o[w]|λin(w)) − P(o[w]|λin(w))| <δ ∀ o[w],λ in(w). (4.6)
+Then, for any given tuple of values forλin(w), there are only ﬁnitely many possibilities for
+the conditional distribution ˆPδ(o[w]|λin(w)). Hence we can consider the family of these
+distributions, as indexed byλin(w), as a measurable function from Xin(w) = ∏
+e∈in(w) Xe
+to some ﬁnite set S. We consider the product measurable space Xin(w) to be equipped
+with the corresponding marginal of the total measure
+P(o[V]λE) =
+∏
+v∈V
+P(o[v]λout(v)|λin(v)), (4.7)
+which determines the distribution of the λin(w). By virtue of Proposition B.2, we can
+replace the measurable spaces (Xe,/Sigma1e) for all e ∈ in(w) by ﬁnite sets X′
+e carrying
+hidden variables μe. More concretely, the X′
+e are coarse-grainings of the Xe arising via
+functions fe : Xe → X′
+e and come themselves equipped with a function
+P′
+δ : X′
+in(w) −→ S
+which assigns to every tuple μin(w) ∈ X′
+in(w) a distribution P′
+δ(o[w]|μin(w)) having the
+property that
+P′
+δ
+(
+o[w]| fout(w)(λout(w))
+)
+= ˆPδ(o[w]|λin(w)) (4.8)
+holds with probability greater than 1−δ with respect to the original distributionP(λin(w))
+as the marginal of ( 4.7).
+In order to apply the induction hypothesis, we need to modify the correlation a bit by
+regarding each new hidden variable μe for e ∈ in(w) as part of the outcome o[src(e)]
+associated to the source node src (e). In other words, we deﬁne new outcomes:
+˜Ov :=
+{
+Ov × X′
+v→w if v → w,
+Ov if v ⁄→ w, ˜o[v]: =
+{
+(o[v],μv→w) if v → w,
+o[v] if v ⁄→ w.
+Now there is an obvious classical correlation on the remainder graph G\{w} corre-
+sponding to a distribution of the new outcomes ˜o[V]:a tt h o s ev with v ⁄→ w, we retain
+the previous conditional distribution P(o[v]λout(v)|λin(v)); at those v with v → w,w e
+compose the old P(o[v]λout(v)|λin(v)) with the fe from above, which gives a new con-
+ditional distribution P(o[v]μeλout(v)\{w}|λin(v)), in which the ﬁrst two components are
+now considered to be forming the new outcome ˜o[v]. This data deﬁnes a new classical
+correlation P(˜o[V]) on the smaller graph G\{w}.
+We now apply the induction hypothesis to this classical correlation. This way, we
+obtain ﬁnite sets X′
+e carrying hidden variables μe for all edges e ∈ E with tar(e) ⁄= w,
+where the new variables μe have a priori nothing to do with the previous μin(w) except
+for sharing the same letter, and conditional probabilities P′
+δ(˜o[v]μout(v)|μin(v)) such that
+the difference
+|P′
+δ(o[V\{w}]μin(w)) − P(o[V\{w}]μin(w))|=| P′
+δ(˜o[V\{w}]) − P(˜o[V\{w}])|
+(4.9)
+tends to 0 as δ → 0.
+
+=== page 18 ===
+408 T. Fritz
+Taking all this together, we will obtain the desired bounds on the difference
+P(o[V]) − P′
+δ(o[V])
+= P(o[V]) −
+∑
+μin(w)
+P′
+δ(o[w]|μin(w))P(o[V\{w}]μin(w))
++
+∑
+μin(w)
+(
+P′
+δ(o[w]|μin(w))P(o[V\{w}]μin(w)) − P′
+δ(o[w]|μin(w))P′
+δ(o[V\{w}]μin(w))
+)
+,
+where we have inserted the ﬁrst sum such that it cancels with the ﬁrst part of the second
+sum. The second sum can be bounded in terms of ( 4.9): by making the δ used in the
+application of the induction hypothesis arbitrarily small, we can also make the second
+sum arbitrarily small. Thus it remains to bound the difference between P(o[V]) and the
+ﬁrst sum, which can be done like this:
+⏐⏐⏐⏐P(o[V])−
+∑
+μin(w)
+P′
+δ(o[w]|μin(w))P(o[V\{w}]μin(w))
+⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐P(o[V]) −
+∫
+λin(w)
+P′
+δ(o[w]| fin(w)(λin(w)))P(o[V\{w}]λin(w))
+⏐⏐⏐⏐⏐
+(4.8)
+≤
+⏐⏐⏐⏐⏐P(o[V]) −
+∫
+λin(w)
+ˆPδ(o[w]|λin(w))P(o[V\{w}]λin(w))
+⏐⏐⏐⏐⏐+ δ
+(4.6)
+≤
+⏐⏐⏐⏐⏐P(o[V]) −
+∫
+λin(w)
+P(o[w]|λin(w))P(o[V\{w}]λin(w))
+⏐⏐⏐⏐⏐+2 δ
+= 2δ.
+⊓⊔
+In Bell scenarios, it is well-known that the “information processing” at the measure-
+ment nodes ai may be assumed to be deterministic without loss of generality [27], in the
+sense that any classical correlation has a hidden variable model satisfying this property.
+For general causal structures, it also seems very plausible that it should be possible to
+assume that the information processing at each node v with pa(v) ⁄=∅ is deterministic.
+The idea here is that if v has at least one parent node, then the randomness needed can
+be “pushed back” in the sense of generating the randomness at the parent node and then
+transporting it from there to v by augmenting the hidden variable on that edge with this
+additional information. If one repeats this process of pushing randomness generation
+back to the parents nodes, then one eventually ends up with a classical model in which
+all information processing is deterministic, except at those nodes that do not have any
+parents, which is where all the randomness originates.
+More precisely, the hypothesis is this:
+Conjecture 4.5. If P (o[V]) is a classical correlation, then P (o[V]) can be represented
+in the form (4.2) in such a way that all conditional probabilities are deterministic at
+all nodes v with in(v) ⁄=∅ , meaning that P (o[v]λout(v)|λin(v)) is a Dirac measure on
+Ov × Xout(v) for all values of λin(v) .
+
+=== page 19 ===
+Beyond Bell’s Theorem 409
+Due to the measure-theoretical technicalities involved, we only have a partial proof of
+this conjecture covering the case in which all hidden variables take only ﬁnitely many val-
+ues. In this case, the statement can be reformulated as saying that P(o[v]λout(v)|λin(v)) ∈
+{0, 1} for any values of the variables involved. Our proof is based on exactly the intuitive
+idea of repeatedly pushing the randomness back to parent nodes:
+Partial Proof. As in the proof of Theorem 4.4, we use induction on the size of G. When
+G has only vertex, then there is no hidden variable and hence nothing to prove.
+For the induction step, we start with a graph G = (V, E) and a classical correlation
+P(o[V]) on G realized by hidden variables λe living on ﬁnite sets Xe and conditional
+distributions P(o[v]λout(v)|λin(v)) which are, due to the ﬁniteness assumption, simply
+stochastic matrices. If there is no node with a parent, then the graph has no edges at all,
+and again there is nothing to prove. Otherwise, we pick a vertex w with pa(w) ⁄=∅ ,b u t
+ch(w) =∅ ; since G is ﬁnite and acyclic, there is at least one such vertex which can be
+found e.g. by starting at any node with an incoming edge and following outgoing edges
+from node to node until one reaches a node without any outgoing edges. From now on,
+we keep such a node w ﬁxed.
+The induction step consists in “pushing back” the randomness inherent in the con-
+ditional distribution P(o[w]|λin(w)) to a parent node of w, and applying the induction
+hypothesis afterwards. While this should be intuitively plausible, we will see that the
+technical details are quite demanding.
+So to perform this induction step, pick an arbitrary parent u ∈ pa(w), which is where
+the randomness will be pushed back to. Doing so means that the hidden variable space
+Xu→w will have to be enlarged, and the appropriate deﬁnition turns out to be
+X′
+u→w := O Xin(w)
+w × Xu→w,
+where the ﬁrst factor is the set of all functions Xin(w) → Ow. The given conditional
+distribution P(o[w]|λin(w)) can be regarded as a distribution on this function space by
+assigning to a function f : Xin(w) → Ow the probability
+ˆP( f ) :=
+∏
+λin(w)∈Xin(w)
+P( f (λin(w))|λin(w)).
+Intuitively, a function f : Xin(w) → Ow can also be regarded as a list of elements
+of Ow indexed by Xin(w), and then this deﬁnition says that all the elements of this
+list are selected independently of each other according to their respective distributions
+determined by the given P(o[w]|λin(w)).
+If we denote the new hidden variable with the new domain X′
+u→w by λ′
+u→w, then we
+can deﬁne a new conditional distribution P′(o[w]|λ′
+u→wλin(w)\{u→w}) by writing λ′
+u→w
+as a pair λ′
+u→w = ( f,λ u→w) and putting
+P′(o[w]|( f,λ u→w)λin(w)\{u→w}) :=
+{
+1i f f (λin(w)) = o[w],
+0 otherwise ,
+where λin(w) stands for the tuple of hidden variables consisting of the λin(w)\{u→w}
+together with the additional λu→w which is part of λ′
+u→w. By construction, P′is deter-
+ministic information processing: the node w receives a collection of incoming hidden
+variables λin(w) as well as a function f : Xin(w) → Ow and does nothing but to apply
+the latter to the former in a deterministic manner.
+
+=== page 20 ===
+410 T. Fritz
+In order to deﬁne a classical hidden variable model using the new hidden variable
+space X′
+u→w, we also need to modify the conditional distribution P(o[u]λout(u)|λin(u))
+to some P′(o[u]λ′
+u→wλout(u)\{u→w}|λin(u)). Since λ′
+u→w = ( f,λ u→w), we can do this
+by simply putting
+P′(o[u] f λout(u)|λin(u)) := ˆP( f ) · P(o[u]λout(u)|λin(u)),
+where ˆP( f ) is as above. In other words, the function f is chosen already at u, randomly
+and independently of any of the other hidden variables. In this sense, the randomness
+has been “pushed back” from the node w to the node u.
+In order to show that the two new conditional distributions P′ at nodes u and w
+indeed give rise to the same overall classical correlation, it is enough to show that the
+resulting conditional distribution P′(o[uw]λout(u)\{u→w}|λin(u)∪in(w)\{u→w}) coincides
+with the original one, since this is the only part of the graph to which we have applied
+any modiﬁcations. Indeed,
+P′(o[uw]λout(u)\{u→w}|λin(u)∪in(w)\{u→w})
+=
+∑
+f,λu→w
+P′(o[w]| f λin(w)) P′(o[u] f λout(u)|λin(u))
+=
+∑
+f,λu→w
+δ f (λin(w)),o[w] · ˆP( f ) · P(o[u]λout(u)|λin(u))
+=
+∑
+λu→w
+P(o[u]λout(u)|λin(u))
+∑
+f
+δ f (λin(w)),o[w]
+∏
+μin(w)
+P( f (μin(w))|μin(w))
+(∗)
+=
+∑
+λu→w
+P(o[u]λout(u)|λin(u))
+∑
+f (λin(w))
+δ f (λin(w)),o[w] P( f (λin(w))|λin(w))
+=
+∑
+λu→w
+P(o[u]λout(u)|λin(u)) · P(o[w]|λin(w))
+= P(o[uw]λout(u)\{u→w}|λin(u)∪in(w)\{u→w}),
+where the step (∗) uses the fact that upon regarding f as a list of elements of Ow
+indexed by Xin(w), all components of this list except for f (λin(w)) simply drop out by
+normalization of probability.
+This ﬁnishes our construction of making the information processing at w determin-
+istic by pushing back the randomness needed u along the edge u → w. The induction
+step can now be completed as in the proof of Theorem 4.4: the hidden variables λin(w)
+have to be regarded as part of the outcomes o[v] for those nodes v with v → w,s o
+that we obtain an induced classical correlation on the restricted graph G\{w}. Applying
+the induction hypothesis to this situation then results in a classical model for the cor-
+responding correlation P(˜o[V\{w}]) = P(o[V\{w}]λin(w)) with the property that all
+information processing at the non-root nodes is deterministic. Putting this together with
+the deterministic processing P′at node w completes the induction step. ⊓⊔
+By virtue of Theorem4.4, this also shows that any classical correlation can be arbitrar-
+ily well approximated by one in which all conditional distributions P(o[v]λout(v)|λin(v))
+are deterministic. We suspect that Conjecture 4.5 also holds without the approximation,
+
+=== page 21 ===
+Beyond Bell’s Theorem 411
+but we do not have a proof of this. 2 The upcoming Theorem 7.3 might be helpful for
+achieving a complete proof.
+5. Correlations Within Any Theoretical Framework
+It should be useful to have a deﬁnition of correlation not just for the classical case,
+but also for other mathematical frameworks for physical theories. In particular, there
+should be deﬁnitions of quantum correlation and of general probabilistic correlations.
+We consider this problem by outlining the form in which a framework for physical
+theories, like “classical”, “quantum” or “general probabilistic”, needs to be given in
+order for it to enable a corresponding deﬁnition of correlation. Our answer to this turns
+out to be very similar to the deﬁnition of causal operational-probabilistic theory of
+Chiribella et al. [ 29]. The reason for tackling this very general problem at this stage
+is that it seems to give the most convenient rigorous deﬁnition of quantum correlation.
+Those readers who are not interested in mathematically precise deﬁnitions can directly
+proceed to the informal deﬁnition of quantum correlations in Sect. 6. Considerations
+similar to the ones of this section can also be found in the independent work of Henson
+et al. [ 16].
+So what pieces of structure did we need in the previous section to deﬁne classical
+correlations? For one thing, each edge of the graph G = (V, E) carries a classical
+system deﬁned in terms of a measurable space. Second, the nodes v ∈ V in turn are
+implemented as “information processing gates” given by stochastic instruments indexed
+by outcomes o[v]; here, an individual operation is typically subnormalized, i.e. happens
+with a state-dependent success probability. Only when taking the sum over all o[v] do
+we get a normalization-preserving operation.
+In general, the dichotomy between labelling the edges by state spaces and the nodes
+by operations suggests that we should assume that a framework for physical theories
+should be given by a category which we denote C.3 Then, each edge gets labelled by
+an object in C, while each node gets labelled by a morphism of C. More precisely, we
+assume that C is a (strict) symmetric monoidal category whose morphisms play the
+role of the operations; in particular, this means that no assumption like normalization or
+preservation of probability should be made when deﬁning the morphisms of C. In order
+to be able to make sense of the requirement that the every node carries one operation
+for each outcome and, when summing over all outcomes, the resulting total operation
+is normalized (more accurately, normalization-preserving), we need to make several
+additional assumptions:
+(cat.i) Every morphism set C(X, Y) is a convex cone: any morphism in C(X, Y) can
+be multiplied by a positive scalar, any two morphisms C(X, Y) can be added,
+and there is a neutral element 0 ∈ C(X, Y). More precisely, C(X, Y) is assumed
+to be a module over the semiring R≥0. Intuitively, the consequences of this are
+that we can take stochastic mixtures of operations, and the normalization of a
+morphism can be rescaled by simply multiplying the morphism by a scalar.
+(cat.ii) The composition of morphisms
+C(X, Y) × C(Y, Z) → C(X, Z)
+2 Our partial proof could possibly be extended to a full proof if the category of measurable spaces was
+cartesian closed, but this seems to be an open problem. See http://mathoverﬂow.net/questions/1388/is-there-
+a-natural-measures-on-the-space-of-measurable-functions .
+3 We refer to [30,31] for background on the relevant pieces of category theory.
+
+=== page 22 ===
+412 T. Fritz
+is bilinear with respect to this R≥0-module structure. In other words, compo-
+sition distributes both over addition and scalar multiplication of morphisms.
+Likewise, the tensor product
+C(X1, Y1) × C(X2, Y2) → C(X1 ⊗ X2, Y1 ⊗ Y2)
+is also bilinear.
+(cat.iii) In addition, there is a distinguished symmetric monoidal subcategory C1 ⊆ C
+containing all identity morphisms. We think of C1 as the subcategory which
+contains all the normalized operations.
+(cat.iv) We have C(I, I) = R≥0 and C1(I, I) ={ 1}, where I is the monoidal unit of
+C (and C1). In other words, there is exactly one normalized operation which
+does nothing to nothing, and this operation is denoted 1. The operations which
+act on nothing are precisely the scalar multiples of 1. This how we are going to
+obtain probabilities: as morphisms of type I → I in C, which are nonnegative
+real numbers.
+(cat.v) We have C1(X, I) ={ 1}, i.e. the unit object I is terminal in C1. In other words,
+every system X can be discarded in a unique way in the sense that there is exactly
+one normalized operation from X to no system which we denote τX : X → I
+and draw as “ ”. This assumption corresponds to the causality assumption
+of [ 29], which also forms a central aspect of the “causal categories” of [ 32],
+where the use of the ground symbol “ ”f o rτ has been introduced.
+This ﬁnishes the list of requirements that the category C should satisfy in order for it
+to be possible to deﬁne the notion of “ C-correlation”. For example, in the quantum case
+that we will consider in the next section, C will be the category of completely positive
+maps in which Hilbert spaces are the objects and completely positive maps between their
+sets of states will be the morphisms. As a more basic example, we can also deﬁne the
+classical correlations from the previous section like this by deﬁning a category in which
+the objects are measurable spaces and the morphisms are stochastic operations. We will
+do this in more detail below.
+Once a category C together with C1 ⊆ C as above has been determined, how do we
+obtain the deﬁnition of C-correlation on a graph G? The basic idea is to interpret G as a
+diagram within the category C, assuming that G has been labelled by an object Xe ∈ C
+for every edge e ∈ E, and by a morphism
+gv ∈ C
+⎛
+⎝ ⨂
+e∈in(v)
+Xe,
+⨂
+e∈out(v)
+Xe
+⎞
+⎠
+for every node v ∈ V . Labelling the edges by objects and the nodes by morphisms is
+essentially the same idea as the one which underlies “quantum picturalism” [33], namely
+the graphical calculus for symmetric monoidal categories [ 34]. This is another reason
+for why we believe that taking the hidden variables to live on the edges—as opposed to
+the nodes—is the appropriate thing to do. Once G can be interpreted as a diagram like
+this, it evaluates to an overall composite morphism I → I , which (cat.iv) guarantees to
+be a nonnegative number. We interpret this number as the probability that the speciﬁc
+labelled graph G “happens”, exactly as in Hardy’s operator-tensor formulation [ 12].
+More precisely, we want to label each node v not just by a single operation, but by a
+whole collection of operations indexed by the outcome o[v]. In other words, we need to
+assume that v is labelled by a function from outcomes to morphisms,
+
+=== page 23 ===
+Beyond Bell’s Theorem 413
+fv : Ov −→ C
+⎛
+⎝ ⨂
+e∈in(v)
+Xe,
+⨂
+e∈out(v)
+Xe
+⎞
+⎠ . (5.1)
+This function is assumed to assign to every outcome o[v] a C-operation fv(o[v]) :⨂
+e∈in(v) Xe → ⨂
+e∈out(v) Xe in such a way that ∑
+o[v] fv(o[v]) is normalized, i.e. lies
+in the subcategory C1. We can call this fv a C-instrument in analogy with the notion
+of quantum instrument, since it is a collection of operations indexed by an outcome
+such that the total operation obtained by marginalization (summing) over the outcome
+is normalized. The C-instrument fv plays the role of the “information processing gate”
+turning all the incoming systems into outgoing systems and producing a classical out-
+come while doing so. We think of a particular operation fv(o[v]) as realized at node
+v exactly when the particular outcome o[v] occurs. So when computing the probabil-
+ity P(o[V]) of a speciﬁc joint outcome o[V] to occur, every node v ∈ V is therefore
+labelled by exactly one morphism fv(o[v]). Then one can try to interpret the graph G,
+labelled by the objects Xe and these particular morphisms fv(o[v]), as a diagram in C,
+which evaluates to an element of C(I, I). Indeed, the graphical calculus for symmetric
+monoidal categories, as formalized by Joyal and Street [ 34, Sec. 2.1] as the deﬁnition
+of “value” of a progressive polarized diagram, should be the appropriate way of doing
+this. By (cat.iv), this value I → I is a nonnegative real number, which we take to be the
+deﬁnition of P(o[V]).
+However, there is an annoying technical problem with the idea of interpreting the
+graph G, when appropriately labelled, as a diagram inC. Strictly speaking, the two tensor
+products ⨂
+e∈in(v) Xe and ⨂
+e∈out(v) Xe are not deﬁned in C: as a symmetric monoidal
+category, we can only make sense of binary tensor products inC.4 Hence, following Joyal
+and Street [34], we equip each set in(v) and out(v) with a particular linear ordering.W e
+will show later that the resulting set of C-correlations does not depend on this choice of
+ordering. Having ﬁxed such orderings, we can now make sense of the tensor products⨂
+e∈in(v) Xe and ⨂
+e∈out(v) Xe by deﬁning them as iterated binary tensor products with
+respect to the given ordering.
+In order to describe the notion of value in more detail, we need to introduce some
+additional terminology. The details of this will differ from the treatment of Joyal and
+Street, but it should be clear to the interested reader how to translate their deﬁnitions
+into ours. The general notion of value applies to directed acyclic graphs which may
+have incoming and outgoing “half-edges”, i.e. edges which have only a source or target
+node within the graph. We can formalize this by deﬁning a directed acyclic graph with
+boundary G to consist of a set V of nodes, a set E of ordinary edges, a set Ein of
+incoming edges, and a set Eout of outgoing edges, together with source and target maps
+s : E ∪ Eout → V, t : E ∪ Eout → V.
+So if we put in (v) := t−1(v), then this set of incoming edges at v also includes all
+half-edges that have v as their target, and similarly for out (v). The acyclicity condition
+is then as before in Deﬁnition 2.2, and G is acyclic if and only if the restricted graph
+4 There is an “unbiased” deﬁnition of monoidal category in which tensor products are not necessarily
+binary [ 35, Sec. 3.1], but an ordering of the factors does still need to be chosen. More generally, there is
+also a deﬁnition of “fat symmetric multicategory” [ 35, App. A], which is more general than the deﬁnition of
+“order-independent unbiased symmetric monoidal category” that we would need. However, there does not yet
+seem to be any theorem on interpreting directed acyclic graphs as diagrams in symmetric monoidal categories,
+which is the reason for the technical complications that we are facing here. See also http://mathoverﬂow.net/
+questions/1388/is-there-a-natural-measures-on-the-space-of-measurable-functions .
+
+=== page 24 ===
+414 T. Fritz
+(V, E) without the half-edges is so. During the discussion of value, we use the term
+“graph” as a synonym of “directed acyclic graph with boundary”. As a special case,
+the boundary may be empty, in which case the deﬁnition reduces to the usual notion of
+directed acyclic graph which we have been using until now.
+Such a graph is polarized if each set in (v) and out (v) is equipped with a linear
+ordering. It is anchored if both Ein and Eout are equipped with linear orderings. A
+valuation in C is a labelling of E, Ein and Eout by objects Xe ∈ C and of V by morphisms
+gv of C such that each fv is of type
+gv :
+⨂
+e∈in(v)
+Xe −→
+⨂
+e∈out(v)
+Xe,
+where it is understood that the tensor products are taken with respect to the chosen
+orderings.
+Then Joyal and Street [ 34, Sec. 2.1] show that it is possible to assign a value to this
+graph in the sense of regarding it as a diagram in C and composing it to a morphism
+ν(G) :
+⨂
+e∈Ein
+Xe −→
+⨂
+e∈Eout
+Xe,
+where again these tensor products are with respect to the chosen orderings on Ein and
+Eout.I f Ein = Eout =∅ , as in the case of interest to us, then ν(G) : I → I . In fact,
+it can be shown that there is a unique way of assigning a value satisfying the following
+properties:
+(val.i) If G is a graph containing exactly one node, then ν(G) coincides with the
+morphism labelling that node.
+(val.ii) If G1 and G2 are graphs equipped with valuations in C, then also the disjoint
+union graph G1 + G2 carries a valuation in C, and
+ν(G1 + G2) = ν(G1) ⊗ ν(G2).
+Intuitively, this corresponds to placing the two diagrams G1 and G2 side by
+side, and hence their value should be interpreted as the tensor product of the
+individual values.
+(val.iii) The second requirement is similar and refers to composition of graphs: if G1
+and G2 are such that there is an equality of ordered sets E1,out = E2,in, and
+both G1 and G2 carry a valuation such that the object assigned to a half-edge
+e ∈ E1,out coincides with the object associated to the corresponding half-edge
+e ∈ E2,in, then the two graphs can be composed to G2 ◦ G1 in the obvious way,
+and this composite graph also carries a valuation. The requirement now is that
+ν(G2 ◦ G1) = ν(G2) ◦ ν(G1),
+where “◦” on the right-hand side is composition in C.
+(val.iv) Taking the value is a linear function of the morphism gv at each node v ∈ V .
+Armed with these preliminary considerations, we can now get to our main result of
+this section. If we have a graph without boundary G, and G is labelled by objects on
+the edges and C-instruments (5.1) on the nodes, then every joint outcome o[V] can be
+assigned a number P(o[V]) by evaluating it as a diagram in C as described above. The
+main point is this:
+
+=== page 25 ===
+Beyond Bell’s Theorem 415
+g
+X
+Y Z
+Fig. 7. Taking the marginal of a morphism in C over an output system Y is deﬁned in terms of composition
+with the unique morphism τY ∈ C1(Y, I) drawn as “ ”. In the quantum case, this is an application of partial
+trace over Y
+Theorem 5.1. The resulting numbers P (o[V]) form a correlation on G.
+See also [ 36] for more general considerations relating assumption (cat.v) to the no-
+signaling property.
+Proof. This proof generalizes the one of Proposition 4.2. In particular, the overall proof
+strategy is the same, and we will see that Proposition 4.2 can indeed be regarded as an
+instance of the present claim.
+We start by deriving the following generalization of (4.3): if W ⊆ V is a set of nodes
+with pst(W) = W , then the marginal P(o[W]) can be computed using the following
+steps:
+• Take the restricted graph(W, E|W ), where E|W contains exactly those edges whose
+source and target both lie in W . Just as the original G, this is also a graph without
+boundary.
+• Equip (W, E|W ) with the same objects Xe as edge labels, and label the nodes by
+the C-instruments whose components are the corresponding marginal operations
+(Fig. 7). Here, the marginal of an operation fv(o[v]) needs to be taken over all
+those edges e ∈ out(v) whose target tar (e) does not lie in W . It follows from
+bilinearity (cat.ii) and the fact that the marginalization morphisms τtar(e) a r ei nt h e
+subcategory C1 that the new marginal operations do also form a C-instrument.
+• Take the linear orderings on the new sets in(v) and out(v) for all v ∈ W to be those
+induced from G.
+• Evaluate this graph to a family of numbers P(o[W]) by applying ν as described
+above.
+We prove that the resulting numbers P(o[W]) coincide with the corresponding mar-
+ginal of P(o[V]) by induction on the size of V\W . The base case is W = V ,f o rw h i c h
+the claim is simply the deﬁnition of P(o[V]). For the induction step, we need to prove
+that the claim holds for a given W with pst (W) = W , while assuming that it holds
+for all bigger W′ in place of W which likewise satisfy pst (W′) = W′. For the given
+W , we can choose a node w with pa(w) ⊆ W , as in the proof of ( 4.3). Upon putting
+W′ := W ∪{ w}, it is then guaranteed that pst (W′) = W′. We therefore can apply
+the induction assumption, which gives that the marginal P(o[W′]) can be computed by
+applying the above steps to W′; this is depicted in Fig. 8a. Then it remains to evaluate
+the sum over o[w], in order to show that the further restricted marginal
+P(o[W]) =
+∑
+o[w]
+P(o[W′]) (5.2)
+
+=== page 26 ===
+416 T. Fritz
+fw (o[w])
+fu(o[u]) fv (o[v])
+...
+...
+...
+...
+...
+...
+(a)
+fu(o[u]) fv(o[v])
+...
+...
+...
+...
+...
+...
+(b)
+fu(o[u]) fv (o[v])
+...
+...
+...
+...
+...
+...
+(c)
+Fig. 8. Illustration of the induction step in the proof of Theorem 5.1 f o rp a r to fa ne x a m p l egraph.T h eground
+symbol represents the unique normalized operation τX ∈ C1(X, I) from any system X to no system
+can likewise be computed by following the above prescription. In order to prove this,
+we use the linearity property (val.iv) to interpret the right-hand side as the value of the
+diagram arising from the valuation of(W′, E|W′) by objects and operations such that each
+v ∈ W is labelled by the morphism fv(o[v]) where the value o[v] is the given one on the
+left-hand side of ( 5.2), while the “new” node w is labelled by ∑
+o[w] fw(o[w]). Because
+the latter is a morphism inC1, we can apply assumption (cat.v): sinceI is a terminal object
+in C1,t h es e tC1
+( ⨂
+e∈in(w) Xe, I
+)
+has exactly one element. In particular, the elements∑
+o[w] fw(o[w]) ∈ C1
+( ⨂
+e∈in(w) Xe, I
+)
+and ⨂
+e∈in(w) τXe ∈ C1
+( ⨂
+e∈in(w) Xe, I
+)
+are
+equal,
+∑
+o[w]
+fw(o[w]) =
+⨂
+e∈in(w)
+τXe , (5.3)
+where τXe is itself the unique element of C1(Xe, I). Intuitively, the idea is that ∑
+o[w]
+fw(o[w]) is the unique normalized operation going from the composite system⨂
+e∈in(w)
+Xe to no system, as illustrated in Fig. 8b, and hence coincides with throwing away all
+systems in parallel, which is given by the morphism ⨂
+e∈in(w) τXe as depicted in Fig. 8c.
+Now we can regard the graph(W′, E|W′) as the composition of two parts as indicated by
+the dashed line in Fig. 8b. The upper part consists of only one node with ingoing edges
+and is labelled by the morphism ( 5.3), and hence by (val.i) its value coincides with this
+very morphism. Since this morphism itself factors into a tensor product, rule (val.ii) tells
+us that we obtain the same value if we furnish each incoming edge with its own target
+node, as in Fig. 8c. Then again by the rules (val.ii) and (val.iii), the overall diagram
+value coincides with the one obtained by taking(W, E|W ) and labelling it with marginal
+morphisms as described above. This completes the induction step.
+Now we can make use of the above prescription. First, if W =∅ , then we obtain
+the marginal P(o[∅]), which simply is a number corresponding to the normalization of
+the distribution P(o[V]), which should be 1. What the above prescription tells is that
+we can compute P(o[∅]) as the value of the empty graph, which is id I ∈ C(I, I).A sa
+number, this is indeed 1.
+Second, we can also show that the “binary” correlation equation ( 3.3) with the as-
+sumption pst(U) = U and pst(W) = W holds by applying the above prescription to the
+subgraph (U ∪ W, E|U∪W ). Since this subgraph decomposes into the disjoint union of
+(U, E|U ) and (W, E|W ), the claim now follows immediately from (val.ii). ⊓⊔
+So for any category of operations C, we now have a precise deﬁnition of the set of
+C-correlations. However, this deﬁnition was phrased in terms of the chosen orderings
+on each in(v) and out(v); since these are not part of the data of the original graph G,w e
+still need to show that the set of C-correlations is independent of that choice.
+
+=== page 27 ===
+Beyond Bell’s Theorem 417
+Proposition 5.2. The set of C-correlations on G does not depend on the particular
+orderings chosen on the sets in(v) and out(v).
+Sketch of Proof. It is enough to show that the ordering on in (v) and out(v) for some
+ﬁxed v can be modiﬁed arbitrarily without changing the set of C-correlations. Since any
+two orderings are related by a permutation, and any permutation can be generated from
+adjacent transpositions which do nothing but exchange a pair of neighboring edges, it
+is enough to consider the case that only two neighboring edges e1, e2 are exchanged
+at some ﬁxed node v, either among the incoming edges or among the outgoing edges.
+We then need to show that if P(o[V]) is a C-correlation with respect to the original
+ordering, then it is also a C-correlation with respect to the new ordering. Since P(o[V])
+is a C-correlation with respect to the original ordering by assumption, we know that there
+exists a labelling of edges by objects Xe of C and of nodes by instruments fv in C which
+reproduces the probabilities. Now we can construct a labelling of the graph with the new
+ordering by replacing the instrument fv with the instrument given by the composition of
+each component operation fv(o[v]) with the symmetry (swap)Xe1 ⊗ Xe2 −→ Xe2 ⊗ Xe1 ,
+while retaining all other labels. If e1 and e2 are incoming edges of v, then the symmetry
+has to be applied before fv ; otherwise, if e1, e2 ∈ out(v), it should be used after.
+This deﬁnes a new set of valuations of the same graph with the new ordering which
+reproduces the same probabilities P(o[V]) thanks to the invariance properties of the
+graphical calculus as given in terms of the map ν [34, Sec. 2.1]. ⊓⊔
+We would like to reemphasize that having to deal with these orderings explicitly is
+not a shortcoming of the use of category theory per se; it is rather due to the fact that the
+appropriate pieces of category theory do not seem to have been developed yet. Recent
+work like [37] paves the way towards improving this situation.
+If one follows the “hidden variables everywhere” paradigm advocated in this paper,
+then there should be no difference between the causal structure corresponding to direct
+causal links v → w and the one corresponding to indirect causal links v ↝ w.T h e
+intuitive reason is this: clearly, every correlation explainable in terms of hidden variables
+on the given causal structure G is likewise explainable by the enlarged causal structure
+comprising all direct and indirect causal links. To see that the converse also holds, one
+can simulate the propagation of a hidden variable along an indirect causal link by passing
+it incognito along all the direct causal links making up the indirect link as additional
+information. So there is ultimately no reason to distinguish between a direct link v → w
+and an indirect link v ↝ w, and so it should be sufﬁcient to deﬁne the causal structure
+only in terms of v ↝ w.
+Theorem 5.3. The set of C-correlations depends only on the partial order (=causal set)
+induced by G, as deﬁned in Sect. 2.
+Sketch of Proof. It is sufﬁcient to show the following: if u,v,w ∈ V are nodes such
+that u → v and v → w but u ⁄→ w, then the graph G′:= (V, E ∪{ u → w}) differs
+from G only in that the edge u → w has been added. It is enough to show that G′has
+the same set of C-correlations as G, since applying this statement repeatedly proves the
+claim.
+As noted above, every C-correlation on G is clearly also a C-correlation on G′:a n y
+labelling of G by objects and instruments in C can be extended to a labelling of G′by
+assigning the monoidal unit I ∈ C to the new edge u → w, while retaining all other
+labels. Since labelling an edge by I is the same as not considering that edge at all, the
+resulting correlation is the same.
+
+=== page 28 ===
+418 T. Fritz
+Conversely, suppose that P(o[V]) is a C-correlation on G′constructed in terms of
+some labelling by objects(X′
+e)e∈E∪{u→w} and instruments( f ′
+x)x∈V . We can turn this into
+a corresponding labelling of G by again retaining all labels, except for the replacements
+Xu→v := X′
+u→v ⊗ X′
+u→w, Xv→w := X′
+v→w ⊗ X′
+u→w,
+fv(o[v]) := f ′
+v(o[v]) ⊗ idX′u→w ,
+where we have assumed that the additional edge u → w comes last in the ordering of
+in(v) and out(v) on G′. Intuitively, the idea is this: in G′, the information on Xu→w gets
+passed directly from u to w, while G needs to use the intermediate node v as a relay for
+sending the information from u to w via v. By considering the value map ν only on the
+subgraph with boundary induced by the three nodes u, v and w, the properties (val.i)–
+(val.iii) imply that the resulting number P(o[V]) ends up being the same. ⊓⊔
+We now illustrate this categorical formalism with the example of classical correla-
+tions, before applying it to quantum correlations in the next section. Classical correlations
+are deﬁned in terms of a category StOp whose objects are measurable spaces (X,/Sigma1X ),
+and whose morphisms (X,/Sigma1X ) → (Y,/Sigma1Y ) are stochastic operations; see Appendix A.
+The monoidal product⊗ of measurable spaces is simply given by their cartesian product.
+The unit object I is any ﬁxed measurable space having exactly one point. The subcat-
+egory of normalized operations StOp1 ⊆ StOp contains precisely those stochastic
+operations P(y|x) which are normalized, i.e.
+∫
+y P(y|x) = 1 for all x ∈ X . It is straight-
+forward to check that this turns StOp into a symmetric monoidal category satisfying
+our assumptions (cat.i)–(cat.v).
+Instantiating the above general deﬁnition for the category StOp results in the notion
+of StOp-correlation, which coincides exactly with the notion of classical correlation
+from Deﬁnition 4.1. The integrals in ( 4.2) arise from the composition of stochastic
+operations as deﬁned in ( A.1).
+Besides the deﬁnition of quantum correlations in the next section, we also suspect
+that it should be possible to deﬁne general probabilistic [38] correlations as arising from
+a suitable category in the analogous way. Currently, the problem with deﬁning general
+probabilistic theories is that a corresponding category of general probabilistic operations
+does not yet seem to have been worked out. However, it has been shown in independent
+work of Henson et al. [ 16] that there exist correlations in certain scenarios that are not
+general probabilistic correlations. This should be seen in contrast to the case of Bell
+scenarios, where the correlations correspond to the no-signaling boxes (Theorem 3.3),
+and it is well-known that every no-signaling box arises from the general probabilistic
+theory known as “box world” [ 39].
+Sometimes a certain framework for physical theories is clearly more powerful than
+another one. For example, it is commonly believed that everything that can be done clas-
+sically can also be done quantumly, and this should imply that every classical correlation
+is also a quantum correlation. One can try to prove statements of this form by making
+use of this result:
+Proposition 5.4. Let C and D be symmetric monoidal category of operations satisfy-
+ing (cat.i)–(cat.v). If there is a linear symmetric monoidal functor F : C → D with
+F(C1) ⊆ D1, then every C-correlation is also a D-correlation.
+Here, linearity of F means that F preserves addition and scalar multiplication of
+morphisms. The functor is monoidal if it comes equipped with isomorphisms F(X ⊗C
+Y) ∼= F(X) ⊗D F(Y) satisfying the appropriate coherence laws, one of which involves
+
+=== page 29 ===
+Beyond Bell’s Theorem 419
+the symmetry isomorphisms. These coherence requirements are technical conditions
+guaranteed to hold in any naturally arising situation.
+Sketch of Proof. Let P(o[V]) be a C-correlation arising via objects (Xe)e∈E and in-
+struments ( fv)v∈V . Linearity of the functor F and F(C1) ⊆ D1 imply that the instru-
+ment components fv(o[v]) map to D-operations F( fv(o[v])) which form an instrument
+themselves that we denote F( fv). Hence we obtain a labelling of G in D with objects
+(F(Xe))e∈E and instruments (F( fv))v∈V . The properties (val.i)–(val.iii) then guarantee
+that the resulting probabilities P(o[V]) are the same, since they imply that applying ν
+commutes with F, and F maps the numbers in C(I, I) to the same numbers in D(I, I)
+thanks to linearity. ⊓⊔
+6. Quantum Correlations
+Our world is governed, at least on microscopic scales, by the laws of quantum mechanics
+and quantum ﬁeld theory. It was the revolutionary insight of Bell [ 1] that this leads to
+correlations (on the graph of Fig. 1) which are not classical. As a consequence, either
+our world cannot be described in terms of classical probability theory, or the given
+causal structure is not actually the correct one describing the given correlations. The
+ﬁrst option is generally known as non-realism [40,41], while the second option is
+referred to as non-locality, in the sense of the existence of non-local interactions. 5
+On the mathematical level, the non-realism solution is preferable since non-locality
+requires ﬁne-tuning to explain why these non-local interactions cannot be exploited for
+instantaneous signalling [ 15].
+Using the deﬁnitions and results from the previous section, we will now deﬁne what
+a quantum correlation is in our more general formalism. The basic idea is that in-
+stead of carrying measurable spaces as in the classical case, the edges should carry the
+quantum analogue of those, i.e. Hilbert spaces. Similarly, instead of having stochastic
+operations at the nodes, the nodes should now be labelled by quantum operations .
+Roughly speaking, quantum correlations are exactly those joint distributions P(o[V])
+that one can obtain upon interpreting the given graph in Hardy’s operator-tensor formu-
+lation of quantum theory [12]. However, since the operator-tensor formulation has so far
+only been worked out for ﬁnite-dimensional quantum systems, we cannot use it for our
+deﬁnition of quantum correlation. We prefer to be general and allow systems of arbitrary
+ﬁnite or inﬁnite dimension, since we have no way to tell how much stronger quantum
+correlations based on inﬁnite-dimensional Hilbert space may be. While we suspect that
+there should be a quantum analogue of Theorem 4.4, already stating and proving such
+a theorem requires having a general deﬁnition. Without a general deﬁnition, there is no
+way to know whether quantum correlations with inﬁnite-dimensional Hilbert spaces can
+be stronger than those based on ﬁnite dimensions or not.
+So in order to apply the deﬁnitions and results from the previous section, we need
+to explain how quantum operations form a symmetric monoidal category, which we
+denote QOp. This works as follows: the objects of QOp are Hilbert spaces H of arbitrary
+dimension, ﬁnite or inﬁnite. These can be tensored in the usual way; we refer to [ 42,43]
+for background on the deﬁnition of this tensor product in the inﬁnite-dimensional case.
+To every Hilbert space H we associate its space of trace class operators S(H).O n e
+can understand the letter “ S” as suggestive of either “state” or of “Schatten class” [ 44].
+5 Unfortunately, the term nonlocality is also often used in a much broader sense, as a synonym for the
+existence of non-classical correlations [ 2].
+
+=== page 30 ===
+420 T. Fritz
+The quantum states (density matrices) on H are precisely those positive elements of
+S(H) that have unit trace. With this in mind, we can now deﬁne the morphisms of QOp:
+for Hilbert spaces H and K, the morphisms forming the set QOp(H, K) are deﬁned
+to be the completely positive maps S(H) → S(K). Note that our usage of the term
+“quantum operation” differs from the usual one [45, Sec. 8.2.4] in that we do not impose
+subnormalization. The normalized maps S(H) → S(K) forming the subcategory QOp1
+are those quantum operations that are trace-preserving, i.e. the quantum channels. It is
+then straightforward to check that our requirements (cat.i)–(cat.v) are satisﬁed.
+Deﬁnition 6.1. P(o[V]) is a quantum correlation if it is a QOp-correlation.
+We refer to the proof of Proposition6.5 for an example of how to unfold this deﬁnition
+for a concrete graph. Thanks to the general Theorem 5.1 from the previous section, we
+obtain immediately:
+Proposition 6.2. If P (o[V]) is a quantum correlation , then it is a correlation.
+Moreover, we also would like to apply Proposition 5.4 in order to show that every
+classical correlation is also a quantum correlation. However, the problem with this is that
+we do not know how to construct any functorStOp → QOp satisfying our requirements,
+since there is no obvious way to assign a Hilbert space to any given measurable space
+(X,/Sigma1). The reader not interested in the reasons for this may skip the following remark.
+Remark 6.3. There is a standard construction assigning a Hilbert space L2(X,/Sigma1,P) to
+any measure space (X,/Sigma1,P), but this Hilbert space depends crucially on the measure
+P, so that it is not applicable to a mere measurable space(X,/Sigma1). In fact, even for the full
+subcategory FinStOp ⊆ StOp containing only the ﬁnite measurable spaces (X, 2X ),
+we have not been able to ﬁnd any functor F : FinStOp → QOp that would satisfy the
+assumptions of Proposition 5.4. Any obvious candidate should be given on objects by
+assigning to every ﬁnite set X the Hilbert space CX , which has a canonical orthonormal
+basis given by {|x⟩}x∈X . To any stochastic operation P(y|x) : X → Y , we can try to
+assign the quantum operation
+S(CX ) → S(CY ), |x1⟩⟨x2| ↦→
+∑
+y1,y2
+√
+P(y1|x1) P(y2|x2) |y1⟩⟨y2|, (6.1)
+which can be understood as being represented by the single Kraus operator
+CX → CY , |x⟩↦→
+∑
+y
+√
+P(y|x) |y⟩.
+It is straightforward to check that this assignment of a quantum operation to any stochastic
+operation is indeed a monoidal functor. However, due to the square root in ( 6.1), it fails
+to be linear—the sum of two classical operations will in general not map to the sum of
+the associated quantum operations! So, alternatively, one might try and come up with an
+alternative to (6.1) which is linear in P. The obvious candidate is a “decoherence in the
+canonical basis” approach, in which we would assign to P(y|x) the quantum operation
+S(CX ) → S(CY ), |x1⟩⟨x2| ↦→ δx1,x2
+∑
+y
+P(y|x1) |y⟩⟨y|, (6.2)
+which indeed has the advantage of being linear in P. However, this assignment lacks
+functoriality: the identity stochastic operation X → X , represented by P(x′|x) = δx′,x ,
+
+=== page 31 ===
+Beyond Bell’s Theorem 421
+gets mapped to the quantum operation S(CX ) → S(CX ) which decoheres any quantum
+state with respect to the computational basis; in other words, this assignment of a quantum
+operation to any stochastic operation does not map identities to identities, as any functor
+should, and hence ( 6.2) does not deﬁne a functor.
+So while we strongly suspect that every classical correlation is indeed a quantum
+correlation, we do not have any proof of this seemingly basic statement!
+Conjecture 6.4. Every classical correlation is also a quantum correlation.
+All that we can say for sure is that every classical correlation which can be realized
+with ﬁnite hidden variable spaces is also a quantum correlation. Providing a proof sketch
+of this is what we do now. By Theorem 4.4, this is arbitrarily close to proving the full
+conjecture, but does not go all the way.
+Partial Proof. As outlined above, we do not know how to apply Proposition 5.4 to
+this situation, but turning any stochastic operation between ﬁnite sets into a quantum
+operation as in ( 6.2) does indeed do the trick, despite not being functorial. So for each
+edge e ∈ E, we replace the hidden variable space Xe,a s s u m e dt ob eﬁ n i t e ,b yt h e
+Hilbert space CXe . We also replace every stochastic instrument P(o[v]λout(v)|λin(v)) by
+the corresponding “decoherence in the canonical basis” quantum instrument
+Ov × S
+( ⨂
+e∈in(v)
+CXe
+)
+−→ S
+( ⨂
+e∈out(v)
+CXe
+)
+with same outcome set Ov . Then all states propagating along the edges will be diagonal
+in the canonical basis. This guarantees that the original joint probabilities P(o[V]) are
+recovered. ⊓⊔
+In order to underline that our deﬁnition of quantum correlation is adequate, we com-
+pare it to the usual deﬁnition in the Bell scenario case:
+Proposition 6.5. In the n-party Bell scenario , P(o[a1 ... an x1 ... xn s]) is a quantum
+correlation if and only if it satisﬁes the free will equation (3.4) and the corresponding
+conditional probabilities admit a quantum model,
+P(o[a1 ... an]|o[x1 ... xn s]) =⟨ψo[s]|Eo[x1]
+o[a1] ⊗···⊗ Eo[xn]
+o[an]|ψo[s]⟩, (6.3)
+where {|ψo[s]⟩}o[s]∈Os is a family of states on some composite Hilbert space H1 ⊗···⊗
+Hn and the E o[xi ]
+o[ai ] are positive operators on Hi , not depending on o [s], subject to the
+completeness relation ∑
+o[ai ] Eo[xi ]
+o[ai ] = 1Hi .
+As in Proposition 4.3, we implicitly also assume that only those values of o[xi]
+and o[s] are considered for which P(o[xi])> 0 and P(o[s])> 0, since otherwise
+conditioning on these variables would not make sense.
+Proof. We begin by spelling out our deﬁnition of quantum correlation for the n-party
+Bell scenario in more detail. First, our deﬁnition requires that the edges of the graph are
+labelled by Hilbert spaces
+Hxi →ai , Hs→ai .
+
+=== page 32 ===
+422 T. Fritz
+Second, there is a quantum instrument labelling the source node s. Since s does not have
+any incoming edges, this quantum instrument corresponds to a collection of subnormal-
+ized states indexed by the outcome o[s]∈ Os ,
+ρo[s] ∈ S
+( n⨂
+i=1
+Hs→ai
+)
+, tr
+⎛
+⎝∑
+o[s]
+ρo[s]
+⎞
+⎠ = 1,
+where the prescription in the proof of Theorem 5.1 shows that P(o[s]) = tr(ρo[s]).
+The same statement applies to the “choice of setting” nodes xi , which likewise emit
+subnormalized states indexed by outcomes o[xi],
+σo[xi ] ∈ S(Hxi →ai ), tr
+⎛
+⎝∑
+o[xi ]
+σo[xi ]
+⎞
+⎠ = 1,
+and we similarly have P(o[xi]) = tr(σo[xi ]).
+Finally, the quantum instrument labelling a “measurement” node ai corresponds
+simply to a POVM,6
+Mo[ai ] ∈ B
+(
+Hxi →ai ⊗ Hs→ai
+)
+,
+∑
+o[ai ]
+Mo[ai ] = 1.
+This data is related to the overall probabilities by
+P(o[a1 ... an x1 ... xn s]) = tr
+[(
+ρo[s] ⊗
+n⨂
+i=1
+σo[xi ]
+)( n⨂
+i=1
+Mo[ai ]
+)]
+, (6.4)
+where it is understood that the tensor factors in the tensor product Hilbert space carrying
+the “state” part need to be reordered so as to match those of the “measurement” part in
+order for the operator multiplication to make sense (This is closely related to the ordering
+issues that we encountered in Sect. 5).
+We begin the proof with the “only if” part. One obtains the free will equation ( 3.4)
+by noting that Proposition 6.2 guarantees that P(o[a1 ... an x1 ... xn s]) is a correlation,
+and therefore Theorem 3.3 applies. In order to obtain a representation of the form ( 6.3),
+we take the Hilbert spaces to be H := Hs→ai , on which we have positive operators
+Eo[xi ]
+o[ai ] := 1
+P(o[xi]) trHxi →ai
+((
+σo[xi ] ⊗ 1Hs→ai
+)
+Mo[ai ]
+)
+. (6.5)
+Since∑
+o[ai ] Mo[ai ] = 1 and tr(σo[xi ]) = P(o[xi]), this indeed satisﬁes the completeness
+relation ∑
+o[ai ] Eo[xi ]
+o[ai ] = 1Hxi →ai . The deﬁnition ( 6.5) formalizes the intuitive idea that
+o[xi] behaves like a choice of setting determining which POVM will be used at ai . With
+this, we can rewrite ( 6.4)i nt h ef o r m
+P(o[a1 ... an x1 ... xn s]) = tr
+[(
+ρo[s] ⊗
+n⨂
+i=1
+1Hs→ai
+)( n⨂
+i=1
+Eo[xi ]
+o[ai ]
+)]
+·
+n∏
+i=1
+P(o[xi]),
+6 To begin with, the components of the quantum instrument at ai are completely positive maps of type
+S(H) → C for H = Hxi →ai ⊗ Hs→ai , but it is well-known that these are in bijection with bounded positive
+operators on H.
+
+=== page 33 ===
+Beyond Bell’s Theorem 423
+where now the trace only ranges over the remaining Hilbert space ⨂ n
+i=1 Hs→ai .I fw e
+now purify the states ρo[s] jointly to unit vectors |ψo[s]⟩by adding an additional ancilla
+system, which should be regarded as becoming part of any one of the Hs→ai , we can
+write this as
+P(o[a1 ... an x1 ... xn s])
+=
+⟨
+ψo[s]
+⏐⏐⏐Eo[x1]
+o[a1] ⊗···⊗ Eo[xn]
+o[an]
+⏐⏐⏐ψs
+⟩
+· P(o[x1])··· P(o[xn])P(o[s]), (6.6)
+where we had to factor out an additional factor of P(o[s]), since |ψo[s]⟩is normalized,
+while tr(ρo[s]) = P(o[s]). This gives the desired form ( 6.3) upon dividing by the free
+will equation ( 3.4).
+Now for the “if” part. Suppose ( 3.4) and ( 6.3) hold; we can multiply these two
+equations and obtain ( 6.6). We rewrite this in the form ( 6.4) as follows. Let the Hilbert
+spaces on the edges be given by
+Hs→ai := Hi, Hxi →ai := COxi ,
+where COxi is the Hilbert space with a canonical orthonormal basis {|o[xi]⟩}indexed by
+the possible values of o[xi]. Now deﬁne
+ρo[s] := P(o[s]) ·| ψo[s]⟩⟨ψo[s]|,σ o[xi ] := P(o[xi]) ·| o[xi]⟩⟨o[xi]|,
+Mo[ai ] :=
+∑
+o[xi ]
+|o[xi]⟩⟨o[xi]| ⊗ Eo[xi ]
+o[ai ].
+It is straightforward to check that these operators satisfy the properties mentioned above
+that are required for the operators to assemble into quantum instruments on the nodes s,
+xi and ai , and that ( 6.4) then indeed recovers the given correlation. ⊓⊔
+The proofs of this proposition and the earlier Propositions 3.3 and 4.3 should make
+it clear how to translate back and forth between Bell scenarios in our formalism and the
+already existing vast literature on Bell scenarios, which uses the ordinary deﬁnitions (4.4)
+and (6.3).
+We leave all further study of quantum correlations on arbitrary causal structure to
+future work. As a start, it should be veriﬁed that our general deﬁnition not only comprises
+the usual one for Bell scenarios, but also for all other concrete scenarios that have been
+studied until now [ 8–11], as far as precise deﬁnitions have been spelled out in these
+works. Then, it will be a challenging enterprise to ﬁnd further examples of non-classical
+quantum correlations and try to answer the question in which scenarios non-classical
+quantum correlations exist and in which ones they do not; as a trivial example, the single-
+party Bell scenario does not have any non-classical quantum correlations. We believe
+that a lot remains to be explored, and works like the present one and [ 10,16]a r eb u tt h e
+beginning of a transformation of our understanding of quantum “nonlocality” and its
+applications to quantum information processing.
+7. Classical Correlations as Hidden Bayesian Networks
+Hidden Markov models. Hidden variables have been studied extensively not only in
+quantum foundations, but also in machine learning, and in particular hidden variables
+for stochastic processes. Recall that a stochastic process is a joint distribution P(o[Z])
+
+=== page 34 ===
+424 T. Fritz
+0 1 2... ...
+(a) Stochastic process.
+0 1 2... ... λ0 λ1 λ2 λ3
+(b) Edge-emitting hidden Markov model.
+μ1μ0 μ2
+10 2
+...
+...
+...
+...
+(c) State-emitting hidden Markov model.
+Fig. 9. A stochastic process and the two kinds of hidden Markov models.a Stochastic process.b Edge-emitting
+hidden Markov model. c State-emitting hidden Markov model
+of a collection of random variableso[Z]= (o[t])t∈Z indexed by integer timesteps t ∈ Z.
+The underlying causal structure is the one ofZ,a si nF i g .9a; the node labels are precisely
+the timesteps t ∈ Z. We now informally discuss correlations and classical correlations
+on this causal structure; this must remain at an informal level since our deﬁnitions and
+results of the previous sections, like Deﬁnition 4.1, are not actually applicable to the
+case of inﬁnite G, like G = Z.
+Informally speaking, every joint distribution P(aZ) should be a correlation in the
+sense of Deﬁnition3.1, since there are no two non-empty subsets ofZ with disjoint causal
+past. Realizations of P(aZ) in terms of classical hidden variables, as in Deﬁnition4.1 and
+depicted in Fig. 9b, are known asedge-emitting hidden Markov models[28, Sec. 3.2].7
+Hidden Markov models have a wide range of applications e.g. in machine learning [ 46]
+and computational biology [ 47]. The essential idea is that the hidden variables (λt)t∈Z
+form a Markov chain in the sense that λt+1 may become correlated with λt−1 only
+through λt , while the analogous statement may not be true for the observed values
+o[t]. Since Markov chains such as the hidden distribution P(λZ) are much easier to
+handle mathematically and computationally, it is useful to consider a representation
+of P(o[Z]), the actual stochastic process of interest, as a classical correlation. It is
+easy to see that every P(o[Z]) actually admits such a representation by deﬁning each
+hidden variable space (Xt,/Sigma1t) to be equal to ∏
+t∈Z Ot , so that one can take all hidden
+variables λt to be equal and to coincide with the entire sequence of outputs (o[t])t∈Z;a n
+information processing gate P(o[t]λt+1|λt) then simply takes an incoming λt = o[Z]
+and deterministically outputs the corresponding component o[t] and forwards the entire
+sequence o[Z] as λt+1. On the other hand, in general it is not the case that every P(o[Z])
+7 There are other technical differences besides the fact that our deﬁnition only applies to ﬁnite graphs. The
+hidden variable spaces Xt in a hidden Markov model are typically assumed to be ﬁnite, and the stochastic
+maps P(atλt+t|λt) are typically assumed to be independent of t. We use the term “hidden Markov model” in
+a sense which does not impose either of these requirements.
+
+=== page 35 ===
+Beyond Bell’s Theorem 425
+time
+space
+μa μb
+μs
+μx μy
+μa μba b
+s
+x y
+a b
+Fig. 10. Hidden Bayesian network for Popescu’s “hidden nonlocality” scenario (Fig. 2)
+can be represented as a classical correlation in such a way that all hidden variable spaces
+Xt are ﬁnite [ 28, Sec. 3.6].
+So much for edge-emitting hidden Markov models. One more commonly encounters
+state-emitting hidden Markov models [48], of which Fig.9c shows an illustration. These
+are deﬁned in a different way: again, there are hidden variable spaces (Yt,/Omega1t) carrying
+hidden variables μt ∈ Yt , but this time they come equipped with a pair of conditional
+distributions
+P(μt+1|μt), P(o[t]|μt),
+which can now be thought of as living on thenodes in Fig. 9c. The ﬁrst of these describes
+an updating of the hidden variable from μt to μt+1, while the second can be thought of
+as a probing of the hidden variable μt resulting in an outcome o[t]. The main point here
+is that these two updating operations are taken to be independent.
+The purpose of this section is to generalize the latter notion of state-emitting hidden
+Markov model to an arbitrary (ﬁnite directed acyclic) graph G = (V, E), which results
+in the notion of hidden Bayesian network. Then we prove that a correlation P(o[V])
+is classical if and only if it admits a description in terms of a hidden Bayesian network.
+Figure 10 displays the structure of a hidden Bayesian network for the example causal
+structure of Fig. 2.
+Deﬁnition 7.1. A Bayesian network on a graph G is an assignment of a measurable
+space (Yv,/Omega1v) to every node v ∈ V together with a conditional probability distribution
+P(μv|μpa(v))
+which generates the overall distribution
+P(μV ) =
+∏
+v∈V
+P(μv|μpa(v)). (7.1)
+
+=== page 36 ===
+426 T. Fritz
+Bayesian networks have been studied extensively for the case that the measurable
+spaces (Yv,/Omega1v) are ﬁnite [ 13], and for this case there are several equivalent conditions
+known for when a joint distribution P(μV ) constitutes a Bayesian network.
+Deﬁnition 7.2. A correlation P(o[V]) arises from a hidden Bayesian networkif there
+is a Bayesian network with distribution P(μV ) on G and stochastic maps P(o[v]|μv)
+for every v ∈ V such that
+P(o[V]) =
+∫
+μV
+( ∏
+v∈V
+P(o[v]|μv)
+)
+· P(μV ). (7.2)
+Intuitively, this formula expresses the idea that each o[v] should be a noisy coarse-
+graining of the hidden variable μv , which are hidden variables whose dependencies are
+captured by the structure of the graph G.
+Theorem 7.3. A correlation P(o[V]) arises from a hidden Bayesian network if and only
+if it is classical.
+The proof will actually show that any joint distribution represented in the form ( 7.2)
+is a classical correlation; in other words, assuming that P(o[V]) is a correlation in
+Deﬁnition 7.2 is redundant.
+Proof. We start with the “if” part, i.e. we assume a representation as a classical corre-
+lation in the form ( 4.2). We deﬁne the new hidden variable spaces (Yv,/Omega1v) to be given
+by, in terms of the old hidden variable spaces (Xe,/Sigma1e),
+Yv := Ov ×
+∏
+e∈ch(v)
+Xe, (7.3)
+where it is understood that theσ -algebra /Omega1v is given by the product of the corresponding
+/Sigma1e with 2Ov . The basic idea here is that the new hidden variableμv ∈ Yv will contain all
+the data which, in the representation as a classical correlation, corresponds to the output
+of the information processing gate P(o[v]λout(v)|λin(v)). The stochastic map P(o[v]|μv)
+which assigns to each new hidden variable a corresponding outcome can then simply be
+taken to be the projection from ( 7.3) onto Ov , and as such it is deterministic.
+This identiﬁcation μv = (o[v],λ out(v)) of the new hidden variable μv with the
+outcome o[v] together with the tuple of old hidden variables λout(v) , which together
+form the output of the old information processing gate P(o[v]λout(v)|λin(v)), suggests
+that we should also choose the conditional distributions in ( 7.1) to coincide with that
+information processing gate,
+P(μv|μpa(v)) := P(o[v]λout(v)|λin(v)).
+This is a sensible deﬁnition if we consider λin(v) as a function of μpa(v) = (o[pa(v)],
+λout(pa(v))), so that the left-hand side becomes a well-deﬁned probability measure on (7.3)
+once a concrete tuple of values μpa(v) has been speciﬁed.
+With this deﬁnition of the hidden Bayesian network, we need to show that ( 7.2)
+indeed reproduces the original correlations. We have
+Pnew(o[V]) =
+∫
+μV
+( ∏
+v∈V
+P(o[v]|μv)
+)
+· P(μV )
+(7.1)
+=
+∫
+μV
+∏
+v∈V
+P(o[v]|μv) P(μv|μpa(v))
+
+=== page 37 ===
+Beyond Bell’s Theorem 427
+(∗)
+=
+∫
+λE
+∏
+v∈V
+P(o[v]λout(v)|λin(v)) = Pold(o[V]),
+where (∗) has used the fact that P(o[v]|μv) is simply given by projection onto the ﬁrst
+factor, so that when decomposing μv into its components, only those tuples with the
+correct o[v] component survive. Since every edge occurs in out(v) for exactly one v,t h e
+resulting integral over μV turns into an integral over λE .
+For the “only if” part, we start with a representation of the form ( 7.2). In this case,
+the new hidden variables are the λe, while the old ones are the μv . We deﬁne the new
+hidden variable spaces to be given by
+Xe := Ysrc(e). (7.4)
+In other words, all outgoing edges e ∈ out(v) at a given node v carry the same hidden
+variable space. Moreover, we construct the information processing gate at v so that all
+the outgoing information is the same on all these edges:
+P(o[v]λout(v)|λin(v)) := P(o[v]|μpa(v)) P(μv|μpa(v)), (7.5)
+which is to be understood as follows: the known incoming valuesλin(v) can be identiﬁed
+by (7.4) with values for the μpa(v) . Then when keeping these values ﬁxed, the right-hand
+side of ( 7.5) deﬁnes a probability measure on Ov × Yv (actually a product measure).
+We can push this forward along the map Yv → Xout(v) , which by ( 7.4) we can take to
+be the inclusion along the diagonal. In other words, the resulting measure is supported
+on those tuples λout(v) for which all components are the same. This ends the deﬁnition
+of the hidden variables and information processing gates.
+We now verify that the resulting correlation is indeed the expected one,
+Pnew(o[V]) =
+∫
+λE
+∏
+v∈V
+P(o[v]λout(v)|λin(v)) =
+∫
+λE
+∏
+v∈V
+P(o[v]|μpa(v)) P(μv|μpa(v)),
+where we simply plugged in ( 7.5), and it is understood that the intended interpretation
+of ( 7.5) needs to be applied. We can evaluate this further by noting that, at every node
+v, the integral over λout(v) is supported on the diagonal, and hence it is sufﬁcient to do
+an integral over μv . This proves that the previous expression is equal to
+∫
+μV
+∏
+v∈V
+P(o[v]|μpa(v)) P(μv|μpa(v)) = Pold(o[V]),
+as was to be shown. ⊓⊔
+It should be interesting to ﬁgure out whether a similar statement can be derived for
+the quantum case, by using e.g. the deﬁnition of “quantum Bayesian network” of Leifer
+and Spekkens [49].
+Acknowledgments. Thanks to all the participants of the Benasque meeting on Causal Structure in Quantum
+Theory, and in particular to the organizers Lluís Masanes and Rob Spekkens. Matthew Pusey has kindly made
+many helpful suggestions and contributed to some of our proofs. Research at Perimeter Institute is supported
+by the Government of Canada through Industry Canada and by the Province of Ontario through the Ministry
+of Economic Development and Innovation. The author has been supported by the John Templeton Foundation.
+
+=== page 38 ===
+428 T. Fritz
+Appendix A. Measure-Theoretic Technicalities
+Measurable spaces and measures. Here, we discuss the proper mathematics needed
+to describe classical hidden variables. A classical hidden variable is modelled by a
+set of possible values equipped with a probability distribution. Since we would like to
+allow this set of values to be of any size, ﬁnite or inﬁnite, we ﬁrst need to recall the
+standard mathematical structures used for dealing with probability distributions with an
+arbitrary number of outcomes. This is standard material can be found in any textbook
+on measure theory, e.g. [ 50]. The notions that we recall in the following can be thought
+of as classical analogues of concepts which are well-known to the quantum information
+and foundations community in the quantum-mechanical context.
+Deﬁnition A.1. A measurable space is a pair (X,/Sigma1)consisting of a set X and a col-
+lection of subsets /Sigma1⊆ 2X such that:
+•∅ ∈ /Sigma1,
+• If U ∈ /Sigma1, then also X\U ∈ /Sigma1,
+• If U1, U2,... ∈ /Sigma1, then also ⋃
+i Ui ∈ /Sigma1.
+If U ∈ /Sigma1, then U is called a measurable set. The measurable sets U are those to
+which one expects to be able to assign a number measuring its “size”, like the probability
+that a randomly chosen element of X will lie in U . A collection of sets /Sigma1satisfying
+these axioms is called a σ -algebra.
+We always assume that /Sigma1separates points in X , which means that for any x, y ∈ X
+there is a measurable set A ∈ /Sigma1such that x ∈ A,b u t y ⁄∈ A.I f X is ﬁnite, this is
+equivalent to assuming that /Sigma1= 2X , meaning that all sets are actually measurable. The
+necessity to distinguish measurable from non-measurable sets arises only for inﬁnite X .
+The rôle of measurable spaces in classical probability theory is more or less analogous
+to the one of Hilbert spaces in quantum theory. The analogues of states are the measures:
+Deﬁnition A.2. A measure on (X,/Sigma1)is a function P : /Sigma1→ R≥0 with
+• P(∅) = 0,
+• P
+(⋃
+i Ui
+)
+= ∑
+i P(Ui) for every sequence of pairwise disjoint measurable sets
+U1, U2,... ∈ /Sigma1.
+The normalization of a measure is the number P(X).I f P(X) = 1, then P is a
+probability measure; this models a situation in which it is certain that some outcome
+x ∈ X occurs, and then we say that (X,/Sigma1,P) is a probability space. Since we do not
+always want to make this assumption, we also allow that the total probability may be
+different from one, in which case it will typically be less than one. We nevertheless use
+the letter “ P” to denote a measure since all our measures do in some way or the other
+have an interpretation as probabilities.
+The rôle of an operator on a Hilbert space is played by the concept of measurable
+function:
+Deﬁnition A.3. A measurable function on (X,/Sigma1)is a function f : X → R such that
+for all a, b ∈ R,t h es e t
+f −1([a, b]) := {x ∈ X | a ≤ f (x) ≤ b}
+is measurable, i.e. in /Sigma1.
+
+=== page 39 ===
+Beyond Bell’s Theorem 429
+Measurable functions that are bounded, i.e. take values in a bounded subset ofR, can
+be integrated with respect to any measure P. This means that we can form the integral
+∫
+x
+f (x)P(x),
+and this corresponds to the expectation value of f . Note that we have now written the
+integration variable formally as an argument of P. Throughout this paper, this should be
+understood to be symbolic notation for integral of a function f with respect to a measure
+P. It is symbolic since the measure P({x}) of any one-element set {x} is typically zero,
+and hence it is not meaningful in any sense to regard the measure P as a function of the
+variable x. For the precise deﬁnition of this integral we refer to the literature on measure
+theory [50].
+Stochastic operations. In the main text, we also crucially need to deal with operations
+taking a collection of hidden variables as input and producing another collection of
+hidden variables as output. In order to deﬁne what exactly this is supposed to mean,
+we need to deﬁne stochastic operations between measurable spaces, which are the
+classical analogue of quantum operations. To this end, We are going to reproduce a
+variant of a deﬁnition of Panangaden [ 51]; the difference is that we allow measures
+with arbitrary normalization instead of only subnormalized ones, and we also speak of
+stochastic operations instead of “stochastic relations” in order to keep the terminology
+more in line with the standard jargon for the quantum case.
+Deﬁnition A.4. Let(X,/Sigma1X ) and(Y,/Sigma1Y ) be measurable spaces. Astochastic operation
+from X to Y is a function
+P(y|x) : X × /Sigma1Y →[ 0, 1]
+satisfying the following properties:
+• For every ﬁxed x ∈ X , P(y|x) is a measure on Y .
+• For every ﬁxed U ∈ /Sigma1Y , the function P(U|x) is a bounded measurable function of
+x.
+The idea behind the notation “P(y|x)”i st h a tf o re v e r yx ∈ X , one obtains a measure
+on Y which, by abuse of notation, we also denote P(y|x). If both X and Y are ﬁnite,
+P(y|x) is simply a matrix of nonnegative numbers indexed by x ∈ X and y ∈ Y .I na n y
+case, a stochastic operation, with our deﬁnition, has the property that the normalization
+of the measure P(y|x) may depend on the value of x.
+There is an important special case of a stochastic operation: if I is a one-element
+set, then the stochastic operations from I to Y are precisely the measures on Y .T h i si s
+similar to how quantum states can themselves be regarded as maps from a trivial system
+to a non-trivial system [ 30].
+A stochastic operation from X to Y can be composed with a stochastic operation
+from Y to Z to give a stochastic operation from X to Z :
+P(z|x) :=
+∫
+y
+P(z|y)P(y|x). (A.1)
+In words, this means that for every ﬁxed z, we integrate the function y ↦→ P(z|y) with
+respect to the measure P(y|x). We refer to [51] for the (non-trivial!) proof showing that
+
+=== page 40 ===
+430 T. Fritz
+this deﬁnition of composition of stochastic operations does indeed deﬁne a category,
+and we denote this category by StOp.
+There is an interesting subcategory StOp1 ⊆ StOp consisting of those stochastic
+operations P(y|x) which are normalized, by which we mean that they satisfy
+∫
+y
+P(y|x) = 1
+for all x ∈ X . For such a normalized stochastic operation, we also use the term condi-
+tional distribution.
+If one only considers ﬁnite measurable spaces and normalized stochastic operations
+between those, one obtains a category which coincides with the category FinStoch
+discussed e.g. in [ 52].
+Products of measure spaces and stochastic operations. For given measurable spaces
+(X,/Sigma1X ) and (Y,/Sigma1Y ), there is a way to form their product space (X × Y,/Sigma1X ⊗ /Sigma1Y ),
+where X × Y is the cartesian product. The σ -algebra /Sigma1X ⊗ /Sigma1Y is deﬁned to contain all
+sets of the form U × V for U ∈ /Sigma1X and V ∈ /Sigma1Y ; but in order to obtain a measurable
+space, we need to close this collection of basic measurable sets by the operations of
+Deﬁnition A.1. See [ 50, Sec. 33] for more detail.
+For stochastic operations P(y1|x1) and P(y2|x2), there also ought to exist a “product”
+operation corresponding to the idea of executing both P(y1|x1) and P(y2|x2) in parallel,
+analogous to the description of sequential execution described by ( A.1). This product
+operation
+P(y1|x1) P(y2|x2) : (X1 × X2,/Sigma1X1 ⊗ /Sigma1X2 ) −→(Y1 × Y2,/Sigma1Y1 ⊗ /Sigma1Y2 )
+is deﬁned to map a pair of values (x1, x2) to the unique measure on Y1 × Y2 having the
+property that it assigns to the setU1 ×U2 ∈ /Sigma1Y1 ⊗/Sigma1Y2 the number P(U1|x1)· P(U2|x2);
+we refer to [50, Thm. 35.B] for the proof of uniqueness. We leave it to the reader to verify
+that this does indeed give a stochastic operation and end by noting that this product turns
+StOp into a symmetric monoidal category. In the particular case X1 = X2 = I ,t h e
+product of stochastic operations specializes to a deﬁnition of product of measures.
+Appendix B. Finite Approximations of Probability Spaces
+Here we prove some technical results which are of crucial importance for the proof
+of Theorem 4.4. We refer to [ 50] for the additional terminology and background from
+measure theory. For sets A and B, we write
+A ∆ B := (A \ B) ∪ (B \ A)
+for the symmetric difference.
+Lemma B.1. Let (X,/Sigma1,P) be a probability space , /Gamma1⊆ /Sigma1an algebra of sets and
+f : X → S a measurable function to some ﬁnite set S. Then for every δ> 0, there exist
+sets B s ∈ /Gamma1indexed by s ∈ S such that P
+(
+Bs ∆ f −1(s)
+)
+<δ , and the B s partition X .
+The main point here is that Bs ∈ /Gamma1: since f is measurable, we already know that
+f −1(s) ∈ /Sigma1, and the problem is to approximate these f −1(s) by elements of /Gamma1.
+
+=== page 41 ===
+Beyond Bell’s Theorem 431
+Proof. We use induction on |S|.I f |S|= 1, then there is nothing to prove, since we
+can simply take Bs := X . For general S, we choose any element u ∈ S. We then apply
+the approximation lemma of measure theory [ 50, 13.D] to obtain a set Bu ∈ /Gamma1with
+P
+(
+Bu ∆ f −1(u)
+)
+<δ /2.
+The idea now is to restrict everything to X\Bu and apply the induction hypothesis to
+that. To do so, we deﬁne the function f ′: X\Bu → S\{u} by taking f ′(x) := f (x) for
+all x with f (x) ⁄= u;w el e t f ′map the other x’s with f (x) = u to an arbitrary element
+of S\{u}. Then f ′differs from the restriction of f to X\Bu on a set of measure less than
+δ/2.
+Applying the induction hypothesis to this situation, with δ replaced by δ/2, gives a
+partition X\Bu = ⋃
+s∈S\{u} Bs satisfying P
+(
+Bs ∆ f ′−1(s)
+)
+<δ /2 for all s ⁄= u. Since
+we already know that P
+(
+f ′−1(s) ∆ f −1(s)
+)
+<δ /2 for all s, we conclude that
+P
+(
+Bs ∆ f −1(s)
+)
+≤ P(Bs ∆ f ′−1(s)) + P( f ′−1(s) ∆ f −1(s))
+<δ /2+ δ/2 = δ,
+as desired. ⊓⊔
+Proposition B.2. Let (Xk,/Sigma1k)n
+k=1 be a family of measurable spaces equipped with a
+probability measure P on the product ∏
+k Xk and S a ﬁnite set. Then for every ε> 0
+and any measurable function
+f : X1 ×···× Xn −→ S
+there exist a ﬁnite set S k together with a measurable function f k : Xk → Sk for each k,
+and a function
+g : S1 ×···× Sn −→ S
+such that the diagram
+X1 ×···× Xn
+f /d47/d47
+f1×···× fn
+/d40/d40/d81/d81/d81/d81/d81/d81/d81/d81/d81/d81/d81/d81/d81 S
+S1 ×···× Sn
+g
+/d57/d57/d115/d115/d115/d115/d115/d115/d115/d115/d115/d115/d115
+commutes up to ε, by which we mean that f (x) = (g ◦ ( f1 ×···× fn))(x) holds with
+probability greater than 1 − ε with respect to P.
+The main point here is that the Sk are ﬁnite: if we think of f as a function which
+coarse-grains X1 ×···× Xn down to a ﬁnite set S, then the claim is that this coarse-
+graining can be approximated arbitrarily well by ﬁrst coarse-graining each Xk down to
+a ﬁnite set Sk , and then coarse-graining S1 ×···× Sn down to S.
+Proof. The ﬁnite disjoint unions of products of measurable sets form an algebra of sets
+in X1 ×···× Xn [50, 33.E] which generates the productσ -algebra /Sigma11 ⊗···⊗ /Sigma1n . Hence
+Lemma B.1 gives a partition X1 ×···× Xn = ⋃
+s∈S Bs such that P
+(
+Bs ∆ f −1(s)
+)
+<δ .
+We will determine the required value of δ later. By construction, we know that each Bs
+is a ﬁnite union of sets of the form
+Ci
+1 ×···× Ci
+n, (B.1)
+
+=== page 42 ===
+432 T. Fritz
+where Ci
+k ∈ /Sigma1k and i indexes all the required sets for all s together. For ﬁxed k,t h e
+ﬁnitely many sets Ci
+k generate a ﬁnite Boolean algebra/Omega1k ⊆ /Sigma1k whose atoms we denote
+by Ai
+k . Again by construction, the Bs ’s are elements of /Omega11 ⊗···⊗ /Omega1n , and hence they
+can also be written as ﬁnite unions of products of atoms,
+Ai
+1 ×···× Ai
+n.
+We then deﬁne Sk to be the set of all the atoms Ai
+k , i.e. the spectrum of the Boolean
+algebra /Omega1k .T h i sSk is guaranteed to be ﬁnite since /Omega1k is ﬁnite. There is a canonical map
+fk : Xk → Sk which sends an x ∈ Xk to the unique atom which contains it.
+We need to deﬁne the map g : S1 ×···× Sn → S. We do this by stipulating that
+a tuple of atoms (A1,..., An) ∈ S1 ×···× Sn maps to the unique s ∈ S for which
+A1 ×···× An ⊆ Bs ; since the Bs ’s partition X and each of them is a ﬁnite union of
+products of atoms, that s is indeed unique.
+Finally, we have to verify that this satisﬁes the required “commutativity up to ε”
+for a suitable choice of δ. This is easy to do once we realize that the composition
+g ◦ ( f1 ×···× fn) is precisely the map which sends all of Bs to s. Hence the measure
+of the set of all tuples (x1,..., xn) on which f differs from g ◦ ( f1 ×···× fn) is given
+by
+P
+( ⋃
+s∈S
+(Bs ∆ f −1(s))
+)
+≤
+∑
+s∈S
+P
+(
+Bs ∆ f −1(s)
+)
+< |S|· δ.
+So if we do the whole construction with δ ≤ ε/|S|, the claim follows. ⊓⊔
+References
+1. Bell, J.S.: On the Einstein–Podolsky–Rosen paradox. Physics 1, 195–200 (1964)
+2. Brunner, N., Cavalcanti, D., Pironio, S., Scarani, V ., Wehner, S.: Bell nonlocality. Rev. Mod. Phys. 86,
+419 (2014)
+3. Ekert, A.K.: Quantum cryptography based on Bell’s theorem. Phys. Rev. Lett. 67, 661–663 (1991)
+4. V azirani, U., Vidick, T.: Fully device independent quantum key distribution. Phys. Rev.
+Lett. 113, 140501 (2014)
+5. Pironio, S., Acín, A., Massar, S., de la Giroday, A. Boyer., Matsukevich, D.N., Maunz, P ., Olmschenk,
+S., Hayes, D., Luo, L., Manning, T.A., Monroe, C.: Random numbers certiﬁed by Bells theorem. Na-
+ture 464, 1021 (2010)
+6. V azirani, U., Vidick, T.: Certiﬁable quantum dice: or, true random number generation secure against quan-
+tum adversaries. In: Proceedings of the Forty-fourth Annual ACM Symposium on Theory of Computing,
+STOC ’12, pp. 61–76 (2012)
+7. Svetlichny, G.: Distinguishing three-body from two-body nonseparability by a Bell-type inequal-
+ity. Phys. Rev. D 35, 3066 (1987)
+8. Popescu, S.: Bell’s inequalities and density matrices: revealing “hidden” nonlocality. Phys. Rev.
+Lett. 74, 2619–2622 (1995)
+9. Branciard, C., Gisin, N., Pironio, S.: Characterizing the nonlocal correlations created via entanglement
+swapping. Phys. Rev. Lett. 104, 170401 (2010)
+10. Fritz, T.: Beyond Bell’s theorem I: correlation scenarios. New J. Phys. 14, 103001 (2012)
+11. Gallego, R., Würﬂinger, L.E., Chaves, R., Acín, A., Navascués, M.: Nonlocality in sequential correlation
+scenarios. New J. Phys. 16, 033037 (2014)
+12. Hardy, L.: The operator tensor formulation of quantum theory. Philos. Trans. R. Soc. A 28, 3385–
+3417 (2012)
+13. Pearl, J.: Causality: Models, reasoning, and inference, 2nd edn. Cambridge University Press, Cambridge
+(2009)
+14. Einstein, A., Podolsky, B., Rosen, N.: Can quantum-mechanical description of physical reality be con-
+sidered complete? Phys. Rev. 47, 777–780 (1935)
+
+=== page 43 ===
+Beyond Bell’s Theorem 433
+15. Wood, C.J., Spekkens, R.W.: The lesson of causal discovery algorithms for quantum correlations: causal
+explanations of Bell-inequality violations require ﬁne-tuning. New. J. Phys. 17, 033002–780 (2015)
+16. Henson, J., Lal, R., Pusey, M.F.: Theory-independent limits on correlations from generalised bayesian
+networks. New J. Phys. 16, 113043 (2014)
+17. Chaves, R., Luft, L., Gross, D.: Causal structures from entropic information: geometry and novel scenar-
+ios. New. J. Phys. 16, 043001 (2014)
+18. Chaves, R., Luft, L., Maciel, T.O., Gross, D., Janzing, D., Schölkopf, B.: Inferring latent structures via
+information inequalities. In: Proceedings of the 30th Conference on Uncertainty in Artiﬁcial Intelligence,
+pp. 112–121. AUAI Press (2014)
+19. Chaves, R., Majenz, C., Gross, D.: Information–theoretic implications of quantum causal structures. Nat.
+Commun. 6, 5766 (2015)
+20. Chaves, R., Kueng, R., Brask, J.B., Gross, D.: A unifying framework for relaxations of the causal as-
+sumptions in Bell’s theorem. Phys. Rev. Lett. 114, 140403 (2015)
+21. Arntzenius, F.: Reichenbach’s common cause principle. In: Zalta, E.N., (eds.) The Stanford Encyclopedia
+of Philosophy. Stanford University (2010). http://plato.stanford.edu/archives/fall2010/entries/physics-
+Rpcc/
+22. Oreshkov, O., Costa, F., Brukner, ˇC.: Quantum correlations with no causal order. Nat. Com-
+mun. 3, 1092 (2012)
+23. Bierhorst, P .: A rigorous analysis of the Clauser–Horne–Shimony–Holt inequality experiment when trials
+need not be independent. Found. Phys. 44, 736–761 (2014)
+24. Henson, J.: The causal set approach to quantum gravity (2006). arXiv:gr-qc/0601121
+25. Barrett, J., Linden, N., Massar, S., Pironio, S., Popescu, S., Roberts, D.: Nonlocal correlations as an
+information–theoretic resource. Phys. Rev. A 71, 022101 (2005)
+26. Leggett, A.J., Garg, A.: Quantum mechanics versus macroscopic realism: is the ﬂux there when nobody
+looks?. Phys. Rev. Lett. 54, 857 (1985)
+27. Fine, A.: Hidden variables, joint probability, and the Bell inequalities. Phys. Rev. Lett. 48(5), 291–
+295 (1982)
+28. Upper, D.R.: Theory and Algorithms for Hidden Markov Models and Generalized Hidden Markov
+Models. PhD thesis, University of California at Berkeley (1989). http://csc.ucdavis.edu/~cmg/papers/
+TAHMMGHMM.pdf.gz
+29. Chiribella, G., D’Ariano, G.M., Perinotti, P .: Probabilistic theories with puriﬁcation. Phys. Rev.
+A 81, 062348 (2010)
+30. Coecke, B., Paquette, E.O.: Categories for the practising physicist. In: Coecke, B. (ed.) New Structures
+for Physics, pp. 173–286. Springer, Berlin (2011)
+31. Spivak, D.: Category theory for scientists (old version) (2013). arXiv:1302.6946
+32. Coecke, B., Lal, R.: Causal categories: relativistically interacting processes. Found. Phys. 43(4), 458–
+501 (2012)
+33. Coecke, B.: Quantum picturalism. Contemp. Phys. 51(1), 59–83 (2010)
+34. Joyal, A., Street, R.: The geometry of tensor calculus, I. Adv. Math. 88, 55–112 (1991)
+35. Leinster, T.: Higher operads, higher categories. Condon Mathematical Society Lecture Notes Series 298.
+Cambridge University Press, Cambridge (2004). arXiv:math/0305049
+36. Coecke, B.: Terminality implies non-signalling. In: Proceedings 11th workshop on Quantum Physics and
+Logic, vol. 172, pp. 27–35 (2014)
+37. Spivak, D.I., Schultz, P ., Rupel, D.: String diagrams for traced and compact categories are oriented
+1-cobordisms (2015). arXiv:1508.01069
+38. Barrett, J.: Information processing in generalized probabilistic theories. Phys. Rev. A75(3), 032304 (2007)
+39. Short, A., Barrett, J.: Strong nonlocality: a trade-off between states and measurements. New J.
+Phys. 12, 033034 (2010)
+40. Gisin, N.: Non-realism: deep thought or soft option?. Found. Phys. 42, 80–85 (2012)
+41. Gisin, N.: A possible deﬁnition of a realistic physics theory (2014). arXiv:1401.0419
+42. Halmos, P .R.: A Hilbert Space Problem Book, volume 19 of Graduate Texts in Mathematics, 2nd
+edn. Springer, Berlin (1982)
+43. Kadison, R.V ., Ringrose, J.R.: Fundamentals of the theory of operator algebras, vol. I, volume 100 of
+Pure and Applied Mathematics. Academic Press Inc. Harcourt Brace Jovanovich Publishers. Elementary
+theory (1983)
+44. Conway, J.B.: A Course in Operator Theory, volume 21 of Graduate Studies in Mathematics. American
+Mathematical Society, Providence (1999)
+45. Nielsen, M., Chuang, I.: Quantum Computation and Quantum Information. Cambridge University
+Press, Cambridge (2000)
+46. Gales, M., Y oung, S.: The application of hidden Markov models in speech recognition. Found. Trends
+Signal Process. 1(3), 195–304 (2008)
+47. Eddy, S.R.: What is a hidden Markov model?. Nat. Biotechnol. 22, 1315–1316 (2004)
+
+=== page 44 ===
+434 T. Fritz
+48. Ghahramani, Z.: An introduction to hidden Markov models and Bayesian networks. Int. J. Pattern Recog-
+nit. Artif. Intell. 15(1), 9–42 (2001)
+49. Leifer, M., Spekkens, R.: Towards a formulation of quantum theory as a causally neutral theory of
+Bayesian inference. Phys. Rev. A 88, 052130 (2013)
+50. Halmos, P .R.: Measure Theory. D. V an Nostrand Company, Inc., New Y ork (1950)
+51. Panangaden, P .: Labelled Markov Processes. Imperial College Press, London (2009)
+52. Baez, J.C., Fritz, T.: A Bayesian characterization of relative entropy. Theory Appl. Categories 29, 421–
+456 (2014)
+Communicated by M. M. Wolf

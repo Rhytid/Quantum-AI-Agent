@@ -1,0 +1,3067 @@
+=== page 1 ===
+Bell nonlocality in quantum networks with unreliable sources:
+Loophole-free postelection via self-testing
+Sadra Boreiri, 1 Nicolas Brunner, 1 and Pavel Sekatski 1
+1Department of Applied Physics, University of Geneva, Switzerland
+We discuss Bell nonlocality in quantum networks with unreliable sources. Our main result is
+a condition on the observed data which ensures that inconclusive events can be safely discarded,
+without introducing any loophole. More formally, we characterize the fair-sampling property for
+measurements in a network. When all measurements are fair-sampling, we show that the post-
+selection of conclusive outcomes does not compromise the assumption of source independence, hence
+avoiding the detection loophole. Furthermore, we show that in some cases, the fair-sampling property
+can in fact be guaranteed based only on observed data. To show this, we prove that saturation of the
+Finner inequality provides a self-test of the underlying quantum model. We illustrate the relevance
+of our results by demonstrating an improvement in device-independent randomness generation for
+a photonic Bell test with a probabilistic source and for the triangle network.
+I. INTRODUCTION
+Bell nonlocality is now widely recognized as a central
+aspect of quantum theory, playing a vital role not only
+in deepening our understanding of the quantum world
+but also in paving the way for advanced applications in
+quantum information processing, leading to the device-
+independent paradigm [1]. In his seminal work [2], Bell
+demonstrated that two distant observers performing lo-
+cal measurements on a shared entangled state can estab-
+lish strong correlations that cannot be explained by any
+physical theory satisfying a natural notion of locality, re-
+spected in classical physics. Such Bell nonlocal quantum
+correlations have been experimentally demonstrated [3],
+and are the basis for several applications, most notably
+within the device-independent framework [4–6].
+In recent years, the effect of quantum Bell nonlocality
+has been investigated in the context of quantum networks
+where several independent sources distribute quantum re-
+sources (e.g. entangled states) to the observers, see e.g.
+[7–13]. The network setting allows for novel forms of Bell
+nonlocality, in particular in scenarios with fixed measure-
+ment settings (i.e. without requiring the observers to ac-
+tively change their measurement setting) [8, 14]. In this
+scenario, Bell nonlocality can be used to certify the com-
+bination of entangled states and joint entangled measure-
+ments [11, 15–17], as well as for generating randomness
+(without the need for input randomness). So far, these
+questions have been mostly discussed in an idealized set-
+ting (e.g. considering deterministic sources of entangle-
+ment), and characterizing Bell nonlocality in more realis-
+tic networks remains challenging [18–21]. This is indeed
+central towards any future experiments or applications.
+In the present work, we discuss Bell nonlocality in net-
+works with unreliable sources. This means that each
+source in the network, in each round of the Bell test,
+has a certain probability of failing, e.g. not sending out
+any particles. In case of such a failure, the observers
+connected to the source will report a failure (no-click)
+outcome. Dealing with such inconclusive outcomes in
+the context of Bell nonlocality is not trivial. In general,
+the naive strategy of simply discarding these inconclusive
+events and analyzing the nonlocality of the post-selected
+data is not valid. Indeed, this procedure can open the
+so-called detection loophole, where a local model can re-
+produce the (seemingly nonlocal) post-selected data by
+exploiting the inconclusive events [1, 22]. This problem
+is related to the fact that Bell nonlocality is predicated
+on certain assumptions of causal independence. In the
+traditional Bell scenario, the choice of measurement set-
+ting must be independent of the source of entanglement,
+while in network nonlocality (where measurement set-
+tings are no longer necessary), one must ensure that the
+different sources are independent, in accordance with the
+network topology. From this perspective, the detection
+loophole arises when the post-selection breaks the causal
+independence relations. In this case, the post-selected
+data no longer comply with the network topology, hence
+invalidating the proof of Bell nonlocality.
+Nevertheless, here we prove that in the failing-source
+scenario, post-selection of inconclusive events is in fact
+harmless, and does not open any loophole. More pre-
+cisely, we show that the correlations observed in this sce-
+nario self-test the underlying failing source model, i.e.
+the latter is the only quantum model compatible with the
+observed data. In this model, the occurrence of failure is
+decided at the source. Therefore post-selection does not
+compromise the assumption of source independence. Af-
+ter proving our general result, we illustrate its relevance
+with two examples. In particular, we apply our result to
+the standard photonic CHSH Bell test (with a probabilis-
+tic SPDC source of entanglement, and demonstrate its
+usefulness for increasing the rate of device-independent
+randomness generation.
+From a more technical perspective, the main contri-
+butions of our work are the following. First, we define
+the concept of fair-sampling measurements in the context
+of quantum networks, following the approach of [23, 24].
+In turn, we show that whenever all measurements in the
+network are fair-sampling, then post-selection is harm-
+less. Finally, to prove our main result, we prove a rigid-
+ity (self-test) statement for all correlations saturating the
+arXiv:2501.14027v1  [quant-ph]  23 Jan 2025
+
+=== page 2 ===
+2
+Finner inequality [25, 26]. Specifically, this rigidity prop-
+erty guarantees that all measurements are fair-sampling.
+Finally, we discuss the connection of our work with the
+effect of topologically robust network Bell nonlocality [27]
+and conclude with open questions.
+II. UNRELIABLE QUANTUM NETWORKS
+AND THE F AIR SAMPLING ASSUMPTION
+Consider a network with N sources Si and M par-
+ties Aj. The network can be represented by a bipartite
+graph where the connections between the sources and the
+parties are specified by the N×M adjacency matrix E
+taking the values Eij = 1 (connection) Eij = 0 (no con-
+nection). Each party Aj performs a measurement on the
+systems received from the connected sources in order to
+produce an outcome aj. In principle, before doing so it
+can also sample a measurement input xj from a local
+source of randomness. However, any such network with
+inputs can be mapped into a “dressed” network without
+inputs by adding a source of randomness and an extra
+party announcing xj (see the example in the left panel
+of Fig. 3). Thus, without loss of generality, we focus
+here on networks without inputs. The set of possible
+probability distributions of outputs P(a1,a 2,...,a M) for
+a given network depends on the underlying physical the-
+ory governing the experiment. Classically (local models),
+a source distributes a random variable, which are read
+out by the measurements at the parties to produce out-
+puts. In quantum theory, each source Si sends a quan-
+tum system Q(i)
+j to the connected party Aj. All systems
+sent by a source Si are denoted by the composite system
+Q(i) =×j|Eij=1Q(i)
+j . The state prepared by the source
+Si admits a purification
+Ψ(i)
+Q(i)E(i), whereE(i) is a pu-
+rifying system potentially controlled by an eavesdropper.
+In turn, the measurement performed by each party are
+given by a POVM {Maj
+Aj} acting on the tensor product
+Hilbert space for all systems received by the party Aj.
+To discuss networks with unreliable elements (such as
+failing sources), we add to each measurement an incon-
+clusive outcome, aj = ∅, which corresponds to a fail-
+ure (no-click) event reported by party Aj. In turn, let
+O✓
+j denote the set of conclusive outputs produced by
+Aj. In general, as mentioned above, such inconclusive
+events cannot be simply discarded. Nevertheless, this
+can be done when the measurements satisfy a so-called
+fair-sampling property [23, 24], which now formalize in
+the context of quantum networks. Loosely speaking, a
+measurement is fair-sampling if it can be performed in
+two steps (see Fig. 1): first, each subsystem is filtered
+(via a CP map), and then an ideal (always conclusive)
+measurement is applied.
+Definition. (Fair-sampling) We say that the measure-
+mentMaj
+Aj satisfies the fair-sampling property if it admits
+FIG. 1. A measurement M
+aj
+Aj is fair-sampling if it can be
+decomposed as shown here. First, a filter is applied on each
+input system, and the outcome is inconclusive ∅ if any of
+the filters is unsuccessful (flag output fi = 0). When all
+filters are successful, a (always) conclusive measurement fM
+aj
+Aj
+is performed on the filter’s output ( N
+iT (i))[•].
+the decomposition
+Maj
+Aj =
+  O
+i|Eij=1
+T (i)
+Q(i)
+j
+∗
+[fMaj
+Aj] for aj̸= ∅,
+M ∅
+Aj = 1Aj−
+X
+aj̸=∅
+Maj
+Aj,
+(1)
+whereT (i)
+Q(i)
+j
+is a local filter (CP map) acting on the system
+Q(i)
+j , and∗ denotes the adjoint map, and fMaj
+Aj is a POVM
+which only has conclusive outcomes, as in Fig. 1.
+A particular case of interest is when the measurement
+acts on two input systems, one of which being classical
+and representing the input setting (as in standard Bell
+tests). Here we recover the previous definition of fair-
+sampling [24]. Next, we derive two properties of fair-
+sampling measurements.
+Proposition 1. The measurementMaj
+Aj is fair-sampling
+if and only if the (coarse-grained) POVM element corre-
+sponding to all conclusive outcomes admits the following
+decomposition
+M ✓
+Aj :=
+X
+aj̸=∅
+Maj
+Aj =
+O
+i|Eij=1
+T (i)
+Q(i)
+j
+, (2)
+with Hermitian 0⪯T (i)
+Q(i)
+j
+⪯ 1, i.e. it is a product on all
+the systems it acts upon.
+Proposition 2. (Fair-sampling and harmless post-
+selection) If all measurements in the network are fair-
+sampling, i.e. satisfy property (1), the post-selected dis-
+tribution
+eP(a1,...,a M) = P(a1,...,a M|a1,...,a M̸= ∅) (3)
+admits a quantum realization on the same network, with
+the states given by
+eΨ(i)
+E
+Q(i)E(i)
+∝
+
+ O
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+
+
+Ψ(i)
+E
+Q(i)E(i)
+(4)
+
+=== page 3 ===
+3
+a2
+a5 a4
+a3
+a8
+a9a1
+a7
+(a)
+a6
+a2
+a8
+a9a1
+a7
+(b)
+FIG. 2. (a) A quantum network with bipartite sources. Each
+party produces an output aj by measuring the quantum sys-
+tems received from the connected sources. (b) In the failing-
+source model, each source may fail with a certain probability,
+in which case the parties connected to it will output an in-
+conclusive outcome ∅.
+and the measurements given by {fMaj
+Aj}aj∈O✓
+j
+with
+fMaj
+Aj = (M ✓
+Aj)(−1/2)Maj
+Aj(M ✓
+Aj)(−1/2), (5)
+whereM(−1) denotes the pseudo-inverse.
+The proofs are rather straightforward and given in ap-
+pendix A. The main idea is to notice that when all mea-
+surements are fair-sampling, all local filters can be moved
+to the sources. Hence the occurrence of failures cannot
+modify the network topology, and does not compromise
+the assumption of source independence.
+In practice, it can be useful to make the fair-sampling
+assumption for certain tasks, for example in a non-
+adversarial scenario where the physics of the setup (de-
+tectors and sources) is well understood and characterized.
+In this case, post-selection can be safely performed with-
+out introducing any loophole, as follows from Proposi-
+tion 2. Nevertheless, it is important to realize that when
+making the fair-sampling assumption, the analysis ceases
+to be fully device-independent. In particular, in an adver-
+sarial scenario or when working with untrusted devices,
+this opens the door to loopholes and potential attacks
+on the hardware implementation [28, 29]. Note that the
+fair-sampling assumption may also fail in setups that are
+not adversarial, and may a priori seem harmless [30, 31].
+III. LOOPHOLE FREE POST-SELECTION VIA
+FINNER SELF-TESTING
+Remarkably, as we show now, there exist cases where
+the fair-sampling property can in fact be guaranteed from
+the observed correlations alone. This is possible due to
+a self-testing property: the observed data allows one to
+uniquely identify the underlying quantum model.
+Here, we restrict our analysis to networks with bipar-
+tite sources, which can be represented by a graph (Fig. 2),
+where each vertex represents a party and each edge rep-
+resents a source connecting two parties. Here, the fail-
+ing source model corresponds to the independent-edge
+(or percolation) model commonly used in network the-
+ory. Each source Si fails with a certain probability e(i),
+in which case both parties connected to it report an in-
+conclusive outcome ∅. Conversely, a party Aj outputs a
+conclusive outcome aj ∈ O✓
+j iff neither of the sources
+connected to it failed. In this model, the probabili-
+ties of conclusive outcomes satisfy P[a1,...,a M̸= ∅] =QN
+i=1(1−e(i)) and QM
+j=1 P[aj ̸= ∅] = QN
+i=1(1−e(i))2.
+Hence, the Finner inequality, given by [25, 26]
+P[a1,...,a M̸= ∅]≤
+vuut
+MY
+j=1
+P[aj̸= ∅], (6)
+is saturated here (there is equality). Remarkably, the
+converse is also true: equality in Eq (6) can only be at-
+tained by a failing source model. This can be formalized
+as follows.
+Theorem 3. (Quantum Finner Rigidity) Consider a
+quantum network with bipartite sources Si and parties
+Aj producing the outputs aj∈O✓
+j ∪{ ∅}, where a source
+is connected to a party if Eij = 1. Then, the equality in
+Eq. (6) holds (saturation of the Finner inequality) if and
+only if, the states are of the form
+Ψ(i)
+E
+Q(i)
+j Q(i)
+j′ E(i)
+=
+p
+1−e(i)|11⟩F (i)
+j F (i)
+j′
+eΨ(i)
+E
+eQ(i)
+j
+eQ(i)
+j′ E(i)
++
+p
+e(i)|00⟩F (i)
+j F (i)
+j′
+Θ(i)
+E
+eQ(i)
+j
+eQ(i)
+j′ E(i)
+(7)
+with 1−e(i) =
+P[aj̸=∅] P[aj′̸=∅]
+P[aj,a′
+j̸=∅] and j,j′ label the two par-
+ties connected to the source Si, and the measurements
+are of the form
+M ✓
+Aj =
+X
+aj̸=∅
+Maj
+Aj =
+O
+i|Eij=1
+
+|1⟩⟨1|F (i)
+j
+⊗ 1 eQ(i)
+j
+
+. (8)
+Here, each system Q(i)
+j =F (i)
+j eQ(i)
+j (sent by the source Si
+to the party Aj) is decomposed in the flag qubit F (i)
+j and
+the remaining degrees of freedom eQ(i)
+j , E(i) is the system
+purifying the source.
+The full proof of the theorem is given in Appendix B.
+The idea is to combine two previous results on the Finner
+inequality. First, a rigidity result has been proven for
+classical models [25]. Second, for networks with bipartite
+sources, Finner’s inequality has been proven to hold for
+quantum models [26]. Following this proof, we show that
+if the Finner inequality is saturated, then the underlying
+quantum model is essentially classical: the measurement
+operators must be diagonal in the Schmidt basis of the
+states. This allows us to lift the rigidity property for
+classical networks to the quantum case.
+
+=== page 4 ===
+4
+Theorem 3 states that any correlations P( a1,...,a M)
+saturating the Finner inequality self-test the quantum
+model responsible for the occurrence of the failure out-
+comes to be the failing-source model. In particular, by
+comparing Eqs. (8) and (1) one sees that such correla-
+tions guarantee that all measurements in the network
+are fair-sampling. From Proposition 2 it follows that
+the post-selected correlations eP(a1,...,a M) of Eq (3) re-
+main consistent with the network topology. In fact, this
+can also be directly deduced from Proposition 3. Indeed,
+accordingly to Eq. (8), each party Aj outputs a conclu-
+sive output aj̸= ∅ iff all the flag qubits F (i)
+j it received
+from the neighboring sources are in the state |1⟩. In
+turn, from Eq. (7) it follows that conditional on all the
+parties reporting a conclusive outcome, each source Si
+must have prepared the state
+11,eΨ(i)
+✓
+E
+Qi
+jQi
+j′E(i)
+. Hence,
+if the Finner inequality is saturated post-selection does
+not break the source independence assumption, as sum-
+marized by the following corollary.
+Corollary 3.1. Consider a quantum network with bi-
+partite sources, where the outputs observed by the parties
+include the failure events aj∈O✓
+j ∪{ ∅}. If the observed
+correlations P(a1,...,a M) saturate the Finner inequality
+(6), then all the measurements must be fair-sampling, and
+the post-selected distributioneP(a1,...,a M) in Eq. (3) ad-
+mits a quantum model on the same network.
+We now illustrate the usefulness of these results with
+two examples, where Bell nonlocality is used to certify
+randomness.
+A. CHSH test with SPDC source
+To start, we consider a very concrete example of the bi-
+partite Bell test (see Fig. 3, where an optical source based
+on spontaneous parametric down-conversion (SPDC) dis-
+tributes polarisation entangled photons pairs to Alice and
+Bob. Their measurement settings are generated via local
+random number generators (RNGs). Here we represent
+this setup as a network with three independent sources,
+as in Fig. 3.
+The state prepared by the SPDC source is of the form
+|Ψ⟩ =
+√
+N exp
+
+T1a†
+hb†
+h +T2a†
+vb†
+v
+
+|0⟩ (9)
+whereN = (1 + T 2
+1 )(1 + T 2
+2 ), ah(v) and bh(v) are the
+photonic modes sent to Alice and Bob respectively, |0⟩
+is the vacuum state of all the involved modes, and T1
+andT2 parametrize the intensity of the pump laser. The
+SPDC source is probabilistic by nature. It creates no
+photons with probability p0 =N , a single photon pair
+with probability p1 =N (T 2
+1 +T 2
+2 ), and multiple pairs
+with the remaining probability.
+Alice and Bob measure locally the polarization of the
+photons. After a polarization rotation controlled by the
+measurement setting, orthogonally polarized photons are
+separated via a polarizing beamsplitter (PBS) and mea-
+sured via non-photon resolving detectors (SPD). Such
+detectors are binary: they either click D• = 1−| 0⟩⟨0|
+or not D◦ =|0⟩⟨0|. Hence, each measurements (Ea|x and
+Eb|y) is described by a four-outcome POVM with outputs
+a,b ∈{◦◦ ,•◦,◦•,••}. The local outcome is conclusive
+when only one of the two SPDs clicks, e.g. a =◦• or
+a =•◦, and inconclusive otherwise. Note that when the
+source generates a single photon pair, outcomes are con-
+clusive, whereas if the source emits no or multiple pairs,
+inconclusive outcome will occur.
+This setup is commonly used to test the CHSH Bell
+inequality [32] and for device-independent randomness
+generation [33, 34]. As this test requires binary outputs,
+it is common to bin inconclusive outcomes together with
+a conclusive one, e.g. a=0 for◦◦,••, and◦•, and a=1 for
+•◦ [35]. Lower bounds on the outcome randomness, given
+by the conditional von Neumann entropy, are obtained
+from the CHSH score [36]. Traditionally, this operation
+is performed using the raw data.
+Using the above results, we can analyze the data dif-
+ferently. Indeed, both parties observe the local outcome
+◦◦ only when the source produces vacuum (no pair), and
+these events are perfectly correlated. Labeling these as
+failure outcomes ◦◦7→ ∅ we recover the failing-source
+model described above. Then, corollary 3.1 guarantees
+that these inconclusive events can be safely discarded.
+We then evaluate the CHSH value and the randomness
+bound on the post-selected data. Taking into account
+the post-selection rate, we plot in Fig. 3 the randomness
+rate as a function of the pump intensity. Interestingly, we
+obtain a small but non-negligible improvement over the
+standard method where no data is discarded. All details
+can be found in appendix C.
+Finally, note that here we have neglected other imper-
+fections in the setup (such as channel loss), and restricted
+to the case of collective attacks. Applying a similar anal-
+ysis to practical setups would require generalizing the
+Theorem 3 to correlations that do not saturate the Finner
+inequality exactly.
+B. Nonlocality and Randomness in the triangle
+network
+Next, we consider the triangle network scenario [8, 11],
+consisting of three parties – A, B, and C — connected
+pairwise by bipartite sources labeled with α,β,γ . Each
+party receives two systems from the neighboring sources
+and produces an output a,b,c . Overall, there are six sys-
+tems involved, labeled asQ(i)
+j wherei∈{α,β,γ} denotes
+the source generating it and j∈{A,B,C} identifies the
+connected party receiving the system. As a concrete ex-
+ample, we consider the quantum distribution discussed in
+[11] for which a bound on the local output randomness
+can be derived [17].
+In the failing source model, the analysis of Refs [11, 17]
+
+=== page 5 ===
+5
+laser
+Pump 
+SPDC
+Alice Bob
+SPD PBS PC
+RNGA RNGB
+x
+a b
+yRNGA RNGB
+0.0 0.2 0.4 0.6 0.8 1.0
+T
+2.0
+2.2
+2.4
+2.6
+2.8CHSH
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+Randomness
+Standard CHSH Score
+Post-selected CHSH Score
+Standard Randomness Rate
+Post-selected Randomness Rate
+FIG. 3. (T op left) Sketch of an experimental setup for testing the CHSH Bell inequality with an SPDC source of polarization-
+entangled photons and single-photon detectors. (Bottom left) The three-source network describing the experiment. (Right)
+CHSH score (left scale, dashed) and randomness rate (right scale, full) obtained from the bare (red) and post-selected (blue)
+data, via the Corollary 3.1, as the function of the pump parameters T =T1 =T2 of the source.
+no longer works. Nevertheless, we will see that Bell non-
+locality and randomness can still be certified using our
+approach. Let us assume that each source fails with prob-
+ability e(i), leading the neighboring parties to report a
+failure outcome. First, we observe that the resulting cor-
+relations will saturate the Finner inequality (6), and by
+Theorem 3 the states prepared by the sources must be of
+the form in Eq. (7). Hence, all the outputs are conclu-
+sive iff the sources prepare the flag qubits in the states
+|11⟩F (i)
+j F (i)
+j′
+, and the post-selected statistics eP(a,b,c ) are
+consistent with the triangle network. Hence we can ap-
+ply previous results where the states
+eΨ(i)
+E
+eQ(i)
+j
+eQ(i)
+j′ E(i)
+can
+be partially self-tested [17]. Following this proof, we can
+thus certify Bell nonlocality and derive a bound on the
+output randomness. For example, if in the ideal scenario
+(perfect source) we have H(A|E)≥ L, with A denoting
+the classical register containing the output a and H be-
+ing the von Neuman entropy, then in the failing source
+model, we obtain the modified bound
+H(A|E)≥ (1−e(β))(1−e(γ)) L. (10)
+It is worth noting that this bound is stronger than the
+one derived from directly using post-selected data, which
+would yield a coefficient of (1−e(α))(1−e(β))(1−e(γ)),
+accounting for non-failure of all of the sources. This
+is coming from applying the self-testing directly as we
+need only the neighbouring sources α and γ to not fail,
+for the output of A to be conclusive. All details can be
+found in appendix D.
+IV. DISCUSSION
+We discussed Bell nonlocality in quantum networks
+with unreliable sources. Our main result is a condition on
+the observed data which ensures that inconclusive events
+can be safely discarded, without introducing any loop-
+hole. Our work contributes to understand the robustness
+of Bell nonlocality in quantum networks.
+To do so, we have introduced the notion of fair-
+sampling measurements for networks, which may be of
+independent interest and facilitate experimental imple-
+mentations.
+Our work is also interesting from the perspective of
+testing Bell nonlocality in networks with varying topol-
+ogy. Here, in each round of the test, the topology varies
+depending on which sources failed (see Fig. 2). This is
+complementary to the results of [27] where the topology
+is partially characterized, but fixed throughout the test.
+Our results may also find applications, e.g. in ran-
+domness generation as we illustrated with examples. For
+practical purposes, one would need to include the effect
+of other noise sources, in particular channel loss. Tech-
+nically, this would require an approximate version of our
+Finner self-testing result, along the lines of [21, 37]. Fi-
+nally, one could explore the extension of the Finner in-
+equality and self-testing for more complex networks, in-
+volving multipartite sources.
+Acknowledgements.— We thank Joey Marcellino and
+Patrik Caspar for their assistance. We acknowledge fi-
+nancial support from the Swiss National Science Foun-
+dation (project 192244) and the by the Swiss Secretariat
+for Education, Research and Innovation (SERI) under
+contract number UeM019-3.
+
+=== page 6 ===
+6
+Appendix A: Proof of Propositions 1 and 2
+Proposition 1. The following properties of the measurement Maj
+Aj are equivalent
+(i) Fair-sampling definition: the POVM elements admit a decomposition
+Maj
+Aj =
+  O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+
+[fMaj
+Aj] for aj̸= ∅,
+M ∅
+Aj = 1Aj−
+X
+aj̸=∅
+Maj
+Aj,
+(A1)
+whereT (i)
+Q(i)
+j
+are CP maps acting on the systems Q(i)
+j , and ∗ denotes the adjoint, and fMaj
+Aj is a POVM which
+only has conclusive outcomes.
+(ii) The POVM element corresponding to all conclusive outcomes satisfies
+M ✓
+Aj :=
+X
+aj̸=∅
+Maj
+Aj =
+O
+i|Eij=1
+T (i)
+Q(i)
+j
+(A2)
+for some Hermitian 0⪯T (i)
+Q(i)
+j
+⪯ 1.
+Proof. The implication (i) =⇒ (ii) is straightforward. The measurementfMaj
+Aj only has conclusive outcomes, therefore
+P
+aj̸=∅fMaj
+Aj = 1Aj =N
+i|Eij=1 1Q(i)
+j
+and
+M ✓
+Aj =
+X
+aj̸=∅
+Maj
+Aj =
+X
+aj̸=∅
+  O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+
+[fMaj
+Aj] (A3)
+=
+  O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+
+[1Aj] (A4)
+=
+O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+[1Q(i)
+j
+] (A5)
+:=
+O
+i|Eij=1
+T (i)
+Q(i)
+j
+. (A6)
+To show the implication (ii) =⇒ (i), we will now drop the superscript of T (i)
+Q(i)
+j
+to avoid cumbersome expression.
+For each positive semi-definite operatorTQ(i)
+j
+define its pseudo-inverseT (−1)
+Q(i)
+j
+⪰ 0 as well as the projector on its support
+ΠT
+Q(i)
+j
+, such that T (−1)
+Q(i)
+j
+TQ(i)
+j
+=TQ(i)
+j
+T (−1)
+Q(i)
+j
+= ΠT
+Q(i)
+j
+. Analogously we define their tensor products
+(M ✓
+Aj)(−1) =
+O
+i|Eij=1
+T (−1)
+Q(i)
+j
+and Π T
+Aj =
+O
+i|Eij=1
+ΠT
+Q(i)
+j
+(A7)
+Now consider the following operators
+fMaj
+Aj = (M ✓
+Aj)(−1/2)Maj
+Aj(M ✓
+Aj)(−1/2), (A8)
+they are positive semi-definite, and satisfy
+X
+aj∈O✓
+j
+fMaj
+Aj = (M ✓
+Aj)(−1/2) X
+aj∈O✓
+j
+Maj
+Aj(M ✓
+Aj)(−1/2) = (M ✓
+Aj)(−1/2)M ✓
+Aj(M ✓
+Aj)(−1/2) = ΠT
+Aj. (A9)
+Hence{fMaj
+Aj}aj∈O✓
+j
+for a POVM on the subspace defined by Π T
+Aj. If Π T
+Aj̸= 1Aj one can always extend the POVM
+{fMaj
+Aj}aj∈O✓
+j
+to act on the whole Hilbert space of the system Aj by associating 1Aj− ΠT
+Aj to any conclusive outcome
+(the state is never found there anyway).
+
+=== page 7 ===
+7
+By defining the (L¨ uders) quantum instrumentIAj ={TAj,FAj} composed of two CP maps given by
+TAj(•) =
+q
+M ✓
+Aj•
+q
+M ✓
+Aj FAj(•) =
+q
+M ∅
+Aj•
+q
+M ∅
+Aj, (A10)
+it is always possible to decompose our POVM as
+Maj
+Aj =T∗
+Aj(fMaj
+Aj) for aj∈O✓
+j (A11)
+M ∅
+Aj =F∗
+Aj(1Aj). (A12)
+This is a two-step process. First, the instrument IAj verifies if a failure outcome must be reported (FAj) or otherwise
+(TAj) a conclusive outcome must be reported. In the later case the instrument outputs the quantum system in
+the subspace ΠT
+Q(i)
+j
+and the POVM {fMaj
+Aj}aj∈O✓
+j
+is performed on it to determine which conclusive outcome will be
+output. Furthermore, by assumption we know that the CP map TAj =N
+i|Eij=1T (i)
+Q(i)
+j
+is product, with T (i)
+Q(i)
+j
+(•) :=
+r
+T (i)
+Q(i)
+j
+•
+r
+T (i)
+Q(i)
+j
+. Hence,
+Maj
+Aj =T∗
+Aj(fMaj
+Aj) =
+  O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+
+[fMaj
+Aj] for aj∈O✓
+j (A13)
+M ∅
+Aj =F∗
+Aj(1Aj) = 1Aj−
+X
+aj̸=∅
+Maj
+Aj (A14)
+Proposition 2. If all measurements in the network are fair-sampling the post-selected distribution eP(a1,...,a M) =
+P(a1,...,a M|a1,...,a M̸= ∅) admits a quantum realization on the same network, with the states given by
+eΨ(i)
+E
+Q(i)E(i)
+∝
+
+ O
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+
+
+Ψ(i)
+E
+Q(i)E(i)
+(A15)
+and the measurements given by {fMaj
+Aj}aj∈O✓
+j
+with
+fMaj
+Aj = (M ✓
+Aj)(−1/2)Maj
+Aj(M ✓
+Aj)(−1/2), (A16)
+whereM(−1) denotes the pseudo-inverse.
+Consider a quantum network with N sourcesSi andM partiesAj producing the outputs aj∈O✓
+j ∪{ ∅}. A source
+is connected to a party if Eij = 1, in which case it sends a quantum system Q(i)
+j . By assumption, each measurement
+in the network satisfies the fair-sampling property, i.e. for conclusive outcomes aj̸= ∅
+Maj
+Aj =
+  O
+i|Eij=1
+T (i)∗
+Q(i)
+j
+
+[fMaj
+Aj] =
+
+ O
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+
+fMaj
+Aj
+
+ O
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+
+ (A17)
+for some Hermitian operators 0 ⪯ T (i)
+Q(i)
+j
+⪯ 1Q(i)
+j
+, and a measurement fMaj
+Aj that has conclusive outcomes only (i.e.
+P
+aj̸=∅fMaj
+Aj = 1Aj).
+Therefore, when all the outcomes are successful their occurance probability admits the following decomposition
+P(a1,...a M;a1,...,a M̸= ∅) =⟨Ψ|QE
+
+ O
+ij|Eij=1
+r
+T (i)
+Q(i)
+j
+
+ (
+MO
+j=1
+fMaj
+Aj)
+
+ O
+ij|Eij=1
+r
+T (i)
+Q(i)
+j
+
+|Ψ⟩QE (A18)
+
+=== page 8 ===
+8
+where|Ψ⟩QE =NN
+i=1
+Ψ(i)
+Q(i)E(i) denotes the global state prepared by all the sources. Regrouping the local filters
+implies
+P(a1,...a M;a1,...,a M̸= ∅) = P(a1,...,a M̸= ∅)
+D
+eΨ
+
+QE
+(
+MO
+j=1
+fMaj
+Aj)
+eΨ
+E
+QE
+with (A19)
+eΨ
+E
+QE
+=
+NO
+i=1
+eΨ(i)
+E
+Q(i)E(i)
+(A20)
+eΨ(i)
+E
+Q(i)E(i)
+=
+N
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+Ψ(i)
+Q(i)E(i)
+∥
+N
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+Ψ(i)
+Q(i)E(i)∥
+(A21)
+P(a1,...,a M̸= ∅) =
+NY
+i=1
+∥
+
+ O
+j|Eij=1
+r
+T (i)
+Q(i)
+j
+
+
+Ψ(i)
+E
+Q(i)E(i)
+∥2. (A22)
+Dividing both sides by P(a1,...,a M̸= ∅), we get
+P(a1,...a M|a1,...,a M̸= ∅) =
+D
+eΨ
+
+QE
+(
+MO
+j=1
+fMaj
+Aj)
+eΨ
+E
+QE
+(A23)
+concluding the proof.
+Appendix B: Proof of Theorem 3
+This appendix is dedicated to prove the following proposition from the main text. Note that the phrasing of the
+proposition is slightly different below, however we show that it is equivalent in section B 5.
+Theorem 3. Consider a quantum network with N bipartite sourcesSi connected toM partiesAj accordingly to the
+N×M adjacency matrix Eij∈{ 0, 1}. Each source Si is connected to the party Aj and sends it the quantum system
+Q(i)
+j iff Eij = 1. Let Q(i) =Q(i)
+j Q(i)
+j′ wherej,j′ label the two parties connected to the source Si, and Qj =×i|Eij
+Q(i)
+j
+collect all the systems received by the party Aj. Upon receiving these systems each source produces a binary outcome
+aj∈{ 0, 1} by performing some POVM Maj
+Qj on the received systems. The correlations of the outputs saturate the
+quantum Finner inequality [cite]
+P
+
+a1 =··· =aM = 1
+
+=
+sY
+j
+P
+
+aj = 1
+
+(B1)
+if and only if in the underlying quantum model the states prepared by each source Si admit a purification
+Ψ(i)
+Q(i)
+such that
+Ψ(i)
+E
+Q(i)
+=
+diX
+ℓi=1
+λ(i)
+ℓi
+|ℓi,ℓi⟩Q(i)
+j Q(i)
+j′
+(B2)
+M1
+Qj =
+O
+i|Eij=1
+Π1
+Q(i)
+j
+with Π1
+Q(i)
+j
+= Π1
+Q(i)
+j′
+=
+diX
+ℓi=1
+χ(i)(ℓi)|ℓi⟩⟨ℓi| (B3)
+whereχ(i)(ℓi)∈{ 0, 1}. In addition, for each source Si, connected to the parties Aj and Aj′ we define:
+e(i) := 1−
+diX
+ℓi
+(λ(i)
+ℓi
+)2χ(i)(ℓi) = 1− P[aj = 1]P[aj′ = 1]
+P[aj =a′
+j = 1] . (B4)
+
+=== page 9 ===
+9
+Note that in the failing source model, e(i) can be interpreted as the probability of the sources Si to fail, see the
+discussion in Sec. B 5.
+To prove it we proceed in a few steps. First, in sec. B 1 we recall the analogous result for classical models. Second,
+in sec. B 2 we briefly introduce the necessary notation and give an a priori description of any quantum model on
+the network. Then, in sec. B 3 following [26] we give a brief proof of the quantum Finner inequality (for binary
+sources). Finally, in sec. B 4 we prove the theorem, to do so given the equality (B1) we identify which steps in the
+inequality proof must be tight. Then we derive a proof for the theorem by combining the classical rigidity with
+elementary operator algebra. In addition, in sec. B 5 we establish the connection between the different formulations
+of the theorem given here and in the main text.
+1. Classical rigidity from the Finner equality condition
+Consider a network N with M parties A1,...,A M and N sources S1,...S N specified by the M×N adjacency
+matrix, where a party Ai is connected to the source Sj if Eij = 1. We assume that each party (source) is connected
+to at least one source (party). Furthermore, we assume that no source is redundant, i.e. there is no pair i̸=i′ such
+that
+[
+j|Eij=1
+Aj⊂
+[
+j|Ei′j=1
+Aj, (B5)
+as a redundant source Si can always be absorbed inside Si′.
+Theorem 4. (Classic Finner inequality [25]) Consider a network N with M observers Aj. Let {x1,...,x M} be a
+fractional independent set of N , i.e. weights xj attributed to each Aj such that, for each source, the sum of the
+weights of parties connected to it is smaller or equal to 1. Let fj be any real local function of the sources Aj has access
+to, i.e. fj({si :Eij = 1}). Then, any possible correlation satisfies the following inequality
+E
+
+Y
+j
+|fj|
+
+≤
+Y
+j
+∥fj∥1/xj
+, (B6)
+where∥f∥α =
+
+E [|f|α]
+1/α
+is the Schatten norm.
+Equality condition: Given that the fractional independent set{xj} is perfect, i.e. P
+jxj = 1, equality in B6 holds
+if and only if for all j∈ [M] and i :Eij = 1, there exist functions fj,i and constants Aj,i > 0 s.t:
+•|fj({si|Eij = 1})| =Q
+i:Eij=1|fj,i(si)| ∀j
+• Ar,i|fr,i|1/xr =As,i|fs,i|1/xs ∀i, and r,s with Eir =Eis = 1
+Remark 4.1. In particular, in case of fj({si|Eij = 1})∈{ 0, 1} being the indicator function of the output being aj,
+we obtain:
+P (a1,...,a M)≤
+MY
+j=1
+ 
+PAj(aj)
+xj
+. (B7)
+In this case, given that the fractional independent set {xj} is perfect, i.e. P
+jxj = 1, equality in B7 holds if and only
+if there exist indicator functions ϕi(si)∈{ 0, 1} such that
+fj({si|Eij = 1}) =
+Y
+i:Eij=1
+ϕi(si), ∀j. (B8)
+Remark 4.2. On graphs, we can consider the fractional independent set to be xj = 1/2∀j, therefore the inequality
+would be
+E
+
+Y
+j
+|fj|
+
+≤
+Y
+j
+q
+E
+
+f2
+j
+
+(B9)
+
+=== page 10 ===
+10
+and equality holds if and only if there exist functions hi≥ 0 for any source i and constant Cj for any party j s.t:
+|fj{(si|Eij = 1)}| =Cj
+Y
+i:Eij=1
+hi(si) ∀j
+2. Notation and a priori description of quantum models
+Recall that our network is represented by the bipartite graph whereN independent sourceS1,...,S N are connected
+toM partiesA1,...,A M, where the N×M adjacency matrix Eij∈{ 0, 1} indicating if the source Si is connected to
+the party Aj.
+For a quantum model each edgeEij = 1 of the graph must correspond to a quantum system Q(i)
+j sent by the source
+Si to the party Aj. In the statement of the theorem, we have also used the following shortened notation
+Q(i) =×
+j|Eij=1
+Q(i)
+j and Qj =×
+i|Eij=1
+Q(i)
+j , (B10)
+where Q(i) collects all the systems prepared by the source Si, and Qj collects all the quantum systems re-
+ceived by the party Aj. Any quantum model on the network is given by some density operators ρ(i)
+Q(i) describing
+the states produced by the sourcesSi, and POVMs{M(aj)
+Qj } describing the measurements performed by the partiesAj.
+In general, the states ρ(i)
+Q(i) prepared by the source do not have to be pure. Nevertheless by introducing an auxiliary
+quantum system E(i) for each source, thestate can be purified to
+Ψ(i)
+E
+Q(i)E(i)
+wiht ρ(i)
+Q(i) = trE(i)
+Ψ(i)
+ED
+Ψ(i)
+
+Q(i)E(i)
+. (B11)
+Hence for any quantum model on the network, there exists a purified model. To keep the notation short the purifying
+system E(i) can then be absorbed into one of the quantum systems prepared by the source. From now on we will
+thus reason in terms of the purified model without explicitly mentioning the systemE(i), for simplicity of the notation.
+Since each source in our network is bipartite, each Q(i) contains two systems and each state
+Ψ(i)
+Q(i) admits a
+Schmidt decomposition
+Ψ(i)
+E
+Q(i)
+=
+diX
+ℓi=1
+λ(i)
+ℓi
+|ℓi,ℓi⟩Q(i), (B12)
+fixing a basis for each quantum system in the network. We can now compute the probability that all parties observe
+1. It is given by
+P[a1 =··· =aM = 1] =
+NO
+i=1
+
+Ψi
+Q(i)
+
+
+MO
+j=1
+M1
+Qj
+
+
+NO
+i′=1
+Ψi′E
+Q(i′)
+(B13)
+=
+X
+ℓ,ℓ′
+λ(1)
+ℓ1
+λ(1)
+ℓ′
+1
+...λ (N)
+ℓN
+λ(N)
+ℓ′
+N
+⟨ℓ|
+
+
+MO
+j=1
+M1
+Qj
+
+|ℓ′⟩ (B14)
+with strings ℓ = (ℓ1,...,ℓ N) and ℓ′ = (ℓ′
+1,...,ℓ ′
+N). It will also be useful to compute the marginal state of the
+systems Qj received by the party Aj, it is given by
+ρQj =
+O
+i|Eij=1
+ diX
+ℓi=1
+(λ(i)
+ℓi
+)2|ℓi⟩⟨ℓi|Q(i)
+j
+!
+. (B15)
+Which allows one to compute the marginal probability
+P[aj = 1] = trρQjM1
+Qj. (B16)
+
+=== page 11 ===
+11
+3. Proof of the quantum Finner inequality (binary sources) [26]
+In [26], it has been shown that the Finner inequality holds in quantum theory as well, for graphs(networks with
+bipartite sources). Here we investigate the equality condition of the Finner inequality and prove a self-testing result
+in that regard.
+For any quantum model, we now define a local variable (LV) model capable of mimicking some quantum expected
+value P[a1 = ··· = aM = 1]. First, let each source Si uniformly sample a pair of independent integers ( ℓi,ℓ′
+i)
+which both have the cardinality di equal to the Schmidt rank of the state
+Ψi
+, hence they are distributed with
+p(ℓi,ℓ′
+i) = 1
+d2
+i
+. After sampling these integers, the sends a copy of these values ( ℓi,ℓ′
+i) to both parties connected to it.
+Each party Aj thus receives the following strings of integers ( ℓj, ℓ′
+j) with
+ℓj =×
+i|Eij=1
+ℓi and ℓ′
+j =×
+i|Eij=1
+ℓ′
+i. (B17)
+Both strings ℓj and ℓ′
+j contain an integer label for each sources connected to the party Aj, and can be used to define
+quantum states |ℓj⟩Qj
+= N
+i|Eij=1|ℓi⟩Q(i)
+j
+and
+ℓ′
+j
+
+Qj
+= N
+i|Eij=1|ℓ′
+i⟩Q(i)
+j
+for the corresponding quantum systems.
+The party will then output a nonegative real value
+gj(ℓj, ℓ′
+j) =
+
+ Y
+i|Eij=1
+di
+q
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+
+
+⟨ℓj|Qj
+M1
+Qj
+ℓ′
+j
+
+Qj
+, (B18)
+computed local from the random variable ℓj and ℓ′
+j.
+Let us now show that for the LV model we just defined the expected value of the product of all gj is equal to the
+probability P[a1 =··· =aM = 1] of the quantum model. We have
+E
+
+
+
+Y
+j
+gj
+
+
+ =
+X
+ℓ,ℓ′
+p(ℓ1,ℓ′
+1,...,ℓ N,ℓ′
+N)
+
+Y
+j
+gj(ℓj, ℓ′
+j)
+
+(B19)
+=
+X
+ℓ,ℓ′
+1Q
+id2
+i
+
+Y
+j
+Y
+i|Eij=1
+di
+q
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+
+
+
+Y
+j
+⟨ℓj|Qj
+M1
+Qj
+ℓ′
+j
+
+Qj
+
+. (B20)
+Recall that in our network there are two parties connected to each source, hence Q
+j
+Q
+i|Eij=1di
+q
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+=
+Q
+id2
+iλ(i)
+ℓi
+λ(i)
+ℓ′
+i
+and
+E
+
+
+
+Y
+j
+gj
+
+
+ =
+X
+ℓ,ℓ′
+Y
+i
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+
+Y
+j
+⟨ℓj|Qj
+M1
+Qj
+ℓ′
+j
+
+Qj
+
+(B21)
+=
+
+X
+ℓ,ℓ′
+Y
+i
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+⟨ℓ|
+
+
+MO
+j=1
+M1
+Qj
+
+|ℓ′⟩
+
+= P[a1 =··· =aM = 1]. (B22)
+Now, by the classical Finner inequality, we know that our LV model must satisfy
+P[a1 =··· =aM = 1] = E
+
+
+
+Y
+j
+gj
+
+
+≤
+sY
+j
+E
+h
+|gj|2
+i
+. (B23)
+Hemce, to prove the quantum Finner ineqaulity it remains to show that E
+h
+|gj|2
+i
+≤ P[aj = 1]. Let us show that this
+
+=== page 12 ===
+12
+is indeed the case. To do so compute
+E
+h
+|gj|2
+i
+=
+X
+ℓ,ℓ′
+1Q
+id2
+i
+gj(ℓj, ℓ′
+j)2 (B24)
+=
+X
+ℓj,ℓ′
+j
+1Q
+i|Eij=1d2
+i
+
+ Y
+i|Eij=1
+di
+q
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+
+
+2
+⟨ℓj|Qj
+M1
+Qj
+ℓ′
+j
+
+Qj
+
+2
+(B25)
+=
+X
+ℓj,ℓ′
+j
+Y
+i|Eij=1
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+⟨ℓj|Qj
+M1
+Qj
+ℓ′
+j
+
+ℓ′
+j
+
+Qj
+M1
+Qj|ℓj⟩Qj
+(B26)
+= tr
+
+X
+ℓj
+(
+Y
+i|Eij=1
+λ(i)
+ℓi
+)|ℓj⟩⟨ℓj|Qj
+
+M1
+Qj
+
+X
+ℓ′
+j
+(
+Y
+i|Eij=1
+λ(i)
+ℓ′
+i
+)
+ℓ′
+j
+
+ℓ′
+j
+
+Qj
+
+M1
+Qj (B27)
+Recall that P
+ℓj(Q
+i|Eij=1λ(i)
+ℓi
+)2|ℓj⟩⟨ℓj|Qj
+=N
+i|Eij=1
+Pdi
+ℓi=1(λ(i)
+ℓi
+)2|ℓi⟩⟨ℓi|Q(i)
+j
+
+= ρQj is the marginal state recieved
+by Aj, and since all the state |ℓj⟩ are orthogonal we also have P
+ℓj(Q
+i|Eij=1λ(i)
+ℓi
+)|ℓj⟩⟨ℓj|Qj
+=√ρQj. This allows us
+to rewrite the above expression as
+E
+h
+|gj|2
+i
+=| tr√ρQjM1
+Qj
+√ρQjM1
+Qj|≤
+q
+(tr√ρQjM1
+QjM1
+Qj
+√ρQj)(trM1
+Qj
+√ρQj
+√ρQjM1
+Qj) (B28)
+= trρQj(M1
+Qj)2≤ trρQjM1
+Qj = P[aj = 1] (B29)
+where we used the Cauchy-Schwartz inequality for the Hilbert-Schmidt inner product, and the inequality ( M1
+Qj)2≤
+M1
+Qj valid for POVM elements whose eigenvalues are real and between 0 and 1.
+4. Quantum Finner rigidity
+The proof of the quantum Finner inequality can thus by the chain of inequalities
+P[a1 =··· =aM = 1] = E
+
+
+
+Y
+j
+gj
+
+
+ (B30)
+≤
+sY
+j
+E
+h
+|gj|2
+i
+=
+sY
+j
+tr√ρQjM1
+Qj
+√ρQjM1
+Qj (B31)
+≤
+sY
+j
+trρQj(M1
+Qj)2 (B32)
+≤
+sY
+j
+trρQjM1
+Qj =
+sY
+j
+P[aj = 1]. (B33)
+Importantly for us, in the case of equality P[a1 =··· = aM = 1] =
+qQ
+j P[aj = 1], both bounds (B31,B33B32)
+must be saturated. We will now use this observation to prove the Theorem.
+First, note that the equality condition tr ρQj(M1
+Qj)2 = trρQjM1
+Qj in Eq. (B33) guarantees that all M1
+Qj = Π1
+Qj
+are projectors 1.
+1 Note that we are only interested and can only reason about the
+restriction of the measurement operators to the the Hilbert space where the states are supported.
+
+=== page 13 ===
+13
+Second, let us discuss the equality condition of the Cauchy-Schwartz bound in Eq. (B32), for all systems Qj it must
+satisfies
+tr√ρQj Π1
+Qj
+√ρQj Π1
+Qj = trρQjΠ1
+Qj. (B34)
+This guarantees that ρQj and Π Qj commute. To see it note that in the rhs one can write ρQj =√ρQj(Π1
+Qj + 1−
+Π1
+Qj)√ρQj, Eq. (B34) then implies tr√ρQj Π1
+Qj
+√ρQj (1− Π1
+Qj) = 0 showing that ρQj is block-diagonal with respect
+to the subspace partition Π 1
+Q1, 1− Π1
+Q1. In other words, Π 1
+Q1 must be diagonal in the product basis {|ℓj⟩}, made of
+the Schmidt bases (of systems Q(i)
+j ) for all the sources connected to Aj. Hence they can be written as
+Π1
+Qj =
+X
+ℓj
+χj(ℓj)|ℓj⟩⟨ℓj|Qj
+. (B35)
+where χj(ℓj)∈{ 0, 1}. This implies that the real functions gj defined in Eq. (B18) are of the form
+gj(ℓj, ℓ′
+j) =
+
+ Y
+i|Eij=1
+di
+q
+λ(i)
+ℓi
+λ(i)
+ℓ′
+i
+
+
+⟨ℓj|Qj
+Π1
+Qj
+ℓ′
+j
+
+Qj
+ =
+
+ Y
+i|Eij=1
+diλ(i)
+ℓi
+
+χj(ℓj)δℓj,ℓ′
+j
+. (B36)
+Finally, by the equality condition of the classical Finner inequality in Eq. (B31), following the Remark 4.2, we also
+know that the functions gj must be of the form
+gj(ℓj, ℓ′
+j) =Cj
+Y
+i|Eij=1
+hi(ℓi,ℓ′
+i) (B37)
+with a nonzero constant Cj and non-negative real functions hi (independent of j). Combining the last two equations
+we find
+χj(ℓj) =⟨ℓj|Qj
+Π1
+Qj|ℓj⟩Qj
+= gj(ℓj, ℓj)
+Q
+i|Eij=1diλ(i)
+ℓi
+=Cj
+Y
+i|Eij=1
+hi(ℓi,ℓi)
+di λ(i)
+ℓi
+=Cj
+Y
+i|Eij=1
+˜hi(ℓi) (B38)
+Here, since χj(ℓj)∈{ 0, 1}, we must also have
+χj(ℓj) =
+Y
+i|Eij=1
+χ(i)(ℓi) with χ(i)(ℓi) :=
+(
+0 ˜hi(ℓi) = 0
+1 ˜hi(ℓi)> 0,
+and the projector must be product Π 1
+Qj =N
+i|Eij=1 Π1
+Q(i)
+j
+, with
+Π1
+Q(i)
+j
+=
+X
+ℓi
+χ(i)(ℓi)|ℓi⟩⟨ℓi| (B39)
+Note also that in eq (B39), χ(i) does not depend on j and for each source i connected to the parties j andj′ we have
+Π1
+Q(i)
+j
+= Π1
+Q(i)
+j′
+, meaning that they are the same projectors acting on the subsystems Q(i)
+j and Q(i)
+j′ .
+Finally, note that the model we have just characterized has nothing genuinely quantum to it. Since all the mea-
+surements are diagonal in the Schmidt bases of the sources, it is equivalent to a LV model where each source sends
+an integer ℓi sampled from p(ℓi) = (λ(i)
+ℓi
+)2 to the neighboring parties. And each party Aj outputs aj = 1 iff
+Y
+i|Eij=1
+χ(i)
+j (ℓi) = 1. (B40)
+To complete the proof of Theorem 3 it remains to show the identity (B4), which follows from straightforward
+calculation. For the parties Aj and Aj′ connected to a source Si we find for the probabilities respective probabilities
+to observe outcomes 1
+P[aj = 1] = trρQjΠ1
+Qj =
+Y
+i′|Ei′j=1
+
+
+di′X
+ℓi′=1
+χ(i′)(ℓi′)(λ(i)
+ℓi′ )2
+
+ =
+Y
+i′|Ei′j=1
+p(i′) (B41)
+P[aj′ = 1] = trρQj′ Π1
+Qj′ =
+Y
+i′|Ei′j′=1
+
+
+di′X
+ℓi′=1
+χ(i′)(ℓi′)(λ(i)
+ℓi′ )2
+
+ =
+Y
+i′|Ei′j′=1
+p(i′), (B42)
+
+=== page 14 ===
+14
+where we introduced p(i′) = Pdi′
+ℓi′=1χ(i′)(ℓi′)(λ(i)
+ℓi′ )2, which is the marginal probability for the event Π 1
+Qi′
+j
+for both
+quantum systems controlled by the source S′
+i. For these two systems these events are however perfectly correlates,
+and for the joint probability of aj =aj′ = 1 we find
+P[aj =aj′ = 1] = tr
+
+
+Ψ(i)
+ED
+Ψ(i)
+
+Q(i)
+j Q(i)
+j′
+O
+i′̸=i|Ei′j=1
+ρQ(i′)
+j
+O
+i′′̸=i|Ei′′j′=1
+ρQ(i′′)
+j′
+
+Π1
+Qj⊗ Π1
+Qj′ (B43)
+=
+Y
+i′|Ei′j=1 or Ei′j′=1
+p(i′). (B44)
+Finally for the ratio we obtain the desired expression
+P[aj = 1]P[aj′ = 1]
+P[aj =aj′ = 1] =
+(Q
+i′|Ei′j=1p(i′))(Q
+i′|Ei′j′=1p(i′))
+Q
+i′|Ei′j=1 or Ei′j′=1p(i′) = (p(i))2
+p(i) =p(i) = 1−e(i). (B45)
+This concludes the proof.
+5. Rephrasing the theorem
+We have now given the formulation of the theorem in terms of the Schmidt decomposition of purified states prepared
+by the sources. Which is different from the one given in the main text. Let us discuss how the two are connected.
+In the state
+Ψ(i)
+Q(i)
+j Q(i)
+j′
+=Pdi
+ℓi=1λ(i)
+ℓi
+|ℓi,ℓi⟩Q(i)
+j Q(i)
+j′
+each ”quantum number”ℓi can be attached a valueχ(i)(ℓi) = 0
+or 1 depending on weather Π 1
+Qi
+j
+|ℓi⟩ = 0 or Π 1
+Qi
+j
+|ℓi⟩ =|ℓi⟩. This defines the partition of the Hilbert spaces of the
+systems Q(i)
+j and Q(i)
+j′ in two subspaces defined by the projector Π 1
+Q(i)
+j
+= Π 1
+Q(i)
+j′
+. Hence, the Hilbert space can be
+decomposed as a tensor product of a qubit, carrying the label χ(i)(ℓi), and the remaining degrees of freedom, on
+which ΠQi
+j
+acts trivially. For the systems this defines a decomposition Q(i)
+j = Q(i)
+j J(i)
+j . In such a parturition, the state
+and the projector read
+Ψ(i)
+E
+Q(i)
+j Q(i)
+j′
+=
+p
+p(i)|11⟩Q(i)
+j Q(i)
+j′
+j11
+J(i)
+j J(i)
+j′
++
+p
+1−p(i)|00⟩Q(i)
+j Q(i)
+j′
+j00
+J(i)
+j J(i)
+j′
+(B46)
+Π1
+Q(i)
+j
+=|1⟩⟨1|Q(i)
+j
+⊗ 1J(i)
+j
+Π¬1
+Q(i)
+j
+=|0⟩⟨0|Q(i)
+j
+⊗ 1J(i)
+j
+(B47)
+Where we used the fact that we know the probability pi =
+
+Ψ(i) Π1
+Q(i)
+j
+Ψ(i)
+, given in Eq. (B4).
+Recall that
+Ψ(i)
+Q(i)
+j Q(i)
+j′
+is the purified state, and we have absorbed the purifying system Ei in one of the systems
+Q(i)
+j Q(i)
+j′ . It remains to see where does it belong with respect to the new partition. This is however straightforward.
+We know that the measurements performed by the parties must act trivially on the purifying systems, therefore E(i)
+must be found in the ”junk” systems J(i)
+j J(i)
+j′ . We can thus rewrite the expression of the state with an explicit mention
+of the purifying system
+Ψ(i)
+E
+Q(i)
+j Q(i)
+j′ E(i)
+=
+p
+p(i)|11⟩Q(i)
+j Q(i)
+j′
+j11
+J(i)
+j J(i)
+j′ E(i) +
+p
+1−p(i)|00⟩Q(i)
+j Q(i)
+j′
+j00
+J(i)
+j J(i)
+j′ E(i), (B48)
+and obtain the formulation of the theorem given in the main text.
+Appendix C: Photonic entanglement with an SPDC source.
+1. Computing the output distribution
+Here we present the detailed analysis of the radomness rate obtained by performing the CHSH test on a photonic
+entangled state. More precisely we consider a single-mode polarization entangled SPDC source which prepares a state
+
+=== page 15 ===
+15
+of the form
+|Ψ⟩ =
+√
+N exp
+
+T1a†
+hb†
+h +T2a†
+vb†
+v
+
+|0⟩ =
+√
+N exp
+
+
+a†
+h
+a†
+v
+T
+T
+b†
+h
+b†
+v
+
+|0⟩ (C1)
+where ah(v) and bh(v) are the photonic modes sent to Alice and Bob respectively, |0⟩ is the vacuum state of all the
+involved modes, andT1 andT2 are parameters controlled by the intensity of the pump laser, with T =
+
+T1
+T2
+
+and
+N = (1 +T 2
+1 )(1 +T 2
+2 ) = det
+ 
+1− T†T
+
+. One notes that the state on the right hand side in Eq. (C1) is well normalize
+for any complex matrix T, such that T †T < 1, which can be seen by performing a singular value decomposition of
+the matrix and absorbing the rotations in a basis change for the operators a†
+h,a†
+v and b†
+h,b†
+v. That is we have the
+following identity
+
+exp
+
+
+a†
+h
+a†
+v
+T
+T
+b†
+h
+b†
+v
+
+|0⟩
+
+2
+= 1
+det(1− M†M) ∀ M : M†M< 1 (C2)
+The state|Ψ⟩ produced by the source is distributed to the two parties Alice and Bob, who can apply local linear-
+optical transformations of the polarization of the their respective modes, described by the following linear transfor-
+mations of the creation operators, parametrized by the angles α,φA and β,φB respectively
+UA
+a†
+h
+a†
+v
+
+U†
+A =R(α,φA,ϕA)
+a†
+h
+a†
+v
+
+with R(θ,φ,ϕ ) :=
+
+cos(θ)eiϕ sin(θ)eiφ
+−e−iφ sin(θ) cos( θ)e−iϕ
+
+(C3)
+UB
+b†
+h
+b†
+v
+
+U†
+B =R(β,φB,ϕB)
+b†
+h
+b†
+v
+
+, (C4)
+where R(θ,φ,ϕ ) is a general element of the special unitary group of degree 2. The polarization rotation leads to the
+following state transformation
+ ˜Ψα,φA,β,φB
+E
+=UA⊗UB|Ψ⟩ (C5)
+=
+√
+N exp
+
+UA⊗UB(T1a†
+hb†
+h +T2a†
+vb†
+v)U†
+A⊗U†
+B
+
+|0⟩ (C6)
+=
+√
+N exp
+
+
+a†
+h
+a†
+v
+T
+RT (α,φA,ϕB)
+
+T1
+T2
+
+R(β,φB,ϕB)
+| {z }
+:=M(T1,T2,α,φA,ϕA,β,φB,ϕB)
+b†
+h
+b†
+v
+
+
+|0⟩ (C7)
+For example, the state is particularly simple for T =T1 =T2 and φA =ϕA =φB =ϕB = 0 where
+M(T,T,α, 0,β, 0) =T
+
+cos(α−β) − sin(α−β)
+sin(α−β) cos( α−β)
+
+(C8)
+The number of photons in each mode ah,av,bh,bv are then measured as we will now describe. But first, it is
+important to mention that such measurement are insensitive to phase, i.e. any transformation of the form a†7→a†eiξ.
+Therefore, the two polarization transformation
+R(α,φ,ϕ )
+a†
+h
+a†
+v
+
+=
+ cos(α)eiϕa†
+h + sin(θ)eiφa†
+v
+− sin(θ)e−iφa†
+h + cos(α)e−iϕa†
+v
+
+and (C9)
+R(α,φ−ϕ, 0)
+a†
+h
+a†
+v
+
+=
+ cos(α)a†
+h + sin(θ)ei(φ−ϕ)a†
+v
+− sin(θ)e−i(φ−ϕ)a†
+h + cos(α)a†
+v
+
+(C10)
+are related by such phase transformation give rise to the same measurement statistics. Without loss of gen-
+erality when optimizing the parameters we can thus set ϕA = ϕB = 0 and write R(θ,φ, 0) = R(θ,φ ),
+M(T1,T 2,α,φ A,ϕA,β,φ B,ϕB) = M(T1,T 2,α,φ A,β,φ B) and
+ ˜Ψ
+E
+=
+ ˜Ψα,φA,β,φB
+E
+.
+
+=== page 16 ===
+16
+On each side we can detect no photons, one photon or both photons, there four events define the following POVM
+EA
+◦◦ =D(ah)
+◦ ⊗D(av)
+◦ =|00⟩⟨00|hv (C11)
+EA
+•◦ =D(ah)
+• ⊗D(av)
+◦ = (1−| 0⟩⟨0|)h⊗| 0⟩⟨0|v (C12)
+EA
+◦• =D(ah)
+◦ ⊗D(av)
+• =|0⟩⟨0|h⊗ (1−| 0⟩⟨0|)v (C13)
+EA
+•• =D(ah)
+• ⊗D(av)
+• = (1−| 0⟩⟨0|)h⊗ (1−| 0⟩⟨0|)v, (C14)
+and the same for EB
+b at Bob. The output probability distribution is thus given by
+P(a,b|α,φA,β,φ B) =
+D
+˜Ψα,φA,β,φB
+EA
+a⊗EB
+b
+ ˜Ψα,φA,β,φB
+E
+(C15)
+wherea,b∈{◦◦,•◦,◦•,••} and the state has an implicit dependence on T1 andT2. Let us denote each outcome with
+a =hAvA with hA = 1 if the corresponding detector clicks (•) and hA = 0 if it does not (◦), and rewrite the output
+probabilities
+P(hA,vA,hB,vB|α,φA,β,φ B) =
+D
+˜Ψα,φA,β,φB
+D(ah)
+hA
+⊗D(av)
+vA ⊗D(bh)
+hB
+⊗D(bh)
+vB
+ ˜Ψα,φA,β,φB
+E
+(C16)
+where DhA =
+(
+|0⟩⟨0| hA = 0
+1−| 0⟩⟨0| hA = 1. From this expression it is clear that by expanding the terms ( 1−| 0⟩⟨0|), all the
+probabilities can be computed as a linear combination of the following terms
+D
+G(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w
+E
+:=
+D
+˜Ψα,φA,β,φB
+G(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w
+ ˜Ψα,φA,β,φB
+E
+(C17)
+=
+G(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w
+ ˜Ψα,φA,β,φB
+E
+2
+(C18)
+where Gx =
+(
+|0⟩⟨0| x = 0
+1 x = 1 and we used G2
+x =Gx. These terms can be computed relatively easily as we find
+G(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w
+ ˜Ψα,φA,β,φB
+E
+(C19)
+=
+√
+NG(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w exp
+
+
+a†
+h
+a†
+v
+T
+M(T1,T 2,α,φ A,β,φ B)
+b†
+h
+b†
+v
+
+|0⟩ (C20)
+=
+√
+N exp
+
+
+a†
+h
+a†
+v
+T
+x
+y
+
+M(T1,T 2,α,φ A,β,φ B)
+
+z
+w
+b†
+h
+b†
+v
+
+|0⟩, (C21)
+leading to
+D
+G(ah)
+x ⊗G(av)
+y ⊗G(bh)
+z ⊗G(bh)
+w
+E
+= det
+ 
+1− T†T
+
+det
+
+1− M†
+
+x
+y
+
+M
+
+z
+w
+, (C22)
+which is straightforward to compute. We have this derived an analytic expression for P( a,b|α,φA,β,φ B) in terms of
+the parameters α,φA,β,φ B,T 1 and T2.
+2. Applying the Finner rigidity
+As discussed in the main text we now identify the outcomes a,b =◦◦ to be the failure outcomes ∅. Since the
+detectors are ideal, it is clear that these outcomes are perfectly correlated and only occur when the quantum source
+emits the vacuum state|0⟩. Hence we find that the Finner inequality is saturated
+P[a,b̸= ∅] = P[a̸= ∅] = P[b̸= ∅] =
+p
+P[a̸= ∅]P[b̸= ∅], (C23)
+
+=== page 17 ===
+17
+and by Corollary 3.1 post-selected does not open the detection loophole. More precisely, the quantum model underlying
+the post-selected distribution (including the purifying system behold by an eavesdropper)
+eP(a,b|α,φA,β,φ B) = 1− P(a,b,a ̸= ∅,b̸= ∅|α,φA,β,φ B)
+P[a,b̸= ∅]
+must be consisted with the network structure.
+For the probability of conclusive outcomes we find
+P[a,b̸= ∅] = 1− P[a =b = ∅] = 1−
+D
+G(ah)
+0 ⊗G(av)
+0 ⊗G(bh)
+0 ⊗G(bh)
+0
+E
+= 1− det
+ 
+1− T†T
+
+= 1− (1−T 2
+1 )(1−T 2
+2 ).
+(C24)
+3. Optimizing the CHSH violation
+The CHSH test
+CHSH[P(a,b|x,y )] =
+X
+a,b,x,y=0,1
+(−1)a+b+xy P(a,b|x,y ) (C25)
+involve two binary measuremnts per party. Hence to compute the CHSH score in our scenario we need to select
+two pairs of measurement settings (α,φA) with (α′,φA) and (β,φB) with (β′,φ′
+B), and furthermore post-process the
+outputs a with b from quaternary (ternary with post-selection) to binary values, by binning some outputs together.
+Furthermore, we obviously wish to maximize the CHSH score with respect to the settings choice, the binning strategy
+(discrete) and the source parameters T1 and T2.
+For the bare distribution P computed in the previous sections we can thus define the optimal CHSH to be
+CHSH∗ = max
+binning
+max
+T1,T2∈[0,1)
+max
+α,φA,α′,φ′
+A,β,φB,β′,φ′
+B
+CHSH[P]. (C26)
+Performing the optimization numerically we find CHSH∗ = 2.3057 given in Table I(left) together with the parameter
+values. As one would expect for the post-selection distribution eP the CHSH score can be made arbitrarily close to
+the quantum bound of 2
+√
+2 as the price of decreasing post-selection probability P[a,b ̸= ∅] (denoted P succ in the
+table). This optimization is thus not very useful.
+To further compare the two regimes in more details we also considered the specific case where T1 =T2 =T . Here
+we found that the optimal bare CHSH score is slightly lower CHSH ∗ = 2.3008, see Table I(right). For fixed T the
+optimization of the post-selected CHSH score is nontrivial (it only give 2
+√
+2 for T→ 0), and in Fig. 4 we present a
+comparison of the optimal bare CHSH and post-selected CHSH scores. A short-coming of this comparison is that
+the CHSH score completely ignores the post-selection rate. For a more ”fair” comparison we consider the rate of
+device-independent randomness generated in the two scenarios.
+Optimization Results for general T1 and T2
+Setting T1 T2 α0 α1 β0 β1
+Standard 0.6098 0.7148 1.6684 4.3063 4.5638 1.9214
+CHSH Score 2.3057
+Randomness 0.2525
+Post-select 0.6308 0.5799 3.2632 2.6783 2.9730 3.5572
+CHSH Score 2.5013
+P succ 0.6004
+Randomness 0.2749
+Optimization Results for T1 =T2 =T
+Setting T α0 α1 β1
+Standard 0.6379 3.4351 2.8472 3.7285
+CHSH Score 2.3008
+Randomness 0.2479
+Post-select 0.5721 2.8240 3.4587 2.5074
+CHSH Score 2.5326
+P succ 0.5474
+Randomness 0.2712
+TABLE I. Optimization results for maximizing the randomness rate
+4. Bounding the randomness
+The randomness of a given output used in the CHSH test, can be directly connected to the CHSH score. For
+concreteness let us label B 1 to be the classical random variable encoding the outcome of Bob’s measurement for the
+
+=== page 18 ===
+18
+setting y = 0 (i.e. β,φB). The device-independent randomness carried by this random variable can by quantified
+the conditional von Neumann entropy H(B1|E), where in general the system E behold by the eavesdropper is the
+purification of the states prepared by the sources. In the context of device-independent quantum key distribution [36]
+with collective attacks it has been shown that this quantity is directly related to the CHSH score
+H(B1|E)≥
+ 
+1−h
+ 
+1 +
+p
+(CHSH/2)2− 1
+2
+!!
+,
+where h is the binary entropy. Note that in [36], the bound was derived assuming uniform marginals, in particular
+H(B1) = 1, which can always be achieved by performing a symmetrization step (using local randomness and public
+comminication, which are free resources in QKD). Nevertheless, it was later observed that the bound is also valid
+without this step, see Appendix A in [38].
+For the bare distribution P the randomness rate is thus given by R =
+
+1−h
+
+1+
+√
+(CHSH/2)2−1
+2
+
+. In turn
+for the post-selected distribution eP, the randomness rate must also take into account the fraction P[a,b ̸= ∅] =
+1− (1−T 2
+1 )(1−T2)2 of rounds that are kept after post-selection, so that we have
+eR =
+
+1−h
+
+1 +
+q
+( ^CHSH/2)2− 1
+2
+
+
+
+ 
+1− (1−T 2
+1 )(1−T 2
+2 )
+
+.
+Now both quantities R and eR can be optimized meaningfully over the free parameters. In Tables I and II we give
+the results for the global optimization. And in Fig. 4 we plot the two randomness rates as a function of T =T1 =T2.
+We see that the post-selected approach achieves a higher rate.
+To conclude, we note that the presented results are quire promising regarding the usefulness of the Finner rigidity,
+however they assume iid attacks, infinite statistics effects, and ideal detectors. At this point we believe that the main
+thing required to go further is to establish an approximate quantum Finner rigidity bound, which would allow to
+partially self-test the setup in the case where the Finner inequality is not exactly saturated.
+0.0 0.2 0.4 0.6 0.8 1.0
+T
+2.0
+2.2
+2.4
+2.6
+2.8Maximized CHSH Score
+CHSH Score Optimization as a Function of T
+Standard CHSH Score
+Post-Selection CHSH Score
+0.0 0.2 0.4 0.6 0.8 1.0
+T
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25R
+Randomness Rate as a Function of T
+Standard
+Post-selected
+FIG. 4. Bell Scenario: Comparison of CHSH score and Randomness plots for Standard and post selected statistics
+Appendix D: Nonlocality and randomness in the triangle network
+Here, we consider the triangle network scenario, consisting of three parties, A, B, and C, pairwise connected by
+bipartite sources labeled α,β,γ according to Fig. 5. Each party receives two systems from the neighboring sources
+and produces an output a,b,c . Overall, there are six systems involved, labeled as Q(ξ)
+X where ξ∈{ α,β,γ} denotes
+the source generating it and X∈{ A,B,C} identifies the connected party receiving the system. The global state
+of the system admits a purification |Ψ⟩ =|ψα⟩Q(α)
+B Q(α)
+C E(α)
+ψβ
+Q(β)
+C Q(β)
+A E(β)|ψγ⟩Q(γ)
+A Q(γ)
+B E(γ) and the measurements
+performed by each party are characterized by the POVMs {Ma
+A}a,{Mb
+B}b,{Mc
+C}c acting on the pairs of systems
+Q(β)
+A Q(γ)
+A ,Q (γ)
+B Q(α)
+B ,Q (α)
+C
+
+=== page 19 ===
+19
+a
+c b
+A
+B C
+FIG. 5. triangle network
+Let us assume that each source fails with probabilitye(ξ), resulting in neighboring parties reporting a failure outcome
+∅. First, we observe that the resulting correlations will saturate the Finner inequality (6), and by Theorem 3 the
+states prepared by the sources must be of the following form
+Ψ(ξ)
+E
+Q(ξ)
+X Q(ξ)
+Y E(ξ)
+=
+p
+1−e(ξ)|11⟩F (ξ)
+X F (ξ)
+Y
+eΨ(ξ)
+E
+eQ(ξ)
+X
+eQ(ξ)
+Y E(ξ)
++
+p
+e(ξ)|00⟩F (ξ)
+X F (ξ)
+Y
+Θ(ξ)
+E
+eQ(ξ)
+X
+eQ(ξ)
+Y E(ξ)
+(D1)
+where, X,Y indicate the parties connected to the source ξ and each system Q(ξ)
+X = F (ξ)
+X eQ(ξ)
+X is decomposed in the
+flag qubit F (ξ)
+X and the remaining degrees of freedom eQ(ξ)
+X , E(ξ) is the system purifying the source. Moreover, the
+measurements are of the form
+
+
+
+Mx
+X =|11⟩⟨11|F (ξ)
+X F (ξ′)
+X
+⊗fMx
+X x̸= ∅
+M ∅
+X =
+ 
+|00⟩⟨00| +|01⟩⟨01| +|10⟩⟨10|
+
+F (ξ)
+X F (ξ′)
+X
+⊗ 1 eQ(ξ)
+X
+eQ(ξ′)
+X
+. (D2)
+Here, ξ,ξ′ indicate the sources connected to the party X, and gMx
+X is a POVM with only conclusive outcomes acting
+on eQ(ξ)
+X eQ(ξ′)
+X . Hence, all the outputs are conclusive iff all the measurements Mx
+X project the flag qubits the flag qubits
+F (ξ)
+X F (ξ′)
+X onto|11⟩. Following the results of this paper, the post-selected statistics eP(a,b,c ) = P(a, b, c|a, b, c̸= ∅) is
+consistent with the triangle network and must be achieved with the states
+eΨ(ξ)
+E
+and measurements gMx
+X.
+Now assume that for u0 =−v1 = cos(θ) and v0 =u1 = sin(θ) with θ∈ [0,π/ 4], the distribution eP(a,b,c ) is of the
+form of the RGB4 distribution, with a,b,c ∈{ 0, 10, 11, 2}
+PRGB4(1i, 1j, 1k) = 1
+8(uiujuk +vivjvk)2
+PRGB4(1i, 0, 2) = 1
+8u2
+i, P RGB4(1i, 2, 0) = 1
+8v2
+i ⟳
+(D3)
+where ⟳ means that the equation is valid up to cyclic permutations of the parties. Then following the results of ref.
+[17] the systems eQ(ξ)
+X contain a qubit subsystem ¯Q(ξ)
+X such that the states
+eΨ(ξ)
+E
+eQ(ξ)
+X
+eQ(ξ)
+Y E(ξ)
+and the measurements
+gMx
+X are of the form
+eΨ(ξ)
+E
+eQ(ξ)
+X
+eQ(ξ)
+Y E(ξ)
+= 1√
+2
+ 
+|01⟩ ¯Q(ξ)
+X
+¯Q(ξ)
+Y
+jc
+ξ
+
+J(ξ)+|10⟩ ¯Q(ξ)
+X
+¯Q(ξ)
+Y
+ja
+ξ
+
+J(ξ)
+
+(D4)
+gM0
+X =|00⟩⟨00| ¯Q(ξ)
+X
+eQ(ξ′)
+X
+⊗ 1JX
+gM2
+X =|11⟩⟨11| ¯Q(ξ)
+X
+¯Q(ξ′)
+X
+⊗ 1JX (D5)
+gM1
+X = gM10
+X + gM11
+X = (|01⟩⟨01| +|10⟩⟨10|) ¯Q(ξ)
+X
+¯Q(ξ′)
+X
+⊗ 1JX.
+
+=== page 20 ===
+20
+where the junk systems JX contains the reaming degrees of freedom in eQ(ξ)
+X eQ(ξ′)
+X ,J(ξ) contains the remaining degrees
+of freedom in eQ(ξ)
+X eQ(ξ)
+Y as well as the purifying system E(ξ), and
+jc/a
+ξ
+E
+J(ξ)
+are some unknown states thereof. We now
+focus on the outcome of a single party, say A. After coarse-graining it to three values
+¯a =
+
+
+
+0 a = 0, 2
+1 a = 10, 11
+∅ a = ∅
+(D6)
+let it be recorder in a classical register, denoted ¯A. The classical-quantum state of this register and the purifying
+systems E(β) and E(γ), potentially controlled by an eavesdropper, is given by (for p A = (1− e(β))(1− e(γ)))
+ϱ¯AE(β)E(γ) = pA
+1
+2|0⟩⟨0|¯A⊗ρ(0)
+E(β)E(γ) + 1
+2|1⟩⟨1|¯A⊗ρ(1)
+E(β)E(γ)
+
++ (1− pA)|∅⟩⟨∅|¯A⊗ρ(∅)
+E(β)E(γ) (D7)
+with
+ρ(0)
+E(β)E(γ) = tr¬E(β)E(γ) (gM0
+A +gM2
+A)
+eΨ(β),eΨ(γ)
+ED
+eΨ(β),eΨ(γ)
+ (D8)
+ρ(1)
+E(β)E(γ) = tr¬E(β)E(γ) (gM10
+A + gM11
+A )
+eΨ(β),eΨ(γ)
+ED
+eΨ(β),eΨ(γ)
+ (D9)
+where tr¬E(β)E(γ) means that we trace out all the degrees of freedom excepts the purifying systems E(β)E(γ), and
+we used Eqs. (D1) and (D2). The randomness of the output ¯ a (from the eavesdropper perspective), is naturally
+quantified by the conditional von Neumann entropy H(¯A|E)ϱ¯AE(β)E(γ) of this classical-quantum state. The data
+precessing inequality guarantees that
+H(¯A|E)≥ pAH(¯A|E, ¯a̸= ∅) + (1− pA)H(¯A|E, ¯a = ∅)| {z }
+=0
+, (D10)
+meaning that the eavesdropper could only increase theirs knowledge of ¯A by knowing if the output was conclusive.
+Here, the first term H(¯A|E, ¯a̸= ∅)ϱ¯AE(β)E(γ) =H(¯A|E)eϱ¯AE(β)E(γ) is simply the conditional entropy of the state in the
+conclusive-output branch, i.e. the state
+eϱ¯AE(β)E(γ) = 1
+2|0⟩⟨0|¯A⊗ρ(0)
+E(β)E(γ) + 1
+2|1⟩⟨1|¯A⊗ρ(1)
+E(β)E(γ) (D11)
+leading the (post-selected) RGB4 distribution. A bound on this entropy has been derived in [17] and subsequently
+improved in [27]. Combining the two results we obtain
+H(¯A|E)eϱ¯AE(β)E(γ)≥L := 1 +h
+1 + 4r
+2
+
+−H
+ 
+(1 +
+√
+4r)2
+4 , (1−
+√
+4r)2
+4 , 1− 4r
+4 , 1− 4r
+4
+!
+(D12)
+Where h(x) is the entropy of the binary distribution ( x, 1−x) and H is the entropy of a four-output distribution
+and the parameter r quantifies the coherence of the observed distribution and can be lower bounded by [17]
+r≥ 1
+2 sin3(θ)
+ 
+3 cos(θ) + cos(3θ)− 6 sin(θ)
+
+.
+Coming back to the full distribution we can therefore conclude that
+H(¯A|E)ϱ¯AE(β)E(γ)≥ (1−e(β))(1−e(γ))L (D13)
+Moreover, it was demonstrated in [17] that observing the RGB4 distribution, as defined in Eq. D3, ensures that the
+measurements of all parties are non-separable and that all sources distribute entanglement among the parties. Both
+conclusions clearly persist here, despite the presence of unreliable sources.
+
+=== page 21 ===
+21
+[1] Nicolas Brunner, Daniel Cavalcanti, Stefano Pironio, Va-
+lerio Scarani, and Stephanie Wehner. Bell nonlocality.
+Rev. Mod. Phys. , 86:419–478, Apr 2014.
+[2] John S Bell. On the einstein podolsky rosen paradox.
+Physics Physique Fizika , 1(3):195, 1964.
+[3] B. Hensen, H. Bernien, A. E. Dr´ eau, A. Reiserer, N. Kalb,
+M. S. Blok, J. Ruitenberg, R. F. L. Vermeulen, R. N.
+Schouten, C. Abell´ an, W. Amaya, V. Pruneri, M. W.
+Mitchell, M. Markham, D. J. Twitchen, D. Elkouss,
+S. Wehner, T. H. Taminiau, and R. Hanson. Loophole-
+free bell inequality violation using electron spins sep-
+arated by 1.3 kilometres. Nature, 526(7575):682–686,
+2015.
+[4] Antonio Ac´ ın, Nicolas Brunner, Nicolas Gisin, Serge
+Massar, Stefano Pironio, and Valerio Scarani. Device-
+independent security of quantum cryptography
+against collective attacks. Physical Review Letters ,
+98(23):230501, 2007.
+[5] Roger Colbeck. Quantum and relativistic protocols
+for secure multi-party computation. arXiv preprint
+arXiv:0911.3814, 2009.
+[6] Stefano Pironio, Antonio Ac´ ın, Serge Massar, A Boyer
+de La Giroday, Dzmitry N Matsukevich, Peter Maunz,
+Steven Olmschenk, David Hayes, Le Luo, T Andrew
+Manning, et al. Random numbers certified by bell’s the-
+orem. Nature, 464(7291):1021–1024, 2010.
+[7] C. Branciard, N. Gisin, and S. Pironio. Characterizing
+the nonlocal correlations created via entanglement swap-
+ping. Phys. Rev. Lett. , 104:170401, Apr 2010.
+[8] Tobias Fritz. Beyond Bell 's theorem: correlation scenar-
+ios. New Journal of Physics , 14(10):103001, oct 2012.
+[9] Rafael Chaves, Christian Majenz, and David Gross.
+Information–theoretic implications of quantum causal
+structures. Nature Communications, 6(1), jan 2015.
+[10] Nicolas Gisin. Entanglement 25 years after quantum tele-
+portation: Testing joint measurements in quantum net-
+works. Entropy, 21(3):325, Mar 2019.
+[11] Marc-Olivier Renou, Elisa B¨ aumer, Sadra Boreiri, Nico-
+las Brunner, Nicolas Gisin, and Salman Beigi. Genuine
+quantum nonlocality in the triangle network. Physical
+Review Letters, 123(14), Sep 2019.
+[12] Sadra Boreiri, Antoine Girardin, Bora Ulu, Patryk Lipka-
+Bartosik, Nicolas Brunner, and Pavel Sekatski. Towards a
+minimal example of quantum nonlocality without inputs.
+Phys. Rev. A , 107:062413, Jun 2023.
+[13] Armin Tavakoli, Alejandro Pozas-Kerstjens, Ming-Xing
+Luo, and Marc-Olivier Renou. Bell nonlocality in net-
+works. Reports on Progress in Physics, 85(5):056001, mar
+2022.
+[14] Cyril Branciard, Denis Rosset, Nicolas Gisin, and Ste-
+fano Pironio. Bilocal versus nonbilocal correlations in
+entanglement-swapping experiments. Physical Review A,
+85(3), Mar 2012.
+[15] Marc-Olivier Renou and Salman Beigi. Network nonlo-
+cality via rigidity of token counting and color matching.
+Physical Review A , 105(2):022408, 2022.
+[16] Ivan ˇSupi´ c, Jean-Daniel Bancal, Yu Cai, and Nicolas
+Brunner. Genuine network quantum nonlocality and self-
+testing. Phys. Rev. A , 105:022206, Feb 2022.
+[17] Pavel Sekatski, Sadra Boreiri, and Nicolas Brunner. Par-
+tial self-testing and randomness certification in the tri-
+angle network. Phys. Rev. Lett. , 131:100201, Sep 2023.
+[18] Elie Wolfe, Robert W Spekkens, and Tobias Fritz. The
+inflation technique for causal inference with latent vari-
+ables. Journal of Causal Inference , 7(2), 2019.
+[19] Tam´ as Kriv´ achy, Yu Cai, Daniel Cavalcanti, Arash
+Tavakoli, Nicolas Gisin, and Nicolas Brunner. A neu-
+ral network oracle for quantum nonlocality problems in
+networks. npj Quantum Information , 6(1):1–7, 2020.
+[20] Elie Wolfe, Alejandro Pozas-Kerstjens, Matan Grinberg,
+Denis Rosset, Antonio Ac´ ın, and Miguel Navascues.
+Quantum inflation: A general approach to quantum
+causal compatibility. Physical Review X , 11, 05 2021.
+[21] Sadra Boreiri, Bora Ulu, Nicolas Brunner, and Pavel
+Sekatski. Noise-robust proofs of quantum network non-
+locality. arXiv preprint arXiv:2311.02182 , 2023.
+[22] Philip M. Pearle. Hidden-variable example based upon
+data rejection. Phys. Rev. D , 2:1418–1425, Oct 1970.
+[23] Dominic W Berry, Hyunseok Jeong, Magdalena
+Stobi´ nska, and Timothy C Ralph. Fair-sampling assump-
+tion is not necessary for testing local realism. Physi-
+cal Review A—Atomic, Molecular, and Optical Physics ,
+81(1):012109, 2010.
+[24] Davide Orsucci, Jean-Daniel Bancal, Nicolas Sangouard,
+and Pavel Sekatski. How post-selection affects device-
+independent claims under the fair sampling assumption.
+Quantum, 4:238, 2020.
+[25] Helmut Finner. A generalization of holder’s inequality
+and some probability inequalities. The Annals of proba-
+bility, pages 1893–1901, 1992.
+[26] Marc-Olivier Renou, Yuyi Wang, Sadra Boreiri, Salman
+Beigi, Nicolas Gisin, and Nicolas Brunner. Limits on
+correlations in networks for quantum and no-signaling
+resources. Physical review letters , 123(7):070403, 2019.
+[27] Sadra Boreiri, Tam´ as Kriv´ achy, Pavel Sekatski, An-
+toine Girardin, and Nicolas Brunner. Topologically ro-
+bust quantum network nonlocality. Phys. Rev. Lett. ,
+134:010202, Jan 2025.
+[28] Ilja Gerhardt, Qin Liu, Ant´ ıa Lamas-Linares, Johannes
+Skaar, Valerio Scarani, Vadim Makarov, and Christian
+Kurtsiefer. Experimentally faking the violation of bell’s
+inequalities. Physical Review Letters , 107(17):170404,
+2011.
+[29] Lars Lydersen, Carlos Wiechers, Christoffer Wittmann,
+Dominique Elser, Johannes Skaar, and Vadim Makarov.
+Hacking commercial quantum cryptography systems
+by tailored bright illumination. Nature photonics ,
+4(10):686–689, 2010.
+[30] Pavel Sekatski, Bruno Sanguinetti, Enrico Pomarico,
+Nicolas Gisin, and Christoph Simon. Cloning en-
+tangled photons to scales one can see. Physical
+Review A—Atomic, Molecular, and Optical Physics ,
+82(5):053814, 2010.
+[31] Enrico Pomarico, Bruno Sanguinetti, Pavel Sekatski,
+Hugo Zbinden, and Nicolas Gisin. Experimental amplifi-
+cation of an entangled photon: what if the detection loop-
+hole is ignored? New Journal of Physics , 13(6):063031,
+2011.
+[32] John F. Clauser, Michael A. Horne, Abner Shimony,
+and Richard A. Holt. Proposed experiment to test local
+hidden-variable theories. Phys. Rev. Lett. , 23:880–884,
+Oct 1969.
+
+=== page 22 ===
+22
+[33] B. G. Christensen, K. T. McCusker, J. B. Altepeter,
+B. Calkins, T. Gerrits, A. E. Lita, A. Miller, L. K.
+Shalm, Y. Zhang, S. W. Nam, N. Brunner, C. C. W.
+Lim, N. Gisin, and P. G. Kwiat. Detection-loophole-free
+test of quantum nonlocality, and applications. Phys. Rev.
+Lett., 111:130406, Sep 2013.
+[34] Peter Bierhorst, Emanuel Knill, Scott Glancy, Yanbao
+Zhang, Alan Mink, Stephen Jordan, Andrea Rommal,
+Yi-Kai Liu, Bradley Christensen, Sae Woo Nam, Mar-
+tin J. Stevens, and Lynden K. Shalm. Experimentally
+generated randomness certified by the impossibility of
+superluminal signals. Nature, 556(7700):223–226, 2018.
+[35] V Caprara Vivoli, Pavel Sekatski, Jean-Daniel Bancal,
+Charles CW Lim, Anthony Martin, Rob T Thew, Hugo
+Zbinden, Nicolas Gisin, and Nicolas Sangouard. Compar-
+ing different approaches for generating random numbers
+device-independently using a photon pair source. New
+Journal of Physics , 17(2):023023, 2015.
+[36] Stefano Pironio, Antonio Ac´ ın, Nicolas Brunner, Nico-
+las Gisin, Serge Massar, and Valerio Scarani. Device-
+independent quantum key distribution secure against col-
+lective attacks. New Journal of Physics , 11(4):045021,
+2009.
+[37] David Ellis, Ehud Friedgut, Guy Kindler, and Amir
+Yehudayoff. Geometric stability via information theory.
+arXiv preprint arXiv:1510.00258 , 2015.
+[38] Melvyn Ho, Pavel Sekatski, EY-Z Tan, Renato Ren-
+ner, J-D Bancal, and Nicolas Sangouard. Noisy pre-
+processing facilitates a photonic realization of device-
+independent quantum key distribution. Physical review
+letters, 124(23):230502, 2020.

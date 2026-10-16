@@ -1,0 +1,3298 @@
+=== page 1 ===
+DEVICE-INDEPENDENT QUANTUM KEY DISTRIBUTION IN
+THE COMMUTING OPERATOR FRAMEWORK
+GEREON KOSSMANN1, REN ´E SCHWONNEK2, PO-CHIEH LIU 3, AND HAO-CHUNG CHENG 3
+Abstract.Device-independent quantum key distribution (DIQKD) is arguably the gold stan-
+dard for secure quantum communication, as it aims to rely only on observed input-output
+statistics of an uncharacterized device which is only assumption to obey the laws of quantum
+physics. A corresponding security analysis hence demands a description of a quantum exper-
+iment from a most general perspective. Under close inspection, existing proof techniques do
+not always meet this goal as they tend to rely on subtile assumptions on a tensor product
+structure of the underlying Hilbert space and a ’hidden but finite’ dimensionality. In this work,
+we collect the tools needed for a full analysis of DIQKD in the commuting operator framework,
+which avoids these subtilities and provides the arguably most general view on a quantum ex-
+periment. We rigorously proof the common assumption that in DIQKD measurements can be
+w.l.o.g. assumed to be projective. Furthermore, we show that task of computing key rates
+can be casted as a non-commutative polynomial optimization (NPO) problem to which the
+Navascu´ es–Pironio–Ac´ ın (NPA) hierarchy gives a correct and converging relaxation.
+As a tool, we generalize the integral representation for the relative entropy byFrenkel[30]
+to general von Neumann algebras and apply techniques fromKoßmann and Schwonnek[45] for
+the approximation in an NPO program.
+1.Introduction
+Quantum key distribution (QKD) has evolved from an idea that started the field of quan-
+tum information theory, trough an motivation for experiments that demonstrate fundamental
+quantum effects into a cryptographic technology that is partially approaching real-world prac-
+ticality. Along this path our collection of available security proof techniques had to keep up
+as well and is still far from being completed. The central promise of QKD is to base crypto-
+graphic security on the fundamental structures of quantum theory itself, in particular on the
+monogamy constraints imposed on quantum correlations [27, 26]. Over the past decades, such
+security ideas [27, 11, 13, 12] have been refined, linked to experiments [36, 77, 55], and placed
+in an information-theoretic framework central to modern QKD [68, 78].
+A technology, that just has started to leave the stage of a purely theoretical idea [52, 9, 2,
+3, 1, 64] in order to reach the stage of real experiments [49, 54, 89, 51] is Device-independent
+QKD (DIQKD). Here the fundamental challenge of modeling imperfect devices is adressed by
+reducing the assumptions made in a modeling process to a minimum. In order to achieve this,
+DIQKD experiments essentially turn experimental setups designed for a loophole-free Bell test
+into cryptographic devices. Those are then only treated through their classical input-output
+behavior, while the security analysis relies, at the device level, only on the validity of quantum
+theory and the availability of local private randomness [52]. This makes DIQKD the most
+stringent form of QKD security, but also creates a clear mathematical requirement: if a proof
+is meant to be device-independent, then its mathematical model of the devices should be as
+general as the most general formulation of quantum theory allows. Providing such a formulation
+is the aim of this work.
+1 Institute for Quantum Information, R WTH Aachen University, Aachen, Germany
+2 Leibniz Universit ¨at Hannover, Hannover, Germany
+3 Department of Electrical Engineering and Graduate Institute of Communication Engi-
+neering,, National Taiwan University, Taipei 106, Taiwan (R.O.C.), Department of Mathemat-
+ics, National Taiwan University, Center for Quantum Science and Engineering, National Tai-
+wan University, Hon Hai (Foxconn) Quantum Computing Center, New Taipei City 236, Taiwan
+(R.O.C.), Physics Division, National Center for Theoretical Sciences, Taipei 10617, Taiwan
+(R.O.C.)
+1
+arXiv:2607.03579v1  [quant-ph]  3 Jul 2026
+
+=== page 2 ===
+2 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Alice Bobsource
+RNG RNG
+x∈X y∈Y
+a∈A b∈B
+ρAB
+Figure 1.The figure illustrates a device-independent quantum key distribution
+(DIQKD) experiment. In contrast to the quantum game depicted in Figure 2,
+the referee is replaced by local random number generators (RNGs), one on each
+side. While sharing a quantum stateρ AB, Alice and Bob use their respective
+RNGs to draw private and local random inputs, feed them into their devices, and
+collect the resulting output statistics.
+Naively, one might try to describe a device by the collection of all positive operator-valued
+measure (POVM) families on all Hilbert spaces that could realize its input-output behavior.
+Taken literally, without imposing further structure, this collection is already too large to be
+a set and in any case not a well behaving object for a security proof. Instead, natural, well
+understood, and indeed also well behaving objects for a general description are provided by
+the commuting-operator framework [82, 41, 40]. Here the language of universalC ∗-algebras
+is used for modeling quantum systems. The beauty of this approach is that we can recover
+any possible implementation of an experiment by representations of this algebra. This is,
+every concrete implementation of devices corresponds to a representation of this algebra, and
+conversely every representation gives such an implementation.
+Throughout this work we will consider bipartite protocols involving two parties Alice and
+Bob, see Figure 1. A generalization to protocols with more parties [16, 44, 50] is straight
+forward. The local measurement device of a party, say Alice, is modeled by assigning an
+abstract effectM a|x to each event with inputxand outputa. Demanding thatM a|x≥0 andP
+aMa|x = 1 is then already sufficient to define [15] the abstractC ∗ algebraAgenerated by
+theM a|x. It contains all observables Alice could measure. The algebraBof Bob is defined
+correspondingly. A system that contains Alice and Bob is then given by any algebraC AB that
+containsAandB. The fact that Alice and Bob have independent laboratories is modeled
+by imposing thatAandBcommute. This is where the name of the framework originates.
+. Now, a representation of an algebraC AB is in essence a linear mapπ:C AB→B(H) that
+assigns bounded operators on a concrete HilbertspaceHto the abstract observables from before.
+This is done in a way that preserves the algebra structure. A sufficiently large collection of
+representations can be obtained by the GNS-construction, which assigns a concrete Hilbertspace
+realization to every stateω.
+What this ansatz not contains is the guarantee that, for an representation onH, we can
+always find local HilbertspacesH A,H B, and an environmentHE such that we could decompose
+H=H A⊗H B⊗H E. So in essence, we have that tensor products of Hilbert spaces do not
+suffice to describe all valid actions and attacks on an DIQKD system held by Alice Bob. This
+point is important as here most of the existing DIQKD security proofs more or less outspokenly
+deviate from the general commuting operator model by restricting to situations in which such
+a tensor product decomposition exists [6, 76, 18]. A major reason for that might be that in
+this case modern finite dimensional building blocks like left over hashing [67, 23, 66] or entropy
+
+=== page 3 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 3
+accumulation [6, 53, 53] and its corresponding entropy definitions can be more or less smoothly
+be taken over. Moreover, worst case models of an attacker, i.e. the HilbertspaceH E and the
+often made simplification that all measurements can w.l.o.g. be assumed to be projective, build
+on Stinespring dilation arguments [76] that, up to now, demanded the tensor product structure.
+The question whether this restriction is only a technicality or reflects a genuine loss of gen-
+erality that is observable in an experiment is precisely the content of the various forms of
+Tsirelson’s problem and Cones embedding conjecture [42, 82, 59, 65, 41, 62, 71, 39]. This
+question is now known to have a negative answer [70, 71, 38]. The question whether this has
+relevant cryptographic implications is however still unclear. An operational characterization of
+states that admit a tensor product representation was given in [85] in terms of a generalized
+Schmidt rank. From this perspective the assumption of a tensorproduct structure can be seen
+as assuming only a finite amount of entanglement between Alice and Bob, which is a clear
+deviation from full generality when considering an attacker Eve only limited by fundamental
+laws of quantum physics.
+Lastly a technical problem arises in the process of numerically computing secure key rates.
+For protocols beyond the CHSH setting, the standard path [76, 18, 45] for this is to reduce
+this task to an non-commutative polynomial optimization problem which is the relaxed by
+the Navascues–Pironio–Ac´ ın (NPA) hierarchy [56, 57], one of the main numerical tools in
+device-independent quantum information. These hierarchies however attain their limit in the
+commuting-operator model and not in a fixed tensor product model.
+In this work, we close these structural gaps for an AEP based secrecy analysis of DIQKD. We
+formulate Alice’s and Bob’s devices by universalC ∗-algebras generated by their measurement
+effects and describe the joint Alice–Bob observable algebra using the maximal tensor product.
+After fixing a state compatible with the observed statistics, the GNS construction gives a repre-
+sented von Neumann algebra for Alice and Bob. Eve’s side information is then not introduced
+as an external tensor factor, but as the commutant of this represented algebra. We next prove
+the corresponding POVM-to-PVM reduction. In a Hilbert space model one would normally
+appeal to Naimark dilation, but in the commuting-operator setting the dilation has to preserve
+not only Alice and Bob’s observed statistics but also all correlations with arbitrary operators
+in Eve’s commutant. We show that this can be done, so that local POVMs may be replaced by
+PVMs without loss of generality for the secrecy relevant optimization. Since Eve’s algebra may
+be an arbitrary von Neumann algebra, the relative entropy, which is the central quantity of a
+security analysis, has to be expressed using modular operators [43] rather than by the explicit
+formula tr(ρ(logρ−logσ)) [84]. A core technical tool, is the extension of Frenkel’s integral rep-
+resentation [30] to von Neumann algebras. For which we have to generalize the operator layer
+cake representation of the Gateaux derivative of the logarithm [48] accordingly. Combining
+this new entropy formula with the asymptotic equipartition theorem in von Neumann alge-
+bras [14] and the techniques of [45] yields a noncommutative polynomial optimization problem
+for the amount of randomness that can be securely extracted in the presence of an attacker.
+This formulation is fully compatible with underlying algebraic structure, and therefore makes
+NPA-type relaxations rigorous within the commuting-operator framework. In this sense, we
+provide a representation independent route from observed statistics to an AEP based security
+statement, with all objects formulated inside the commuting-operator framework.
+This paper is structures as follows. In the subsequent Sec. 2 we briefly comment on two
+theorems that build the technical core of this work and might be from general interest. In
+Sec. 3 we briefly review the basic algebraic concepts needed to follow the content of this work.
+In Sec. 4 the basic concepts and challenges of a DIQKD security proof are outlined. In Sec. 5
+a formulation of DIQKD in the commuting operator framework is worked out in detail. In
+Sec. 6 our main technical tool, the von Neumann version of the operator layer cake theorem is
+provided. In Sec. 7 we collect the numerical tools needed for computing key rates in a fully DI
+setting and proof their convergence.
+
+=== page 4 ===
+4 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+2.Challenges and Results
+Considering DIQKD from the perspective of quantum games turns out to be a very powerful
+and mathematically rigorous point of view for the analysis of the underlying experiment, which
+we already sketched in Figure 1. However, several serious challenges arise the moment we
+leave the well-established perspective of Hilbert space based quantum theory. Indeed, the
+definition of security of a DIQKD protocol needs to be adapted, and most of the tools required
+to claim security in a rigorous mathematical manner need to be developed within the commuting
+operator framework, which is the correct framework for analyzing quantum games. In this
+work, we do not aim to lift all techniques available in the Hilbert space world to the commuting
+operator framework, as this would go strictly beyond the scope of this work. To nevertheless
+deliver all results with mathematical rigor, we use a leftover hashing result from [14], which turns
+a one-shot security statement into an entropic statement, and we apply the simplest form of a
+reduction theorem for ann-round procedure of a DIQKD protocol sketched in Figure 1, namely
+the asymptotic equipartition (AEP) theorem, which is available on von Neumann algebras [28].
+Even though both results are not state of the art in the device-dependent/Hilbert space world
+(cf. [23] for a state-of-the-art privacy amplification result and [53] for an entropy accumulation
+theorem), both results are formulated in the commuting operator framework and thus fit into
+our point of view. After collecting statistics in ann-round procedure of Figure 1, and even
+assuming that the rounds are independent and identically distributed such that we can apply
+the AEP from [28], it has been an open question in the commuting operator framework whether
+we are allowed to assume that the single-round reduction from the AEP can be considered with
+projective measurements instead of general effects (cf. e.g. [76]). Roughly speaking, the reason
+for this is that we are not allowed to assume that the purification of any state lives in a fixed
+additional Hilbert space, which could simply be tensored on as one would do in a Naimark
+dilation argument in Hilbert spaces (see also Sec. 4.2). Our first result is a dilation theorem
+showing that, in a certain sense, an embedding of the commutants of the Gelfand-Naimark-
+Segal representation of the underlying state on the effect algebra into the algebra spanned by
+projection-valued measurements is possible.
+Theorem 2.1(Dilation theorem, informal).Letψbe a state on the POVM algebra with GNS
+triple with purificationζ ψ. Then there exist
+(a) a Hilbert spaceH,
+(b) a unit vectorξ∈H,
+(c) a unital⋆-representation from the PVM-algebra intoB(H),
+(d) an injective normal unital⋆-homomorphism connecting the commutants,
+such thatζ ψ behaves on the effect algebra and its commutant asξbehaves on the PVM-algebra
+and its commutant.
+Given this dilation theorem, we can show that the optimization problems of the single-round
+entropy can be computed without loss of generality with the assumption that Alice and Bob
+have PVM’s at their disposal (cf. Corollary 5.6).
+Randomness is quantified by entropic quantities, and thus the natural objective function in
+the optimization problem resulting from the AEP reduction to a single round involves, in this
+case, the conditional von Neumann entropy on a general von Neumann algebra. As we are not
+allowed to assume that Eve always admits a type-Ifactor description, we must assume that
+the adversary’s information is correctly described only by a general, possibly type-III, von
+Neumann algebra. However, the techniques available for the optimization of the conditional
+von Neumann entropy for DIQKD assumed at some point a Hilbert space model and tensor
+products and did not consider the general case [18, 45]. To overcome this issue and to show that
+the technique from [45] leads to the correct optimization problem in the commuting operator
+framework, we provide in this work a proof of the integral formula by Frenkel [30] in the case
+of von Neumann algebras. To achieve this, we choose the path via the operator layer cake
+
+=== page 5 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 5
+theorem introduced in [20] for matrices. To be concrete, we prove the following main theorem,
+which is an integral representation for the Gateaux derivative of the operator logarithm.
+Theorem 2.2(Operator layer cake).LetHbe a separable Hilbert space and letA,B∈B(H)
+withA≥δIfor someδ >0andB=B ∗. Then the following identity holds in strong operator
+topology:
+D log(A)[B] =
+Z ∞
+0
+H(B−uA)du−
+Z 0
+−∞
+(I−H(B−uA))du,(1)
+whereH(·)denotes the Heaviside function defined in(108)below.
+With some technical effort, we are able to show the integral formula by Frenkel for the relative
+entropy in its general form, establishing another integral formula for the relative entropy next
+to the Kosaki formula [43].
+Theorem 2.3(Frenkel formula for general von Neumann algebras).LetMbe a von Neumann
+algebra and letρ,σ∈M ⋆
++ with supports M(ρ)≤s M(σ). Then
+D(ρ∥σ) = (ρ−σ) (1) +
+Z 1
+0
+1
+s (sσ−ρ) + (1)ds+
+Z ∞
+1
+1
+s (ρ−sσ) + (1)ds,(2)
+with both sides possibly infinite.
+Given the integral formula for the relative entropy, it turns out that the discretization tech-
+niques from [45] can be adopted to the setup of von Neumann alegbras and deliver for fixed
+statesρandσan approximation. However, what is a priori not clear is that this is compatible
+with the Navascues-Pironio-Acin (NPA)-hierarchy [56, 57] as the NPA-hierarchy optimizes over
+the maximal tensor product of universalC ⋆-algebras as shown in [47]. For this purpose we show
+that this step is indeed justified and the optimization of the conditional von Neumann entropy
+can be indeed executed in the framework of the NPA-hierachy and a corresponding universal
+C⋆-algebra (cf. Theorem 7.3).
+3.Preliminaries on operator algebras
+Before turning to the device-independent cryptographic setting, we recall the operator-
+algebraic notions used throughout the paper. The aim of this section is not to give a self-
+contained introduction to the theory of von Neumann algebras, but rather to collect the con-
+cepts needed by a reader with a background in quantum information theory to follow the later
+construction. We begin with basicC ∗-algebraic terminology, including positivity, states, repre-
+sentations, and maximal tensor products, since these provide the language in which commuting-
+operator models of Bell experiments are formulated. We then recall the corresponding von
+Neumann algebraic notions: normal states, traces, type decompositions at the level needed
+here, standard forms, support projections, and Araki relative entropy. Finally, we record two
+technical tools used later in the paper: Haagerup reduction, which allows certain arguments
+to be reduced to the finite tracial case, and the functional calculus for the operator logarithm,
+whose directional derivative is the starting point for the layer-cake representation of relative
+entropy.
+In this work we considerC⋆-algebrasA, which are Banach-algebras equipped with a conjugate-
+linear isometric anti-automorphism of order two [15], such that the norm∥·∥satisfies∥a ⋆a∥=
+∥a∥2 for all elementsa∈A. An elementa∈Ais called positive, if there existsb∈Asuch that
+a=b ⋆b. The closed convex cone of positive elements is denoted withA +. A representation of
+aC ⋆-algebraAis a⋆-homomorphism fromA→B(H) for some Hilbert spaceH. A representa-
+tionπis called non-degenerate ifH= {π(x)ξ|x∈A,ξ∈H}
+∥·∥
+. LetAandBbeC ⋆-algebras.
+Thealgebraic tensor productA⊙Bis the algebraic tensor product of vector spaces equipped
+with the⋆-algebra structure
+(a1⊗b 1)(a2⊗b 2) := (a1a2)⊗(b 1b2),(a⊗b) ∗ :=a ⋆⊗b⋆.(3)
+
+=== page 6 ===
+6 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Forx∈A⊙Bdefine themaximalC ⋆-seminormby
+∥x∥max := sup{∥(πA·πB)(x)∥|(π A,πB) commuting⋆-representations on someH},(4)
+where (πA·πB)(a⊗b) :=π A(a)πB(b). Then themaximal tensor productA⊗ maxBis the
+completion ofA⊙B/{x|∥x∥ max = 0}with respect to∥·∥ max.
+We refer to the free product ”⋆” ofC⋆-algebras as the universalC ⋆-algebras by its subalgebras
+and relations. As we just consider algebras generated by positive operator valued measure
+constraints, it becomes clear how to build the universalC ⋆-algebras. We furthermore denote by
+ℓ∞(Ω) for a countable set Ω, the commutativeC ⋆-algebra on the symbols of Ω.A von Neumann
+algebraM⊆B(H) is aC ⋆-algebra, which satisfiesM ′′ =M. For von Neumann algebras
+M1⊆B(H 1) andM 2⊆B(H 2), the spatial tensor product is defined as the weak ⋆-closure of
+the algebraic tensor productM 1⊙M 2⊆B(H 1⊗H 2), which is denoted asM 1⊗M2.
+3.1.States.AsC ⋆-algebras are Banach spaces, we can define its canonical dual space as the
+set of linear functionalsω:A→C, which are continuous with respect to theC ⋆-norm∥·∥. In
+particular positive functionals, i.e.ω(a)≥0 for alla∈A +, are denoted withA ⋆
++ and states
+are positive functionals with∥ω∥= 1, whereby
+∥ω∥ := sup
+x∈A,∥x∥≤1
+|ω(x)|.(5)
+For a von Neumann algebraMwe denote byM ⋆
++ the set of normal linear functionals, i.e. linear
+functionals, which are also weak⋆-continuous andS(M) the set of normal states.
+3.2.Types and traces.Atraceon a von Neumann algebraMis a mapτ:M +→[0,∞]
+which is additive, positively homogeneous, and satisfies the tracial property
+τ(x∗x) =τ(xx ∗) for allx∈M.(6)
+A trace is calledfaithfulifτ(x) = 0 impliesx= 0 for everyx∈M +,normalif it is continuous
+with respect to increasing limits of positive operators, andsemi-finiteif for everyx∈M +
+there exists 0̸=y∈M + withy≤xandτ(y)<∞.
+The theory of von Neumann algebras is partly characterized by types, which, in a rough
+sense, classify von Neumann algebras according to the existence of a trace. For the purpose of
+this work, it is enough to introduce three classes:
+(1)finite.A finite von Neumann algebra admits a normal faithful trace which is finite,
+i.e.τ(1) = 1.
+(2)semi-finite.A semi-finite von Neumann algebra admits a normal faithful semi-finite
+trace.
+(3)type-III.A type-III von Neumann algebra is not semi-finite.
+The simplest example of finite, non-commutative von Neumann algebras are full matrix alge-
+bras, which we denote withM n(C) forn×n-dimensional matrices.
+3.3.Standard form and relative entropy.The standard form of a von Neumann algebra
+[75]Mis defined by a quadruple (M,H,J,P), wherebyHis a Hilbert space,Jis an injective
+anti-linear isometry onHandP⊆His a self-dual cone and with an injective⋆-homomorphism
+π:M→B(H), such that
+(1)J 2 = 1,JMJ=M ′,
+(2)JaJ=a ⋆ fora∈M∩M ′,
+(3)Jξ=ξ,ξ∈P,
+(4)aJaJP⊆Pfora∈M.
+Given the standard form, there exists a unique vectorξϕ∈Pfor each positive normal functional
+ϕ∈M ⋆
++ implementingϕvia
+ϕ(x) =⟨ξ ϕ|xξϕ⟩, x∈M.(7)
+
+=== page 7 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 7
+For positive normal linear functionsϕ∈M ⋆
++ (and indeed even positive forms) there exists a
+unique projections M(ϕ) with the property
+ϕ(x) =ϕ(xsM(ϕ)) =ϕ(sM(ϕ)x), x∈M.(8)
+This projection is calledsupport projectionofϕ(cf. [73, sec. 5.15]).
+Letψ,ϕ∈M ⋆
++ with vector representationsξ ψ,ξϕ∈P. Then define
+S0
+ψ,ϕ(aξϕ +η) =s M(ϕ)a⋆ξψ, a∈M, η∈(1−s M′(ϕ))H.(9)
+This is a closable and anti-linear operator, whereby we denote withSψ,ϕ its closure. The relative
+modular operator is defined as
+∆(ψ,ϕ) :=S ⋆
+ψ,ϕSψ,ϕ.(10)
+For elementsρ∈S ≤(M) andσ∈M ⋆
++ withsM(ρ)≤s M(σ), the Umegaki relative entropy
+is defined as (cf. [5])
+D(ρ∥σ) :=−⟨ξ ρ,log ∆(σ,ρ)ξρ⟩.(11)
+We have the following properties of the Umegaki relative entropy, which readily follow from
+(11).
+Lemma 3.1.Letρ∈S ≤(M)and letσ,σ 1,σ 2∈M∗
++ withsM(ρ)≤s M(σ).
+(i) Ifσ 1≤σ 2 andsM(ρ)≤s M(σ1), then
+D(ρ∥σ2)≤D(ρ∥σ 1).(12)
+(ii) For everyλ>0,
+D(ρ∥λσ) =D(ρ∥σ)−ρ(1) logλ.(13)
+In particular, ifρis a state, then
+D(ρ∥λσ) =D(ρ∥σ)−logλ.(14)
+It is well-known that, in the case where the von Neumann algebra (M,τ) is semi-finite with
+traceτ, the Umegaki relative entropy can be written as
+D(ρ∥σ) :=
+(
+τ(ρ(logρ−logσ)),ifs(ρ)≤s(σ),
++∞,otherwise,
+(15)
+wheres(ρ) ands(σ) denote the support projections ofρandσ, respectively.
+3.4.Haagerup reduction.The Haagerup reduction technique [32] is a powerful tool in the
+theory of von Neumann algebras, as it allows one to approximate the noncommutativeLp-spaces
+of a von Neumann algebraMby an increasing family of subalgebras (M n)n∈N. We recall the
+formulation given in [28, Thm. 2.1, Prop. 2.2], since it directly highlights the properties used
+in this work.
+Proposition 3.2(Haagerup reduction).LetMbe a von Neumann algebra. Then there exists
+a sequence of finite von Neumann algebras with normal faithful trace(M n,τn)such that, for
+each pair of statesρ,σ∈S(M), one can find, after appropriate identification, sequences of
+states(ρ n)and(σ n)withρ n,σn∈S(M n)such that
+lim
+n→∞
+D(ρn∥σn) =D(ρ∥σ).(16)
+
+=== page 8 ===
+8 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+3.5.Operator logarithm and its directional derivative.LetHbe a separable Hilbert
+space andB(H) the algebra of bounded operators. For a bounded operatorA∈B(H) with
+σ(A)⊂C\(−∞,0] (17)
+we denote by log the principal branch of the complex logarithm onC\(−∞,0] and define the
+operator logarithm by the holomorphic functional calculus
+log(A) := 1
+2πi
+Z
+ΓA
+log(z) (zI−A) −1dz,(18)
+where ΓA is a positively oriented, simple smooth closed curve enclosingσ(A) and lying in
+C\(−∞,0].
+IfA >0 is boundedly invertible andB=B ∗ ∈B(H), thenA+tBstays invertible for
+|t|small enough, and we define thedirectional derivative(Gˆ ateaux derivative) of log atAin
+directionBby
+D log(A)[B] := d
+dt
+
+t=0
+log(A+tB),(19)
+where the derivative is taken in the strong operator topology (equivalently, pointwise on vec-
+tors). It is standard that D log(A)[B] exists and is bounded, and one may also express it via
+the resolvent integral
+D log(A)[B] = 1
+2πi
+Z
+ΓA
+log(z) (zI−A) −1B(zI−A) −1dz,(20)
+again in strong operator topology.
+4.Challenges in Device Independent Quantum Key Distribution
+The overarching purpose of quantum key distribution (QKD) is to establish an information-
+theoretically secure key between distant users, usually referred to as Alice and Bob, which
+is provably known only to Alice and Bob themselves, up to a security parameterε>0 that
+quantifies an arbitrarily small error parameter [68]. As was recognized in the early days of QKD,
+security cannot be guaranteed unless all imperfections and all mismatches between theory and
+experiment are taken into account [11, 13]. It has become apparent throughout the different
+stages of development that experimental mismatches are arguably difficult to characterize, and
+it remains unclear at what level of detailed experimental description it is sufficient to claim
+security [69].
+To overcome the challenge of describing an experiment with sufficient accuracy to claim se-
+curity, device-independent quantum key distribution (DIQKD) was developed and is regarded
+as the gold standard of security techniques in the quantum world, at least from a theoretical
+perspective [52] (cf. [26] for a discussion of fundamental limitations of mathematical modeling
+in a physical world). The goal of a (DI)QKD protocol is to establish a secure key relying
+only on the observed statistics, i.e. based on a Bell-experiment [10] (cf. Figure 1). To achieve
+this goal, quantum theory makes it possible to prove security based on fundamental physical
+principles [2, 3, 64]. Standard DIQKD protocols are based on the Bell-type QKD experiment
+introduced in [27] and first demonstrated as a Bell experiment in [34]. The fundamental prin-
+ciple underlying DIQKD security is the monogamy of entanglement: roughly speaking, strong
+correlations obtained in a quantum experiment cannot be shared among an arbitrary number
+of parties. Since this property is fundamental and does not depend on a specific implementa-
+tion or detailed modeling of the experiment itself, the notion of device independence has been
+established.
+In most earlier works (cf. [9, 2, 3, 56, 57, 64, 87] and subsequent developments), device
+independence has been formulated through the mathematical model in which the underly-
+ing quantum system admits a Hilbert-space representation with a trace-class operatorρ AB∈
+
+=== page 9 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 9
+Alice Bobsource
+Referee
+x∈X y∈Y
+a∈A b∈B
+ρAB
+Figure 2.The figure illustrates a non-local quantum game. A source prepares
+a bipartite stateρ AB and distributes it between Alice and Bob. Following a
+predetermined strategy, specified by the shared state together with their local
+measurements, Alice and Bob receive questionsx∈Xandy∈Yfrom a referee,
+feed them as inputs into their respective devices, and respond with the outcomes
+a∈Aandb∈Bproduced by their local boxes.
+S(HA⊗HB), measurement operators{M a|x}on Alice’s side, and measurement operators{N b|y}
+on Bob’s side. We will refer to such a tuple as a strategy and denote it by
+S :=
+ 
+ρAB,{Ma|x},{Nb|y},HA,HB
+
+.(21)
+The observed statistics in an experiment of the form shown in Figure 1 are then given by Born’s
+rule,
+p(a,b|x,y) := tr[ρABMa|x⊗Nb|y].(22)
+The key difference between device-dependence and device independence is that one even
+neither specifies the Hilbert spacesH A andH B more the measurement operators. Rather, in
+DIQKD one assumes only the existence of some strategy of the form (21) that gives rise to
+the observed conditional distribution (22). Accordingly, the typical questions in DIQKD ask
+whether a given property of the underlying experiment holds for all strategies compatible with
+an observed statisticp(a,b|x,y) connected to the mathematical modeling with (22). Although
+this point of view has been tremendously successful in the device-dependent setting, where the
+Hilbert spaces and measurement operators are fixed and known, substantial obstacles arise in
+the device-independent setting.
+4.1.Quantum Games and DIQKD.The more and less obvious limitations of the Hilbert
+space strategy-based perspective in DIQKD are perhaps best understood by viewing a DIQKD
+experiment as a quantum game, see Figure 2. Since QKD ultimately amounts to collecting
+statistical data under the assumption that the underlying experiment is governed by the laws
+of quantum theory, it is natural to compare QKD with the task of playing a quantum game
+(cf. [60] for a review). A bipartite quantum gameGis specified by sets of questionsX,Y, sets
+of answersA,B, a rule function
+V:X×Y×A×B→{0,1},(23)
+and a referee who asks Alice and Bob questionsx∈Xandy∈Yaccording to a probability
+mass functionπonX×Y. The goal of Alice and Bob is to agree in advance on a strategy,
+in the most general case given by a conditional distributionp(a,b|x,y), so as to maximize the
+
+=== page 10 ===
+10 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+success probability
+ω(G) := sup
+p(a,b|x,y) feasible
+X
+a,b,x,y
+π(x,y)V(a,b,x,y)p(a,b|x,y).(24)
+If the distributionp(a,b|x,y) arises from a quantum experiment, for instance as in (22) and
+corresponding to a strategySof the form (21), then the game is called a quantum game.
+Computing the optimal valueω(G) is therefore equivalent to optimizing a linear functional over
+a set of distributions determined by the physical power available to Alice and Bob. Although
+in DIQKD one is not directly interested in the success probability of a game, it has turned
+out that important cryptographic quantities can be derived from this value when the DIQKD
+protocol is based on a game [64, 19]. In the realm of the quantum games it was a central task
+to distinguish different notions on the power of the strategies such as they can be described
+with finite-dimensional quantum systems, approximately finite-dimensional quantum systems,
+general limits of such strategies and strategies in the commuting operator framework (cf. e.g. [42,
+82, 59, 65, 41, 62, 71, 39] for a by far not complete list of milestone results in the realm of
+quantum games).
+For DIQKD, it is an immediate consequence that the perspective of Hilbert spacestrategies
+as in (21) is incomplete, as this becomes apparent already if we decide for a specific class
+of strategies studied in the context of quantum games (cf. [70]). In particular, these results
+show that, even if one restricts (21) to finite-dimensional strategies, to which is often referred
+to in DIQKD, the corresponding set of strategies is not closed. Comparing this with one
+of the most important and successful tools in DIQKD, namely the Navascu´ es–Pironio–Ac´ ın
+(NPA) hierarchy [56, 57], which is known in the setting of quantum games to converge to the
+commuting-operator value of the game (cf. [47, Lem. 4] and [62]), reveals a genuine discrepancy
+between the way DIQKD is modeled and the tools available to analyze it. This calls for a
+unified framework.
+4.2.Randomness extraction in DIQKD.A less obvious challenge in DIQKD lies in the fact
+that the central quantity to be quantified in QKD israndomness. Modern security frameworks
+capture this through entropic quantities [68] (cf. [66] for a recent result on randomness extrac-
+tion in device-dependent QKD). In cryptography, however, one is interested in the amount of
+randomness that remains secure in the presence of a potential eavesdropper. In the Hilbert-
+space model of quantum theory, this question can be addressed using purifications of quantum
+states and the fact that pure states are, in a precise sense, uncorrelated with any additional
+systems. More specifically, ifρ AB∈S(H A⊗HB), then we have for any extensionρ ABEE′
+trE′[ρABEE′] =|ψ ABE⟩⟨ψABE| ⇒ρ ABEE′ =|ψ ABE⟩⟨ψABE|⊗ρ E′,(25)
+which means precisely that the state is a product across the bipartitionABE:E ′. Moreover,
+it follows that all purifications can be modeled within a fixed quantum systemH A⊗HB⊗HE,
+withH E∼=HA⊗HB. By Uhlmann’s theorem [83] and the invariance of conditional entropies
+under local isometries in the Hilbert-space framework (cf. [79]), one may therefore fix, without
+loss of generality, a quantum systemH E ∼=HA⊗H B and solve the randomness-extraction
+problem in this setting. Unfortunately, this property fails in the general commuting operator
+framework, as was recently shown in [86]. Thus, combining the elegant perspective in Sec. 4.1
+with randomness extraction over side-information is at least challenged by an argumentation
+for acorrectnotion of purification for the purpose of randomness extraction.
+4.3.Turning experimental data into security statements.The composable security
+framework established for QKD [63] provides a way to turn experimental data, such as the
+statisticsp(a,b|x,y), together with a given Hilbert-space model of the underlying quantum
+experiment, into a security statement for the resulting key. For the purposes of this work, it is
+sufficient to distinguish the following three core security properties [68]:
+
+=== page 11 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 11
+(1)Completeness: If both parties behave honestly and the protocol is executed under nor-
+mal operating conditions, then the protocol should abort only with small probability.
+(2)Correctness: Conditioned on not aborting, the keys held by the legitimate parties should
+be identical except with small probability.
+(3)Secrecy: Conditioned on not aborting, the final key should be indistinguishable from
+an ideal uniformly random key that is independent of the adversary’s information.
+Among these three properties, onlysecrecytruly depends on the underlying quantum model,
+since it requires a characterization of the adversary’s possible side information [29]. By contrast,
+completenessandcorrectnessare determined from the classically observed data and an honest
+implementation usually in finite dimensions, namely whether the protocol aborts and whether
+the legitimate users’ classical keys agree. Thus, as this work focuses on how to turn data such
+as a distributionp(a,b|x,y) into a mathematical model for DIQKD, we are primarily interested
+in provingsecrecy. In device-dependent QKD, secrecy is defined by requiring that, conditioned
+on the protocol not aborting, the final key be close to an ideal uniformly random key that
+is independent of the adversary’s side information (cf. [68, Rem 6.1.3]). We give a concrete
+definition next.
+Definition 4.1(Secrecy in device-dependent QKD).LetΩdenote the event that the protocol
+does not abort, and letp(Ω)be its probability. Letρ KAE|Ω be the joint state of Alice’s final key
+KA and Eve’s side informationE, conditioned onΩ, whereEincludes all information available
+to the adversary, in particular the public classical transcript. The protocol is calledε sec-secret
+if
+p(Ω)∥ρKAE|Ω−τKA⊗ρE|Ω∥≤ε sec,(26)
+andτ KA = 1
+2ℓ
+P
+k∈{0,1}ℓ|k⟩⟨k|is the fully mixed state on theℓ-bit key space.
+To derive a secrecy statement from experimental data, a leftover-hash lemma [81, 14, 23, 66]
+converts the one-shot quantity in (26) into an entropic quantity for a multi-round experiment.
+Building on this, entropy-accumulation theorems [24, 25, 53], which can be viewed as generaliza-
+tions of the quantum asymptotic equipartition theorem [80, 28], reduce the security analysis to
+a single optimization problem involving a single-round quantity, typically a conditional entropy
+H[79]. The resulting optimization program is then given by
+infH(A|X= ˜x,E) ρAE
+tr[ρABMa|x⊗Nb|y] =p(a,b|x,y)
+ρABE∈S(H A⊗HB⊗HE).
+(27)
+In the device-dependent case, the optimization problem (27) can be solved numerically for cer-
+tain conditional entropiesH, given the distributionp(a,b|x,y) (cf. [33, 46, 35]). In the general
+device-independent case, however, the discrepancy between the two perspectives discussed in
+Sec. 4.1 and Sec. 4.2 becomes apparent. If one adopts the viewpoint of DIQKD as a quantum
+game, as in Sec. 4.1, then the discussion in Sec. 4.2 shows that one must carefully address the
+definition of purification in cryptographic settings 1 and its relation to a single-round program
+such as (27) within the commuting-operator framework. Conversely, if one assumes that the
+model is described by a finite-dimensional quantum system, then the purification issues dis-
+cussed in Sec. 4.2 simplify considerably, but the application of the NPA hierarchy and related
+tools from the commuting-operator framework may no longer faithfully describe the experi-
+ment under consideration as discussed in Sec. 4.1. As we show in the following section, a
+careful combination of known tools and statements from operator algebras yields, in principle,
+a fully rigorous DIQKD framework in the language of the commuting-operator setting. How-
+ever, the resulting optimization problems have so far only been solved by methods [76, 18, 45]
+that rely on the availability of Hilbert spaces and trace-class operators, which makes it difficult
+1We remark that this was considered in [14, Lem. 1] for the setting of a leftover-hash lemma.
+
+=== page 12 ===
+12 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+to conclude that one has obtained a genuinely complete DIQKD model. In the subsequent
+sections, we show how to resolve these issues completely.
+5.The commuting operator framework for DIQKD
+Given the discussion ofdevice independenceand its consequences from point of view of quan-
+tum games, i.e. Sec. 4.1, and randomness extraction, i.e. Sec. 4.2, there is a need for a precise
+mathematical description of its meaning in the realm of DIQKD. Following the framework of
+quantum games, we consider Figure 1 simply as an experiment whose internal workings inside
+the boxes may be modeled by quantum theory, without to specify any further. This question
+was already addressed in the early days of axiomatic quantum theory and was solved by von
+Neumann and Segal [8, 88]. The solution is given by the universalC ⋆-algebra generated by the
+effects for each party, together with the maximal tensor product of these local algebras. In this
+realm, the standard Bell scenario is specified by measurement setsXandYfor Alice and Bob,
+respectively. Each measurement is assumed to have a finite outcome set, denotedA x forx∈X
+andB y fory∈Y. We first model local measurements as positive operator-valued measures
+(POVMs), i.e. each settingxcorresponds to a finite family of positive contractions{M a|x}a∈Ax
+summing to the identity, and similarly for Bob. This motivates the following universal con-
+struction. Theuniversal POVM algebraassociated with POVMsM a|x,a∈A x for eachx∈X
+is the universal unital C⋆-algebra
+UA :=C ⋆
+ 
+{Ma|x}x∈X,a∈A x
+ 0≤M a|x≤1,
+X
+a∈Ax
+Ma|x = 1
+!
+.(28)
+ThusU A is generated by symbols{M a|x}subject only to the relations that they form POVMs.
+The universalC ⋆-algebra is well-defined: the relations imply∥M a|x∥≤1 for all generators, and
+the defining relations are consistent (e.g. realized in a commutative model). Existence of the
+corresponding universalC ⋆-algebra for bounded generators is standard (see [15, II.8.3.1]).
+Given the local algebras, one may ask what is the appropriate way of concatenating them,
+i.e., what is the correct “tensor product” between local algebras. As we aim to remain as general
+as possible, we argue that the universal property of the maximal tensor product provides the
+correct physical modeling (cf. Prop. 5.1): every realization in a commuting-operator framework
+– operationally satisfying the axioms of quantum theory – is included in this tensor product [15].
+In particular, since it is known that there is a distinction between the minimal and maximal
+tensor products [39], we decide for the maximal tensor product as there exists a surjection from
+the maximal onto the minimal tensor product.
+Proposition 5.1(Universal property of⊗ max [74, Prop. IV.4.7]).LetA,BbeC ⋆-algebras.
+Then for everyC ⋆-algebraCand every pair of⋆-homomorphismsπ A :A→C,π B :B→C
+with commuting ranges (i.e.[π A(a),πB(b)] = 0for alla∈A,b∈B), there exists a unique
+⋆-homomorphism
+Φ :A⊗ maxB−→C(29)
+such that
+Φ(a⊗b) =π A(a)πB(b)∀a∈A,b∈B.(30)
+Proof.See [74], Prop. IV.4.7.□
+Thus, the observable algebra for Figure 1 can be summarized as
+UA⊗maxUB.(31)
+
+=== page 13 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 13
+5.1.From POVMs to PVMs in the commuting-operator model.With (31), we con-
+clude that the DIQKD experiment can be described with the universalC ⋆-algebra of POVM’s
+on Alice’s and Bob’s side and that they are concatenated by the maximal tensor product.
+Moreover, from the perspective of DIQKD, we are ultimately interested only in the statistics
+of such an experiment and aim to show a Naimark-type argument in order to replace the
+effect algebra by the universalC ⋆-algebra of projective measurements. This is particularly
+advantageous in applications, since, for instance, the Navascu´ es–Pironio–Ac´ ın (NPA) hierarchy
+[56, 57] works much better with projections.
+For eachx∈Xdefine the unitalC ⋆-algebral ∞(Ax) to be generated by symbols{p a|x}a∈Ax
+subject to
+pa|xpa′|x =p a,a′pa|x,
+X
+a∈Ax
+pa|x = 1.(32)
+Theuniversal PVM algebrais the unital free product [15, II.8.3.4]
+PA =∗ x∈Xl∞(Ax),(33)
+soP A is generated by families of projections which for each fixedxform a projective measure-
+ment{p a|x}a∈Ax, with no relations across differentx̸=x ′∈X. We recall the corresponding
+proposition from quantum games.
+Proposition 5.2(Bell statistics are unchanged by passing from POVMs to PVMs).LetU A
+andU B be the universal POVM algebras for Alice and Bob from Eq. 28 andP A andP B be the
+universal PVM algebras from Eq. 33.
+Then the set of probability distributions
+n 
+ω(Ma|x⊗Nb|y)
+
+a,b,x,y :ω∈S(U A⊗maxUB)
+o
+(34)
+coincides with n 
+eω(pa|x⊗qb|y)
+
+a,b,x,y :eω∈S(P A⊗maxPB)
+o
+.(35)
+Proof.cf. e.g. [31, Prop. 3.4. (b)].□
+As discussed in the previous Sec. 4.2, Prop. 5.2 is not enough for DIQKD. We need to
+investigate also the relation of the POVM vs. PVM model with respect to quantum side-
+information.
+5.2.Quantum-side information and DIQKD in the commuting operator model.The
+discussion in Sec. 4.2 shows that, in the commuting-operator framework, one cannot a priori
+model the adversary by adjoining a fixed Hilbert space factorH E as in the finite-dimensional
+setting. The reason is that the observable algebra of Alice and Bob is now given abstractly
+by a universalC ⋆-algebra, and its concrete realizations need not come with a distinguished
+tensor-product decomposition. Consequently, the correct notion of quantum side information
+has to be formulated representation-theoretically.
+The guiding principle is that, once a stateψ∈S(A⊗ maxB) describing the statistics between
+Alice and Bob has been fixed, the GNS construction provides a canonical representation of the
+observable algebra as a von Neumann algebra, while the vector state induced byξ ψ is a normal
+state on the corresponding von Neumann algebra, and the commutant of the represented Alice–
+Bob algebra plays the role of the complementary system. Thus, we consider from now on an
+arbitrary but fixed stateψ∈S(A⊗ maxB) and its GNS-construction (πψ,Hψ,ξψ). Particulary,
+we fix the corresponding von Neumann algebra
+MAB,ψ :=π ψ(A⊗ maxB)′′,(36)
+which will be from now on the object under consideration with
+ψ(a⊗b) =⟨ξ ψ,πψ(a⊗b)ξ ψ⟩, a⊗b∈A⊗ maxB,(37)
+
+=== page 14 ===
+14 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+whereby the vectorξ ψ is cyclic for the representationπ ψ. This implies that this description
+contains all information needed about the stateψconsidered as action onA⊗ maxB. Indeed, the
+relative entropy, which will become central in the following, can be defined with this approach
+onC ⋆-algebras as discussed in [58].
+This leads to the following notion of purification, following the operator-algebraic framework
+of [14] (cf. also [74, Lem. 4.11]).
+Definition 5.3(Purification in the commuting-operator framework).LetMbe a von Neumann
+algebra and letω∈S(M). Apurificationofωis a triple
+(π,H,ξ),(38)
+whereπ:M→B(H)is a representation andξ∈His a unit vector such that
+ω(x) =⟨ξ,π(x)ξ⟩, x∈M.(39)
+We callπ(M)therelevant systemandπ(M) ′ thecomplementary systemof the purification.
+In particular, if (πω,Hω,ξω) denotes the GNS triple ofω, then
+ω(x) =⟨ξ ω,πω(x)ξω⟩, x∈M,(40)
+and hence the GNS construction yields a canonical purification ofω. It is worth mentioning that
+with this discussion, the problematic situation of non-unique purifications from [86] disappears
+in the sense of entropic quantities as shown in [14, Lem. 1]. Moreover, in contrast to the finite-
+dimensional tensor-product picture (cf. (25)), this notion of purification is formulated entirely
+in terms of the represented algebraπ(M) and its commutant. Thus, the complementary system
+is not introduced externally, but is determined by the chosen representation of the observable
+algebra itself. The following theorem shows how this point of view can be connected with a
+PVM modelP A⊗maxPB instead ofU A⊗maxUB.
+Theorem 5.4(Dilation theorem).Letψ∈S(U A⊗maxUB)be a state with GNS triple(π ψ,Hψ,ξψ).
+Then there exists
+(a) a Hilbert spaceH
+(b) a unit vectorξ∈H
+(c) a unital⋆-representationΠ :P A⊗maxPB→B(H)
+(d) an injective normal unital⋆-homomorphismι:π ψ (UA⊗maxUB)′→Π (PA⊗maxPB)′
+such that for allx,y,a,bandE∈π ψ (UA⊗maxUB)′
+⟨ξψ,Ma|xNb|yEξψ⟩=⟨ξ,Π
+ 
+pa|x⊗qb|y
+
+ι(E)ξ⟩.(41)
+In particular,ιis a normal⋆-isomorphism onto its image.
+Proof.Let (π ψ,Hψ,ξψ) be the GNS representation ofψ,M AB :=π ψ (UA⊗maxUB)′′ and
+ι0 :M′
+AB ,→B(Hψ) (42)
+the embedding of the complementary system. Thenι 0 is an injective normal⋆-homomorphism
+by construction. With abuse of notation we denote by{A a|x}a,x and{B b|y}b,y the images
+of the POVM elements fromU A⊗maxUB inB(H ψ), which are again POVM’s and satisfy
+Aa|x,Bb|y
+
+= 0 as well asA a|x,Bb|y∈M AB. We define in the following
+NA :=
+ 
+{Bb|y}b,y∪M′
+AB
+′′
+(43)
+which is by construction a von Neumann algebra. Moreover, eachA a|x,a∈A x andx∈X,
+belongs toN ′
+A and we thus define
+ϕx :l∞(Ax)→N ′
+A, p a|x7→A a|x.(44)
+Since{A a|x}a∈Ax⊆B(H ψ) is a POVM, eachϕx is a unital and completely positive map (cf. [31,
+Prop. 3.1. (b)]). By the free-product extension theorem for unital completely positive maps
+
+=== page 15 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 15
+[22, Thm. 3.1] (cf. also [17]), there exists a unital completely positive map Φ A :P A→N ′
+A such
+that
+ΦA(pa|x) =A a|x, x∈X, a∈A x.(45)
+Now let (ρA,HA,VA) be a minimal Stinespring dilation of ΦA [61, Thm. 4.1] (cf. also [72]). Then
+we haveV ⋆
+AρA(u)VA = ΦA(u) for allu∈P A and by minimality span
+ 
+ρA(PA)VAHψ
+
+=H A.
+Since ΦA is unital,V ⋆
+AVA = ΦA(1) = 1, i.e.V A is an isometry. Furthermore, we observe that
+ρA (PA)⊆B(H A) is a unitalC ⋆-subalgebra. By Arveson’s theorem [61, Thm. 12.7] there exists
+for allT∈(V ⋆
+AρA (PA)VA)′ an elementT 1∈ρ A (PA)′ such thatV AT=T 1VA. Indeed the map
+κA : (V⋆
+AρA (PA)VA)′→ρ A (PA)′∩{VAV⋆
+A}′,T7→κ A(T) :=T 1 (46)
+is a normal⋆-homormorphism (for normality check [7, Thm. 1.3.1]). Since Φ A (PA)⊆N ′
+A, we
+haveV ⋆
+AρA (PA)VA⊆N ′
+A.This impliesN A⊆(V ⋆
+AρA (PA)VA)′ and thus there exists for each
+T∈N A an operatorκ A (T)∈ρ A (PA)′ such that
+κA (T)V A =V AT.(47)
+Moreover,κ A is injective: ifκ A (T) = 0, thenV AT= 0 by Eq. 47 and henceT=V ⋆
+AVAT= 0,
+sinceV A is an isometry. We defineξ A :=V Aξψ∈H A, which is a unit vector sinceV A is an
+isometry. Then we have forT∈N A,x∈X,a∈A x
+⟨ξA,ρA
+ 
+pa|x
+
+κA (T)ξ A⟩=⟨ξ A,ρA
+ 
+pa|x
+
+κA (T)V Aξψ⟩
+=⟨ξ ψ,V ⋆
+AρA
+ 
+pa|x
+
+VATξψ⟩
+=⟨ξ ψ,ΦA
+ 
+pa|x
+
+Tξψ⟩
+=⟨ξ ψ,Aa|xTξψ⟩,
+(48)
+where we have used Eq. 47 and Eq. 45. We turn to Bob’s side and define
+NB := (ρA(PA)∪κ A(M′
+AB))′′⊆B(H A),(49)
+which is again a von Neumann algebra. SinceB b|y∈N A for allb,y, the operatorsκ A
+ 
+Bb|y
+
+are
+well-defined and we claimκ A
+ 
+Bb|y
+
+∈N ′
+B. Indeed,
+
+κA
+ 
+Bb|y
+
+,ρA
+ 
+pa|x
+
+= 0 sinceκ A(NA)⊆
+ρA(PA)′, and forE∈M ′
+AB we have
+
+Bb|y,E
+
+= 0 sinceB b|y∈M AB, whence
+
+κA
+ 
+Bb|y
+
+,κA(E)
+
+=κ A
+ 
+Bb|y,E
+
+= 0,(50)
+becauseκ A is a⋆-homomorphism. We thus define for eachy∈Y
+ϕy :l∞(By)→N ′
+B, q b|y7→κ A
+ 
+Bb|y
+
+.(51)
+Sinceκ A is a unital⋆-homomorphism,{κ A
+ 
+Bb|y
+
+}b∈By is again a POVM and eachϕ y is a unital
+and completely positive map (cf. [31, Prop. 3.1. (b)]). By the free-product extension theorem
+[22, Thm. 3.1] (cf. also [17]), there exists a unital completely positive map Φ B :P B→N ′
+B such
+that
+ΦB
+ 
+qb|y
+
+=κ A
+ 
+Bb|y
+
+, y∈Y, b∈B y.(52)
+Now let (ρ B,HB,VB) be a minimal Stinespring dilation of Φ B. ThenV ⋆
+BρB(v)VB = ΦB(v)
+for allv∈ P B andV B is an isometry since Φ B is unital. Since Φ B(PB)⊆ N′
+B, we have
+V⋆
+BρB(PB)VB⊆N ′
+B and henceN B⊆(V ⋆
+BρB(PB)VB)′. By the same application of Arveson’s
+theorem [61, Thm. 12.7] as above, there exists a normal⋆-homomorphism
+κB : (V⋆
+BρB(PB)VB)′→ρ B(PB)′∩{VBV⋆
+B}′ (53)
+such that for eachS∈N B
+κB(S)VB =V BS,(54)
+andκ B is injective by the same argument as forκ A, sinceV B is an isometry. We now set
+H :=H B, ξ :=V BξA =V BVAξψ,Π A :=κ B◦ρA,Π B :=ρ B, ι :=κ B◦κA◦ι 0.(55)
+
+=== page 16 ===
+16 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+The vectorξis a unit vector sinceV A andV B are isometries. The compositions are well-defined:
+by Eq. 49 we haveρ A(PA)⊆N B andκ A(M′
+AB)⊆N B, both contained in the domain ofκ B.
+Furthermore, ΠA and ΠB are unital⋆-representations with commuting ranges, since
+ΠA(PA) =κ B(ρA(PA))⊆ρ B(PB)′ = ΠB(PB)′.(56)
+By the universal property of the maximal tensor product (cf. Proposition 5.1) there exists a
+unique unital⋆-representation
+Π :P A⊗maxPB→B(H),Π(u⊗v) = Π A(u) ΠB(v),(57)
+which proves (a)–(c). For (d) we first observe thatιis a normal unital⋆-homomorphism as a
+composition of such maps, and injective as a composition of injective maps. It remains to show
+ι(M′
+AB)⊆Π(P A⊗maxPB)′, i.e. commutation with Π A(PA) and ΠB(PB). ForE∈M ′
+AB we
+haveι(E) =κ B(κA(E))∈κ B(NB)⊆ρ B(PB)′ = ΠB(PB)′. Moreover,
+
+κA(E),ρ A
+ 
+pa|x
+
+= 0
+sinceκ A(NA)⊆ρ A(PA)′, and therefore
+ι(E),Π A
+ 
+pa|x
+
+=κ B
+ 
+κA(E),ρ A
+ 
+pa|x
+
+= 0,(58)
+becauseκ B is a⋆-homomorphism. Sinceιis an injective normal⋆-homomorphism between von
+Neumann algebras, it is a normal⋆-isomorphism onto its image. Finally, letx∈X,y∈Y,
+a∈A x,b∈B y andE∈M ′
+AB. Then
+⟨ξ,Π
+ 
+pa|x⊗qb|y
+
+ι(c)ξ⟩=⟨V BξA,κB
+ 
+ρA
+ 
+pa|x
+
+ρB
+ 
+qb|y
+
+κB(κA(E))VBξA⟩
+=⟨V BρA
+ 
+pa|x
+
+ξA, ρB
+ 
+qb|y
+
+VBκA(E)ξA⟩
+=⟨ρ A
+ 
+pa|x
+
+ξA, V⋆
+BρB
+ 
+qb|y
+
+VBκA(E)ξA⟩
+=⟨ξ A, ρA
+ 
+pa|x
+
+κA
+ 
+Bb|y
+
+κA(E)ξA⟩
+=⟨ξ A, ρA
+ 
+pa|x
+
+κA
+ 
+Bb|yE
+
+ξA⟩
+=⟨ξ ψ, Aa|xBb|yEξψ⟩,
+(59)
+where the second equality uses Eq. 54 forρ A
+ 
+pa|x
+
+∈N B andκ A(E)∈N B, the fourth equality
+usesV ⋆
+BρB
+ 
+qb|y
+
+VB = ΦB
+ 
+qb|y
+
+together with Eq. 52, the fifth equality holds sinceκ A is a⋆-
+homomorphism andB b|yE∈N A, and the last equality is Eq. 48 applied withT=B b|yE. This
+proves Eq. 41. □
+5.3.Secrecy proofs.As already emphasized in the Sec. 4.3, the genuinely quantum part of
+a security proof is privacy amplification: once Alice has produced a classical raw key variable
+from her key-generation measurement, the task is to quantify how much randomness can still
+be extracted against arbitrary quantum side information compatible with the observed data.
+In the present framework, such side information is not modeled by adjoining a fixed tensor
+factor, but rather through the commutant of a purification as in Def. 5.3.
+For secrecy, fix a key-generation setting ˜x∈X, letZ :=A ˜x, and write{P z}z∈Z for the
+corresponding measurement on Alice’s side. Let (π,H,ξ) be a purification of the relevant
+Alice–Bob state in the sense of Def. 5.3, and set
+ME :=π(M AB)′ (60)
+for the adversary’s system. The key-generation measurement is then described in the Heisenberg
+picture by the normal unital ∗-homomorphism
+MZ :ℓ∞(Z)→π(M AB),M Z(f) =
+X
+z∈Z
+f(z)P z.(61)
+SinceM E commutes withπ(M AB), this induces a normal state
+ωZE∈S
+ 
+ℓ∞(Z)⊗ME
+
+(62)
+given by
+ωZE(f⊗E) =⟨ξ,M Z(f)Eξ⟩, f∈ℓ ∞(Z), E∈M E.(63)
+
+=== page 17 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 17
+Equivalently, if
+p(z) :=⟨ξ,P zξ⟩,(64)
+then
+ωZE =
+X
+z∈Z
+p(z)pz⊗ω z
+E, ω z
+E(E) :=⟨ξ,PzEξ⟩
+p(z) forp(z)>0,(65)
+soω ZE is precisely the classical–quantum post-measurement state of Alice’s raw key variable
+and Eve’s side information. The following definition is from [14].
+Definition 5.5(Secrecy for privacy amplification in the commuting-operator model).LetK
+be a finite key alphabet and let
+ωKE∈S≤
+ 
+ℓ∞(K)⊗ME
+
+(66)
+be a classical–quantum state. We callω KE ε-secret if
+ωKE− 1
+|K|τK⊗ωE
+≤ε,(67)
+whereτK denotes the canonical trace onℓ ∞(K),ω E is the marginal ofω KE onM E.
+Def. 5.5 is the operator-algebraic analogue of the usual secrecy requirement, that is, the
+ideal key is the uniformly distributed classical state onℓ ∞(K), independent of the adversary’s
+observable algebra. In particular, once the abort event and the public classical transcript are
+included in the standard way, (67) reduces to the same privacy-amplification task that appears
+in the composable definitions of secrecy discussed in Sec. 4.3.
+The quantity governing privacy amplification is the smooth conditional min-entropy. Since
+ℓ∞(Z) is finite-dimensional and canonically embeds as the diagonal algebra inB(C|Z|), the defi-
+nition [14] applies verbatim in our setting. For a classical–quantum stateωZE∈S≤(ℓ∞(Z)⊗ME)
+we define
+Hmin(Z|E)ω :=−log inf
+σE∈N +(ME)
+n
+σE(1) :τZ⊗σE≥ω ZE
+o
+,(68)
+whereτZ is the trace onℓ ∞(Z). Writing
+Bε(ωZE) :=
+n
+eωZE∈S≤
+ 
+ℓ∞(Z)⊗ME
+
+:P(eωZE,ωZE)≤ε
+o
+,(69)
+for theε-ball with respect to the purified distance (cf. [14, Def. 7]), we set
+Hε
+min(Z|E)ω := sup
+eωZE∈Bε(ωZE )
+Hmin(Z|E) eω.(70)
+Equivalently, in terms of the smooth max-relative entropy,
+Hε
+min(Z|E)ω =−inf
+σE∈S(ME)
+Dε
+max
+ 
+ωZE
+τZ⊗σE
+
+.(71)
+At this point it is important that the quantity in (70) is well defined from the cryptographic
+point of view. For any purification, Alice’s key measurement induces a post-measurement state
+onZB, whose complementary system is the adversary’s algebra. After embeddingℓ ∞(Z) diag-
+onally into a matrix algebra, [14, Lem. 1 and Lem. 3] imply thatH ε
+min(Z|E) ω is independent
+of the chosen purification. Hence (70) is an intrinsic quantity of the commuting-operator model
+and thus the correct one-shot measure for privacy amplification.
+The left-over-hash lemma [14, Prop. 21] reduces secrecy to a lower bound onH ε
+min(Z|E)ω in
+the following sense. LetZ,Kbe finite sets with|K|≤|Z|, and let{F,P F}Z,K be a two-universal
+family of hash functionsf:Z→K. For eachf∈F, let
+Tf :ℓ∞(Z)→ℓ ∞(K) (72)
+
+=== page 18 ===
+18 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+denote the induced classical post-processing map. Then for everyε≥0,
+Ef∼PF
+(Tf⊗idE)(ωZE)− 1
+|K|τK⊗ωE
+≤
+q
+|K|2−H ε
+min(Z|E) ω + 4ε.(73)
+In the asymptotic i.i.d. regime, this one-shot quantity (73) is governed by the conditional von
+Neumann entropy. To make this precise, recall that [28] formulates the asymptotic equipartition
+theorem in terms of the smooth max-relative entropy and the Araki relative entropy on general
+von Neumann algebras. For the present classical–quantum situation, this leads naturally to the
+definition
+H(Z|E)ω :=−inf
+σE∈S(ME)
+D
+ 
+ωZE
+τZ⊗σE
+
+.(74)
+Indeed, writing the classical–quantum state in block form as
+ωZE =
+X
+z∈Z
+pz⊗ω z
+E, ω E =
+X
+z∈Z
+ωz
+E,(75)
+the direct-sum structure ofℓ ∞(Z)⊗ME implies
+D
+ 
+ωZE
+τZ⊗σE
+
+=
+X
+z∈Z
+D
+ 
+ωz
+E
+σE
+
+(76)
+for everyσ E∈S(M E). Applying the corresponding identity for Araki relative entropy, which
+is a direct consequence of the definition, yields
+X
+z∈Z
+D
+ 
+ωz
+E
+σE
+
+=
+X
+z∈Z
+D
+ 
+ωz
+E
+ωE
+
++D
+ 
+ωE
+σE
+
+.(77)
+SinceD(ω E∥σE)≥0, with equality if and only ifσ E =ω E, the infimum in (74) is attained at
+the marginalω E. Therefore
+H(Z|E)ω =−D
+ 
+ωZE
+τZ⊗ωE
+
+.(78)
+Combining [14, Prop. 21] with [28, Thm. 1.1], we arrive at the same conceptual conclusion
+as in the finite-dimensional discussion. Up to finite-size corrections, the secrecy of a DIQKD
+protocol is determined by a single-round optimization of a conditional von Neumann entropy
+over all commuting-operator models compatible with the observed statisticsp(a,b|x,y). The
+only difference is that the optimization now has to be carried out in the universal operator-
+algebraic model and with side information represented via the commutant of a purification.
+More concretely, letUA andU B be the universal POVM algebras from Eq. 28, let ˜x∈Xbe the
+key-generation input on Alice’s side, and letM z|˜x∈U A denote the corresponding measurement
+operators. The asymptotic secrecy problem is then reduced to
+infH(Z|E) ωZE
+s.t.ψ∈S(U A⊗maxUB),
+ψ
+ 
+Ma|x⊗Nb|y
+
+=p(a,b|x,y), a,b,x,y,
+(π,H,ξ) is a purification ofψ,
+ME :=π(U A⊗maxUB)′,
+ωZE∈S(ℓ ∞(Z)⊗ME),
+ωZE(pz⊗E) =
+
+ξ, π
+ 
+Mz|˜x⊗1
+
+Eξ
+
+, z∈Z, E∈M E.
+(79)
+Here{p z}z∈Z denotes the canonical basis ofℓ ∞(Z). Comparing this with (27), we conclude a
+similar structure in the commuting operator framework.
+Moreover, there is no loss of generality in fixing the GNS purification ofψ. Indeed, for the
+one-shot quantities relevant to privacy amplification, purification-independence is exactly the
+content of [14, Lem. 1 and Lem. 3]. Combining the argument in [14, Lem. 3] and the asymptotic
+equipartition theorem [28] readily implies that also the conditional von Neumann entropy is
+invariant under the concrete purification. Hence the optimization over arbitrary purifications
+
+=== page 19 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 19
+can be dropped, and one may, without loss of generality, work with the GNS representation
+throughout. Accordingly, if (πψ,Hψ,ξψ) denotes the GNS triple ofψand
+MAB,ψ :=π ψ(UA⊗maxUB)′′,(80)
+then the asymptotic secrecy problem reduces to
+infH(Z|E) ωZE
+s.t.ψ∈S(U A⊗maxUB),
+ψ
+ 
+Ma|x⊗Nb|y
+
+=p(a,b|x,y), a,b,x,y,
+ME :=M′
+AB,ψ,
+ωZE∈S(ℓ ∞(Z)⊗ME),
+ωZE(pz⊗E) =
+
+ξψ, πψ
+ 
+Mz|˜x⊗1
+
+Eξψ
+
+, z∈Z, E∈M E.
+(81)
+Here{pz}z∈Z denotes again the canonical basis ofℓ∞(Z). Comparing this with (27), we conclude
+that the commuting-operator framework leads to the same structural optimization problem,
+except that the underlying model is now formulated canonically in the GNS representation and
+the adversary’s side information is encoded by the commutant.
+Finally, the dilation theorem Theorem 5.4 allows us to replace the universal POVM algebras
+by the universal PVM algebras without changing the value of the program. Consider
+infH(Z|E) ωZE
+s.t.ψ∈S(P A⊗maxPB),
+ψ
+ 
+pa|x⊗qb|y
+
+=p(a,b|x,y), a,b,x,y,
+ME :=M′
+AB,ψ,
+ωZE∈S(ℓ ∞(Z)⊗ME),
+ωZE(pz⊗E) =
+
+ξψ, πψ(pz|˜x)Eξ ψ
+
+, z∈Z, E∈M E,
+(82)
+where nowM AB,ψ :=π ψ(PA⊗maxPB)′′ and we abbreviateπ ψ(pz|˜x) :=π ψ
+ 
+pz|˜x⊗1
+
+.
+Corollary 5.6.The optimal values of(81)and(82)coincide.
+Proof.Denote the value of (81) byh POVM and the value of (82) byh PVM.
+We first showhPOVM≤h PVM. Since the canonical projections{p a|x}a∈Ax⊆P A form POVMs,
+the universal property ofU A yields a unital⋆-homomorphismθ A :U A→P A withθ A
+ 
+Ma|x
+
+=
+pa|x, and similarlyθ B :U B→P B withθ B
+ 
+Nb|y
+
+=q b|y. Composed with the canonical inclusions
+intoP A⊗maxPB, the ranges commute, so by the universal property of the maximal tensor
+product (cf. Proposition 5.1) there exists a unital⋆-homomorphism
+Θ :U A⊗maxUB→P A⊗maxPB,Θ
+ 
+Ma|x⊗Nb|y
+
+=p a|x⊗qb|y,(83)
+which is surjective, since it contains the generatorsp a|x⊗qb|y. Now let (ψ,M E,ωZE) be feasible
+for (82) and setψ ′ :=ψ◦Θ∈S(U A⊗maxUB). Thenψ ′ 
+Ma|x⊗Nb|y
+
+=p(a,b|x,y). Since Θ
+is surjective,ξ ψ is cyclic forπ ψ◦Θ, so by uniqueness of the GNS construction up to unitary
+equivalence [15, II. 6.4.3] (πψ◦Θ,H ψ,ξψ) is the GNS triple ofψ ′, and
+MAB,ψ′ = (πψ◦Θ(UA⊗maxUB))′′ =π ψ(PA⊗maxPB)′′ =M AB,ψ,(84)
+again by density. In particular the commutants agree, so (ψ ′,ME,ωZE) is feasible for (81),
+with the same classical–quantum state becauseπ ψ′
+ 
+Mz|˜x⊗1
+
+=π ψ
+ 
+pz|˜x⊗1
+
+, and hence with
+the same objective value. Taking the infimum yieldsh POVM≤h PVM.
+We now showh PVM≤h POVM. Let (ψ,M E,ωZE) be feasible for (81). By Theorem 5.4 there
+exist a Hilbert spaceH, a unit vectorξ∈H, a unital⋆-representation Π :P A⊗maxPB→B(H)
+and an injective normal unital⋆-homomorphismι:M ′
+AB,ψ→Π(P A⊗maxPB)′ such that
+
+ξψ, πψ
+ 
+Ma|x⊗Nb|y
+
+Eξψ
+
+=
+
+ξ,Π
+ 
+pa|x⊗qb|y
+
+ι(E)ξ
+
+, a,b,x,y, E∈M ′
+AB,ψ.(85)
+
+=== page 20 ===
+20 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Defineψ p :=⟨ξ,Π(·)ξ⟩∈S(P A⊗maxPB). Evaluating (85) atE= 1 givesψ p 
+pa|x⊗qb|y
+
+=
+p(a,b|x,y). Moreover, summing (85) overb∈B y with P
+bNb|y = 1 and P
+b Π
+ 
+pa|x⊗qb|y
+
+=
+Π
+ 
+pa|x⊗1
+
+yields, forx= ˜x,a=zandE∈M E,
+ωZE(pz⊗E) =
+
+ξ,Π
+ 
+pz|˜x⊗1
+
+ι(E)ξ
+
+=:ωp
+ZE(pz⊗ι(E)),(86)
+whereω p
+ZE ∈S(ℓ ∞(Z)⊗ι(ME)) is the classical–quantum state induced by the purification
+(Π,H,ξ) ofψ p with side informationι(M E)⊆Π(P A⊗maxPB)′. By Theorem 5.4,ιrestricts
+to a normal⋆-isomorphism fromM E ontoι(M E), so id⊗ιis a normal⋆-isomorphism from
+ℓ∞(Z)⊗ME ontoℓ∞(Z)⊗ι(ME). By (86) we haveωZE =ω p
+ZE◦(id⊗ι) and, for the marginals,
+ωE =ω p
+E◦ι. Since the relative entropy is invariant under normal⋆-isomorphisms, it follows
+that
+D(ωZE∥τZ⊗ωE) =D(ω p
+ZE∥τZ⊗ω p
+E),(87)
+and henceH(Z|E) ωp
+ZE
+=H(Z|E) ωZE . The tuple (ψ p,ι(ME),ω p
+ZE) is a feasible point with
+respect to the purification (Π,H,ξ), which need not be the GNS purification ofψ p.
+Let ΩZNE ∈S(ℓ ∞(Z)⊗NE) denote the classical–quantum state induced by the same pu-
+rification (Π,H,ξ), whereN E := Π(PA⊗maxPB)′. Thenω p
+ZE is the restriction of Ω ZNE to
+ℓ∞(Z)⊗ι(ME). Hence, by monotonicity of relative entropy under this restriction, enlarging
+Eve’s algebra fromι(M E) toN E can only decrease the conditional entropy,
+H(Z|NE)Ω≤H(Z|ι(M E))ωp =H(Z|E) ωZE.
+By purification independence of the conditional entropy, the left-hand side agrees with the value
+obtained from the GNS purification ofψ p. Let (ψ p,N,ω ′
+ZE) be a feasible point of (82) with
+H(Z|E)ω′
+ZE≤H(Z|E) ωp
+ZE
+=H(Z|E) ωZE.(88)
+Taking the infimum over all feasible points of (81) yieldsh PVM≤h POVM, which completes the
+proof. □
+We close this section with a simple observation regarding the range of the optimization
+problem (82).
+Lemma 5.7.Let
+ωZE∈S
+ 
+ℓ∞(Z)⊗ME
+
+(89)
+be a classical–quantum state, and letω E denote its marginal onM E. Then
+ωZE≤τZ⊗ωE.(90)
+In particular,
+0≤H(Z|E) ω≤log|Z|.(91)
+Proof.Writeω ZE in block form as
+ωZE =
+X
+z∈Z
+pz⊗ω z
+E, ω E =
+X
+z∈Z
+ωz
+E,(92)
+withω z
+E∈N +(ME). Let
+x=
+X
+z∈Z
+pz⊗cz∈
+ 
+ℓ∞(Z)⊗ME
+
++ (93)
+withc z∈M E+. Sinceω z
+E≤ω E for everyz∈Z, we obtain
+ωZE(x) =
+X
+z∈Z
+ωz
+E(cz)≤
+X
+z∈Z
+ωE(cz) = (τZ⊗ωE)(x),(94)
+which proves (90).
+By the discussion above,
+H(Z|E)ω =−D
+ 
+ωZE
+τZ⊗ωE
+
+.(95)
+
+=== page 21 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 21
+Using (90) together with Lemma 3.1(i), we get
+D
+ 
+ωZE
+τZ⊗ωE
+
+≤D
+ 
+ωZE
+ωZE
+
+= 0,(96)
+and hence
+H(Z|E)ω≥0.(97)
+For the upper bound, let
+uZ := 1
+|Z|τZ.(98)
+ThenuZ⊗ωE is a state, so by nonnegativity of the Araki relative entropy,
+D
+ 
+ωZE
+uZ⊗ωE
+
+≥0.(99)
+SinceτZ =|Z|u Z andω ZE is a state, Lemma 3.1(ii) yields
+D
+ 
+ωZE
+τZ⊗ωE
+
+=D
+ 
+ωZE
+uZ⊗ωE
+
+−log|Z|.(100)
+Therefore
+D
+ 
+ωZE
+τZ⊗ωE
+
+≥−log|Z|,(101)
+or equivalently,
+H(Z|E)ω≤log|Z|.(102)
+This proves (91).□
+6.Operator layer cake on von Neumann algebras
+In order to solve (82), we show in the following the main theorem of this work, which is an
+integral formula for the relative entropy introduced by Frenkel [30] on von Neumann algebras.
+Given two positive semidefinite matricesρ,σ∈M n(C), [30] shows
+D(ρ∥σ) = tr[ρ−σ] +
+Z
+R
+dt
+|t|(t−1) 2 tr−[(1−t)ρ+tσ],(103)
+whereby the tr−[·] denotes the negative part of an hermitian matrix argument. In subsequent
+work it has been shown that the formula (103) can be seen as a special type off-divergence,
+which are commonly defined for a twice continuously-differentiable functionfwithf(1) = 0 as
+Df(ρ∥σ) :=
+Z ∞
+1
+f′′(s) tr+[ρ−sσ]ds+
+Z ∞
+1
+s−3f′′(s−1) tr+[σ−sρ]ds.(104)
+For the specific functionf(s) =slogs, a direct integration by parts argument with (103) yields
+D(ρ∥σ)≡D slogs (ρ∥σ) =
+Z ∞
+1
+ds
+s tr+[ρ−sσ] +
+Z ∞
+1
+ds
+s2 tr+[σ−sρ].(105)
+As the goal is to generalize the formula from (103), we introduce the main ingredient for this
+first, which is theoperator-layer cakeformula, for matrices presented in [48]. The operator layer-
+cake formula is given by the following expression for the Gˆ ateaux derivative of the logarithm
+for a matrixA>0 andB=B ⋆
+D log(A)[B] =
+Z ∞
+0
+[B−uA>0]du−
+Z 0
+−∞
+[uA−B >0]du,(106)
+whereby [H >0] means the unique projection on the positive part ofH. The matter of the
+following theorem is to generalize this formula to a separable Hilbert spaceH.
+
+=== page 22 ===
+22 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Theorem 6.1(Operator layer cake).LetHbe a separable Hilbert space and letA,B∈B(H)
+withA≥δIfor someδ >0andB=B ∗. Then the following identity holds in strong operator
+topology:
+D log(A)[B] =
+Z ∞
+0
+H(B−uA)du−
+Z 0
+−∞
+(I−H(B−uA))du,(107)
+whereH(·)denotes the Heaviside function defined in(108)below.
+Proof.We define the Heaviside function as
+H(x) :=
+
+
+
+0x<0
+1
+2 x= 0
+1x>0.
+(108)
+Fixε>0 and define bounded continuous functions
+f +
+ε (x) := 1
+2
+
+1 + 2
+π arctan
+x
+ε
+
+,
+f−
+ε (x) := 1
+2
+
+1− 2
+π arctan
+x
+ε
+
+= 1−f +
+ε (x).
+(109)
+Then 0≤f ±
+ε ≤1, andf +
+ε (x)→H(x),f −
+ε (x)→1−H(x) pointwise asε↓0, including at
+x= 0, wheref ±
+ε (0) = 1
+2 =H(0).
+Forr >0 set
+Tε,r :=
+Z r
+0
+f +
+ε (B−uA)du−
+Z 0
+−r
+f−
+ε (B−uA)du.(110)
+Sinceu7→f ±
+ε (B−uA) is continuous and uniformly bounded by 1, the integrals exist as Bochner
+integrals in norm topology.
+Moreover, for each fixeduandξ∈H, the pointwise convergencef ±
+ε →H,1−HonR
+together with dominated convergence with respect to the spectral measure ofB−uAyields
+f +
+ε (B−uA)ξ− − →
+ε↓0
+H(B−uA)ξ, f −
+ε (B−uA)ξ− − →
+ε↓0
+(I−H(B−uA))ξ.(111)
+Applying dominated convergence once more, now in the variableuwith the integrable bound
+∥f±
+ε (B−uA)ξ∥≤∥ξ∥on the compact interval [−r,r], we obtain the strong limit
+Tε,r
+s.o.t.
+−−→
+ε↓0
+Z r
+0
+H(B−uA)du−
+Z 0
+−r
+(1−H(B−uA))du.(112)
+Note thatf ±
+ε cannot converge uniformly toH,1−H, since a uniform limit of continuous
+functions is continuous; the convergence therefore only holds strongly.
+Using the identity
+arctan(t) = 1
+2i (log(1 +it)−log(1−it)),(113)
+one checks that for realx
+f +
+ε (x) = 1
+2 + 1
+2πi (log(ε+ix)−log(ε−ix)), f −
+ε (x) = 1−f +
+ε (x).(114)
+By continuous functional calculus this lifts to selfadjoint operators, and in particular (using
+(18))
+f +
+ε (X) = 1
+2I+ 1
+2πi (log(εI+iX)−log(εI−iX)), X=X ∗.(115)
+
+=== page 23 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 23
+InsertX=B−uAand use that the 1
+2Icontributions cancel in (110), since both domains of
+integration have lengthr, to obtain
+Tε,r = 1
+2πi
+Z r
+−r
+log(εI+i(B−uA))du−
+Z r
+−r
+log(εI−i(B−uA))du
+
+.(116)
+Consider the operator-valued functions of a complex parameterz,
+F+(z) := log(εI+i(B−zA)), F −(z) := log(εI−i(B−zA)).(117)
+We claim thatF + is holomorphic on the strip
+Σ+ :=
+
+z∈C:ℑz >− ε
+2∥A∥
+
+,(118)
+andF− is holomorphic on
+Σ− :=
+
+z∈C:ℑz < ε
+2∥A∥
+
+.(119)
+Indeed, forz=u+ivwe have
+εI+i(B−zA) =εI+i(B−uA) +vA,(120)
+so
+ℜ(εI+i(B−zA)) =εI+vA.(121)
+SinceA≥0, we distinguish two cases. Ifv≥0, thenvA≥0, hence
+ℜ(εI+i(B−zA))≥εI≥ ε
+2I.(122)
+If−ε/(2∥A∥)<v <0, thenA≤∥A∥Iand therefore, becausev <0,
+vA≥v∥A∥I,(123)
+so
+ℜ(εI+i(B−zA)) =εI+vA≥(ε+v∥A∥)I > ε
+2I.(124)
+Hence for allzwithℑz=v >−ε/(2∥A∥) we have
+ℜ(εI+i(B−zA))≥ ε
+2I.(125)
+In particular,
+σ(εI+i(B−zA))⊂{w∈C:ℜw≥ε/2}⊂C\(−∞,0],(126)
+so the principal-branch logarithm is well-defined andF + is holomorphic on Σ+ by the holomor-
+phic functional calculus.
+Similarly,
+εI−i(B−zA) =εI−i(B−uA)−vA,(127)
+hence
+ℜ(εI−i(B−zA)) =εI−vA.(128)
+Ifv≤0, then−vA≥0 and thus
+ℜ(εI−i(B−zA))≥εI≥ ε
+2I.(129)
+If 0<v <ε/(2∥A∥), thenA≤∥A∥Iimplies
+−vA≥−v∥A∥I,(130)
+and therefore
+ℜ(εI−i(B−zA)) =εI−vA≥(ε−v∥A∥)I > ε
+2I.(131)
+
+=== page 24 ===
+24 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Hence for allzwithℑz=v <ε/(2∥A∥) we have
+ℜ(εI−i(B−zA))≥ ε
+2I,(132)
+which implies
+σ(εI−i(B−zA))⊂{w∈C:ℜw≥ε/2}⊂C\(−∞,0].(133)
+Therefore the principal-branch logarithm is well-defined andF − is holomorphic on Σ−.
+LetC r,+ :={re iθ : 0≤θ≤π}⊆Σ + andC r,− :={re iθ :−π≤θ≤0}⊆Σ −. By holomorphy
+and Cauchy’s theorem applied to the closed contours formed by [−r,r]∪C r,+ inside Σ + and
+[r,−r]∪C r,− inside Σ−, we obtain
+Z r
+−r
+F+(u)du=−
+Z
+Cr,+
+F+(z)dz,−
+Z r
+−r
+F−(u)du=−
+Z
+Cr,−
+F−(z)dz.(134)
+Substituting into (116) yields
+Tε,r = 1
+2πi
+ 
+−
+Z
+Cr,+
+F+(z)dz−
+Z
+Cr,−
+F−(z)dz
+!
+.(135)
+Now invokeA≥δI, and chooser >∥B∥/δ(fixed). ThenAis invertible and for everyzwith
+|z|=rwe can write
+B−zA=−zA
+ 
+I−z −1A−1B
+
+.(136)
+Since
+z−1A−1B
+≤ 1
+r∥A−1∥∥B∥≤ ∥B∥
+rδ <1,(137)
+the operatorI−z −1A−1Bis invertible by the Neumann series argument, henceB−zAis
+invertible for all|z|=r. In particular,
+i(B−zA) and−i(B−zA) (138)
+are invertible onC r,+ andC r,−, respectively.
+Moreover, ifz=u+iv∈C r,+, thenv≥0 and
+ℜ(i(B−zA)) =vA≥0.(139)
+Hence
+σ(i(B−zA))⊂{w∈C:ℜw≥0}.(140)
+Sincei(B−zA) is invertible andz7→(B−zA) −1 is continuous on the compact arcC r,+, there
+existsη + >0 such that
+σ(i(B−zA))⊂{w∈C:ℜw≥0,|w|≥η +}(z∈C r,+).(141)
+Similarly, forz=u+iv∈C r,− we havev≤0 and
+ℜ(−i(B−zA)) =−vA≥0,(142)
+and there existsη − >0 such that
+σ(−i(B−zA))⊂{w∈C:ℜw≥0,|w|≥η −}(z∈C r,−).(143)
+Setη := min{η +,η−}>0. Forw∈Cwithℜw≥0 andε≥0 we have|w+ε| 2 =
+|w|2 + 2εℜw+ε 2≥|w| 2, so the shift byεdoes not decrease the distance to the branch cut.
+Hence for allε≥0,
+σ(εI+i(B−zA))⊂{w∈C:ℜw≥0,|w|≥η}⊂C\(−∞,0] (z∈C r,+),(144)
+and
+σ(εI−i(B−zA))⊂{w∈C:ℜw≥0,|w|≥η}⊂C\(−∞,0] (z∈C r,−).(145)
+
+=== page 25 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 25
+Therefore the principal logarithm is defined also atε= 0, and by continuity of the holomorphic
+functional calculus uniformly on the compact arcs we have
+F+(z)−→log(i(B−zA)) forε→0 uniformly in operator norm onC r,+,(146)
+and
+F−(z)−→log(−i(B−zA)) forε→0 uniformly in operator norm onC r,−.(147)
+Hence we may pass to the limitε→0 in (135), in operator norm, obtaining
+lim
+ε↓0
+Tε,r = 1
+2πi
+ 
+−
+Z
+Cr,+
+log(i(B−zA))dz−
+Z
+Cr,−
+log(−i(B−zA))dz
+!
+.(148)
+We next simplify the right-hand side of (148). For|z|=r, writez=re iθ. Since the choice
+ofrimplies
+rI >A−1/2BA−1/2 >−rI,(149)
+we have
+ℜ(A−z −1B) =A−r −1 cos(θ)B
+=A 1/2 
+I−r −1 cos(θ)A−1/2BA−1/2
+A1/2 >0.(150)
+Hence, the spectrum ofA−z −1Blies in the open right half-plane. Moreover, onC r,+, the
+scalar−zilies in the closed right half-plane, while onC r,−, the scalarzilies in the closed right
+half-plane. Therefore, by the scalar principal-logarithm identity and holomorphic functional
+calculus,
+log(i(B−zA)) = log(−zi)I+ log(A−z −1B), z∈C r,+,(151)
+log(−i(B−zA)) = log(zi)I+ log(A−z −1B), z∈C r,−.(152)
+Using (151) and (152), we obtain
+Z
+Cr,+
+log(i(B−zA))dz+
+Z
+Cr,−
+log(−i(B−zA))dz
+=
+Z
+Cr,+
+log(A−z −1B)dz+
+Z
+Cr,−
+log(A−z −1B)dz+
+Z
+Cr,+
+log(−zi)Idz+
+Z
+Cr,−
+log(zi)Idz.
+(153)
+The scalar logarithmic terms cancel by the substitutionw=−z:
+Z
+Cr,+
+log(−zi)Idz+
+Z
+Cr,−
+log(zi)Idz=
+Z
+Cr,+
+log(−zi)Idz−
+Z
+Cr,+
+log(−wi)Idw= 0.(154)
+Consequently,
+Z
+Cr,+
+log(i(B−zA))dz+
+Z
+Cr,−
+log(−i(B−zA))dz=
+I
+|z|=r
+log(A−z −1B)dz.(155)
+Combining this with (148), we get
+lim
+ε↓0
+Tε,r =− 1
+2πi
+I
+|z|=r
+log(A−z −1B)dz.(156)
+It remains to evaluate the full-circle integral. Since
+d
+dz log(A−z −1B) = D log(A−z −1B)[B]z−2,(157)
+
+=== page 26 ===
+26 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+integration by parts givesI
+|z|=r
+log(A−z −1B)dz=−
+I
+|z|=r
+z−1 D log(A−z −1B)[B]dz
+=−
+Z 2π
+0
+D log
+ 
+A−(re iθ)−1B
+
+[B]·idθ.(158)
+Therefore,
+lim
+ε↓0
+Tε,r = 1
+2πi
+Z 2π
+0
+D log
+ 
+A−(re iθ)−1B
+
+[B]·idθ.(159)
+So far, we have
+Z r
+0
+H(B−uA)du−
+Z 0
+−r
+(1−H(B−uA))du= 1
+2πi
+Z 2π
+0
+D log
+ 
+A−(re iθ)−1B
+
+[B]·idθ.
+(160)
+SinceH(B−uA) and 1−H(B−uA) vanish foru > r >∥B∥/δandu <−r <−∥B∥/δ,
+respectively, the integrals on both sides are independent ofr >∥B∥/δ. We can taker→∞
+and recall that the Fr´ echet derivative D log(·)[B] is continuous to arrive at
+Z ∞
+0
+H(B−uA)du−
+Z 0
+−∞
+(1−H(B−uA))du= 1
+2πi
+Z 2π
+0
+D log(A)[B]·idθ= D log(A)[B]
+(161)
+as desired. □
+Our first minor result is the layer cake representation of the relative entropy for strictly
+positive densities in a von Neumann algebra. This is to be compared with [48, Prop. 4.1],
+which shows the result for matrices.
+Proposition 6.2(Layer cake forD(ρ∥σ) in the finite tracial case).Let(M,τ)be a finite von
+Neumann algebra and letρ,σ∈M + be strictly positive, not necessarily normalized. Then
+D(ρ∥σ) =
+Z ∞
+1
+1
+γ τ(ρ(H(ρ−γσ)−H(σ−γρ)))dγ,(162)
+whereH(X)denotes the Heaviside function applied to the selfadjoint operatorXvia the Borel
+functional calculus.
+Proof.SetA t := (1−t)σ+tρfort∈[0,1]. ThenA t is strictly positive for allt, sinceρand
+σare; note that this and all subsequent steps use only strict positivity and at no point the
+normalization ofρorσ. By the fundamental theorem of calculus and (15),
+D(ρ∥σ) =τ(ρlogρ)−τ(ρlogσ) =
+Z 1
+0
+d
+dtτ(ρlogA t)dt=
+Z 1
+0
+τ(ρD log(A t)[ρ−σ])dt.(163)
+Apply Theorem 6.1 insideMwithA=A t andB=ρ−σ:
+D log(At)[ρ−σ] =
+Z ∞
+0
+H(ρ−σ−uA t)du−
+Z 0
+−∞
+ 
+1−H(ρ−σ−uA t)
+
+du.(164)
+Insert into (163) and use normality ofτto exchangeτwith the (bounded, finite-range) strong
+integrals:
+D(ρ∥σ) =
+Z 1
+0
+Z ∞
+0
+τ(ρH(ρ−σ−uA t))dudt
+−
+Z 1
+0
+Z 0
+−∞
+τ(ρ(1−H(ρ−σ−uA t)))dudt.(165)
+We now identify the Heaviside terms. For the first term,
+ρ−σ−uA t = (ρ−σ)−u((1−t)σ+tρ) = (1−ut)ρ−(1 +u(1−t))σ.
+
+=== page 27 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 27
+For fixedt∈(0,1], the coefficient 1−utis positive precisely when 0≤u<1/t. On this interval
+we may rewrite
+(1−ut)ρ−(1 +u(1−t))σ= (1−ut)
+ 
+ρ−γσ
+
+, γ=γ(u,t) := 1 +u(1−t)
+1−ut ,
+and since 1−ut>0 we have
+H
+ 
+(1−ut)ρ−(1 +u(1−t))σ
+
+=H(ρ−γσ).
+Foru≥1/tthe operator (1−ut)ρ−(1 +u(1−t))σis strictly negative (becauseρ,σare strictly
+positive), hence its Heaviside value is 0. Moreover, for fixedt∈(0,1), the mapu7→γ(u,t) is
+aC 1 bijection from [0,1/t) onto [1,∞). A direct computation gives the Jacobian
+u= γ−1
+γt+ (1−t) , ∂u
+∂γ = 1
+(γt+ (1−t)) 2.(166)
+Hence
+Z 1
+0
+Z ∞
+0
+τ(ρH(ρ−σ−uA t))dudt=
+Z 1
+0
+Z ∞
+1
+τ(ρH(ρ−γσ)) 1
+(γt+ (1−t)) 2dγdt.(167)
+Now integrate intexplicitly:
+Z 1
+0
+dt
+(γt+ (1−t)) 2 =
+Z 1
+0
+dt
+(1 +t(γ−1)) 2 =
+
+− 1
+(γ−1)(1 +t(γ−1))
+t=1
+t=0
+= 1
+γ.
+Therefore
+Z 1
+0
+Z ∞
+0
+τ(ρH(ρ−σ−uA t))dudt=
+Z ∞
+1
+1
+γ τ(ρH(ρ−γσ))dγ.(168)
+For the second term in (165), use 1−H(X) =H(−X) and then substituteu=−vwith
+v≥0:
+1−H(ρ−σ−uA t) =H
+ 
+−(ρ−σ−uA t)
+
+,(169)
+so
+1−H(ρ−σ−uA t)
+
+u=−v
+=H(σ−ρ−vA t).
+Repeating the same change-of-variables computation as above (withρ,σinterchanged) yields
+Z 1
+0
+Z 0
+−∞
+τ(ρ(1−H(ρ−σ−uA t)))dudt=
+Z ∞
+1
+1
+γ τ(ρH(σ−γρ))dγ.(170)
+Subtracting (170) from (168) gives (162).□
+6.1.The Frenkel–Jenˇ cov´ a integral formula.In this subsection we derive from Proposi-
+tion 6.2 an integral representation of the Umegaki relative entropy for arbitrary positive normal
+functionals on arbitrary von Neumann algebras. This will be an extension of the integral for-
+mula by Frenkel [30], which was previously just known on matrix algebras and limits of matrix
+algebras.
+We begin by recalling the Jordan decomposition for normal functionals on a von Neumann
+algebra. LetMbe a von Neumann algebra and letϕ∈M ⋆
+sa be a self-adjoint normal functional.
+Thenϕadmits a unique decomposition
+ϕ=ϕ +−ϕ−,(171)
+whereϕ +,ϕ−∈M ⋆
++ are positive normal functionals with mutually orthogonal support projec-
+tions (cf. [74, III.4.2]). In particular,
+ϕ+(1) = sup
+p∈P(M)
+ϕ(p) = sup
+x∈M,0≤x≤1
+ϕ(x),(172)
+
+=== page 28 ===
+28 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+whereP(M) denotes the lattice of projections inM. For brevity we write
+(sσ−ρ) + (1) := sup
+p∈P(M)
+(sσ(p)−ρ(p)) (173)
+forρ,σ∈M ⋆
++ ands≥0. If (M,τ) carries a faithful normal trace, we identifyρ∈M + with
+the functionalτ(ρ·)∈M ⋆
++; in this identification (172) reads
+τ(X +) = sup
+p∈P(M)
+τ(pX), X=X ⋆∈M,(174)
+with the supremum attained at the support projection1 (0,∞)(X) ofX +. We further remark
+that ifA,B∈ Msatisfy the assumptions of Theorem 6.1, then all spectral projections of
+B−uAbelong toMby Borel functional calculus, and the strong integrals in (107) converge
+to an element ofM. In the following lemma we show that the value of the Heavyside function
+at 0 does not affect the integrals.
+Lemma 6.3.Let(M,τ)be a von Neumann algebra with faithful normal semifinite trace. Let
+A,B∈MwithA≥δ1,δ >0, andB=B ⋆, and letρ∈L 1(M,τ) +. Then the set
+
+u∈R
+ τ
+ 
+ρ1{0}(B−uA)
+
+>0
+	
+(175)
+is countable, hence a Lebesgue null set. In particular, definingH θ(T) :=1 (0,∞)(T) +θ1 {0}(T)
+and
+Φθ :=
+Z ∞
+0
+Hθ(B−uA)du−
+Z 0
+−∞
+(1−H θ(B−uA))du, θ∈[0,1],(176)
+the valueτ(ρΦ θ)is independent ofθ.
+Proof.DefineP(u) :=1{0}(B−uA)∈M. For a self-adjointTwe have
+Hθ1(T)−H θ0(T) = (θ 1−θ 0)1{0}(T),(177)
+hence
+Φθ1−Φθ0 = (θ1−θ 0)
+Z
+R
+P(u)du.(178)
+By positivity and monotone convergence we may interchange the integration withτ(ρ·), so the
+second claim follows from the first, since a countable set has Lebesgue measure zero and thusR
+Rτ(ρP(u))du= 0.
+For the first claim consider the GNS-representation ofτonL 2(M,τ) and defineξ :=ρ 1/2∈
+L2(M,τ). SinceP(u) is a projection, we have
+τ(ρP(u)) =⟨ξ,P(u)ξ⟩=∥P(u)ξ∥ 2
+2.(179)
+AsA≥δ1, we can define the bounded and self-adjoint operator
+C :=A−1/2BA−1/2∈M.(180)
+Thenζ :=A−1/2ξ∈L 2(M,τ) and we define the finite Borel measure
+µ(Ω) :=⟨ζ,1 Ω(C)ζ⟩,Ω⊆RBorel.(181)
+Sinceµis finite, its set of atoms
+S :={u∈R|µ({u})>0}=
+
+u∈R
+∥1{u}(C)ζ∥ 2 >0
+	
+(182)
+is countable. We prove thatP(u)ξ̸= 0 implies1 {u}(C)ζ̸= 0. AssumeP(u)ξ̸= 0 and set
+η :=P(u)ξ. Thenη∈ker(B−uA), whereB−uAacts onL 2(M,τ) via left-multiplication, i.e.
+(B−uA)η= 0.(183)
+Indeed, asAhas a bounded inverse, we have
+0 =A−1/2(B−uA)η=
+ 
+A−1/2BA−1/2−u
+
+A1/2η= (C−u)A 1/2η,(184)
+
+=== page 29 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 29
+soA 1/2η∈ker(C−u) = Ran
+ 
+1{u}(C)
+
+. Now compute
+⟨A1/2η,ζ⟩=⟨A 1/2η,A−1/2ξ⟩=⟨η,ξ⟩=⟨P(u)ξ,ξ⟩=∥P(u)ξ∥ 2
+2 >0 (185)
+by assumption, soA 1/2ηis not orthogonal toζ, which forces1 {u}(C)ζ̸= 0, i.e.u∈S. Hence
+{u|τ(ρP(u))>0}⊆Sis countable.□
+Taking Lemma 6.3 and the operator layer cake formula Theorem 6.1 together yields the
+following integral formula for the Umegaki relative entropy on finite von Neumann algebras.
+Proposition 6.4(Frenkel’s formula in the finite tracial case).Let(M,τ)be a finite von
+Neumann algebra with faithful normal tracial stateτand letρ,σ∈M + withs(ρ)≤s(σ), not
+necessarily normalized or invertible. Then
+D(ρ∥σ) =τ(ρ−σ) +
+Z 1
+0
+1
+sτ
+ 
+(sσ−ρ) +
+
+ds+
+Z ∞
+1
+1
+sτ
+ 
+(ρ−sσ) +
+
+ds,(186)
+with both sides possibly infinite.
+Proof.Assume first thatρ,σare strictly positive. By Proposition 6.2 and Lemma 6.3, applied
+with the functionalτ(ρ·) and the pairs (A,B) = (σ,ρ) and (A,B) = (ρ,σ) to replace the
+conventionH(0) = 1
+2 by the strict spectral projections on a set of full measure, we have
+D(ρ∥σ) =
+Z ∞
+1
+1
+sτ(ρ(p s−qs))ds, p s :=1 (0,∞)(ρ−sσ), q s :=1 (0,∞)(σ−sρ).(187)
+Sincep s andq s are the support projections of (ρ−sσ) + and (σ−sρ) +, we haveτ
+ 
+(ρ−sσ) +
+
+=
+τ(ρps)−sτ(σp s) andτ
+ 
+(σ−sρ) +
+
+=τ(σq s)−sτ(ρq s), whence
+1
+sτ(ρ(p s−qs)) = 1
+sτ
+ 
+(ρ−sσ) +
+
++ 1
+s2τ
+ 
+(σ−sρ) +
+
++τ(σp s)− 1
+s2τ(σqs).(188)
+The substitutions7→1/stogether with (σ−s −1ρ)+ =s −1 (sσ−ρ) + turns the second term
+into the first integral of (186),
+Z ∞
+1
+1
+s2τ
+ 
+(σ−sρ) +
+
+ds=
+Z 1
+0
+1
+sτ
+ 
+(sσ−ρ) +
+
+ds,(189)
+so it remains to show Z ∞
+1
+τ(σps)ds−
+Z ∞
+1
+1
+s2τ(σqs)ds=τ(ρ−σ).(190)
+ConsiderF(s) :=τ
+ 
+(ρ−sσ) +
+
+fors≥0. By the variational formulaτ(X +) = supp∈P(M)τ(pX),
+Fis a supremum of affine functions ofs, hence convex, withF(0) =τ(ρ) andF(s) = 0 for
+s≥
+σ−1/2ρσ−1/2. Evaluating the variational formula at the projectionsp s andp s+h, which
+are optimal atsands+hrespectively, gives forh>0
+−τ(σps)≤ F(s+h)−F(s)
+h ≤−τ(σp s+h),(191)
+sos7→τ(σp s) is non-increasing andF ′(s) =−τ(σp s) at almost everys. As a finite convex
+function,Fis locally absolutely continuous, and the fundamental theorem of calculus yields
+Z b
+a
+τ(σps)ds=F(a)−F(b),0≤a≤b,(192)
+in particular
+R∞
+1 τ(σps)ds=F(1). For the second term in (190), the substitutions7→1/sand
+the fact thatσ−s −1ρandsσ−ρhave the same strictly positive spectral projection give
+Z ∞
+1
+1
+s2τ(σqs)ds=
+Z 1
+0
+τ
+ 
+σ1 (0,∞)(sσ−ρ)
+
+ds.(193)
+
+=== page 30 ===
+30 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Since1 (0,∞)(sσ−ρ) =1−p s−1{0}(ρ−sσ) and, by Lemma 6.3 applied with the functional
+τ(σ·), the kernel term vanishes for almost everys, we obtain with (192)
+Z ∞
+1
+1
+s2τ(σqs)ds=
+Z 1
+0
+(τ(σ)−τ(σp s))ds=τ(σ)−τ(ρ) +F(1),(194)
+which proves (190). Integrating (188) overs∈[1,∞) and inserting (187), (189) and (190)
+establishes (186) for strictly positiveρ,σ; note that all integrals are finite in this case, since the
+integrands vanish outside a compact subset of (0,∞) and are bounded.
+Now letρ,σ∈M + be arbitrary withs(ρ)≤s(σ), and set
+ρε := ρ+ε1
+1 +ε , σ ε := σ+ε1
+1 +ε , ε>0,(195)
+which are strictly positive, so that (186) holds for (ρ ε,σε). We now justify the passage to the
+limitε↓0 in the entropy term. We use joint convexity and lower semicontinuity of the relative
+entropy for positive normal functionals, which follow from Kosaki’s variational formula [43].
+Put
+λε := 1
+1 +ε.
+Then,
+(ρε,σε) =λ ε(ρ,σ) + (1−λ ε)(1,1).
+SinceD(1∥1) = 0, joint convexity gives
+D(ρε∥σε)≤λ εD(ρ∥σ).
+Consequently,
+lim sup
+ε↓0
+D(ρε∥σε)≤D(ρ∥σ) in (−∞,+∞].
+Moreover,
+τ
+ 
+|ρε−ρ|
+
+= ε
+1 +ετ
+ 
+|1−ρ|
+
+≤ ε
+1 +ε
+ 
+τ(1) +τ(ρ)
+
+→0,
+and similarly
+τ
+ 
+|σε−σ|
+
+≤ ε
+1 +ε
+ 
+τ(1) +τ(σ)
+
+→0.
+Thus the positive normal functionals represented byρ ε andσ ε converge in norm to those
+represented byρandσ, respectively. Hence lower semicontinuity gives
+D(ρ∥σ)≤lim inf
+ε↓0
+D(ρε∥σε).
+Combining the two inequalities yields
+D(ρε∥σε)→D(ρ∥σ) in (−∞,+∞].
+For the right-hand side,τ(ρ ε−σε) =τ(ρ−σ)/(1 +ε)→τ(ρ−σ), and sinceX7→τ(X +)
+satisfies|τ(X +)−τ(Y +)|≤∥X−Y∥ 1, both integrands converge pointwise ins. On (0,1] the
+integrands are uniformly bounded, since 1
+sτ
+ 
+(sσε−ρε)+
+
+≤τ(σ ε)≤τ(σ)+ετ(1), so dominated
+convergence applies. On [1,∞) we haveρ ε−sσε≤(ρ−sσ)/(1 +ε), hence by monotonicity of
+X7→τ(X +)
+1
+sτ
+ 
+(ρε−sσε)+
+
+≤ 1
+sτ
+ 
+(ρ−sσ) +
+
+.(196)
+If the right-hand side is integrable on [1,∞), dominated convergence applies; if not, Fatou’s
+lemma forces the integrals to diverge alongε↓0 as well. In either case the right-hand side
+of (186) for (ρ ε,σε) converges in (−∞,+∞] to the right-hand side for (ρ,σ), and the identity
+extends. □
+
+=== page 31 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 31
+To generalize the formula in Proposition 6.4 to arbitrary von Neumann algebras, we use the
+concrete form of Haagerup’s reduction theorem. The point requiring care is that the finite
+approximating states must have bounded densities with respect to the finite traces before
+Proposition 6.4 can be applied; this is ensured below by choosing the reference state in the
+reduction to dominate the two states under consideration.
+Theorem 6.5(Frenkel formula for general von Neumann algebras).LetMbe a von Neumann
+algebra and letρ,σ∈M ⋆
++ withsM(ρ)≤s M(σ). Then
+D(ρ∥σ) = (ρ−σ) (1) +
+Z 1
+0
+1
+s (sσ−ρ) + (1)ds+
+Z ∞
+1
+1
+s (ρ−sσ) + (1)ds,(197)
+with both sides possibly infinite.
+Proof.Ifρ= 0, thenD(0∥σ) = 0 and the right-hand side of (197) is−σ(1) +
+R 1
+0 σ(1)ds= 0.
+We therefore assumeρ̸= 0. The support assumption then impliesσ̸= 0.
+For a unital von Neumann algebraAand positive normal functionalsα,β∈A ⋆
++, write
+FA(α,β) := (α−β)(1 A) +
+Z 1
+0
+1
+s (sβ−α) +(1A)ds+
+Z ∞
+1
+1
+s (α−sβ) +(1A)ds.
+We first reduce the identity to the case of states. Put
+a :=ρ(1), b :=σ(1),¯ρ :=a−1ρ,¯σ :=b−1σ, c :=b/a.
+The scaling in the first argument follows directly from the standard-form definition of Araki
+relative entropy:ξ a¯ρ=a 1/2ξ¯ρand ∆(σ,a¯ρ) =a−1∆(σ,¯ρ), henceD(a¯ρ∥σ) =aD(¯ρ∥σ) +aloga.
+Combining this with the scaling in the second argument from Lemma 3.1 gives
+D(ρ∥σ) =aD(¯ρ∥¯σ) +aloga
+b.(198)
+On the right-hand side, the substitutionw=csand the homogeneity of the positive part give
+FM(ρ,σ) =a−b+a
+Z c
+0
+1
+w (w¯σ−¯ρ)+(1)dw+
+Z ∞
+c
+1
+w (¯ρ−w¯σ)+(1)dw
+
+.
+For everyw >0, the Jordan decomposition identityω +(1)−(−ω) +(1) =ω(1), applied to
+ω=w¯σ−¯ρ, gives
+(w¯σ−¯ρ)+(1)−(¯ρ−w¯σ)+(1) =w−1.
+Thus, with the integral over [1,c] interpreted as an oriented integral whenc<1,
+FM(ρ,σ)−aF M(¯ρ,¯σ) =a−b+a
+Z c
+1
+w−1
+w dw=alog a
+b.(199)
+It is therefore enough, by (198) and (199), to prove the formula whenρandσare states.
+Assume from now on thatρ,σ∈S(M). Letp=s M(σ). Sinces M(ρ)≤p, both functionals
+are supported onp. Passing fromMto the cornerpMpdoes not change either side of (197):
+for the Jordan terms, ifωis any self-adjoint normal functional supported onp, then
+ωM
++ (1) = sup
+0≤x≤1M
+ω(x) = sup
+0≤y≤p
+ω(y) =ω pMp
++ (p),
+and the equality of Araki relative entropy under this support reduction is standard from the
+definition in standard form [5, 74]. After this replacement, and relabellingpMpasM, we may
+suppose thatσis faithful; in particularMisσ-finite. Set
+φ := 1
+2(ρ+σ).
+Thenφis a faithful normal state andρ,σ≤2φ.
+Apply Haagerup’s reduction theorem to (M,φ) in its concrete crossed-product form [32,
+Thm. 2.1, Lem. 2.4]. ThusMembeds into an ambient von Neumann algebra fM, there is a
+
+=== page 32 ===
+32 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+normal faithful conditional expectationE: fM→M, and there is an increasing sequence of
+finite von Neumann subalgebras (Mn)n≥1 whose union isσ-weakly dense in fM. Let
+eρ:=ρ◦E,eσ :=σ◦E,eφ :=φ◦E, ρ n :=eρ|Mn, σ n :=eσ|Mn.
+The same concrete reduction writesMn as the centralizer of a normal faithful positive functional
+φn, whose restrictionτ n :=φ n|Mn is a normal faithful finite trace, and there is a bounded
+positive elementa n∈M n such that
+φn(x) =eφ(e−anx),0≤a n≤α n1, α n := 2n+1π.
+Sinceeρ,eσ≤2eφ, forx∈(M n)+ we obtain
+ρn(x)≤2eφ(x) = 2τn(eanx) = 2τn(ean/2xean/2)≤2e αnτn(x),(200)
+and the same bound holds forσ n. Hence, by the Radon–Nikodym theorem for normal func-
+tionals dominated by a finite trace [74], the functionalsρ n andσ n are represented by bounded
+positive densities inM n with respect toτ n. Moreover,s Mn(ρn)≤s Mn(σn): ifx∈(M n)+ and
+σn(x) = 0, thenσ(E(x)) = 0, whenceρ(E(x)) = 0 bys M(ρ)≤s M(σ), and thereforeρ n(x) = 0.
+We may now apply Proposition 6.4 inside (Mn,τn) to these bounded densities. Sinceρ n and
+σn are states, the mass term vanishes and
+D(ρn∥σn) =
+Z 1
+0
+1
+s (sσn−ρn)+(1)ds+
+Z ∞
+1
+1
+s (ρn−sσn)+(1)ds.(201)
+By the entropy approximation part of Haagerup reduction [28, Prop. 2.2],
+lim
+n→∞
+D(ρn∥σn) =D(eρ∥eσ) =D(ρ∥σ),(202)
+where the last equality follows becauseEis a conditional expectation onto the embedded copy
+ofM.
+It remains to pass to the limit in the two integrals in (201). For a self-adjoint normal
+functionalωon a von Neumann algebra, the Jordan decomposition gives
+ω+(1) = 1
+2 (∥ω∥+ω(1)) (203)
+(cf. [74, III.4.2]). Fixs >0 and putω s :=seσ−eρ. Sinceω s is normal and the unit ball ofS
+nMn isσ-weakly dense in the unit ball of fM, we have
+∥sσn−ρn∥= sup
+x∈Mn,∥x∥≤1
+|ωs(x)|↗∥ω s∥ fM⋆
+.(204)
+Furthermore, becauseω s = (sσ−ρ)◦EandE| M = idM, contractivity ofEgives
+∥ωs∥ fM⋆
+=∥sσ−ρ∥ M⋆.
+Using (203), together with (sσ n−ρn)(1) =s−1 and (ρ n−sσn)(1) = 1−s, we get pointwise
+monotone convergence of both integrands:
+(sσn−ρn)+(1)↗(sσ−ρ) +(1),
+(ρn−sσn)+(1)↗(ρ−sσ) +(1).
+The monotone convergence theorem therefore applies to both non-negative integrals in (201).
+Combining the resulting limit with (202) proves (197) for states. The scaling reduction at the
+beginning of the proof proves the asserted formula for arbitrary positive normal functionals
+satisfying the support condition.□
+Similarly to [37, Cor. 1], we prove the following corollary.
+
+=== page 33 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 33
+Corollary 6.6(Finite-range integral formula).LetMbe a von Neumann algebra and let
+ρ,σ∈M ⋆
++. Suppose there existµ≥0andλ>0such that
+µσ≤ρ≤λσ(205)
+in the ordering ofM ⋆
++. Then
+D(ρ∥σ) = (ρ−σ) (1) +
+Z λ
+µ
+1
+s (sσ−ρ) + (1)ds+ρ(1) lnλ−(λ−1)σ(1).(206)
+Proof.We first note that (205) impliess M(ρ)≤s M(σ): ifx∈ M + withσ(x) = 0, then
+0≤ρ(x)≤λσ(x) = 0. Hence Theorem 6.5 applies and we start from the integral formula
+(197).
+Sinceµσ≤ρ, for everys∈[0,µ] one hassσ≤µσ≤ρ, whence (sσ−ρ) + (1) = 0. Thus the
+first integral in (197) reduces to
+R 1
+µ . Likewise,ρ≤λσimplies (ρ−sσ) + (1) = 0 for alls≥λ,
+and the second integral reduces to
+Rλ
+1 . In particular, both remaining integrands are bounded
+by (s+ 1) (ρ(1) +σ(1))/son compact subsets of (0,∞), so all integrals below are finite.
+For any self-adjoint normal functionalϕ∈M sa
+⋆ , the Jordan decomposition gives
+ϕ+(1) =ϕ(1) +ϕ −(1) =ϕ(1) + (−ϕ) +(1).(207)
+Applied toϕ=ρ−sσwiths∈[1,λ], this yields
+(ρ−sσ) + (1) =ρ(1)−sσ(1) + (sσ−ρ) + (1).(208)
+Substituting (208) into the truncated second integral gives
+Z λ
+1
+1
+s (ρ−sσ) + (1)ds=
+Z λ
+1
+1
+s (sσ−ρ) + (1)ds+
+Z λ
+1
+ρ(1)−sσ(1)
+s ds.(209)
+The elementary integral evaluates to
+Z λ
+1
+ρ(1)−sσ(1)
+s ds=ρ(1) lnλ−(λ−1)σ(1).(210)
+Combining the truncated first integral over [µ,1] with the rewritten second integral over [1,λ]
+collapses the two (sσ−ρ) + (1)-integrals into a single integral over [µ,λ]. Together with (210)
+and the (ρ−σ) (1) term from (197), this yields (206).
+Finally, the result is independent of the particular choice ofµandλsatisfying (205): ifλ ′≥λ,
+the integrand (sσ−ρ) + (1) vanishes on (λ,λ ′], and the change inρ(1) lnλ ′−(λ′−1)σ(1) is
+exactly compensated by the additional piece of the elementary integral (210). An analogous
+argument applies at the lower limitµ.□
+7.Approximations and NPA-programs
+In this section we aim to combine the tools from Sec. 6 with the remaining optimization
+problem for a security proof in DIQKD. We recall the optimization problem after applying the
+dilation argument from Theorem 5.4 in the following (cf. Eq. 82)
+infH(Z|E) ωZE
+s.t.ψ∈S
+ 
+PA⊗maxPB
+
+,
+ψ
+ 
+pa|x⊗qb|y
+
+=p(a,b|x,y), a,b,x,y,
+ME⊆M′
+AB,ψ,
+ωZE∈S
+ 
+ℓ∞(Z)⊗ME
+
+,
+ωZE(pz⊗c) =
+
+ξψ, πψ(pz|˜x)cξ ψ
+
+, z∈Z, c∈M E.
+(211)
+The idea is to replace the conditional von Neumann entropy with a relative entropy and to
+apply then subsequently the integral formula from Corollary 6.6.
+
+=== page 34 ===
+34 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+7.1.Discretization and upper bounds for relative entropy.The integral in Corollary 6.6
+can be approximated from above by a finite sum of suprema over projections as shown in [46, 45].
+The resulting upper bound for the relative entropy translates directly into a lower bound for
+the conditional von Neumann entropy and, ultimately, into a semidefinite program via the NPA
+hierarchy.
+Theorem 7.1(Upper bounds for relative entropy).LetMbe a von Neumann algebra and let
+ρ,σ∈M ⋆
++ andµ,λa pair of cut off parameters with
+ρ≤λσandλ>µ>0 (212)
+. Letr≥1and fix a partitionµ=t 1 < t2 <···< t r =λ. Then there exist real numbers
+α0,...,α r andβ 0,...,β r, (given in(224)) depending only onµ,λand the partition, such that
+Z λ
+0
+1
+s (sσ−ρ) + (1)ds≤
+rX
+k=0
+sup
+pk∈P(M)
+(αkρ+β kσ) (pk).(213)
+In particular,
+D(ρ∥σ)≤(ρ−σ) (1) +
+rX
+k=0
+sup
+pk∈P(M)
+(αkρ+β kσ) (pk) +ρ(1) lnλ−(λ−1)σ(1).(214)
+Moreover, the sequence of upper bounds converges toD(ρ∥σ)when the mesh of the partition
+tends to cover the interval(0,λ).
+Proof.Define the function
+F(s) := (sσ−ρ) + (1) = sup
+p∈P(M)
+(sσ(p)−ρ(p)), s≥0.(215)
+SinceFis the pointwise supremum of a family of affine functions ins, it is convex and continuous
+on [0,∞). Moreover,F(0) = 0, sinceρis positive. We emphasize that no lower domination
+assumption of the formµσ≤ρis used here; the parameterµ >0 is only an auxiliary lower
+cut-off which keeps the logarithmic kernel away from the singular endpoint. By convexity and
+the boundary valuesF(0) = 0 andF(µ)≥0, for everys∈[0,µ],
+F(s)≤
+
+1− s
+µ
+
+F(0) + s
+µF(µ) = s
+µF(µ).(216)
+Hence Z µ
+0
+F(s)
+s ds≤
+Z µ
+0
+F(µ)
+µ ds=F(µ) = sup
+p0∈P(M)
+(µσ(p 0)−ρ(p 0)),(217)
+which corresponds to the choiceα 0 :=−1 andβ 0 :=µ. For each grid pointt k, define
+yk :=F(t k) = sup
+p∈P(M)
+(tkσ(p)−ρ(p)).(218)
+Sinces7→F(s)/sis the ratio of a convex function to a linear function on (0,∞), the piecewise-
+linear interpolant of the values (tk,yk) yields, by the methods of [45], the estimate
+Z λ
+µ
+F(s)
+s ds≤
+rX
+k=1
+ckyk,(219)
+where the quadrature weightsc k≥0 are given by
+c1 := 1 + t1
+t2−t 1
+
+lnt2
+t1
+−1
+
+,(220)
+cr := 1− tr−1
+tr−tr−1
+ln tr
+tr−1
+,(221)
+ck := 1 + tk
+tk+1−tk
+lntk+1
+tk
+− tk−1
+tk−tk−1
+ln tk
+tk−1
+,2≤k≤r−1.(222)
+
+=== page 35 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 35
+Combining (217) and (219), and writingy k = suppk (tkσ(pk)−ρ(p k)), we obtain
+Z λ
+0
+F(s)
+s ds≤sup
+p0
+(−ρ(p0) +µσ(p 0)) +
+rX
+k=1
+sup
+pk
+(−ckρ(pk) +cktkσ(pk)).(223)
+Defining
+αk :=
+(
+−1, k= 0,
+−ck,1≤k≤r, βk :=
+(
+µ, k= 0,
+cktk,1≤k≤r, (224)
+yields (213).
+‘ Inserting this into Corollary 6.6 produces (214). It remains to explain the convergence as
+the lower cut-off is removed. Fixµ>0 and letT={µ=t 1 <t 2 <···<t r =λ}be a partition
+of [µ,λ]. Denote byL TFthe piecewise affine interpolant ofFwith respect to this partition.
+SinceFis convex,L TF≥Fon [µ,λ], and the bound obtained above can be written as
+Bµ,T =F(µ) +
+Z λ
+µ
+LTF(s)
+s ds.(225)
+For fixedµ>0, the kernel 1/sis bounded on [µ,λ], andL TFconverges uniformly toFas the
+mesh size|T|tends to zero. Hence
+lim
+|T|→0
+Bµ,T =F(µ) +
+Z λ
+µ
+F(s)
+s ds.(226)
+It remains to letµ↓0. By convexity andF(0) = 0, for 0≤s≤µone has
+F(s)≤ s
+µF(µ),(227)
+and therefore
+0≤F(µ)−
+Z µ
+0
+F(s)
+s ds≤F(µ).(228)
+SinceFis continuous at 0 andF(0) = 0, the right-hand side tends to zero asµ↓0. Conse-
+quently,
+lim
+µ↓0
+lim
+|T|→0
+Bµ,T =
+Z λ
+0
+F(s)
+s ds.(229)
+Finally, sinceρ≤λσ, the upper tail in the finite-range representation of the relative entropy
+vanishes fors≥λ. Thus Corollary 6.6 gives
+D(ρ∥σ) = (ρ−σ) (1) +
+Z λ
+0
+F(s)
+s ds+ρ(1) lnλ−(λ−1)σ(1).(230)
+This proves that the upper bounds in (214) converge toD(ρ∥σ) by first refining the partition
+of [µ,λ] and then takingµ↓0.□
+7.2.Application to the secrecy program.We now apply Theorem 7.1 to the optimization
+problem (82), which, captures the asymptotic secrecy of a DIQKD protocol without loss of
+generality: the GNS reduction eliminates the optimization over arbitrary purifications, and
+the dilation theorem (Theorem 5.4) together with Corollary 5.6 justifies the formulation in
+terms of the universal PVM algebras. Recall that, for a stateψ∈S(P A⊗maxPB) with GNS
+triple (πψ,Hψ,ξψ) and von Neumann algebraM AB,ψ :=π ψ(PA⊗maxPB)′′, the conditional von
+Neumann entropy is given by
+H(Z|E)ω =−D(ω ZE∥τZ⊗ωE),(231)
+whereω ZE∈S(ℓ ∞(Z)⊗ME) is the post-measurement state,M E⊆M′
+AB,ψ is the adversary’s
+algebra, andω E denotes the marginal onM E.
+
+=== page 36 ===
+36 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+By Lemma 5.7, the dominationω ZE≤τZ⊗ω E holds. Settingρ :=ω ZE andσ :=τZ⊗ω E,
+we haveλ= 1 andµ= 0, so that Corollary 6.6 yields
+D(ωZE∥τZ⊗ωE) = (1−|Z|) +
+Z 1
+0
+1
+s (s(τZ⊗ωE)−ω ZE)+ (1)ds,(232)
+sinceρ(1) ln 1 = 0 and (λ−1)σ(1) = 0. Replacing the integral by the discretization of Theo-
+rem 7.1 turns (82) into
+inf (|Z|−1)−
+rX
+k=0
+sup
+pk∈P(ℓ∞(Z)⊗M E)
+(αkωZE +βk (τZ⊗ωE)) (pk)
+s.t.ψ∈S(P A⊗maxPB),
+ψ
+ 
+pa|x⊗qb|y
+
+=p(a,b|x,y), a,b,x,y,
+ME⊆M′
+AB,ψ,
+ωZE∈S(ℓ ∞(Z)⊗ME),
+ωZE(pz⊗c) =
+
+ξψ, πψ(pz|˜x)cξ ψ
+
+, z∈Z, c∈M E.
+(233)
+Remark 7.2.The relaxation in(228)is monotone in Eve’s algebra. IfM E⊆M ′
+AB,ψ, then
+Proj(ℓ∞(Z), ¯⊗,ME)⊆Proj(ℓ ∞(Z), ¯⊗,M′∗AB,ψ). Thus the projection suprema in(228)can
+only increase whenM E is enlarged to the full commutant. Since these terms appear with a
+minus sign, the objective can only decrease. Hence the infimum over allM E ⊆ M′
+AB,ψ is
+unchanged by takingM E =M′
+AB,ψ.
+Theorem 7.3(Equivalence and convergence of the entropy hierarchy).Letp(a,b|x,y)be a
+conditional distribution,˜x∈Xa key-generation input, andZ :=A ˜x. For eachr≥1, fix
+a partition0< µ r =t 1 < t2 <···< t r = 1with meshδ r := max 1≤k≤r−1(tk+1−t k), and let
+α0,...,α r,β 0,...,β r be the coefficients from Theorem 7.1. Define the following four quantities:
+(I)Theconditional entropy valuein the commuting-operator model:
+h⋆ :=value of(82).(234)
+(II)Thediscretized commuting-operator programat levelr:
+hr :=value of(233).(235)
+(III)TheuniversalC ⋆-algebraic NPOat levelr: let
+Qr :=C ⋆
+
+{p(z)
+k }0≤k≤r,z∈Z
+ (p(z)
+k )2 =p (z)
+k = (p(z)
+k )⋆
+
+(236)
+be the universalC ⋆-algebra generated by(r+ 1)·|Z|projections. Set
+hNPO
+r := inf|Z|−1 +
+rX
+k=0
+X
+z∈Z
+ω
+ 
+−αkpz|˜x−βk
+
+p(z)
+k
+
+s.t.ω∈S(P A⊗maxPB⊗maxQr),
+ω
+ 
+pa|xqb|y
+
+=p(a,b|x,y), a,b,x,y.
+(237)
+(IV)TheNPA relaxationat levelnof the program(237):
+h(n)
+r :=level-nNPA outer relaxation of(237).(238)
+Then the following hold:
+(a)h r =h NPO
+r . Moreover,h NPO
+r coincides with the value of the Hilbert-space NPO from[45,
+Thm. II.2], formulated with commuting operators in place of tensor products.
+(b)h r≤h ⋆ for everyr≥1.
+(c) lim
+r→∞
+lim
+µr→0
+hr =h ⋆.
+(d)h (n)
+r ≤h r for everyn≥1, andlim
+n→∞
+h(n)
+r =h r.
+
+=== page 37 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 37
+(e) lim
+r→∞
+lim
+n→∞
+lim
+µr→0
+h(n)
+r =h ⋆.
+Proof.We first showh r =h NPO
+r . Letω∈S(P A⊗maxPB⊗maxQr) be feasible for (237). By
+the universal property of⊗ max (Proposition 5.1), the GNS representation (π ω,Hω,ξω) yields
+commuting⋆-representations ofP A,P B, andQ r onH ω. SettingM AB :=π ω(PA⊗maxPB)′′,
+the imagesπ ω(p(z)
+k ) lie inM ′
+AB and are projections. Withψ :=ω| PA⊗maxPB andM E :=
+W⋆
+
+{πω(p(z)
+k )}k,z
+
+⊆M ′
+AB, the tuple
+
+ψ,ME,{πω(p(z)
+k )}
+
+is feasible for (233). The block
+decomposition gives
+sup
+pk∈P(ℓ∞(Z)⊗M E)
+(αkωZE +βk (τZ⊗ωE)) (pk) =
+X
+z∈Z
+sup
+p(z)
+k ∈P(M E)
+(αkωz
+E +βkωE) (p(z)
+k ).(239)
+The supremum on the right is attained at the support projection of (α kωz
+E +βkωE)+, which
+exists inM E by the Jordan decomposition (172), and the resulting value equals
+−ω
+ 
+−αkpz|˜x−βk
+
+p(z)
+k
+
+(240)
+precisely whenp (z)
+k is the optimal projection. Since the program (233) optimizes over all
+projections in the commutant, while (237) optimizes over all states on the maximal tensor
+product, both infima range over the same set of expectation values, and henceh r =h NPO
+r .
+Conversely, any feasible tuple for (233) defines, via the universal property of⊗ max, a state on
+PA⊗maxPB⊗maxQr that is feasible for (237) with the same objective value. The identifica-
+tion with [45, Thm. II.2] follows from the same universal property: the commuting-operator
+constraints in [45, eq. (16)]
+
+Ma|x,Nb|y
+
+=
+h
+Ma|x,P (z)
+k
+i
+=
+h
+Nb|y,P (z)
+k
+i
+= 0 (241)
+are exactly the relations encoded by the maximal tensor productP A⊗maxPB⊗maxQr, and the
+passage from POVMs to PVMs is justified by Theorem 5.4 together with Corollary 5.6. This
+proves (a).
+For (b), letψbe feasible. By Lemma 5.7 we haveω ZE≤τZ⊗ω E, soµ= 0 andλ= 1 are
+admissible in Theorem 7.1. By (214),
+D(ωZE∥τZ⊗ωE)≤(1−|Z|) +
+rX
+k=0
+sup
+pk∈P(ℓ∞(Z)⊗M E)
+(αkωZE +βk (τZ⊗ωE)) (pk),(242)
+whenceH(Z|E) ω =−D(ω ZE∥τZ⊗ωE) satisfies
+H(Z|E)ω≥(|Z|−1)−
+rX
+k=0
+sup
+pk
+(αkωZE +βk (τZ⊗ωE)) (pk).(243)
+Since this holds for every feasibleψ, taking the infimum overψon both sides yieldsh r≤h ⋆.
+For (c), the discretization error for a single feasible stateψis
+0≤H(Z|E) ψ−Lr(ψ) =
+rX
+k=0
+ckFψ(tk)−
+Z 1
+µr
+Fψ(s)
+s ds,(244)
+whereL r(ψ) denotes the objective of (233) evaluated atψ, and
+Fψ(s) := (s(τZ⊗ωE)−ω ZE)+ (1), s∈[0,1],(245)
+is the function appearing in the Frenkel–Jenˇ cov´ a formula (197). We claim that the right-hand
+side of (244) is bounded uniformly over all feasibleψ. Indeed, for any feasibleψ, the variational
+characterization of the positive part of a self-adjoint normal functional gives
+Fψ(s) = sup
+0≤q≤1
+ 
+s(τZ⊗ωE)−ω ZE
+
+(q).
+
+=== page 38 ===
+38 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+Hence, fors≥s ′,
+Fψ(s)≤F ψ(s′) + (s−s′)(τZ⊗ωE)(1) =F ψ(s′) + (s−s′)|Z|.
+Interchangingsands ′ gives
+|Fψ(s)−F ψ(s′)|≤|s−s ′||Z|
+for alls,s ′ ∈[0,1] and all feasibleψ. Thus the family{F ψ : [0,1]→R ≥0 |ψfeasible}is
+uniformly bounded and equi-Lipschitz.
+Since the quadrature from Theorem 7.1 provides an upper bound for
+R 1
+0 F(s)/sdsvia a
+piecewise-linear interpolant of any convexF, and the quality of this approximation depends only
+on the meshδ r and the Lipschitz constant ofF(cf. [45]), there exists a functionε(δ r,|Z|)≥0
+withε(δ r,|Z|)→0 asδ r→0, such that
+sup
+ψfeasible
+(H(Z|E)ψ−Lr(ψ))≤ε(δ r,|Z|).(246)
+From this uniform bound we conclude: on one hand,h r≤h ⋆ by (b); on the other,L r(ψ)≥
+H(Z|E)ψ−ε(δr,|Z|) for every feasibleψ, so
+hr = inf
+ψ
+Lr(ψ)≥inf
+ψ
+H(Z|E)ψ−ε(δr,|Z|) =h ⋆−ε(δr,|Z|).(247)
+Therefore|h ⋆−hr|≤ε(δ r,|Z|)→0 asr→∞andµ r→0, which proves (c).
+For (d), by (a) the valueh r =h NPO
+r is the value of a non-commutative polynomial optimiza-
+tion over states on theC ⋆-algebraP A⊗maxPB⊗maxQr. Since all generators are contractions,
+this algebra is Archimedean, and [47, Lem. 4] (cf. also [57]) guarantees that the NPA hierarchy
+at levelnprovides outer approximations satisfyingh (n)
+r ≤h r withh (n)
+r ↗h r asn→∞.
+Finally, (e) is immediate from (c) and (d):
+h⋆ = lim
+r→∞
+lim
+µr→0
+hr = lim
+r→∞
+lim
+µr→0
+lim
+n→∞
+h(n)
+r .(248)
+□
+8.Outlook
+In this work, we have provided decisive tools for a possible route towards a fully operator-
+algebraic formulation of device-independent quantum key distribution. At the same time,
+the results presented here should be understood only as a first step. They show that the
+secrecy-relevant entropy optimization can be formulated consistently in the commuting-operator
+framework and connected to NPA-type relaxations, but they also point to several directions in
+which the operator-algebraic approach could be developed further.
+A first natural direction concerns the cryptographic reduction from many rounds to a single-
+round entropy quantity. The asymptotic equipartition theorem used in this work is available
+in the von Neumann algebraic setting and therefore fits naturally into the commuting-operator
+framework. However, modern DIQKD security proofs often rely on more refined tools, such
+as generalized entropy accumulation theorems and techniques based on R´ enyiα-norms. The
+language of von Neumann algebras and noncommutativeL p-spaces appears well suited for
+formulating such quantities beyond the tensor-product Hilbert-space setting. In particular, an
+analogue of the leftover-hash lemma with the required R´ enyi-type one-shot quantities in the
+commuting-operator framework does not seem to be available. Establishing such results would
+be an important step towards finite-size DIQKD security proofs that are fully intrinsic to the
+commuting-operator model.
+A second direction is the development of parallel-repetition and entropy-accumulation princi-
+ples directly at the level of commuting-operator strategies. In the language of non-local games,
+parallel repetition is a central tool for understanding how correlations behave under indepen-
+dent repetitions of an experiment. For DIQKD, an operator-algebraic parallel-repetition theo-
+rem would provide a structural bridge between the single-round Bell-type description and the
+
+=== page 39 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 39
+multi-round cryptographic protocol. Such a theorem could clarify to what extent the tensor-
+product assumptions usually imposed between rounds can be replaced by intrinsic algebraic
+independence or product-state assumptions.
+A third perspective is obtained by reversing the logic used in the present paper. We started
+from the commuting-operator model and showed how to recover an entropy optimization that
+can be represented on concrete Hilbert spaces when needed. More generally, any theorem
+proved at the level of universalC∗-algebras or von Neumann algebras immediately yields corre-
+sponding device-dependent statements by choosing a concrete representation on Hilbert spaces.
+This suggests a possible route towards unified security proofs: rather than proving separate
+theorems for each concrete physical model, one proves a single representation-independent the-
+orem at the algebraic level and obtains the usual Hilbert-space versions as representations.
+Such an approach could also make security proofs more transparent and certifiable, since the
+assumptions entering the proof are encoded explicitly in the algebra on which the theorem is
+formulated.
+More broadly, theC∗-algebraic viewpoint offers a systematic way of comparing different sets
+of security assumptions. Each model of a cryptographic experiment corresponds to an algebra
+generated by the observables that are assumed to exist, together with the relations they are
+assumed to satisfy. Stronger or weaker security assumptions then become relations between
+algebras, for instance through quotients, embeddings, or tensor-product choices. From this
+perspective, a minimal requirement for a mathematically transparent security proof would be
+that the proof specifies at the outset the algebra in which it is carried out. Once this algebra
+is made explicit, different device-dependent, semi-device-independent, and device-independent
+assumptions can be compared and ordered within a common mathematical language.
+We therefore view the present work not as the conclusive treatment of the commuting-
+operator approach to DIQKD, but rather as an initial step towards a unified and systematic
+view on quantum security.
+Acknowledgements
+Theorem 6.5 has been shown independently by Correa da Silva, Fr¨ ob, Lechner, and L. San-
+galetti [21]. GK thanks Alexander Stottmeister for a discussion at an early stage of the project.
+GK acknowledges support from the Excellence Cluster - Matter and Light for Quantum Com-
+puting (ML4Q-2) and by the European Research Council (ERC Grant Agreement No. 948139).
+R.S. is supported by the DFG under Germany’s Excellence Strategy - EXC-2123 Quantum-
+Frontiers - 390837967 and SFB 1227 (DQ-mat), the Quantum Valley Lower Saxony, and the
+BMBF projects CBQD, SEQUIN, Quics and ATIQ. PL and HC are supported by the Emerg-
+ing Young Scholars Program of the National Science and Technology Council, Taiwan (R.O.C.)
+under Grant numbers NSTC 114-2628-E-002-006, NSTC 114-2119-M-001-002, and NSTC 114-
+2124-M-002-003, by the Yushan Young Scholar Program of the Ministry of Education, Tai-
+wan (R.O.C.) under Grant number NTU-114V2016-1, and by the research project ‘Forefront
+Quantum Computing, Learning, and Engineering in Noisy Intermediate-Scale Quantum Era’
+of National Taiwan University under Grant NTU-114L895005. H.-C. Cheng acknowledges
+the support from the ‘Center for Advanced Computing and Imaging in Biomedicine (NTU-
+115L900702)’ through The Featured Areas Research Center Program within the framework of
+the Higher Education Sprout Project by the Ministry of Education (MOE) in Taiwan. The
+authors acknowledge the use of [4].
+References
+[1] A. Ac´ ın, N. Brunner, N. Gisin, S. Massar, S. Pironio, and V. Scarani.“Device-Independent Security of
+Quantum Cryptography against Collective Attacks”. Physical Review Letters98(23) (2007).
+[2] A. Ac´ ın, N. Gisin, and L. Masanes.“From Bell’s Theorem to Secure Quantum Key Distribution”. Physical
+Review Letters97(12) (2006).
+
+=== page 40 ===
+40 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+[3] A. Ac´ ın, S. Massar, and S. Pironio.“Efficient quantum key distribution secure against no-signalling eaves-
+droppers”. New Journal of Physics8(8): 126–126 (2006).
+[4] Anthropic.“Claude (Claude Fable 5) [Large language model]”.https://claude.ai, (2026). Zugriff am 11.
+Juni 2026.
+[5] H. Araki.“Relative Entropy of States of von Neumann Algebras”. Publications of the Research Institute
+for Mathematical Sciences11(3): 809–833 (1975).
+[6] R. Arnon-Friedman.Device-Independent Quantum Information Processing: A Simplified Analysis. Springer
+International Publishing (2020).
+[7] W. B. Arveson.“Subalgebras ofC ∗-algebras”. Acta Mathematica123: 141–224, (1969).
+[8] J. C. Baez, I. E. Segal, and Z. Zhou.Introduction to Algebraic and Constructive Quantum Field Theory.
+Princeton University Press (1992).
+[9] J. Barrett, L. Hardy, and A. Kent.“No Signaling and Quantum Key Distribution”. Physical Review Letters
+95(1) (2005).
+[10] J. S. Bell.“On the Einstein Podolsky Rosen paradox”. Physics Physique1(3): 195–200 (1964).
+[11] C. H. Bennett, F. Bessette, G. Brassard, L. Salvail, and J. Smolin.“Experimental quantum cryptography”.
+Journal of Cryptology5(1): 3–28 (1992).
+[12] C. H. Bennett and G. Brassard.“Quantum cryptography: Public key distribution and coin tossing”. Theo-
+retical Computer Science560: 7–11 (2014).
+[13] C. H. Bennett, G. Brassard, and N. D. Mermin.“Quantum cryptography without Bell’s theorem”. Physical
+Review Letters68(5): 557–559 (1992).
+[14] M. Berta, F. Furrer, and V. B. Scholz.“The smooth entropy formalism for von Neumann algebras”. Journal
+of Mathematical Physics57(1) (2015).
+[15] B. Blackadar.Operator Algebras. Springer Berlin Heidelberg (2006).
+[16] A. Bluhm, G. Koßmann, and R. Schwonnek.“Device independent quantum key distribution with robust
+self-tests”. arXiv preprint arXiv:2603.28085 , (2026).
+[17] F. Boca.“Free products of completely positive maps and spectral sets”. Journal of Functional Analysis
+97(2): 251–263 (1991).
+[18] P. Brown, H. Fawzi, and O. Fawzi.“Device-independent lower bounds on the conditional von Neumann
+entropy”. Quantum8: 1445 (2024).
+[19] E. Cervero-Martin and M. Tomamichel.“Device independent security of quantum key distribution from
+monogamy-of-entanglement games”. Quantum9: 1652 (2025).
+[20] H.-C. Cheng and P.-C. Liu.“Error Exponents for Quantum Packing Problems via An Operator Layer Cake
+Theorem”, (2025). Available online:https://arxiv.org/abs/2507.06232.
+[21] R. C. da Silva, M. B. Fr¨ ob, G. Lechner, and L. Sangaletti.“Integral representations off-divergences for
+general von Neumann algebras”, (2026). The paper appears on the same day on the arXiv.
+[22] K. R. Davidson and E. T. A. Kakariadis.“A proof of Boca’s Theorem”. Proceedings of the Royal Society
+of Edinburgh: Section A Mathematics149(04): 869–876 (2018).
+[23] F. Dupuis.“Privacy Amplification and Decoupling Without Smoothing”. IEEE Transactions on Information
+Theory69(12): 7784–7792 (2023).
+[24] F. Dupuis and O. Fawzi.“Entropy Accumulation With Improved Second-Order Term”. IEEE Transactions
+on Information Theory65(11): 7596–7612 (2019).
+[25] F. Dupuis, O. Fawzi, and R. Renner.“Entropy Accumulation”. Communications in Mathematical Physics
+379(3): 867–913 (2020).
+[26] A. Ekert and R. Renner.“The ultimate physical limits of privacy”. Nature507(7493): 443–447 (2014).
+[27] A. K. Ekert.“Quantum cryptography based on Bell’s theorem”. Physical Review Letters67(6): 661–663
+(1991).
+[28] O. Fawzi, L. Gao, and M. Rahaman.“Asymptotic Equipartition Theorems in von Neumann Algebras”.
+Annales Henri Poincar´ e27(1): 95–141 (2025).
+[29] C. Ferradini, M. Sandfuchs, R. Wolf, and R. Renner.“Defining Security in Quantum Key Distribution”,
+(2025). Available online:https://arxiv.org/abs/2509.13405.
+[30] P. E. Frenkel.“Integral formula for quantum relative entropy implies data processing inequality”. Quantum
+7: 1102 (2023).
+[31] T. FRITZ.“TSIRELSON’S PROBLEM AND KIRCHBERG’S CONJECTURE”. Reviews in Mathematical
+Physics24(05): 1250012 (2012).
+[32] U. Haagerup, M. Junge, and Q. Xu.“A reduction method for noncommutativeL p-spaces and applications”.
+Transactions of the American Mathematical Society362(4): 2125–2165 (2009).
+[33] K. He, J. Saunderson, and H. Fawzi.“QICS: Quantum Information Conic Solver”, (2025). Available online:
+https://arxiv.org/abs/2410.17803.
+[34] B. Hensen, H. Bernien, A. E. Dr´ eau, A. Reiserer, N. Kalb, M. S. Blok, J. Ruitenberg, R. F. L. Vermeulen,
+R. N. Schouten, C. Abell´ an, W. Amaya, V. Pruneri, M. W. Mitchell, M. Markham, D. J. Twitchen,
+
+=== page 41 ===
+DIQKD IN THE COMMUTING OPERATOR FRAMEWORK 41
+D. Elkouss, S. Wehner, T. H. Taminiau, and R. Hanson.“Loophole-free Bell inequality violation using
+electron spins separated by 1.3 kilometres”. Nature526(7575): 682–686 (2015).
+[35] H. Hu, J. Im, J. Lin, N. L¨ utkenhaus, and H. Wolkowicz.“Robust Interior Point Method for Quantum Key
+Distribution Rate Computation”. Quantum6: 792 (2022).
+[36] T. Jennewein, C. Simon, G. Weihs, H. Weinfurter, and A. Zeilinger.“Quantum Cryptography with Entangled
+Photons”. Physical Review Letters84(20): 4729–4732 (2000).
+[37] A. Jenˇ cov´ a.“Recoverability of quantum channels via hypothesis testing”. Letters in Mathematical Physics
+114(1) (2024).
+[38] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen.“MIP*=RE”, (2020).
+DOI: 10.48550/ARXIV.2001.04383.
+[39] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen.“MIP*=RE”, (2022). Available online:https:
+//arxiv.org/abs/2001.04383.
+[40] M. Junge, M. Navascu´ es, C. Palazuelos, D. P´ erez-Garc´ ıa, V. B. Scholz, and R. F. Werner.“Connes’
+Embedding Problem and Tsirelson’s Problem”. Journal of Mathematical Physics52(1): 012102 (2011).
+[41] M. Junge, C. Palazuelos, D. P´ erez-Garc´ ıa, I. Villanueva, and M. M. Wolf.“Operator Space Theory: A
+Natural Framework for Bell Inequalities”. Physical Review Letters104(17) (2010).
+[42] E. Kirchberg.“On non-semisplit extensions, tensor products and exactness of groupC *-algebras”. Inven-
+tiones Mathematicae112(1): 449–489 (1993).
+[43] H. KOSAKI.“Relative entropy of states: a variational expression”. Journal of Operator Theory16(2): 335–
+348, (1986).
+[44] G. Koßmann, M. Berta, and R. Schwonnek.“Routed Bell tests with arbitrarily many local parties”. arXiv
+preprint arXiv:2510.08405 , (2025).
+[45] G. Koßmann and R. Schwonnek.“Reliable Entropy Estimation from Observed Statistics for Device-
+Independent Quantum Cryptography”, (2025). Available online:https://arxiv.org/abs/2411.04858.
+[46] G. Koßmann and R. Schwonnek.“Optimising the relative entropy under semidefinite constraints”. npj
+Quantum Information12(1) (2026).
+[47] L. T. Ligthart, M. Gachechiladze, and D. Gross.“A Convergent Inflation Hierarchy for Quantum Causal
+Structures”. Communications in Mathematical Physics401(3): 2673–2714 (2023).
+[48] P.-C. Liu, C. Hirche, and H.-C. Cheng.“Layer Cake Representations for Quantum Divergences”, (2025).
+Available online:https://arxiv.org/abs/2507.07065.
+[49] W.-Z. Liu, Y.-Z. Zhang, Y.-Z. Zhen, M.-H. Li, Y. Liu, J. Fan, F. Xu, Q. Zhang, and J.-W. Pan.“Toward
+a Photonic Demonstration of Device-Independent Quantum Key Distribution”. Physical Review Letters
+129(5) (2022).
+[50] E. P. Lobo, J. Pauwels, and S. Pironio.“Certifying long-range quantum correlations through routed Bell
+tests”. Quantum8: 1332 (2024).
+[51] B.-W. Lu, C.-W. Yang, R.-Q. Wang, B.-F. Gao, Y.-Z. Zhen, Z.-G. Wang, J.-K. Shi, Z.-Q. Ren, T. A. Hahn,
+E. Y.-Z. Tan, et al.“Device-independent quantum key distribution over 100 km with single atoms”. Science
+391(6785): 592–597, (2026).
+[52] D. Mayers and A. Yao.“Quantum cryptography with imperfect apparatus”. InProceedings 39th Annual
+Symposium on Foundations of Computer Science (Cat. No.98CB36280), SFCS-98, page 503–509, (1998).
+[53] T. Metger, O. Fawzi, D. Sutter, and R. Renner.“Generalised Entropy Accumulation”. Communications in
+Mathematical Physics405(11) (2024).
+[54] D. P. Nadlinger, P. Drmota, B. C. Nichol, G. Araneda, D. Main, R. Srinivas, D. M. Lucas, C. J. Bal-
+lance, K. Ivanov, E. Y.-Z. Tan, P. Sekatski, R. L. Urbanke, R. Renner, N. Sangouard, and J.-D. Bancal.
+“Experimental quantum key distribution certified by Bell’s theorem”. Nature607(7920): 682–686 (2022).
+[55] D. S. Naik, C. G. Peterson, A. G. White, A. J. Berglund, and P. G. Kwiat.“Entangled State Quantum
+Cryptography: Eavesdropping on the Ekert Protocol”. Physical Review Letters84(20): 4733–4736 (2000).
+[56] M. Navascu´ es, S. Pironio, and A. Ac´ ın.“Bounding the Set of Quantum Correlations”. Physical Review
+Letters98(1) (2007).
+[57] M. Navascu´ es, S. Pironio, and A. Ac´ ın.“A convergent hierarchy of semidefinite programs characterizing
+the set of quantum correlations”. New Journal of Physics10(7): 073013 (2008).
+[58] M. Ohya and D. Petz.Quantum Entropy and Its Use. Springer Berlin Heidelberg (1993).
+[59] N. OZAWA.“ABOUT THE QWEP CONJECTURE”. International Journal of Mathematics
+15(05): 501–530 (2004).
+[60] C. Palazuelos and T. Vidick.“Survey on nonlocal games and operator space theory”. Journal of Mathemat-
+ical Physics57(1) (2016).
+[61] V. Paulsen.Completely Bounded Maps and Operator Algebras. Cambridge University Press (2003).
+[62] V. I. Paulsen, S. Severini, D. Stahlke, I. G. Todorov, and A. Winter.“Estimating quantum chromatic
+numbers”. Journal of Functional Analysis270(6): 2188–2222 (2016).
+
+=== page 42 ===
+42 DIQKD IN THE COMMUTING OPERATOR FRAMEWORK
+[63] B. Pfitzmann and M. Waidner.“Composition and integrity preservation of secure reactive systems”. In
+Proceedings of the 7th ACM conference on Computer and Communications Security, CCS00, page 245–254,
+(2000).
+[64] S. Pironio, A. Ac´ ın, N. Brunner, N. Gisin, S. Massar, and V. Scarani.“Device-independent quantum key
+distribution secure against collective attacks”. New Journal of Physics11(4): 045021 (2009).
+[65] D. P´ erez-Garc´ ıa, M. M. Wolf, C. Palazuelos, I. Villanueva, and M. Junge.“Unbounded Violation of Tri-
+partite Bell Inequalities”. Communications in Mathematical Physics279(2): 455–486 (2008).
+[66] B. Regula and M. Tomamichel.“Rethinking quantum smooth entropies: Tight one-shot analysis of quantum
+privacy amplification”, (2026). Available online:https://arxiv.org/abs/2603.04493.
+[67] R. Renner.“Security of quantum key distribution”. Ph.D. Thesis (ETH Zurich), arXiv:quant-ph/0512258
+(2005).
+[68] R. Renner.“SECURITY OF QUANTUM KEY DISTRIBUTION”. International Journal of Quantum
+Information06(01): 1–127 (2008).
+[69] V. Scarani, H. Bechmann-Pasquinucci, N. J. Cerf, M. Duˇ sek, N. L¨ utkenhaus, and M. Peev.“The security
+of practical quantum key distribution”. Reviews of Modern Physics81(3): 1301–1350 (2009).
+[70] W. SLOFSTRA.“THE SET OF QUANTUM CORRELATIONS IS NOT CLOSED”. Forum of Mathe-
+matics, Pi7: e1 (2019).
+[71] W. Slofstra.“Tsirelson’s problem and an embedding theorem for groups arising from non-local games”.
+Journal of the American Mathematical Society33(1): 1–56 (2019).
+[72] W. F. Stinespring.“Positive Functions onC ⋆-Algebras”. Proceedings of the American Mathematical Society
+6(2): 211 (1955).
+[73] S.-V. Stratila and L. Zsido.Lectures on von Neumann Algebras. Cambridge University Press (2019).
+[74] M. Takesaki.Theory of Operator Algebras I. Springer New York (1979).
+[75] M. Takesaki.Theory of Operator Algebras II. Springer Berlin Heidelberg (2003).
+[76] E. Y.-Z. Tan, R. Schwonnek, K. T. Goh, I. W. Primaatmaja, and C. C.-W. Lim.“Computing secure key
+rates for quantum cryptography with untrusted devices”. npj Quantum Information7(1) (2021).
+[77] W. Tittel, J. Brendel, H. Zbinden, and N. Gisin.“Quantum Cryptography Using Entangled Photons in
+Energy-Time Bell States”. Physical Review Letters84(20): 4737–4740 (2000).
+[78] M. Tomamichel.“A Framework for Non-Asymptotic Quantum Information Theory”, (2013). Available
+online:https://arxiv.org/abs/1203.2142.
+[79] M. Tomamichel.Quantum Information Processing with Finite Resources. Springer International Publishing
+(2016).
+[80] M. Tomamichel, R. Colbeck, and R. Renner.“A Fully Quantum Asymptotic Equipartition Property”. IEEE
+Transactions on Information Theory55(12): 5840–5847 (2009).
+[81] M. Tomamichel, C. Schaffner, A. Smith, and R. Renner.“Leftover Hashing Against Quantum Side Infor-
+mation”. IEEE Transactions on Information Theory57(8): 5524–5535 (2011).
+[82] B. S. Tsirelson.“Some results and problems on quantum Bell-type inequalities”. Hadronic Journal Supple-
+ment8: 329–345, (1993).
+[83] A. Uhlmann.“The “transition probability” in the state space of a⋆-algebra”. Reports on Mathematical
+Physics9(2): 273–279 (1976).
+[84] H. Umegaki.“Conditional expectation in an operator algebra, IV (entropy and information)”. InKodai
+Mathematical Seminar Reports, volume 14, pages 59–85, (1962).
+[85] L. van Luijk, R. Schwonnek, A. Stottmeister, and R. F. Werner.“The Schmidt rank for the commuting
+operator framework”. Communications in Mathematical Physics405(7): 152, (2024).
+[86] L. van Luijk, A. Stottmeister, and H. Wilming.“Uniqueness of Purifications Is Equivalent to Haag Duality”.
+Physical Review Letters136(4) (2026).
+[87] U. Vazirani and T. Vidick.“Fully Device-Independent Quantum Key Distribution”. Physical Review Letters
+113(14) (2014).
+[88] J. von Neumann.Mathematische Grundlagen der Quantenmechanik. Springer Berlin Heidelberg (1996).
+[89] W. Zhang, T. van Leent, K. Redeker, R. Garthoff, R. Schwonnek, F. Fertig, S. Eppelt, W. Rosenfeld,
+V. Scarani, C. C.-W. Lim, and H. Weinfurter.“A device-independent quantum key distribution system for
+distant users”. Nature607(7920): 687–691 (2022).

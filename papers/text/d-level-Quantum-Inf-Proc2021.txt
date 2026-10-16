@@ -1,0 +1,1116 @@
+=== page 1 ===
+Quantum Information Processing (2021) 20:137
+https://doi.org/10.1007/s11128-021-03072-6
+Quantum summation using d-level entanglement
+swapping
+Cai Zhang 1 · Yinxiang Long 2 · Qin Li 3
+Received: 9 September 2020 / Accepted: 18 March 2021 / Published online: 9 April 2021
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2021
+Abstract
+In this paper, we propose a secure multi-party quantum modulo- d summation proto-
+col using d-level entanglement swapping, where a malicious but non-collusive third
+party (TP) who plays a role of entanglement distribution between the participants
+is involved. TP is assumed to be malicious but non-collusive, which means TP can
+launch various attacks within boundaries of quantum mechanics except the collusion
+with any dishonest participant. Our protocol is congenitally free from Trojan horse
+attacks because there is no need to relay encoded states. In addition, only d-level Bell
+measurement is required for the users except TP , which makes our protocol’s imple-
+mentation more feasible. We show that the presented protocol is secure against outside
+as well as participant attacks. Second, we give a detailed comparison of different quan-
+tum modulo-d summation protocols, in terms of qudit cost, quantum resources, and
+quantum operations. In the end, we discuss how to replace cat states with d-level
+Bell states in Je et al.’s protocols (Quantum Inf Process 18(6):168, 2019) for easier
+implementation with current quantum technology.
+Keywords Quantum multi-party computation · Quantum summation · Entanglement
+swapping
+1 Introduction
+Secure multi-party quantum summation [ 1–5], as a fundamental primitive of secure
+multi-party quantum computation [ 6–10], has been gaining attention recently. The
+B Cai Zhang
+zhangcai@scau.edu.cn
+1 College of Mathematics and Informatics, South China Agricultural University, Guangzhou
+510642, China
+2 Department of Automation Engineering, Guangdong Technical College of Water Resources and
+Electric Engineering, Guangzhou 510925, China
+3 School of Computer Science, Xiangtan University, Xiangtan 411105, China
+123
+
+=== page 2 ===
+137 Page 2 of 19 Cai Zhang et al.
+goals of quantum summation are to ensure the correctness of summation result, as
+well as to preserve the privacy of users’ inputs. Quantum summation can be applied
+to quantum voting [ 11–15], quantum anonymous ranking [ 16], and quantum private
+equality comparison [ 17–19]. Devising efﬁcient and practical quantum summation
+protocols is thus signiﬁcant, as we pursue in this work.
+A variety of quantum summation protocols have been investigated by using various
+quantum resources. Reference [20] presented a quantum summation protocol based on
+single photons in both polarization and spatial-mode degrees of freedom, where unitary
+operations employed to encode users’ private bits on the travelling single photons are
+required. Most other protocols depend on sharing a multipartite entangled state among
+users. For example, Zhang et al. [21] designed a quantum summation protocol without
+a trusted third party, in which the number of users was limited to three because of the use
+of the so-called genuinely maximally entangled six-qubit states. In 2016, Shi et al. [22]
+proposed protocols for summation and multiplication that involve quantum Fourier
+transform, controlled-NOT (CNOT) gates and oracle operators. They then studied
+a common quantum solution that addresses a class of two-party private summation
+problems [23]. In 2017, Zhang et al. [ 24] devised a multi-party quantum summation
+protocol without a trusted third party where a multipartite entangled state is shared
+among users. Liu et al. [ 25] presented a quantum summation protocol by sharing
+multipartite entangled states that include Bell states as subsystems among users. In
+their protocol, quantum communication is two-way, which means they should offer
+special care concerning Trojan horse attacks [ 26–28]. In contrast to these protocols,
+Zhang et al. [ 29] employed quantum teleportation to devise a quantum summation
+protocol, in which a certain entanglement distribution protocol is involved.
+Recently, Ji et al. [ 30] discussed how to construct quantum private comparison,
+quantum anonymous ranking, and quantum anonymous voting protocols based on
+quantum summation. They designed two quantum summation protocols by employing
+entanglement swapping property between the d-level Bell state and the d-level n-
+partite cat state. As the d-level n-partite cat state remains difﬁcult to prepare with the
+current technology, we try to replace them with d-level Bell states.
+In some quantum cryptographical protocols, a semi-honest third party (TP) is usu-
+ally involved to help compute some results [ 5,20]. TP is said to be semi-honest if TP
+executes the protocols loyally, writes down a record of all its intermediate computa-
+tions, and might try to steal the participants’ private inputs from the record, but he
+cannot collude with other participants. In our protocol, a malicious but non-collusive
+TP is introduced to help the computation. TP is said to be malicious but non-collusive
+if he can do whatever he wants within boundaries of quantum mechanics except the
+collusion with dishonest participants. The difference between the semi-honest TP and
+the TP in our protocol is that the TP in our protocol does not need to execute the
+protocol loyally; that is to say, the malicious TP has more possible ways to attack the
+protocol, which in return makes the protocol more secure. For this point, we give the
+assumption of the malicious but non-collusive TP .
+In this work, we start with a quantum modulo- d protocol relying on the entan-
+glement swapping property between d-level Bell states in which the malicious but
+non-collusive TP is introduced. A security analysis shows that our protocol can resist
+both outside and participant attacks. We then compare in detail our protocol with exist-
+123
+
+=== page 3 ===
+Quantum summation using d-level entanglement swapping Page 3 of 19 137
+ing quantum modulo-d summation protocols. Finally, we show that the cat states in Je
+et al.’s protocols can be replaced withd-level Bell states, which facilitates the protocol
+implementation. Note that if the TP in our protocol could launch collusion attacks with
+some dishonest participant, they can learn some honest participant’s private input. We
+will consider such attacks in the future and try to minimize the security assumptions.
+The rest of this paper is organized as follows. In Sect. 2, we introduce the entan-
+glement swapping property of d-level Bell states. In Sect. 3, we describe the quantum
+modulo-d summation protocol, followed by its correctness and security analysis in
+Sect. 4. Section 5 gives a detailed comparison of quantum modulo- d summation pro-
+tocols and a discussion on how to replace cat states with d-level Bell states in Ji et
+al.’s protocols as well. Conclusions are given in Sect. 6.
+2 Preliminary knowledge
+In this section, let us introduce the entanglement swapping property of d-level Bell
+states and the notations we used in this work. For simplicity, symbols ⊕, ⊖ denote
+addition modulo d and subtraction modulo d, respectively, throughout the paper.
+A d-level Bell basis contains states of the following form: [ 31]
+|ψ (a, b)⟩:= 1√
+d
+d−1∑
+j=0
+ζ ja | j⟩|j ⊕ b⟩, (1)
+where ζ = e2πi/d , and a and b range from 0 to d − 1. These states reduce to the
+familiar Bell states when d = 2.
+Suppose particles 1 and 2 and particles 3 and 4 are in states |ψ(a1, b1)⟩1,2 and
+|ψ(a2, b2)⟩3,4, respectively. Swapping particle 2 and 4 gives us [ 31]
+|ψ(a1, b1)⟩1,2 ⊗| ψ(a2, b2)⟩3,4
+= 1
+d
+d−1∑
+j,k=0
+ζ− jk |ψ(a1 ⊕ j, b2 ⊕ k)⟩1,4 ⊗| ψ(a2 ⊖ j, b1 ⊖ k)⟩3,2. (2)
+We now consider the case wheren+1 pairs of d-level Bell states are involved. Sup-
+pose these states are |ψ(a1, b1)⟩1,2,|ψ(a2, b2)⟩3,4,..., |ψ(an+1, bn+1)⟩2n+1,2n+2.
+By repeatedly using Eq. ( 2), we can deduce the following
+|ψ(a1, b1)⟩1,2 ⊗| ψ(a2, b2)⟩3,4 ⊗ ... ⊗| ψ(an+1, bn+1)⟩2n+1,2n+2
+= 1
+d
+d−1∑
+x1,y1=0
+ζ−x1 y1|ψ(a1 ⊕ x1, b2 ⊕ y1)⟩1,4 ⊗| ψ(a2 ⊖ x1, b1 ⊖ y1)⟩3,2
+⊗| ψ(a3, b3)⟩5,6 ⊗ ... ⊗| ψ(an+1, bn+1)⟩2n+1,2n+2
+123
+
+=== page 4 ===
+137 Page 4 of 19 Cai Zhang et al.
+= 1
+d2
+d−1∑
+x1,y1=0
+d−1∑
+x2,y2=0
+ζ−x1 y1−x2 y2 |ψ(a1 ⊕ x1, b2 ⊕ y1)⟩1,4
+⊗| ψ(a2 ⊖ x1 ⊕ x2, b3 ⊕ y2)⟩3,6
+⊗| ψ(a3 ⊖ x2, b1 ⊖ y1 ⊖ y2)⟩5,2
+⊗| ψ(a4, b4)⟩7,8 ⊗ ... ⊗| ψ(an+1, bn+1)⟩2n+1,2n+2
+= ...
+= 1
+dk−1
+d−1∑
+x1,y1=0
+d−1∑
+x2,y2=0
+...
+d−1∑
+xk−1,yk−1=0
+ζ−∑ k−1
+j=1 x j y j |ψ(a1 ⊕ x1, b2 ⊕ y1)⟩1,4
+⊗| ψ(a2 ⊖ x1 ⊕ x2, b3 ⊕ y2)⟩3,6
+⊗| ψ(a3 ⊖ x2 ⊕ x3, b4 ⊕ y3)⟩5,8
+...
+⊗| ψ(ak ⊖ xk−1, b1 ⊖ y1 ⊖ y2 ⊖ ... ⊖ yk−1)⟩2k−1,2|ψ(ak+1, bk+1)⟩2k+1,2k+2
+⊗ ... ⊗| ψ(an, bn)⟩2n+1,2n+2
+= ...
+= 1
+dn
+d−1∑
+x1,y1=0
+d−1∑
+x2,y2=0
+...
+d−1∑
+xn,yn=0
+ζ−∑ n
+j=1 x j y j |ψ(a1 ⊕ x1, b2 ⊕ y1)⟩1,4
+⊗| ψ(a2 ⊖ x1 ⊕ x2, b3 ⊕ y2)⟩3,6
+⊗| ψ(a3 ⊖ x2 ⊕ x3, b4 ⊕ y3)⟩5,8
+...
+⊗| ψ(ak ⊖ xk−1 ⊕ xk, bk+1 ⊕ yk)⟩2k−1,2k+2
+⊗ ... ⊗| ψ(an ⊖ xn, b1 ⊖ y1 ⊖ y2 ⊖ ... ⊖ yn)⟩2n+1,2, (3)
+which can be depicted in Fig. 1.
+If particles (2 j − 1) and (2 j + 2) ( j = 1, 2,..., n) and particles (2 n + 1)
+and 2 are measured in the d-level Bell basis and the measurement results are
+|ψ(v j,w j)⟩2 j−1,2 j+2 and |ψ(vn+1,w n+1)⟩2n+1,2, respectively, then we have
+n+1∑
+k=1
+ak ≡
+n+1∑
+k=1
+vk (mod d), (4)
+n+1∑
+k=1
+bk ≡
+n+1∑
+k=1
+wk (mod d), (5)
+according to Eq. ( 3). The measurement results will be used as keys to encrypt users’
+private inputs in our protocol.
+The d-level computational basis is deﬁned as the orthonormal set {|0⟩,|1⟩,...,
+|d − 1⟩}. Performing the quantum Fourier transform on each element of this set then
+123
+
+=== page 5 ===
+Quantum summation using d-level entanglement swapping Page 5 of 19 137
+Fig. 1 Entanglement swapping of d-level Bell states
+gives us
+| fk⟩: =F|k⟩= 1√
+d
+d−1∑
+r=0
+ζ kr |r⟩, (6)
+where k = 0, 1,..., d−1, which forms another basis, namely the Fourier basis. States
+randomly chosen from the computational and the Fourier bases will be employed to
+detect the outside eavesdropping. In addition, | j⟩∈{ | 0⟩,|1⟩,..., |d − 1⟩}can be
+expanded in the Fourier basis as:
+| j⟩= 1√
+d
+d−1∑
+r=0
+ζ− jr | fr ⟩. (7)
+Equation (1) can thus be rewritten as:
+|ψ (a1, b1)⟩= 1√
+d
+d−1∑
+j=0
+ζ ja1 | j⟩|j ⊕ b1⟩
+= 1√
+d
+d−1∑
+j=0
+ζ ja1 1√
+d
+d−1∑
+m=0
+ζ− jm | fm⟩ 1√
+d
+d−1∑
+n=0
+ζ−( j⊕b1)n| fn⟩
+= 1√
+d
+· 1
+d · ζ b1n
+d−1∑
+j,m,n=0
+ζ j(a1−m−n)| fm⟩|fn⟩
+123
+
+=== page 6 ===
+137 Page 6 of 19 Cai Zhang et al.
+= 1√
+d
+· ζ b1n ∑
+m+n
+≡a1( mod d)
+| fm⟩|fn⟩, (8)
+where the last equation follows from the fact∑ d−1
+j=0 ζ jk = dδk,0 and δk,0 = d if k = 0,
+otherwise δk,0 = 0. Equation (8) will be utilized to detect the honesty of the malicious
+but non-collusive TP who is in charge of distributingd-level Bell states between users.
+3 The proposed protocol
+We are now ready to describe our protocol satisfying the following requirements:
+(1) Correctness the modulo-d summation of all users’ private inputs should be correct.
+(2) Security an outside eavesdropper cannot obtain any information about each user’s
+private input.
+(3) Privacy no user can learn about other users’ private inputs.
+(4) Fairness All users get the summation result at the same time.
+The classical and quantum channels used in our protocol are assumed to be authen-
+ticated and noiseless, respectively. The third party (TP) who distributes d-level Bell
+states between users and computes the modulo-d summation of all users’ private inputs
+is assumed to be malicious but non-collusive; that is to say, TP is allowed to launch
+various attacks by using different quantum resources except the collusion with any
+dishonest user. For simplicity, TP will be donated by P1 in the remainder of the paper.
+Suppose there are n users P2, P3,..., Pn+1, with Pi (i = 2, 3,..., n + 1) having
+two private integers mi1, mi2 ∈{ 0, 1,..., d − 1}. P1 helps them compute
+( n+1∑
+i=2
+mi1 (mod d),
+n+1∑
+i=2
+mi2 (mod d)
+)
+, (9)
+without learning any information about their private integers.
+Our protocol works as follows:
+(1) Entanglement distribution P1 generates (n+1)(1+ R) ordered d-level Bell states,
+each of which is randomly selected from the d-level Bell basis,
+Ki =
+(⏐⏐ψ
+(
+a1
+i , b1
+i
+)⟩
+2i−1,2i,
+⏐⏐ψ
+(
+a2
+i , b2
+i
+)⟩
+2i−1,2i,...,
+⏐⏐ψ
+(
+a1+R
+i , b1+R
+i
+)⟩
+2i−1,2i
+)
+,
+(10)
+where i = 1, 2,..., n+1. P1 then picks up the ﬁrst component of eachd-level Bell
+state from Ki to form an ordered sequence Si
+2i−1, leaving the second component
+of the states forming another ordered sequence Si
+2i+2. P1 then prepares n sets of
+decoy states. Each set contains d decoy states that are randomly chosen from the
+computational basis or from the Fourier basis. Afterward, P1 inserts randomly
+each set of decoy states into S j
+2 j−1 and S j+1
+(2 j+2) mod (2n+2),( j = 2, 3,..., n + 1),
+123
+
+=== page 7 ===
+Quantum summation using d-level entanglement swapping Page 7 of 19 137
+forming new sequences (S j
+2 j−1)′and (S j+1
+(2 j+2) mod (2n+2))′, respectively. At last,
+P1 sends (S j
+2 j−1)′and (S j+1
+(2 j+2) mod (2n+2))′to Pj and keeps S1
+1 and S2
+4 in his hands.
+Note that, at this stage, the positions of the decoy states in each sequence and the
+information about all the d-level Bell states are only known to P1.
+(2) Detection for outside attacks After conﬁrming that Pj ( j = 2, 3,..., n + 1) has
+received ( S j
+2 j−1)′ and ( S j+1
+(2 j+2) mod (2n+2))′ ( j = 2, 3,..., n + 1) from P1, P1
+and Pj check whether the transmission between them is secure against outside
+attacks. Concretely, P1 ﬁrst announces to Pj the position and the corresponding
+bases of the decoy states. Based on the announced information, Pj measures these
+decoy states in the correct bases and publishes at random half the measurement
+results. Next, P1 announces the original states of the other half of the decoy states.
+They then compute the error rate by comparing the measurement results with
+their corresponding original states. If the error rate exceeds a certain threshold,
+the protocol will abort and restart from Step (1); otherwise, it will continue to the
+next step.
+(3) Detection for the honesty of P 1 By removing the d decoy states from (S j
+2 j−1)′and
+(S j+1
+(2 j+2) mod (2n+2))′( j = 2, 3,..., n+1), Pj obtains S j
+2 j−1 and S j+1
+(2 j+2) mod (2n+2)
+( j = 2, 3,..., n + 1). All the n users then detect whether the genuine d-level
+Bell states are shared in an honest way. After Step (1), (1+R) d-level Bell states
+|ψ(ak
+1, bk
+1)⟩1,2 (k = 1, 2,..., 1 + R) should be shared between P1 and Pn+1;
+(1+R) d-level Bell states |ψ(ak
+j , bk
+j)⟩2 j−1,2 j (k = 1, 2,..., 1 + R, j = 2, 3,...,
+n + 1) should be shared between Pj and Pj−1.
+(3.1) To examine the genuineness of the d-level Bell states shared between P1 and
+Pn+1, Pn+1 ﬁrst randomly selects Rd -level Bell states between them and
+requests P1 to announce the corresponding original states. Next, Pn+1 ran-
+domly measures each corresponding component in S1
+2 in the computational
+basis or in the Fourier basis. These measurement results are only known to
+himself. Later on, Pn+1 notiﬁes P1 to measure the corresponding components
+in S1
+1 in the same basis as Pn+1 does and announce the measurement results.
+According to Eq. ( 8), Pn+1 examines if these measurement results are corre-
+lated with each other, and computes the error rate. For example, if the original
+state announced by P1 is |ψ(a1, b1)⟩1,2, and the measurement results in the
+computational basis are r1 and r2, then the equation r2 − r1 ≡ b1(mod d)
+should be obtained; otherwise, the equation r1 + r2 ≡ a1(mod d) should
+hold. If the error rate is greater than a certain threshold, the protocol will abort
+and restart from Step (1). Otherwise, the protocol will continue.
+(3.2) To examine the genuineness of the d-level Bell states shared between P2 and
+P1, P2 also employs Rd -level Bell states to complete this detection by using
+the similar method as that used by Pn+1. If the error rate is greater than the
+threshold, the protocol will abort and restart from Step (1). Otherwise, the
+protocol will continue.
+(3.3) To examine the genuineness of the d-level Bell states shared between Pj and
+Pj−1 ( j = 3, 4,..., n + 1), Pj randomly chooses R/2 d-level Bell states
+between them and asks P1 to announce the corresponding original states. Pj
+123
+
+=== page 8 ===
+137 Page 8 of 19 Cai Zhang et al.
+then measures each corresponding component in S j
+2 j−1 randomly in the com-
+putational basis or in the Fourier basis, publishing the measurement results.
+Afterward, Pj−1 measures the corresponding components in S j
+2 j in the same
+basis, publicizing his measurement results. Pj and Pj−1 can then check if
+these measurement results are correlated based on Eq. ( 8). Pj−1 utilizes the
+same procedure as Pj dose with another R/2 randomly chosen Bell states to
+derive the relation of Pj ’s and Pj−1’s measurement results. If the error rate in
+either case is greater than the threshold, the protocol will abort and restart from
+Step (1). Otherwise, they have the guarantee that the states shared between
+them are genuine Bell states and distributed in an honest way, and the protocol
+will continue.
+(4) Private input encryption P i (i = 1, 2,..., n + 1) discards Rd -level Bell states
+used for P1’s honesty detection, resulting in only n + 1 d-level Bell states shared
+between every two users. Suppose these n + 1 states are |ψ(a1, b1)⟩1,2 shared
+between P1 and Pn+1 and |ψ(a j, b j)⟩2 j−1,2 j ( j = 2, 3,..., n + 1) shared
+between Pj and Pj−1. Note that only P1 has the knowledge of (a j, b j). P1 mea-
+sures particles 1 and 4 in the d-level Bell basis, obtaining the measurement result
+|ψ(v1,w 1)⟩1,4. Pj ( j = 2, 3,..., n + 1) also measures particles (2 j − 1) and
+((2i + 2) mod (2n + 2))i nt h ed-level Bell basis and gets the measurement results
+|ψ(v j,w j)⟩2 j−1,(2 j+2) mod (2n+2). Pj then encrypts his private inputs ( m j1, m j2)
+by computing
+c j1 ≡ m j1 ⊕ v j, (11)
+c j2 ≡ m j2 ⊕ w j, (12)
+which are later sent to P1 through authenticated classical channels.
+(5) Summation. After receiving all (c j1, c j2) ( j = 2, 3,..., n + 1), P1 computes
+t1 ≡
+⎛
+⎝v1 ⊕
+n+1∑
+j=2
+c j1
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+ai
+⎞
+⎠ (mod d), (13)
+t2 ≡
+⎛
+⎝w1 ⊕
+n+1∑
+j=2
+c j2
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+bi
+⎞
+⎠ (mod d), (14)
+and announces ( t1, t2)t o P2, P3,..., Pn+1.
+4 Analysis
+Let us now analyse the correctness of our protocol in Sect. 4.1 as well as its security
+in Sect. 4.2.
+123
+
+=== page 9 ===
+Quantum summation using d-level entanglement swapping Page 9 of 19 137
+4.1 Correctness analysis
+We begin with the correctness analysis. We show here that if all users honestly provide
+their private inputs, they can eventually obtain the correct summation result
+( n+1∑
+i=2
+mi1 (mod d),
+n+1∑
+i=2
+mi2 (mod d)
+)
+. (15)
+In Step (4) of the proposed protocol, Pj( j = 2, 3,..., n + 1) uses his measurement
+result (v j,w j ) as a key to encrypt his private inputs (m j1, m j2)b yE q s .(11) and (12)t o
+generate ciphertexts (c j1, c j2) that are then sent to P1 through authenticated classical
+channels.
+In Step (5), by employing Eqs. ( 4) and ( 5), P1 calculates and announces the fol-
+lowing
+t1 ≡
+⎛
+⎝v1 ⊕
+n+1∑
+j=2
+c j1
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+ai
+⎞
+⎠ (mod d)
+≡
+⎛
+⎝v1 ⊕
+n+1∑
+j=2
+(m j1 ⊕ vi)
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+ai
+⎞
+⎠ (mod d)
+≡
+⎛
+⎝
+n+1∑
+j=1
+v j ⊕
+n+1∑
+j=2
+m j1
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+ai
+⎞
+⎠ (mod d)
+≡
+n+1∑
+j=2
+m j1 (mod d), (16)
+t2 ≡
+⎛
+⎝w1 ⊕
+n+1∑
+j=2
+c j2
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+bi
+⎞
+⎠ (mod d)
+≡
+⎛
+⎝w1 ⊕
+n+1∑
+j=2
+(m j2 ⊕ wi)
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+bi
+⎞
+⎠ (mod d)
+≡
+⎛
+⎝
+n+1∑
+j=1
+w j ⊕
+n+1∑
+j=2
+m j2
+⎞
+⎠ −
+⎛
+⎝
+n+1∑
+j=1
+bi
+⎞
+⎠ (mod d)
+≡
+n+1∑
+j=2
+m j2 (mod d), (17)
+which are the modulo-d summation result of n users’ private inputs. And our protocol
+thus fulﬁls the correctness requirement.
+123
+
+=== page 10 ===
+137 Page 10 of 19 Cai Zhang et al.
+4.2 Security analysis
+Let us now move on to the security analysis. We have to show that the proposed
+protocol can resist both outside and participant attacks, and it thus satisﬁes the security,
+privacy and fairness requirements mentioned in Sect.3. Outside attacks may potentially
+affect our protocol via the initial entanglement distribution. Note that P1, as a special
+participant, cannot collude with any dishonest user, but he can launch attacks within
+boundaries of quantum mechanics. Other dishonest users may collude to steal the rest
+users’ private inputs. We will show how we can detect these attacks by using decoy
+states and extra d-level Bell states. Trojan horse attacks [28,32,33], such as the delay-
+photon Trojan horse attacks as well as the invisible photon eavesdropping Trojan horse
+attack, usually exist in quantum communication protocols where quantum states are
+encoded and relayed. As the entanglement distribution occurs only once in a one-way
+communication, these attacks become invalid to our protocol.
+4.2.1 Analysis of outside attacks
+We now give a detailed analysis of the security of our protocol against outside
+attacks. The decoy-state technique is utilized in our protocol. The idea comes from
+the ﬁrst quantum key distribution protocol by Bennett and Brassard [ 34] that has been
+proven to be unconditional secure [ 35]. Our protocol can thus resist a variety of out-
+side attacks, such as the intercept-resend attack, the measurement-resend attack, the
+entanglement-measurement attack, and the denial-of-service (DOS) attack. Without
+loss of generality, the most general strategy that the outside attacker, Eve, can adopt
+is that she uses the operation UE to entangle the quantum state transmitted from P1 to
+Pj with her ancillary quantum system |E⟩, which can be characterized as
+UE| j⟩|E⟩=
+d−1∑
+i=0
+a ji |i⟩|e ji ⟩, (18)
+where | j⟩∈{ |0⟩,|1⟩,..., |d − 1⟩}and ∑ d−1
+i=0 |a ji |2 = 1. We show that any attempt
+to eavesdrop by Eve will inevitably change the photon statistics and expose her.
+On the one hand, suppose the decoy state comes from the computational basis, and
+it is measured in this basis. If Eve introduces no error, the following equation
+aij =
+{ 0, i ⁄= j,
+1, i = j, (19)
+should be satisﬁed according to Eq. ( 18).
+On the other hand, by using Eqs. ( 7) and ( 19), the states from the Fourier basis
+performed by the operation UE become
+UE| f j⟩|E⟩= UE F| j⟩|E⟩= UE
+1√
+d
+d−1∑
+r=0
+ζ jr |r⟩|E⟩
+123
+
+=== page 11 ===
+Quantum summation using d-level entanglement swapping Page 11 of 19 137
+= 1√
+d
+d−1∑
+r=0
+ζ jr UE|r⟩|E⟩= 1√
+d
+d−1∑
+r=0
+ζ jr
+d−1∑
+i
+ari |i⟩|eri ⟩
+= 1√
+d
+d−1∑
+r=0
+d−1∑
+i=0
+ζ jr ari |i⟩|eri ⟩= 1√
+d
+d−1∑
+r=0
+ζ jr arr |r⟩|err ⟩
+= 1√
+d
+d−1∑
+r=0
+ζ jr 1√
+d
+d−1∑
+p=0
+ζ−rp | f p⟩|err ⟩
+= 1
+d
+d−1∑
+r=0
+d−1∑
+p=0
+ζ jr − pr | f p⟩|err ⟩
+= 1
+d
+∑
+p⁄= j
+d−1∑
+r=0
+ζ jr − pr | f p⟩|err ⟩+ 1
+d
+d−1∑
+r=0
+| f j⟩|err ⟩. (20)
+Thus, if the decoy state is from the Fourier basis and measured in this basis, in order
+to introduce no error by Eve, the following condition
+1
+d
+∑
+p⁄= j
+d−1∑
+r=0
+ζ jr − pr | f p⟩|err ⟩= 0, (21)
+should hold, where the 0 on the right side represents zero vector, and j ranges from 0
+to d − 1, which leads to
+|e00⟩=| e11⟩=···=| e(d−1)(d−1)⟩, (22)
+that is to say, Eve does not introduce any error only when her ancillary quantum state
+and the decoy state are product states. Therefore, Eve can learn nothing about users’
+private inputs.
+4.2.2 Analysis of participant attacks
+Let us now study the security of our protocol against participant attacks. We need to
+account for two kinds of attacks: one from P1 who distributes the d-level Bell states
+between users, and the other from dishonest users.
+Analysis of Attacks from P 1. We ﬁrst analyse the attacks from P1, who cannot
+collude with any dishonest user. Without loss generality, suppose that P1 attempts to
+obtain Pk ’ private inputs ( mk1, mk2)( k ⁄= 2, n + 1). To achieve this, P1 may carry
+out the entanglement swapping attack as follows: P1 ﬁrst distributes two d-level Bell
+states shared between him and Pk . P1 can then derive Pk ’s private key (vk,w k) using
+Eq. ( 1), because he knows the initial d-level states and his own measurement result
+in the d-level Bell basis; P1 can thus obtain Pk ’s private inputs. Another attack is that
+P1 distributes a d-level Bell state to Pk without sharing it with other user. It is easy
+for P1 to obtain Pk ’s measurement result, and, therefore, to get Pk ’s private inputs.
+123
+
+=== page 12 ===
+137 Page 12 of 19 Cai Zhang et al.
+These attacks, however, will be detected in Step (3) where the genuineness of the
+d-level Bell states shared between Pj and Pj−1 (between Pj+1 and Pj ) is examined.
+In what follows, we show that the entanglement swapping attack is invalid to our
+protocol. Other attacks from P1 can be analogously analysed as the security relies on
+the genuine d-level states shared between users in the honest way.
+As we can see from Eq. ( 8) in Sect. 2,i fa d-level Bell state shared between
+Pk and Pk−1 is known to them and each component of the state is measured in the
+same basis (both in the computation basis or both in the Fourier basis), then their
+measurement results should be correlated. For example, if the state is |ψ(a, b)⟩and
+their measurement results in the computational basis arerk and rk+1, respectively. They
+then ought to have rk+1 − rk ≡ b ( mod d). Otherwise, they should attain rk+1 + rk ≡
+a (mod d). To obtain the maximum probability that P1 passes the detection, he can
+distribute only one fake d-level Bell state between Pk and Pk−1 and another fake one
+between Pk+1 and Pk , and then share two genuine d Bell states between him and Pk ,
+and Pk−1, respectively. He can then start the entanglement swapping attack. In this
+case, these two fake states cannot be used for detection. The probability of passing
+the detection thus become 1 /(1 + R)2. For the cases where k = 2o r k = n + 1, this
+probability turns into 1 /(1 + R) due to the fact that P1 can only pass the detection
+between him and Pk . These two probabilities will close to 1 when R is large enough.
+As a consequence, P1 is unable to take users’ private inputs.
+Analysis of Attacks from dishonest users
+In this part, we will show that n − 2 dishonest users will even fail to obtain just only
+one of the other two honest users’ private inputs. Suppose that these dishonest users
+intend to achieve Pp’s ( p ⁄= 1) private inputs.
+For the cases where p = 2o r p = n + 1, as one component of the d Bell state
+belongs to P1 who cannot collude with dishonest users, they are unable to obtain useful
+measurement results in the d-level Bell basis. They can thus learn nothing about P2’s
+and Pn+1’s private inputs.
+We now consider the cases where p ⁄= 2 and p ⁄= n + 1. If the other honest user Pq
+is not Pp’s neighbour, namely q ⁄= p + 1 and q ⁄= p − 1. Dishonest users Pp−1 and
+Pp+1 may initiate entanglement swapping attack as each of them has one component
+that is part of the d-level Bell state shared between Pp−1 and Pp (between Pp+1 and
+Pp). Suppose the state shared between Pp and Pp−1 is |ψ(ap, bp)⟩2 p−1,2 p and the
+state shared between Pp+1 and Pp is |ψ(ap+1, bp+1)⟩2 p+1,2 p+2. We then have
+|ψ(ap, bp)⟩2 p−1,2 p ⊗| ψ(ap+1, bp+1)⟩2 p+1,2 p+2
+= 1
+d
+d−1∑
+j,k=0
+ζ− jk |ψ(ap ⊕ j, bp+1 ⊕ k)⟩2 p−1,2 p+2
+⊗| ψ(ap+1 ⊖ j, bp ⊖ k)⟩2 p+1,2 p, (23)
+where particles (2 p− 1) and (2 p+ 2) belong to Pp, particle (2 p) belongs to Pp−1, and
+particle (2 p + 1) is in Pp+1’s hands. To derive Pp’s measurement result in the d-level
+Bell basis, Pp−1 and Pp+1 need to get the information about the shared d-level Bell
+states, which is impossible as it is only known to P1. They thus fail to learn about Pp’s
+123
+
+=== page 13 ===
+Quantum summation using d-level entanglement swapping Page 13 of 19 137
+private inputs. If the other honest user Pq is Pp’s, namely q = p + 1o r q = p − 1.
+The analysis is similar. In this case, they cannot even attain the modulo- d summation
+of Pp’ and Pq ’s private integers. Let alone Pp’s private inputs.
+Note that any (n − 1) dishonest users can easily derive the rest one’s private inputs
+when the summation result is revealed. Our protocol is, therefore, secure against
+(n − 2)-party collusive attacks.
+5 Comparison and discussion
+In this section, we ﬁrst compare our protocol with existing quantum modulo- d sum-
+mation protocols in terms of qudit cost, quantum resource, and quantum operations.
+And then we discuss how to replace the cat states in the protocols of Ref. [ 30] with
+the d-level Bell states, which facilitates the protocol’s implementation.
+The qudit cost of a quantum summation protocol is deﬁned as the number of qudits
+(including the qudits used for security detection) required to obtain a modulo- d sum-
+mation of n private dits, where n is the number of users.
+For simplicity, we assume that all protocols use n decoy qudits to check eavesdrop-
+ping whenever necessary.
+Shi et al. [22] utilized qubits to construct modulo-d summation protocols, in which
+d = 2m and m is the number of qubits. For comparison, we regardd qubits as a qudit. As
+the authors mentioned, their protocol I can only protect the private input of the initiator,
+who starts the protocol. To overcome this weakness, they proposed protocol III based
+on protocol I, which can be secure against attacks from any less n − 1 dishonest users.
+To compute the modulo-d summation of n private dits provided byn users, protocol III
+should call protocol I n + 1 times, with each time, protocol I consuming n + 1 qudits.
+Totally, protocol III costs (n + 1)(n + 1) = n2 + 2n + 1 qudits. Their protocol needs
+d-level ( n + 1)-partite entangled d-level states and quantum operations, including
+the (inverse) quantum Fourier transform, the controlled-NOT (CNOT) operation, an
+oracle operation, and single qubit measurement. Protocols II and IV in their work are
+about modulo-d multiplication, which are not discussed here.
+Y ang et al. [ 36] presented a secure multi-party summation protocol based on d-
+level n-partite entangled states, where n is the number of users. A d-level n-partite
+entangled state is required to obtain a modulo- d summation of n private dits. Besides,
+n(n − 1) decoy qudits are needed to prevent outside attacks, and (n − 1) d-level n-
+partite entangled states should be employed to detect the initiator’s honesty. The qudit
+cost thus becomes n + n(n − 1)+ n(n − 1) = 2n2 − n. In their protocol, the quantum
+Fourier transform and unitary operations related to users’ private inputs are necessary.
+The single qudit measurements are performed to read the summation result.
+In our previous work [37], d-level single quantum systems are employed to design
+a multi-party quantum summation protocol, whered is limited to a prime integer. Only
+one d-level single state is needed to compute a dit sum. However, it needs relaying
+n + 1 times and each time, n decoy qudits are required to detect eavesdropping. The
+qudit cost is thus 1+(n+1)n = n2 +n+1. The protocol needs two unitary operations
+to combine to transform an element in a d-level basis to another element in another
+123
+
+=== page 14 ===
+137 Page 14 of 19 Cai Zhang et al.
+basis. Besides, each participant should be equipped with quantum state generators and
+the measurement devices in d + 1 different bases.
+Ji et al.’s [ 30] protocol I is probabilistic can easily be modiﬁed into a modulo- d
+summation protocol. The only change is the last step, where the participant, who helps
+the computation, can just perform the summation in modulo d instead of the general
+one. The protocol then becomes deterministic. In this case, their protocol I needs a
+d-level (n + 1)-partite cat state and nd -level Bell states. Besides, TP and n users
+have to transmit particles to each other, which requires 2 n2 qudits for eavesdropping
+detection. Hence, their protocol’s qudit cost is (n + 1) + 2n + 2n2 = 2n2 + 3n + 1.
+In addition, their protocols need the measurement in the n-partite cat basis, which is
+not available when n is very large with current quantum technology. Their protocol II
+based on protocol I aims at solving other problems, which is omitted here.
+In our protocol in this work, we take advantage of the entanglement swapping
+property of d-level Bell states to devise a quantum modulo- d summation protocol,
+where a two-dit summation of n users’ private inputs, each with two dits, is computed.
+n + 1 pairs of d-level Bell states are required for the computation, and n2 decoy qudits
+are used for outside eavesdropping detection. Also, n2 pairs d-level Bell states are
+utilized to check the initiator’s honesty. The qudit cost is, therefore, ((n + 1) + 2n +
+n2 + 2n2)/2 = (3n2 + 3n + 1)/2. The quantum operations users need include only
+the d-level Bell measurement and the single qudit measurement.
+We can see, from Table 1, that except the protocol in Ref. [ 37], other protocols
+require entangled states. It seems that the protocol in Ref. [ 37] is the best one because
+Table 1 Comparison between quantum modulo-d summation protocols in terms of their qudit cost, quantum
+resources, and quantum operations
+Protocols Qudit cost Quantum resource Quantum operations
+Protocol III of Ref. [ 22] n2 + 2n + 1 d-level n-partite
+entangled state
+Quantum Fourier transform,
+CONT operation, oracle
+operation, inverse quantum
+Fourier transform, single
+qubit measurement
+Protocol of Ref. [ 36]2 n2 − nd -level n-partite
+entangled state,
+d-level single decoy
+state
+Quantum Fourier transform,
+unitary operation Uk , single
+qudit measurement
+Protocol of Ref. [ 37] n2 + n + 1 d-level single encoding
+state and d-level
+single decoy state
+Two unitary operations ( Xd
+and Yd ), single qudit
+measurement
+Protocol I of Ref. [ 30]2 n2 + 3n + 1 d-level (n + 1)-partite
+entangled state,
+e-level bipartite state
+and d-level single
+decoy state
+A unitary operation ( Uu,v ),
+single qudit measurement,
+d-level Bell measurement,
+(n + 1)-partite cat state
+measurement
+Our Protocol (3n2 + 3n + 1)/2 d-level bipartite
+entangled state and
+d-level single decoy
+state
+Single qudit measurement,
+d-level Bell measurement
+123
+
+=== page 15 ===
+Quantum summation using d-level entanglement swapping Page 15 of 19 137
+of its lowest qudit cost and fewest quantum operations. However, every user needs
+quantum generators to generate decoy qudits, as well as quantum measurement devices
+in d+1 different bases. Moreover, this protocol cannot be modiﬁed for the applications
+in quantum anonymous ranking and voting. In contrast, our protocol based on d-level
+bipartite states can be modiﬁed for these applications as the protocols do in Ref.
+[30]. Further, users in our protocol only need single qudit measurements and d-level
+measurements, which is much more available with current technology.
+We are now interested in how to replace the cat states with d-level Bell states in the
+protocols in Ref. [ 30] to make the protocols simple. We mainly focus on the protocol
+I as it is the primitive for their protocol II.
+Let us ﬁrst present their idea. For simplicity, we consider the case where each user
+has one private integer. In the protocol I, there are n users P1, P2,..., Pn and Pi has
+a private input xi ∈{ 0, 1,..., d − 1}. They wish to compute the summation ∑ n
+i=1 xi
+instead of ∑ n
+i=1 xi (mod d). To ﬁnish this task, they use the entanglement swapping
+property between the cat state and the Bell state as follows:
+|ψ (u1, u2,..., un)⟩1,2,...,n ⊗
+⏐⏐ψ
+(
+v,v ′)⟩
+s,s′
+= 1
+d
+d−1∑
+k,l
+ζ kl ⏐⏐ψ
+(
+u1 ⊕ k, u2, u3,...,v ′⊕ l,..., un
+)⟩
+1,2,...,s′,...,n
+⊗ |ψ (v ⊖ k, um ⊖ l)⟩s,m . (24)
+The process can be described in the following:
+(1) TP prepares a cat state |ψ (u0, u1,..., un)⟩and Pi (i = 1, 2,..., n) generates
+a d-level Bell state
+⏐⏐ψ
+(
+vi,v ′
+i
+)⟩
+, where v′
+i = xi . TP then tells Pi the mark ui ,a s
+well as sending him the particle with the mark ui by using decoy-state detection
+technique.
+(2) After receiving the particle with the mark ui (i = 1, 2,..., n) from TP ,Pi measure
+it and the particle with the mark vi in the d-level Bell basis, which make the
+entanglement swapping happen; see Fig. 2 [30] for clarity.
+(3) Using ui , all parties collaborate to compute
+SP =
+n∑
+i=1
+li, (25)
+which is then announced to TP .
+(4) Pi (i = 1, 2,..., ) sends the other component that is not measured to TP by decoy-
+state detection technique, and TP measures his cat state, obtaining the marks
+(
+u0 +
+n∑
+i=1
+ki
+)
+mod d,v ′
+1 ⊕ l1,v ′
+2 ⊕ l j
+2 ,...,v ′
+n ⊕ ln. (26)
+123
+
+=== page 16 ===
+137 Page 16 of 19 Cai Zhang et al.
+Fig. 2 The graphical description of entanglement swapping between a cat state and n Bell states
+TP then computes
+n∑
+i=1
+(
+v′
+i ⊕ li
+)
+− SP =
+n∑
+i=1
+v′
+i, (27)
+which is the summation ∑ n
+i=1 xi .
+In what follows, we show that the cat state can be replaced with nd -level Bell
+states.
+In Step (1), instead of preparing a cat state, TP generates nd -level Bell states
+|ψ(u′
+i, ui)⟩ (i = 1, 2,..., n), and Pi (i = 1, 2,..., n) generates a Bell state⏐⏐ψ
+(
+vi,v ′
+i
+)⟩
+, where v′
+i = xi . TP then announces to Pi the mark ui as well as sending
+him the particle with the mark ui by using decoy-state detection technique.
+Steps (2) and (3) remain the same. But note that, Step (2) makes the entanglement
+swapping happen; see Fig. 3.
+In step (4), after receiving the other component not measured from Pi , TP measures
+his n Bell states in the d-level Bell basis and obtains the marks
+(u′
+i ⊕ ki,v ′
+i ⊕ li). (28)
+TP is then able to compute TP then computes
+n∑
+i=1
+(
+v′
+i ⊕ li
+)
+− SP =
+n∑
+i=1
+v′
+i, (29)
+123
+
+=== page 17 ===
+Quantum summation using d-level entanglement swapping Page 17 of 19 137
+Fig. 3 The graphical description of entanglement swapping between Bell states
+which is the summation ∑ n
+i=1 xi .
+For the values of l1, l1,..., ln obtained from the methods in Figs. 2 and 3, respec-
+tively, they are equivalent, which means that a cat state can be replaced with nd -level
+Bell states. Thus, the replaced version has the same successful probability that TP has
+a correct result as the protocol I in Ref. [ 30].
+For the security, as pointed out by Ref. [ 38], Ji et al.’s protocols become insecure
+if li(i = 1, 2,..., n) were sent to TP via the public channel. Thus, our replaced
+version also suffers such a security loophole. This security loophole can be closed
+by the method proposed in Ref. [ 38], namely P1, P2,..., Pn pre-share a private key
+sequence.
+Based on that, we now consider the most powerful attack, where n − 2 dishonest
+users desire to collude to steal the rest two users’ private inputs. Suppose these dis-
+honest users are P1, P2,..., Pi−1, Pi+1,..., Pj−1, Pj+1,..., Pn , and they intend
+to collude to obtain Pi ’s private input, xi , and Pj ’s private input, x j . Although
+they are able to learn about the value of li + l j from SP and their lm (m =
+1, 2,..., i − 1, i + 1,..., j − 1, j + 1,..., n) in accordance with Eq. ( 25), they
+cannot obtain the values of v′
+i and v′
+j as they know nothing about v′
+i ⊕ li and v′
+j ⊕ l j .
+As other quantum summation protocols, any n − 1 dishonest users can get the rest
+one’s private input once the summation is revealed.
+6 Conclusions
+We ﬁrst designed a multi-party quantum modulo- d summation by taking advantage
+of the entanglement swapping property of d-level Bell states. A malicious but non-
+collusive third party (TP), also known as P1 in our protocol, plays a role of distributing
+entanglement shared between users in such a way that he can ﬁnally obtain the sum-
+mation result according to n users’ cipher-texts. The correctness and the security of
+the proposed protocol were analysed in detail. Afterward, we gave a comparison of
+123
+
+=== page 18 ===
+137 Page 18 of 19 Cai Zhang et al.
+different quantum summation in modulo- d protocols. Finally, we discussed how the
+cat state in Ji et al. [ 30] protocols can be replaced with nd -level Bell states to solve
+the same problems.
+Acknowledgements This work is supported by the National Natural Science Foundation of China (Grant
+Nos. 61902132, 11647140, and U1736113), the Guangdong Basic and Applied Basic Research Foundation
+(Grant No. 2021A1515011985), and the Natural Science Foundation of Guangdong Province of China
+(Grant No. 2018A030310147).
+References
+1. Heinrich, S.: Quantum summation with an application to integration. J. Complex. 18(1), 1 (2002)
+2. Heinrich, S., Novak, E.: On a problem in quantum summation. J. Complex. 19(1), 1 (2003)
+3. Heinrich, S., Kwas, H., Wozniakowski, M.: Quantum Boolean Summation with Repetitions in the
+Worst-Average Setting (2003). arXiv:quant-ph/0311036
+4. Du, J.Z., Chen, X.B., Wen, Q.Y ., Zhu, F.C.: Secure multiparty quantum summation. Acta Phys. Sin.
+56(11), 6214 (2007)
+5. Chen, X.B., Xu, G., Y ang, Y .X., Wen, Q.Y .: An efﬁcient protocol for the secure multi-party quantum
+summation. Int. J. Theor. Phys. 49(11), 2793 (2010)
+6. Lo, H.K.: Insecurity of quantum secure computations. Phys. Rev. A 56, 1154 (1997)
+7. Crépeau, C., Gottesman, D., Smith, A.: Secure multi-party quantum computation. In: Proceedings of
+the Thirty-Fourth Annual ACM Symposium on Theory of Computing, pp. 643–652. ACM (2002)
+8. Chau, H.F.: Quantum-classical complexity–security tradeoff in secure multiparty computations. Phys.
+Rev. A 61, 032308 (2000)
+9. Ben-Or, M., Crepeau, C., Gottesman, D., Hassidim, A., Smith, A.: Secure multiparty quantum com-
+putation with (only) a strict honest majority. In: 47th Annual IEEE Symposium on Foundations of
+Computer Science, 2006. FOCS’06, pp. 249–260. IEEE (2006)
+10. Smith, A.: Multi-party Quantum Computation (2010). arXiv:quant-ph/0111030
+11. Hillery, M., Ziman, M., Bužek, V ., Bieliková, M.: Towards quantum-based privacy and voting. Phys.
+Lett. A 349(1–4), 75 (2006)
+12. Li, Y ., Zeng, G.: Quantum anonymous voting systems based on entangled state. Opt. Rev. 15(5), 219
+(2008)
+13. Wang, Q., Y u, C., Gao, F., Qi, H., Wen, Q.: Self-tallying quantum anonymous voting. Phys. Rev. A
+94(2), 022333 (2016)
+14. Xue, P ., Zhang, X.: A simple quantum voting scheme with multi-qubit entanglement. Sci. Rep. 7(1),
+7586 (2017)
+15. Bao, N., Halpern, N.Y .: Quantum voting and violation of Arrow’s impossibility theorem. Phys. Rev.
+A 95(6), 062306 (2017)
+16. Huang, W., Wen, Q.Y ., Liu, B., Su, Q., Qin, S.J., Gao, F.: Quantum anonymous ranking. Phys. Rev. A
+89(3), 032325 (2014)
+17. Sun, Z., Y u, J., Wang, P ., Xu, L., Wu, C.: Quantum private comparison with a malicious third party.
+Quantum Inf. Process. 14(6), 2125 (2015)
+18. Hung, S.M., Hwang, S.L., Hwang, T., Kao, S.H.: Multiparty quantum private comparison with almost
+dishonest third parties for strangers. Quantum Inf. Process. 16(2), 36 (2017)
+19. He, G.P .: Quantum private comparison protocol without a third party. Int. J. Quantum Inf. 15(02),
+1750014 (2017)
+20. Zhang, C., Sun, Z., Huang, Y ., Long, D.: High-capacity quantum summation with single photons in
+both polarization and spatial-mode degrees of freedom. Int. J. Theor. Phys. 53(3), 933 (2014)
+21. Zhang, C., Sun, Z.W., Huang, X., Long, D.Y .: Three-party quantum summation without a trusted third
+party. Int. J. Quantum Inf. 13(02), 1550011 (2015)
+22. Shi, R.H., Mu, Y ., Zhong, H., Cui, J., Zhang, S.: Secure multiparty quantum computation for summation
+and multiplication. Sci. Rep. 6, 19655 (2016)
+23. Shi, R.H., Zhang, S.: Quantum solution to a class of two-party private summation problems. Quantum
+Inf. Process. 16(9), 225 (2017)
+123
+
+=== page 19 ===
+Quantum summation using d-level entanglement swapping Page 19 of 19 137
+24. Zhang, C., Situ, H., Huang, Q., Y ang, P .: Multi-party quantum summation without a trusted third party
+based on single particles. Int. J. Quantum Inf. 15, 1750010 (2017)
+25. Liu, W., Wang, Y .B., Fan, W.Q.: An novel protocol for the quantum secure multi-party summation
+based on two-particle bell states. Int. J. Theor. Phys. 56(9), 2783 (2017)
+26. Deng, F.G., Li, X.H., Zhou, H.Y ., Zhang, Z.: Improving the security of multiparty quantum secret
+sharing against Trojan horse attack. Phys. Rev. A 72, 044302 (2005)
+27. Gisin, N., Fasel, S., Kraus, B., Zbinden, H., Ribordy, G.: Trojan-horse attacks on quantum-key-
+distribution systems. Phys. Rev. A 73, 022320 (2006)
+28. Li, X.H., Deng, F.G., Zhou, H.Y .: Improving the security of secure direct communication based on the
+secret transmitting order of particles. Phys. Rev. A 74, 054302 (2006)
+29. Zhang, C., Razavi, M., Sun, Z., Huang, Q., Situ, H.: Multi-party quantum summation based on quantum
+teleportation. Entropy 21(7), 719 (2019)
+30. Ji, Z., Zhang, H., Wang, H., Wu, F., Jia, J., Wu, W.: Quantum protocols for secure multi-party summa-
+tion. Quantum Inf. Process. 18(6), 168 (2019)
+31. Karimipour, V ., Bahraminasab, A., Bagherinezhad, S.: Entanglement swapping of generalized cat states
+and secret sharing. Phys. Rev. A 65(4), 042320 (2002)
+32. Deng, F.G., Li, X.H., Zhou, H.Y ., Zhang, Z.: Improving the security of multiparty quantum secret
+sharing against Trojan horse attack. Phys. Rev. A 72(4), 4 (2005)
+33. Gisin, N., Fasel, S., Kraus, B., Zbinden, H., Ribordy, G.: Trojan-horse attacks on quantum-key-
+distribution systems. Phys. Rev. A 73(02), 022320 (2006)
+34. Bennett, C.H., Brassard, G.: Quantum cryptography: public-key distribution and coin tossing. In:
+Proceedings of IEEE International Conference on Computer, System and Signal, pp. 175–179 (1984)
+35. Shor, P .W., Preskill, J.: Simple proof of security of the BB84 quantum key distribution protocol. Phys.
+Rev. Lett. 85(2), 441 (2000)
+36. Y ang, H.Y ., Y e, T.Y .: Secure multi-party quantum summation based on quantum Fourier transform.
+Quantum Inf. Process. 17(6), 129 (2018)
+37. Zhang, C., Situ, H., Huang, Q., Sun, Z., Huang, Z.: Multi-party quantum summation based on quantum
+teleportation. Int. J. Quantum Inf. 17, 1950027 (2019)
+38. Gan, Z.G.: Improvement of quantum protocols for secure multi-party summation. Int. J. Theor. Phys.
+59, 3086 (2020)
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps
+and institutional afﬁliations.
+123

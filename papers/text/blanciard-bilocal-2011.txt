@@ -1,0 +1,2688 @@
+=== page 1 ===
+arXiv:1112.4502v1  [quant-ph]  19 Dec 2011
+Bilocal versus non-bilocal correlations in entanglement swapping experiments
+Cyril Branciard 1, Denis Rosset 2, Nicolas Gisin 2 and Stefano Pironio 3
+1School of Mathematics and Physics, The University of Queens land, St Lucia, QLD 4072, Australia
+2Group of Applied Physics, University of Geneva, 20 rue de l’E cole-de-M´ edecine, CH-1211 Geneva 4, Switzerland
+3Laboratoire d’Information Quantique, Universit´ e Libre de Bruxelles, 1050 Bruxelles, Belgium
+(Dated: September 19, 2018)
+Entanglement swapping is a process by which two initially independent quantum systems can become entan-
+gled and generate nonlocal correlations. To characterize such correlations, we compare them to those predicted
+by bilocal models, where systems that are initially independent are de scribed by uncorrelated states. We ex-
+tend in this paper the analysis of bilocal correlations init iated in [Phys. Rev. Lett. 104, 170401 (2010)]. In
+particular, we derive new Bell-type inequalities based on t he bilocality assumption in different scenarios, we
+study their possible quantum violations, and analyze their resistance to experimental imperfections. The bilo-
+cality assumption, being stronger than Bell’s standard local causality assumption, lowers the requirements for
+the demonstration of quantumness in entanglement swapping experiments.
+I. INTRODUCTION
+The study of correlations between the outcomes of mea-
+surements performed on several quantum systems has led to
+remarkable progresses, both on fundamental aspects of quan-
+tum theory and on potential applications in quantum informa-
+tion technologies. Particularly intriguing are the cases w here
+the various quantum systems are all at a distance from each
+other. From a fundamental point of view this situation led to
+the discovery of quantum nonlocality, that is, of the existence
+of correlations that cannot be described by a locally causal
+model [1]. From an applied point of view, these studies led,
+quite recently, to the understanding of the power of nonloca l
+correlations for quantum information processing, in parti cu-
+lar for reducing communication complexity [2], for Quantum
+Key Distribution (QKD) [3, 4], private randomness genera-
+tion [5, 6], or device independent entanglement witnesses [7].
+Interestingly, in such examples nonlocal correlations can be
+exploited directly, in a device independent manner, indepe n-
+dently of the Hilbert space machinery of the quantum theory.
+This applied side led, in turn, to a better understanding of
+some fundamental aspects of quantum theory and quantum
+information, such as for instance hidden assumptions in the
+abstract security analyses of QKD [8].
+The usual starting point in such works on nonlocality are
+limitations—such as, e.g., Bell inequalities [9]—on the po s-
+sible correlations between the measurement results on distant
+systems, following from the principle of local causality. F or-
+mally, the different systems measured in the experiment are
+considered to be all in an initial joint “hidden”1 stateλ, where
+λ is arbitrary and could even describe the state of the entire
+universe prior to the measurement choices. The measurement
+outcome of any particular system can depend arbitrarily on the
+global state λ and on the type of measurement performed on
+that system, but not on the measurements performed on dis-
+tant systems. This last condition is Bell’s local causality as-
+sumption [1] (or Bell’s “locality assumption”, simply), which
+1 We keep the terminology “hidden” to describe the states λ for historical
+reasons [1]. Note that these states λ need not actually be hidden, i.e., inac-
+cessible to the observer.
+implies, e.g. in the case of three parties, that the measurement
+outcome probabilities can be written as
+P (a,b,c|x,y,z) =
+∫
+dλρ (λ)P (a|x,λ)P (b|y,λ)P (c|z,λ), (1)
+wherex,y,z denote the measurement settings (“inputs”) cho-
+sen by the three parties,a,b,c denote the corresponding mea-
+surement outcomes (“outputs”), where ρ(λ) is a probability
+distribution over the set of all possible joint hidden state sλ,
+and where it has implicitely been assumed that the measure-
+ment choicesx,y,z are independent ofλ.
+Nowadays, fast progress towards advanced demonstrations
+of quantum communication networks, involving quantum re-
+peaters [10] based on entanglement swappings [11] and quan-
+tum memories [12], are underway in many labs around the
+world. In these future quantum networks, several indepen-
+dent sources of entangled qubit pairs will distribute entangle-
+ment to partners who will then connect their neighbours by
+performing joint measurements on two (or more) qubits, each
+entangled with one neighbouring qubit, as illustrated for t he
+simple case of three partners in Fig. 1. Such experiments have
+an interesting feature that has so far received little attention in
+previous works on nonlocality: the multipartite correlati ons
+between the measurement results at each site do not originate
+from a single multipartite entangled state, but from a serie s
+of bipartite entangled states that are initially independe nt and
+uncorrelated from each other; i.e., there is not a unique ini tal
+joint state (the analogue ofλ in a locally causal model) that is
+responsible for the observed correlations, but these are instead
+created from smaller systems through joint measurements.
+To understand and characterize the nonlocal properties ex-
+hibited in such experiments, it is natural to compare them to
+models where independent systems are characterized by dif-
+ferent, uncorrelated hidden states λ. In the case, e.g., of the
+experiment of Figure 1, one would thus replace Bell’s locality
+condition (1) by
+P (a,b,c|x,y,z) =
+∫∫
+dλ1dλ2ρ1(λ1)ρ2(λ2)
+P (a|x,λ1)P (b|y,λ1,λ2)P (c|z,λ2), (2)
+whereλ1 characterizes the joint state of the systems produced
+by the source S1 andλ2 for the source S2; see Figure 2. Of
+
+=== page 2 ===
+2
+Alice
+x
+a
+Bob
+y
+b
+Charlie 
+z
+c
+S1 S2
+FIG. 1. Typical entanglement swapping scenario where threeparties,
+Alice, Bob and Charlie, share two sources S1 and S2 that each emit
+independent pairs of particles in some quantum states̺1 and ̺2. Bob
+performs a joint measurement y on the two particles he receives from
+each source and obtains an output b. Depending on Bob’s outcome,
+Alice and Charlie’s systems end up in one out of different pos sible
+entangled states. Alice and Charlie apply some measurements x and
+z on their particle and obtain outputs a and c. Such an experiment is
+characterized by a joint probability distribution P (a,b,c|x,y,z).
+Alice 
+x
+a
+Bob
+y
+b
+Charlie 
+z
+c
+S1
+λ1 λ1
+S2
+λ2 λ2
+FIG. 2. The natural counterpart of the entanglement swappin g sce-
+nario of Fig. 1 in terms of a locally causal model with two inde pen-
+dent sources of hidden states: the systems produced by the source S1
+are characterized by hidden statesλ1, while those from the sourceS2
+are characterized by hidden states λ2. The two sources are assumed
+to be independent, hence the joint distribution ρ(λ1, λ2) of hidden
+states has the product form ρ(λ1, λ2) = ρ1(λ1)ρ2(λ2), as in eq. (2).
+course, one can never exclude on pure logical grounds that
+systems that appear independent to us, such as pairs of parti -
+cles produced by different sources, are not in fact correlat ed
+in some hidden way. But, quoting Bell, “this way of arranging
+quantum mechanical correlations would be even more mind-
+boggling than one in which causal chains go faster than light.
+Apparently separate parts of the world would be deeply and
+conspiratorially entangled” [1].
+Motivated by the earlier works [13, 14], the study of cor-
+relations between the results of measurements performed in
+quantum networks was initiated in a recent letter [15] from
+the point of view just introduced. This leads to interestingnew
+scenarios: because of the assumption that independent sources
+are characterized by different and independent λ’s, this low-
+ers the requirements on experiments for the demonstration o f
+quantumness of a network and, to start with the simplest case,
+the demonstration of quantumness of an entanglement swap-
+ping process. Such studies may lead to new applications, in
+the spirit of device independent quantum information process-
+ing [3–7].
+The general approach considered here should also con-
+tribute to the characterization of the nonlocal properties as-
+sociated to joint measurements, a question that has receive d
+little attention in traditional works on nonlocality (see h ow-
+ever Refs. [16, 17]). Indeed, the joint measurements needed
+to connect neighbouring qubits in quantum networks are nec-
+essarily entangling, i.e., entanglement between remote parties
+appears through joint measurements and not from a joint state
+of distant systems—formally, the eigenvectors of the opera -
+tors that describe joint measurement are entangled. Recall
+that a joint measurement, the so-called Bell state analyzer , is
+also at the core of the celebrated quantum teleportation pro -
+tocol [18]. Entanglement, the characteristic property of quan-
+tum mechanics in Schr¨ odinger’s words [19], thus plays a dual
+role, once allowing joint states of several systems and once
+allowing joint measurements.
+Before discussing in more details the results presented in
+this paper, let us ﬁnally stress how natural the assumption o f
+independentλ’s is. Actually, an equivalent assumption is al-
+ready implicit in all standard tests of Bell inequalities. I n-
+deed, in such tests one needs to assume that the measure-
+ment settings are random and independent of the entangle-
+ment source [1]; this is achieved, e.g., by having a local
+Quantum Random Number Generator (QRNG) determining
+the random settings [20]. But this makes sense only if one
+assumes that the sources in the QRNG are independent of the
+entanglement source and that they are characterized by inde -
+pendent and uncorrelated λ’s. Consequently, our assumption
+is actually not new, but merely formalizes a usually tacit as -
+sumption and extends its scope to more advanced topologies
+of quantum networks.
+Structure of the paper
+In this article, we develop and formalize the approach in-
+troduced above for the simplest case: that of three partners on
+a line, with two independent sources of entangled qubits, as
+illustrated in Fig. 1. Following [15], we call bilocal the corre-
+lations that can be described as resulting from measurement s
+of two independent hidden statesλ1 andλ2, each produced by
+one of the two sources. Conversely, a correlation that canno t
+be described in such a way is called non-bilocal.
+We ﬁrst introduce more formally the concept of bilocal-
+ity in Section II, and show how the bilocality assumption can
+be tested. A ﬁrst approach, developped in subsection II C, is
+to look for explicit bilocal decompositions; we introduce e f-
+ﬁcient representations for (bi-)local models, which help t he
+search for explicit decompositions, and where the bilocali ty
+assumption takes a very simple form. Another approach is to
+test Bell-like inequalities, which are satisﬁed by bilocal cor-
+relations but can be violated by non-bilocal correlations; in
+subsection II D we derive such (nonlinear) bilocal inequali-
+ties (eqs. (20), (23) and (27)), which typically take the form
+√
+|I| +
+√
+|J| ≤ 1, (3)
+where I and J are linear combinations of probabilities
+P (a,b,c |x,y,z ) (see eqs. (18–19), (21–22) and (25–26)).
+Section III is devoted to the study of how the correla-
+tions produced in quantum entanglement swapping experi-
+ments violate our bilocal inequalities. We analyse the situ a-
+tions where Bob performs a complete Bell state measurement
+in subsection III A, and where he performs partial Bell state
+measurements that allows him to distinguish different pair s
+
+=== page 3 ===
+3
+of Bell states (subsection III B 1), or to distinguish two Bel l
+states, while the other two give the same outcome (subsec-
+tion III B 2). In all cases we study the resistance to white noise
+of the quantum violations, and ﬁnd that the required visibil i-
+ties for demonstrating non-bilocality are signiﬁcantly lo wer
+than for demonstrating Bell nonlocality. The resistance to de-
+tection inefﬁciencies is also analysed in some simple casesfor
+the complete Bell state measurement in subsection III C.
+In Section IV, we address further issues on quantum non-
+bilocality. We study a trade-off between the resistance to
+noise of nonlocality and non-bilocality for quantum correl a-
+tions (subsection IV A), and show that the two are not neces-
+sarily correlated but that the maximization of one is made at
+the expense of the other. We then investigate possible viola -
+tions of the bilocality assumption using non-maximally entan-
+gled states (subsection IV B). We also address the question of
+classically simulating noisy entanglement swapping corre la-
+tions, and introduce two protocols (with and without commu-
+nication) for that in subsection IV C.
+Finally, in Section V we come back to our justiﬁcation for
+the assumption of independent sources, and to the idea that
+it is actually already implicitly used in standard Bell expe ri-
+ments. We illustrate this claim by showing that the assump-
+tion of local causality with independent sources in a bipart ite
+Bell test is equivalent to an assumption oftrilocality in a four-
+partite experiment.
+II. CHARACTERIZING BILOCAL CORRELATIONS
+A. The bilocality assumption
+We consider the scenario depicted in Figure 2, with three
+parties sharing two sources of independent hidden states; this
+is the simplest case where our assumption of independent
+sources of hidden states makes sense.
+In such a tripartite scenario, Bell’s locality assumption [ 1]
+reads (as we recalled in eq. (1))
+P (a,b,c|x,y,z) =
+∫
+dλρ (λ)P (a|x,λ)P (b|y,λ)P (c|z,λ). (4)
+Here given the stateλ, the outputsa,b andc of the three par-
+ties, for inputs x,y andz, are determined respectively by the
+local distributions P (a|x,λ ), P (b|y,λ ) and P (c|z,λ ). The
+hidden statesλ follow the distributionρ(λ), normalized such
+that
+∫
+dλρ (λ) = 1 .
+If we now assume that the response of the three parties de-
+pend only on the states λ1 or λ2 characterizing the systems
+that they receive from the sources S1 orS2, respectively, we
+write:
+P (a,b,c|x,y,z)=
+∫∫
+dλ1dλ2ρ(λ1,λ 2)
+P (a|x,λ1)P (b|y,λ1,λ2)P (c|z,λ2), (5)
+Note that without making any further assumption, equation (5)
+is equivalent to (4); indeed,ρ(λ1,λ 2) could be different from
+zero only whenλ1 =λ2 =λ to recover (4).
+Now we introduce our crucial assumption: since the two
+quantum sources S1 andS2 are supposed to be independent,
+we assume that this property carries over to the local model,
+and therefore the distribution of the hidden states λ1 andλ2
+should factorize, in the form
+ρ(λ1,λ 2) = ρ1(λ1)ρ2(λ2). (6)
+Together with (5), this deﬁnes our assumption ofbilocality, as
+already expressed in equation (2). The hidden states λ1 and
+λ2 now follow independent distributions ρ1(λ1) andρ2(λ2),
+such that
+∫
+dλ1ρ1(λ1) =
+∫
+dλ2ρ2(λ2) = 1 .
+Note that, as in the standard case of Bell locality, no re-
+strictions are made on the sets on whichλ1,λ2 are distributed
+(apart from the fact that they must be measurable). Expanding
+the results of [15], we show in the subsections II C and II D
+below that for ﬁnite numbers of inputs and outputs, eqs. (5)
+and (6) lead nonetheless to implementable tests of bilocali ty,
+by looking for explicit bilocal decompositions or by testin g
+(non-linear) Bell-like inequalities. Before that, let us b rieﬂy
+mention some general properties of the set of bilocal correl a-
+tions.
+B. Topology of the bilocal set
+Any bilocal correlation is by construction also local; the set
+of bilocal correlations (“bilocal set”, B) is therefore included
+in the set of local correlations (“local set”, L): B ⊆ L .
+It is well known, and clear from the deﬁnition (4), that the
+local set is convex. On the other hand, because of the non-
+linear constraint (6), a mixture of bilocal correlations is not
+necessarily bilocal: the bilocal set is not convex. Determi n-
+istic local correlations are bilocal; since they are the extremal
+points of the local set, L is actually the convex hull of B.
+One can further show (see Appendix A) that the bilocal set
+is connected, and that its restriction to subspaces where th e
+marginal probability distribution of Alice (or Charlie) is ﬁxed
+is star-convex; star-convexity does not however hold for th e
+whole bilocal set.
+C. Explicit bilocal decompositions
+From now on we consider scenarios with ﬁnite numbers of
+possible inputs and outputs.
+In that case, the local set L forms a convex polytope [21].
+The description of the local polytope as the convex hull of
+a ﬁnite set of extremal points—corresponding to determinis -
+tic local correlations—allows one to use efﬁcient numerica l
+approaches based on linear programming to determine if a
+correlation P is local. Alternatively, the local polytope can
+be described in terms of its facets—corresponding to (possi -
+bly trivial) Bell inequalities—which can be enumerated alg o-
+rithmically for a small enough number of inputs and outputs.
+Hence, in order to determine whether a correlation P is local
+or not, one can either solve a linear programming problem, or
+check that all Bell inequalities are satisﬁed.
+
+=== page 4 ===
+4
+Because the bilocal set is not convex, one cannot use stan-
+dard Bell inequalities to distinguish the bilocal and the no n-
+bilocal correlations. The bilocal set is signiﬁcantly more difﬁ-
+cult to characterize than the local set. Still, similar approaches
+can be used: one can describe the question whether a given
+correlation P is bilocal or not as a non-convex feasibility
+problem, or alternatively (as we will see in the next subsec-
+tion II D), one can derive non-linear inequalities that are satis-
+ﬁed by any bilocal point. However, we do not have a system-
+atic practical approach to obtain such “bilocal inequaliti es”;
+and even in the simplest case we consider, we do not have a
+complete set of inequalities that would be sufﬁcient to deﬁn e
+the set B.
+We start here by giving alternative formulations for the bilo-
+cality assumption (5–6), which will prove more handy to use
+for practical purposes, in particular when looking for expl icit
+bilocal decompositions.
+1. Bilocal decompositions onto deterministic correlation s,
+with weights q ¯α ¯β ¯γ
+Consider a local correlation P , written in the form (5).
+It is well known [22] that Alice’s local response function
+P (a|x,λ 1) can (without any loss of generality) be taken to be
+deterministic, i.e., such that it assigns a unique measurem ent
+outputa to every inputx: any randomness used locally by Al-
+ice can indeed always be thought of as being included in the
+shared random variable λ1. For a ﬁnite number of possible
+measurement inputs and outputs, there is a ﬁnite number of
+such deterministic strategies corresponding to an assignm ent
+of an outputαx to each of Alice’sN possible inputsx. We la-
+bel each of these strategies with the string ¯α =α1...α N and
+denote the corresponding response functionP ¯α(a|x) = δa,αx
+(withδm,n = 1 ifm =n,δm,n = 0 otherwise). Similarly, the
+response functionsP (b|y,λ 1,λ 2) andP (c|z,λ 2) can also be
+taken deterministic; we label the associated strategies ¯β and ¯γ
+and the corresponding response functions areP ¯β(b|y) = δb,βy
+andP¯γ(c|z) = δc,γz.
+Integrating over the set Λ12
+¯α ¯β¯γ of all pairs (λ1,λ 2) that spec-
+ify the strategies ¯α, ¯β, and ¯γ for Alice, Bob and Charlie resp.,
+we can write (5) as
+P (a,b,c|x,y,z) =
+∑
+¯α, ¯β, ¯γ
+q ¯α ¯β¯γP ¯α(a|x)P ¯β (b|y)P¯γ(c|z) (7)
+with q ¯α ¯β¯γ =
+∫∫
+Λ12
+¯α ¯β ¯γ
+dλ1dλ2ρ(λ1,λ 2) ≥ 0 and
+∑
+¯α ¯β¯γq ¯α ¯β¯γ = 1 . Eq. (7) corresponds to the well-known de-
+composition of local correlations as a convex sum of deter-
+ministic strategies, where the weightsq ¯α ¯β ¯γ can be understood
+as the probabilities assigned by the source to the strategies ¯α,
+¯β and ¯γ.
+Since ¯α is speciﬁed here by λ1 and ¯γ is speciﬁed by λ2,
+then (with obvious notations) ∪ ¯βΛ12
+¯α ¯β¯γ = Λ 12
+¯α¯γ = Λ 1
+¯α × Λ2
+¯γ,
+and
+q ¯α¯γ =∑
+¯βq ¯α ¯β¯γ =
+∫∫
+Λ1
+¯α×Λ2
+¯γ
+dλ1dλ2ρ(λ1,λ 2), (8)
+q ¯α =∑
+¯γq ¯α¯γ =
+∫∫
+Λ1
+¯α×Λ2 dλ1dλ2ρ(λ1,λ 2), (9)
+q¯γ =∑
+¯αq ¯α¯γ =
+∫∫
+Λ1×Λ2
+¯γ
+dλ1dλ2ρ(λ1,λ 2), (10)
+where Λ1 = ∪ ¯αΛ1
+¯α and Λ2 = ∪¯γΛ2
+¯γ are the state spaces of
+the variablesλ1 andλ2.
+Let us now assume thatP is bilocal. One can see from (8–
+10) that the independence condition (6) implies that
+for all ¯α, ¯γ, q ¯α¯γ = q ¯αq¯γ. (11)
+The interpretation is clear: the strategies ¯α and ¯γ being deter-
+mined by two independent sources, their probabilities shou ld
+be independent.
+Conversely, any correlation P (a,b,c|x,y,z) satisfying (7)
+and (11) can be written in the form (5). Indeed, since
+q ¯α¯γ = q ¯αq¯γ, we can write q ¯α ¯β¯γ = q ¯αq¯γq ¯β| ¯α¯γ. In-
+serting this expression in (7) and deﬁning P ¯α,¯γ(b|y) =∑
+¯βq ¯β| ¯α¯γP ¯β(b|y), we then ﬁnd that P (a,b,c|x,y,z) =∑
+¯α,¯γq ¯αq¯γP ¯α(a|x)P ¯α¯γ(b|y)P¯γ(c|z), which is clearly of the
+form (5). We thus conclude that a tripartite correlation is bilo-
+cal if and only if it admits the decomposition (7) with the re-
+striction (11).
+Such a description of bilocal correlations is easier to deal
+with than the deﬁning assumptions (5) and (6), as it involves
+only a ﬁnite number of coefﬁcients q ¯α ¯β ¯γ. One can thus now
+determine whether a correlationP is bilocal by searching such
+weightsq ¯α ¯β¯γ ≥ 0, with the linear constraints that they must
+reproduce the correlation P as in (7), and the quadratic con-
+straints of bilocality (11).
+An even more compact representation of bilocal decompo-
+sitions can however be given in the following way.
+2. Decompositions in terms of “correlators” e¯i¯j¯k
+For a given local (or bilocal) correlationP , the decomposi-
+tion (7) is in general not unique; Eq. (7) only imposes a lim-
+ited number of constraints on the weightsq ¯α ¯β ¯γ, which are not
+enough to ﬁx all of them. When dealing with a local decom-
+position, it is convenient to use a parametrization that cle arly
+separates the parameters that are ﬁxed, and those that are in -
+ternal degrees of freedom of the local model. A nice way to
+do it is to transform the weightsq ¯α ¯β¯γ into “correlators”e¯i¯j¯k.
+Since we will use this approach in the context of bilocal-
+ity, we present it here in the 3-partite case; note however th at
+this representation can be useful in more general studies of
+(non-)locality—not only of bilocality—and it can easily be
+generalised to any N-partite case. Also, for simplicity we
+consider here a scenario with binary inputs and outputs; the
+generalization to other scenarios can be cumbersome but is
+rather straightforward (see subsection II D 3 and Appendix B
+for instance for the case where Bob has only 1 possible input,
+and 4 or 3 outputs).
+For binary inputs and outputs, Alice, Bob and Charlie’s
+strategies ¯α, ¯β, ¯γ simply contain two bits: ¯α = α0α1, etc.
+
+=== page 5 ===
+5
+Let us then deﬁne, for a particular local decomposition of P
+in terms of weights q ¯α ¯β ¯γ, and for ¯i = i0i1, ¯j = j0j1 and
+¯k =k0k1 ∈ {00, 01, 10, 11}, the coefﬁcients
+e¯i¯j¯k =
+∑
+¯α ¯β¯γ
+(−1) ¯α·¯i+ ¯β·¯j+¯γ·¯kq ¯α ¯β¯γ, (12)
+where ¯α · ¯i =α0i0 +α1i1, etc. The set of coefﬁcients {e¯i¯j¯k}
+is equivalent to the set of weights {q ¯α ¯β ¯γ} (eq. (12) is actu-
+ally a discrete Fourier transformation), and (12) can easily be
+inverted to obtain
+q ¯α ¯β¯γ = 2 −6∑
+¯i¯j¯k
+(−1) ¯α·¯i+ ¯β·¯j+¯γ·¯ke¯i¯j¯k. (13)
+Thus, both representations (in terms of coefﬁcients q ¯α ¯β ¯γ or
+e¯i¯j¯k) can be used to unambiguously deﬁne the local decom-
+position.
+We call the coefﬁcientse¯i¯j¯k “correlators”, for the following
+reason: deﬁning 2, for a strategy ¯α ¯β¯γ, Ax = ( −1)αx, By =
+(−1)βy, and Cz = (−1)γz, we have
+e¯i¯j¯k = ⟨Ai0
+0 Ai1
+1 Bj0
+0 Bj1
+1 Ck0
+0 Ck1
+1 ⟩{q ¯α ¯β ¯γ }. (14)
+where the average value is computed with the weights q ¯α ¯β¯γ
+(note that for a deterministic strategy, all values Ax, By and
+Cz are deﬁned simultaneously).
+Now, when ¯i ⁄= ¯1, ¯j ⁄= ¯1 and ¯k ⁄= ¯1 (with the notation
+¯1 = 11 ), at most one term Ax, By and Cz per party appears
+non-trivially in the average above. Hence, this average val ue
+can be obtained directly from the correlation P , and the cor-
+responding correlators3e¯i¯j¯k are therefore ﬁxed byP :
+for ¯i ⁄= ¯1, ¯j ⁄= ¯1, and ¯k ⁄= ¯1,
+e¯i¯j¯k = ⟨Ai0
+0 Ai1
+1Bj0
+0 Bj1
+1 Ck0
+0 Ck1
+1 ⟩P (15)
+with nowAx = ( −1)ax, whereax ∈ { 0, 1} is Alice’s output
+for the inputx, and similarly for the other two parties. The av-
+erage is now computed from the correlation P . For instance,
+one gets e10,10,10 = ⟨A0B0C0⟩P , and e01,00,00 = ⟨A1⟩P .
+Note that in particular, with ¯0 = 00 , one has e¯0¯0¯0 = 1 by
+normalization.
+On the other hand, when ¯i = ¯1, ¯j = ¯1 or ¯k = ¯1, the
+average value in (14) cannot be obtained from P , since the
+measurement results A0 andA1, B0 andB1, C0 andC1 are
+incompatible; the corresponding correlators are internal de-
+grees of freedom of the local model, only constrained by the
+nonnegativity ofq ¯α ¯β¯γ, i.e.,
+for all ¯α, ¯β, ¯γ,
+∑
+¯i¯j¯k
+(−1) ¯α·¯i+ ¯β·¯j+¯γ·¯ke¯i¯j¯k ≥ 0. (16)
+2 When expressing correlations, it is often more convenient to consider ±1-
+valued outputs. Throughout the paper, we’ll use lowercase variables for bit
+values 0/1, and uppercase variables for the corresponding bit values ±1,
+as for instance in Ax = (−1)αx .
+3 More generally, for more than two inputs per party, the ﬁxed c orrelators
+are those where the corresponding product averaged in (14) o nly contains
+terms that refer to at most one input per party.
+Coming back to the bilocality constraint: in the correlator s
+representation, one can easily check that the condition (11 )
+translates into the following constraints:
+for all ¯i, ¯k, e ¯i¯0¯k = e¯i¯0¯0e¯0¯0¯k. (17)
+Now, when ¯i ⁄= ¯1 and ¯k ⁄= ¯1, the correlators that appear
+in (17) are already ﬁxed according to (15), and the con-
+straint is indeed satisﬁed, as a consequence of the fact that
+for bilocal correlations, P (a,c|x,z) = P (a|x)P (c|z)4 (or
+⟨AxCz⟩ = ⟨Ax⟩⟨Cz ⟩). When ¯i = ¯1 and ¯k ⁄= ¯1, or vice
+versa, (17) gives linear constraints on the free correlatorse¯1¯0¯k
+ande¯i¯0¯1. There ﬁnally remains only one5 quadratic constraint
+in the case where ¯i = ¯k = ¯1:e¯1¯0¯1 =e¯1¯0¯0e¯0¯0¯1.
+Because the representation in terms of correlators nicely
+separates the ﬁxed and free parameters of the (bi)local decom-
+position, it simpliﬁes the search for explicit bilocal decompo-
+sitions quite signiﬁcantly. We now present how this problem
+can be tackled in practice.
+3. Looking for explicit bilocal decompositions
+To determine whether a given correlation P is bilocal or
+not, one can now look whether there exist correlators e¯i¯j¯k—
+some of which are ﬁxed by (15)—that satisfy the nonnegativ-
+ity constraint (16) and the bilocality assumption (17).
+This non-convex feasibility problem can be addressed from
+two different perspectives. First, one can try a heuristic search
+that will provide an explicit bilocal model if successful, t hus
+provingP ∈ B —unless an exhaustive search can be under-
+gone, a negative result will however be inconclusive. Sec-
+ondly, one can try to solve a convex relaxation [23] of the
+quadratic constraints (17) in the non-convex problem—a neg -
+ative result proving P /∈ B . Both approaches lead naturally
+to the usage of numerical algorithms to solve the non-convex
+problem or its convex relaxations6.
+In practice, one may be interested in the robustness of a
+non-bilocal correlation to experimental imperfections, such as
+noise (see in particular subsections III A 1 and III B) or detec-
+tion inefﬁciencies (see subsection III C). One can then tran s-
+form the above feasibility problem into an optimization prob-
+lem; for instance, one may want to maximize the noise that is
+tolerated by a correlation (or minimize the visibility of a noisy
+correlation of the formP (V ) = VP +(1 −V )P0, see eq. (33)
+below) before it becomes bilocal. The brute force search wil l
+give an upper bound on the tolerated noise (a lower bound on
+4 The fact that P (a,c|x,z) = P (a|x)P (c|z) directly follows from the bilo-
+cality condition (2): after summing over Bob’s outputs b, the two integrals
+over λ1 and λ2 factorize. Note that this equality also holds for quantum
+correlations established from independent sources, as in Fig. 1.
+5 For more than 2 inputs for Alice and Charlie, there will remai n more than
+one quadratic constraint, but the correlators representation will still signif-
+icantly simplify the search for explicit bilocal decompositions.
+6 In our numerical tests, we used the standard optimization to olbox of
+MATLAB, which implements the algorithms described in [24], and the
+BMIBNB solver of Y ALMIP for convex relaxations.
+
+=== page 6 ===
+6
+the visibility threshold Vbiloc, as deﬁned in subsection III A 1
+below), while the convex relaxation will give a lower bound
+on the tolerated noise (an upper bound onVbiloc).
+Examples of explicit bilocal decompositions, for the quan-
+tum correlations studied in section III, are given in Ap-
+pendix B.
+D. Non-linear inequalities for bilocal correlations
+As mentioned earlier, another approach to study the
+(non-)bilocality of given correlations is to test Bell-typ e in-
+equalities. Indeed, one can derive in some cases analytical
+constraints satisﬁed by all bilocal correlations; if a correlation
+is found to violate these constraints, then this implies tha t the
+correlation is non-bilocal. These non-linear bilocal inequali-
+ties thus provide convenient tests of non-bilocality, which are
+directly implementable in experimental demonstrations.
+We start by deriving such a bilocal inequality for the case
+where the three parties all have binary inputs and outputs. We
+then show that our ﬁrst inequality implies similar inequali -
+ties for the case where Bob now has only one possible input,
+with 4 or 3 possible outputs (while Alice and Charlie still have
+binary inputs and outputs). These cases will be relevant for
+entanglement swapping experiments, as we will later see in
+section III.
+1. A bilocal inequality for binary inputs and outputs
+We thus consider ﬁrst the scenario where Alice, Bob and
+Charlie have binary inputs and outputsx,y,z,a,b,c ∈ {0, 1}.
+Let us deﬁne, for a given correlationP 22, the tripartite cor-
+relation terms
+⟨AxByCz⟩P 22 =
+∑
+a,b,c
+(−1)a+b+cP 22(a,b,c |x,y,z )
+and the following linear combinationsI 22,J 22:
+I 22 = 1
+4
+∑
+x,z=0,1
+⟨AxB0Cz⟩P 22, (18)
+J 22 = 1
+4
+∑
+x,z=0,1
+(−1)x+z⟨AxB1Cz⟩P 22. (19)
+As we show below, if P 22 is bilocal, then the following
+nonlinear inequality necessarily holds:
+√
+|I 22| +
+√
+|J 22| ≤ 1. (20)
+Proof. By assumption,P 22 has a bilocal decomposition of the
+form (2). Deﬁning ⟨Ax⟩λ1 = ∑
+a(−1)aP 22(a|x,λ 1), and
+with similar deﬁnitions for ⟨By⟩λ1,λ2 and ⟨Cz⟩λ2, one gets
+I 22 = 1
+4
+∫∫
+dλ1dλ2ρ1(λ1)ρ2(λ2)
+(
+⟨A0⟩λ1+⟨A1⟩λ1
+)
+⟨B0⟩λ1,λ2
+(
+⟨C0⟩λ2+⟨C1⟩λ2
+)
+.
+Using the fact that |⟨B0⟩λ1,λ2 | ≤ 1,
+|I 22|
+≤ 1
+4
+∫∫
+dλ1dλ2ρ1(λ1)ρ2(λ2)
+⏐⏐⟨A0⟩λ1+⟨A1⟩λ1
+⏐⏐⏐⏐⟨C0⟩λ2+⟨C1⟩λ2
+⏐⏐
+≤
+∫
+dλ1ρ1(λ1)
+⏐⏐⟨A0⟩λ1+⟨A1⟩λ1
+⏐⏐
+2 ×
+∫
+dλ2ρ2(λ2)
+⏐⏐⟨C0⟩λ2+⟨C1⟩λ2
+⏐⏐
+2 ,
+and one can show similarly, that
+|J 22|
+≤
+∫
+dλ1ρ1(λ1)
+⏐⏐⟨A0⟩λ1−⟨A1⟩λ1
+⏐⏐
+2 ×
+∫
+dλ2ρ2(λ2)
+⏐⏐⟨C0⟩λ2−⟨C1⟩λ2
+⏐⏐
+2 .
+Now, for any r,s,r ′,s ′ ≥ 0, the inequality √rs +
+√
+r′s′ ≤√
+r +r′√
+s +s′ holds. Applied to the above two bounds on
+|I 22| and |J 22|, we obtain
+√
+|I 22| +
+√
+|J 22|
+≤
+/radicaltp/radicalvertex/radicalvertex√
+∫
+dλ1ρ1(λ1)
+(⏐⏐⟨A0⟩λ1+⟨A1⟩λ1
+⏐⏐
+2 +
+⏐⏐⟨A0⟩λ1−⟨A1⟩λ1
+⏐⏐
+2
+)
+×
+/radicaltp/radicalvertex/radicalvertex√
+∫
+dλ2ρ2(λ2)
+(⏐⏐⟨C0⟩λ2+⟨C1⟩λ2
+⏐⏐
+2 +
+⏐⏐⟨C0⟩λ2−⟨C1⟩λ2
+⏐⏐
+2
+)
+.
+Furthermore, |⟨A0⟩λ1 + ⟨A1⟩λ1 |/2 + |⟨A0⟩λ1 − ⟨A1⟩λ1 |/2 =
+max(|⟨A0⟩λ1 |, |⟨A1⟩λ1 |) ≤ 1 and similarly, |⟨C0⟩λ2 +
+⟨C1⟩λ2 |/2 + |⟨C0⟩λ2 − ⟨C1⟩λ2 |/2 ≤ 1. After integrating
+overλ1 andλ2 in the previous expressions, we obtain inequal-
+ity (20).
+A projection of the correlation space onto the (I 22,J 22)
+plane is shown on Figure 3. Note that the bilocal inequal-
+ity (20) is tight in this plane, i.e., any values of I 22 and J 22
+such that
+√
+|I 22| +
+√
+|J 22| ≤ 1 can be obtained by a bilocal
+correlation; see Table I in Appendix B for an explicit biloca l
+decomposition. One can show on the other hand that the local
+correlations satisfy |I 22| + |J 22| ≤ 1 (recall that L is the con-
+vex hull of B), which can be understood as Bell inequalities7.
+Finally, non-signaling correlations—such that their marg inal
+probability distributions when one discards some parties d o
+not depend on the settings of the discarded parties—also for m
+a polytope, bounded by max(|I 22|, |J 22|) ≤ 1; in particular, a
+non-signaling correlation such that8a +b +c =xy +yz (mod
+2), which can easily be realized with two Popescu-Rohrlich
+(PR) boxes [26] (one shared by Alice and Bob, one shared by
+Bob and Charlie [27]), reaches the valuesI 22 =J 22 = 1.
+7 For instance, the inequality I 22 + J 22 ≤ 1 can be written as (a quarter of)
+the sum of two equivalent facet inequalities of the tripartite local polytope
+(it is therefore not a facet itself): ⟨A0B0C0 + A1B1C1 + A1B0C0 −
+A0B1C1⟩ ≤ 2 and ⟨A1B0C1 +A0B1C0 +A0B0C1 −A1B1C0⟩ ≤ 2,
+which are facets of the ‘Class 3’ type as deﬁned in [25].
+8 More precisely, P 22(a, b, c|x, y, z) = 1
+8 [1 + (−1)a+b+c+xy+yz ].
+
+=== page 7 ===
+7
+−1 −1/2 0 1/2 1
+−1 
+−1/2
+0
+1/2
+1
+ 
+ 
+ 
+ 
+FIG. 3. Projection of the tripartite correlation space in th e (I, J )
+plane, for I = I 22 or I 14 and J = J 22 or J 14, as deﬁned in (18–
+19) or (21–22), for the “22-” and “14-”cases, resp. The non-c onvex
+bilocal set B is delimited by the four portions of parabolas, corre-
+sponding to the inequality
+√
+|I| +
+√
+|J| ≤ 1 (eqs. (20) or (23)). It is
+included in the local set L delimited by the dashed lines, for which
+|I| + |J| ≤ 1. The set Q of quantum correlations is also limited
+in this plane by |I| + |J| ≤ 1. In the 22-case, the non-signaling
+polytope NS22 is delimited by the outer dotted square, deﬁned by
+max(|I 22|, |J 22|) ≤ 1; in the 14-case, the projection of the non-
+signaling polytope NS14 coincides with that of the local and quan-
+tum sets.
+The ﬁgure can also be understood as a 2-dimensional slice of the cor-
+relation space, containing the quantum correlation PQ = P 22
+Q (34)
+or P 14
+Q (30), the fully random correlation P0 = P 22
+0 or P 14
+0 , and the
+bilocal correlations PI = P 22
+I or P 14
+I and PJ = P 22
+J or P 14
+J , as
+deﬁned in footnotes 13 and 17. In this slice, the bilocal set i s star-
+convex. One can see that the quantum correlationPQ = 1
+2 PI + 1
+2 PJ
+is local, but not bilocal. When adding some white noise, it enters the
+bilocal set for visibilities V ≤ 1
+2 (see subsection III A 1).
+2. Scenario with one input, four outputs for Bob
+We now consider the case where Bob has only 1 possible
+input and 4 possible outputs, while Alice and Charlie still
+have binary inputs and outputs; this could in practice corre -
+spond to the case where Bob performs a complete Bell state
+measurement, in an entanglement swapping experiment—see
+section III A below.
+Let us denote Bob’s outputs by two bits 9 b = b0b1 =
+00, 01, 10 or 11, and by P 14(a,b 0b1,c |x,z ) the correlation
+9 To clarify the notations, note that we use superscripts on Bob’s output bits
+b0 and b1, to distinguish the case where they form one single output ( b =
+b0b1), from the previous case where b0 and b1 were Bob’s outputs for two
+different inputs (y = 0 and 1, resp.). Note also that since Bob has only one
+possible input y, we do not need to specify it in P 14(a, b0b1, c|x, z).
+shared by Alice, Bob and Charlie. Similarly to the previous
+case, we now deﬁne the tripartite correlation terms
+⟨AxByCz⟩P 14 =
+∑
+a,b0b1,c
+(−1)a+by+cP 14(a,b 0b1,c |x,z )
+and the linear combinationsI 14 andJ 14 as follows:
+I 14 = 1
+4
+∑
+x,z=0,1
+⟨AxB0Cz⟩P 14, (21)
+J 14 = 1
+4
+∑
+x,z=0,1
+(−1)x+z⟨AxB1Cz⟩P 14. (22)
+As in the previous case, ifP 14 is bilocal, then the following
+nonlinear inequality necessarily holds:
+√
+|I 14| +
+√
+|J 14| ≤ 1. (23)
+Note that this implies in particular the inequality previou sly
+derived in [15] (see appendix C).
+Proof. We show that inequality (23) can directly be derived
+from (20). Indeed, from the correlation P 14, the three parties
+can obtain a correlation P 22(a,b,c |x,y,z ), with now binary
+inputs and outputs for Bob, if, for a given input y ∈ { 0, 1},
+Bob simply outputs the corresponding bitby. Formally:
+P 22(a,b,c |x,y,z ) = P 14(a,b y =b,c |x,z )
+=
+∑
+b0,b1
+δb,byP 14(a,b 0b1,c |x,z ). (24)
+One can easily check that for the correlation P 22 thus ob-
+tained, ⟨AxByCz⟩P 22 = ⟨AxByCz⟩P 14 and the values ofI 22
+andJ 22 as deﬁned in (18–19) coincide with the values of I 14
+andJ 14 obtained from (21–22).
+Suppose now thatP 14 is bilocal. Since the processing from
+P 14 toP 22 is made locally by Bob, then P 22 is also bilocal,
+and therefore it satisﬁes (20). Since I 22 = I 14 and J 22 =
+J 14, then (23) also holds.
+The projection of the correlation space onto the (I 14,J 14)
+plane can also be seen on Figure 3. As before, the bilocal
+inequality (23) is tight in this plane. On the other hand, loc al
+correlations satisfy the Bell inequalities |I 14| + |J 14| ≤ 1.
+Interestingly, it turns out that non-signaling correlations in this
+scenario are now also bounded by10 |I 14| + |J 14| ≤ 1.
+3. On the difference between the case with 1 input / 4 outputs
+and the case with 2 inputs / 2 outputs for Bob
+We observe a quite strong similarity between the cases
+where Bob has binary inputs and outputs (the “22-case”), and
+10 For instance, the non-signaling assumption implies I 14 + J 14 =
+1 − ∑ P 14(a, b0b1, c|x, z) ≤ 1, where the sum is over all indices
+x, z, a, b0b1, c such that b0 ⁄= a ⊕ c and b1 ⁄= a ⊕ c ⊕ x ⊕ z, and
+where ⊕ denotes the addition modulo 2.
+
+=== page 8 ===
+8
+where he has 1 input with 4 possible outputs (the “14-case”).
+As we have just seen in the proof of (23), a scenario of the ﬁrst
+kind can easily be obtained from a scenario of the second kind,
+and constraints on the correlations in the 22-case imply con -
+straints in the 14-case. However, this is only a one-way proce-
+dure. From a correlation with binary inputs and outputs, one
+cannot simply obtain a correlation with four outputs: indee d,
+b0 andb1 in the binary case are incompatible measurement re-
+sults, and can in general not be outputted simultaneously to
+deﬁne a single 4-valued outcome b =b0b1.
+From a more technical point of view, when looking for
+explicit (bi-)local decompositions, the deﬁnitions of wei ghts
+q ¯α ¯β ¯γ or of correlators e¯i¯j¯k for instance will be formally the
+same, the only difference being in the interpretation: in th e
+22-case, β0 and β1 are different single-bit outputs, corre-
+sponding to different inputs, while in the 14-case, β0 andβ1
+form a single 2-bit output, for a single input. Since the outputs
+β0 and β1 in the 14-case are compatible, the bilocal models
+are more constrained in that case than in the 22-case: correla-
+tors of the form e¯i,11,¯k (with ¯i, ¯k ⁄= 11 ) are ﬁxed by correla-
+tionsP 14, but not by correlations P 22. Although our bilocal
+inequality does not illustrate this fact, it might be the case that
+more severe constraints on bilocal correlations can be derived
+in the 14-case than in the 22-case. What can be seen how-
+ever when looking only at the linear combinationsI 22/14 and
+J 22/14 is that, as already mentioned, the Bell inequalities of
+the form |I 22| + |J 22| ≤ 1 for local correlations can be vi-
+olated by non-signaling correlations; but interestingly, their
+counterpart |I 14| + |J 14| ≤ 1 cannot (see Figure 3).
+4. Scenario with one input, three outputs for Bob
+Let us ﬁnally consider the “13-case”, where Bob has only
+1 input and 3 possible outputs (again, Alice and Charlie stil l
+have binary inputs and outputs); in practice, this could cor -
+respond to an incomplete Bell state measurement—see sec-
+tion III B 2 below.
+To compare with the case with four outputs for Bob, we
+still use two bits to denote Bob’s outputs, b = b0b1 = 00, 01
+or {10 or 11}: here, Bob does not distinguish his outcomes
+10 and 11, i.e. [b0b1 = 10] ≡ [b0b1 = 11] . We denote
+byP 13(a, b,c |x,z ) the correlation shared by Alice, Bob and
+Charlie.
+By analogy with the previous cases, let us now deﬁne the
+following tripartite correlators:
+⟨AxB0Cz⟩P13
+=
+∑
+a,c
+(−1)a+c[
+P 13(a, 00,c |x,z ) +P 13(a, 01,c |x,z )
+−P 13(a, {10 or 11 },c |x,z)
+]
+,
+⟨AxB1Cz⟩P13,b0=0
+=
+∑
+a,c
+(−1)a+c[
+P 13(a, 00,c |x,z ) −P 13(a, 01,c |x,z )
+]
+,
+and, in a similar way again as before, the following linear
+combinations:
+I 13 = 1
+4
+∑
+x,z=0,1
+⟨AxB0Cz⟩P 13, (25)
+J 13 = 1
+4
+∑
+x,z=0,1
+(−1)x+z⟨AxB1Cz⟩P 13,b0=0. (26)
+Once again, all bilocal correlationsP 13 necessarily satisfy
+√
+|I 13| +
+√
+|J 13| ≤ 1, (27)
+and this inequality is tight in the (I 13,J 13) plane.
+Proof. We show here that inequality (27) can directly be de-
+rived from (23). Indeed, from the correlation P 13, the three
+parties can obtain a correlation P 14(a,b,c |x,y,z ), with now
+four possible outputs for Bob, in the following very simple
+way: when Bob gets an outcome b = 0b1, he outputs it di-
+rectly; when he gets the outcome b = {10 or 11}, he outputs
+b = 10 or b = 11 at random. Formally:
+{
+P 14(a, 0b1,c |x,z ) = P 13(a, 0b1,c |x,z )
+P 14(a, 1b1,c |x,z ) = 1
+2P 13(a, {10 or 11 },c |x,z ).
+(28)
+One can again check that for the correlation P 14 thus ob-
+tained, ⟨AxB0Cz⟩P 14 = ⟨AxB0Cz⟩P13 and ⟨AxB1Cz⟩P 14 =
+⟨AxB1Cz⟩P13,b0=0; therefore the values ofI 14 andJ 14 as de-
+ﬁned in (21–22) coincide with the values of I 13 andJ 13 ob-
+tained from (25–26).
+Suppose now that P 13 is bilocal. Then so is P 14, which
+therefore satisﬁes (23). Since I 14 =I 13 andJ 14 =J 13, then
+P 13 satisﬁes (27).
+The projection of the correlation space onto the (I 13,J 13)
+plane is shown on Figure 4. As in the 14-case, the lo-
+cal and non-signaling sets are delimited in this plane by
+|I 13| + |J 13| ≤ 1, while the bilocal correlations satisfy√
+|I 13| +
+√
+|J 13| ≤ 1 (which is tight in this plane: see Ta-
+ble III in Appendix B).
+It is also relevant to restrict ourselves to correlations wi th
+a random marginals ⟨B0⟩P 13 = 0 for Bob (with an obvious
+notation) and random bipartite marginals ⟨AxCz⟩P 13 = 0 for
+Alice-Charlie, such as the quantum correlationP 13
+Q (36) stud-
+ied in subsection III B 2 below. With these additional con-
+straints, the local and non-signaling sets are delimited in the
+(I 13,J 13) plane by11 |I 13| + 2|J 13| ≤ 1; see Figure 4.
+11 The non-signaling assumption indeed implies for instance I 13 + 2J 13 =
+1 + ⟨B0⟩ − 1
+4
+∑
+x,z⟨AxCz⟩ − 2 ∑ P 13(a, 0b1, c|x, z), where the last
+sum is over all indices x, z, a, b1, c such that a ⁄= c and b1 = x ⊕ z. If
+Bob’s marginal⟨B0⟩ and all Alice-Charlie’s bipartite marginals ⟨AxCz⟩
+are zero, it follows that I 13 + 2J 13 ≤ 1.
+
+=== page 9 ===
+9
+−1 −1/2 0 1/2 1
+−1 
+−1/2
+0
+1/2
+1
+ 
+ 
+ 
+ 
+2
+3
+FIG. 4. Projection of the tripartite correlation space in the (I 13, J13)
+plane, as deﬁned in (25–26), for the “13-case”. The projecti ons of
+the bilocal set B13, of the local polytope L13, of the quantum set
+Q13 and of the non-signaling polytope NS13 are similar to those of
+Figure 3. When restricting to correlations with a random mar ginal
+⟨B0⟩P 13 for Bob and random bipartite marginals ⟨AxCz⟩P 13 for
+Alice-Charlie, the local (L13
+RND), quantum (Q13
+RND) and non-signaling
+(NS13
+RND) sets are instead delimited by |I 13| + 2|J 13| ≤ 1 (dashed
+diamond).
+The restriction of the ﬁgure to the dashed diamond can also be un-
+derstood as a 2-dimensional slice of the correlation space,containing
+the quantum correlation P 13
+Q (36), the random correlation P 13
+0 , and
+the bilocal correlations P 13
+I and P 13
+J , as deﬁned in footnote 18. One
+can see that the quantum correlation P 13
+Q = 2
+3 P 13
+I + 1
+3 P 13
+J is local,
+but not bilocal. When adding some noise, it enters the bilocal set for
+visibilities V ≤ 2
+3 (see subsection III B 2).
+5. Do our bilocal inequalities fully characterize the biloc al set?
+Note that one can of course also derive many equivalent
+versions of inequalities (20), (23) and (27), where the in-
+puts and/or outputs are permuted. One may wonder whether
+these inequalities are enough to delimit the bilocal set, as it
+is the case for instance with the Clauser-Horne-Shimony-Holt
+(CHSH) inequality [28] and its equivalent versions for 2 par -
+ties with binary inputs and outputs, which—together with triv-
+ial inequalities of the formP ≥ 0—fully characterize the cor-
+responding local set [22]. The answer is negative: there exi st
+nonbilocal correlations that satisfy (23) for instance and all
+its equivalent versions. Although in most practical cases w e
+study in the next sections, considering inequalities (20), (23)
+or (27) will be enough to demonstrate non-bilocality, the study
+of the detection loophole in section III C will provide an ex-
+ample where these are not sufﬁcient; we will then resort to
+convex relaxation methods.
+Fully characterizing the bilocal set, in the scenarios con-
+sidered here, by a simple list of inequalities remains an ope n
+problem.
+III. QUANTUM VIOLATIONS OF BILOCALITY IN
+ENTANGLEMENT SWAPPING EXPERIMENTS
+Since John Bell’s work in the 1960’s [1], it is well under-
+stood that his locality assumption can be falsiﬁed by quan-
+tum correlations. Hence, our bilocality assumption can a for-
+tiori also be falsiﬁed quantum mechanically. Since the latter
+is a stronger assumption than the former, one may wonder
+whether it can lead to stronger tests of quantumness; we show
+now that this is indeed the case.
+To justify the use of the bilocality assumption, we consider
+below scenarios where two independent quantum sources S1
+and S2 send particles to Alice and Bob in the state ̺1, and
+to Bob and Charlie in the state ̺2, respectively, so that the
+overall quantum state is
+̺ABC =̺1 ⊗̺2. (29)
+This typically corresponds to entanglement swapping exper i-
+ments [11], as depicted in Figure 1.
+We always assume below that Alice and Charlie have bi-
+nary inputs and outputs. As for Bob, we consider the case
+where he can perform a full Bell state measurement (he has
+only one possible input, with four possible outputs), the ca se
+where his measurement results group the Bell states two by
+two, and he can choose among two possible pairings (he has
+binary inputs and outputs), and the case where his partial Bell
+state measurement distinghishes two Bell states, but group s
+the other two together (he has again only one possible input,
+with now three possible outputs).
+In most cases (with the notable exception of subsec-
+tion III C 2 below), our bilocal inequalities derived in the
+previous section will be sufﬁcient to demonstrate the non-
+bilocality of the quantum correlations thus obtained.
+A. Entanglement swapping experiment
+with a complete Bell state measurement
+We start by considering a typical standard entanglement
+swapping experiment, where the sourcesS1 andS2 each pro-
+duces a singlet state |Ψ−⟩, and where Bob performs a com-
+plete Bell state measurement on the two particles he receive s
+from the two sources; the four possible outcomes b =b0b1 =
+00, 01, 10 or 11 he can obtain correspond to the four Bell
+states (with standard notations) |Φ+⟩, |Φ−⟩, |Ψ+⟩ or |Ψ−⟩,
+respectively. Alice and Charlie can each choose a projec-
+tive measurement (with binary outcomes) to perform on their
+qubit, described by the observables ˆAx and ˆCz (corresponding
+to their inputsx andz, resp.).
+Suppose that Alice and Charlie can measure either ˆA0 =
+ˆC0 = (ˆσZ + ˆσX)/
+√
+2 (for x,z = 0 ) or ˆA1 = ˆC1 = (ˆσZ −
+ˆσX)/
+√
+2 (forx,z = 1) on their particle, where ˆσZ and ˆσX are
+the Pauli matrices12. Quantum Mechanics predicts that Alice,
+12 In order not to confuse the notations, we use the fonts X, Y, Z for the Pauli
+matrices ˆσX, ˆσY and ˆσZ or for directions on the Bloch sphere, and the fonts
+x, y, z for Alice, Bob and Charlie’s inputs.
+
+=== page 10 ===
+10
+Bob and Charlie will observe the following correlation:
+P 14
+Q (a,b 0b1,c |x,z )
+= 1
+16
+[
+1 + (−1)a+c (−1)b0
++ (−1)x+z+b1
+2
+]
+. (30)
+From the deﬁnitions (21–22), one easily obtains
+I 14(P 14
+Q ) = J 14(P 14
+Q ) = 1
+2, (31)
+which violates (23). One can thus conclude that the quantum
+mechanical correlationP 14
+Q (30) is non-bilocal.
+It turns out however thatP 14
+Q is local13. Like local and non-
+signaling correlations, quantum correlations are bound to sat-
+isfy14 |I 14| + |J 14| ≤ 1 (see Figure 3); note that this holds
+even if the state̺ABC does not have the product form (29).
+1. Resistance to noise
+An interesting ﬁgure of merit to quantify the
+non-(bi-)locality of a correlation is its resistance to noi se.
+One way to model noise 15 is to suppose that each source Si
+introduces white noise with probability 1 − vi, i.e. corre-
+sponding to a visibility vi: instead of sending a pure (say,
+2-qubit) state |ψi⟩, the state it actually sends is
+̺i(vi) = vi |ψi⟩⟨ψi| + (1 −vi) /BD /4. (32)
+In the case we consider here, with maximally entangled
+states and random marginal probability distributions, the re-
+sulting quantum correlation will only depend on the product
+13 P 14
+Q can indeed be decomposed as P 14
+Q = 1
+2 P 14
+I + 1
+2 P 14
+J (see
+Figure 3), with P 14
+I (a, b0b1, c|x, z) = 1
+16 [1 + ( −1)a+c+b0
+] and
+P 14
+J (a, b0b1, c|x, z) = 1
+16 [1 + ( −1)x+z+a+c+b1
+]. P 14
+I and P 14
+J
+are bilocal (and hence, local): they can be obtained from the explicit
+decompositions of Table II in Appendix B, for (I 14=1, J 14=0) and
+(I 14=0, J14=1), respectively.
+Note that P 14
+I and P 14
+J , as well as the fully random correlation
+P 14
+0 , are all invariant with respect to the symmetries (a, b0, b1) ↔
+(a⊕1, b0⊕1, b1⊕1), (b0, b1, c) ↔ (b0⊕1, b1⊕1, c⊕1), (x, b1) ↔
+(x⊕1, b1⊕1) and (z, b1) ↔ (z⊕1, b1⊕1), which can all be applied bilo-
+cally (i.e., independently between A–B and B–C). When applying each
+of these symmetries with probability 1
+2 , any correlation P 14 (giving values
+I 14, J 14) is projected onto a correlation P 14
+⊥ = I 14P 14
+I + J 14P 14
+J +
+(1−I 14−J 14)P 14
+0 on the 2-dimensional slice represented on Figure 3.
+This “depolarisation” is similar to that introduced in Ref. [15]; similar de-
+polarisation processes can be deﬁned in the other (22- and 13-) cases.
+14 Note that all values of I 14, J14 such that |I 14| + |J 14| ≤ 1 can be ob-
+tained quantum mechanically; for instance, for Alice and Ch arlie’s mea-
+surement settings of the form ˆA0/1 = ˆC0/1 = cos θˆσZ ± sin θˆσX, we get
+I 14 = cos 2 θ, J 14 = sin 2 θ, and the full line segment I 14 + J 14 = 1
+(with 0 ≤ I 14, J 14 ≤ 1) is recovered.
+15 Note that one could also consider some additional white nois e due to the
+measurement apparatuses, by introducing a visibility vP for each party
+P = A, B or C. In the case we consider here, the resulting quantum
+correlation would then depend on the product V = v1v2vAvB vC of the
+visibilities of each source and measurement apparatus, and our argument
+would remain unchanged.
+V = v1v2 of the visibilities of each source, and is simply
+given by
+P 14
+Q (V ) = VP 14
+Q + (1 −V )P 14
+0 , (33)
+where P 14
+0 is the fully random probability distribution (i.e.,
+P 14
+0 (a,b 0b1,c |x,z ) = 1 /16 for all a,b 0b1,c,x,z ). The
+largest visibility for which the correlation P 14
+Q (V ) admits a
+bilocal decomposition deﬁnes the bilocal visibility threshold
+Vbiloc, and can be used to quantify the non-bilocality of P 14
+Q :
+the smallest Vbiloc is, the more resistant to noise, and hence
+the more bilocalP 14
+Q is.
+Noting that I 14[P 14
+Q (V )] = J 14[P 14
+Q (V )] = 1
+2V , we con-
+clude from our bilocal inequality (23) that P 14
+Q (V ) is non-
+bilocal for all visibilities V > 50% (see Figure 3). On the
+other hand, for visibilities V ≤ 50%, one can ﬁnd an ex-
+plicit decomposition that proves that P 14
+Q (V ) is bilocal (see
+Table II in Appendix B); our inequality thus detects opti-
+mally the resistance to noise of the correlationP 14
+Q , for which
+Vbiloc = 50%.
+The visibility V can be understood as the visibility of the
+maximally entangled state that results from the entangleme nt
+swapping process. In order to check the nonlocality of that
+state in the standard locality scenario, one could test the
+CHSH inequality [28]: this would require the use of differen t
+measurement settings for Alice or Charlie, and would require
+a visibility V > 1√
+2 ≃ 70.7% for the CHSH inequality to
+be violated. Actually, no Bell inequality can be violated (u s-
+ing V on Neumann measurements) for visibilities smaller than
+V ≃ 66% [29]. Our assumption allows one however to exhibit
+non-bilocal correlations for visibilities as low as 50%. This
+illustrates the advantage of the bilocality assumption, wh ich
+simpliﬁes the requirements for the demonstration of quantum-
+ness in entanglement swapping experiments [30, 31].
+2. On our choice of measurement settings
+The measurement settings we chose for Alice and Charlie
+above (and which were already introduced before in [15]) are
+the ones giving the bilocal quantum correlation P 14
+Q (30) that
+is the most resistant to noise we could ﬁnd, i.e. with the small-
+est bilocal visibility thresholdVbiloc.
+These measurement settings were ﬁrst obtained numeri-
+cally, following the approach introduced in subsection II C .
+Our extensive numerical tests convince us that we have found
+the optimal settings for the case where the sources send two
+singlet states, where Alice and Charlie can choose among two
+projective measurements, and where Bob performs a com-
+plete Bell state measurement. The symmetries of the quan-
+tum correlation P 14
+Q (30) then actually inspired our deﬁni-
+tions (21–22) forI 14 andJ 14, and the whole analysis of sub-
+section II D; interestingly, our bilocal inequality (23) is suf-
+ﬁcient to demonstrate the non-bilocality of P 14
+Q (V ) down to
+V =Vbiloc.
+
+=== page 11 ===
+11
+B. Partial Bell state measurements
+An ideal entanglement swapping experiment requires Bob
+to perform a complete Bell state measurement. This might not
+be a trivial thing to do; actually, it is known to be impossibl e
+to perform this ideal joint measurement with linear quantum
+optics [32].
+From an experimental perspective, it is therefore interest -
+ing to study the consequences of the bilocality assumption i n
+scenarios where Bob does not perform a complete Bell state
+measurement, but only a partial one. We thus consider be-
+low cases where Bob’s measurement does not allow him to
+discriminate the four Bell states, but only subsets of the Be ll
+states.
+For instance, he may perform a measurement that allows
+him to discriminate one Bell states vs the other three. In tha t
+case however, we found no advantage with the bilocality as-
+sumption, over a test of standard locality (for instance, a t est
+of CHSH between Alice and Charlie, conditioned on Bob hav-
+ing observed the Bell state he can distinguish), even if Bob
+may have different possible inputs that allow him to choose
+which of the four Bell states he wants to discriminate: we
+always found Vloc = Vbiloc = 1 /
+√
+2. Another possibility
+would be for Bob to distinguish pairs of Bell states. If he can
+only distinguish two states vs the other two, the correlatio n
+shared by the three parties will be bilocal 16; if he can choose
+among two different pairwise groupings of the same four Bell
+states (when he has two possible inputs), they will obtain non-
+bilocal correlations, with a visibility threshold Vbiloc = 50%
+(see subsection III B 1 below); the case where he can choose
+among the 3 possible pairwise groupings does not provide any
+advantage over the case with two inputs. Finally, Bob may be
+able to discriminate two Bell states perfectly, but not to di s-
+tinguish the other two. In that case, the correlation will ag ain
+be non-bilocal, with now a visibility threshold Vbiloc = 2/3
+(subsection III B 2 below); when Bob has more than one in-
+put that allow him to choose which two Bell states he wants to
+discriminate perfectly, the situation is the same as the previous
+one, with pairwise groupings.
+1. Binary inputs and outputs for Bob
+Let us thus start by considering the case where Bob has two
+possible inputs, and he wants to distinguish either the |Φ±⟩
+vs the |Ψ±⟩ Bell states, or the |Φ+/Ψ+⟩ vs the |Φ−/Ψ−⟩
+Bell states. That is, he measures either ˆB0 = |Φ+⟩⟨Φ+| +
+|Φ−⟩⟨Φ−| − | Ψ+⟩⟨Ψ+| − | Ψ−⟩⟨Ψ−| = ˆσZ ⊗ ˆσZ or ˆB1 =
+|Φ+⟩⟨Φ+| − |Φ−⟩⟨Φ−| + |Ψ+⟩⟨Ψ+| − |Ψ−⟩⟨Ψ−| = ˆσX ⊗ ˆσX;
+note that his measurement is actually a separable measure-
+ment.
+We still assume that the two sources produce singlet states,
+and that Alice and Charlie perform the same measurements as
+16 This is due to the fact that for a pairwise grouping of the Bell states, Bob’s
+measurement is separable, of the form ˆσU ⊗ ˆσU, with U = X, Y, or Z
+depending on the grouping (see III B 1).
+before, in subsection III A: ˆA0/1 = ˆC0/1 = (ˆσZ ± ˆσX)/
+√
+2. In
+this scenario where all parties have binary inputs and outputs,
+the quantum correlation shared by the three parties is then
+P 22
+Q (a,b,c |x,y,z ) = 1
+8
+[
+1 + 1
+2 (−1)a+b+c+xy+yz]
+, (34)
+for which, from the deﬁnitions (18–19), one gets
+I 22(P 22
+Q ) = J 22(P 22
+Q ) = 1
+2. (35)
+This violates (20), which proves thatP 22
+Q is not bilocal.
+The bilocal visibility threshold can be deﬁned as in the
+previous section, by considering correlations of the same
+form as (33) (with now P 22
+0 (a,b,c |x,y,z ) = 1 /8 for all
+a,b,c,x,y,z ). We ﬁnd that P 22
+Q (V ) violates inequality (20)
+for visibilities V > 50%, and that it admits a bilocal model
+for visibilities V (see Table I in Appendix B), so that again,
+forP 22
+Q ,Vbiloc = 50% (see Figure 3).
+The practical consequences of this result are however not as
+interesting as in the 14-case. Bob’s measurement being sepa-
+rable, we are not considering here an entanglement swapping
+experiment. In fact, the scenario here amounts to perform-
+ing two tests of the CHSH inequality, between Alice–Bob and
+Bob–Charlie. The requirementV > 50% simply corresponds
+to the requirement that at least one of the visibilities vi of the
+CHSH tests be larger than 1/
+√
+2; however, this is already a
+sufﬁcient condition to demonstrate simply Bell nonlocality.
+For completeness, note that as wasP 14
+Q in the 14-case,P 22
+Q
+is local 17. Like local correlations (but unlike non-signaling
+ones, here), and as in the 14-case once again, quantum corre-
+lations actually also satisfy |I 22| + |J 22| ≤ 1, which is again
+tight and holds even if the state̺ABC does not have the prod-
+uct form (29); this can be seen by expanding the factors of the
+positive operator ˆO = ( ˆA+ − ˆB0 ˆC+)2 + ( ˆC+ − ˆA+ ˆB0)2 +
+( ˆA− − ˆB1 ˆC−)2 + ( ˆC− − ˆA− ˆB1)2, with ˆA± = ˆA0 ± ˆA1 and
+ˆC± = ˆC0 ± ˆC1 (and where tensor products are implicit, while
+identity operators are omitted; e.g., ˆB0 ˆC+ actually stands for
+/BD ⊗ ˆB0 ⊗ ˆC+).
+2. One input, three possible outputs for Bob
+Another interesting case is when Bob performs a single in-
+complete Bell state measurement, with now three outcomes.
+We consider here for instance the case where his outcomes
+b = b0b1 = 00, 01, {10 or 11} correspond, respectively, to
+|Φ+⟩, |Φ−⟩and |Ψ±⟩(which Bob cannot discriminate, as they
+give the same outcome). Such a measurement can be realized
+17 P 22
+Q can indeed be decomposed as P 22
+Q = 1
+2 P 22
+I + 1
+2 P 22
+J (see
+Figure 3), with P 22
+I (a, b, c|x, y, z) = 1
+8 [1 + δy,0(−1)a+b+c] and
+P 22
+J (a, b, c|x, y, z) = 1
+8 [1 + δy,1(−1)x+z+a+b+c]. P 22
+I and P 22
+J are
+bilocal: they can be obtained from the explicit decompositi ons of Table I
+in Appendix B, for (I 22=1, J 22=0) and (I 22=0, J22=1), respectively.
+
+=== page 12 ===
+12
+with linear quantum optics [32], hence the practical motiva -
+tion for studying this particular case.
+We consider now the following measurements for Alice and
+Charlie: ˆA0 = ˆC0 = (
+√
+2 ˆσZ + ˆσX)/
+√
+3 and ˆA1 = ˆC1 =
+(
+√
+2 ˆσZ − ˆσX)/
+√
+3. The quantum correlationP 13
+Q (a, b,c |x,z )
+shared by Alice, Bob and Charlie is then
+
+
+
+P 13
+Q (a, 0b1,c |x,z ) = 1
+16
+[
+1 + (−1)a+c 2+(−1)x+z+b1
+3
+]
+P 13
+Q (a, {10 or 11 },c |x,z ) = 1
+8
+[
+1 − 2
+3 (−1)a+c] (36)
+One easily obtains, from the deﬁnitions (25–26),
+I 13(P 13
+Q ) = 2
+3, J 13(P 13
+Q ) = 1
+6, (37)
+which violates (27), thus proving thatP 13
+Q is not bilocal.
+For noisy correlations of the same form as (33), with now
+P 13
+0 (a, 0b1,c |x,z ) = 1
+16 and P 13
+0 (a, {10 or 11 },c |x,z ) =
+1
+8, the above values of I 13 and J 13 are again simply to be
+multiplied byV . They violate inequality (27) for all V > 2
+3.
+ForV ≤ 2
+3 on the other hand, one can ﬁnd an explicit bilocal
+decomposition for P 13
+Q (V ), as in Table III of Appendix B.
+Hence, the bilocal visibility threshold of P 13
+Q is Vbiloc = 2
+3
+(see Figure 4).
+Even when a complete Bell state measurement is not pos-
+sible, the bilocality assumption thus provides an advantage—
+compared to the standard Bell locality assumption—for prac -
+tical demonstrations of quamtumness in entanglement swap-
+ping experiments.
+Let us ﬁnally note that as in the previous cases, P 13
+Q is lo-
+cal18. Like local and non-signaling correlations, quantum cor-
+relations with random single- and bi-partite marginals (as ob-
+tained from singlet states and a partial Bell state measurement
+for Bob) satisfy19 |I 13| + 2|J 13| ≤ 1; see Figure 4.
+C. Resistance to detection inefﬁciencies
+Another experimental imperfection that is important to take
+into account is the fact that Alice, Bob and Charlie’s detec-
+tors might not be 100% efﬁcient. In a typical demonstration
+of nonlocality, this may open the well-known detection loop -
+hole [33], if the parties post-select their correlations on de-
+tected events only.
+18 P 13
+Q can indeed be decomposed as P 13
+Q = 2
+3 P 13
+I + 1
+3 P 13
+J
+(see Figure 4), with P 13
+I (a, 0b1, c|x, z) = 1
+16 [1 + ( −1)a+c],
+P 13
+I (a,{10 or 11}, c|x, z) = 1
+8 [1−(−1)a+c] and P 13
+J (a, 0b1, c|x, z) =
+1
+16 [1 + ( −1)x+z+a+c+b1
+], P 13
+J (a, {10 or 11 }, c|x, z) = 1
+8 . P 13
+I and
+P 13
+J are bilocal: they can be obtained from the explicit decompos itions of
+Table III in Appendix B, for (I 13=1, J 13=0, K13=1, L13=M 13=0)
+and (I 13=0, J 13= 1
+2 , K13= −1, L13=M 13=0), respectively.
+19 Note again that all values of I 13, J 13 such that |I 13| + 2|J 13| ≤ 1 can be
+obtained quantum mechanically; for instance, for the same m easurement
+settings as in footnote 14, the full line segment I 13 + 2 J 13 = 1 (with
+0 ≤ I 13, 2J 13 ≤ 1) is recovered.
+Restricted classes of local models with independent sources
+were actually considered before in [13, 14], and were pre-
+cisely studied in the context of the detection loophole. Her e
+we initiate the study of the detection loophole with respect to
+the general assumption of bilocality, by considering the si m-
+plest cases, where only one party has an limited detection ef -
+ﬁciency η ∈ [0, 1] while other parties have perfect detectors,
+and the case where both Alice and Charlie have the same de-
+tection efﬁciency η while Bob has 100% efﬁcient detectors.
+More complex cases, for instance where all parties may have
+non-prefect detectors, are beyond the scope of this paper, and
+are left for future work [34].
+In the preliminary study below, we consider again binary
+inputs and outputs for Alice and Charlie, and a complete Bell
+state measurement for Bob. We assume that when one party
+fails to get a conclusive result, they still output a result f rom
+their standard set of possible outcomes, either at random or
+according to a speciﬁc strategy—note that when the parties
+output random results, the situation is the same as for white
+noise in their measurement apparatus, and as that of imperfect
+visibilities studied before. The case where a no-detection re-
+sult is explicitly treated as a different outcome is left forfuture
+work; it is an open question, whether this may increase here
+the resistance to detection inefﬁciencies.
+1. Only one party has inefﬁcient detectors
+We start with the case where one party (either Alice, Bob
+or Charlie) has imperfect detectors with efﬁciency η, while
+the other two have perfectly efﬁcient detectors. Note that i n
+the case of Bob’s Bell state measurement, if one of his de-
+tectors does not click, he might still get some partial infor -
+mation (such as on a subset of possible Bell states); we as-
+sume however that he does not make use of that information—
+which could possibly lead to a better resistance to detectio n
+inefﬁciencies—and we leave this potential improvement as a n
+open research problem.
+We found that the best strategy is for Alice and Charlie
+to use the same measurement settings as in subsection III A,
+which give the correlation P 14
+Q (30), and for the party with
+inefﬁcient detectors to output a random result in case of a no-
+detection event; in that case, similar to that studied previously,
+the resulting correlation is non-bilocal for η > ηbiloc = 50%
+(where the bilocal detection efﬁciency threshold ηbiloc is de-
+ﬁned in a similar way as the bilocal visibility threshold Vbiloc
+above); our bilocal inequality (23) detects optimally its n on-
+bilocality.
+2. Alice and Charlie both have imperfect detectors
+(ηA = ηC = η, ηB = 1)
+The second case we consider is that where Alice and Char-
+lie both have imperfect detectors, with the same efﬁciency
+η, while Bob has perfect detectors. Alice and Charlie still
+perform the same measurements as before. In case of non-
+detections, the best strategy is for Alice to output her inpu t
+
+=== page 13 ===
+13
+0% 67% 71% 75% 100%
+0% 
+50%
+100%
+ 
+ 
+Upper bound from our
+bilocal inequality
+Bilocal correlations 
+Detection eﬃciency η
+Overall visibility V=v 1 v 2
+67% 71% 75%
+FIG. 5. (Non-)bilocality of correlations obtained by the st rategy de-
+scribed in the main text, in the case where Alice and Charlie’ s de-
+tectors have a detection efﬁciency η. The correlations are bilocal
+for visibilities V = v1v2 ≤ V η
+biloc, with V η
+biloc depending on η.
+As explained in the text, V η
+biloc was estimated by matching lower
+bounds given by explicit bilocal decompositions (see TableIV of Ap-
+pendix B) and upper bounds obtained from convex relaxationsof the
+bilocality constraint; our inequality (23) also gives an up per bound
+on V η
+biloc; this bound was found to be tight only for η ≥ 3
+4 .
+directly (i.e.,a =x), and for Charlie to always output c = 0.
+The resulting correlation is found to be bilocal for allη ≤ 2/3;
+an explicit bilocal decomposition is given in Table IV of Ap-
+pendix B. On the other hand, convex relaxation techniques
+mentioned in subsection II C 3 allowed us to establish a nu-
+merical upper bound of η = 2/3 +ǫ, with ǫ ≈ 10−6, above
+which the correlation is non-bilocal. We conclude that in th is
+case,ηbiloc = 2/3.
+Taking also into account the noise in the state preparation,
+as in the previous subsections, the correlation then depends on
+η and onV =v1v2. For any ﬁxed value ofη, one can estimate
+the corresponding bilocal visibility thresholdV η
+biloc, as shown
+on Figure 5. This was obtained again by comparing a lower
+bound on V η
+biloc given by the explicit bilocal decomposition
+of Table IV in Appendix B (to which we refer for analytical
+expressions forV η
+biloc), with a numerical upper bound derived
+using convex relaxations; the two bounds match again up to
+ǫ ≈ 10−6.
+Note that our bilocal inequality (23) can also be used to
+obtain an upper bound on ηbiloc and V η
+biloc. However, this
+upper bound on V η
+biloc is found to be tight only for η ≥ 3/4
+(see Figure 5); and for V = 1 , inequality (23) is violated
+only for η > 1/
+√
+2. This illustrates the fact that our bilocal
+inequality is not always sufﬁcient to detect the non-biloca lity
+of a correlation (see subsection II D 5).
+3. Open problems related to the detection loophole
+A more complete study would be necessary to draw any
+conclusion regarding the advantage of the bilocality assum p-
+tion compared to the locality assumption, with respect with
+the detection loophole.
+One should in particular consider the case where all three
+parties have inefﬁcient detectors; note that because their mea-
+surements are inherently different, there is no reason to as -
+sume that Alice and Charlie should have the same detection
+efﬁciencies as Bob; rather, it would be relevant to consider
+a practical (and incomplete) Bell state measurement and see
+how Bob’s efﬁciency would compare to that of Alice and
+Charlie [34].
+Many questions are left open here, including whether using
+partially entangled or higher-dimensional states may lower the
+required efﬁciencies, as it is the case in the standard scena rio
+of Bell nonlocality [35, 36].
+IV . FURTHER ISSUES ON QUANTUM NON-BILOCALITY
+We now present some additional results related to the study
+of quantum non-bilocality, coming back to the case where Bob
+performs a complete Bell state measurement and where all
+parties have perfect detectors. We ﬁrst study the relation b e-
+tween resistance to noise with respect to locality and to bil o-
+cality. We then present quantum violations of bilocality using
+partially entangled qubit states. Finally, we address the q ues-
+tion of simulating quantum correlations in a bilocal manner.
+A. Trade-off between Bell nonlocality and non-bilocality
+for quantum correlations
+We have shown that the quantum correlations P 14
+Q (30),
+P 22
+Q (34) andP 13
+Q (36) we exhibited are not bilocal. They are
+in fact the most robust to noise we could ﬁnd in each scenario,
+and become bilocal for visibilities smaller than Vbiloc = 50%
+in the ﬁrst two cases, andVbiloc = 2/3 in the last case.
+However, these correlations were found to be local. In each
+case, one can also, of course, obtain nonlocal quantum corre -
+lations by rotating for instance the measurement settings o f
+Alice and/or Charlie. The nonlocality of such correlations
+can also be quantiﬁed by their resistance to noise: i.e., for a
+given correlation one can deﬁne the local visibility threshold
+Vloc below which the corresponding noisy correlation of the
+form (33) becomes local. One may then wonder how the two
+visibility thresholds,Vloc andVbiloc, behave, one compared to
+the other, when the measurement settings of Alice and Charlie
+vary.
+To illustrate the trade-off between the local and bilocal vis-
+ibility thresholds, let us consider here the ﬁrst scenario ( the
+14-case), where Bob performs only one measurement, with
+four possible outcomes. For the correlation (30), we had
+Vloc = 1 andVbiloc = 1
+2. By changing the measurement set-
+tings ˆA0, ˆA1, ˆC0 and ˆC1, while still considering a complete
+
+=== page 14 ===
+14
+Local visibility threshold 
+Bilocal visibility threshold 
+trade-oﬀ between optimal resistance to noise 
+of nonlocality and of non-bilocality 
+FIG. 6. Shaded area: local ( Vloc) versus bilocal ( Vbiloc) visibility
+thresholds for quantum correlations obtainable in standard entangle-
+ment swapping experiments, with binary inputs and outputs for Alice
+and Charlie. For the quantum correlationP 14
+Q of eq. (30) for instance,
+on has (Vloc, Vbiloc) = (1 , 1
+2 ).
+Bell state measurement for Bob, we modify the quantum cor-
+relationP 14
+Q and thus obtain different corresponding pairs of
+visibility thresholds (Vloc,V biloc). From a numerical investi-
+gation, we obtained the set of pairs (Vloc,V biloc) represented
+on Figure 6.
+The upper boundary illustrates the fact that, obviously,
+Vbiloc ≤ Vloc; note that the extreme left point for which
+Vloc = Vbiloc = 1√
+2 ≃ 70.7% can be obtained for instance
+when one uses the standard settings to test the CHSH inequal-
+ity [28] between Alice and Charlie (e.g., ˆσZ and ˆσX for Alice,
+(ˆσZ ± ˆσX)/
+√
+2 for Charlie). One can see however that Vbiloc
+can be lowered down toVbiloc = 2 −
+√
+2 ≃ 58.6% while still
+havingVloc = 1√
+2.
+The lower boundary is of particular interest, as it expresses
+the trade-off between optimal resistance to noise of non-
+locality and of non-bilocality; it is the result of a multi-
+objective optimization problem. This front can for instanc e
+be parametrized by considering the following measurement
+settings:
+ˆA0 = ˆC0 = cosθξ
+0 ˆσZ + sinθξ
+0 ˆσX,
+ˆA1 = ˆC1 = cosθξ
+1 ˆσZ + sinθξ
+1 ˆσX,
+withθξ
+i = (−1)i π
+4 −ξ π
+8, andξ ∈ [0, 1]. (38)
+A straightforward calculation gives, for the quantum corre -
+lation P 14
+Q (ξ) thus obtained and for the deﬁnitions (21–22),
+I 14 = J 14 = 1
+4 [1 + cos(ξ π
+4 )]. For a given visibility V , one
+just has to multiply these values ofI 14 andJ 14 byV ; the cor-
+relation then violates inequality (23) for all visibilitie s V >
+1/[1 + cos(ξ π
+4 )]. For visibilities lower than 1/[1 + cos(ξ π
+4 )]
+on the other hand, one can ﬁnd an explicit bilocal decompo-
+sition, given in Table V of Appendix B. Hence, this value is
+precisely the bilocal visibility thresholdV ξ
+biloc for the quantum
+correlation obtained with the measurement settings (38).
+To test for locality, we note that for a tripartite correlati on
+to be local, a necessary condition is that the corresponding
+bipartite correlation between Alice and Charlie, conditio ned
+on one particular result of Bob, is local [37], and therefore (in
+our case where Alice and Bob have binary inputs and outputs)
+it must satisfy the CHSH inequality [28]. When conditioned
+on Bob obtaining |Φ−⟩, we ﬁnd that the value of the CHSH
+polynomial isCHSH = 2[cos(ξ π
+4 ) + sin(ξ π
+4 )]. For a given
+visibilityV , the value of CHSH is simply multiplied by V ,
+and the CHSH inequalityCHSH ≤ 2 is violated for allV >
+1/[cos(ξ π
+4 ) + sin(ξ π
+4 )]. On the other hand, one can check
+that the corresponding correlation is local for visibilities lower
+than 1/[cos(ξ π
+4 )+sin(ξ π
+4 )]; an explicit local decomposition is
+given in Table V of Appendix B. Hence, this value is precisely
+the local visibility threshold Vloc for the quantum correlation
+we consider.
+The lower front in Figure 6 can thus be parametrized as
+(V ξ
+loc,V ξ
+biloc) =
+( 1
+cos(ξ π
+4 ) + sin(ξ π
+4 ), 1
+1 + cos(ξ π
+4 )
+)
+(39)
+with ξ ∈ [0, 1]. For ξ = 0 in particular, one gets the most
+non-bilocal correlations we could ﬁnd, namelyP 14
+Q as in (30);
+forξ = 1, we obtain the point (V ξ=1
+loc ,V ξ=1
+biloc) = ( 1√
+2, 2 −
+√
+2)
+that we brieﬂy mentioned before.
+We also looked at this relation between the locality and
+bilocality visibility thresholds in other scenarios and fo und
+similar trade-offs, although with different quantitative results.
+For instance, in the 22-case we found numerically that when
+Alice and Charlie’s settings vary, while Bob’s measurements
+are ﬁxed, all correlations for which Vloc = 1/
+√
+2 also have
+Vbiloc = 1/
+√
+2 = Vloc; an improvement inVbiloc can only be
+obtained by increasingVloc.
+B. Non-maximally entangled states
+One might wonder whether our inequality (23) for bilocal-
+ity can be violated by non-maximally entangled states, and
+how non-bilocal the resulting correlations can be.
+Let us thus consider the case where the sources S1 andS2
+send 2-qubit entangled states of the form
+|ψi⟩ = cos θi
+2 |01⟩ − sinθi
+2 |10⟩, (40)
+withθi ∈ [0, π
+2 ] (andi = 1, 2). We assume that Bob performs
+a complete Bell state measurement (in the standard Bell ba-
+sis), and that Alice and Charlie can each choose among two
+projective measurements to perform on their respective qubits.
+The tripartite correlators that appear in the deﬁnitions (21–22)
+ofI 14 andJ 14 are easily found to be
+⟨AxB0Cz⟩P 14 = aZ
+xcZ
+z (41)
+⟨AxB1Cz⟩P 14 = aX
+xcX
+z sinθ1 sinθ2 (42)
+where aZ,X
+x and cZ,X
+z are the Z and X components of the vectors
+⃗ax and⃗cz representing Alice and Charlie’s measurements in
+
+=== page 15 ===
+15
+the Bloch sphere, respectively (for inputs x andz). We thus
+obtain
+I 14 = 1
+4 (aZ
+0 + aZ
+1)(cZ
+0 + cZ
+1), (43)
+J 14 = 1
+4 (aX
+0 − aX
+1)(cX
+0 − cX
+1) sinθ1 sinθ2. (44)
+One can easily see that, in order to maximize
+√
+|I| +
+√
+|J|,
+the optimal settings of Alice and Charlie should be in the ZX
+plane, symmetric around the Z axis. More precisely, we ﬁnd
+that the optimal measurements are, for both Alice and Charlie,
+ˆσZ ± √sinθ1 sinθ2 ˆσX
+√1 + sinθ1 sinθ2
+, (45)
+leading to
+I 14 = 1
+1 + sinθ1 sinθ2
+, J 14 = sin2θ1 sin2θ2
+1 + sinθ1 sinθ2
+, (46)
+and √
+|I 14| +
+√
+|J 14| =
+√
+1 + sinθ1 sinθ2. (47)
+If sinθ1 sinθ2 > 0, we have
+√
+|I 14| +
+√
+|J 14| > 1, which
+proves that the quantum correlationP 14
+θ1,θ2 thus obtained is non-
+bilocal.
+To study its resistance to noise, one can consider, as be-
+fore, the case where the source sends noisy states of the form
+ρi(vi) = vi|ψi⟩⟨ψi|+(1−vi)/BD /4. Because of the non-random
+marginals, the noisy correlation does no longer have the sim -
+ple form of (33). However, the values ofI andJ, which only
+involve tripartite correlation terms, are still simply multiplied
+by the global visibilityV =v1v2. Inequality (23) is thus vio-
+lated for allV > 1
+1+sin θ1 sin θ2
+.
+For all values of θ1,θ 2,v 1 and v2, such that v1v2 ≤
+1
+1+sin θ1 sin θ2
+, that we tested, we could ﬁnd numerically an
+explicit bilocal decomposition for the correlation P 14
+θ1,θ2. We
+therefore believe that 1
+1+sin θ1 sin θ2
+is precisely its bilocal vis-
+ibility thresholdVbiloc, and that once again our inequality (23)
+detects optimally the non-bilocality ofP 14
+θ1,θ2.
+Note that as expected, for θ1 = θ2 = π
+2 , we recover the
+case of maximally entangled states studied in section III A.
+C. Classical simulation of (noisy) entanglement swapping
+We have shown in Section III A that the correlations ob-
+tained in an entanglement swapping experiment (with a com-
+plete Bell state measurement) can be non-bilocal for visibi li-
+ties down toV =v1v2> 50%. A natural question is whether
+this visibility threshold Vbiloc = 50% can be lowered, possi-
+bly by using more measurement settings on Alice and Char-
+lie’s sides.
+Studying more complex scenarios, with more settings,
+rapidly becomes very difﬁcult, because of the nonlinearityand
+nonconvexity of the bilocality assumption. We could not ﬁnd
+so far any scenario where Vbiloc could be lowered. However,
+by trying to simulate the noisy entanglement swapping exper-
+iment with an explicit bilocal model, one can obtain a lower
+bound onVbiloc for all possible scenarios in which Alice and
+Charlie perform projective V on Neumann measurements on
+their qubits, and Bob performs a Bell state measurement.
+1. A fully bilocal model for a visibility V = 25%
+We present here a model that reproduces with a visibility
+V = 25% all correlations obtained in a standard entangle-
+ment swapping experiment, where Alice and Charlie perform
+V on Neumann measurements on their qubits. The model is
+inspired by Werner’s model [38] which reproduces the noisy
+singlet state (so-called Werner state) correlations for vi sibil-
+ities v = 50% : intuitively, one can simulate the two singlet
+states with visibilities v1 = v2 = 50% , to obtain an overall
+visibility V = v1v2 = 25% ; the only nontrivial question is
+how to simulate Bob’s Bell state measurement.
+In Werner’s model, Alice and Bob share a random vector
+⃗λ, uniformly distributed on the Bloch sphere S2. After re-
+ception of a measurement setting⃗a ∈ S 2, Alice outputsA =
+−sign(⃗a·⃗λ); after reception of a measurement setting⃗b ∈ S 2,
+Bob outputs B = ±1 with probability p(B|⃗b,⃗λ) = 1+B ⃗b·⃗λ
+2 ;
+note that this corresponds precisely to the quantum prediction
+for the measurement along the direction ⃗b of a qubit in the
+pure state |⃗λ⟩ ∈ S 2.
+In a similar spirit, we consider the following bilocal model:
+Alice and Bob share a random vector ⃗λ1, Bob and Charlie
+share a random vector ⃗λ2, both uniformly distributed on the
+Bloch sphere S2. For measurement settings ⃗a,⃗c ∈ S 2, Alice
+and Charlie output A = sign(⃗a ·⃗λ1),C = sign(⃗c ·⃗λ2). As
+for Bob, in order to simulate his measurement, he outputs the
+result B = B0B1 of a Bell state measurement on a 2-qubit
+pure product state |⃗λ1⟩|⃗λ2⟩, with the probabilities predicted
+by Quantum Mechanics. We show in Appendix D 1 that this
+model indeed reproduces the entanglement swapping correla-
+tions, with a visibilityV = 25%; of course, one can then also
+simulate smaller visibilities by introducing some additio nal
+noise.
+We note that there is a signiﬁcant gap between the upper
+boundV = 50% and the lower boundV = 25% on the bilocal
+visibility threshold, for any choice of measurement settin gs.
+But the situation is quite similar to the case of locality, where
+Werner’s model reproduces the singlet state correlations f or
+a visibility v = 50% , while the CHSH inequality [28] al-
+lows one to demonstrate nonlocality only forv >1/
+√
+2. It is
+known however that there exists a local model that reproduces
+the Werner state correlations for a visibilityv ≃ 65.95% [29];
+it would be interesting to see if that model could be adapted
+to a bilocal model for entanglement swapping correlations.
+The difﬁculty is to deﬁne an adequate simulation of Bob’s
+Bell state measurement, with local variables that do not hav e
+(unlike in Werner’s model) a straightforward interpretation as
+quantum states. On the other hand, some inequalities have
+been found that demonstrate the nonlocality of Werner state s
+for visibilities v slightly smaller than 1/
+√
+2 [39]. However,
+these inequalities involve a very large number of measurement
+settings. It will certainly be very hard to ﬁnd better inequa li-
+ties to decrease the visibility threshold in the case of bilocality.
+
+=== page 16 ===
+16
+2. Simulation of entanglement swapping with communication ?
+Toner and Bacon [40], followed by Degorre et al. [41],
+have shown that the use of one single bit of communication
+is enough to classically simulate the quantum correlations ob-
+tained from V on Neumann measurements on a singlet state.
+It is quite natural to wonder whether such a result holds in
+our case, i.e. whether adding some (limited) classical com-
+munication can help to simulate the entanglement swapping
+experiment in a bilocal manner.
+We present in Appendix D 2 a protocol directly inspired
+from the communication protocol of [41], that uses 2 bits
+of communication. We ﬁnd that it allows one to simulate
+the entanglement swapping correlations with a visibilityV =
+4/9 ≃ 44.4%; this is indeed better than the visibility of 25%
+obtained with the previous bilocal model, but this is still a
+pretty low visibility, which does not even reach the thresho ld
+of 50%.
+It might however be possible to increase this visibility—and
+even obtain a perfect simulation withV = 1—with a different
+protocol, possibly using more (but still ﬁnite) communication,
+in addition to bilocal shared randomness. Recent results in
+this direction indeed look quite promising [42].
+V . ON THE ASSUMPTION OF INDEPENDENT SOURCES
+IN STANDARD BELL EXPERIMENTS
+We ﬁnally come back to the justiﬁcation of our bilocality
+assumption. As already emphasized in the introduction, a very
+similar assumption is actually needed in standard Bell test s,
+namely that the sources of randomness used to choose the
+measurement settings are independent from the source emit-
+ting the states that are being measured (the “free choice” or
+“measurement independence” assumption [43–45]).
+To make this connection more precise, consider a standard
+bipartite Bell experiment, in which a correlation P (a,b |x,y )
+is observed. Bell’s local causality assumption writes
+P (a,b |x,y ) =
+∫
+dλρ (λ)P (a|x,λ )P (b|y,λ ). (48)
+Assume that the random choice of Alice’s setting depends on
+the hidden stateλ1 of her random number generator, so thatx
+is chosen with probabilityP (x|λ1), andλ1 follows the distri-
+butionρ1(λ1); similarly, assume that Bob’s setting y is cho-
+sen with probability P (y|λ2), where the hidden state λ2 of
+his random number generator follows the distributionρ2(λ2).
+The assumption that the settings can be freely chosen implies
+thatλ1,λ2 andλ must be independent. Together with the lo-
+cal causality assumption, the overall probability distrib ution
+P (a,b,x,y ) then writes
+P (a,b,x,y ) = P (a,b |x,y )P (x,y )
+=
+∫∫∫
+dλ1 dλ dλ2ρ1(λ1)ρ(λ)ρ2(λ2)
+P (x|λ1)P (a|x,λ )P (b|y,λ )P (y|λ2). (49)
+Let us now compare this situation with the four-partite ex-
+periment depicted on Figure 7, in which Xavier and Alice re-
+ceive particles from a sourceS1, Alice and Bob receive parti-
+cles from a sourceS, while Bob and Yolanda receive particles
+from a sourceS2. The four parties perform some ﬁxed (possi-
+bly joint) measurements on their particles, and obtain outputs
+x,a,b and y respectively. In the spirit of our bilocality as-
+sumption, we call trilocal correlations that can be written in
+the form
+P (x,a,b,y ) =
+∫∫∫
+dλ1 dλ dλ2ρ1(λ1)ρ(λ)ρ2(λ2)
+P (x|λ1)P (a|λ1,λ )P (b|λ,λ 2)P (y|λ2). (50)
+Note the similarities with eq. (49).
+Assume now that for all x,y , the marginal probabilities
+P (x,y ) areP (x,y ) = P (x)P (y) ⁄= 0. Under that condition,
+P (x,a,b,y ) is trilocal if and only if the conditional probabil-
+ity distributionP (a,b |x,y ), where x,y are interpreted as the
+inputs of a bipartite scenario, is local.
+Proof. Suppose that P (x,a,b,y) is trilocal, i.e. that it
+can be decomposed as in (50), and that P (x,y ) =
+P (x)P (y) ⁄= 0 for all x,y . From Bayes’ rule, we can
+writeρ1(λ1)P (x|λ1) = ρ1(λ1|x)P (x) andρ2(λ2)P (y|λ2) =
+ρ2(λ2|y)P (y). Dividing eq. (50) by P (x)P (y), we ﬁnd
+that P (a,b |x,y ) = P (x,a,b,y )/[P (x)P (y)] is of the
+form (48), with P (a|x,λ ) =
+∫
+dλ1ρ1(λ1|x)P (a|λ1,λ ) and
+P (b|y,λ ) =
+∫
+dλ2ρ2(λ2|y)P (b|λ,λ 2) (which constitute
+properly normalised probability distributions). This sho ws
+thatP (a,b |x,y ) is local.
+Conversely, suppose that P (a,b |x,y ) is local, with a
+decomposition of the form (48), and that P (x,y ) =
+P (x)P (y). Let then λ1 and λ2 be copies of the vari-
+ables x and y respectively, so that P (x|λ1) = δx,λ1 and
+P (y|λ2) = δy,λ2. By writing P (x) = ∑
+λ1P (λ1)P (x|λ1)
+and P (y) = ∑
+λ2P (λ2)P (y|λ2), and using the fact that
+P (x|λ1) = δx,λ1 to replace P (a|x,λ ) by P (a|λ1,λ ) (and
+similarly for P (b|y,λ )), one gets, from the local distribu-
+tion of P (a,b |x,y ), an expression of the form (50) for
+P (x,a,b,y ) = P (a,b |x,y )P (x)P (y): hence, P (x,a,b,y )
+is trilocal.
+Hence, when Xavier and Yolanda’s measurement boxes
+in Figure 7 are interpreted as random number generators,
+which determine Alice and Bob’s inputs x and y, the four-
+partite scenario is tantamount to a standard Bell test; the
+trilocality assumption—which naturally extends our biloc al-
+ity assumption—is formally equivalent to the assumption th at
+the measurement settings are chosen independently from the
+sourceS. It is worth stressing that the trilocality assumption
+can thus be tested without any choice of inputs: there is no
+need for any additional “free choice” or “measurement inde-
+pendence” assumption, as it is already explicitly taken int o
+account in (50).
+To ﬁnish off, let us illustrate our claims with an explicit ex-
+ample. Consider a four-partite scenario as in Figure 7, wher e
+the sourcesS1 andS2 send the (separable) states ̺1 = ̺2 =
+1
+2 |00⟩⟨00| + 1
+2 |11⟩⟨11| to Xavier-Alice and to Bob-Yolanda
+respectively, and where the source S sends singlet states to
+Alice-Bob.
+
+=== page 17 ===
+17
+Xavier
+x
+Alice
+a
+Bob
+b
+S1
+λ1 λ1
+S
+λ λ Yolanda 
+y
+S2
+λ2 λ2
+FIG. 7. A trilocal scenario, with four parties returning out puts x, a, b, y (here they do not receive any input). Under the assumption th at
+P (x, y) = P (x)P (y) > 0, the 4-partite correlation P (x, a, b, y) is trilocal if and only if the corresponding bipartite corre lation P (a, b|x, y)
+is local.
+Assume that Xavier and Yolanda both measure ˆX = ˆY =
+σZ, that Alice measures ˆA = |0⟩⟨0| ⊗ ˆσZ + |1⟩⟨1| ⊗ ˆσX while
+Bob measures ˆB = ˆσZ+ˆσX√
+2 ⊗ |0⟩⟨0| + ˆσZ−ˆσX√
+2 ⊗ |1⟩⟨1|. The
+correlation obtained by the four parties is
+P (x,a,b,y ) = 1
+16 [1 − 1√
+2 (−1)a+b+xy], (51)
+leading to
+P (a,b |x,y ) = 1
+4 [1 − 1√
+2 (−1)a+b+xy] (52)
+which is precisely the correlation one would get in a Bell test,
+where the source sends singlet states, where Alice measures
+either ˆσZ or ˆσX, and where Bob measures either ˆσZ+ˆσX√
+2 or
+ˆσZ−ˆσX√
+2 . This can be understood as follows: the measurement
+of ˆX and ˆY reveal the inputsx andy of the Bell test; for Alice,
+measuring ˆA = |0⟩⟨0| ⊗ ˆσZ + |1⟩⟨1| ⊗ ˆσX precisely amounts
+to measuring either ˆσZ ifx = 0, or ˆσX ifx = 1; similarly for
+Bob, measuring ˆB = ˆσZ+ˆσX√
+2 ⊗|0⟩⟨0|+ ˆσZ−ˆσX√
+2 ⊗|1⟩⟨1| amounts
+to measuring either ˆσZ+ˆσX√
+2 ify = 0, or ˆσZ−ˆσX√
+2 ify = 1.
+VI. CONCLUSION
+We have developped in this article the study of the bilocality
+assumption in the context of entanglement swapping experi-
+ments. We derived new constraints on bilocal correlations, in
+the form of nonlinear Bell-type inequalities, for different sce-
+narios; in particular, for the experimentally relevant sce nario
+where only a partial Bell state measurement can be performed.
+We found in all cases an advantage of the bilocality assump-
+tion compared to Bell’s standard local causality assumptio n,
+as the former lowers the requirements for demonstrating quan-
+tumness in entanglement swapping experiments.
+A lot of questions are left open. For instance, one could
+study scenarios with more inputs and outputs, quantum states
+of higher dimensions, different kinds of measurements per-
+formed by the three parties, etc. It is not easy to develop an
+intuition about which results are to be expected; these ques -
+tions should motivate further work on the study of bilocal cor-
+relations.
+Another natural and very interesting problem is to ex-
+tend our bilocality assumption to more complex topologies
+of quantum networks with independent sources. While it is
+straightforward to formulate the assumption of independen t
+sources for the hidden statesλ (theN-locality assumption) in
+a similar form as eq. (2) for instance, translating it into mo re
+explicit constraints that can be tested numerically, as we d id
+in subsection II C, is not trivial; let alone deriving Bell-t ype
+inequalities for N-local correlations. For instance, a natu-
+ral extension to our study would be to consider the case of
+an (N +1)-partite linear network withN independent sources
+generating singlet states, where all N −1 parties inside the
+chain would perform some Bell state measurements, and the
+two parties at both ends of the chain can choose among two
+possible projective measurements; based on our numerical
+ﬁndings for N = 3 , we conjecture that the correlations thus
+obtained can be non-N-local for overall visibilities larger than
+VN-loc = (1/
+√
+2)N (and that this would be obtained by alter-
+nating the horizontal/vertical and the diagonal bases for t he
+measurements of each party), although proving it remains an
+open problem.
+Among the various other network topologies worth investi-
+gating in the context of N-locality, one is especially intrigu-
+ing. Consider a simple triangle with Alice, Bob and Charlie at
+the three vertices (see Figure 8). In the quantum scenario each
+of the three edges holds an entangled qubit pair source; the
+three sources are assumed to be independent, hence the global
+quantum state is a product of the formρAB ⊗ρBC ⊗ρAC. In
+the corresponding 3-locality scenario, Alice’s output depends
+on the hidden states (λ1,λ 3), Bob’s on (λ1,λ 2), Charlie’s on
+(λ2,λ 3), and the distribution of the three independent statesλi
+factorizes. One can thus again easily formulate an adequate3-
+Alice 
+x
+a
+Bob
+y
+b
+Charlie 
+z
+c
+λ
+1
+λ2
+λ3
+FIG. 8. A 3-locality scenario, where three parties receive states from
+3 sources, forming a closed loop. Characterizing the (non)-3-locality
+of such a scenario remains an open problem.
+
+=== page 18 ===
+18
+locality assumption for this scenario in terms of general states
+λi; however, it is unclear if it is possible to discretize these as
+we did in subsection II C, in order to derive more convenient
+3-locality constraints. Even in the case without any input,
+characterizing the (non)-3-locality in this triangle conﬁ gura-
+tion seems challenging.
+Studying more deeply the implications of the independent
+sources assumption will lead to a better understanding of th e
+nonlocality that quantum networks can exhibit, and of how
+powerful they can be—compared to classical ressources—
+to perform information processing tasks. We also expect
+such studies to lead to new applications, fully exploiting t he
+non-N-locality of Quantum Mechanics.
+VII. ACKNOWLEDGMENTS
+We acknowledge Jean-Daniel Bancal, Nicolas Brunner and
+Yeong-Cherng Liang for fruitful discussions. This work was
+supported by a University of Queensland Postdoctoral Re-
+search Fellowship, by the European ERC-AG QORE, the
+Swiss NCCR-QSIT, the European EU FP7 QCS project, the
+CHIST-ERA DIQIP project, the Interuniversity Attraction
+Poles Photonics@be Programme (Belgian Science Policy),
+and the Brussels-Capital Region through a BB2B Grant.
+Appendix A: Topology of the bilocal set
+We prove here that although the bilocal set is non-convex, it
+keeps some weaker properties of the local set: it is connected,
+and its restriction to subspaces where the marginal of Alice(or
+Charlie) is ﬁxed is star-convex (which is not the case however
+for the whole bilocal set). These properties can for instanc e
+be observed on Figures 3 and 4.
+1. Connectedness
+Consider a bilocal correlation P (a,b,c|x,y,z), with a bilo-
+cal decomposition in terms of local variables λ1,λ 2, and de-
+ﬁne the correlation Pξ as follows: each party outputs a result
+according to the probability distribution P (i.e., according to
+P (a|x,λ1),P (b|y,λ1,λ2) andP (c|z,λ2) resp.) with probabil-
+ity ξ, and produces a random output with probability 1 −ξ.
+The transformation from P toPξ is made locally (and inde-
+pendently) by each party; therefore, Pξ remains bilocal. For
+ξ ∈ [0, 1],Pξ follows a continuous path in the bilocal set, from
+P =Pξ=1 toP0 =Pξ=0, whereP0 is the fully random prob-
+ability distribution. All bilocal correlations are thus connected
+toP0; it follows that the bilocal set is connected.
+2. Weak star-convexity (in certain subspaces)
+Let us consider a subspace of BP (a|x) ⊂ B where Al-
+ice’s marginal probability distributionP (a|x) is ﬁxed. Then
+BP (a|x) is star-convex, meaning there exists a point P⋆ ∈
+BP (a|x) such that the whole line segment between any P ∈
+BP (a|x) andP⋆ is in BP (a|x).
+Proof. Let P⋆ be a product correlation of the form
+P⋆(a,b,c|x,y,z) = P⋆(a|x)P⋆(b|y)P⋆(c|z), with P⋆(a|x) =
+P (a|x), while P⋆(b|y) and P⋆(c|z) are arbitrary. Clearly,
+P⋆ ∈ B P (a|x).
+Consider another correlation P ∈ B P (a|x), with a bilocal
+decomposition in terms of local variables λ1,λ 2, and let us
+provide Bob and Charlie with an additional random bitℓ, such
+thatp(ℓ = 1) = 1 −p(ℓ = 0) = ξ ∈ [0, 1]. Deﬁne now the
+correlation Pξ as follows: Alice always outputs a result ac-
+cording to P (a|x,λ 1); if ℓ = 1 , Bob and Charlie output a
+result according to the probability distributionsP (b|y,λ 1,λ 2)
+andP (c|z,λ 2), resp., while if ℓ = 0 they output a result ac-
+cording to the probability distributions P⋆(b|y) and P⋆(c|z).
+One can easily check thatPξ =ξP + (1−ξ)P⋆. Clearly,Pξ is
+also bilocal, and Alice’s marginal satisﬁesPξ(a|x) = P (a|x):
+hence,Pξ ∈ B P (a|x). For ξ ∈ [0, 1], the full line segment be-
+tweenP andP⋆ in thus in BP (a|x), which shows that BP (a|x)
+is star-convex, for the vantage pointP⋆.
+By symmetry, any restriction BP (c|z) of the bilocal set to a
+subspace where Charlie’s marginal probability distribution is
+ﬁxed, is also star-convex.
+The star-convexity property does not however extend to the
+full bilocal set. Consider indeed two bilocal correlations P
+and P ′, such that both P (a|x) ⁄= P ′(a|x) and P (c|z) ⁄=
+P ′(c|z), and a mixture Pξ = ξP + (1 −ξ)P ′ (with again
+ξ ∈ [0, 1]). Noting that all bilocal correlations necessarily
+satisfyP (a,c|x,z) = P (a|x)P (c|z), one gets
+Pξ(a,c|x,z) = ξP (a,c|x,z) + (1 −ξ)P ′(a,c|x,z)
+=ξP (a|x)P (c|z) + (1 −ξ)P ′(a|x)P ′(c|z)
+Pξ(a|x) = ξP (a|x) + (1 −ξ)P ′(a|x)
+Pξ(c|z) = ξP (c|z) + (1 −ξ)P ′(c|z).
+and therefore
+Pξ(a,c|x,z) −Pξ(a|x)Pξ(c|z)
+=ξ(1 −ξ)[P (a|x) −P ′(a|x)][P (c|z) −P ′(c|z)].
+For 0 < ξ <1, one thus has Pξ(a,c|x,z) ⁄= Pξ(a|x)Pξ(c|z),
+and therefore Pξ is not bilocal. For all bilocal correlation P ,
+there thus exists a bilocal correlation to which it is not con -
+nected by a line segment of bilocal correlations: this prove s
+that the whole bilocal set is not star-convex (and therefore, in
+particular, that it is non-convex).
+Appendix B: Explicit local and bilocal decompositions
+We give in Tables I to V explicit (bi-)local decomposition
+for various correlations analyzed in the main text. Exhibit ing
+these decompositions allows us to prove, precisely, that th e
+correlation they deﬁne is (bi-)local. These explicit decom po-
+sitions are given here in the correlators representation, i ntro-
+duced in subsection II C 2.
+
+=== page 19 ===
+19
+TABLE I. Any values of I 22 and J 22 such that
+√
+|I 22| +
+√
+|J 22| ≤ 1 can be obtained by a bilocal correlation P 22, for instance by the one
+deﬁned by the above explicit decomposition, with K 22 =
+√
+|I 22| −
+√
+|J 22|. For this decomposition, the constraint
+√
+|I 22| +
+√
+|J 22| ≤ 1
+comes from the non-negativity condition (B1).
+For I 22 = J 22 = 1
+2 V (and hence K 22 = 0), the table gives a bilocal decomposition for P 22
+Q (V ) (see section III B 1), valid forV ∈ [0, 1
+2 ].
+TABLE II. Similarly as in the 22-case of Table I, any values of I 14 and J 14 such that
+√
+|I 14| +
+√
+|J 14| ≤ 1 can be obtained by a bilocal
+correlation P 14, for instance by the one deﬁned by the above explicit decompo sition, with K 14 =
+√
+|I 14| −
+√
+|J 14|. Note the strong
+similarities of this decomposition with that of Table I; the main difference being that the correlators e¯i,11,¯k with ¯i ⁄= 11 and ¯k ⁄= 11 (in the
+fourth sub-table) are no longer internal degrees of freedom of the decomposition; we now display them in non-shaded cells.
+For I 14 = J 14 = 1
+2 V (and K 14 = 0), the table gives a bilocal decomposition for P 14
+Q (V ) (section III A 1), valid forV ∈ [0, 1
+2 ].
+TABLE III. Any values of I 13 and J 13 such that
+√
+|I 13| +
+√
+|J 13| ≤ 1 can be obtained by a bilocal correlation P 13, for instance by the
+one deﬁned by the above explicit decomposition, with K 13, L13 and M 13 such that |L13+M 13| ≤ 1
+2 (1−K 13)2, |L13−M 13| ≤ 1−(K 13)2,
+4|I 13| ≤ (1+K 13)2 and 4|J 13| ≤ 1
+2 (1−K 13)2 + L13+M 13 ≤ (1−K 13)2.
+For I 13 = 2
+3 V , J 13 = 1
+6 V , K 13 =
+√
+|I 13| −
+√
+|J 13| =
+√
+V
+6 , L13 = 0 and M 13 = 1
+3 V , the table gives a bilocal decomposition for P 13
+Q (V )
+(section III B 2), valid forV ∈ [0, 2
+3 ].
+For the case where all parties have binary inputs and outputs
+(the 22-case), we use the deﬁnition (12) for the correlators. A
+given explicit decomposition will be displayed in the form o f
+four sub-tables (see Table I), each of them containing the val-
+ues of the correlatorse¯i¯j¯k, for ¯j = 00, 10, 01 and 11; we refer
+to eq. (14) to clarify the notations on the left column and top
+row of each sub-table. Let us recall that the correlators e¯i¯j¯k
+such that ¯i ⁄= 11, ¯j ⁄= 11 and ¯k ⁄= 11 are ﬁxed by the cor-
+relationP 22 we want to reproduce; we display these in white
+cells (the number of which is the dimension of the correla-
+tion space), except for the constant normalization coefﬁci ent
+e¯0¯0¯0 = 1, shown in a black cell. On the other hand, the corre-
+lators such that ¯i = 11, ¯j = 11 or ¯k = 11 are internal degrees
+of freedom of the different possible decompositions of P 22;
+these are displayed in shaded cells.
+Recall also that a valid decomposition must satisfy the non-
+negativity constraint (16):
+for all ¯α, ¯β, ¯γ,
+∑
+¯i¯j¯k
+(−1) ¯α·¯i+ ¯β·¯j+¯γ·¯ke¯i¯j¯k ≥ 0. (B1)
+This constraint will delimit the domain of validity of our ex -
+plicit decompositions. Finally, the bilocality constrain t (17)
+(i.e. e¯i¯0¯k = e¯i¯0¯0e¯0¯0¯k) can easily be checked in each case on
+the ﬁrst sub-table: the 3 × 3 bottom-right sub-table (separated
+by dashed lines) must be the product of the column on its left
+with the row above.
+As already observed in subsection II D 3, the 14-case,
+where Bob has one input and four possible outputs, is quite
+similar to the 22-case. The deﬁnitions of the correlators, a nd
+the non-negativity and bilocality constraints on these, are for-
+mally the same. The only difference is that the correlators
+e¯i,11,¯k with ¯i ⁄= 11 and ¯k ⁄= 11 are now accessible experi-
+mentally, and therefore ﬁxed by the correlation P 14 we want
+
+=== page 20 ===
+20
+TABLE IV . Explicit bilocal decomposition for the correlati ons P 14
+Q (V, η) of section III C 2 (shown on Figure 5), for imperfect detectio n
+efﬁciencies η for Alice and Charlie. We use the notation ¯η = 1 − η. Three regimes for η must be distinguished. For η ≥ 3
+4 , we
+deﬁne eη = 0 , fη = 1 −η, and the decomposition is valid for all V ≤ V η
+biloc = 1
+2η2 . For 2
+3 ≤ η ≤ 3
+4 , we deﬁne eη = 3 −4η,
+fη = min[4(1 −η)2, 4(1−η)(3η−2) + V η2], and the decomposition is valid for all V ≤ V η
+biloc =
+1− e2
+η
+2η2 = 4(1− η)(2η− 1)
+η2 . Finally, for
+η ≤ 2
+3 , we deﬁne eη = 2η−1, fη = V η2, and the decomposition is valid for all V ≤ V η
+biloc = 1.
+TABLE V . Explicit local (top sub-tables) and bilocal (botto m sub-tables) decompositions for the correlation P 14
+Q (ξ) introduced in subsec-
+tion IV A to study the trade-off between resistance to noise o f nonlocality and resistance to noise of non-bilocality. We use the notations
+cξ = cos(ξ π
+4 ), sξ = sin(ξ π
+4 ), and deﬁne gξ =
+cξ +sξ− 1
+4 and hξ = cξ − sξ.
+The local decomposition (which is clearly not bilocal: see i ts ﬁrst sub-table) is valid, i.e. (B1) is satisﬁed, for visib ilities
+V ≤ Vloc = 1/[cξ + sξ]. The bilocal decomposition is valid for visibilities V ≤ Vbiloc = 1/[1 + cξ].
+to reproduce: the explicit decompositions have fewer internal
+degrees of freedom (see Tables II and IV – V).
+The 13-case, where Bob now has one input and three possi-
+ble outputs, requires slightly different deﬁnitions for th e cor-
+relators. From a (bi-)local decomposition of a correlationP 13
+in terms of weights q ¯α ¯β¯γ (with ¯α = α0α1, ¯γ = γ0γ1 =
+00, 01, 10 or 11, and ¯β = 00, 01 or {10 or 11 }), we deﬁne
+in the 13-case
+
+
+
+e¯i0¯k =∑
+¯α¯γ(−1) ¯α·¯i+¯γ·¯k[q ¯α,00,¯γ +q ¯α,01,¯γ +q ¯α,{10 or 1 1},¯γ],
+e¯i1¯k =∑
+¯α¯γ(−1) ¯α·¯i+¯γ·¯k[q ¯α,00,¯γ +q ¯α,01,¯γ −q ¯α,{10 or 1 1},¯γ],
+e¯i2¯k =∑
+¯α¯γ(−1) ¯α·¯i+¯γ·¯k[q ¯α,00,¯γ −q ¯α,01,¯γ],
+which can be inverted into
+
+
+
+q ¯α,00,¯γ = 2 −6∑
+¯i¯k(−1) ¯α·¯i+¯γ·¯k[e¯i0¯k +e¯i1¯k + 2e¯i2¯k],
+q ¯α,01,¯γ = 2 −6∑
+¯i¯k(−1) ¯α·¯i+¯γ·¯k[e¯i0¯k +e¯i1¯k − 2e¯i2¯k],
+q ¯α,{10 or 1 1},¯γ = 2 −6∑
+¯i¯k(−1) ¯α·¯i+¯γ·¯k[2e¯i0¯k − 2e¯i1¯k].
+With these deﬁnitions, one can check that again, all correla -
+tors of the forme¯ij¯k, with ¯i ⁄= 11 and ¯k ⁄= 11, are ﬁxed by the
+correlationP 13 one wants to reproduce; in particular, one has
+e00,0,00 = 1 by normalization, and the correlators e¯i1¯k and
+e¯i2¯k with ¯i, ¯k = 10 or 01 correspond precisely to the tripartite
+correlation terms ⟨AxB0Cz⟩P13 and ⟨AxB1Cz⟩P13,b0=0 de-
+ﬁned in subsection II D 4. Note that for the decomposition to
+be valid, the weightsq ¯α ¯β¯γ must be non-negative, which (from
+the previous equations) imposes some constraints on the cor -
+relatorse¯ij¯k. Finally, the bilocality assumption writes again,
+in terms of correlators,e¯i0¯k =e¯i0¯0e¯00¯k.
+In Table III, we display the correlators e¯ij¯k in three sub-
+tables, using similar conventions as before.
+Appendix C: Comparison of inequality (23)
+with that previously presented in ref. [15]
+Here we show that the bilocal inequality previously derived
+in [15] is actually implied by our inequality (23), for the ca se
+where Bob has one input and 4 possible outputs.
+
+=== page 21 ===
+21
+DeﬁningI± = 2I 14 ± 2J 14, inequality (23) implies
+I+ ≤ 1 + I 2
+−
+4 . (C1)
+Now, from the deﬁnitions (21–22), we have
+I+ =
+∑
+b0b1
+∑
+x⊕z=b0⊕b1
+P (b0b1)Eb0b1(xz)
+I− =
+∑
+b0b1
+∑
+x⊕z⁄=b0⊕b1
+P (b0b1)Eb0b1(xz)
+with
+P (b0b1)Eb0b1 (xz) = ( −1)b0∑
+a,c
+(−1)a+cP 14(a,b 0b1,c |x,z ).
+One can see that, up to a small change of notations ( b1 ↔
+b0 ⊕b1),I+ corresponds toI, and that |I−| ≤ 2E, forI and
+E as deﬁned in [15]. Together with (C1), we thus ﬁnd that
+our inequality (23) implies the one (I ≤ 1 +E2) previously
+presented in [15].
+It is in fact strictly stronger than the previous inequality :
+there exist nonbilocal correlations (such as, e.g., the local cor-
+relation deﬁned by its weightsq00,00,00 =q01,01,01 = 1
+2, with
+all its other weightsq ¯α ¯β¯γ = 0) that violate inequality (23), but
+which do not violate the inequality of Ref. [15], nor any of its
+equivalent versions.
+Appendix D: Classical simulation
+of noisy entanglement swapping
+We give in this appendix the details of the simulation of
+noisy entanglement swapping correlations by bilocal model s,
+as presented in section IV C.
+1. Simulation without communication
+Consider the bilocal simulation protocol presented in sec-
+tion IV C 1. To study the correlation P (A,B 0B1,C |⃗a,⃗c) it
+deﬁnes, it is sufﬁcient to calculate the average values
+⟨A⟩, ⟨C⟩, ⟨B0⟩, ⟨B1⟩, ⟨B0B1⟩,
+⟨AC⟩, ⟨AB0⟩, ⟨AB1⟩, ⟨AB0B1⟩, ⟨B0C⟩, ⟨B1C⟩, ⟨B0B1C⟩,
+⟨AB0C⟩, ⟨AB1C⟩, ⟨AB0B1C⟩. (D1)
+For B = B0B1 ∈ { ++, +−, −+, −−} being the result
+of a Bell state measurement, corresponding to the outcomes
+|Φ+⟩, |Φ−⟩, |Ψ+⟩ and |Ψ−⟩ respectively, it is convenient to
+note that the outcome B0 actually corresponds to the mea-
+surement of ˆσZ ⊗ ˆσZ, the outcomeB1 corresponds to the mea-
+surement of ˆσX ⊗ ˆσX, and the product B0B1 corresponds to
+the measurement of −ˆσY ⊗ ˆσY; therefore, the expectation val-
+ues for a given quantum state |⃗λ1⟩|⃗λ2⟩ are ⟨B0⟩⃗λ1⃗λ2
+=λZ
+1λZ
+2,
+⟨B1⟩⃗λ1⃗λ2
+= λX
+1λX
+2 and ⟨B0B1⟩⃗λ1⃗λ2
+= −λY
+1λY
+2 (λ
+X,Y,Z
+i being
+the X, Y, Z components of⃗λi).
+After averaging over⃗λ1 and⃗λ2, one can easily check that
+all single- and bi-partite correlators in the ﬁrst 2 lines of (D1)
+vanish, as it is the case for entanglement swapping correla-
+tions. To calculate the tripartite correlators, one can show that∫
+S 2 d⃗λρ(⃗λ) sign(⃗a ·⃗λ) (⃗λ ·⃗u) = 1
+2⃗a ·⃗u (with ρ(⃗λ) = 1
+4π
+being the uniform distribution of⃗λ on the sphere S2), so that
+we get
+⟨AB0C⟩ =
+∫
+S 2 d⃗λ1ρ(⃗λ1) sign(⃗a ·⃗λ1)λZ
+1
+×
+∫
+S 2 d⃗λ2ρ(⃗λ2) sign(⃗c ·⃗λ2)λZ
+2 = 1
+4 aZ cZ,
+⟨AB1C⟩ = 1
+4 aX cX, ⟨AB0B1C⟩ = − 1
+4 aY cY, (D2)
+where aX,Y,Z and cX,Y,Z are the X, Y, Z components of the mea-
+surement settings⃗a and⃗c.
+Now, for the quantum correlations in an entanglement
+swapping experiment, one has, precisely,
+⟨AB0C⟩ = aZ cZ, ⟨AB1C⟩ = aX cX,
+⟨AB0B1C⟩ = −aY cY.
+Hence, our bilocal model reproduces the entanglement swap-
+ping correlations with a visibilityV = 1
+4 = 25%.
+2. Simulation with 2 bits of communication
+We have mentioned in Section IV C 2 that one could in-
+crease the visibility of the simulation with the help of commu-
+nication. Inspired from the communication protocol presented
+in [41] (Theorem 10) that simulates the singlet state correl a-
+tions, we slightly modify the previous bilocal model in the
+following way: instead of starting with ⃗λ1 and⃗λ2 uniformly
+distributed on the Bloch sphere, we use 1 bit from Alice to
+Bob, and 1 bit from Charlie to Bob to bias the distributions of
+⃗λ1 and⃗λ2 according to (see Theorem 6 of [41])
+ρ⃗a(⃗λ1) = |⃗a ·⃗λ1|
+2π , ρ ⃗c(⃗λ2) = |⃗c ·⃗λ2|
+2π .
+One can still easily check that the single- and bi-partite cor-
+relators in (D1) vanish, as for the entanglement swapping cor-
+relations. The tripartite correlators can be calculated in a sim-
+ilar way as in (D2), with the modiﬁed distribution functions
+ρ⃗a(⃗λ1) and ρ⃗c(⃗λ2) above. An easy calculation shows that∫
+S 2 d⃗λρ⃗a(⃗λ)sign(⃗a ·⃗λ)(⃗λ ·⃗u) = 1
+2π
+∫
+S 2 d⃗λ(⃗a ·⃗λ)(⃗λ ·⃗u) =
+2
+3⃗a ·⃗u, from which we now get
+⟨AB0C⟩ = 4
+9 aZ cZ, ⟨AB1C⟩ = 4
+9 aX cX,
+⟨AB0B1C⟩ = − 4
+9 aY cY.
+This shows that our bilocal model, augmented by two bits of
+communication, reproduces the entanglement swapping cor-
+relations with a visibilityV = 4
+9 ≃ 44.4%.
+
+=== page 22 ===
+22
+[1] J. S. Bell, Speakable and unspeakable in quantum mechanics ,
+2nd ed. (Cambridge University Press, 2004)
+[2] R. Cleve and H. Buhrman, Phys. Rev. A 56, 1201 (1997)
+[3] D. Mayers and A. Yao, in Proceedings of the 39th IEEE Sym-
+posium on Foundations of Computer Science (IEEE Computer
+Society, Los Alamitos, CA, USA, 1998) p. 503
+[4] A. Ac´ ın, N. Brunner, N. Gisin, S. Massar, S. Pironio, and
+V . Scarani, Phys. Rev. Lett.98, 230501 (2007)
+[5] S. Pironio, A. Ac´ ın, S. Massar, A. B. de la Giroday, D. N. Mat-
+sukevich, P. Maunz, S. Olmschenk, D. Hayes, L. Luo, T. A.
+Manning, and C. Monroe, Nature 464, 1021 (2010)
+[6] R. Colbeck and A. Kent, Journal of Physics A: Mathematica l
+and Theoretical 44, 095305 (2011)
+[7] J.-D. Bancal, N. Gisin, Y .-C. Liang, and S. Pironio,
+Phys. Rev. Lett. 106, 250404 (2011)
+[8] A. Ac´ ın, N. Gisin, and L. Masanes, Phys. Rev. Lett.97, 120405
+(2006)
+[9] J. S. Bell, Physics 1, 195 (1964)
+[10] N. Sangouard, C. Simon, H. de Riedmatten, and N. Gisin,
+Rev. Mod. Phys. 83, 33 (2011)
+[11] M. Zukowski, A. Zeilinger, M. A. Horne, and A. K. Ekert, Phys.
+Rev. Lett. 71, 4287 (1993)
+[12] K. Hammerer, A. S. Sørensen, and E. S. Polzik,
+Rev. Mod. Phys. 82, 1041 (2010)
+[13] N. Gisin and B. Gisin, Phys. Lett. A 297, 279 (2002)
+[14] D. M. Greenberger, M. Horne, A. Zeilinger, Phys. Rev. A 78,
+022110 (2008); D. M. Greenberger, M. Horne, A. Zeilinger, M.
+˙Zukowski, Phys. Rev. A78, 022111 (2008)
+[15] C. Branciard, N. Gisin, and S. Pironio, Phys. Rev. Lett. 104,
+170401 (2010)
+[16] T. V´ ertesi and M. Navascu´ es, Phys. Rev. A83, 062112 (2011)
+[17] R. Rabelo, M. Ho, D. Cavalcanti, N. Brunner, and V . Scara ni,
+Phys. Rev. Lett. 107, 050502 (2011)
+[18] C. H. Bennett, G. Brassard, C. Cr´ epeau, R. Jozsa, A. Peres, and
+W. K. Wootters, Phys. Rev. Lett.70, 1895 (1993)
+[19] E. Schr¨ odinger, Math. Proc. Camb. Phil. Soc.31, 555 (1935)
+[20] G. Weihs, T. Jennewein, C. Simon, H. Weinfurter, and
+A. Zeilinger, Phys. Rev. Lett.81, 5039 (1998)
+[21] I. Pitowsky, Quantum Probability–Quantum Logic , Lecture
+Notes in Physics, V ol. 321 (Springer-Verlag, New York, 1989).
+[22] A. Fine, Phys. Rev. Lett. 48, 291 (1982)
+[23] E. L. Lawler and D. E. Wood, Operations Research 14, 699
+(1966)
+[24] R. Waltz, J. Morales, J. Nocedal, and D. Orban, Mathemat ical
+Programming 107, 391 (2006)
+[25] C. ´Sliwa, arXiv:quant-ph/0305190(2003)
+[26] S. Popescu and D. Rohrlich, Found. Phys. 24, 379 (1994)
+[27] J. Barrett, N. Linden, S. Massar, S. Pironio, S. Popescu , and
+D. Roberts, Phys. Rev. A 71, 022101 (2005)
+[28] J. F. Clauser, M. A. Horne, A. Shimony, and R. A. Holt, Phy s.
+Rev. Lett. 23, 880 (1969)
+[29] A. Ac´ ın, N. Gisin, and B. Toner, Phys. Rev. A 73, 062105
+(2006)
+[30] M. Halder, A. Beveratos, N. Gisin, V . Scarani, C. Simon, and
+H. Zbinden, Nat. Phys. 3, 692 (2007)
+[31] R. Kaltenbaek, R. Prevedel, M. Aspelmeyer, and A. Zeili nger,
+Phys. Rev. A 79, 040302 (2009)
+[32] J. Calsamiglia and N. L¨ utkenhaus, Appl. Phys. B72, 67 (2001)
+[33] P. M. Pearle, Phys. Rev. D 2, 1418 (1970)
+[34] D. Rosset et al., in preparation.
+[35] P. H. Eberhard, Phys. Rev. A 47, R747 (1993)
+[36] T. V´ ertesi, S. Pironio, and N. Brunner, Phys. Rev. Lett . 104,
+060401 (2010), and references therein
+[37] S. Pironio, J. Math. Phys. 46, 062112 (2005)
+[38] R. F. Werner, Phys. Rev. A 40, 4277 (1989)
+[39] T. V´ ertesi, Phys. Rev. A78, 032112 (2008)
+[40] B. F. Toner and D. Bacon, Phys. Rev. Lett. 91, 187904 (2003)
+[41] J. Degorre, S. Laplante, and J. Roland, Phys. Rev. A72, 062314
+(2005)
+[42] H. Buhrman et al., in preparation.
+[43] J. S. Bell, Epist. Lett., Feb. 1977, reprinted in Ref. [1 ] (chap.
+12).
+[44] M. J. W. Hall, Phys. Rev. Lett. 105, 250404 (2010)
+[45] J. Barrett and N. Gisin, Phys. Rev. Lett. 106, 100406 (2011)

@@ -1,0 +1,2002 @@
+=== page 1 ===
+Limits on correlations in networks for quantum and no-signaling resources
+Marc-Olivier Renou,1 Yuyi Wang,2 Sadra Boreiri,1 Salman Beigi,3 Nicolas Gisin,1 and Nicolas Brunner 1
+1D´ epartement de Physique Appliqu´ ee, Universit´ e de Gen` eve, CH-1211 Gen` eve, Switzerland
+2Distributed Computing Group, ETH Zurich, Switzerland
+3School of Mathematics, Institute for Research in Fundamental Sciences (IPM), Tehran, Iran
+(Dated: 25 January 2019)
+A quantum network consists of independent sources distributing entangled states to distant nodes
+which can then perform entangled measurements, thus establishing correlations across the entire
+network. But how strong can these correlations be? Here we address this question, by deriving
+bounds on possible quantum correlations in a given network. These bounds are nonlinear inequalities
+that depend only on the topology of the network. We discuss in detail the notably challenging
+case of the triangle network. Moreover, we conjecture that our bounds hold in general no-signaling
+theories. In particular, we prove that our inequalities for the triangle network hold when the sources
+are arbitrary no-signaling boxes which can be wired together. Finally, we discuss an application of
+our results for the device-independent characterization of the topology of a quantum network.
+I. INTRODUCTION
+Quantum nonlocality, i.e., the fact that distant ob-
+servers performing local measurements on a shared en-
+tangled quantum state can violate a Bell inequality, is a
+key feature of quantum theory [1]. In recent years, con-
+siderable eﬀorts have been devoted, both theoretically
+and experimentally, to deepen our understanding of this
+phenomenon [2]. Of particular interest is the investi-
+gation of quantum nonlocality in the context of general
+networks [3–5]. Here, a set of distant observers share en-
+tanglement distributed by several sources which are as-
+sumed to be independent from each other. As each source
+distributes entanglement to only certain subsets of ob-
+servers, new limits on possible correlations arise. More-
+over, observers can correlate particles coming from dif-
+ferent independent sources (e.g. via entangled quantum
+measurements, as in quantum teleportation [6]), and thus
+generate strong correlations across the entire network.
+Notably, this leads to astonishing new eﬀects, such as
+the possibility of violating a Bell inequality without the
+need for inputs [4, 5]. Beyond the fundamental interest,
+these ideas are also directly relevant to the development
+of real-world quantum networks [7, 8].
+It is fair to say, however, that our understanding of
+quantum nonlocality in networks is still very limited [9].
+A ﬁrst challenge is to characterize classical correlations
+in networks, i.e. when all sources distribute only classi-
+cal variables. Due to the independence condition of the
+sources, the set of classical correlations is no longer con-
+vex (contrary to the standard Bell scenario, featuring a
+single common source, see e.g. [2]). Therefore, relevant
+Bell inequalities must be nonlinear. Examples of such in-
+equalities have been derived (see e.g. [3, 4, 10–15]), but
+the general structure of this problem is still not under-
+stood.
+Another challenge, which represents the starting point
+of this work, is to understand the limits of quantum cor-
+relations in networks. Speciﬁcally, given a certain net-
+work, we aim at determining fundamental constraints on
+achievable correlations when using quantum resources.
+Hence we consider any possible quantum strategy com-
+patible with the network topology. This involves sources
+producing arbitrary quantum states (of any Hilbert space
+dimension), and nodes performing arbitrary joint quan-
+tum measurements. Interestingly it turns out that fun-
+damental limits arise here even without involving any
+inputs, in contrast to the standard Bell scenario. This
+means that the network topology imposes fundamental
+limitations on achievable correlations.
+We start our investigation with the case of networks
+featuring three observers, each of them providing an
+output (but receiving no input). We discuss in detail
+the notably challenging case of the “triangle network”
+[4, 5, 14, 16], for which we identify a nonlinear inequality
+capturing partly the set of quantum correlations. More
+generally we derive a family of inequalities satisﬁed by
+quantum correlations considering an arbitrary network
+with bipartite sources. Interestingly these inequalities
+can be viewed as quantum versions of the Finner inequal-
+ities [18], introduced in a completely diﬀerent context,
+namely graph theory.
+An interesting application of our inequalities is that
+they allow one to test the topology of an unknown quan-
+tum network in a device-independent manner. That is,
+by simply considering the observed correlations, one can
+tell whether a certain network topology is compatible or
+not. If the observed data violates one of our inequalities,
+then the corresponding network topology can be ruled
+out immediately.
+Finally, we go beyond quantum correlations, and con-
+sider more general no-signaling resources [21, 22]. That
+is, each source now distributes a no-signaling (NS) box,
+and each node performs a joint operations on these re-
+sources [23]. Notably, we show that, for the triangle net-
+work, the nonlinear inequality we obtained for quantum
+correlations also holds in a general no-signaling theory,
+where each source can produce an arbitrary number of
+bipartite NS boxes, and each node performs an arbitrary
+wiring on the received resources. This leads us to the con-
+jecture that Finner inequalities captures in fact the limit
+arXiv:1901.08287v1  [quant-ph]  24 Jan 2019
+
+=== page 2 ===
+2
+FIG. 1. All inequivalent three-party networks.
+of correlations in networks for any possible no-signaling
+theory. It thus represents a general limit of achievable
+correlations in networks, independently of the underly-
+ing physical model, given the latter does not allow for
+instantaneous communication (in other words, is com-
+patible with special relativity).
+II. THREE-OBSER VER NETWORKS
+Consider a quantum network with three observers A,
+B and C, featuring one (or more) sources, distributing
+quantum states to subset of the parties. Each party then
+performs a measurement on the received quantum sys-
+tems, leading to outputs denoted a, b and c. Here for
+simplicity we assume that a,b,c ∈{ 0, 1} are binary, but
+later consider larger output sets.
+One can consider three inequivalent networks here.
+The ﬁrst, depicted in Fig. 1(a), features a single com-
+mon source distributing a quantum state to all three
+observers. This corresponds to the situation considered
+in the standard Bell scenario (see e.g. [2]), except that
+parties receive no inputs in our case. It is straightfor-
+ward to see that any possible distribution P (abc) can
+be achieved. In fact, it is enough to restrict to classical
+sources here. The source samples from the distribution
+P (abc), and then distributes the obtained outputs to each
+observer. Geometrically, the set of possible attainable
+distributionsP (abc) is nothing but the whole probability
+simplex, which is a 7-dimensional simplex in R8 due to
+the normalization constraint ∑
+a,b,cP (abc) = 1.
+A more interesting scenario is when the network fea-
+tures two independent sources, as in Fig. 1(b). The ﬁrst
+source distributes a common state to A and B, and the
+second independent source to B and C. This scenario is
+known as bilocality [3], and corresponds to the setup of
+entanglement swapping. In this case, the parties A and
+C are initially independent, and can only be correlated
+via B. Hence, if one traces out B, the marginal statis-
+tics of A and C must factorize. We have the causality
+condition:
+∑
+b
+P (abc) =PAC(ac) =PA(a)PC(c). (1)
+Hence, contrary to the ﬁrst network discussed above, not
+all correlations are possible in the bilocality network. It
+turns out however that the constraint (1) is enough to
+characterize achievable correlations: any P (abc) satisfy-
+ing (1) can be achieved. It is again enough to consider
+only classical variables. Speciﬁcally, let the ﬁrst (resp.
+second) source sample fromPA(a) (resp. PC(c)) and dis-
+tribute the output to A and B (resp. B and C) and
+B use local randomness to sample P (b|ac). Geometri-
+cally, the set of achievable distributions P (abc) forms a
+6-dimensional curved manifold in R8.
+Next we move to the third—and arguably the most in-
+teresting and challenging—conﬁguration, i.e. the triangle
+network (see Fig. 1(c)). Consider the bilocality network
+again, and add a source connecting A and C. Due to
+this additional source, the independence condition (1)
+does no longer hold. In fact, one can show that, besides
+the normalization constraint, there is no other equality
+constraint for this network (which would reduce the di-
+mension of the set). This follows from the fact that the
+maximally mixed (uniform) distribution Pu(abc) = 1/8
+∀a,b,c is surrounded by a ball of achievable distributions;
+see Appendix B.
+It turns out, however, that not all distributionsP (abc)
+are achievable in the triangle scenario, as shown in Ap-
+pendix B and Ref. [14] via speciﬁc examples. Thus, the
+set of possible distributions forms a strict subset of the
+probability simplex, yet its characterization is a challeng-
+ing problem. Here we derive a relevant nonlinear inequal-
+ity that necessarily holds in quantum theory.
+Theorem 1. In the triangle network (Fig. 1(c)), quan-
+tum correlations necessarily satisfy
+P (abc)≤
+√
+PA(a)PB(b)PC(c). (2)
+As quantum correlations are stronger than classical
+ones, inequality (2) also holds for the case where the
+sources emit classical variables: in this case Theorem 1
+can be derived by applying two Cauchy-Schwarz inequal-
+ities on E[fAgBhC] where fA,gB and hC are the charac-
+teristic functions of the sets{a},{b} and{c} respectively.
+Back to quantum sources, Theorem 1 can be proven by
+essentially the same ideas, but as we will later prove a
+generalization of this theorem, we skip the proof here.
+In the classical case, the set of all possible strategies
+can be understood intuitively in geometrical terms, as a
+3-dimensional cube. In this case, the inequality (2) fol-
+lows from the Loomis-Whitney inequality, capturing the
+fact that the volume of a 3-dimensional object is upper
+bounded by the product of the areas of the object’s pro-
+jections in three orthogonal directions (see Appendix B).
+The inequality (2) allows us to prove that a large range
+of distributions cannot be achieved in the quantum tri-
+angle network. Consider for instance the family of distri-
+butions
+Pp,q =pδ000 +qδ111 + (1−p−q)Pdiﬀ (3)
+where δabc represents the distribution that always out-
+puts a, b and c deterministically, and Pdiﬀ is the uni-
+form distribution over {0, 1}3\{ 000, 111}, i.e., Pdiﬀ =
+
+=== page 3 ===
+3
+FIG. 2. Geometrical representation of the set of distribu-
+tions Pp,q of Eq. (3). Distributions in the shaded area are
+not achievable in the triangle network in quantum theory, as
+they do not satisfy inequality (2). Distributions below the red
+curve satisfy the inequality, and are thus potentially achiev-
+able in quantum mechanics. The blue circle represents the
+maximally mixed distribution Pu, while the blue square is
+the so-called GHZ distribution p =q = 1/2. Distributions of
+the formrδ111 + (1−r)Pu (dashed line) violate inequality (2)
+for 7/8< r <1 (see inset), showing that the quantum set is
+not star convex.
+(δ001 +δ010 +δ100 +δ011 +δ101 +δ110)/6. From inequality
+(2) it follows that Pp,q is not realizable in the triangle
+network when q > 1 +p− 2p2/3; see Fig. 2. This also
+shows that the set of quantum distributions achievable in
+the triangle network is not star convex 1 since distribu-
+tions of the form rδ111 + (1−r)Pu violate inequality (2)
+when 7/8 < r <1; Pu denotes the uniform distribution
+over{0, 1}3.
+The above example also illustrates how our results can
+be used to test the topology of an initially unknown net-
+work. Suppose Alice, Bob and Charlie observe a distribu-
+tion P (abc) that violates inequality (2). Then, they can
+certify that the underlying network is not of the triangle
+type (neither bilocal indeed), but must feature a common
+source distributing information to all three parties. Note
+that this test is device-independent, as it is based only
+on the observed data P (abc).
+In the remainder of the paper, we will generalize The-
+orem 1 in two diﬀerent directions. First, we will show
+how to derive similar nonlinear inequalities for a larger
+class of networks. Second, we will prove that inequality
+(2) holds also in the triangle network for a generalized
+probabilistic theory.
+1 Note that here we show that the set is not star convex with
+respect to the identity, which implies that the set is not star
+convex in general (invoking symmetry arguments and the fact
+that if a set is star convex with respect to two points, then it is
+star convex with respect to any points between those two).
+III. GENERAL NETWORKS
+We now consider networks with an arbitrary number
+of parties (outputs) yet we mostly restrict to bipartite
+sources. That is, we assume that our networks N con-
+sist of n parties A1,...,A n, and an arbitrary number of
+sources each of which is connected to a pair of parties.
+Thus a networkN can be thought of as a graph over n
+vertices whose edges represent sources (e.g., the triangle
+network is represented by the triangle graph). The fol-
+lowing theorem presents a generalization of Theorem 1
+for arbitrary graphs whose proof is given in Appendix D.
+Theorem 2. (Quantum Finner inequality) Consider a
+networkN with n observers A1,...,A n and some bipar-
+tite sources. Let η ={η1,...,η n} be a fractional inde-
+pendent set of N , i.e. weights ηj attributed to Aj’s are
+such that, for each source the sum of weights of parties
+connected to it is smaller than or equal to 1. 2Let fj
+be any real positive local post-processing (function) of the
+classical output of party Aj. Then, any distribution P
+achievable in quantum network N satisﬁes
+E
+
+∏
+j
+fj
+
+≤
+∏
+j
+‖fj‖1/ηj
+, (4)
+where‖f‖1/η = (E
+[
+f1/η]
+)η and the expectations are with
+respect toP . In particular, letting fj being the indicator
+function of the output of Aj beingaj, we have
+P (a1...an)≤
+n∏
+j=1
+(
+PAj(aj)
+)ηj
+. (5)
+Inequality (4) has been derived by Finner [18] in the
+context of graph theory, as a generalization of H¨ older’s
+inequality. In our setting, the proof of Finner directly
+applies to arbitrary networks with multipartite classical
+sources. Our theorem here generalizes Finner’s inequal-
+ity for arbitrary networks with bipartite sources that are
+quantum.
+Note that although Finner’s inequality is presented
+as a continuous family of inequalities depending on the
+choice of weights ( η1,...,η n), it can be reduced to a
+ﬁnite set of inequalities for a given network (see Ap-
+pendix C). In particular, for the triangle network, the
+only nontrivial fractional independent set corresponds to
+η = (1/2, 1/2, 1/2), in which case (5) reduces to (2).
+IV. TRIANGLE NETWORK WITH
+NO-SIGNALING BOXES
+We now consider the correlations achievable in the tri-
+angle network in a generalized no-signaling theory [23].
+2 Note that here we do not use the classical deﬁnition of (frac-
+tional) independent sets in hypergraph theory.
+
+=== page 4 ===
+4
+In this model, the resources are not quantum states, but
+general NS boxes. In the triangle network, each source
+can thus distribute some NS boxes to the two parties con-
+nected to it. We emphasis that in general, each source
+can distribute several NS boxes that are not necessarily
+identical and can have arbitrary number of inputs and
+outputs. These NS boxes thus serve as a resource for the
+parties to generate correlated outputs; each party having
+an arbitrary number of NS boxes shared with others, can
+locally “wire” these boxes in the most general way to de-
+termine an output3. That is, the inputs of certain boxes
+can be chosen by the party, while others can be deter-
+mined by wirings, the output of one box being used as
+in the input for another one. We can prove the following
+result.
+Theorem 3. Suppose that a distribution P is achievable
+in the triangle network when the sources distribute ar-
+bitrary NS boxes and the parties perform arbitrary local
+wirings. Then P satisﬁes (2).
+Clearly, this result does not follow from Theorem 1,
+as here the sources can distribute stronger nonlocal re-
+sources than what is possible in quantum theory [21].
+However, we also point out that Theorem 3 does not
+imply Theorem 1, as squantum theory allows for joint
+entangled measurements which cannot be described as
+wirings and admit no equivalent in general no-signaling
+theories [23, 24].
+Here we give the proof ingredients while all details are
+left for Appendix E. A key point in the proof is the notion
+of the Hypercontractivity Ribbon (HR) studied in [26] as
+a monotone measure of non-local correlations.
+Deﬁnition 1 (Hypercontractivity Ribbon) . The HR
+R(P ) of a tripartite distribution P (abc) is the set of non-
+negative triplets (α,β,γ ) such that for any real functions
+f(a), g(b) and h(c) of the outputs a, b, c, we have
+E [fgh ]≤ E
+[
+|f|1/α
+]α
+E
+[
+|g|1/β
+]β
+E
+[
+|h|1/γ
+]γ
+. (6)
+By H¨ older’s inequality, the HR of the maximally mixed
+distributionPu (the weakest resource for establishing cor-
+relations) is the entire unit cube. Also it is not hard to
+verify that the HR of the GHZ distribution (δ000+δ111)/2
+which is the best possible resource, is the half cube given
+by the vertices (0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1).
+The main feature of HR is its monotonicity under local
+operations. That is, if a tripartite distribution Q(a′b′c′)
+can be obtain by local post-processing of outcomes of
+another distributionP (abc), then R(P )⊆ R(Q). In par-
+ticular, with the GHZ distribution we can simulate Pu,
+but no the other way around.
+Now with the deﬁnition of HR in hand, equation (2)
+essentially says that (1 /2, 1/2, 1/2) ∈ R(P ). In Ap-
+pendix C, we give an alternative characterization of HR
+in terms of mutual information which allows us to prove
+Theorem 3.
+V. DISCUSSION
+We have presented fundamental constraints on quan-
+tum correlations achievable in networks. The constraints
+take the form of nonlinear inequalities, that can be
+viewed as the quantum version of the Finner inequali-
+ties. In particular, we have discussed in detail the case
+of the triangle network, as well as the problem of device-
+independently testing the topology of an unknown quan-
+tum network.
+A natural question is indeed whether the quantum
+Finner inequalities fully capture the set of quantum cor-
+relations in networks. This appears not to be the case
+in general. Indeed, for the triangle network, there exist
+correlations that are provably not achievable in quantum
+theory that do not violate our inequality (2) 4. It would
+be interesting to derive other forms of constraints. A pos-
+sibility in this direction would be to exploit the “reverse
+Holder” inequality, the quantum version of which can be
+straightforwardly derived. Whether this new inequality
+will turn out to be stronger than the ones we presented
+is not clear. More generally, one should generalise the
+quantum Finner inequalities to the case of sources pro-
+ducing multipartite quantum states.
+Finally, we also discussed the limits of correlations in
+networks when considering theories beyond quantum me-
+chanics. In particular, we could show that inequality (2)
+also holds for the triangle network with generalized no-
+signaling resources. More generally, we conjecture that
+the inequality (4) holds for any no-signaling theory, for
+more general networks. Note that for the triangle net-
+work, this does not follow from our results, as each gener-
+alized probabilistic theory features its own set of allowed
+no-signaling correlations and the set of allowed joint mea-
+surements; the two sets being dual to each other [23, 25].
+If our conjecture is correct, this means that the Finner
+inequalities capture the limits of achievable correlations
+in a network, that must hold in any no-signaling the-
+ory; the Finner inequalities could thus be viewed as a
+generalisation of the standard no-signaling condition to
+networks.
+Acknowledgements.—We thank Denis Rosset, Armin
+Tavakoli, Amin Gohari and Elie Wolfe for discussions.
+We acknowledge ﬁnancial support from the Swiss na-
+tional science foundation (Starting grant DIAQ, NCCR-
+QSIT).
+3 Note that this model corresponds essentially to the generalized
+probabilistic theory of “boxworld” [23], except for the fact that
+boxworld allows for certain multipartite eﬀects (i.e., measure-
+ments) that are not wirings [25].
+4 The so-called “W” distribution, PW = (δ001 +δ010 +δ100)/3,
+cannot be done with quantum resources, which can be proven
+using the inﬂation technique of [14].
+
+=== page 5 ===
+5
+[1] J. S. Bell, Physics 1, 195–200 (1964).
+[2] N. Brunner, D. Cavalcanti, S. Pironio, V. Scarani, and
+S. Wehner, Rev. Mod. Phys. 86, 419 (2014).
+[3] C. Branciard, N. Gisin and S. Pironio, Phys. Rev. Lett.
+104, 170401 (2010).
+[4] C. Branciard, D. Rosset, N. Gisin, and S. Pironio, Phys.
+Rev. A 85, 032119 (2012).
+[5] T. Fritz, New J. Phys. 14, 103001 (2012).
+[6] C. H. Bennett, G. Brassard, C. Crepeau, R. Jozsa, A.
+Peres and W. K. Wootters, Phys. Rev lett. 70, 1895
+(1993).
+[7] J. Kimble, Nature 453, 1023 (2008).
+[8] C. Simon, Nat. Phot. 11, 678 (2017).
+[9] N. Gisin, arXiv:1809.10901.
+[10] R. Chaves, T. Fritz, Phys. Rev. A 85, 032113 (2012).
+[11] A. Tavakoli, P. Skrzypczyk, D. Cavalcanti, and A. Ac´ ın,
+Phys. Rev. A 90, 062109 (2014).
+[12] D. Rosset, C. Branciard, T. J. Barnea, G. P¨ utz, N. Brun-
+ner, and N. Gisin, Phys. Rev. Lett. 116, 010403 (2016).
+[13] R. Chaves, Phys. Rev. Lett. 116, 010402 (2016).
+[14] E. Wolfe, R. W. Spekkens, and T. Fritz,
+arXiv:1609.00672.
+[15] M.-X. Luo, Phys. Rev. Lett. 120, 140402 (2018).
+[16] N. Gisin, arXiv:1708.05556.
+[17] T. Fraser, E. Wolfe, Phys. Rev. A 98, 022113 (2018).
+[18] H. Finner, Ann. Probab. 20, 1893-1901 (1992).
+[19] D. Rosset, N. Gisin, E. Wolfe, arXiv:1709.00707 (2017).
+[20] M. Navascues, E. Wolfe, arXiv:1707.06476 (2017).
+[21] S. Popescu and D. Rohrlich, Found. Phys.24, 379 (1994).
+[22] J. Barrett, N. Linden, S. Massar, S. Pironio, S. Popescu
+and D. Roberts, Phys. Rev. A 71 022101 (2005).
+[23] J. Barrett, Phys. Rev. A 75, 032304 (2007).
+[24] A. J. Short, S. Popescu, N. Gisin, Phys. Rev. A 73,
+012101 (2006).
+[25] A. J. Short, J. Barrett, New J. Phys. 12, 033034 (2010).
+[26] S. Beigi, A. Gohari, IEEE Transactions on Information
+Theory 61(9), 5185-5208 (2015).
+[27] R.J.Evans, Annals of Statistics, Vol. 46, No. 6A, 2623-
+2656 (2018)
+[28] A. Schrijver, Combinatorial Optimization: Polyhedra
+and Eﬃciency, Springer, 2003.
+
+=== page 6 ===
+6
+Appendix A: Alternative description of networks
+A network consists of a pair ( A,S) where A =
+{A1,...,A n} is the set of parties and S ={S1,...,S m}
+is the set of sources each of which is shared among a spe-
+ciﬁc subset of parties. Each party Aj produces an output
+after a post-processing her available sources.
+Here we do not limit the amount of information pro-
+vided by the sources, but restrict ourselves to distribu-
+tions in which the output of each party Aj has a ﬁnite
+alphabet set. We also restrict ourselves to minimal net-
+works, where no source is connected to a subgroup of
+parties already connected by another source. However,
+as the amount of information provided by the source is
+not restricted, we can always (for convenience) add ad-
+ditional sources shared by parties already connected by
+another source: in Appendix B, we sometimes assume
+that the parties have there own source of randomness.
+Since here we are mostly interested in bipartite sources
+we may think of the network as a graph. We may think
+ofN as a graph whose vertices are labeled by Aj’s and
+whose edges are labeled by Si’s. That is, for any i there
+is an edge ei of the graph that connects the two parties
+that share the source Si. For later use, we adopt the
+notationSi→Aj (or simply i→j) to represent that Aj
+receives a share from the source Si, i.e., Aj is connected
+to the edge ei.
+1. Classical variable models
+In the classical case we assume that the sources Si
+share randomness among the parties, and each party Aj
+applies a function on the receives randomnesses to deter-
+mine her output. As proven in [12] in this case, we can
+assume that each source Si only takes a ﬁnite number
+of values. Alternatively, we can suppose that Si is as-
+sociated to a uniform random variable si∈ [0, 1] that is
+discretized by a single step function over [0, 1] by the par-
+ties. Here we adopt the latter notation. Then the party
+Aj applies a function on the sources she receives, i.e., on
+{si : i→ j}, and outputs aj. Let us denote by rj
+a the
+indicator function that aj equals a, i.e., for a given real-
+ization of the sources {si} we deﬁne rj
+a({si : i→ j}) to
+be equal to 1 if the output ofAj given inputs{si :i→j}
+equals a, and 0 otherwise. Then the joint output distri-
+bution can be written as
+P (a1,...,a n) =
+∫ (∏
+j
+rj
+aj
+(
+{si :i→j}
+))∏
+i
+dsi,
+(A1)
+and the marginals are given by
+PAj(aj) =
+∫
+rj
+aj
+(
+{si :i→j}
+) ∏
+i:i→j
+dsi. (A2)
+We denote the set of all distributions achievable in the
+classical variable model for a given network N byNL.
+2. Quantum models
+In the quantum model we assume that sourcesSi share
+quantum states, and the parties determine their outputs
+by applying measurements. As we have no dimension
+restriction, we can assume that the shared states are pure
+and the measurements are projective. We denote by ρi
+the quantum state distributed by sourceSi and writeρ =⨂
+iρi. Moreover, we denote the measurement operators
+ofAj by
+{
+M(j)
+aj
+}
+. Then the resulting output distribution
+equals
+P (a1,...,a n) = Tr
+(
+ρ·
+⨂
+j
+M(j)
+aj
+)
+.
+We denote the set of all distributions achievable in the
+quantum model for a given network N byNQ.
+3. Boxworld model
+In this model, each source distributes an arbitrary
+number of NS boxes to the parties to which it connects.
+These NS boxes serve as a resource for the parties to gen-
+erate correlated outputs. Each party can locally “wire”
+her boxes in hand to determine her output. That is,
+each party successively choose a box and its input, and
+receives an output. She is free to choose the order in
+which she uses her boxes and the input of it with some
+stochastic post-processing of her transcript at that time,
+i.e., previous choices of boxes, their inputs and their out-
+puts. The ﬁnal output of each party is a stochastic post-
+processing of her ﬁnal transcript. We will later formalize
+this deﬁnition in a more precise way. We denote the set
+of all distributions achievable in the boxworld model for
+a given networkN byNB.
+4. F ractional independent sets
+Later we will use the following deﬁnition.
+Deﬁnition 2. A fractional independent set of a network
+N is a vector of non-negative η = (η1,...,η n) which cor-
+responds a weight each party such that for each source
+the summation of the weights of parties connected to it
+at most 1. Formally, ηj≥ 0 for all j and
+∑
+j:i→j
+ηj≤ 1, ∀i. (A3)
+A vector η satisfying the above conditions is called a
+fractional independent set since assuming that ηj’s are
+either 0 or 1, the subset{Aj : ηj = 1} forms an indepen-
+dent set of the associated graph, i.e., a subset of vertices
+to two of which are adjacent.
+
+=== page 7 ===
+7
+FIG. 3. Any local strategy in the triangle scenario can be
+mapped to a unit cube. Three orthogonal axis of the cube
+are labeled by the hidden variables α,β,γ . Alice’s response
+for a given (β,γ ) is written on the face orthogonal to the α
+direction (and similarly for Bob and Charlie). In this repre-
+sentation, P (000) is the volume of points which project to 0
+on all the three faces, and PA(0) is the area of points one the
+face orthogonal to the α direction which are labeled 0.
+Appendix B: Basic properties in the triangle
+scenario
+In the following, we present some basic results about
+correlations achievable in the triangle network.
+1. Cube representation of strategies in the triangle
+scenario
+Any classical strategy for generating a given tripartite
+distribution in the triangle scenario can geometrically be
+represented by a cube with labels on it sides. Consider a
+unit cube in three dimensions. We label three mutually
+orthogonal edges of the cube by the three sources α,β,γ
+and labelA,B,C the faces respectively orthogonal to the
+edgesα,β,γ . Recall that we assume that the sourcesα,β
+andγ take values in [0, 1]. Thus any values ofβ,γ ∈ [0, 1]
+correspond to a point on faceA, and to an answer of Alice
+when she receives ( β,γ ) from the sources, i.e., a(β,γ ).
+That is, points of face A are labeled bya’s. On the other
+hand, as we mentioned before, for each source the interval
+[0, 1] is divided in a ﬁnite number of subintervals, and
+the parties are ignorant of the exact value of the source,
+but its subinterval index. Therefore, face A is indeed
+partitioned in some aligned rectangles which are labeled
+bya’s. The same applies to faces B and C. See Fig. 3.
+2. Basic properties of NL in the triangle scenario
+In the following, we recall and give basic properties
+of the set of correlation in NL for the triangle scenario.
+We choose to illustrate some proofs with the cube rep-
+resentation of strategies discussed above. For simplicity
+of presentation, we limit ourselves to the case where the
+outputs are all binary; generalization of these proofs to
+larger output alphabet sizes is straightforward.
+Proposition 1. Let N denote the triangle network.
+Then the followings hold:
+(i) The GHZ distribution and the W distribution (in
+which exactly one of the parties, chosen uniformly
+at random, outputs 1 and the others output 0) are
+not inNL (see also [14]).
+(ii)NL, as well as NQ, NB, are contractible (even
+though they are not star convex), hence do not con-
+tain holes.
+(iii)NL contains an open ball in the probability sim-
+plex around Pu the maximally mixed distribution
+(see also [27]). Thus the dimension of NL equals
+the dimension of the probability simplex, which is
+7 when outputs are all binary. The same holds for
+NQ andNB as they contain NL.
+(iv) The Finner inequality (2) is valid for any distribu-
+tion inNL.
+Proof. (i) can be proven based on the cube representation
+of strategies. The proof for the W distribution is given
+in Fig. 4; the proof for GHZ is left for the reader.
+
+=== page 8 ===
+8
+FIG. 4. Suppose that a cube gives the W distribution. As
+Alice sometimes answer 1, by relabeling the hidden variables,
+we can suppose that there is a 1 at the location given in ( a).
+Then, there are two possibilities: either there is no 0 on the
+left of that 1 (case ( a1)), or there is one (case ( a2)). The
+ﬁrst case is not possible: as Alice and Charlie never answer 1
+together, there must be 0 everywhere on Charlie’s face, i.e.,
+Charlie always answers 0. In the second one, as when Alice
+says 1 Bob and Charlie cannot say 1, we end up with the cube
+(a2). As when Alice and Bob both say 0, Charlie must say 1,
+we obtain the cube (a22). However, in that cube Bob should
+not say 1 when Charlie already says it; he must answer 0 all
+the time, which is absurd.
+(ii) Recall that a set S is said to be contractible if it
+can be continuously shrunk to a point within S. More
+precisely, there is a continuous map Φ : (t,P )∈ [0, 1]×
+S↦→ Φt(P )∈S such that Φ 1(P ) = P and Φ0(P ) = Pu
+for some ﬁxed Pu. For the set NL such a map Φt(P ) for
+an arbitrary P∈NL is constructed as follows, and can
+similarly be deﬁned for NQ andNB.
+In the cubic representation of strategies, since the par-
+ties can also have access to local randomness independent
+of common sources, we may add a question mark symbol
+‘?’ telling the party to choose her output uniformly at
+random. Thus, the maximally mixed (uniform) distribu-
+tionPu corresponds to a cube all of whose three orthogo-
+nal faces are labeled by the question mark. Now consider
+a strategy for generating a distribution P and construct
+a cube whose cornert×t×t sub-cube, for some 0≤t≤ 1,
+is ﬁlled according to the renormalized strategy forP , and
+the rest of it is ﬁlled by the question mark (see Fig. B 2).
+Call the resulting distribution Pt = ΦP (t). When the
+outputs are binary, a simple computation verify that
+Pt(abc) =1
+8
+(
+1− 3t2 + 2t3 + 8t3P (abc)
++ 2t2(1−t)
+(
+PA(a) +PB(b) +PC(c)
+))
+.
+(B1)
+Clearly,Pt = ΦP (t) is continuous in (P,t ).
+FIG. 5. In the cube representation of strategies, ﬁll the
+upper corner cube of size t×t×t according to a strategy
+for P , and with full random choices elsewhere. The resulting
+distribution is denoted by Pt = ΦP (t) and is given by (B1).
+(iii) Let P (j), j = 1,...,k , be some distributions in
+NL. Pick arbitrary ϵj≥ 0 with ∑
+jϵj≤ 1 and on each
+of the three orthogonal sides of the cube pick disjoint
+intervals of sizesϵj for anyj. Then in the cube one ﬁnds
+k (disjoint) sub-cubes of sizes ϵj×ϵj×ϵj for any j (see
+Fig. 6). Now similar to the proof of part ( ii) ﬁll the j-th
+sub-cube according to the scaled strategy associated to
+P (j). This gives a distribution Q∈N L which can be
+derived following similar computation as that of (B1):
+Q(abc) =1
+8
+(
+1 +
+∑
+j
+[
+− 3ϵ2
+j + 2ϵ3
+j + 8ϵ3
+jP (j)(abc)
++ 2ϵ2
+j(1−ϵj)
+(
+P (j)
+A (a) +P (j)
+B (b) +P (j)
+C (c)
+)])
+,
+where 1 has to be interpreted as a vector full of ones
+(similarly for 1
+8 and 1
+2 in the following).
+To continue the proof it is instructive two write down
+the distributions P (j) as
+P (j) = 1
+8 +R(j),
+with marginals P (j)
+A = 1
+2 +R(j)
+A etc. Then letting Q =
+1
+8 +S the above equation can be rewritten as
+S(abc) =1
+8
+∑
+j
+ΓP (j),ϵj(abc), (B2)
+where
+ΓP (j),ϵj(abc) =8ϵ3
+jR(j)(abc)
++ 2ϵ2
+j(1−ϵj)
+(
+R(j)
+A (a) +R(j)
+B (b) +R(j)
+C (c)
+)
+.
+Now to ﬁnish the proof we need to show that any S
+satisfying ∑
+a,b,cS(abc) = 0 and with suﬃciently small
+coordinates can be written as (B2) for some P (j)∈NL
+and some choices of ϵj’s.
+
+=== page 9 ===
+9
+Let P (xyz), for (x,y,z )∈{ 0, 1, ?}3 be the distribution
+coming from the cube whose Alice’s face is labeled x,
+Bob’s face is labeled y, and Charlie’s face is labeled z.
+For instance we have
+P (0??)(abc) = 1
+4δa=0,
+with R(0??)
+A (a) = 1
+2(−1)a and R(0??)
+B =R(0??)
+C = 0. Then
+we have
+ΓP (0??),ϵ(abc) =ϵ2(−1)a,
+and also Γ P (1??),ϵ(abc) = −ΓP (0??),ϵ(abc). We similarly
+can compute
+ΓP (00?),ϵ(abc) =ϵ2(
+(−1)a + (−1)b)
++ϵ3(−1)a+b,
+and
+ΓP (000),ϵ(abc) =ϵ2(
+(−1)a + (−1)b + (−1)c)
++ϵ3(
+(−1)a+b + (−1)a+c + (−1)b+c)
++ϵ3(−1)a+b+c.
+Comparing the above equations, we ﬁnd that by consider-
+ing the summations of these Γ terms for diﬀerent choices
+of (x,y,z )∈{ 0, 1, ?}3, we can write the functions
+±δ(−1)a,±δ(−1)b,±δ(−1)c,
+±δ(−1)a+b,±δ(−1)a+c,±δ(−1)a+c
+±δ(−1)+a+b+c,
+in the form of (B2) when δ is suﬃciently small. Ob-
+serving that these functions, which also include their
+negations, form a basis for the space of functions S with∑
+abcS(abc) = 0, the proof is concluded.
+Reference [27] is related to the same question and ex-
+ploits a totally diﬀerent framework.
+FIG. 6. Suppose that two disjoint sub-cubes of size ϵ×ϵ×ϵ
+(with disjoint projections on the three orthogonal directions)
+are ﬁlled with constant 0 and constant 1, and the rest of the
+cube with totally random choices. The resulting tripartite
+distribution would be equal to P = Pu + ϵ3
+4V where Pu is
+the maximally mixed (uniform) distribution and V is given
+by V (000) = V (111) = 3 and V (abc) = −1 if ( a,b,c ) ∈
+{0, 1}3\{ 000, 111}.
+(iν) This is a direct consequence of the Loomis-
+Whitney inequality, asserting that in R3, the square of
+the volume of any measurable subset is bounded by the
+product of the areas of its projections in the three or-
+thogonal directions.
+Appendix C: The Finner inequality in term of the
+Hypercontractivity Ribbon
+The Hypercontractivity Ribbon (HR) is a measure of
+correlation that can be deﬁned in terms of parameters for
+which the Finner inequality is satisﬁed. In the tripartite
+case on which we focus, the HR of a distribution PABC
+is the set of (α,β,γ )∈ [0, 1]3 for which
+E [fAgBhC]≤‖fA‖1/α·‖gB‖1/β·‖hC‖1/γ, (C1)
+for all choices of functionsfA,gB andhC. We denote the
+HR of PABC by R(A,B,C ). An important property of
+HR is that it expands under local post-processing. That
+is, if A′,B′,C′ are obtained by local post-processing of
+A,B,C respectively, then we have
+R(A,B,C )⊆ R(A′,B′,C′). (C2)
+More interesting is the tensorization property of HR say-
+ing that R(An,Bn,Cn) = R(A,B,C ) where the former
+is computed with respect to the iid distribution P⊗n
+ABC.
+See [26] and references therein for more details.
+Finner’s inequality can be stated in terms of HR. In the
+triangle scenario, for instance, Finner’s inequality says
+that for every PABC ∈ NL we have (1 /2, 1/2, 1/2) ∈
+
+=== page 10 ===
+10
+R(A,B,C ). In general, Finner’s inequality says that any
+fractional independent set of a network belongs to the
+HR of any distribution achievable in that network.
+A crucial property of R(A,B,C ) is that it can be ex-
+pressed in terms of the mutual information function as
+follows. R(A,B,C ) consists of the set of non-negative
+triples (α,β,γ ) such that for any auxiliary random vari-
+able U given by PU|ABC we have
+I(U;ABC)≥αI(U;A) +βI(U;B) +γI(U;C) (C3)
+From this characterization of HR it is clear that
+R(A,B,C ) is a convex set. This is a property that will
+be used in the proof of Theorem 2.
+Appendix D: The Finner inequality holds in NQ
+We now present a proof of Theorem 2, that the Finner
+inequality holds for any P∈NQ when the sources in the
+networkN are all bipartite.
+First of all, as mentioned in Appendix C, given a dis-
+tributionP , the set of weights η = (η1,...,η n) for which
+the Finner inequality (4) holds for all choices of fj’s, is
+a convex set. That is, if (4) holds for η and η′, then
+it holds for any convex combination of them. Therefore,
+in order to show that the Finner inequality is satisﬁed
+for all weights η that form a fractional independent set
+(which itself is a convex set), it suﬃces to prove it for the
+extreme points of the set of fractional independent set.
+That is, in the proof we may assume thatη = (η1,...,η n)
+is an extreme point of the set of fractional independent
+sets.
+Second, we use the assumption that all sources in the
+networkN are bipartite. It is well-known that in any
+graph the extreme points of the set of fractional indepen-
+dent sets are half-integers [28, Theorem 64.7]. In other
+words, if η = (η1,...,η n) is an extreme fractional inde-
+pendent set, for all j we have ηj∈{ 0, 1/2, 1}. On the
+other hand, if one of ηj’s, say ηn, equals 0, then we have
+‖fn‖1/ηn =‖fn‖∞ = max
+an:PAn(an)⁄=0
+f(an),
+and
+E
+[∏
+fj
+]
+≤ E
+[ n−1∏
+j=1
+fj
+]
+·‖fn‖∞.
+This means that if (4) holds ignoring the n-th party (for
+the marginal distribution PA1,...,An−1), it also holds in-
+cluding her and putting ηn = 0. We conclude that we
+may restrict ourselves to weights η = (η1,...,η n) such
+that ηj∈{ 1/2, 1} for all j. Even more, for such weights
+if there is j, say j = n, with ηj = 1, then the n-th
+party cannot share any source with others. This is be-
+cause if Aj′ shares a source with An then we must have
+ηn+ηj′≤ 1 that is a contradiction sinceηj′ is assumed to
+be in{1/2, 1}. This means such a party An with ηn = 1
+is isolated and shares nothing with others. In this case
+we have
+E
+[∏
+fj
+]
+= E
+[ n−1∏
+j=1
+fj
+]
+· E[fn],
+and of course‖fn‖1/ηn =‖fn‖1 = E[fn]. As a result, par-
+ties whose weights are equal to 1 can be ignored. Putting
+all these together we may assume that all the weights are
+equal to ηj = 1/2 and we need to prove
+E
+
+∏
+j
+fj
+
+≤
+∏
+j
+‖fj‖2, (D1)
+Third, recall thatfj is an arbitrary function applied on
+the output of thej-th partyAj. Composing the measure-
+ment operators of Aj with this classical post-processing,
+we may assume that fj is the outcome of some quantum
+observable Xj that the j-th party applies on quantum
+systems in her hand. Indeed, we may put
+Xj =
+∑
+aj
+fj(aj)M(j)
+aj ,
+where
+{
+M(j)
+aj
+}
+is the projective measurement applied by
+Aj. Thus we have
+E
+[∏
+j
+fj
+]
+= Tr
+[
+ρ·
+⨂
+j
+Xj
+]
+, (D2)
+where as before ρ =⨂
+iρi and ρi is the pure state asso-
+ciated to the i-th source.
+Recall that for each source i, ρi is a pure bipartite
+state, so we may consider its Schmidt decomposition.
+For simplicity of notation we may assume that the di-
+mension of all subsystems in ρi’s are equal (by taking
+the maximum of all these local dimensions). Moreover,
+by applying appropriate local rotations we may assume
+that the Schmidt basis of all ρi’s are the same. Thus we
+may write ρi =|ψi⟩⟨ψi| with
+|ψi⟩ =
+d∑
+𝓁=1
+λ(i)
+𝓁 |𝓁⟩⊗| 𝓁⟩,
+where λ(i)
+𝓁 ≥ 0 denote Schmidt coeﬃcients of ρi.
+Then (D2) reduces to
+E
+[∏
+j
+fj
+]
+=
+∑
+𝓁1 ,...,𝓁m
+𝓁′
+1,...,𝓁′m
+∏
+i
+λ(i)
+𝓁i
+λ(i)
+𝓁′
+i
+·
+∏
+j
+Tr
+[
+Xj·
+⨂
+i:i→j
+|𝓁i⟩⟨𝓁′
+i|
+]
+.
+For anyj deﬁne gj :∏
+i:i→j{1,...,d }2→ R by
+gj
+(
+(𝓁i,𝓁′
+i)i:i→j
+)
+=
+∏
+i:i→j
+√
+λ(i)
+𝓁i
+λ(i)
+𝓁′
+i
+· Tr
+[
+Xj·
+⨂
+i:i→j
+|𝓁i⟩⟨𝓁′
+i|
+]
+.
+
+=== page 11 ===
+11
+Also, letRi be the uniform random variable taking values
+in{1,...,d }2, i.e., Ri equals (𝓁,𝓁′) with probability d−2.
+Then the previous equation can be written as
+E
+[∏
+j
+fj
+]
+=d2mE
+[∏
+j
+gj
+(
+(Ri)i→j
+)]
+Now we may think of Ri’s as sources of randomnesses
+that are shared to the parties who apply local functions
+gj on them. Then by the (classical) Finner inequality we
+have
+E
+[∏
+j
+fj
+]
+≤d2m∏
+j
+‖gj‖2.
+Let us compute the factors on the right hand side:
+d2·|{i:i→j}|·‖gj‖2
+2 =d2·|{i:i→j}|· E
+[
+g2
+j
+]
+=
+∑
+(𝓁i,𝓁′
+i)i:i→j
+∏
+i:i→j
+λ(i)
+𝓁i
+λ(i)
+𝓁′
+i
+· Tr
+[
+Xj·
+⨂
+i:i→j
+|𝓁i⟩⟨𝓁′
+i|
+]2
+= Tr
+[√σjXj
+√σjXj
+]
+,
+where
+σj =
+∑
+(𝓁i)i:i→j
+( ∏
+i:i→j
+λ(i)
+𝓁i
+)2 ⨂
+i:i→j
+|𝓁i⟩⟨𝓁i|.
+We continue
+d2·|{i:i→j}|·‖gj‖2
+2 = Tr
+[(
+σ1/4
+j Xjσ1/4
+j
+)2]
+≤ Tr
+[
+σ1/2
+j X2
+jσ1/2
+j
+]
+= Tr
+[
+σjX2
+j
+]
+=‖fj‖2
+2,
+where the inequality follows from the Araki-Lieb-
+Thirring inequality, and the last equality is veriﬁed by
+an easy computation. We conclude that
+E
+[∏
+j
+fj
+]
+≤d2m∏
+j
+‖gj‖2
+=
+∏
+j
+d|{i:i→j}|·‖gj‖2
+≤
+∏
+j
+‖fj‖2,
+where the equality follows from the fact that the sources
+are bipartite and for each i there are exactly two j’s for
+whichi→j.
+Appendix E: Finner inequality holds for triangle
+scenario in the Boxworld
+In this section we show that the Finner inequality is
+satisﬁed for the triangle scenario in the Boxworld, where
+bipartite no-signaling boxes are wired by the parties to
+produce an output. As explained in Appendix D, we can
+restrict ourselves to coeﬃcients 1/2.
+Theorem 4 (Finner inequality in Boxworld). LettingN
+be the triangle network, for any PABC∈NB we have
+E [fAgBhC]≤‖fA‖2·‖gB‖2·‖hC‖2.
+Before getting into the details of the proof, let us
+brieﬂy explain the proof ideas. First, as mentioned
+in Appendix C, the above theorem says that for any
+PABC ∈ NB we have (1 /2, 1/2, 1/2) ∈ R(A,B,C ).
+On the other hand, since HR is monotone under local
+post-processing (equation (C2)), it suﬃces to prove that
+(1/2, 1/2, 1/2)∈ R(T,R,S ) where T,R and S denote all
+information available to Alice, Bob and Charlie respec-
+tively, at the end of the wirings. This is because, A,B,C
+are functions ofT,R,S respectively. Next we can use the
+second equivalent characterization of HR, and in order to
+prove (1/2, 1/2, 1/2)∈ R(T,R,S ) show that
+χ =I(U;TRS )− 1
+2I(U;T )− 1
+2I(U;R)− 1
+2I(U;S)≥ 0.
+The proof of this inequality is based on the chain rule
+of mutual information. In the wiring, each party uses
+her boxed in hand one by one: for each time-step new
+information is added to her transcript. Therefore, we
+expand each mutual information term in the above equa-
+tion as a summation over time-steps using the chain rule.
+We further expand each time step into the choice of box
+and input, and the creation of the output. As a result
+we obtain χ = χI +χO, where χI (respectively, χO) is
+a summation of terms corresponding to all the choices
+of boxes and their inputs (respectively, outputs) by the
+parties.
+As the choice of boxes and their inputs are done lo-
+cally and independently of the sources, χI can easily be
+bounded. As the order in which Alice, Bob and Charlie
+choose there boxes is a priori not the same, bounding χO
+is more tricky. One has to ﬁrst reorder the summation in
+χO to put terms associated to a given box together, and
+then use properties of mutual information to bound χO.
+We use the no-signaling assumption in this last step.
+This proof follows the ideas introduced in [26], in which
+the author prove that PR boxes cannot be puriﬁed using
+wirings.
+1. Notations
+Here we introduce the notations we need to prove The-
+orem 4. We deﬁne notations for Alice and then recap
+them for Bob and Charlie.
+Let JAB (respectively JAC) be the set of index of all
+boxes shared between Alice and Bob (respectively Alice
+and Charlie). Let NA be the number of boxes available
+to Alice, i.e., NA =|JAB| +|JAC|.
+Forj∈ JAB, let Xj, Yj (respectively Aj, Bj) be the
+inputs (respectively, the outputs) of the box j. This box
+is described by a no-signaling conditional distribution
+P (AjBj|XjYj).
+
+=== page 12 ===
+12
+In each time-step Alice chooses which box to use next
+and its input as a random function of whatever she has
+so far, i.e. previous choices of boxes, their inputs and
+their outputs. We denote by Π j the time-step at which
+Alice uses box j. Thus Π is a permutation of the boxes
+available to Alice. We denote the inverse of this distri-
+bution by ˜Π. That is, ˜Πi is the index of the box used by
+Alice at time-step i.
+Let Tj be the transcript of Alice before using the j-th
+box, i.e., whatever she has seen before using thej-th box.
+We also denote Alice’s extended transcript byTe
+j that is
+Tj together with Πj and Xj:
+Te
+j = (Tj, Πj,Xj).
+We also use the notations ˜Xi =X˜Πi
+, ˜Ai =A˜Πi
+, ˜Ti =T˜Πi
+and ˜Te
+i =Te
+˜Πi
+. Observe that, for instance, ˜Xi is the box
+that Alice uses in time-step i. With these notations we
+have
+Tj :=
+(˜Π1,..., ˜ΠΠj−1, ˜X1,..., ˜XΠj−1, ˜A1,..., ˜AΠj−1
+)
+.
+Here is a summary of notations for later use:
+• Πj : Alice uses the j-th box in her Πj-th action.
+• ˜Πi: Alice uses the ˜Πi-th box in her i-th action.
+• Xj : Alice’s input of the j-th box.
+• ˜Xi : Alice’s input in her i-th action.
+• Aj : Alice’s output of the j-th box.
+• ˜Ai : Alice’s output in her i-th action.
+• Tj : Alice’s transcript before using the j-th box.
+• ˜Ti :Alice’s transcript before her i-th action.
+• Te
+j ={Tj, Πj,Xj}.
+• ˜Te
+i ={ ˜Ti, ˜Πi, ˜Xi}.
+We use superscript NA to denote the full set of vari-
+ables at the end, e.g., ANA = (A1,...,A NA). At the
+end, Alice determines her ﬁnal output by applying a
+stochastic map on all information available to her, i.e.,
+on ΠNA,XNA,ANA which we denote by
+T =
+(
+ΠNA,XNA,ANA
+)
+. (E1)
+At the end Alice, Bob, and Charlie apply their stochas-
+tic maps to determine their ﬁnal output.
+The corresponding variables in the above list for Bob
+are Ωj, ˜Ωi,Yj, ˜Yi,Bj, ˜Bi,Sj, ˜Si,Se
+j, ˜Se
+i respectively. The
+corresponding variables in the above list for Charlie are
+Γj, ˜Γi,Zj, ˜Zi,Cj, ˜Ci,Rj, ˜Ri,Re
+j, ˜Re
+i respectively
+2. Auxiliary lemmas
+In this section, we introduce some lemmas deduced
+from the no-signaling condition.
+Lemma 1. For every 1≤i≤NB we have
+I( ˜Yi ˜Ωi;T| ˜Si) = 0,
+and for every 1≤i≤NC we have
+I( ˜Zi˜Γi;TS| ˜Ri) = 0.
+Proof. These expressions are simple consequences of the
+fact that each party at time-step i chooses a box and its
+input locally as a (stochastic) function of the transcript
+at stepi, and other parties cannot signal using the boxes.
+Lemma 2. For boxes available to Bob we have
+(i) For j∈JAB:
+I(Bj;T|Te
+jAjSe
+j ) = 0
+(ii) For j∈JBC :
+I(Bj;T|Se
+j ) = 0
+Proof. (i) states the independence of Bob’s output of the
+j-th box and the future information in Alice’s side, given
+all the information of Alice and Bob, except Bj, up to
+just after using this box. To prove this, it is enough to
+show that H(Bj|Te
+jAjSe
+j ) = H(Bj|TSe
+j ), for which we
+compute
+H(Bj|TSe
+j ) =H(AjBj|T\{Aj}Se
+j )−H(Aj|T\{Aj}Se
+j )
+=H(AjBj|Te
+jSe
+j )−H(Aj|Te
+jSe
+j )
+=H(Bj|Te
+jAjSe
+j ).
+Here the second line follows from the fact that Aj and
+Bj are determined independently of the other variables
+once the inputs of the j-th box are ﬁxed.
+(ii) states that given the input of Bob for a box shared
+between Bob and Charlie, Bob’s output is independent
+of Alice’s transcript. To prove this we compute
+I(T ;Bj|Se
+j )≤I(TRe
+j;Bj|Se
+j )
+=I(T ;Bj|Se
+jRe
+j)
+≤I(T ;BjCj|Se
+jRe
+j).
+Here the inequalities follow from the data process-
+ing inequality, and the equality follows from the chain
+rule and I(Bj;Re
+j|Se
+j ) = 0, the no-signaling condi-
+tion. Then the desired result follows once we note that
+I(T ;BjCj|Se
+jRe
+j) = 0 since the output of the j-th box
+are determined independently of other variables once its
+inputs are ﬁxed.
+
+=== page 13 ===
+13
+The following lemma presents similar statements as
+above for boxes available for Charlie. We skip its proof
+as it follows from similar ideas as above.
+Lemma 3. For boxes available to Charlie we have
+(i) For j∈JBC :
+I(Cj;TS|Se
+jBjRe
+j) = 0
+(ii) For j∈JAC:
+I(Cj;ST|Te
+jAjRe
+j) = 0
+In the following for four random variables X,Y,Z,W
+we use the notation
+I(X;Y ;Z|W ) =H(X|W ) +H(Y|W ) +H(Z|W )
+−H(XY|W )−H(XZ|W )−H(YZ|W )
++H(XYZ|W ).
+We will frequently use the following expression for
+I(X;Y ;Z|W ) which can easily be veriﬁed:
+I(X;Y ;Z) =I(X;Y|W )−I(X;Y|WZ ). (E2)
+We indeed use the symmetry in the deﬁnition of
+I(X;Y ;Z|W ) which gives
+I(X;Y|W )−I(X;Y|WZ ) =I(Y ;Z|W )−I(Y ;Z|WX ).
+(E3)
+3. Proof of Theorem 4
+As mentioned before, we need to show that
+(1/2, 1/2, 1/2)∈ R(A,B,C ). Moreover, since HR sat-
+isﬁes the monotonicity property (C2), and A,B,C are
+determined by post-processing of T,S,R respectively, it
+suﬃces to prove that (1/2, 1/2, 1/2)∈ R(T,S,R ). That
+is, we need to show that for any PU|TSR we have
+χ =I(U;TRS )− 1
+2I(U;T )− 1
+2I(U;R)− 1
+2I(U;S)≥ 0.
+We ﬁrst write
+I(U;TRS ) =I(U;T ) +I(U;S|T ) +I(U;R|TS ). (E4)
+Then noting that, say,T itself consists of several random
+variables as in (E1), we apply chain rule once again to
+each of the above terms. This decomposes χ into two
+termsχ =χI +χO associated to the input parts and the
+output parts given by
+χI =
+NA∑
+i=1
+[
+I(U; ˜Xi ˜Πi| ˜Ti)− 1
+2I(U; ˜Xi ˜Πi| ˜Ti)
+]
++
+NB∑
+i=1
+[
+I(U; ˜Yi ˜Ωi|T ˜Si)− 1
+2I(U; ˜Yi ˜Ωi| ˜Si)
+]
++
+NC∑
+i=1
+[
+I(U; ˜Zi˜Γi|TS ˜Ri)− 1
+2I(U; ˜Zi˜Γi| ˜Ri)
+]
+and
+χO =
+NA∑
+i=1
+[
+I(U; ˜Ai| ˜Te
+i )− 1
+2I(U; ˜Ai| ˜Te
+i )
+]
++
+NB∑
+i=1
+[
+I(U; ˜Bi|T ˜Se
+i )− 1
+2I(U; ˜Bi| ˜Se
+i )
+]
++
+NC∑
+i=1
+[
+I(U; ˜Ci|TS ˜Re
+i )− 1
+2I(U; ˜Ci| ˜Re
+i )
+]
+We will show separately that both χI and χO are non-
+negative.
+Let us ﬁrst start with χI ≥ 0 that is easy (as each
+party chooses its box and input independently, a stronger
+inequality holds with the terms 1/2 replaced by 1). The
+ﬁrst summand inχI is non-negative sinceI(U; ˜Xi ˜Πi| ˜Ti)−
+1
+2I(U; ˜Xi ˜Πi| ˜Ti) = 1
+2I(U; ˜Xi ˜Πi| ˜Ti)≥ 0. For the second
+summand we compute
+I(U; ˜Yi ˜Ωi|T ˜Si)− 1
+2I(U; ˜Yi ˜Ωi| ˜Si)
+≥I(U; ˜Yi ˜Ωi|T ˜Si)−I(U; ˜Yi ˜Ωi| ˜Si)
+=−I(U; ˜Yi ˜Ωi;T| ˜Si)
+=I(T ; ˜Yi ˜Ωi|U ˜Si)−I(T ; ˜Yi ˜Ωi| ˜Si)
+=I(T ; ˜Yi ˜Ωi|U ˜Si)
+≥ 0,
+where the third equality follows from Lemma 1. The
+proof that the third summand is non-negative is similar.
+Therefore, χI≥ 0.
+We now show thatχO≥ 0. Observe that by deﬁnitions
+˜Ai = A˜Πi
+etc. Then splitting the summands in χO in
+terms of boxes shared between diﬀerent pairs of parties,
+we obtain:
+χO =
+∑
+i: ˜Πi∈JAB
+[
+I(U;A˜Πi
+|Te
+˜Πi
+)− 1
+2I(U;A˜Πi
+|Te
+˜Πi
+)
+]
++
+∑
+i: ˜Πi∈JAC
+[
+I(U;A˜Πi
+|Te
+˜Πi
+)− 1
+2I(U;A˜Πi
+|Te
+˜Πi
+)
+]
++
+∑
+i: ˜Ωi∈JAB
+[
+I(U;B˜Ωi
+|TSe
+˜Ωi
+)− 1
+2I(U;B˜Ωi
+|Se
+˜Ωi
+)
+]
++
+∑
+i: ˜Ωi∈JBC
+[
+I(U;B˜Ωi
+|TSe
+˜Ωi
+)− 1
+2I(U;B˜Ωi
+|Se
+˜Ωi
+)
+]
++
+∑
+i: ˜Ωi∈JBC
+[
+I(U;C˜Γi
+|TSRe
+˜Γi
+)− 1
+2I(U;C˜Γi
+|Re
+˜Γi
+)
+]
++
+∑
+i: ˜Γi∈JAC
+[
+I(U;C˜Γi
+|TSRe
+˜Γi
+)− 1
+2I(U;C˜Γi
+|Re
+˜Γi
+)
+]
+.
+Next, we rewrite χO by reordering the summands in
+
+=== page 14 ===
+14
+terms of the indices of boxes and not time-steps:
+χO =
+∑
+j∈JAB
+[
+I(U;Aj|Te
+j )− 1
+2I(U;Aj|Te
+j )
+]
++
+∑
+j∈JAC
+[
+I(U;Aj|Te
+j )− 1
+2I(U;Aj|Te
+j )
+]
++
+∑
+j∈JAB
+[
+I(U;Bj|TSe
+j )− 1
+2I(U;Bj|Se
+j )
+]
++
+∑
+j∈JBC
+[
+I(U;Bj|TSe
+j )− 1
+2I(U;Bj|Se
+j )
+]
++
+∑
+j∈JBC
+[
+I(U;Cj|TSRe
+j)− 1
+2I(U;Cj|Re
+j)
+]
++
+∑
+j∈JAC
+[
+I(U;Cj|TSRe
+j)− 1
+2I(U;Cj|Re
+j)
+]
+.
+Using (E3) and Lemma 2 (i), for j∈JAB we have
+I(U;Bj|TSe
+j )−I(U;Bj|Te
+jAjSe
+j )
+=I(Bj;T|Te
+jAjSe
+jU)≥ 0. (E5)
+Moreover, by (E3) and Lemma 2 (ii), for j ∈ JBC we
+have
+I(U;Bj|TSe
+j )−I(U;Bj|Se
+j ) =I(Bj;T|Se
+jU)≥ 0 (E6)
+We similarly for j∈JBC have
+I(U;Cj|TSRe
+j)−I(U;Cj|Se
+jBjRe
+j)
+=I(Cj;TS|Se
+jBjRe
+jU)≥ 0 (E7)
+and for j∈JAC have
+I(U;Cj|TSRe
+j)−I(U;Cj|Te
+jAjRe
+j)
+=I(Cj;ST|Te
+jAjRe
+jU)≥ 0 (E8)
+Putting these together we ﬁnd that
+χO≥χO1 +χO2 +χO3,
+where,
+χO1 =
+∑
+j∈JAB
+[
+I(U;Aj|Te
+j ) +I(U;Bj|Te
+jAjSe
+j )
+− 1
+2I(U;Aj|Te
+j )− 1
+2I(U;Bj|Se
+j )
+]
+,
+χO2 =
+∑
+j∈JAC
+[
+I(U;Aj|Te
+j ) +I(U;Cj|Te
+jAjRe
+j)
+− 1
+2I(U;Aj|Te
+j )− 1
+2I(U;Cj|Re
+j)
+]
+,
+χO3 =
+∑
+j∈JBC
+[
+I(U;Bj|Se
+j ) +I(U;Cj|Se
+jBjRe
+j)
+− 1
+2I(U;Bj|Se
+j )− 1
+2I(U;Cj|Re
+j)
+]
+.
+By adding and subtractingI(U;Aj|Te
+jSe
+j ) and using (E2)
+and the chain rule we have
+χO1 =
+∑
+j∈JAB
+[
+I(U;Aj;Se
+j|Te
+j ) +I(U;AjBj|Te
+jSe
+j )
+− 1
+2I(U;Aj|Te
+j )− 1
+2I(U;Bj|Se
+j )
+]
+.
+Next by the data processing inequality we have
+χO1≥
+∑
+j∈JAB
+[
+I(U;Aj;Se
+j|Te
+j )
++ 1
+2I(U;Aj|Te
+jSe
+j ) + 1
+2I(U;Bj|Te
+jSe
+j )
+− 1
+2I(U;Aj|Te
+j )− 1
+2I(U;Bj|Se
+j )
+]
+.
+On the other hand, by the no-signaling condition
+I(Se
+j ;Aj|Te
+j ) = 0 we have
+I(U;Aj|Te
+jSe
+j ) =I(USe
+j ;Aj|Te
+j )−I(Se
+j ;Aj|Te
+j )
+=I(USe
+j ;Aj|Te
+j )
+=I(U;Aj|Te
+j ) +I(Se
+j ;Aj|Te
+jU)
+We similarly have
+I(U;Bj|Te
+jSe
+j ) =I(U;Bj|Se
+j ) +I(Te
+j ;Bj|Se
+jU).
+Therefore,
+χO1≥
+∑
+j∈JAB
+[
+I(U;Aj;Se
+j|Te
+j )
++ 1
+2I(Se
+j ;Aj|Te
+jU) + 1
+2I(Te
+j ;Bj|Se
+jU)
+]
+.
+Next, using (E2) and I(Se
+j ;Aj|Te
+j ) = 0 we ﬁnd that
+I(U;Aj;Se
+j|Te
+j ) = −I(Aj;Se
+j|Te
+jU). Putting these to-
+gether we arrive at
+2χO1≥
+∑
+j∈JAB
+[
+I(Bj;Te
+j|Se
+jU)−I(Aj;Se
+j|Te
+jU)
+]
+:=LA→B.
+Following similar computations we also obtain
+2χO2≥
+∑
+j∈JAC
+[
+I(Cj;Te
+j|Re
+jU)−I(Aj;Re
+j|Te
+jU)
+]
+:=LA→C,
+and
+2χO3≥
+∑
+j∈JBC
+[
+I(Cj;Se
+j|Re
+jU)−I(Bj;Re
+j|Se
+jU)
+]
+:=LB→C.
+Hence,
+2χO≥LA→B +LA→C +LB→C.
+If LA→B +LA→C +LB→C ≥ 0 the proof is complete.
+Otherwise, from the beginning we could change the order
+in which the chain rule in (E4) is expanded and repeat
+the same computations. If instead of the order Alice, Bob
+
+=== page 15 ===
+15
+and Charlie in (E4) we expand I(U;TSR ) in the reverse
+order Charlie, Bob and Alice we obtain the inequality
+2χO≥LB→A +LC→A +LC→B.
+Now the proof completes once we note that LB→A =
+−LA→B etc.
+□
+Appendix F: Tightness
+In this appendix we show that the Finner inequalities
+that we derive in the paper are tight in the following
+sense.
+Theorem 5. For any network N with parties
+{A1,...,A n} and sources {S1,...,S m}, and arbitrary
+numbers 0 ≤ pj ≤ 1, there exists a fractional inde-
+pendent set (η1,...,η n) ofN and a binary distribution
+PA1...An∈NL such that PAj(1) =pj for all j and
+P (1,..., 1) =
+n∏
+j=1
+(
+PAj(1)
+)ηj
+.
+Proof. Let (η∗
+1,...,η ∗
+n) be a fractional independent set of
+N that optimizes the following linear program:
+max −
+n∑
+j=1
+ηj logpj
+s.t.
+∑
+j:i→j
+ηj≤ 1 ∀i
+ηj≥ 0 ∀j.
+Consider the dual of this linear program:
+min
+m∑
+i=1
+ci
+s.t.
+∑
+i:i→j
+ci≥− logpj ∀j
+ci≥ 0 ∀i.
+Let (c∗
+1,...,c ∗
+m) be an optimal solution of this dual pro-
+gram isc∗. Then by the strong duality of linear programs
+we have
+∑
+i
+c∗
+i =−
+∑
+j
+η∗
+j logpj. (F1)
+Let us split the set of parties in terms of the constraints
+of the dual linear program:
+E =
+{
+j
+⏐⏐⏐
+∑
+i:i→j
+c∗
+i >− logpj
+}
+,
+F =
+{
+j
+⏐⏐⏐
+∑
+i:i→j
+c∗
+i =− logpj
+}
+.
+For anyj∈E and any sourcei connected to it (i.e., with
+i→j) pick some 0≤d(j)
+i ≤ci such that
+∑
+i:i→j
+d(j)
+i =− logpj.
+Note that since for j∈E we have∑
+i:i→jc∗
+i >− logpj,
+suchd(j)
+i ’s exist.
+Deﬁne independent Bernoulli random variables
+(X1,...,X m) by
+P (Xi = 1) = 2−c∗
+i.
+Also for any j∈ E and source i connected to it deﬁne
+the binary random variable Y (j)
+i by
+P
+(
+Y (j)
+i = 1
+⏐⏐Xi = 1
+)
+= 1,
+P
+(
+Y (j)
+i = 1
+)
+= 2−d(j)
+i .
+Observe that such a random variable Y (j)
+i exists since
+d(j)
+i ≤ ci, and that Y (j)
+i can be computed given Xi and
+independent of the rest of random variables.
+Now suppose that thei-th source distributesXi. Then
+partyj∈F outputs
+Aj =
+∏
+i:i→j
+Xj,
+and party j∈E outputs
+Aj =
+∏
+i:i→j
+Y (j)
+i .
+We emphasis once again that Y (j)
+i can be computed lo-
+cally by thej-th party having access toXi. Then by def-
+inition the resulting joint distributionPA1...An belongs to
+NL. Also, for every j∈E we have
+P (Aj = 1) =
+∏
+i:i→j
+P
+(
+Y (j)
+i = 1
+)
+=
+∏
+i:i→j
+2−d(j)
+i =pj.
+Similarly for every j ∈ F we have P (Aj = 1) = pj.
+Next we computeP (1,..., 1). Note that for every i there
+exists some ji∈ F with i→ j since otherwise we can
+decrease c∗
+i and improve the objective value of the dual
+linear program. Then ( A1,...,A n) = (1,..., 1), and in
+particular Aji = 1 only if Xi = 1. On the other hand,
+by deﬁnitions if Xi = 1 then Y (j)
+i = 1 for all j∈E. We
+conclude that (A1,...,A n) = (1,..., 1) is equivalent to
+Xi = 1 for all i. Therefore,
+P (1,..., 1) =
+∏
+i
+P (Xi = 1) =
+∏
+i
+2−c∗
+i =
+∏
+j
+p
+η∗
+j
+j ,
+where we used (F1).

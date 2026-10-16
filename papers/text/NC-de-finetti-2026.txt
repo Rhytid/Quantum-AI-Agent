@@ -1,0 +1,2826 @@
+=== page 1 ===
+A DYNAMICAL APPROACH TO
+NON-COMMUTATIVE DE FINETTI THEORY
+SIMONE DEL VECCHIO AND STEFANO ROSSI
+Abstract.We develop a dynamical framework for non-commutative
+de Finetti theory. We first establish the non-commutative Hewitt-
+Savage 0-1 law for quantum stochastic processes. We identify the
+factorization condition of the distribution of a spreadable process
+which characterizes tail-triviality, which is also characterized dy-
+namically in terms of a certain attractivity property of the distri-
+bution. These three equivalent ergodic conditions identify a dis-
+tinguished level in the non-commutative hierarchy of ergodic prop-
+erties, which all collapse to ergodicity in the classical probability
+setting.
+To pass from the ergodic to the general case, we construct the con-
+ditional expectation onto the tail algebra for a spreadable process,
+in the GNS representation of the distribution of the canonical bi-
+lateral extension of the process. In this representation we establish
+the non-commutative Olshen Theorem identifying the tail algebra
+with the stationary algebra, and with the exchangeable algebra
+when the process is exchangeable. The resulting conditional expec-
+tation in particular inherits the same type of factorization property
+as distributions satisfying the Hewitt-Savage 0-1 law. This factor-
+ization strengthens conditional independence conditions arising in
+previous literature, while collapsing to the same notion in the clas-
+sical case.
+This dynamical viewpoint leads to the identification of the minimal
+distributional symmetry underlying non-commutative de Finetti
+Theory, which we callweak spreadability, and which in the classical
+setting is equivalent to exchangeability. We prove that a stationary
+process is weakly spreadable if and only if its tail algebra admits
+a unique normal conditional expectation satisfying Hewitt-Savage
+type factorization, thereby establishing a general non-commutative
+de Finetti Theorem.
+Mathematics Subject Classification: 46L55, 46L53, 60G09,
+60G10, 46L09.
+Key words: Distributional symmetries, Spreadable processes, non-
+commutative ergodic theory, de Finetti Theorem
+1
+arXiv:2607.20342v1  [math.OA]  22 Jul 2026
+
+=== page 2 ===
+2 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+1.Introduction
+Two fundamental structural results in the classical theory of ex-
+changeable stochastic processes are the theorems of De Finetti and
+Hewitt-Savage. De Finetti’s theorem identifies exchangeable processes
+with those that are conditionally independent and identically distributed
+with respect to the tailσ-algebra, or equivalently, with mixtures of in-
+dependent and identically distributed processes. Complementing this
+result, the Hewitt-Savage 0-1 law characterizes the ergodici.i.d.case
+through the triviality of the tailσ-algebra. Together with the Olshen
+Theorem, which identifies the tailσ-algebra with both the stationary
+and exchangeableσ-algebras, these results provide an accomplished
+description of exchangeable processes.
+The extension of this picture to non-commutative probability is con-
+siderably more subtle. In contrast with the classical setting, where
+there is a unique notion of independence, several inequivalent notions of
+independence emerged in non-commutative probability following Voiculescu’s
+introduction of free probability [27]. Among them, tensor, free, Boolean,
+monotone and anti-monotone constitute Muraki’s five natural notions
+of independence [23]. Other forms have also been introduced, see e.g.
+[6, 26].
+The existence of several notions of independence naturally raises the
+question of how de Finetti theory should be extended beyond the clas-
+sical framework. The first major breakthrough in this direction was
+achieved by K¨ ostler and Speicher [18], who introduced the notion of
+quantum exchangeability and proved a free de Finetti theorem. Quan-
+tum exchangeability replaces classical exchangeability by the invariance
+under the action of Wang’s quantum permutation groups, which is a
+stronger symmetry, and characterizes free conditional i.i.d. with re-
+spect to the tail algebra. Their work established a new paradigm, in
+which a prescribed notion of conditional i.i.d. is characterized by a
+suitable quantum symmetry.
+Analogous de Finetti theorems were established for the remaining
+Muraki’s natural notions of independence by Liu in [19, 20, 21] and,
+more generally, for a variety of quantum symmetries associated with
+so-called easy quantum groups [4, 5, 21, 22].
+A different perspective was developed by K¨ ostler in [17]. Motivated
+by the theorem of Ryll-Nardzewski, identifying spreadability with ex-
+changeability in the classical setting, he proposed spreadability as the
+fundamental distributional symmetry in the non-commutative frame-
+work. It is worth mentioning that spreadability is also the distri-
+butional symmetry naturally shared by the various non-commutative
+
+=== page 3 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY3
+frameworks described above. Rather than starting from a prescribed
+notion of independence, spreadability itself is shown to imply a weak
+form of conditional independence, which in K¨ ostler’s terminology goes
+under the name of full conditional independence with respect to the tail
+algebra. Since in the classical setting conditional i.i.d. and spreadabil-
+ity/exchangeability determine each other, it is natural to ask whether
+this remains true in the non-commutative framework. The answer is
+negative: as shown in [15, 17], stationarity together with full condi-
+tional independence do not suffice to reconstruct spreadability.
+The present work addresses precisely this issue. Our guiding prin-
+ciple is that the appropriate notion of conditional independence as-
+sociated with the fundamental distributional symmetry should first
+be identified at the ergodic level through a suitable non-commutative
+analogue of the Hewitt-Savage 0-1 law. Accordingly, our first main re-
+sult establishes such a theorem for spreadable processes, Theorem 5.3.
+We prove that tail triviality is equivalent to a three-block factoriza-
+tion property of the distribution, which we call the forward-decoupling
+property, and, equivalently, to a dynamical attractivity property.
+This characterization naturally motivates a hierarchy of ergodic prop-
+erties. The classical theory admits several equivalent characterizations
+of ergodicity, whereas in the non-commutative setting these are known
+to be no longer equivalent. Our analysis organizes them into such a hi-
+erarchy, Theorem 5.12, and identifies the precise level occupied by the
+non-commutative Hewitt-Savage law. In particular, the factorization
+corresponding to the Hewitt-Savage level is genuinely stronger than the
+natural non-commutative analogue of the classical product factoriza-
+tion of moments. Furthermore, we show that the faithfulness assump-
+tions commonly adopted in the literature (e.g. in [4, 15, 17, 18]) force
+all levels of this hierarchy to coincide, motivating an approach that
+does not rely on such assumptions.
+The next step is to construct the canonical conditional expectation
+onto the tail algebra. Such a construction was obtained by K¨ ostler
+under faithfulness assumptions [17] and, by Liu for bilateral processes
+[20]. On the other hand, it is known that, without faithfulness, the GNS
+representation of the original (unilateral) process need not admit a sta-
+tionary normal conditional expectation onto the tail algebra [13, 20].
+This leads naturally to the GNS representation of the canonical bilat-
+eral extension of the process, in which we construct the canonical tail
+conditional expectation, Theorem 4.1, following [20], and we establish
+a non-commutative Olshen theorem, Theorem 3.2, identifying the tail
+algebra with the stationary algebra and, in the exchangeable case, with
+the exchangeable algebra. Note that the latter result is known not to
+
+=== page 4 ===
+4 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+hold in general in the GNS representation of the original process with-
+out faithfulness assumptions [13]. We then prove that the canonical tail
+conditional expectation of a spreadable process satisfies both the con-
+ditional forward-decoupling factorization property and K¨ ostler’s full
+conditional independence property, Theorem 6.3. Besides extending
+the de Finetti Theorem in [17] beyond the faithful setting, Theorem
+6.3 shows that the factorization singled out by the Hewitt-Savage er-
+godic level naturally persists in the conditional setting. This raises the
+natural question of whether adding the conditional forward-decoupling
+property restores the converse direction of K¨ ostler’s de Finetti theo-
+rem, namely whether stationarity together with full conditional inde-
+pendence and the conditional forward-decoupling property suffices to
+recover spreadability. The answer is again negative. Indeed, Gohm
+and K¨ ostler’s original counterexample in [15] can be seen to satisfy
+the conditional forward-decoupling property as well, showing that this
+additional factorization is still insufficient to characterize spreadabil-
+ity. A closer inspection of the proofs however reveals that the full
+strength of spreadability is only required to derive K¨ ostler’s full con-
+ditional independence. The remaining structural results rely instead
+on a weaker remnant of spreadability, which still suffices to establish
+the non-commutative Hewitt-Savage 0-1 law, the associated hierarchy
+of ergodic properties, the construction of the canonical tail conditional
+expectation together with the Olshen theorem, and the conditional
+forward-decoupling factorization. In particular, we mention that the
+latter implies K¨ ostler’s ordered conditional independence. This obser-
+vation naturally leads to the notion of weak spreadability, introduced
+in Definition 6.5.
+We show that weak spreadability is the minimal distributional sym-
+metry underlying the non-commutative de Finetti theory developed in
+this paper. Besides yielding all the structural results described above,
+it is exactly characterized by the following de Finetti theorem, Theo-
+rem 6.7: a process is weakly spreadable if and only if it is stationary
+and admits a conditional expectation onto the tail algebra satisfying
+the forward-decoupling property.
+Finally, we show in Corollary 6.8 that weak spreadability is a gen-
+uinely non-commutative phenomenon. In the commutative setting,
+weak spreadability coincides with spreadability/exchangeability, and
+more generally the same remains true for processes whose degree of
+non-commutativity is dialed down in a suitable sense. In particular,
+our de Finetti theorem, Theorem 6.7, recovers the classical de Finetti
+theorem exactly.
+
+=== page 5 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY5
+To complete the picture, the present work, together with the existing
+non-commutative de Finetti theorems in the literature yields a unified
+ergodic characterization of Muraki’s five natural notions of indepen-
+dence for infinite i.i.d. sequences. Each of them is precisely obtained
+by combining the Hewitt-Savage ergodic condition with the stronger
+distributional symmetry appearing in the corresponding de Finetti the-
+orem (or through a quotient factorization property in the tensor case).
+We now move on to describe how the sections of the paper are orga-
+nized. In Section 2, we establish the framework ofC ∗-quantum proba-
+bility spaces as a setup for quantum stochastic processes, which are here
+assumed to be unital for simplicity, with the general case of possibly
+non-unital processes being deferred to Section 7. We discuss the canon-
+ical bilateral extension procedure which allows us to obtain canonically,
+by stationarity, a double infinite quantum sequence of random variables
+out of a process indexed by the naturals.
+In Section 3, we provide the non-commutative formulation of the Ol-
+shen theorem, Theorem 3.2, that for a spreadable process the stationary
+algebra and the tail algebra in the Hilbert space of the bilateral exten-
+sion are the same, and the tail algebra of the process is isomorphic with
+the tail algebra in the larger Hilbert space via the natural restriction
+∗-automorphism. We also prove a Hilbert-space version of the Olshen
+theorem, Theorem 3.3, which settles invariant vectors rather than in-
+variant operators.
+In Section 4, we tackle the problem of establishing the existence of a
+unique normal, invariant conditional expectation onto the tail algebra
+in the GNS representation of the bilateral extension of the given pro-
+cess for a (weakly) spreadable quantum stochastic process, Theorem
+4.1. Among other things, the existence of such a conditional expecta-
+tion leads us to a characterization of extremality (of the distribution of
+the process) in terms of pureness of the restriction of the distribution to
+the tail algebra, Corollary 4.3, completing the partial characterization
+in [13, Proposition 5.4.3].
+In Section 5, we state and prove in Theorem 5.3 the general non-
+commutative Hewitt-Savage 0–1 law. Theorems 5.10 and 5.12 cover
+the hierarchy of ergodicities in the exchangeable and spreadable case,
+respectively. Proposition 5.15 and Remark 5.16 contain the discussion
+of how identically distributed tensor or free independent processes can
+be characterized in terms of the suitable invariance of the distribution
+combined with any of the three conditions in Theorem 5.3.
+Section 6 is devoted to the complete development of weak spreadability
+and the general non-commutative de Finetti Theorem.
+
+=== page 6 ===
+6 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+In Section 7, we complete our theory by dealing with possibly non-
+unital processes. The resulting analysis, which up to some techical-
+ities is the same as the unital case, is summed up in Theorem 7.5,
+where the four levels of ergodicities for non-unital processes are spelled
+out. By enlarging the class of processes dealt with, we can also take
+into account Boolean and monotone/antimonotone independence. In
+particular, in Examples 7.6 and 7.7 we discuss how, in the assump-
+tions used in the literature [19, 20], identically distributed Boolean or
+monotone/antimonotone independent processes can be characterized
+in terms of the suitable invariance of the distribution combined with
+any of the three conditions in Theorem 5.3.
+Section 8 is devoted to concrete examples and counterexamples illus-
+trating the sharpness of the results established throughout the paper.
+We investigate classes of quantum processes arising from quotients of
+free products, including the infinite non-commutative torus. In partic-
+ular, these examples show that the natural non-commutative analogue
+of moment factorization does not suffice to guarantee the triviality of
+the tail algebra. We also obtain a detailed description of the tail alge-
+bra of the extreme spreadable states on the infinite non-commutative
+torus, viewed as the distributions of quantum processes satisfying the
+twisted tensor commutation relations of the non-commutative torus.
+Finally, we observe that the techniques developed extend naturally to
+other twisted tensor products, including parafermion algebras [9].
+2.Preliminaries
+2.1.Quantum Stochastic Processes and Distributional Sym-
+metries.We start by establishing the non-commutative framework we
+work in, which is theC ∗-algebraic approach. AC ∗-probability space is
+a pair (B,ω) of a unitalC ∗-algebraBand a stateω:B→C. A (uni-
+tal) quantum stochastic process with (unital) sampleC ∗- algebraAis
+a quadruple (B,ω,A,{ι j}j∈N), where (B,ω) is aC ∗- probability space
+and{ι j :j∈N}is a family of unital ∗-homomorphismsι j :A→B,
+which are to be interpreted as the non-commutative random variables.
+Remark 2.1.For the time being, we will be focused on the unital
+case for sake of simplicity. However, the more general case of possi-
+bly non-unital sample algebras and/or non-unital∗-homomorphisms
+will be handled in Section 7. A few words on the approach we follow
+are now in order. First, the definition of non-commutative random
+variable includes the classical case. Indeed, the situation of a real-
+valued random variable corresponds exactly to takingA=C 0(R) and
+ι(f) =f(A),finC 0(R), the continuous functional calculus of some
+
+=== page 7 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY7
+possibly unbounded self-adjoint operatorAonH ω (the GNS space of
+πω, the GNS representation ofω). The case of a whole sequence of ran-
+dom variables is obtained by consideringA=C 0(R) andιj(f) =f(A j),
+jinN, for a sequence of possibly unbounded operators commuting with
+one another (that is for allj,kinNone hasf(A j)g(Ak) =g(A k)f(Aj)
+for allf,ginC 0(R)).
+In particular, the approach based on possibly non-unital∗-homomorphisms
+allows one to consider unbounded random variables while sticking to a
+C∗-algebra formalism.
+The distribution of a quantum stochastic process as above is the
+stateφon the infinite unital free product (with amalgamation of the
+unit)∗ NAgiven by
+φ(ij1(a1)ij2(a2)···i jn(an)) :=ω(ι j1(a1)ιj2(a2)···ι jn(an))
+for alln∈N,j 1 ̸=j 2 ̸=··· ̸=j n ∈N, wherei k :A→ ∗ NAis
+thek-th embedding ofAinto its infinite free product∗ NA. That the
+above formula defines a state on∗ NAcan be seen as follows. De-
+note byπ ω the GNS representation ofBcorresponding to the state
+ω. Consider the family{π ω◦ι j}j∈N of∗-homomorphisms ofA. By
+the universal property of the free product there exists a unique rep-
+resentationπ:∗ NA→B(H ω) such thatπ(i j1(a1)ij2(a2)···i jn(an)) =
+πω(ιj1(a1)ιj2(a2)···ι jn(an)), which meansφis nothing but the vector
+state associated withξ ω of the representationπ.
+Conversely, one can obtain a quantum stochastic process from any
+given stateφon∗ NAwithφitself as its distribution. This will haveA
+as its sample algebra,B=B(H φ),ωthe vector state corresponding to
+ξφ, and finallyι j =π φ◦ij for everyjinN.
+A quantum stochastic process is identically distributed if, for allj,k
+inN,ω◦ι j =ω◦ι k (or equivalentlyφ◦i j =φ◦i k) as states on the
+sample algebraA.
+The tail algebra of a quantum stochastic process will play a key role
+throughout the paper. In complete analogy with the classical case, it
+can be defined as the von Neumann algebra acting onH φ, the GNS
+space ofπ φ, given by
+(2.1)T φ :=
+\
+n∈N
+{πφ(ik(A)) :k≥n} ′′ =
+\
+n∈N
+{πω(ιk(A)) :k≥n} ′′.
+for a quantum stochastic process with distributionφ.
+If we start directly with a stateφon∗ NA, we can still define its tail
+algebraT φ by the first equality above, or equivalently as the tail algebra
+of the process induced byφ.
+
+=== page 8 ===
+8 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+We now move on to recall the main distributional symmetries com-
+ing from the classical setting. To do so, we need to remind the reader
+what the natural actions of permutations/monotone maps by indices
+on the free infinite product look like.
+Denote byP N the group of bijective maps ofNacting non-trivially only
+on finitely many naturals. The group operation is given by the com-
+position.
+The universal property of the free product C∗-algebra ensures that any
+functionf:N→Ncan be lifted to a∗-endomorphism Φ f :∗ NA→
+∗NA, uniquely determined by Φf(ij(a)) =i f(j) (a) for allj∈N,a∈A.
+In particular, the groupP N has a natural actionαofP N on∗ NAas a
+group homomorphismα:P N→Aut(∗ NA).
+Any stateφinS(∗ NA) invariant under the action ofα, i.e. such that
+φ◦ασ =φfor allσ∈P N, is called exchangeable, and so is the quantum
+stochastic process with distributionφ.
+Stationary states are those invariant under the shift, namely the en-
+domorphismτ:∗ NA→∗ NA, which is defined asτ(i j(a)) :=i j+1(a).
+Accordingly, a process whose distribution is stationary will be called
+stationary as well.
+Now consider the semigroup of all strictly increasing mapsh:N→N.
+Each of these maps induces an endomorphism of∗ NA. Any state
+S(∗NA) invariant under all these endomorphisms is called spreadable.
+Basically, a process is spreadable if and only if all of its subsequences
+have the same joint distribution as the whole process. For an anal-
+ysis of the relations between spreadability and exchangeability in the
+non-commuttaive setting the reader is referred to [2]. Here we limit
+ourselves to recalling that spreadability is a weaker symmetry than ex-
+changeability. Instead of working with the semigroup of all strictly
+increasing monotone maps, we may as well work with the smaller
+semigroupJ N of those stricly increasing mapshwith cofinite range,
+|N\h(N)|<∞. Indeed, verifying spreadability amounts to checking
+invariance at the level of the dense∗-algebra generated by finite words
+in∗ NA, and on any finite set ofNthe action of a stricly increasing map
+hcoincides with that of some ehinJ N.
+Recall thatJ N is generated as a semigroup by the partial shiftsθ h,
+h∈N,
+θh(k) :=
+(
+kifk <h,
+k+ 1 ifk≥0,
+see [17]. In order to refer to the various sets of invariant states, we set
+up the notationS PN(∗NA),S JN(∗NA), andS τ(∗NA) to denote the sets of
+
+=== page 9 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY9
+exchangeable, spreadable, and stationary states, respectively.
+In many examples the variables of the quantum process may satisfy
+relations, with the classical case corresponding to (a commutative sam-
+ple algebra and) commuting variables. For this reason, it is useful to
+establish terminology tailored to the situations where the distribution
+of the process actually comes from a suitable quotient of the infinite
+free product, as is done in the following definition.
+Definition 2.2.We say that the distributionφof a quantum stochastic
+process with sample algebraAfactorizes through the quotient∗ NA/I,
+for some two-sided idealI, ifφ=eφ◦p I for some stateeφon∗ NA/I,
+withp I :∗ NA→∗ NA/Ibeing the canonical projection.
+Remark 2.3.Many results in theW ∗-framework used in the litera-
+trure are stated under the assumption that the distribution is a faithful
+state on the von Neumann algebra generated by the process (see e.g.
+[4, 15, 17, 18]). The corresponding hypothesis in theC ∗-setting is that
+the GNS vectorξ φ be separating for the von Neumann algebra gener-
+ated by the process,R φ :=π φ(∗NA)′′.
+It is worth recalling that, in general, in order for the GNS vectorξ φ
+to be separating for the von Neumann algebra generated by the GNS
+representation of the stateφon aC ∗-algebraB, it is necessary and
+sufficient that the support ofφin the bidualB ∗∗ lies in the center of
+B∗∗, see e.g. [24, p. 15]. Since the latter terminology is more concise,
+even though we will only make use of the former characterization, we
+shall simply say that the state has central support when referring to
+this property. Clearly, all of the states of a commutativeC ∗-algebra
+have central support.
+We end this preliminary present section with some notation used
+consistently in the proofs of many results of the paper.
+If Φ is a∗-endomorphism of aC ∗-algebraBandφis a Φ-invariant
+state, then it is possible to define an isometryVΦ onH φ asV ϕπφ(b)ξφ :=
+πφ(Φ(b))ξφ, for allbinB. We mention thatV Φ is also known as the
+implementing isometry of Φ on the GNS representation ofφ, although
+VΦπφ(b)V∗
+Φ may in general differ fromπ φ(Φ(b)). However, if Φ is a∗-
+automorphism, in which caseV Φ is a unitary, then the adjoint action
+ofV ϕ does implement the action of Φ.
+2.2.Bilateral Extension and Implementation of the Shift.Be-
+cause the shiftτacts on the infinite free product indexed byN,∗ NA,
+as a proper∗-endomorphism (τis injective but not surjective), it need
+
+=== page 10 ===
+10 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+not lift to a normal∗-endomorphism of the von Neumann algebra gen-
+erated by the GNS representation of any given shift-invariant state.
+By normal implementation of the shift in the GNS representation of a
+stationary stateφwe mean the normal∗-endomorphismeτofπ φ(∗NA)′′
+uniquely determined byeτ(πφ(x)) =π φ(τ(x)),xin∗ NA. When such
+an implementation exists, we simply denote it byτsince it is uniquely
+determined by the shift at theC ∗-algebra level.
+As shown in [13, 20], examples can be given of exchangeable states
+in whose GNS representation the shift cannot implemented as a nor-
+mal∗-endomorphism. In such cases, in the GNS representation of the
+given state, as a drawback of the fact that the shift does not act as
+a normal∗-endomorphism on the whole von Neumann algebra, it is
+not possible to identify the tail algebra with the shift-invariant von
+Neumann subalgebra, nor is it possible to exhibit a normal conditional
+expectationEonto the tail algebra which is shift-invariant (that is
+E(πφ(x)) =E(π φ(τ(x))) for allxin∗ NA). For completeness’ sake
+we recall here what is meant by normal conditional expectation in the
+non-commutative setting an discuss an example of a stationary state
+for which the shift admits no normal implementation.
+Definition 2.4.A normal conditional expectationE:M→Nfrom
+a von Neumann algebraMonto a von Neumann subalgebraN⊆Mis
+a normal, contractive, completely positive projection ontoN(E=E 2
+andE(n) =nfor allninN) such thatE(nmn ′) =nE(m)n ′ for allm
+inMandn,n ′ inN.
+Example 2.5.In[13, Example 5.2.1]the authors consider the sample
+algebra algebraA=C 3 with generatora= (1,−1,0). Consider the
+Hilbert spaceℓ 2(N0)with canonical orthonormal basis{v n :n≥0}.
+For everyn≥1, define the representationsι n :A→B(ℓ 2)by
+ιn(a) =e 0,n +en,0,
+wheree n,m is the rank-one operatore n,m(x) =⟨x,v m⟩vn,xinℓ 2(N0).
+For every finite permutationσofN, consider the unitaryU s acting on
+ℓ2(N)asU σvn =v σ(n) Uσv0 =v 0.
+Letπ:∗ NA→B(ℓ 2(N0))be the corresponding representation, that
+is the representation of∗ NAuniquely determined byπ(i k(a)) =ι k(a),
+k∈N. Consider the stateφon∗ NAgiven byφ(x) =⟨π(x)v 0,v 0⟩,x
+in∗ NA. As observed in the mentioned paper, the GNS representation
+ofφisπitself sincev 0 is cyclic (πis actually irreducible in that its
+range coincides with the unitalization of the algebra of compact oper-
+ators onℓ 2(N)). We next show thatτdoes not extend to a normal
+∗-endomorphism ofB(ℓ 2(N)). To this end, we start by noting that
+
+=== page 11 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 11
+e0,0 =ι n(a2)ιn+1(a2)ande n,n =ι n(a2)−ι n(a2)ιn+1(a2), for alln≥1.
+Therefore, if the shift could be extended, we would haveτ(e 0,0) =e 0,0
+andτ(e n,n) =e n+1,n+1 for alln≥1. However, such aτcannot be
+normal. Indeed, from P
+n≥0en,n =Iin the strong operator topology,
+we find
+I=τ(I) =τ(
+X
+n≥0
+en,n) =
+X
+n≥0
+τ(en,n) =e 0,0 +
+X
+n≥1
+en+1,n+1 =I−e 1,1,
+which is a contradiction.
+As shown in[13], the tail algebraT φ is isomorphic withC 2 as it is
+the algebra generated bye 0,0, and coincides with the subalgebra fixed
+by the adjoint action of allU σ. However, no normal shift-invariant
+conditional expectationE:B(ℓ 2(N))→T φ exists, that is there does
+not exist any normal conditional expectationEonto the tail algebra
+such thatE(π φ(a)) =E(π φ(τ(a))). Indeed, by stationarity we would
+haveE(e 0,0) =e 0,0 andE(e n,n) = 0for alln≥1(becauseE(e n,n) =
+E(en+k,n+k)for allkande n+k,n+k tends to0in the weak operator topol-
+ogy askdiverges). But thenE(I) =E( P
+n≥0en,n) =e 0,0̸=I.
+Notice instead that on the infinite free product indexed byZ,∗ ZA,
+the shiftτ, which is again uniquely determined byτ(i k(a)) =i k+1(a),
+kinZ,ainA, acts as a∗-automorphism.
+If one starts with a shift-invariant stateφon∗ NA, then there exists a
+unique shift-invariant extension,φ Z, to the largerC ∗-algebra∗ ZAby
+virtue of the following proposition. The stateφ Z can be interpreted as
+the distribution of the extended bilateral process, which is obtained by
+symmetry out of the original process indexed byN.
+Lemma 2.6.The restriction mapS(∗ ZA)τ∋η7→η↾ ∗NA∈S(∗ NA)τ is
+an affine homeomorphism of compact convex sets.
+Proof.The restriction map is easily seen to be injective. As for its
+surjectivity, starting from aτ-invariant stateη 0 on∗ NA, one first defines
+a sequence of states{η n :n∈N}, whereη n is the state on∗ AnA, with
+An :={−n,...,0,1,...}, defined asη n :=η 0◦τ n. Now the sought
+shift-invariant extension ofη 0 is the unique stateηon∗ ZAsuch that
+the restriction ofηto∗ AnAisη n for everyn.
+□
+For the sequel, we will need to consider the GNS representation,πφZ,
+of the extended stateφ Z on∗ ZAas a representation of the smaller free
+product,∗ NA. We then define the two von Neumann algebras
+Rφ :=π φ(∗NA)′′,R φZ :=π φZ(∗NA)′′,
+
+=== page 12 ===
+12 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+and note thatH N :=πφZ(∗NA)ξφZ is a∗ NA-invariant subspace, which
+is, as a representation of∗ NA, unitarily equivalent to the GNS repre-
+sentation of the stateφ.
+Finally, we denote by Φ :R φZ →R φ the∗-homomorphism given by
+Φ(T) =T↾ HN,TinR φZ.
+The following Proposition offers an initial indication that the GNS
+representation of the canonical bilateral extensionπ φZ is the natural
+framework for our analysis.
+Proposition 2.7.The restriction∗-homomorphismΦ :R φZ→R φ is
+a∗-isomorphism of von Neumann algebras if and only if the shiftτof
+∗NAadmits a (unique) normal implementation onR φ.
+Proof.If Φ is a∗-isomorphism, then the normal implementation of the
+shift onR φ is obtained as Φ◦τ◦Φ −1, whereτis the shift onR φZ.
+For the converse implication, let us suppose that the shift admits a
+normal implementationeτonRφ. As the equality Φ◦adUτ =eτ◦Φ, where
+Uτ is the implementing unitary ofτ(thought of as a∗-automorphism of
+∗ZA) inπφZ, clearly holds at theC∗-algebra level, it continues to hold at
+the von Neumann level as well. In particular, Ker Φ is a shift-invariant
+ideal. We are now ready to show that Φ is injective. IfTinR φZ is
+such that Φ(T) = 0, then by shift-invariance of Ker Φ we must have
+Φ(Uk
+τTU−k
+τ ) = 0 for all naturalsk, that isU k
+τTU−k
+τ πφZ(x)ξφZ = 0 for
+allxin∗ NA, thusTπ φZ(τ−k(x))ξφZ = 0 (theτappearing in the right-
+hand side of this equality is the shift automorphism on∗ ZA). SinceS
+kτ−k(∗NA) is a norm dense∗-algebra of∗ ZA, we finally see thatT
+vanishes on a norm dense subspace and thusT= 0.□
+Remark 2.8.We would like to observe that ifφhas central support,
+see Remark 2.3, thenτcertainly admits a normal implementation on
+Rφ, which means Proposition 2.7 applies yielding the∗-isomorphism
+RφZ
+∼= Rφ. In particular, this applies to the classical/commutative
+case.
+To see that the shift has a normal implementation, note thatπφ(x) = 0
+impliesπ φ(τ(x)) = 0 by the assumption on the central support ofφ.
+Therefore, the mapπφ(x)7→π φ(τ(x)) is a well-defined∗-endomorphism
+ofπ φ(∗NA). Furthermore, sinceφis shift-invariant, the above map is
+isometric w.r.t. the GNS Hilbert space topology. The conclusion then
+follows from this general fact: the Hilbert space topology induced by
+a faithful state on a von Neumann algebra is the same as its strong
+operator topology on bounded sets.
+We end the section with the following terminology that will be used
+throughout the paper.
+
+=== page 13 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 13
+Definition 2.9.An elementx∈ ∗ NA(resp.x∈ ∗ ZA,x∈R φZ)
+is said to belocalizedifx∈ ∗ F A⊂ ∗NA(resp.x∈ ∗ F A⊂ ∗ZA,
+x∈π φZ(∗F A)′′⊂R φZ), whereF⊂N(resp.F⊂Z) is a finite subset
+and the inclusion is the obvious one. In such a case we will say that the
+support ofxis contained inF. Given two (finite) subsetsF,G⊂N, we
+witeF <Gto mean that maxF <minG, and analogously forF >G.
+For localized elementsx,ywe will say that the support ofxlies to the
+left/right of (resp. is disjoint from) that ofyifF X < FY/FX > FY
+(resp.F X∩F Y =∅) for some finite setsF X,FY which contain the
+support ofx,yrespectively.
+3.Non-commutative Olshen theorem
+It is a known fact that the Olshen theorem may fail to hold in the
+GNS representation of an exchangeable state on the free product in-
+dexed byN. One reason of the failure is that the stationary algebra
+might not be defined, as a consequence of the fact that the shift itself
+may not be implemented as a normal∗-endomorphism on the GNS
+representation of the given state, see Example 2.5. Another is that
+the tail algebra may be stricly included in the exchangeable algebra.
+Counterexamples of this sort show up even in the very tame case of
+processes whose distribution factorizes through tensor products in the
+sense of Definition 2.2. In the following example,p:∗ NA→⊗ NAis
+the canonical quotient projection.
+Example 3.1.On the sample algebraA:=M 2(C), we consider the
+stateω(A) =A 1,1 (ωis the vector state associated withe 1, with{e 1,e 2}
+being the canonical orthonormal basis ofC 2).
+On the infinite tensor product⊗ NA, we consider the product state⊗ω,
+which is obviously permutation invariant. Sinceωdoes not have central
+support, in the sense recalled in Remark 2.3, its product⊗ωdoes not
+have central support either, as follows from e.g. Proposition B.1. Now,
+if the fixed-point algebra under permutation in the GNS representation
+of (⊗ω◦p,∗ NA),(π ⊗ω◦p(∗NA)′′)PN, were trivial, then by[7, Theorem
+4.3.20]the product state would have central support, which is not the
+case.
+On the other hand, the tail algebra of(⊗ω◦p)is trivial, as could be
+verified directly. However, the fact that the tail algebra is trivial can
+also be seen as a consequence of Theorem 5.3.
+We complete the description of our setting with a few definitions
+and notation. We recall thatπ φZ denotes the GNS representation of
+the canonical extensionφ Z on∗ ZA, thought of as a representation of
+the smaller free product,∗ NA.
+
+=== page 14 ===
+14 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+The tail algebra ofφseen in the larger Hilbert space of the bilateral
+extension is
+TφZ :=
+\
+n
+{πφZ(ιk(A)) :k≥n} ′′.
+The shift-invariant algebra is
+Rτ
+φZ :={T∈R φZ :TU τ =U τT}.
+Finally, if the stateφis also exchangeable, then we can define the
+exchangeable algebra as well by
+RPZ
+φZ :={T∈R φZ :TU σ =U σT,σ∈P Z},
+whereU σ is the unitary operator acting onH φZ that implements the
+automorphism of∗ ZAinduced by the permutationσinP Z.
+We are ready to state the non-commutative Olshen Theorem.
+Theorem 3.2.For any spreadable stateφon∗ NAone has
+Rτ
+φZ =T φZ.
+Moreover, the restriction mapΦ :T φZ→T φ is a∗-isomorphism.
+Ifφis also exchangeable, then one has
+RPZ
+φZ =R τ
+φZ =T φZ.
+Proof.We start by dealing with the exchangeable case, where more
+equalities need to be proved.
+The inclusionsR τ
+φZ⊆T φZ⊆R PZ
+φZ can be verified as follows. For the
+first, any shift-invariantTliesa fortioriin the tail algebraT φZ due
+to the equalityT=τ n(T), for alln. For the second, anyTin the
+tail algebraT φZ is fixed by all permutations: ifσis a permutation
+such thatσ(k) =kfor allk≥nthenU σTU∗
+σ =TasTlies in
+{πφZ(ιk(A)) :k≥n} ′′.
+The chain of equalities in the statement will then follow as long as we
+show thatR PZ
+φZ ⊆R τ
+φZ. To this end, we claim that the shift can be
+obtained as the following limitτ= lim n ad (Uσ−n···U σn), which holds
+pointwise in the strong operator topology (σ i is the permutation that
+swapsiandi+ 1). IfTinR φZ is fixed by all permutations, we have
+adUσ−n···σn(T) =Tfor alln, hence, taking the limit asngoes to infin-
+ity, we findτ(T) =T,i.e.TinR τ
+φZ.
+As for the claim, it is enough to show that the sequence of unitaries
+Uσ−n···U σn strongly converges toUτ. Since the sequence{U σ−n···U σn :
+n}is obviously bounded, it suffices to verify the limit equality on
+vectors of the formπ φZ(x)ξφZ withx=ι i1(a1)···ι ik(ak) a localized
+monomial of the free product∗ ZA. But for such a vector we have
+
+=== page 15 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 15
+Uσ−n···U σnπφZ(x)ξφZ =π φZ(τ(x))ξφZ as soon asnis greater than
+max{|i1|,...,|i k|}.
+We now tackle the case of spreadable stateφ. Since the inclusion
+Rτ
+φZ ⊆T φZ is trivially satisfied, we need only show thatT φZ ⊆R τ
+φZ
+holds as well. LetTbe an element ofT φZ. We will prove thatτ(T) =T
+by showing that for any localizeda,bin∗ ZAone has
+⟨τ(T)π φZ(a)ξφZ,πφZ(b)ξφZ⟩=⟨Tπ φZ(a)ξφZ,πφZ(b)ξφZ⟩.
+This can be seen as follows. Sincea,bare localized, there exists
+ninNsuch that the support of bothaandblies to the left of
+n. BecauseTsits in the tail algebra, we can assume its support
+lies entirely to the right ofn. By spreadability ofφwe must have
+⟨τ(T)π φZ(a)ξφZ,πφZ(b)ξφZ⟩=⟨Tπ φZ(a)ξφZ,πφZ(b)ξφZ⟩by considering a
+monotone map ofZto itself which shifts by +1 the support ofTwhile
+not moving at all the supports ofaandb.
+Finally, we are left with the task of proving that the restriction map
+Φ in the statement is a∗-isomorphism. To this end, we start by
+observing that the restriction map sendsT φZ toT φ because one has
+Φ({πφZ(ιk(A)) :k≥n} ′′) ={π φ(ιk(A)) :k≥n} ′′ for everyn.
+We move on to prove that the restriction mapT φZ∋T7→T↾ HN∈T φ
+a∗-isomorphism. We first show that Φ is surjective. As already re-
+marked, for everynone has Φ({π φZ(ιk(A)) :k≥n} ′′) ={π φ(ιk(A)) :
+k≥n} ′′. Now ifSlies in T
+n{πφ(ιk(A)) :k≥n} ′′, then there existT n
+in{π φZ(ιk(A)) :k≥n} ′′ such that Φ(Tn) =Sand∥T n∥≤∥S∥for all
+n. By boundedness the sequence{T n :n∈N}has at least one accu-
+mulation point, sayT, in the weak operator topology. By construction
+Tsits in T
+n{πφZ(ιk(A)) :k≥n} ′′ and Φ(T) =Sby continuity of Φ
+w.r.t. the weak operator topology.
+To conclude, let us prove that Φ is injective as well. Suppose thatT
+inT φZ is such that Φ(T) = 0, that isTπ φZ(x)ξφZ = 0 for allxin∗ NA.
+Thanks to the first part, such aTis fixed by the shift, meaning we
+have (Uτ)nT(Uτ)−nπφZ(x)ξφZ = 0, henceT(U τ)−nπφZ(x)ξφZ = 0, from
+which it follows thatT= 0 as S
+nτ−n(∗NA) is a norm dense∗-algebra
+of∗ ZA.□
+In order to state the Hilbert-space version of the non-commutative
+Olshen theorem, we first need to set some notation. In particular,
+we need to consider subpaces of fixed vectors under the action of the
+implementing isometries. Ifφis a spreadable state of∗ NA, then one
+may consider the subspace of shift-invariant vectors
+Hτ
+φ :={x∈H φ :V τx=x},
+
+=== page 16 ===
+16 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+whereVτ is the proper isometry acting onHφ determined byVτπφ(x)ξφ =
+πφ(τ(x))ξφ,xin∗ NA. We denote byE φ the orthogonal projection onto
+Hτ
+φ. We consider the subspace ofJ N-invariant vectors
+HJN
+φ :={x∈H φ :V hx=xfor allh∈J N},
+whereV h is the isometry implementingα h, for allhinJ N.
+If the stateφis also exchangeable, then we can define the subspace of
+exchangeable vectors as well, that is
+HPN
+φ :={x∈H φ :U gx=xfor allg∈P N}.
+Theorem 3.3.For any spreadable stateφon∗ NAone has
+Hτ
+φ =H JN
+φ = Tφξφ.
+Ifφis also exchangeable, then
+Hτ
+φ =H JN
+φ =H PN
+φ = Tφξφ.
+Proof.We start by dealing with the case of a spreadable stateφ.
+As for the inclusionH τ
+φ⊂H JN
+φ , ifV Nidenote the isometry associated
+with theN-th partial shiftθ N, we have the equalityVNVN−1 = (VN−1)2,
+from which the inclusion follows asV 0 =V τ. The converse inclusion
+HJN
+φ ⊂H τ
+φ is trivial because the shift is one of the maps ofJ N.
+To conclude, we need to show thatH τ
+φ = Tφξφ.
+The inclusion Tφξφ⊂H τ
+φ will follow once we have proved thatT φξφ⊂
+Hτ
+φ, becauseH τ
+φ is a closed subspace. IfTis inT φ, then by Theorem
+3.2 there exists a (unique) eTinR τ
+φZ such that Φ(eT) =T. Calculating
+the equalityU τeT= eTUτ onξ φZ we findV τTξφ =Tξ φ,i.e.Tξ φ is in
+Hτ
+φ.
+Let us move on to prove the converse inclusion. Letybe a vector in
+Hφ fixed byV τ. By cyclicity ofξ φ, we can obtainyas a norm limity=
+limkπφ(xk)ξφ, for a suitable sequence{xk :k∈N}of localized elements
+of∗ NA. Denote byE φ the orthogonal projection onto the fixed-point
+subspace ofV τ. We clearly havey=E φy= lim kEφ(πφ(xk)ξφ).
+We now need to recall that by von Neumann’s ergodic theoremE φ =
+limn
+1
+n
+Pn−1
+k=0Vk
+τ , with the limit being understood in the strong operator
+topology. But then for anyxin∗ NAwe have:
+Eφ(πφ(x)ξφ) = lim
+n
+1
+n
+n−1X
+k=0
+Vk
+τ πφ(x)ξφ = lim
+n
+1
+n
+n−1X
+k=0
+(πφZ(τk(x)))ξφ
+= eTξφ
+where eTis any accumulation point in the weak operator topology of
+the sequence{ 1
+n
+Pn−1
+k=0(πφZ(τk(x))) :n∈N}, which by construction is
+
+=== page 17 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 17
+inR τ
+φZ. In particular, its restriction toH φ provides an elementTof
+the tail algebra such thatE φ(πφ(x)ξφ) =Tξ φ.
+Finally, ifφis also exchangeable, thenH PN
+φ ⊆H τ
+φ due to the limit
+equalityV τ = limnUσ0···U σn (whereσ i is the permutation that swaps
+iandi+ 1), which can be verified as in the proof of Theorem 3.2. The
+converse inclusionH τ
+φ ⊆H PN
+φ follows from the equalityH τ
+φ = Tφξφ
+because the tail algebraT φ is fixed by all permutations.□
+For any spreadable stateφ, we will henceforth denote byE φ the
+orthogonal projection onto any of the the subspaces above, without
+any confusion occurring, in that they are all the same subspace by
+virtue of Theorem 3.3.
+As a first consequence of the aboveL 2 version of the Olshen Theorem,
+we show that the exchangeable states make up a face of the simplex of
+spreadable states, which is a face of the simplex of stationary states.
+Corollary 3.4.Each convex subset in the chain of inclusionsS PN(∗NA)⊂
+SJN(∗NA)⊂S τ(∗NA)is a face of the convex sets in which it is contained.
+Proof.We will only prove thatS PN(∗NA) is a face ofS τ(∗NA). for the
+other cases can be handled in the exact same way.
+Letφbe an exchangeable state that is obtained as a non-trivial convex
+combinationφ=tω+ (1−t)η,t∈(0,1), of two stationary states
+ω,η. In particular,ωis dominated byφ, and therefore there exists a
+positive operatorSinπ φ(∗NA)′ such thatω(x) =⟨π φ(x)Sξφ,ξφ⟩for all
+xin∗ NA.
+We claim thatSξ φ is inH τ
+φ. If this is the case, then by Theorem 3.3
+Sξφ lies inH PN
+φ as well, meaning thatω(andη) is exchangeable.
+All we have to do to conclude is prove the claim. For allxin∗ NAwe
+have
+⟨πφ(x)ξφ,Sξφ⟩=ω(x) =ω(τ(x)) =⟨π φ(τ(x))ξφ,Sξφ⟩
+=⟨V τπφ(x)ξφ,Sξφ⟩=⟨π φ(x)ξφ,V ∗
+hSξφ⟩,
+which, by cyclicity of the GNS vector impliesV ∗
+hSξφ =Sξ φ. The
+conclusion now follows from this general fact: for any isometryVon a
+Hilbert spaceV ∗y=yimpliesVy=y.□
+4.Existence of the conditional expectation onto the
+tail algebra
+Examples of exchangeable statesφon∗ NAare known for which there
+is no invariant normal conditional expectation fromπ φ(∗NA)′′ onto the
+tail algebra. For instance, such a situation occurs in the setting of
+Example 2.5, as a consequence of the fact that the shift cannot be
+
+=== page 18 ===
+18 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+implemented as a normal∗-endomorphism of the von Neumann alge-
+bra generated in the GNS representation of the state. However, this
+difficulty can be overcome by working in the GNS representation of
+the extended stateφ Z, where the shift is implemented as the adjoint
+action of a unitary. Importantly, the conditional expectation obtained
+from the shift is natural because the tail algebra defined on the larger
+Hilbert space is∗-isomorphic to the tail algebra in the∗-isomorphism
+induced by the restriction map by Theorem 3.2.
+Conditional expectations of this type were first constructed by K¨ ostler
+in [17] under the additional assumption that the invariant state is faith-
+ful on the von Neumann algebra generated by the variables (i.e.in our
+setting the state has central support). Liu later removed the faith-
+fulness assumption in theW ∗-setting for processes indexed byZ[20].
+Because our setting is slightly different, and the conditional expectation
+is crucial in our analysis, we include a complete self-contained proof of
+its existence.
+Theorem 4.1.For any spreadable stateφon∗ NAthere exists a unique
+normal shift-invariant conditional expectationE τ :R φZ→T φZ, which
+is alsoφ-invariant, i.e.⟨E τ(T)ξφZ,ξφZ⟩=⟨Tξ φZ,ξφZ⟩for allTinR φZ.
+Moreover, forT=π φZ(a), withabeing a localized element of∗ NA, one
+has
+Eτ(T) = lim
+n→∞
+πφN(τn(a))
+in the weak operator topology ofB(H φZ).E τ isJ N-invariant, that is
+for allhinJ N one hasE τ(πφZ(αh(a))) =E τ(πφZ(a)),ain∗ NA.
+In addition, ifφis also exchangeableE τ is permutation invariant.
+Proof.We start by establishing the existence of the stated limit for
+T=π φZ(a), for some localizedain∗ NA. Ifb,care localized elements
+in∗ ZA, one has
+⟨πφZ(τn(a))πφZ(b)ξφZ,πφZ(c)ξφZ⟩=φ Z(c∗τn(a)b) =φ Z(c∗τn+1(a)b)
+=⟨πφZ(τn+1(a))πφZ(b)ξφZ,πφZ(c)ξφZ⟩
+for allnsufficiently large. Indeed, as soon asnis so large that the
+support ofτ n(a) lies entirely to the right of the supports of bothband
+c, there exists a monotone map that does not displace the supports of
+bandcand shifts by 1 that ofτ n(a). This shows that for anyx,yin
+the dense subspaceπ φZ((∗ZA)alg)ξφZ, the limit limn⟨πφZ(τn(a))x,y⟩ex-
+ists and defines a bounded sequilinear form (whose norm is bounded by
+∥a∥). By boundedness, this form can be (uniquely) extended to a sequi-
+linear form on the wholeH φZ. By the Riesz representation theorem,
+this form is associated with a unique bounded operator,E τ(πφZ(a)),
+
+=== page 19 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 19
+which by construction is the limit in the weak operator topology of the
+sequence{π φZ(τn(a)) :n∈N}. By linearity the mapE τ is thus defined
+on the subalgebraπ φZ((∗ZA)alg).
+We next note that for all localizedain∗ NAandb,cin∗ ZAthe equality
+(4.1)
+⟨Eτ(πφZ(a))πφZ(b)ξφZ,πφZ(c)ξφZ⟩=⟨π φZ(a)πφZ(τk(b))ξφZ,πφZ(τk(c))ξφZ⟩
+holds for everyk <0 such that the supports ofτ k(b) andτ k(c) lies to
+the left of 0.
+Indeed, sinceE τ◦τ=τ◦E τ, for all integerskwe have
+⟨Eτ(πφZ(a))πφZ(b)ξφZ,πφZ(c)ξφZ⟩=⟨E τ(πφZ(a))πφZ(τk(b))ξφZ,πφZ(τk(c))ξφZ⟩
+and the right-hand side ot the above equality can be expressed as
+lim
+n
+⟨πφZ(τn(a))πφZ(τk(b))ξφZ,πφZ(τk(c))ξφZ⟩=⟨π φZ(a)πφZ(τk(b))ξφZ,πφZ(τk(c))ξφZ⟩
+thanks toJ Z-invariance ofφ Z (for any fixedn, consider a permutation
+that fixes negative integers and shifts bynthe support ofa).
+If now{T α :α∈I}is a bounded net of localized elements ofπ φZ(∗ZA)
+that converges to 0 in the weak operator topology, we have that
+(4.2) lim
+α
+Eτ(Tα) = 0
+as well. Indeed, for all localizedb,cin∗ ZA, we have
+lim
+α
+⟨Eτ(Tα)πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+α
+⟨Tα(πφZ(τk(b))ξφZ,(πφZ(τk(c))ξφZ⟩
+= 0,
+for a suitablek <0, which gives the desired convergence by bounded-
+ness of the net{T α :α∈I}.
+We are now in a position to prove that the mapE τ can be extended
+to the whole von Neumann algebraR φZ. LetTbe an element ofR φZ
+and let{T α :α∈I}be a bounded net converging toTin the weak
+operator topology. A straightforward application of (4.1) gives that
+{Eτ(Tα) :α∈I}is a (bounded) Cauchy net in the weak operator
+topology, and therefore it converges o a bounded operator, which we
+may safely denote byE τ(T), in that it does not depend on the choice
+of the approximating net by (4.2).
+Equation (4.1) continues to hold forE τ(T) forTin the von Neumann
+algebra. Indeed, for all localizedb,cin∗ ZA, we have
+⟨Eτ(T)πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+α
+⟨Eτ(Tα)πφZ(b)ξφZ,πφZ(c)ξφZ⟩=
+lim
+α
+⟨TαπφZ(τk(b))ξφZ,(πφZ(τk(c))ξφZ⟩=⟨Tπ φZ(τk(b))ξφZ,(πφZ(τk(c))ξφZ⟩.
+From this it easily follows that the restriction of the mapE τ to the
+unit ball ofR φZ is continuous in the strong/weak operator topology.
+
+=== page 20 ===
+20 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Note that the mapE τ is shift invariant,i.e.E τ◦τ=τ◦E τ =E τ.
+This is in fact a straightforward consequence of the weak continuiy
+ofE τ and the fact that the equality holds on the dense∗-subalgebra
+spanned by elements of the formπ φZ(a), withain∗ NAlocalized, as we
+have already remarked. In particular, it follows that the range ofE τ
+is contained inT φZ. We next show that the range ofE τ is the whole
+Tτ
+φZ (that isR τ
+φZ by Theorem 3.2) as a consequence of the fact thatT
+inR τ
+φZ impliesE τ(T) =T.
+LetTbe a shift-invariant element ofR φZ and let{t α :α∈I}a
+net in the dense subalgebra of localized elements of∗ NAsuch that
+limαπφZ(tα) =Tin the weak operator topology. Supposeb,care lo-
+calized elements in∗ ZAwith supports contained in{k∈Z:k≤N}.
+SinceTis shift-invariant, we may safely assume that the support of
+eacht α lies to the right ofN(for if this were not the case, we could
+consider the shifted net{τ N(tα) :α∈I}, which would still approxi-
+mateT). But then we have
+⟨Eτ(T)πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+α
+⟨Eτ(πφZ(tα))πφZ(b)ξφZ,πφZ(c)ξφZ⟩=
+lim
+α
+lim
+n
+⟨(πφZ(τn(tα))πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+α
+lim
+n
+φZ(c∗τn(tα)b).
+Now for any fixednandαthere exists a monotone map that does not
+move the supports ofb,cand shifts bynthat oft α. ByJ Z-invariance
+ofφ Z, we then haveφ Z(c∗τn(tα)b) =φ Z(c∗tαb). Going back to the
+previous computation, we find
+⟨Eτ(T)πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+α
+φZ(c∗tαb) =⟨Tπ φZ(b)ξφZ,πφZ(c)ξφZ⟩,
+henceE τ(T) =Tby cyclicity of the GNS vector.
+In order to conclude thatE τ is a conditional expectation, it is enough
+to make sure thatE τ is a contraction by Tomiyama’s lemma see [8,
+Theorem 1.5.10]. Note thatE τ is certainly contractive on the dense
+subalgebraπφZ((∗NA)alg) because thereEτ is simply given as the limit of
+a sequence of∗-endomorphisms. The general case is achieved by density
+and lower semicontinuity of the operator norm, for if{T α :α∈I}is
+an approximating net ofTinR τ
+φZ with∥T α∥≤∥T∥for allα(such a
+net exists by virtue of the Kaplansky density theorem) we have
+∥Eτ(T)∥≤lim sup
+α
+∥Eτ(Tα)∥≤lim sup
+α
+∥Tα∥≤∥T∥.
+As for the uniqueness ofE τ, supposeFis a normal shift-invariant
+conditional expectation ontoR τ
+φZ. The following computation shows
+thatFequalsE τ on all elements of the formπ φZ(a), withabeing a
+
+=== page 21 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 21
+localized element of∗ NA:
+F(πφZ(a)) =F(τ n(πφZ(a))) = lim
+n
+F(τ n(πφZ(a))) =F(lim
+n
+τn(πφZ(a)))
+=F(E τ(πφZ(a))) =E τ(πφZ(a)).
+By normality this in turn entails thatF=E τ, as the elements above
+span a weakly dense∗-subalgebra ofR φZ.
+We are left with the task of verifying thatE τ isJ N invariant. Lethbe
+a fixed element ofJ N. By norm density it suffices to verify the desired
+equality on elements of the formπ φZ(a) witha=i j1(a1)···i jl(al), To
+this end, letb,clocalized elements of∗ ZA. We have
+⟨Eτ((πφZ(αh(a)))πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+n
+φZ(c∗τn(αh(a))b).
+Now, as soon asnis large enough, there exists a monotone mapgthat
+is the identity on the supports of bothbandcand sendsj k +nto
+αh(jk) +nfor allk= 1,...,l. ByJ Z-invariance ofφ Z we eventually
+haveφ Z(c∗τn(αh(a))b) =φ Z(c∗τn(a)b). But then:
+⟨Eτ((πφZ(αh(a)))πφZ(b)ξφZ,πφZ(c)ξφZ⟩= lim
+n
+φZ(c∗τn(a)b)
+= lim
+n
+⟨(πφZ(τn(a)))πφZ(b)ξφZ,πφZ(c)ξφZ⟩=⟨E τ(πφZ(a))πφZ(b)ξφZ,πφZ(c)ξφZ⟩.
+henceE τ((πφZ(αh(a))) =E τ(πφZ(a)) by cyclicity of the GNS vector.
+Finally, verifying thatE τ is also permutation-invariant whenφis ex-
+changeable can be done in the same way as above.□
+IfRis a von Neumann algebra, we denote byS ∗(R) the convex
+set of all normal states ofR. In the sequel,T φZ =R τ
+φZ andT φ are
+identified via the restriction isomorphism. We defineS πφZ
+to be the
+convex set of all states of∗ NAwhich are normal in the representation
+πφZ. As a consequence of the existence of the conditional expectation
+onto the tail algebra, we find that the tail algebra itself encodes the
+faceS τ
+πφZ
+:={η∈S πφZ
+:η◦τ=η}of distributions of all stationary
+processes normal in the GNS of the given extended process toZ.
+Corollary 4.2.Letφbe a spreadable (exchangeable) state on∗ NA.
+The map
+S∗(Tφ)∋ω7→ω◦E τ◦πφZ∈S τ
+πφZ
+is an affine homeomorphism. In particular, the states inS τ
+πφZ
+are au-
+tomatically spreadable (exchangeable).
+For any stateφon∗ NA, we denote byeφthe vector state (as a
+state on the wholeB(H φ)) associated with the GNS vectorξ φ of the
+GNS representation (Hφ,ξφ,πφ) ofφ, that iseφ(T) :=⟨Tξ φ,ξφ⟩,Tin
+B(Hφ). The following results completes the partial characterization of
+
+=== page 22 ===
+22 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+extremality given in [13, Proposition 5.4.3] in terms of pureness of the
+restriction to the tail algebra.
+Corollary 4.3.A spreadable (resp. exchangeable) state on∗ NAis
+extreme inS JN(∗NA)(resp. inS PN(∗NA)), or equivalently inS τ(∗NA),
+if and only if the restriction ofeφto the tail algebra is extreme inS ∗(Tφ)
+(i.e. a pure and normal state ofT φ).
+Proof.Note that the fact that extremality inS JN(∗NA) and inS τ(∗NA)
+(resp. or inS PN(∗NA)) agree, is the content of Corollary 3.4.
+We will only deal with the exchangeable case, for the spreadable case
+can be handled in the same way. As the tail algebraT φ is identified
+withR τ
+φZ, we may as well work in the GNS representation ofφZ if needs
+be.
+IffφZ fails to be extreme inS ∗(Rτ
+φZ), thenfφZ ↾RτφZ
+=tω 1 + (1−t)ω 2
+for somet∈(0,1) andω 1̸=ω 2 normal states onR τ
+φZ. The extensions
+eωi =ω i◦E τ,i= 1,2, toR φZ are exchangeable normal states ofR φZ
+andfφZ =tfω1 + (1−t)fω2 (sincefφZ is uniquely determined by its re-
+striction to the tail algebra). This shows thatφ=tφ 1 +(1−t)φ 2, with
+φi(x) =eωi(πφZ(x)),xin∗ NA. Nowφ 1̸=φ 2, because by normalityfω1
+andfω2 are completely determined by their restriction to the weakly
+dense∗-subalgebraπ φZ(∗NA). Therefore,φis not extreme inS PN(∗NA).
+Conversely, ifφis not extreme inS PN(∗NA), then it dominates some
+exchangeable stateωwithω̸=φ, sayω(x ∗x)≤Mφ(x ∗x), for allx
+in∗ NA, for someM≥1. By the non-commutative Radon-Nikodym
+theorem,ωcan be realized as a vector state,eω, in the GNS represen-
+tation ofφ, andeω≤Meφon the positive cone ofR φ as well. Since
+exchangeable states which are normal in the GNS representation ofφ
+are uniquely determined by their restriction toT φ, the restriction ofeω
+to the tail algebra is still different fromeφ↾ Tφ, meaning that the latter
+state cannot be extreme among all normal states of the tail algebra.□
+5.Non-commutative Hewitt-Savage0−1law
+The present section is devoted to characterizing when the tail algebra
+of a spreadable state is trivial. As explained in the introduction, this
+is done in a twofold fashion in terms of a dynamical condition, attrac-
+tiveness, and a factorization property of the state, forward-decoupling
+condition, which we next define. To do so, let us consider the convex
+set of all states which are normal in a given representationπof the free
+product∗ NA,
+Sπ :={ω∈S(∗ NA) :ω(·) = tr(π(·)T) withT∈B(H π)+,tr(T) = 1}.
+Definition 5.1.A stationary stateφon∗ NAis said to be:
+
+=== page 23 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 23
+-π-attractive (πbeing a representation of∗ NA) if for everyωin
+Sπ one has
+(5.1) lim
+n→∞
+ω(τn(x)) =φ(x) for allx∈∗ NA.
+- forward-decoupling if for all localizedx,y,zin∗ NAone has
+(5.2)φ(xyz) =φ(zx)φ(y),
+provided thatx,y,zis have supports contained in finite subsets
+Fx,Fy,Fz respectively, in the sense of Definition 2.9, withF y >
+Fx∪Fz.
+- block-singleton if for all localizedx,y,zin∗ NAone has
+(5.3)φ(xyz) =φ(zx)φ(y)
+provided thatx,y,zis have supports contained in finite subsets
+Fx,Fy,Fz respectively, in the sense of Definition 2.9, withF y∩
+(Fx∪Fz) =∅.
+Note that for exchangeable states being forward-decoupling or block-
+singleton is the same property.
+Remark 5.2.The block-singleton condition was introduced in [1],
+which highlighted its relevance as a form of non-commutative inde-
+pendence. However, several statements in that paper do not hold in
+full generality. Since the block-singleton condition plays a relevant role
+in our results as well, we shall comment on these technical issues in
+Remarks 5.11 and 8.6 and provide explicit counterexamples.
+What follows is exactly the non-commutative Hewitt-Savage 0–1 law.
+Theorem 5.3.Letφbe a spreadable (resp. exchangeable) state on
+∗NA. The following are equivalent:
+(i)T φ =C;
+(ii)φis forward-decoupling (resp. is block-singleton);
+(iii)φisπ φZ-attractive.
+Proof.We will prove the implications (ii)⇒(i)⇒(iii)⇒(ii).
+We start by proving that any forward-decoupling state has a trivial
+tail algebra. We claim that for any such stateφthe GNS vectorξ φ is
+separating forT φ.
+Indeed, suppose thatTinT φ vanishes onξ φ, For any localized element
+xof∗ NA, say with support contained in{0,...,l}, we have
+∥Tπφ(x)ξφ∥2 =⟨Tπ φ(x)ξφ,Tπ φ(x)ξφ⟩=⟨π φ(x∗)T∗Tπφ(x)ξφ,ξφ⟩
+=⟨T ∗Tξφ,ξφ⟩⟨πφ(x∗x)ξφ,ξφ⟩= 0,
+
+=== page 24 ===
+24 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+since the support ofTis certainly to the right ofl.
+We next show that knowing thatξ φ is separating forT φ allows us to
+injectT φ intoE φRφEφ via the linear mapT φ∋T7→E φTEφ. To this
+aim, we start by showing that for allA,BinT φ, we have
+(5.4)E φAEφBEφ =E φABEφ.
+In order to prove this, we need to take advantage of the representation
+ofE φ as the strong limitE φ = limn
+1
+n
+Pn−1
+k=0Vk
+τ . We then have:
+EφAEφBEφ = lim
+n
+EφA 1
+n
+n−1X
+k=0
+Vk
+τ BEφ = lim
+n
+EφA
+n−1X
+k=0
+1
+nBEφ
+=E φABEφ,
+where we have exploited the equalityV k
+τ BEφ =BE φ for all naturalk.
+This in turn can be seen in the following way. By Theorem 3.2, there
+exists a unique eBinR τ
+φZ whose restriction toH N∼= Hφ coincides with
+B. By restricting the operator equalityU k
+τ eB(Uk
+τ )∗ = eBto vectors of
+the range ofE φ, one gets the very equalityV k
+τ BEφ =BE φ we needed
+to verify.
+We are now ready to get to the conclusion. IfTinT φ is such that
+EφTEφ = 0, thenE φT∗TEφ = 0 thanks to Equation (5.4). Therefore,
+we haveTE φ = 0, henceTξ φ = 0, which givesT= 0 becauseξ φ is
+separating forT φ.
+NowE φ is the projection ontoCξ φ by Proposition A.1 because the
+forward-decoupling condition implies (iii) of the mentioned proposi-
+tion. As a consequence ofE φ being one-dimensional, we finally see
+thatT φ is trivial.
+As for the implication (i)⇒(iii), ifT φ is trivial, the conditional ex-
+pectationE τ constructed in Theorem 4.1 projects ontoCand thus
+coincides with the normal extension ofφ Z onR φZ. Letωbe a state in
+the foliumS πφZ
+. For any localizedxin∗ NA, by Theorem 4.1, we have
+limnω(τn(x)) = ˜ω(Eτ(πφZ(x))) =φ(x).
+Finally, we prove that (iii)⇒(ii).
+Letx,y,zbe localized in∗ ZA, with the support ofyto the right of the
+supports of bothxandz. We start by observing that a simple polar-
+ization argument shows that it suffices to verify the forward-decoupling
+condition whenz=x ∗, for the general case ofznot necessarily equal
+tox∗ is got to by consideringφ((x+z)y(x ∗ +z∗)).
+Now ifφ(xx ∗) = 0, then by the Cauchy-Schwartz inequality we have
+|φ(xyx∗)|≤φ(xx ∗)
+1
+2φ(xy∗yx∗)
+1
+2 = 0, henceφ(xyx∗) = 0 =φ(xx∗)φ(y)
+and there is nothing left to prove. Therefore, we can safely suppose
+
+=== page 25 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 25
+thatφ(xx∗) does not vanish. If (iii) holds, we can apply the attractiv-
+ity condition to the stateω(y) := 1
+φZ(xx∗)φZ(xyx∗), which is of course
+normal in the GNS representation ofφ Z, obtaining
+lim
+n→∞
+1
+φZ(xx∗)φZ(xτn(y)x∗) =φ Z(y),
+that is
+lim
+n→∞
+φZ(xτn(y)x∗) =φ Z(y)φZ(xx∗).
+On the other hand, fornbig enough there exists a monotone map in
+JZ that is the identity on the supports ofxand acts as the shift by
+non the support ofy. Therefore, byJ Z-invariance ofφ Z, we have
+φZ(xyx∗) =φ Z(xτn(y)x∗), henceφ Z(xyx∗) =φ Z(xx∗)φZ(y), which is
+exactly what we meant to prove.□
+We now present some notable examples to illustrate the above result
+where specific non-commutative independeces are introduced.
+Definition 5.4.Following [16], a quantum stochastic process with
+distributionφis said to be:
+- freely independent if
+φ(ιi1(a1)···ι im(am)) = 0
+wheni 1̸=i 2̸=···̸=i m andφ(ιij(aj)) = 0 for allj= 1,2,...m;
+- tensor independent if
+φ(ιi1(a1)···ι im(am)) =φ(ι i1(a1))φ(ιi2(a2)···ι im(am))
+wheni 1 is not in{i k}m
+k=2, or
+φ(ιi1(a1)···ι im(am)) =φ(ι i2(a2)···ι i1(ar−1)(ιi1(a1ar))ιim(am))
+wheni 1 =i r.
+Corollary 5.5.The distributionφof a quantum stochastic process
+which is identically distributed and either freely or tensor independent
+satisfies the three equivalent conditions in Theorem 5.3.
+Proof.For the free case, note that in order forφto be identically
+distributed and freely independent, it is necessary and sufficient that
+φ=∗ω, the infinite free product of some stateωon the sample algebra
+A, see [3]. Now, the conclusion follows from the fact that free product
+states are block-singleton,cf.[1, Proposition 2.2].
+As for the tensor indepedence case, it is a trivial computation that a
+tensor independent state is also block-singleton.□
+
+=== page 26 ===
+26 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Remark 5.6.- Boolean, monotone, anti-monotone independence
+will be addressed in Section 7 as these forms of independece
+need to be set in the framework of non-unital processes.
+- Further classes of processes which satisfy the thesis of the Hewitt-
+Savage 0–1 law but do not satisfy any of the five Muraki’s nat-
+ural forms of non-commutative independence are supplied by
+twisted tensor products, see Remark 8.2.
+- An example of a state that is forward-decoupling while not be-
+ing block-singleton is given in Example 7.8.
+Along the way, we also provide an application of the dynamical con-
+dition in Theorem 5.3 to general representation theory of infinite free
+productC ∗-algebras, which represents a free analogue of [25, Theorem
+6.1].
+Corollary 5.7.Two free product states∗ Nωand∗ Nφon∗ NAare quasi-
+equivalent if and only ifω=φ.
+Proof.We first observe that one may as well work with the infinite free
+product indexed byZ. Indeed, by universality of free products any
+bijectionf:N→Zcan be lifted to a∗-isomorphism Ψ f :∗ NA→∗ ZA.
+Since Ψf◦ι n =ι f(n) for allninN, we have∗ Zω◦Ψ f =∗ Nω, from
+which it follows that quasi-equivalence of∗ Nωand∗ Nφis the same as
+quasi-equivalence of∗ Zωand∗ Zφ.
+That said, letω,φbe states onAsuch that the GNS representations of
+∗Zωand∗ Zφare quasi-equivalent. In particular,∗ Zωis normal in the
+GNS representation of∗ Zφ, but then (∗ Zω)◦τ n =∗ Zωmust converge
+to∗ Zφ, that is∗ Zω=∗ Zφ, that isω=φ.□
+5.1.Hierarchy of ergodicities.In this section what we called a hi-
+erarchy of ergodicities is established. What we do is exhibit four in-
+creasingly stronger levels of ergodicity for states on the infinite free
+product, ranging from mere extremality to extremality with central
+support, and, importantly, including the Hewitt-Savage 0–1 law.
+In the setting of Classical Probability, all these levels collapse to the
+same notion since states on commutativeC ∗-algebras always have cen-
+tral support. Interestingly, the hypothesis of central support (or rather
+of having a von Neumann algebra with a normal faithful state) is the
+basis of much literature in the field, seee.g.[4, 15, 17, 18].
+Furthermore, each level of ergodicity is characterized in a number of
+equivalent ways. Finally, in the exchangeable case the fourth and
+strongest level corresponds to having a trivial exchangeable algebra
+in the GNS representation of the state.
+
+=== page 27 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 27
+First of all we recall the following.
+Definition 5.8.Letφbe a state on∗ NA.φis said to
+- bestrongly clusteringif
+lim
+n→∞
+φ(xτn(y)) =φ(x)φ(y),
+for allx,yin∗ NA;
+- satisfy thefull product conditionif
+φ(xy) =φ(x)φ(y),
+for all localizedx,yin∗ NAsupported in subsetsF x,Fy with
+Fx∩Fy =∅;
+- satisfy theordered product conditionif
+φ(xy) =φ(x)φ(y),
+for all localizedx,yin∗ NAsupported in subsetsF x,Fy with
+eitherF x <F y orF x >F y.
+Remark 5.9.For an exchangeable state the two notions of being an
+ordered product state or a full product state trivially agree.
+We would like to point out thatπ φZ-attractivity is a stronger form
+of strongly clustering, for it is equivalent to lim n→∞φ(x∗τn(y)z) =
+φ(y)φ(x∗z),for allx,y,zin∗ NA,cf.the proof of Theorem 5.3.
+We end this remark by noting that the full/ordered product conditions
+are natural extensions of the factorization of momenta in the classical
+setting. It is well-known that all forms of non-commutativity satisfy
+these two properties.
+We start with the hierarchy for the exchangeable case. The spread-
+able one is provided in Theorem 5.12.
+Theorem 5.10.Letφbe an exchangeable state on∗ NA. Then:
+(i)φis extreme inS PN(∗NA)⇔{π φ(∗NA),U φ
+σ :σ∈P N}′ =C;
+(ii) dimE φ = 1⇔φis strongly clustering⇔φis a full product
+state
+(iii)T φ =C⇔φis block-singleton⇔φisπ φZ-attractive;
+(iv)R PN
+φ =C⇔φis extreme inS PN(∗NA)and has central support.
+Furthermore, (iv)⇒(iii)⇒(ii)⇒(i).
+Proof.The equivalence in (i) is a well-known general fact, seee.g.[7,
+Theorem 4.3.20]. The equivalences in (ii) are the content of Proposition
+A.1. The equivalences in (iii) are Theorem 5.3.
+The equivalence in (iv) has to be proved. In one direction, ifR PN
+φ =C,
+thenξ φ is a separating vector forR φ by [7, Theorem 4.3.20] andH PN
+φ =
+
+=== page 28 ===
+28 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Tφξφ ⊆ RPN
+φ ξφ =Cξ φ by Theorem 3.3, soE φ is a one-dimensional
+projection anda fortioriφis extreme bye.g.[7, Theorem 4.3.20]. The
+other implication follows again by [7, Theorem 4.3.20].
+The implication (iv)⇒(iii) can be proved in the following way. The
+restriction ofeφ, the vector state onB(H φ) corresponding toξ φ, toT φ
+is a faithful normal state, which is also pure by Corollary 4.3. LetH eφ
+denote the GNS Hilbert space of (Tφ,eφ). ThenTφ is∗-isomorphic with
+B(H eφ), andH eφmust be a one-dimensional Hilbert space sinceB(H eφ)
+has a separating vector, the GNS vector ofeφ.
+The implication (iii)⇒(ii) is trivial as the block singleton property
+clearly implies the full product property.
+Finally, the implication (ii)⇒(i) is a well-known general fact, [7,
+Theorem 4.3.20].□
+Remark 5.11.In the light of the previous result, the validity of a
+strong form of the Hewitt-Savage law that in the GNS representation
+πφ of an exchangeable stateφon∗ NAthe exchangeable algebraR PN
+φ
+and the tail algebra are both trivial only holds for states with central
+support.
+The notion of central support also clarifies the scope of the following
+result from the literature: Theorem 3.2 in [1] claims the equivalence for
+an exchangeable state on∗ ZAbetween having trivial stationary algebra
+(precisely{T∈π φZ(∗ZA)′′ :U τTU∗
+τ =T}is trivial) and satisfying the
+block-singleton condition. However, the first condition implies that
+the state has central support by [7, Theorem 4.3.20], whereas no such
+consequence on the support can be drawn from the block-singleton
+condition, see e.g. Example 3.1.
+The following is the full hierarchy for spreadable distributions.
+Theorem 5.12.Letφbe a spreadable state on∗ NA. Then:
+(i)φis extreme inS JN(∗NA)⇔φis extreme inS τ(∗NA)⇔{π φ(∗NA),Vτ}′ =
+C;
+(ii) dimE φ = 1⇔φis strongly clustering⇔φis an ordered prod-
+uct state⇔φis a full product state;
+(iii)T φ =C⇔φis forward-decoupling⇔φisπ φZ-attractive;
+(iv)φis extreme inS JN(∗NA)and has central support.
+Furthermore, (iv)⇒(iii)⇒(ii)⇒(i).
+Proof.For the equivalences in (i) note that by Corollary 3.4 extremal-
+ity inS JN(∗NA) is the same as extremality inS τ(∗NA).
+We can then move on to show thatφis extreme inSτ(∗NA)⇔{π φ(∗NA),Vτ}′ =
+C. The implicationφis extreme inS τ(∗NA)⇒{π φ(∗NA),Vτ}′ =C
+
+=== page 29 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 29
+is straightforward (for any non-scalar positiveTin the commutant
+{πφ(∗NA),Vτ}′ gives rise to a state properly dominated byφ).
+For the reverse implication, ifωis dominated byφ, thenω(x) =
+⟨πφ(x)Tξφ,ξφ⟩,xin∗ NA, for a suitable positiveTinπ φ(∗NA)′ by
+the non-commutative Radon-Nikodym theorem. Therefore, the con-
+clusion will be reached as soon as we showh thatTcommutes with
+Vτ. By the same argument as in the proof of Corollary 3.4 one sees
+thatV τTξφ =Tξ φ. Now the equalityV τπφ(x)η=π φ(τ(x))ηholds for
+allxin∗ NA, ifηis an invariant vector (that is ifV τη=η). Indeed,
+let{x n :n∈N}be a sequence in∗ NAsuch thatη= lim nπφ(xn)ξφ.
+Becauseηis invariant, we also haveη= lim nπφ(τ(xn))ξφ. But then
+Vτπφ(x)η= lim
+n
+Vτπφ(xxn)ξφ = lim
+n
+πφ(τ(x))πφ(τ(xn))ξφ
+=π φ(τ(x))η.
+The sought commutation betweenTand the isometrieV τ can now be
+derived easily in the following way. For allxin∗ NA, we have:
+VτTπφ(x)ξφ =V τπφ(x)Tξφ =π φ(τ(x))Tξ φ =Tπ φ(τ(x))ξφ
+=TV τπφ(x)ξφ,
+which showsV τT=TV τ asπ φ(∗NA)ξφ is a dense subspace ofH φ.
+The equivalence of the first three conditions in (ii) is the content of
+Proposition A.1. The full product state condition obviously implies the
+ordered product state condition. The converse implication is non-trivial
+and requires the discussion in the appendix culminating in Lemma A.3.
+Using Lemma A.3, the full product state condition follows immediately
+from the condition dimE φ = 1.
+The equivalences in (iii) have been proved in Theorem 5.3.
+The chain of implications (iv)⇒(iii)⇒(ii) can be proved in the exact
+same way as we did Theorem 5.10. The implication (ii)⇒(i) requires
+further discussion because the one in Theorem 5.10 relied on the fact
+thatP N is a group acting by automorphisms. By Corollary 4.3, showing
+thatφis extreme inS JN(∗NA) amounts to show thateφis a pure state
+onT φ, whereeφ(T) :=⟨Tξ φ,ξφ⟩forT∈T φ. Theorem 3.3 implies that
+EφHφ is an invariant space forT φ and that the GNS representation of
+(Tφ,eφ) is given by the action ofT φ onE φHφ. Consequently, by the
+hypothesis in (ii),E φHφ is one-dimensional, meaning thateφis a pure
+state.□
+Remark 5.13.None of the implications (iv)⇒(iii)⇒(ii)⇒(i) is
+an equivalence.
+The states associated with constant processes that we discuss below in
+Example 5.14 are extreme but dimEφ can be as large as wished as long
+
+=== page 30 ===
+30 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+as a suitable sample algebra is chosen, meaning (i) does not imply (ii).
+As we shall see in Section 8, product states on twisted tensor products
+which are not gauge-invariant feature a non-trivial tail algebra, see
+Remark 8.2 and Theorem 8.4, meaning (ii) does not imply (iii).
+Finally, Example 3.1 showcases that (iii) does not imply (iv).
+Example 5.14.LetAbe any non-commutative unitalC ∗-algebra and
+letωbe a pure state ofAwhose (irreducible) GNS representation acts
+on a Hilbert spaceH ω withdimH ω≥2. Consider the corresponding
+stateφon the free product∗ NAdetermined by
+φ(ii1(a1)···i ik(ak)) =⟨π ω(a1)···π ω(ak)ξω,ξω⟩
+for allk∈N,i 1,...,i k∈N,a 1,...,a k∈A.
+The stateφis obviously exchangeable. Moreover, it is extreme since it
+is even pure, in that its GNS representation is irreducible. Note that
+Eφ =IinB(H ω)andT φ =B(H ω)because, for eachninN, we clearly
+have(T
+k≥nιk(A))′′ =π ω(A)′′ =B(H ω).
+Also note that any suchφas above is possibly the simplest conceivable
+example of an extreme exchangeable state whose projectionE φ is not
+one-dimensional.
+In the light of the results we have gleaned so far it is suggestive
+to think of a spreadable process satisfying any of the three equivalent
+conditions in our Hewitt-Savage 0–1 law as an identically distributed,
+independent (i.i.d. for short) process.
+This way of construing the i.i.d. condition becomes particularly sharp
+when applied to the five non-commutative natural forms of indepen-
+dence, which, as we will show over the paper, can be obtained by
+combining this i.i.d. condition with the appropriate specific distri-
+butional symmetry (w.r.t. the action/coaction of suitable compact
+groups/quantum groups and semigroups) or, for tensor independence,
+with the request that the distribution factorizes through a suitable
+quotient. As we will see, these characterizations are got to by carefully
+relying on the literaure of the field.
+In the remaining part of this section, tensor independence and free in-
+dependence are dealt with. We recall that the notion of a distribution
+factorizing through a quotient was given in Definition 2.2.
+Proposition 5.15.For a quantum stochastic process with sample al-
+gebraAand with distributionφ, the following are equivalent:
+(i)the process is identically distributed and tensor independent;
+(ii)φis spreadable, satisfies any of the three conditions of Theorem
+5.3, and factorizes through the infinite maximal tensor product
+⊗NA.
+
+=== page 31 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 31
+Proof.We start by proving that (i) implies (ii). If (i) holds, then
+φis spreadable and by Corollary 5.5 it satisfies the three conditions
+of the non-commutative Hewitt-Savage 0–1 law. All is left to do is
+make sure thatφfactorizes through the infinite tensor product, that
+isφ(I) = 0 ifI⊂∗ NAis the two-sided ideal such that∗ NA/I∼=⊗NA,
+and a moment’s reflection shows that this amounts to showing that
+φ((xyz−yxz) ∗(xyz−yxz)) = 0 for all localizedx,y,zsuch thatx
+andyhave disjoint supports. This equality can be derived by applying
+the definition of tensor independence, Definition 5.4, and making some
+easy yet tedious calculations.
+As for the converse implication, a stateφsatisfying (ii) is of the form
+φ=φ ′◦p I, whereφ ′ =⊗ωis a tensor product state of⊗ NA, for
+some stateωon the sample algebraA, and tensor product states of the
+infinite tensor product are seen at once to be tensor independent.□
+Remark 5.16.As is known, the infinite free product is naturally
+coacted upon by the compact quantum groups of so-called quantum
+permutations. The corresponding invariant states are known as the
+quantum exchangeable states. These are the main focus of the influ-
+ential paper [18] insofar as the symmetry they enjoy enables one to
+characterize (conditional) free independence. The scope of that paper
+was later widened in [13] by allowing for not necessarily faithful states
+and for sample algebras not necessarily singly generated. For defini-
+tions and precise statements of the results we refer the reader to [13].
+What we aim to stress here is that a state is identically distributed,
+free independent if and only if it is quantum symmetric and satisfies
+any of the three conditions in the non-commutative Hewitt-Savage 0–1
+law, Theorem 5.3. Indeed, one implication is the content of Corollary
+5.5 and the well-known fact that free product states∗ Nωare quantum
+symmetric. For the other, if the state is quantum symmetric, then by
+Theorem 6.1 in [13] it is conditionally free independent w.r.t. the tail
+algebra, which is trivial under our assumptions. Clearly, conditional
+free independence w.r.t. a trivial tail algebra is just free indepenence.
+Remark 5.17.We would like to point out that in the GNS represen-
+tation of (∗ ZA,φ Z) a past tail algebraT −
+φZ can also be considered by
+defining it as
+T−
+φZ :=
+\
+n∈N
+{πφZ(ik(A)) :k≤−n} ′′.
+The analysis we carried out for the tail algebra can be conducted for
+the past tail algebra as well provided that one works entirely in the
+GNS representationπ φZ (here thought of as a representation of∗ ZA).
+
+=== page 32 ===
+32 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+In particular, one can prove the existence of a unique normal condi-
+tional expectation fromπ φZ(∗−∞
+k=nA)′′ (for any fixedn) onto the past
+tail algebra satisying the same factorization and invariance properties
+as the conditional expectation onto the tail algebra, see Theorem 6.3.
+Furthermore, an analogue of the Hewitt-Savage 0–1 law can be formu-
+lated for the past tail algebra as well. Precisely, for a spreadable state
+φon∗ NAthe following are equivalent:
+-T −
+φZ =C;
+-φis backwards-decoupling, namelyφ(xyz) =φ(xz)φ(y) for all
+localizedx,y,zin∗ NAprovided thatx,y,zis have supports
+contained in finite subsetsF x,Fy,Fz respectively, in the sense
+of Definition 2.9, withF y <F x∪Fz.;
+-φisτ −1-πφZ-attractive, namely lim n→+∞ω(τ−n(x)) =φ Z(x),
+for allxsitting in∗ NA⊂∗ ZAand for allωinS πφZ
+(w.r.t. the
+”negative”C ∗-algebra∗−∞
+k=0A).
+These conditions make up yet another layer in the hierarchy of ergod-
+icities, say [(iii)’], which is the same level as [(iii)], in the sense that
+it is implied by [(iv)] and implies [(ii)], while not being equivalent to
+[(iii)] in Theorem 5.12, see Example 7.8.
+However, ifφis an exchangeable state, it is easy to see thatT −
+φZ
+∼= Tφ,
+with [(iii)] and [(iii)’] becoming equivalent.
+As well as the tail algebra, the past tail algebra can be used to develop
+a fully-flegded specular de Finetti theory, including the corresponding
+version of the de Finetti theorem given in Theorem 6.7.
+6.Non-commutative de Finetti theorem
+In this section we finally state what we deem is the most general
+version of the non-commutative de Finetti theorem. Theorem 6.3 pro-
+vides an extension of K¨ ostler’s de Finetti theorem in [17] for spreadable
+process by dropping any assumption of faithfulness on the distribution
+of the processes. In the same theorem we show that the conditional
+expectation onto the tail algebra of a spreadable process enjoys the
+analogous factorizing properties corresponding to (iii) in the hierarchy
+of ergodicities, namely it is conditionally forward-decoupling.
+Importantly, if we weaken the assumption of spreadability by request-
+ing weak speadability, as defined in Definition 6.5, while maintaining
+the forward-decoupling property for the conditional expectation, we
+find in Theorem 6.7 an accomplished characterization of weak spread-
+ability, which ought to conceived of as a full non-commutative de
+Finetti theorem. Finally, Corollary 6.8 covers the case of processes
+
+=== page 33 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 33
+whose distribution factorizes through quotients such that weak spread-
+ability and spreadability actually coincide. In particular, it returns de
+Finetti’s classical theorem when applied to the infinite tensor product
+of a commutative sample algebra.
+Definition 6.1.The conditional expectationE τ :R φZ→T φZ onto the
+tail algebra of a spreadable stateφis said to satisfy:
+- the ordered product condition if
+Eτ(XY) =E τ(X)Eτ(Y)
+for all localizedX,YinR φZ such thatX,Yhave supports con-
+tained in finite subsetsF X,FY respectively, in the sense of Def-
+inition 2.9, withF X >F Y orF X <F Y ;
+- the full product condition if
+Eτ(XY) =E τ(X)Eτ(Y)
+for all localizedX,YinR φZ such thatX,Yhave supports con-
+tained in finite subsetsF X,FY respectively withF X∩FY =∅;
+- the forward-decoupling condition if
+Eτ(XYZ) =E τ(XEτ(Y)Z)
+for all localizedX,Y,ZinR φZ such thatX,Y,Zhave supports
+contained in finite subsetsF X,FY,FZ respectively withF Y >
+FX∪FZ;
+- the block-singleton condition if
+Eτ(XYZ) =E τ(XEτ(Y)Z)
+for all localizedX,Y,ZinR φZ such thatX,Y,Zhave supports
+contained in finite subsetsF X,FY,FZ respectively withF Y∩
+(FX∪FZ) =∅.
+Remark 6.2.It is easy to see that the forward-decoupling condi-
+tion implies the ordered product condition. Furthermore, the block-
+singleton condition implies both the full product condition and the
+forward-decoupling condition.
+At this point a few words of comment are in order. What we called
+ordered product condition and full product condition usually goes in
+the literature under the heading of ordered conditional independence
+and full conditional independence, respectively, see [17]. However, fol-
+lowing our guiding principle that stems from the hierarchy or ergodici-
+ties, Theorem 5.12, it is the forward-decoupling condition instead that
+should be regarded as a non-commutative form of conditional indepen-
+dence, thus we have changed the nomenclature accordingly. Also note
+
+=== page 34 ===
+34 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+that the factorization properties of the conditional expectation repre-
+sented by ordered and full product conditions, correspond to level (ii)
+in the hierarchy of ergodicities, which for states is no guarantee of triv-
+iality of the tail algebra. Finally, we would like to point out that the
+Classical Probability setting does not allow to differentiate between the
+ordered/full product properties and the forward-decoupling condition.
+Theorem 6.3.The conditional expectationE τ onto the tail algebra
+of a spreadable state on∗ NAenjoys the forward-decoupling and full
+product conditions. Moreover, if the state is also exchangeable, then
+Eτ satisfies the block-singleton condition.
+Proof.By normality ofE τ all the stated properties need only be verified
+on the weakly dense∗-subalgebraπ φZ(∗NA). Letx,y,zin∗ NAlocalized
+elements with the support ofyto the right of that ofxandz. For every
+ninN, there exists a maph n inJ N which acts as the identity on the
+supports ofxandzbut shifts bynthat ofy. ByJ N-invariance ofE τ
+we then have:
+Eτ(πφZ(xyz)) =E τ((πφZ(αhn(x))πφZ(αhn(y))πφZ(αhn(z))))
+=E τ(πφZ(x)πφZ(τn(y))πφZ(z)) = lim
+n
+Eτ(πφZ(x)πφZ(τn(y))πφZ(z))
+=E τ(πφZ(x)Eτ(πφZ(y))Eτ(πφZ(z)),
+and we are done. In the exchangeable case, the block-singleton condi-
+tion can be proved analogously.
+The full-product condition is more laborious to prove.
+Consider a separating family (e.g.the set of all normal states) of nor-
+mal states ofT φZ, say{ω 0
+i :i∈I}along with their normal spreadable
+extension to the wholeR φZ,{eωi :i∈I}. For eachi, we denote byω i
+the corresponding state at theC ∗-algebra level,ω i(x) =eωi(πφZ(x)),x
+in∗ NA.
+Let Ψ be the linear map fromR φZ toB(⊕ iHωi) given by Ψ(S) :=
+⊕i∈IEωiπeωi(S)Eωi, whereE ωi is the orthogonal projection onto the
+closed subspaceH τ
+ωi ⊂H ωi =H eωi. Note that when Ψ is restricted
+toT φZ, by Theorem 3.3, it is precisely the direct sum of the GNS rep-
+resentations corresponding to{ω 0
+i :i∈I}and thus is faithful onT φZ.
+We claim that Ψ(ST) = Ψ(S)Ψ(T) for allS,TinR φZ with disjoint
+supports and that Ψ(T) = Ψ(E τ(T)) for allTinR φZ. Using these
+claims, whenS,T∈R φZ have disjoint supports we have
+Ψ(Eτ(ST)) = Ψ(ST) = Ψ(S)Ψ(T) = Ψ(E τ(S))Ψ(Eτ(T))
+= Ψ(Eτ(S)Eτ(T)),
+
+=== page 35 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 35
+by the fact that the restriction of Ψ toT φZ is multiplicative since it
+is a representation. HenceE τ(ST) =E τ(S)Eτ(T) by injectivity of Ψ
+restricted to the tail algebra.
+It remains to prove the claims. For the first one, note that ifT,Sare lo-
+calized elements ofRφZ with disjoint supports, we haveEωiπeωi(TS)Eωi =
+Eωiπeωi(T)Eωiπeωi(S)Eωi by virtue of Lemma A.3.
+For the second claim, by density, it is enough to verify the claimed
+equality on elements of the typeπ φZ(x),xin∗ NA, only. But in this
+case we simply have
+Eωiπeωi(Eτ(πφZ(x)))Eωi = lim
+n
+Eωiπeωi(τn(x))Eωi = lim
+n
+EωiVn
+τ πeωi(x)Eωi
+=E ωiπeωi(x)Eωi,
+whereV τ is the isometric implementer of the shift in the representation
+πeωi.□
+Remark 6.4.At this point, one might wonder whether Theorem 6.3
+has a converse. In this regard, one should look at the nice example
+by Gohm and K¨ ostler, in [15, Theorem 5.6], of a stationary quantum
+stochastic process which fails to be spreadable but whose normal, shift-
+invariant andφ-invariant conditional expectation nevertheless satisfies
+the full product condition. Now, it is a matter of simple calculations
+to ascertain that the conditional expectation of that process enjoys the
+forward-decoupling property as well. This demonstrates that spread-
+ability cannot be recovered from assuming stationarity of the process
+and forward-decoupling property of its (unique normal, shift-invariant,
+φ-invariant) conditional expectation, together with the full product
+condition, which prevents our Theorem 6.3 from having a converse.
+Going back to the proofs of the results we obtained, one can realize
+that most of them do not take full advantage of the fact that our
+processes are spreadable. In fact, what is really made use of is a weaker
+distributional symmetry that deserves to be singled out in a definition.
+Definition 6.5.A quantum stochastic process with distributionφon
+∗NAis said to beweakly spreadableif
+φ(xyx) =φ(xτ(y)z)
+for all localizedx,y,zin∗ NAwith supports contained in finite subsets
+Fx,Fy,Fz respectively withF y >F x∪Fz.
+Remark 6.6.Apart from those involving the use of Proposition A.3,
+all the main results of the present paper continue to hold with spread-
+ability replaced by weak spreadability. In particular, the non-commutative
+
+=== page 36 ===
+36 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Olshen theorem, Theorem 3.2, the existence of the conditional expec-
+tation onto the tail algebra, Theorem 4.1, and the non-commutative
+Hewitt-Savage 0–1 law, Theorem 5.3, can be stated replacing spread-
+ability with weak spreadability. The hierarchy of ergodicities, Theorem
+5.12, continues to work as well for weakly spreadable states as long as
+the full product condition is omitted from the statement in (ii). More-
+over, the conditional expectation built out of a weakly spreadable state
+continues to enjoy the forward-decoupling condition.
+We are now ready to state the full non-commutative de Finetti theo-
+rem alluded to at the beginning of the section. To do so, let us establish
+a bit of language: we say that the tail algebra of a process is expected
+if there exists a normal conditional expectation fromR φZ ontoT φZ
+(which is∗-isomorphic withT φ via the restriction map in the weakly
+spreadable case as well).
+Theorem 6.7.For a stationary quantum stochastic process with dis-
+tributionφ∈S(∗ NA), the following are equivalent:
+(i)the process is weakly spreadable;
+(ii)the tail algebraT φ is expected with a unique shift-invariant nor-
+mal,φ-invariant conditional expectation, which is also forward-
+decoupling
+Proof.The implication (i)⇒(ii) is a consequence of Theorems 4.1, which
+holds for weakly spreadable processes as well, and the part of Theo-
+rem 6.3 concerned with the forward-decoupling condition for the con-
+ditional expectation, which can be derived in the same was as we did
+in the spreadable case.
+The implication (ii)⇒(i) follows from the computation below. Ifeφis
+the vector state onB(H φZ) associated with the GNS vectorξ φZ, and
+x,y,zare localized elements of∗ NAsuch that the support ofylies to
+the right of that of bothxandz, we have:
+φ(xyz) =eφ(Eτ(πφZ(xyz))) =eφ(Eτ(πφZ(x)Eτ(πφZ(y))πφZ(z)))
+=eφ(Eτ(πφZ(x)Eτ(τ(πφZ(y)))πφZ(z)))
+=eφ(Eτ(πφZ(x)τ(πφZ(y))πφZ(z))) =φ(xτ(y)z),
+and we are done.□
+Interestingly, if a weakly spreadable state factorizes in the sense of
+Definition 2.2 through a quotient by aJ N-invariant idealIwhich is
+linearly generated by ordered monomials (that is the set of all equiv-
+alence classes of the type [ι j1(a1)...ι jn(an)], withj 1 < ... < jn or
+
+=== page 37 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 37
+j1 >...>j n anda 1,...,a n inA, generates∗ NA/Ias a Banach space),
+then the state is spreadable.
+What is more, if the quotient is by aP N-invariant ideal, then ex-
+changeability is the same as spreadability, meaning that exchangeabil-
+ity can also be characterized in terms of stationarity and the forward-
+decoupling property of the conditional expectation.
+Corollary 6.8.For a stationary quantum stochastic process whose dis-
+tributionφfactorizes through a quotient of∗ NAby an idealIsuch that
+(a)IisJ N-invariant (respectivelyP N-invariant)
+(b)the quotient∗ NA/Iis linearly generated by ordered monomials,
+the following are equivalent:
+(i)φis spreadable (respectively exchangeable);
+(ii)φis weakly spreadable;
+(iii)the tail algebraT φ ofφis expected with a unique shift-invariant
+normal,φ-invariant conditional expectation, which is also forward-
+decoupling;
+(iv)the tail algebraT φ ofφis expected with a unique shift-invariant
+normal,φ-invariant conditional expectation, which is also forward-
+decoupling and satisfies the full product condition.
+Proof.We need only prove the implication (ii)⇒(i). This can be seen
+in the following way. Sinceφfactorizes through a quotient as in the
+statement, it is enough to check spreadability only on words of the
+typeι i1(a1)···i jk(ak)ijk(ak)ijk+1(ak+1)···ι in(an) with ordered indices.
+In this case, Definition 6.5 simply yields the following invariance prop-
+erty forφ:
+φ(ιi1(a1)···i jk(ak)ijk(ak)ijk+1(ak+1)···ι in(an)) =
+φ(ij1(a1)···i jk(ak)ijk+1+1(ak+1)···i jn+1(an)),
+which is the invariance ofφunder the partial shiftsθ jk+1, and these
+generate the semigroupJ N.
+Finally, the exchangeable case follows from [2, Theorem 3.2].□
+In particular, Corollary 6.8 applies to tensor products, covering the
+classical setting of random variables taking their values on a compact
+Hausdorff space, and, more generally, to twisted tensor products, which
+are described and dealt with in Section 8. The case of unbounded
+random variables is finally covered in the next section, where non-unital
+processes are considered.
+Remark 6.9.It remains open whether weak spredability automati-
+cally implies the full product condition for the expectation onto the
+tail algebra.
+
+=== page 38 ===
+38 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+7.Non-unital processes
+By a non-unital quantum stochastic process we mean a quadruple
+(B,ω,A,{ι j}j∈N), where now, as opposed to the unital case, the sample
+algebraAis allowed to be non-unital and the∗-homomorphismsι j, too,
+can be non-unital. Furthermore, we require that, for everyjinN, the
+positive functionalω◦ι j onAis normalized. Note that this requirement
+is automatically satisfied in the unital case.
+The distribution of such a process is the normalized positive functional
+φ:∗ 0
+NA→Con the non-unital free product∗ 0
+NAdefined by
+φ(ij1(a1)ij2(a2)···i jn(an)) :=ω(ι j1(a1)ιj2(a2)···ι jn(an)) (7.1)
+for alln∈N,j 1 ̸=j 2 ̸=··· ̸=j n ∈N,a 1, . . . ,a n ∈A, where
+ik :A→∗ 0
+NAis thek-th embedding ofAinto its infinite non-unital
+free product. As in the unital case,φis a well-defined positive func-
+tional thanks to the universal property enjoyed by∗ 0
+NA,i.e.for any
+family{f k}k∈N of possibly non-unital∗-homomorphismsf k :A→B,
+withBbeing a possibly non-unitalC ∗-algebra, there exists a unique
+∗-homomorphism Φ :∗ 0
+NA→Bsuch that Φ(i k(a)) =f k(a),ainAand
+kinN.
+For anyC∗-algebraB, we denote by eB=B⊕Cthe one-point unital-
+ization ofB, with the tacit understanding that ifBis already unital,
+we add the unit all the same.
+We denote byS(∗ 0
+NA) the convex compact set of all positive functionals
+on∗ 0
+NAwith norm less than or equal to 1, the zero functional included.
+Note thatS(∗ 0
+NA) is affinely homeomorphic withS( g∗0
+NA), the compact
+convex set of all states of g∗0
+NA, which is the one-point unitalization of
+∗0
+NA, viaS(∗ 0
+NA)∋φ7→eφ∈S( g∗0
+NA), witheφ(x+λI) =φ(x) +λ,xin
+∗0
+NAandλinC.
+Now, by the universal property of the unital free product∗ NeA, there
+exists a unital∗-homomorphism Ψ :∗ NeA→ g∗0
+NAuniquely determined
+by Ψ(ik(a+λI)) =i ′
+k(a) +λIfor allainAandkinN. It is easy
+to see that Ψ is a∗-isomorphism, as can be checked by constructing
+its inverse by means of the universal property of the non-unital free
+product∗ 0
+NA. In particular, the two compact convex setsS(∗ 0
+NA) and
+S(∗NeA) can be identified.
+That said, we can move on to give the definition of tail algebra for
+non-unital processes.
+
+=== page 39 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 39
+Definition 7.1.The tail algebraT φ of a non-unital stochastic process
+with distributionφis the von Neumann algebra
+Tφ =
+\
+n∈N
+{πφ(ik(A)) :k≥n}
+w
+⊂B(H φ),
+where A
+w
+denotes the closure of a∗-subalgebraAin any of the weak,
+strong, ultraweak, ultrastrong operator topologies.
+Remark 7.2.Out of any non-unital process (B,ω,A,{ι j}j∈N) one
+can obtain a unital process ( eB,eω,eA,{eιj}j∈N), where, for alljinN,
+eιj : eA→ eBis the unital extension ofι j,i.e.eι j(a+λI) =ι j(a) +λI,
+ainAandλinC. Ifφis the distribution of the original process
+(B,ω,A,{ι j}j∈N), theneφis the distribution of the unitalized process
+(eB,eω,eA,{eιj}j∈N), as is easily verified.
+As in the unital case, we still denote byR φ the (possibly degenerate)
+weakly closed∗-algebra generated by the GNS representation ofφ, that
+is πφ(∗0
+NA)
+w
+and byR φZ the weakly closed∗-algebra π eφZ(∗0
+NA)
+w
+.
+Note that the Olshen Theorem carries over to the non-unital case with
+the same proof as in Theorem 3.2.
+Furthermore, thanks to the unitalization precedure, for any non-unital
+quantum process (B,ω,A,{ι j}j∈N) there still exists a unique normal
+invariant conditional expectationE τ onto the tail algebraT φ, which is
+obtained by restricting toR φZ the conditional expectation fEτ of the
+unitalized process. Note that in the non-unital case, it is not neces-
+sarily true thatCIis contained inT φ due to non-unitality of thei j’s.
+Nevertheless,T φ can never be 0 unlessφ= 0.
+In the next definition we collect the analogues for non-unital pro-
+cesses of the equivalent properties in the level (iii) of the hierarchy of
+ergodicities, that is those of the Hewitt-Savage 0–1 law.
+Definition 7.3.A stationary positive linear functionalφinS(∗ 0
+NA):
+(i) is forward-decoupling ifφ(xyz) = 0 whenφ(y) = 0, provided
+thatx,y,zare localized with supports contained in finite sub-
+setsF x,Fy,Fz respectively, withF y >F x∪Fz.
+(ii) isπ-attractive (withπbeing a representation of∗ 0
+NA) if for all
+ωinS π one has limnω(τn(x)) = 0 ifφ(x) = 0,xin∗ 0
+NA.
+Remark 7.4.As will be clear later on, seee.g.Example 7.6, it is not
+necessarily true that ifφsatisfisies any of (i)-(ii) then its extensioneφ
+to∗ NeAsatisfies the corresponding properties for states in the unital
+free product. Of course, if the process is unital the above Definitions
+agree with the respective ones for unital processes in Definition 5.1.
+
+=== page 40 ===
+40 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+The next result is the hierarchy of ergodicities for the distributions
+of weakly spreadable non-unital processes, which can be defined in the
+exact same way as in the unital case.
+Theorem 7.5.LetφinS(∗ 0
+NA)be the distribution of a weakly spread-
+able non-unital quantum stochastic process, then:
+(i)φis extreme inS τ(∗0
+NA)⇔{π φ(∗0
+NA),Vτ}′ =C;
+(ii) dimE φ = 1⇔φis strongly clustering⇔φis an ordered prod-
+uct state;
+(iii)T φ =CFfor some projectionF⇔φis forward-decoupling⇔
+φisπ φZ-attractive;
+(iv)φis extreme inS τ(∗0
+NA)and has central support (ξ φ is separat-
+ing forπ φ(∗0
+NA)′′).
+Furthermore, (iv)⇒(iii)⇒(ii)⇒(i).
+Proof.Since the proof of this theorem is virtually the same as that of
+Theorem 5.12 by passing to the unitalized process, we will just com-
+ment on those points where extra care has to be taken.
+The equivalences in (iii), which represent the Hewitt-Savage 0–1 law
+for non-unital processes can be done as in the proof of the analogous
+implications in Theorem 5.3. However, for the implication that the
+future-decoupling condition gives a trivial tail algebra we need to as-
+certain that dimEφ = 1, which is used in the proof of Theorem 5.3. We
+will prove this by showing that the extensioneφis an ordered product
+state, to which one can then apply Proposition A.1. This amounts to
+showing thateφ(xy) = 0 ifeφ(y) = 0 forx,yin g∗0
+NAlocalized and with
+the support ofyto the right of the support ofx. LetB⊂∗ 0
+NAthe
+C∗-subalgebra generated by those localized elements whose support is
+the same as that ofy=y ′ +βIfor someyinBandβinC(note
+that (φ(y′) =−βas follows fromeφ(y) = 0). Let{e λ :λ∈Λ}be an
+approximate unit ofB. Since the restriction ofφtoBhas norm 1 by
+hypothesis, we can apply Lemma C.1 and conclude limλπφ(eλ)ξφ =ξ φ.
+Now, writingx=x ′+αI,x ′ in∗ 0
+NAandαinC, and taking into account
+thatφ(e λ) tends to 1, we find:
+eφ(xy) =eφ
+ 
+x(y′ +βI)
+
+= lim
+λ
+eφ
+ 
+x(y′ + 1
+φ(eλ)βeλ)
+
+=
+lim
+λ
+φ
+
+x′ 
+y′ + 1
+φ(eλ)βeλ
+
++αφ
+
+y′ + 1
+φ(eλ)βeλ
+
+= 0
+sinceφ
+ 
+y′ + 1
+φ(eλ)βeλ
+
+=φ(y′) +β= 0 for everyλand the support of
+y′ + 1
+φ(eλ)βeλ lies to the right of the support ofxby construction.
+
+=== page 41 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 41
+The implication that a trivial tail algebra yields attractivity, too, can
+be done as in the proof of Theorem 5.3 as long as one first makes sure
+thatE τ(π eφZ(x)) =φ(x)F,xin∗ 0
+NA, whereFis the projection such
+thatT φ =CF, which is what we do below.
+IfT φ =CF, thenE τ(T) =λ(T)F,TinR φZ, for a suitable linear func-
+tionalλonR φZ. We first prove thatλis normalized. To this end, note
+that∥E τ∥= 1 (which is certainly true asE τ(F) =F) implies∥λ∥= 1
+because of the equality|λ(T)|=∥λ(T)F∥=∥E τ(T)∥.
+Now byφ-invariance ofE τ we have|λ(T)|φ(F) =|φ(T)|, for allTin
+RφZ, where with abuse of notation we have denoted byφits normal
+extension onR φZ. By taking the sup forTrunning in the unit ball
+ofR φZ on both the right and left side of the previous equality we get
+φ(F) = 1, hence, again byφ-invariance ofE τ,λ=φ.
+□
+Having at hand a theory for non-unital processes allows us to tackle
+monotone/antimonotone and Boolean independence as well.
+Example 7.6.Following[16], a non-unital process is said to be Boolean
+independent, identically distributed if its distribution is identically dis-
+tributed and satisfies:
+φ(ιi1(a1)···ι im(am)) =φ(ι i1(a1))φ(ιi2(a2)···ι im(am))
+fori 1̸=i 2̸=···̸=i n.
+It is easy to see that a Boolean independent, identically distributed pro-
+cess is exchangeable and satisfies the forward-decoupling condition (ii)
+in Definition 7.3. Therefore, by Theorem 7.5 it gives rise to a one-
+dimensional tail algebra.
+Moreover, the projectionFsuch thatT φ =CFwill in general be proper,
+as shown in[19, Example 7.3]. This example also shows that the con-
+dition for a normalized positive functional to be forward-decoupling at
+the level of the non-unital process does not imply that the distribution
+of the unitalized process is still forward-decoupling in the sense of Def-
+inition 5.1.
+Importantly, when the sample algebra admits a single self-adjoint gener-
+ator, that isA=C(K)for some compact subsetK⊂Rof the real line,
+by using the characterization of Boolean conditional i.i.d. in terms of
+invariance under the linear coaction of the quantum semigroupB s(n)
+given in Theorem 1.1 of[19], to which the reader is referred for all
+the needed definitions, we can come to the following characterization of
+Boolean i.i.d. processes: a quantum stochastic process is Boolean i.i.d.
+if and only if its distribution isB s(n)-invariant for allninNand
+
+=== page 42 ===
+42 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+satisfies any of the three equivalent conditions of the non-commutative
+Hewitt-Savage0–1law, Theorem 5.3.
+Example 7.7.Following[16], a (non-unital) process with distribution
+φand sample algebraAis said to be
+-monotone independent if
+φ(ij1(a1)···i jm(am)) =φ(i jp(ap))φ(ij1(a1)···i jp−1(ap−1)ijp+1(ap+1)···i jm(am))
+whenj 1̸=j 2̸=···̸=j n andj p >j p±1;
+-anti-monotone independent if
+φ(ij1(a1)···i jm(am)) =φ(i jp(ap))φ(ij1(a1)···i jp−1(ap−1)ijp+1(ap+1)···i jm(am))
+whenj 1̸=j 2̸=···̸=j n andj p <j p±1.
+It is easy to see that a monotone/antimonotone identically distributed
+process is spreadable and satisfies the forward-decoupling condition. In
+particular, by Theorem 7.5 the tail algebra of a monotone/antimonotone
+identically distributed process is one-dimensional. In the monotone
+case, the unitalized process continues to satisfy the forward-decoupling
+condition in Definition 5.1, meaning that the the projectionFsuch that
+Tφ =CFcoincides with the identityIofB(H φ).
+Unlike the monotone case, the tail algebra of an antimonotone inde-
+pendent , identically distributed process can be degenerate, as is shown
+in Example 7.8.
+As with Boolean independence, for processes with a sample algebra ad-
+miting a single self-adjoint generator, that isA=C(K)for some com-
+pact subsetK⊂Rof the real line, by using the characterization of
+monotone conditional i.i.d. in terms of invariance under the coaction
+of the quantum semigroupsM(n,k)of quantum spreadability given in
+Theorem 1.1 of[20], to which the reader is referred for all the needed
+definitions, we can come to the following characterization of mono-
+tone i.i.d. processes: a quantum stochastic process is monotone i.i.d.
+if and only if its distribution isM(n,k)-invariant for allninNand
+k < n, and satisfies any of the three equivalent conditions of the non-
+commutative Hewitt-Savage0–1law, Theorem 5.3. The antimonotone
+case follows from the monotone case by reflection, that is, by reversing
+the order of the variables.
+Example 7.8.In this example of a non-unital quantum stochastic pro-
+cess the sample algebraAis given by the2by2matricesM 2(C). In
+order to define all of the data of the quantum stochastic process, we
+need to recall what the antimonotone Fock space looks like.
+
+=== page 43 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 43
+Fork≥1, setI k :={(i 1,i 2,...,i k)|i 1 < i2 <···< i k,ij∈N}. The
+antimonotone Fock space is the Hilbert space
+Famon(H) :=
+∞M
+k=0
+Hk,
+whereH 0 =Cand for everyk≥1H k :=ℓ 2(Ik). Henceforth we will
+denote byΩthe vector inF amon(H)given by(1,0,0,...)and refer to
+it as the Fock vacuum.
+The canonical basis of the antimonotone Fock space is obtained in the
+following way. If(i 1,i 2,...,i k)∈I k is an increasing sequence of in-
+tegers, we denote bye (i1,i2,...,ik)∈ℓ 2(Ik)the square summable sequence
+that is always zero but at(i 1,i 2,...,i k), where it is1. The vector
+corresponding to the empty set is just the vacuumΩ, and the corre-
+sponding vector stateω Ω is called the vacuum state. For everyi∈N,
+the monotone creation and annihilation operators are respectively given
+bya†
+iΩ =e (i),a iΩ = 0and
+a†
+ie(i1,i2,...,ik) :=
+
+e(i,i1,i2,...,ik) ifi<i 1
+0otherwise,
+aie(i1,i2,...,ik) :=
+
+e(i2,...,ik) ifk≥1andi=i 1
+0otherwise.
+TheC ∗-probability space(B,ω)of the process is obtained by taking
+B=B(F amon(H)), and choosingωto be the vacuum stateω Ω.
+Lastly, the∗-homomorphismsι j :M 2(C)→Bare given byι j(A) =a j,
+whereA:=
+
+0 1
+0 0
+
+∈M 2(C). The non-unital quantum process thus
+obtained is well known to be antimonotone independent and identically
+distributed.
+Note that by considering the Hilbert space with reversed order relations
+between indices, one obtains a monotone independent process.
+We claim that the tail algebra of the antimonotone process isCP Ω,
+whereP Ω is the orthogonal projection onto the vacuum vector.
+Indeed, it is easy to see thatlim nana†
+n =P Ω in the strong operator
+topology, which shows thatP Ω must lie in the tail algebra. On the
+other hand, the tail algebra must be one-dimensional, as explained in
+Example 7.7, hence the conclusion.
+This process also provides a good illustration of the fact that the past
+tail algebra, see Remark 5.17, and the tail algebra in general are not
+∗-isomorphic. To see this, we consider the unitalized process obtained
+out of the above antimonotone process. Its tail algebra is not one-
+dimensional, containingCP Ω⊕C(I−P Ω). On the other hand, the past
+
+=== page 44 ===
+44 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+tail algebra of the unitalized process is seen to be∗-isomorphic with the
+tail algebra of the unitalized monotone process, which has a trivial tail
+algebraCIby Example 7.7.
+As a final remark, we would like to point out that the unitalized mono-
+tone process fails to satisfy the block-singleton condition while satisfy-
+ing the forward-decoupling condition, for we have0 =ω Ω(a1a0a†
+0a†
+1)̸=
+ωΩ(a1a†
+1)ωΩ(a0a†
+0) = 1.
+Remark 7.9.The general de Finetti theorem, Theorem 6.7, continues
+to hold for non-unital processes as well with the same proof. Indeed,
+it is enough to take into account the unitalized process and consider
+the restriction of the conditional expecation to the relative non-unital
+algebras. In particular, the classical case of possibly unbounded real-
+valued random variables now fits in the theory developed in the paper.
+8.Models
+8.1.Twisted tensor products.In this section we provide a thor-
+ough account of the examples we alluded to throughout the paper,
+especially in relation to the strictness of the implication (iii)⇒(ii) in
+the hierarchy of ergodicities established in Theorem 5.12. Twisted ten-
+sor products by a bicharacter of the dual of a grading groupGgive rise
+to quantum stochastic processes whose distributions factorize as full
+product states but whose tail algebra may fail nonetheless to be trival
+because it actually keeps track of theG-orbit of the state itself.
+Twisted tensor products are particularly workable examples of quo-
+tients of the infinite free product, which are useful in that the ideal out
+of which they are obtained is always invariant under spreadable maps
+and may be invariant under permutations depending on the bicharac-
+ter.
+Suppose that the sample algebraAis given more structure. namely
+that it is aG-gradedC ∗-algebra, withGbeing an abelian compact
+group. This means that we actually have a C ∗-dynamical system
+(A,G,γ), whereAis a unitalC ∗-algebra, andγ:G→Aut(A) a
+group homomorphism, pointwise norm continuous,i.e., for everyain
+A, the functionG∋g7→γ g(a)∈Ais continuous w.r.t the norm topol-
+ogy. The eigenspace of the action associated withχin bG( bGis the
+Pontryagin dual ofG) is the subspace
+Vχ :={a∈A:γ g(a) =χ(g)a,for allg∈G}⊂A.
+The elements of eachV χ are referred to as being homogeneous. For
+everyχ,ηin bG, one hasV χVη⊂V χη andV ∗
+χ =V χ−1. The algebraic
+direct sumA 0 := L
+χ∈ ˆGVχ is a dense∗-algebra ofA, seee.g.[11,
+
+=== page 45 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 45
+Theorem 2.5], and it is known as the algebraic layer ofA. IfainAis
+homogeneous withγ g(a) =χ(g)afor allgwe say thatχis the degree
+ofaand denote it by dega.
+To any bicharacterv: bG× bG→T(a bicharacter is a function that is
+a character w.r.t. each separate variable), it is possible to associate a
+quotient of∗ NAby theJ N-invariant idealI v generated by the set
+{ιk(a)ιl(b)−v(dega,degb)ι l(b)ιk(a) :a,bhomogeneous inA,k <l∈N}.
+TheC ∗-algebra thus obtained is known as the infinite twisted tensor
+product w.r.t. tov(note that the casev= 1 gives back the usual
+maximal tensor product) and is denoted by⊗ N
+v A. By construction the
+action ofJ N on the infinite free product passes to its quotient⊗ N
+v A.
+The action ofP N, instead, passes to⊗ N
+v Aif and only if the bicharacter
+vis antisymmetric (v(χ,η) = v(η,χ) for allχ,ηin bG).
+A more concrete construction of the infinite twisted tensor product
+is possible, seee.g.[2, 14]. Composing eachi k with the quotient map
+∗NA7→⊗ N
+v Agives a unital embedding ofAinto⊗ N
+v Awhich by a minor
+abuse of notation we continue to denote byi k.
+The infinite twisted tensor product itself is acted uponGthrough the
+so-called gauge action, which is given by
+αg(ij1(a1)···i jk(ak)) =i j1(γg(a1))···i jk(γg(ak))
+fork,j 1,...,j k inN, anda 1,...,a k inA.
+Unlike usual tensor products, it is not always possible to consider the
+tensor product state of given states on the sample algebraAwhen the
+bicharactervis not trivial. In fact, some compatibility between the
+assigned states and the bicharacter must be fulfilled. In order to recall
+the necessary and sufficient condition for the tensor product state to
+exist, we recall that the spectral support of a stateω, as introduced in
+[2], is the set
+suppGω:={η∈ bG:∃a∈A η withω(a)̸= 0}.
+Clearly,ωisG-invariant if and only if supp Gωis trivial. That said, we
+are ready to state the announced result, [2, Corollary 3.8].
+Theorem 8.1.Letωbe a state onA. There exists a (unique) state
+×ωon NN
+v Asuch that
+×ω
+ 
+ιj1(a1)···ι jn(an)
+
+=ω(a 1)···ω(a n),
+for alln∈N,j 1 <···<j n inN,a 1,...,a n∈A, if and only if for any
+η1,η 2∈supp Gωone hasv(η 1,η 2) = 1.
+
+=== page 46 ===
+46 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+In the sequel, tensor product states will be looked at as distributions
+of quantum stochastic processes whose distribution factorizes through
+a twisted tensor product in the sense of Definition 2.2.
+Remark 8.2.Infinite tensor product states as in Theorem 8.1 are all
+instances of full product states. Morever, it is easy to check that an
+infinite tensor product state×ωis block-singleton if and only ifωisG-
+invariant. Also note that when the action ofGis not trivial, no infinite
+tensor product state satisfies any of the five natural non-commutative
+independence forms.
+In the next section, we fix a particular specimen of infinite twisted
+tensor product to show what the tail algebra may look like when the
+assumption on theG-invariance of our product state is dropped. As
+already mentioned, the tail algebra will not be trivial so as to encode
+theG-orbit of the product state.
+8.2.The infinite non-commutative torus.The infinite noncom-
+mutative torusA N
+α with deformation parameterα∈Ris the universal
+C∗-algebra generated by a countable set of unitaries{u l :l∈N}satis-
+fying the commutation relationsu luk =e i2παukul for anyl,k∈Nwith
+l<k.
+TheC ∗-algebraA N
+α can also be obtained as an infinite twisted ten-
+sor product with sample algebraA=C(T) thought of as aG-graded
+C∗-algebra, withG=Tacting onC(T) by rotation and bicharacter
+vα :Z×Z→Tgiven byv α(l,k) :=e i2παlk.
+We recall thatA N
+α is endowed with a canonical trace, tr, which is noth-
+ing but the infinite tensor product of the state onC(T) corresponding
+to the Haar measure onT.
+The convex set of all spreadable states onA N
+α, or equivalently by Corol-
+lary 6.8 the set of all weakly spreadable states, is completely determined
+in [10], where the following has been proved.
+Theorem 8.3.The set of all spreadable states onA N
+α is the Bauer
+simplex whose extreme points are the tensor product states×ω, where
+(i)If α
+2π is irrational, the trace is the only spreadable state, i.e.ω
+is the Haar measure onT;
+(ii)If α
+2π = qn1
+1 ···qnss
+pm1
+1 ···pmrr
+is rational,ωis any state onC(T)invari-
+ant under all rotations byn 0-th roots of unity, wheren 0 =
+p{m1/2}
+1 ···p {mr/2}
+r , with{ k
+2}is k
+2 ifkis even and k+1
+2 ifkis
+odd.
+In the light of the result above, only the rational case needs a thor-
+ough discussion if tail algebras are to be dealt with. Indeed, the tail
+
+=== page 47 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 47
+algebra of the canonical trace is trivial because the canonical trace sat-
+isfies the block-singleton condition. Therefore, from now on we will
+supposeα= m
+n withm,ncoprime.
+In this case, the grading can more conveniently be described by the
+finite groupZ n ={z∈T:z n = 1} ⊂Tand by the bicharacter
+v: cZn×cZn→Tgiven byv([l],[k]) =e 2πim
+nlk, where cZn is identified
+withZ/nZ(and [·] is the equivalence class modn).
+For any spreadable stateφonA N
+α, we denote by φthe average ofφ
+with respect to the action of the reduced gauge groupG=Z n, that is
+(8.1) φ= 1
+|G|
+X
+g∈G
+φ◦α g
+or, more concretely, φ= 1
+n
+Pn−1
+k=0φ◦α zk
+0
+withz 0 =e
+2πi
+n .
+Denote byφ Z the unique spreadable extension ofφto the infinite non-
+commutative torus indexed by the integersZ,A Z
+α. Note thatφis
+dominated byφand accordinglyφ Z is still dominated byφZ. But then
+the GNS representation ofφ Z can be realized as a subrepresentation of
+the GNS representation of φZ , that is there exists a vectorx φ inH φZ
+such that⟨π φZ(a)xφ,xφ⟩=φ Z(a) for allainA Z
+α, meaning the closed
+subspaceH φZ := πφZ(AZ
+α)xφ is a subrepresentation equivalent to the
+GNS representation ofφ Z.
+SetR φZ :=π φZ(AN
+α)′′ andR φZ :=π φZ(AN
+α)′′. Let Ψ :R φZ→R φZ the∗-
+epimorphism obtained by restricting operators in the former algebra to
+the subspaceHφZ. We recall thatS τ
+πφZ
+is the convex set of all stationary
+states that are normal in the GNS representation ofφ Z.
+The following theorem completely describes tail algebras of the ex-
+treme states of the simplex of spreadable states onA N
+α, which we recall
+satisfy Property (ii) of Theorem 5.12.
+Theorem 8.4.For any spreadable stateφonA N
+α, one has
+Tφ∼= Tφ,
+with the∗-isomorphism being realized by the restriction toT φ of the
+isomorphismΨ :R φZ→R φZ above.
+Furthermore, ifφis a tensor product state, thenS τ
+πφZ
+is the finite-
+dimensional Bauer simplex given byconv{φ◦α g :g∈Z n}and
+Tφ∼= Cd d:=|{φ◦α g :g∈Z n}|
+in the∗-isomorphism that identifies the minimal projections inC d with
+the supports of the extreme states ofS τ
+πφZ
+.
+
+=== page 48 ===
+48 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Proof.We start by observing that, althoughφis not necessarily gauge
+invariant, the gauge action ofZ n is all the same implemented in rep-
+resentationπ φZ onπ φZ(AN
+α). Indeed, by the commutation rules of the
+non-commutative torusu−1uju∗
+−1 =e 2πim
+nuj for allj≥0, one sees that
+the adjoint action ofu −1 onA N
+α coincides withα zm
+0 withz 0 =e 2πi 1
+n .
+Becausemandnare coprime, by B´ ezout’s identity there existk,lin
+Zsuch thatkm+ln= 1. But then
+uk
+−1uj(u−1)∗k =e 2πikm
+n uj =e 2πi( 1
+n−l)uj =e 2πi 1
+nuj,
+which meansu k
+−1 implements the action of the generator of the gauge
+groupZ n, whose action is thus fully implemented.
+The next step we take is to show that for allginG=Z n the rep-
+resentationsπ φZ◦αg andπ φZ, understood as representation ofA N
+α, are
+unitarily equivalent. This can be seen by noting thatπ φZ◦αg is unitarily
+equivalent toπφZ◦αg, and eachαg is unitarily implemented in the GNS
+representation by the above discussion. In particular,φ◦α g appears as
+a vector state (associated with sayx g inH φZ) inπ φZ (restricted toA N
+α).
+As a result, the averaged stateφis a normal state in the representation
+πφZ (restricted toA N
+α).
+We now move on to show that the restriction map Ψ defined above
+sendsT φZ ontoT φZ. The inclusion Ψ(T φZ)⊆T φZ is a straightforward
+consequence of the definition of tail algebra. As for the reverse inclu-
+sion, letSbe inT φZ. By definition ofT φZ, for everyninNthere exists
+Tn in{π φZ(ik(C(T))) :k≥n} ′′ such that Ψ(Tn) =Sand∥T n∥≤∥S∥
+for alln(that is because Ψ sends{π φZ(ik(C(T))) :k≥n} ′′ onto
+{πφZ(ik(C(T))) :k≥n} ′′ ). Now the sequence{T n :n∈N}has a sub-
+sequence that converges to someTin the weak operator topology. By
+constructionTsits in T
+n{πφZ(ιk(A)) :k≥n} ′′ =T φZ and Ψ(T) =S
+by continuity of Ψ w.r.t. the weak operator topology.
+As for injectivity of Ψ, let us now observe thatφZ(T) = 1
+n
+P
+g∈G⟨Txg,xg⟩
+holds for allTinR φ, in that it certainly holds for allT=π φZ(a),a
+inA N
+α. Suppose now Ψ(T ∗T) = 0 forTinT φZ. By the formula above
+φZ(T∗T) = 1
+n
+P
+g∈G∥Txg∥2 = 0, which entailsT ∗T= 0 by Lemma B.2.
+As for the second part of the statement, we start by showing thatT φ is
+an abelianC ∗-algebra. This follows from the chain of ∗-isomorphisms
+Tφ∼= TφZ
+∼= TφZ
+∼= EφZ(πφZ(AN
+α))′′EφZ, whereE φZ is the orthogonal
+projection ontoH τ
+φZ, and the last∗-isomorphism can be proved in the
+exact same way as in the proof of Theorem 5.3 and relies on the fact
+thatT φ is separated byξ φ. Finally, abelianness of algebras of the form
+EφZ(πφZ(AN
+α))′′EφZ is shown in [10, Proposition 4.1].
+
+=== page 49 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 49
+Therefore, we need only show thatTφ is finite-dimensional with dimen-
+sion given by thedin the statement. Now ifφis extreme, then the
+statesφ◦α g are extreme as well for allginZ n. Furthermore, by what
+we saw above, they are normal in the representationπ φZ, and thus by
+virtue of Theorem 4.3 their restrictions toT φ provide pure states of the
+tail algebra, hence dimTφ≥|{α◦α g :g∈Z n}|. On the other hand, we
+must also have dimT φ≤|{α◦α g :g∈Z n}|because{φ◦α g :g∈Z n}
+is a separating set of states for the tail algebra (since their uniform
+convex combination givesφ). The rest of the statement is now a direct
+consequence of Corollary 4.2.□
+Remark 8.5.In [9] the authors address what they call braidable states
+on the parafermion algebra, lavishing their attention to the correspond-
+ing tail agebras. Now the parafermion algebra is an instance of infinite
+twisted tensor product, with sample algebraM d(C) and grading group
+Zd. As shown in [15], every braidable state is spreadable. However,
+it is presently unclear how large the class of braidable states on the
+parafermion algebra actually is, whereas the class of spreadable states
+forms a rich Bauer simplex whose extreme points are precisely the ad-
+missible tensor product states, see [2, Section 4.2]. The tail algebras
+of these extreme states can be described in the same way as those for
+the infinite non-commutative torus by an analogue of Theorem 8.4.
+Since the argument is entirely analogous to that for the infinite non-
+commutative torus, and both the statement and proof would require
+additional notation, we omit every detail.
+Remark 8.6.The result in [1, Theorem 3.4] is inaccurate, for coun-
+terexamples can be given. To this end, we can consider the following
+example, which is actually due to Elia Vincenzi and was contained in
+his Ph.D. thesis. However, since the thesis is no longer available online,
+we include a reasonably detailed account of that example.
+Consider theC ∗-dynamical system (M2(C),Z 2×Z 2,γ), with gauge ac-
+tionγ:Z 2×Z 2 →Aut(M2(C)) determined byγ (1,0)(A) =ad U(A),
+γ(0,1)(A) =ad V (A) with
+U=
+
+1 0
+0−1
+
+,V=
+
+0 1
+1 0
+
+,
+together with the antisymmetric bicharatervon \Z2×Z 2∼= Z2×Z 2
+given by
+v((x1,x 2),(y 1,y 2)) = (−1)x1y1+x2y2 for (x1,x 2),(y 1,y 2)∈Z 2×Z 2.
+Take the infinite twisted tensor product ofM 2(C) w.r.t.v,⊗ Z
+vM2(C).
+We note that the dynamics given by the permutation action gives rise
+
+=== page 50 ===
+50 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+to aP Z-abelian system, that is a system that satisfies the hypotheses
+of Theorem 3.4 in [1]. This can be seen for instance by applying a
+minor variation of [2, Theorem 4.10]. However, there are extreme ex-
+changeable states on⊗ Z
+vM2(C) that do not satisfy the block-singleton
+property, thus contradicting the conclusion of Theorem 3.4 in [1]. In-
+deed, takeωto be the vector state onM 2(C) induced by the vector
+1√
+2(1,i)∈C 2. By Theorem 8.1, there exists the tensor product state
+×ωon⊗ Z
+vM2(C), which is easily checked to be exchangeable, since the
+bicharactervis antisymmetric, and notZ 2×Z 2-invariant. It follows
+that×ωdoes not satisfy the block singleton property, see Remark 8.2.
+In addition,×ωis an extreme exchangeable state on⊗ Z
+vM2(C) by the
+implication (ii)⇒(i) in the hierararchy of ergodicities for the exchange-
+able case, Theorem 5.10.
+AppendixA
+The present appendix includes a series of results of various type
+which have been deferred to the end of the paper so as to keep the
+general exposition as coincise as possible.
+A.1.Some equivalences of ergodic properties.
+Proposition A.1.For a spreadable (or weakly spreadable) stateφon
+∗NA, the following conditions are equivalent:
+(i)φis strongly clustering, i.e.lim n→∞φ(xτn(y)) =φ(x)φ(y), for
+allx,yin∗ NA;
+(ii)E φ is the projection ontoCξ φ;
+(iii)φ(xy) =φ(x)φ(y), for all localizedx,yin∗ NAsupported in
+subsetsF x,Fy with eitherF x <F y orF x >F y.
+Proof.We will show the chain of implications (i)⇒(ii)⇒(iii)⇒(i).
+We show that if (i) holds, thenE φπφ(x)ξφ =φ(x)ξ φ for allxin∗ NA,
+from which (ii) follows. For anyyin∗ NAwe have
+⟨Eφπφ(x)ξφ,πφ(y)ξφ⟩=⟨π φ(x)ξφ,Eφπφ(y)ξφ⟩= lim
+n
+⟨πφ(x)ξφ, 1
+n
+nX
+k=0
+πφ(τk(y))ξφ⟩
+= lim
+n
+1
+n
+nX
+k=0
+φ(xτk(y)) =φ(x)φ(y) =⟨φ(x)ξ φ,πφ(y)ξφ⟩,
+which proves the sought equality by cyclicity ofξ φ.
+Suppose now (ii) holds and letx,yin∗ NAwith the support ofyentirely
+to the right of the support ofx. We have
+φ(xy) =⟨π φ(xy)ξφ,ξφ⟩=⟨π φ(x)πφ(τq(y))ξφ,ξφ⟩
+
+=== page 51 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 51
+for allq≥0, thanks toJ N-invariance ofφ(or by weak spreadability),
+since there certainly exists an increasing map from fromNtoNthat
+is the identity on the support ofxand shifts byqthat ofy. But then
+φ(xy) =⟨π φ(x) 1
+n
+n−1X
+q=0
+πφ(τq(y))ξφ,ξφ⟩
+= lim
+n
+⟨πφ(x) 1
+n
+n−1X
+q=0
+πφ(τq(y))ξφ,ξφ⟩=⟨π φ(x)Eφπφ(y)ξφ,ξφ⟩
+=⟨π φ(x)φ(y)ξφ,ξφ⟩=φ(x)φ(y)
+and we are done. If it is the support ofxto lie to the right of the
+support ofy, then
+⟨πφ(xy)ξφ,ξφ⟩=⟨ξ φ,πφ(y∗)πφ(x∗)ξφ⟩=⟨ξ φ,πφ(y∗)πφ(τq(x∗))ξφ⟩
+for the same reason as above. At this point we can safely proceed as
+above to find thatφ(xy) =φ(x)φ(y).
+Finally, suppose (iii) holds, that is the factorizationφ(xy) =φ(x)φ(y)
+holds for all localizedx,ywith suitable supports. Fornlarge enough
+the support ofτ n(y) will lie to the right of the support ofx, hence
+φ(xτn(y)) =φ(x)φ(y), and lim nφ(xτn(y)) =φ(x)φ(y). The general
+limit property is easily achieved by norm density of the set of localized
+elements.□
+A.2.AnL 2 version of K¨ ostler’s ergodic Theorem.We here derive
+anL 2 version of K¨ ostler’s ergodic Theorem [17, Theorem 8.4] where
+we remove the faithfulness assumption. This is the essential ingredient
+used to obtain the full product factorization condition of the conditional
+expectation onto the tail algebra for spreadable processes.
+Let us first fix some notation. For anyN≥1,θ N inJ N is partial
+shift given byθ N(n) =n+ 1 forn≥Nandθ N(n) =nforn<N. For
+any fixed spreadable stateφ, denote byV N the isometry acting on the
+GNS Hilbert spaceH φ asV Nπφ(x)ξφ :=π φ(θN(x))ξφ, x∈∗ NA. Note
+that
+(A.1)V NVN−1 =V 2
+N−1.
+Set
+M (N)
+k := 1
+N
+N−1X
+l=0
+Vl
+k TN :=
+NY
+k=0
+VkN
+k M (N)
+k .
+Proposition A.2.With the notation set above, for any spreadable
+stateφon∗ NAone has
+lim
+N→∞
+TN =E φ
+
+=== page 52 ===
+52 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+in the strong operator topology.
+Proof.Since∥T N∥≤1 for allNinN, it is enough to verify the limit
+equality in the statement only on the dense subspace ofHφ given by all
+vectorsπ φ(x)ξφ withxrunning through the (norm dense) subalgebra
+of localized elements. Letxsit in the subalgebra generated by the
+firstN 0 embeddings and letN≥N 0. Fromθ N(x) =x, we have
+VNπφ(x)ξφ =π φ(x)ξφ, henceM (n)
+N πφ(x)ξφ =π φ(x)ξφ for alln.
+For everyk, denote byE k the orthogonal projection onto the fixed-
+point subspace ofV k. Note thatE 0 is the projectionE φ ontoH JN
+φ =
+Hτ
+φ. Now for allk≤Nwe haveE kVN =E k. Indeed, proving this
+equality amounts to showingV ∗
+NEk =E k. This in turn is equivalent to
+VNEk =E k, which is of course verified. We clearly haveE kVl
+N =E k
+for alll≥0, and in particularE kM (n)
+N =E k.
+But then we have
+TNπφ(x)ξφ =M (N)
+0 VN
+1 M (N)
+1 ···V kN
+k M (N)
+k ···V N 2
+N M (N)
+N πφ(x)ξφ =
+M (N)
+0 VN
+1 M (N)
+1 ···V kN
+k M (N)
+k ···V (N0−1)N
+N0−1 M (N)
+N0−1πφ(x)ξφ =
+ N0−1Y
+l=0
+VlN
+l (M (N)
+l −El)
+!
+EN0πφ(x)ξφ+
+ N0−2Y
+l=0
+VlN
+l (M (N)
+l −El)
+!
+EN0−1πφ(x)ξφ+
+ N0−3Y
+l=0
+VlN
+l (M (N)
+l −El)
+!
+EN0−2πφ(x)ξφ+
+...+
+(M (N)
+0 −E 0)V1(M (N)
+1 −E 1)E2πφ(x)ξφ+
+(M (N)
+0 −E 0)E1πφ(x)ξφ+
+E0πφ(x)ξφ.
+In particular, the sequence of vectors{TNπφ(x)ξφ−Eφπφ(x)ξφ}N is the
+sum ofN 0 terms, each of which goes to zero thanks to the mean ergodic
+theorem. For example, the first of these terms is the the sequence (in
+N) of vectors
+ N0−1Y
+l=0
+VlN
+l (M (N)
+l −El)
+!
+EN0πφ(x)ξφ
+
+=== page 53 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 53
+which go to zero by joint continuity on bounded subsets ofB(Hφ) of the
+product in the strong operator topology, in that each factor (M(N)
+l −El)
+strongly converges to zero by virtue of the mean ergodic theorem.□
+Lemma A.3.Letφbe a spreadable state on∗ NA. For any localized
+a,bin∗ NAwith disjoint supports one has
+Eφπφ(ab)Eφ =E φπφ(a)Eφπφ(b)Eφ.
+Proof.For anyN-tuplel N = (l1,l 2,...,l N) in{0,1,...N−1} N define
+θN,lN := QN
+i=0θiN+li
+i =θ l0
+0θN+l 1
+1 ···θ N 2+lN
+N . As proved in [17, Lemma
+8.5], the mapsθ N,lN enjoy the following property: for any fixedN,l N,
+kN one hasθ N,lN (i)<θ N,kN (j) ifi<j <N.
+By its very definition,TN can also be written asTN = 1
+NN+1
+P
+lN
+VθN,lN
+,
+whereVθN,lN
+is the isometry onHφ defined byVθN,lN
+πφ(x)ξφ :=π φ(θN,lN (x))ξφ,
+for allxin∗ NA.
+That said, we are ready to prove the statement. For allξ,ηinH φ we
+have
+⟨Eφπφ(a)Eφπφ(b)EφEφξ,Eφη⟩
+= lim
+N
+⟨ 1
+NN+1
+X
+lN
+VθN,lN
+πφ(a) 1
+NN+1
+X
+kN
+VθN,kN
+πφ(b)EφEφξ,Eφη⟩
+by joint continuity of the product w.r.t. the strong operator topology
+on bounded sets ofB(H φ).
+The right-hand side of the equality above can in turn be expressed as
+follows:
+lim
+N
+1
+N 2(N+1)
+X
+lN,kN
+⟨θN,lNπφ(a)VθN,kN
+πφ(b)EφEφξ,Eφη⟩=
+lim
+N
+1
+N 2(N+1)
+X
+lN,kN
+⟨πφ(a)πφ(b)EφEφξ,Eφη⟩=⟨π φ(a)πφ(b)EφEφξ,Eφη⟩=
+⟨Eφπφ(a)πφ(b)EφEφξ,Eφη⟩,
+where the first equality is got to byJ N-invariance of the bounded linear
+functional⟨(·)E φξ,Eφη⟩and the property enoyed by the mapsθ N,lN
+recalled above.□
+AppendixB
+Proposition B.1.LetB⊂Abe a unital inclusion ofC ∗-algebras. If
+φis a state onAwith central support, thenφ↾ B has central support
+as well as a state onB
+
+=== page 54 ===
+54 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+Proof.Denote byK⊂H φ the cyclic subspace generated byBin the
+GNS representation (ofA) ofφ, that isK:= πφ(B)ξφ. By uniqueness
+of the GNS representation,Kis (up to unitary equivalence) the GNS
+representation ofφ↾ B. By von Neumann bicommutant theorem, the
+restriction mapπ φ(B)∋π φ(b)7→π φ(b)↾ K∈π φ↾B(B) can be extended
+to a surjective∗-homomorphism Φ :π φ(B)′′→π φ↾B(B)′′.
+Let nowTbe inπ φ↾B(B)′′ such thatTξ φ = 0. Since Φ is surjective,
+there existsSinπ φ(B)′′ such that Φ(S) =T. Because Φ restricts
+operators toK, we also haveSξ φ = 0, henceS= 0 as by hypothesis
+ξφ is separating for the wholeπ φ(A)′′, which finally yieldsT= 0.□
+Lemma B.2.For anyG-invariant, shift-invariant stateφon⊗ N
+v A,
+the GNS vectorξ φ is separating forT φ.
+Proof.Since the stateφisG-invariant, the action ofGis unitarily
+implemented onH φ by a family of unitaries{V g :g∈G}uniquely
+determined byV gπφ(x)ξφ =π φ(γg(x))ξφ, for allginG,xin⊗ N
+v A.
+We claim thatT G
+φ :={T∈T φ :V gTV ∗
+g =T,g∈G}is contained in
+the center of the von Neumann algebraπ φ(⊗N
+v A)′′. From this it imme-
+diately follows thatξ φ is separating forT G
+φ (asξ φ is separating for the
+whole commutantπ φ(⊗N
+v A)′).
+Let us now denote byE G the canonical conditional expectation of
+πφ(⊗N
+v A)′′ onto itsG-fixed-point algebra,i.e.E G is obtained by av-
+eraging the adjoint action of theV g’s.
+IfTinT φ is such thatTξ φ = 0, thenV gT∗TV ∗
+gξφ = 0 for allgin
+G, henceE G(T∗T)ξφ = 0. Sinceξ φ is separating forT G
+φ , we find
+EG(T∗T) = 0. BecauseE G is faithful, we finally get toT ∗T= 0,
+henceT= 0.
+In order to end the proof, we need to make sure the claim made above
+holds true. This can be seen by noting that any element inT G
+φ com-
+mutes with the image underπ φ of all homogeneous localized elements
+of⊗ N
+v A.□
+AppendixC
+We recall that iffis a positive linear functional on a non-unitalC ∗-
+algebraA, then∥f∥= sup λf(eλ), where{e λ :λ∈Λ}is a contractive,
+positive approximate unit, seee.g.[12, Proposition 2.1.5.] For any
+positive linear functionalfonAwith norm less than or equal to 1,
+we denote by efits extension as a state of eA=A+CI, the one-point
+unitalization ofA. The GNS representationπ f offis by definition the
+restriction toAof the GNS representation of efas a representation of
+
+=== page 55 ===
+A DYNAMICAL APPROACH TO NON-COMMUTATIVE DE FINETTI THEORY 55
+eA(note that in this wayπ f acts onH ef). To ease the notation, the
+GNS vectorξ ef will be simply denoted byξ f.
+Lemma C.1.Letφbe a normalized positive linear functional on∗ 0
+NA
+such that∥φ↾ B∥= 1, whereB⊂∗ 0
+NAis aC ∗-subalgebra. For any
+contractive, positive approximate unit{e λ :λ∈Λ}ofB, one has
+lim
+λ
+πφ(eλ)ξφ =ξ φ,
+where the convergence is understood in norm.
+Proof.It is a matter of computation. Indeed, one has
+0≤∥π φ(eλ)ξφ−ξφ∥2 =eφ((eλ−1)∗(eλ−1)) =eφ(e2
+λ) + 1−2eφ(eλ)≤
+eφ(eλ) + 1−2eφ(eλ)→0
+asφ(e λ) goes to 1 because the norm of the restriction ofφtoBis 1
+by hypothesis (in the inequality we have taken into accounte 2
+λ≤e λ,
+which holds as 0≤e λ≤1).□
+Acknowledgments
+Both authors are members of INDAM-GNAMPA and acknowledge the
+support of INdAM-GNAMPA Project 2026 “Simmetrie distribuzionali
+per processi stocastici quantistici”, Project CUP UP E53C25002010001.
+References
+[1] Accardi L., Crismale V., Ghorbal A.B., Lu Y.G.Singleton conditions and
+quantum de Finetti’s theorem, Infin. Dimens. Anal. Quantum Probab. Relat.
+Top.11(2008)
+[2] Aiello V., Del Vecchio S., Rossi S.On the Ryll-Nardzewski Theorem for
+Quantum Stochastic Processes, Adv. Math.501(2026), 111119
+[3] Avitzour D.Free products ofC ∗-algebras, Trans. Am. Math. Soc.271(1982),
+423–435.
+[4] Banica T., Curran S., Speicher R.de Finetti theorems for easy quantum
+groupsAnn. Probab.,40(2012) No. 1, 401-435
+[5] Baraquin I., C´ ebron G., Franz U., Maassen L., Weber M.de Finetti Theo-
+rems for the Unitary Dual GroupSIGMA18(2022), 067
+[6] Bo˙ zejko M., Leinert M., Speicher R.,Convolution and limit theorems for
+conditionally free random variablesPac. J. Math.175 (1996), No. 2, 357–
+388
+[7] Bratteli O., Robinson D. W.Operator algebras and quantum statistical me-
+chanics. I., Second edition, Texts and Monographs in Physics. Springer-
+Verlag, Berlin, 1997
+[8] Brown N.P., Ozawa N.C*-Algebras and Finite-Dimensional Approxima-
+tions, Graduate Studies in Mathematics, Amer. Math. Soc., 2008.
+[9] Bu K., Jaffe A., Liu Z., Wu J.De Finetti Theorems for Braided
+Parafermions, Commun. Math. Phys.373(2020), 435–456.
+
+=== page 56 ===
+56 SIMONE DEL VECCHIO AND STEF ANO ROSSI
+[10] Crismale V., Del Vecchio S., Griseta M.E., Rossi S.de Finetti theorem on
+the infinite non-commutative torus, Proc. Amer. Math. Soc.154(2026),
+723-735.
+[11] de la Salle M.Towards strong Banach property (T) forSL(3,R), Israel J.
+Math.211(2016), 105–145.
+[12] Dixmier J.C ∗-algebras, Elsevier North-Holland mathematical library; v. 15,
+1977.
+[13] Dykema K.J., K¨ ostler C., Williams J.D.Quantum symmetric states on free
+productC ∗-algebras, Trans. Am. Math.Soc.369(2017), 645–679.
+[14] Fidaleo F., Vincenzi E.GradedC ∗-algebras and twistedC ∗-tensor products,
+Ricerche Mat74(2025), 163–184.
+[15] Gohm R., K¨ ostler C.Noncommutative Independence from the Braid Group
+Communications in Mathematical Physics289(2009): 435-482.
+[16] Hora A., and Obata N.Quantum probability and spectral analysis of graphs.
+Springer Science & Business Media, 2007.
+[17] K¨ ostler C.A noncommutative extended de Finetti theorem, J. Funct. Anal.
+258(2010) 1073–1120.
+[18] K¨ ostler, C., Speicher, R.A Noncommutative de Finetti Theorem: Invariance
+under Quantum Permutations is Equivalent to Freeness with Amalgamation,
+Commun. Math. Phys.291(2009) 473–490.
+[19] Liu W.A noncommutative de Finetti theorem for boolean independenceJ.
+Funct. Anal.269(2015), no. 7
+[20] Liu W.Extended de Finetti theorems for boolean independence and monotone
+independenceTrans. Amer. Math. Soc.370(2018) no. 3 1959–2003
+[21] Liu W.General de Finetti type theorems in noncommutative probability,
+Comm. Math. Phys.369(2019), 837-866
+[22] Liu W.Full classification of de Finetti type theorems for*-random variables
+in classical and free probabilityarXiv preprint arXiv:2512.16170 (2025)
+[23] Muraki N.,The five independences as natural products, Infin. Dimens. Anal.
+Quantum Probab. Relat. Top.,6, (2003) no. 3, pp. 337-371.
+[24] Nicolescu C.P., Stroh, A., Zsido L.Noncommutative Extensions of Classical
+and Multiple Recurrence TheoremsJ. Oper. Theory50(2003) 3–52
+[25] Størmer E.Symmetric States of infinite Tensor Products of C*-algebras.J.
+Funct. Anal.3(1969), 48–68.
+[26] Voiculescu, D. V.Free probability for pairs of faces I.Comm. Math. Phys.,
+332(2014), no. 3, pp.955?980,
+[27] Voiculescu, D. V., Dykema K. J., Nica A.Free random variables. Vol. 1.
+American Mathematical Soc., 1992.
+Simone Del Vecchio, Dipartimento di Matematica, Universit `a degli
+studi di Bari, Via E. Orabona, 4, 70125 Bari, Italy
+Email address:simone.delvecchio@uniba.it
+Stefano Rossi, Dipartimento di Matematica, Universit `a degli studi
+di Bari, Via E. Orabona, 4, 70125 Bari, Italy
+Email address:stefano.rossi@uniba.it

@@ -1,0 +1,1253 @@
+=== page 1 ===
+Entanglement-swapping in generalised probabilistic theories, and iterated CHSH games
+Lionel J. Dmello,∗ Laurens T. Ligthart,† and David Gross‡
+Institute for Theoretical Physics, University of Cologne, Germany
+(Dated: May 22, 2024)
+While there exist theories that have states “more strongly entangled” than quantum theory, in the sense that
+they show CHSH values above Tsirelson’s bound, all known examples of such theories have a strictly smaller
+set of measurements. Therefore, in tasks which require both bipartite states and measurements, they do not
+perform better than QM. One of the simplest information processing tasks involving both bipartite states and
+measurements is that of entanglement swapping. In this paper, we study entanglement swapping in generalised
+probabilistic theories (GPTs). In particular, we introduce the iterated CHSH game, which measures the power
+of a GPT to preserve non-classical correlations, in terms of the largest CHSH value obtainable aftern rounds of
+entanglement swapping. Our main result is the construction of a GPT that achieves a CHSH value of 4 after an
+arbitrary number of rounds. This addresses a question about the optimality of quantum theory for such games
+recently raised by Weilenmann and Colbeck. One challenge faced when treating this problem is that there seems
+to be no general framework for constructing GPTs in which entanglement swapping is a well-defined operation.
+Therefore, we introduce an algorithmic construction that turns a bipartite GPT into a multipartite GPT that
+supports entanglement swapping, if consistently possible.
+I. INTRODUCTION
+Finding a set of operationally motivated axioms that sin-
+gle out QM has been a long-standing problem in the field of
+foundations of quantum mechanics. Such an undertaking re-
+quires a mathematical framework that allows us to compare
+QM with other theories, such as classical theory. Arguably
+the most general framework is that of generalised probabilis-
+tic theories (GPTs) [1–9].
+Within this framework, a large number of axioms have been
+proposed over the years [10–16]. One of the main foci of
+many investigations is the behavior of bipartite theories. In
+particular, explaining why CHSH-type experiments [17, 18]
+in nature are bounded by2
+√
+2, which Tsirelson [19] famously
+showed to be the largest value allowed by quantum theory.
+But, as it stands, we still have no definitive axiom singling out
+quantum theory based on this property.
+In their recent work [20], Weilenmann and Colbeck turn to
+multipartite theories to possibly explain 2
+√
+2. The argument
+hinges on a well-known tension between the set of states and
+measurements in a theory: Expanding state space to include
+more correlations requires one to shrink the set of measure-
+ments in order to avoid the emergence of negative probabili-
+ties.
+For example, bipartite boxworld [8, 9, 21] state space is the
+biggest possible bipartite state space one could make. But,
+as a consequence, the bipartite effect space (the space from
+which the measurements are constructed) has only product
+effects. This in turn, is the smallest possible bipartite effect
+space.
+Therefore, by adding a step of entanglement swapping be-
+fore playing the CHSH game, the set of possible correla-
+tions achievable in theories with such state spaces shrink
+(see [22, 23]). Quantum theory seems to strike the optimum
+∗ ldmello@thp.uni-koeln.de
+† ligthart@thp.uni-koeln.de
+‡ david.gross@thp.uni-koeln.de
+between these competing notions, in that the CHSH viola-
+tion of 2
+√
+2 is preserved under entanglement swapping. And
+indeed, Weilenmann and Colbeck show that, for the adap-
+tive CHSH game [24], the winning probability of any theory
+whose unipartite state and effect spaces are characterised by
+regular polygons [25] is upper bounded by the winning prob-
+ability of quantum theory.
+Naturally, the question arises whether quantum theory is
+optimal, in the sense that no post-quantum theory can sus-
+tain a CHSH violation greater than2
+√
+2 through entanglement
+swapping. To investigate this, we introduce theiterated CHSH
+game, which is an extension of the adaptive CHSH game to
+multiple rounds. The main result of this paper is to answer
+this question in the negative, with the construction of a post-
+quantum GPT which sustains the maximal-possible value of
+4 over arbitrarily many rounds in the iterated CHSH game.
+Along the way, we also discuss a simpler construction which
+sustains a CHSH violation of 4 only for a finite number of
+rounds.
+A. Generalised Probabilistic Theories
+The main idea of GPTs is to model experiments as a two
+step process. A preparation step which produces a state, and
+a measurement step which probabilistically maps states to out-
+comes. Associated to each outcome of a measurement, comes
+an effect.
+Mathematically, states are modelled as members of a con-
+vex set (convexity corresponding operationally to probabilis-
+tic mixtures). Effects can be viewed as positive linear func-
+tionals on states. The pairing between a state ρ and an effect
+e is interpreted as the probability of obtaining the outcome
+corresponding to the effecte, given that we prepared the state
+ρ.
+It is useful to represent these operations diagrammatically.
+For example, the CHSH experiment consists of a bipartite
+state measured locally by two parties. The resulting contrac-
+tion can be diagrammatically represented as in Fig. 1. This
+arXiv:2405.13819v4  [quant-ph]  2 Sep 2024
+
+=== page 2 ===
+2
+e f
+ρ
+FIG. 1. Diagramatic representation of the measurement of a bipar-
+tite state by two local observers. Here, the bipartite state ρ is rep-
+resented by a circle with two arrows emerging from it, one for each
+sub-system. The unipartite effectse andf on the other hand, are rep-
+resented by boxes with one port each. The full diagram represents the
+probability that, on measuringρ, Alice and Bob get the outcome cor-
+responding to effecte andf respectively.
+diagram corresponds to the joint probability obtained by con-
+tracting the 2-tensor representing the state with the tensor
+product of the local unipartite effects, i.e., the pairing
+⟨ρ12,e 1⊗f2⟩ (1)
+(see also Sec. II).
+B. Entanglement swapping
+Contractions of the type depicted in Fig. 1, whose result is
+a probability, are called full contractions. It is also possible to
+define partial contraction of states and effects.
+Note for example the situation in Fig. 2 (a), where a bipar-
+tite stateρ is measured only on sub-system 1 and the outcome
+corresponding to the effecte is obtained. We will interpret the
+resulting object as a (not necessarily normalised) conditional
+state, which acts on effectsf on the second sub-system as
+⟨ρ12,e 1⊗ 12⟩ :f27→⟨ρ12,e 1⊗f2⟩. (2)
+Here 1 is the identity channel, which operationally corre-
+sponds to “do nothing”.
+Similarly, one can pair a bipartite effect with a unipartite
+state. This situation is depicted in Fig. 2 (b) and mathemati-
+cally corresponds to
+⟨ρ1⊗ 12,e 12⟩ :σ27→⟨ρ1⊗σ2,e 12⟩. (3)
+We can also extend these notions to the case of several
+bipartite objects. Consider the situation where two bipartite
+states are partially contracted with a bipartite effect, as de-
+picted in Fig. 2 (c). This is the generalisation of the quantum-
+mechanical notion of entanglement swapping to GPTs. These
+operations will occur so frequently, that we introduce a com-
+pact notation: For bipartite states ρ,σ and a bipartite effect
+e, we denote the conditional bipartite state resulting from an
+entanglement swapping procedure as
+Jρ
+e
+σK :=⟨ρ12⊗σ34, 11⊗e23⊗ 14⟩. (4)
+Similarly, we can instead contract two bipartite effects, par-
+tially, with a bipartite state, as depicted in Fig. 2 (d). This
+(a)
+e
+ρ (b)
+ρ
+e
+(c)
+e
+ρ σ (d)
+e f
+ρ
+FIG. 2. Operational depiction of various partial contractions on the
+level of a bipartite theory. (a) depicts partial contraction of a uni-
+partite effect and a bipartite state, (b) depicts partial contraction of a
+bipartite effect and a unipartite state, (c) depicts entanglement swap-
+ping, and, (d) depicts dual entanglement swapping
+situation we call dual entanglement swapping, and as before,
+for bipartite effectse,f and a bipartite stateρ, we denote it by
+qe
+ρ
+f y
+:=⟨11⊗ρ23⊗ 14,e 12⊗f23⟩ (5)
+In the following, we generally drop subscripts labelling sys-
+tems in contractions, if the system an object belongs to is clear
+from context.
+C. Outline
+This paper is structured as follows. In Section II we state
+our axioms for a theory under which entanglement swapping
+is well-defined. We also present an algorithm to either show
+that a given bipartite theory is inconsistent or extend it to a
+multipartite theory in a consistent manner.
+In Section III we discuss the iterated CHSH game.
+In Section IV we discuss the notion of composite GPTs,
+which can swap PR-box correlations for a finite number of
+steps.
+Finally, in Section V we present a GPT which sustains a
+maximal violation of Tsirelson’s bound indefinitely under en-
+tanglement swapping, and provide an optimal strategy for the
+iterated CHSH game.
+II. DEFINITION OF A THEORY
+The main goal of this paper is to analyse the phenomenon
+of entanglement swapping in the general context of GPTs. To
+this end, it is necessary to specify the conditions on a theory
+under which entanglement swapping is well defined.
+There are a few choices we make therein. First, we will
+choose the fundamental objects of our theory to be convex
+cones rather than starting with the state/effect spaces. This
+is because it is sufficient (and more convenient) to work with
+cones in the present context, i.e., describing notions such as
+entanglement swapping and partial contractions. The state
+
+=== page 3 ===
+3
+and effects spaces of the theory are obtained as derived ob-
+jects, in the usual way, as specified below.
+Second, we find it a more natural construction to reinter-
+pret the effects as the primal objects and the states as linear
+functionals on the effects. The two formulations are clearly
+equivalent. For a detailed exposition of such a construction
+refer to the review [9].
+Definition 1. A theory in which entanglement swapping is
+well defined is specified by the following:
+1. A finite-dimensional vector space V .
+2. An element 1∈V , called the unit effect.
+3. A collection of convex cones{P(n)}n∈N,P(n)⊂V⊗n,
+representing (unnormalised) effects, subject to:
+(a) 1∈P (1).
+(b) Closure under tensor products, i.e.,
+Ife∈P (n),f ∈P (m), thene⊗f∈P (n+m).
+4. A collection of convex cones {D(n)}n∈N, D(n) ⊂
+(V⊗n)∗, representing (unnormalised) states, subject to:
+(a) Positivity, i.e.,D(n)⊂ (P(n))′, the polar dual of
+P(n).
+(b) Closure under tensor products, i.e.,
+Ifρ∈D (n),σ∈D (m), thenρ⊗σ∈D (n+m)
+5. Closure under partial contractions, i.e.,
+Fore∈P (n),ρ∈D (m):
+(a) If n>m , then⟨ρ,e⟩∈P (n−m)
+(b) If n<m , then⟨ρ,e⟩∈D (m−n)
+(c) (for completeness) If n =m, then⟨ρ,e⟩∈ R+, is
+the canonical pairing.
+6. Invariance under permutations of systems, i.e., for ev-
+eryn∈ N andπ∈ Sn, we have π(D(n)) =D(n) and
+π(P(n)) =P(n). Where, forρ1···n∈D (n)
+π(ρ1···n) :=ρπ(1)···π(n).
+Similarly for effects.
+From the above definition, we can derive the following:
+For an effecte∈P (n), define the negation
+¬e := 1⊗n−e. (6)
+Define then-partite effect space as
+E(n) :=P(n)∩¬ (P(n)). (7)
+Define then-partite state space as
+S(n) :={ρ∈D (n)|⟨ρ, 1⊗n⟩ = 1}. (8)
+Define the set of unipartite correlators as
+X (1) :={e−¬e|e∈E (1)}. (9)
+For every choice A0,A 1,B 0,B 1 ∈ X(1), we define the
+CHSH observable as
+CHSH(A0,A 1;B0,B 1)
+:=A0⊗B0 +A0⊗B1 +A1⊗B0−A1⊗B1. (10)
+The CHSH value corresponding to the above choice of corre-
+lators and some choice ofρ∈S (2) is the expectation value of
+the CHSH observable with respect toρ, i.e.,
+⟨ρ, CHSH(A0,A 1;B0,B 1)⟩. (11)
+We can associate with every theory a CHSH value defined to
+be the supremum over all possible choicesρ,A 0,A 1,B 0,B 1.
+sup
+A0,A1,B0,B1∈X (1)
+ρ∈S (2)
+|⟨ρ, CHSH(A0,A 1;B0,B 1)⟩|. (12)
+Another important notion in the discussion that follows, is
+that of closure under entanglement swapping . Given a the-
+ory with bipartite conesP(2) andD(2), we sayD(2) is closed
+under entanglement swapping if
+r
+D(2)
+P (2)
+D(2)
+z
+⊂D (2). (13)
+Further, we sayD(2) is stable under entanglement swapping
+if
+conv
+ r
+D(2)
+P (2)
+D(2)
+z
+=D(2). (14)
+The same notions apply to dual entanglement swapping.
+A. Consistent Bipartite Theory
+In this section, we are concerned with the following ques-
+tion. Given:
+• A finite-dimensional vector space V ,
+• a non-zero element 1∈V ,
+• a convex cone P⊂V⊗V ,
+• a convex cone D⊂ (V⊗V )∗,
+is it possible to produce a multipartite theory which has the
+same unit effect, for whichP(2) =P andD(2) =D?
+We answer this question by constructing an algorithm that,
+for an input n∈ N, either produces n-partite conesP(n) and
+D(n) by extending P and D, if consistently possible, or de-
+tects the inconsistency. The algorithm can be split into two
+parts. First, a consistency check on the objects 1,P and D,
+followed by an explicit construction ofP(n) andD(n) for ev-
+eryn∈ N. The algorithm is as follows:
+
+=== page 4 ===
+4
+Algorithm 1 Induced theory
+1: input: (V, 1,P,D,n ∈ N)
+2: if CHECK CONSISTENCY (V, 1,P,D ) = “Inconsistent” then
+3: return “Inconsistent”
+4: else
+5: D(1)← cone⟨D, 1⟩ # partial contractions
+6: P (1)← cone⟨D(1),P⟩
+7: P (2)←P
+8: D(2)←D
+9: ifn is even then
+10: P (n)←Sn·
+
+P (2) ˙⊗n/2
+11: D(n)←Sn·
+
+D(2) ˙⊗n/2
+12: else
+13: P (n)←Sn·
+
+P (1) ˙⊗P (2) ˙⊗⌊n/2⌋
+14: D(n)←Sn·
+
+D(1) ˙⊗D(2) ˙⊗⌊n/2⌋
+15: end if
+16: returnP (n),D(n)
+17: end if
+1: function CHECK CONSISTENCY (V, 1,P,D )
+2: D(1)← cone⟨D, 1⟩ # partial contractions
+3: P (1)← cone⟨D(1),P⟩
+4: if
+5: 1̸∈P (1) # Axiom 3(a)
+6: or
+7: ⟨D(1),P (1)⟩< 0 # positivity, unipartite
+8: or
+9: ⟨D,P⟩< 0 # positivity, bipartite
+10: or
+11: ∀π∈S2, π(P )̸=P # Axiom 6, bipartite
+12: or
+13: ∀π∈S2, π(D)̸=D
+14: or
+15: P (1)⊗P (1)̸⊂P # Axiom 3(b), unipartite
+16: or
+17: D(1)⊗D (1)̸⊂D # Axiom 4(b), unipartite
+18: or
+19:
+q
+D
+P
+D
+y
+̸⊂D # Axiom 5(b), bipartite
+20: or
+21:
+qP
+D
+P y
+̸⊂P # Axiom 5(a), bipartite
+22: then
+23: return “inconsistent”
+24: else
+25: return “consistent”
+26: end function
+In the presentation of Algorithm 1, ˙⊗ stands for the mini-
+mal tensor product, defined as the conal hull over the tensor
+product of the respective sets:
+P(n) ˙⊗P(m) := cone
+ 
+P(n)⊗P (m)
+. (15)
+Additionally, we have not specified in which format inputs
+likeV orP are to be supplied, or how the checks should be
+performed. In this sense, it is a “template” for a concrete algo-
+rithm that depends on the mathematical properties of the input
+data. For example, ifP,D are polyhedral cones in Rd, thenV
+can be represented by the integerd and the cones by the facet
+inequalities. In this case, all tests in Algorithm 1 are linear
+programs. But more general situations also make sense, e.g.
+cones defined in terms of semi-definite constraints.
+Lemma 2. Given the input dataV, 1,P,D , Algorithm 1 either
+detects inconsistency, or returns consistent n-partite cones
+P(n) andD(n) induced by the data, for any n∈ N, in a fi-
+nite number of steps.
+Proof. If the function check consistency in Algorithm 1 re-
+turns “inconsistent”, then one of the axioms in Def. 1 is vio-
+lated already at the level of bipartite objects and so there is no
+consistent extension of the input.
+We will now verify that if the functioncheck consistency in
+Algorithm 1 returns “consistent”, then there exists a theory as
+advertised.
+Indeed, the objects whose existence is posited by Axioms 1
+and 2 are part of the problem data. Axiom 6 holds by con-
+struction given that the bipartite cones are invariant under per-
+mutations. Axiom 3(a) is checked directly. The n-partite
+cones are constructed only using the unipartite and bipartite
+cones. Therefore, Axioms 5(a) and 5(b) follow from Axiom 6
+and closure under partial contractions, entanglement swap-
+ping and dual entanglement swapping, at the bipartite level.
+Axiom 4(a) follows from Axioms 5(a) and 5(b) plus the pos-
+itivity of the unipartite and bipartite cones, since tensor prod-
+ucts preserve positivity. Axioms 3(b) and 4(b) follow by con-
+struction.
+III. THE ITERATED CHSH GAME
+The iterated CHSH game, as previously alluded to, is an ex-
+tension of the adaptive CHSH game from Ref. [24], to include
+multiple rounds of entanglement swapping. The game can be
+viewed as implementing a CHSH test after the use of a “GPT
+repeater”, the generalisation of a quantum repeater to GPTs,
+in order to probe the capacity of the repeater to propagate en-
+tanglement.
+The iterated CHSH game is parameterised by n, referring
+to the number of repeater units between the start and end
+nodes. The players of the game are Alice ( A), a collection
+ofn Bobs ({Bi}i=1,···,n), and Charlie (C). Alice corresponds
+to the start node, Charlie to the end node, and the Bobs to re-
+peaters. The diagramatic reperesentation of the structure thus
+produced is shown in Fig. 3
+Each round of the game proceeds as follows. First, each
+of the Bobs performs a bipartite measurement on the subsys-
+tems available to him, effectively leading to n rounds of en-
+tanglement swapping. They subsequently broadcast their out-
+comes. Alice and Charlie are then allowed to implement local
+corrections based on the outcomes of the Bobs. Finally, Al-
+ice and Charlie perform a CHSH test. In addition to shared
+randomness among all parties, each of the nearest neighbours
+depicted in Fig. 3 may share a bipartite resource, but no other
+multipartite resource. (The adaptive CHSH game of Ref. [24],
+depicted in Fig. 4, is the iterated CHSH game forn = 1).
+To calculate the resulting CHSH value between Alice
+and Charlie in the general case, we simply sum over the
+CHSH value corresponding to each outcome vector ⃗b =
+
+=== page 5 ===
+5
+CB1
+...
+BnA
+ρBn-1Bn ρBnCρB1B2
+ρAB1
+FIG. 3. Diagrammatic representation of the structure of the iterated
+CHSH game.A andC stand for Alice and Charlie respectively. The
+first and the last Bob are shown asB1 andBn respectively. The other
+Bobs are similarly iterated in order. Each of the nearest neighbours
+shares a bipartite resource. The local effect space of all the Bobs is
+bipartite, and that of Alice and Charlie is unipartite.
+CB
+ρBC
+A
+ρAB
+FIG. 4. Diagrammatic representation of the structure of the adaptive
+CHSH game. A,B andC stand for Alice, Bob and Charlie respec-
+tively. Bob shares a bipartite resourceρAB with Alice andρBC with
+Charlie.
+(b1,··· ,bn)∈ (Zk)n (for a k-outcome measurement) pro-
+duced by the Bobs, weighted by the respective probabilities.
+That is, ifβ⃗b andp⃗b are the CHSH value and probability cor-
+responding to the outcome vector ⃗b respectively, the CHSH
+value of the game is calculated as
+β =
+X
+⃗b∈(Zk)n
+p⃗bβ⃗b. (16)
+In the case of quantum mechanics, it is trivial to describe an
+optimal strategy for the iterated CHSH game: Choose all the
+shared states to be the Bell state |Φ+⟩. The Bobs perform a
+Bell basis measurement each. Conditioned on the outcomes,
+the state shared by Alice and Charlie is then one of four ele-
+ments of the Bell basis, all of which are equiprobable. A local
+Pauli operation, performed by either of them, can map it to
+|Φ+⟩. Hence, it follows that quantum theory retains a CHSH
+value of 2
+√
+2 for alln.
+IV . COMPOSITE GPTS
+The present section is inspired by private communications
+with Roger Colbeck, Marc-Olivier Renou, Mirjam Weilen-
+mann, and Elie Wolfe.
+Here we discuss a family of constructions that can each
+swap PR-box correlations for a fixed number of iterations m.
+That is for alln≤m, they have a CHSH value of 4 in the it-
+erated CHSH game. But, as we will also show, for all n>m
+they have a CHSH value of 2.
+The main idea of this construction is to use particles with
+multiple “internal degrees of freedom”. Roughly speaking, we
+assign to some d.o.f.’s the task of carrying the entanglement,
+and to others the task of supporting entangled measurements.
+As described below, this way, we can circumvent the tension
+between state and effect space sizes. We call these particles
+composites, as they can be viewed as a composite of particles
+from smaller GPTs.
+A. An example
+Consider the following example. Say we have particles
+with two d.o.f.’s, labeled 1 and 2. Each d.o.f. supports the
+same local effects and local states as a unipartite boxworld
+theory ([9]). That is, if P andD are the unipartite boxworld
+state and effect cones, then the effects measurable on each
+composite particle are
+Pc =P1 ˙⊗P2, (17)
+Physically, this says that we do not allow for entangled
+measurements between the d.o.f.’s within each composite par-
+ticle. We define the joint state space within each particle in
+the same way:
+Dc =D1 ˙⊗D2, (18)
+We now define the effects and states realisable between two
+composite particles. The n-partite theory then results from
+this input data via the general construction of Sec. II A.
+Let
+bD =D ˆ⊗D (19)
+be the cone of bipartite boxworld states. Here, ˆ⊗ is the maxi-
+mal tensor product. Mathematically, it is the polar dual to the
+minimal tensor effects:
+D ˆ⊗D := (P ˙⊗P)′ (20)
+Physically it gives rise to the maximally entangled boxworld
+states that achieve CHSH values of 4 [8, 9, 21].
+In our theory, in addition to product states, we allow for
+maximally entangled boxworld states between the first d.o.f.’s
+of any two composite particles, and between the first d.o.f. of
+one and the second d.o.f. of the other. We thus arrive at the
+following cone of composite bipartite states
+Dc := cone
+ bD1A,1B⊗D2A⊗D2B∪bD1A,2B⊗bD2A,1B
+
+, (21)
+where we have indicated the tensor factors that any object acts
+on in the superscripts: Letters A,B refer to the first and sec-
+ond composite particle, respectively; and numbers 1, 2 to the
+internal degrees of freedom.
+Finally, the bipartite effects are just the minimal tensor
+product of the local ones, except that we allow for maximally
+entangled measurements between the second d.o.f.’s of any
+two composite particles (This is consistent because no entan-
+glement exists between these particular d.o.f.’s). As in the
+
+=== page 6 ===
+6
+FIG. 5. Caricature of PR-box entanglement swapping using com-
+posite particles. The red dot signifies d.o.f. 1, the blue dot d.o.f. 2.
+The green lines signify entangled states. The blue rectangle signifies
+an entangled measurement, the red squares signify product measure-
+ments.
+case of states, denote the cone of maximally entangled bipar-
+tite effects as
+bP =P ˆ⊗P. (22)
+Then, for the composite bipartite effects we get:
+Pc := cone
+ 
+P1A⊗P 1B⊗ bP2A,2B
+
+. (23)
+One can now check thatPc,Dc consistently define a theory.
+This theory allows for a CHSH value of 4 after one round of
+entanglement swapping, according to the scheme visualized
+in Fig. 5.
+B. General construction
+In the example just treated, by adding an additional d.o.f.,
+we managed to move a PR box past one round of entangle-
+ment swapping. It is resonable to conjecture that with access
+to more d.o.f.’s one may be able to find a way to sustain en-
+tanglement longer, maybe even indefinitely.
+To investigate this, we generalise the previous example to
+m degrees of freedom. Each d.o.f. supports unipartite box-
+world states and effects. Now, for each d.o.f. k we have to
+specify the two disjoint subsets of d.o.f.’s that form entangled
+states and entangled effects with k. This amounts to specify-
+ing two symmetric bipartite graphs as follows:
+Start with a collection of 2m vertices, two per d.o.f.
+V ={v1,··· ,vm,w 1,··· ,wm}
+={vi}i=1,···,m∪{wi}i=1,···,m. (24)
+On this vertex set, define two symmetric bipartite graphs,
+G = (V,E ) andH = (V,F ) (with the same bipartition over
+the above indicated subsets), such that they lie in each other’s
+complement. The elements of edge sets E and F therefore,
+are ordered pairs of vertices, one from each of the subsets
+{vi}i=1,···,m and{wi}i=1,···,m.
+Indeed, the edges of graphG specifies those pairs of d.o.f.’s
+that can support entangled states, whereas the edges of graph
+H give those pairs that can support entangled measurements.
+The entire construction can be summarised by the following
+rules imposed on the edge setsE andF :
+1. If (vi,wj)∈E then (vj,wi)∈E, by symmetry. Same
+forF .
+2. If (vi,wj)∈ E then (vi,wj)̸∈ F , because they lie in
+each other complements
+3. If (vi,wj), (vk,wl)∈ E and (vj,wk)∈ F then, we
+can concatenate edges via entanglement swapping as
+follows:
+(vi,wj)◦ (vj,wk)◦ (vk,wl)≡ (vi,wl)∈E.
+4. If (vi,wj), (vk,wl)∈ F and (vj,wk)∈ E then, we
+can concatenate edges via dual entanglement swapping
+as follows:
+(vi,wj)◦ (vj,wk)◦ (vk,wl)≡ (vi,wl)∈F.
+Lemma 3. Given a composite particle with m boxworld
+d.o.f. ’s, there existsl∈ N such that∀n≥l the CHSH value of
+the composite GPT in the iterated CHSH game parametrised
+byn, is 2.
+Proof. In order to sustain entanglement indefinitely under en-
+tanglement swapping with a finite number of d.o.f.’s, we must
+have a “closed cycle”. That is, there is some chain of concate-
+nations, alternating edges from E andF (starting and ending
+withE) that reproduces the first edge. In equations:
+(v1,w 2)◦ (v2,w 3)◦···
+···◦ (vk−1,wk)◦ (vk,w 2)≡ (v1,w 2)∈E, (25)
+with (vi,wi+1) belongs toE for oddi andF for eveni.
+Since the second and penultimate edge belong toF , we can
+use Rule. 4 to simplify the above chain to
+(v1,w 2)◦ (v2,wk)◦ (vk,w 2)≡ (v1,w 2) (26)
+The above equation implies that(v1,w 2), (vk,w 2)∈E and
+(v2,wk)∈ F . But, by Rule. 1 we get (vk,w 2)∈ F which
+contradicts Rule. 2.
+This then means, each time we do an additional round of
+entanglement swapping, we have to add a new degree of free-
+dom (if not more).
+This implies, given access tom d.o.f.’s, the maximum num-
+ber of entanglement swapping rounds such that the output is
+still entangled is less than or equal tom− 1.
+Therefore, for any n≥ m we end up with only product
+states in the iterated CHSH game, meaning the CHSH value
+is no more than 2.
+V . OBLATE STABILIZER THEORY
+In this section we present our main result. That is, we con-
+struct the oblate stabilizer theory, which not only achieves a
+CHSH value of 4 but is also stable under entanglement swap-
+ping. In other words, it can sustain this CHSH value indefi-
+nitely under entanglement swapping. We also show that, given
+the resources described by this theory, there is an optimal
+strategy by which we get a CHSH value of 4 in the iterated
+CHSH game.
+
+=== page 7 ===
+7
+A. Setup
+The theory can be obtained by slightly deforming the set
+of quantum-mechanical stabilizer states. For this reason, we
+will use objects from the mathematical description of quantum
+mechanics to construct it.
+Consider the one-qubit stabilizer polytope, i.e., the convex
+hull of the following states on the Bloch sphere
+|x±⟩⟨x±| := 1
+2(1±σ1),
+|y±⟩⟨y±| := 1
+2(1±σ2),
+|z±⟩⟨z±| := 1
+2(1±σ3),
+(27)
+whereσ1,σ 2,σ 3 are the Pauli matrices. Now perform a “uni-
+form stretch in the equatorial plane of the Bloch sphere”, i.e.,
+for somer> 1, set
+|˜x±⟩⟨˜x±| := 1
+2(1±rσ1),
+|˜y±⟩⟨˜y±| := 1
+2(1±rσ2),
+|˜z±⟩⟨˜z±| :=|z±⟩⟨z±| = 1
+2(1±σ3).
+(28)
+These will be the building blocks for the unipartite state space.
+The Bell state is defined as usual as:
+|Φ+⟩⟨Φ+| := 1
+4(σ0⊗σ0+σ1⊗σ1−σ2⊗σ2+σ3⊗σ3). (29)
+It satisfies the standard identities
+(A⊗B)|Φ+⟩ = (1⊗BAt)|Φ+⟩ (30)
+and
+tr1(|Φ+⟩⟨Φ+|) = tr2(|Φ+⟩⟨Φ+|) = 1
+2 1. (31)
+WhereAt stands for the matrix-transpose ofA, and
+|Φ+⟩ = 1√
+2(|00⟩ +|11⟩). (32)
+From the Bell state, we can generate the Bell basis as:
+|Φ+
+µ⟩⟨Φ+
+µ| := (σµ⊗ 1)|Φ+⟩⟨Φ+|(σµ⊗ 1), µ ∈ Z4. (33)
+In keeping with the quantum formalism, effects will also be
+represented by 2× 2 matrices and the pairing between states
+and effects by the trace inner product. Additionally, partial
+contractions between states and effects are realised as partial
+traces. For example, for a unipartite effect e1 and bipartite
+stateρ12, the partial contraction is
+⟨ρ12,e 1⟩ := tr1
+ 
+ρ12(e1⊗ 1)
+
+. (34)
+Similarly, for a bipartite effect e and bipartite states ρ andσ,
+the entanglement swapping map is
+Jρ
+e
+σK := tr23
+ 
+ρ12⊗ 1⊗2(1⊗e23⊗ 1)1⊗2⊗σ34
+
+. (35)
+FRONT V IEW TOP V IEW
+FIG. 6. Caricature of the geometry of the unipartite Oblate Stabilizer
+Theory. The black outlines represent a Bloch sphere with a scaled
+up equatorial plane. The rays formed by vertices of the red polytope
+(what used to be the stabilizer states) represent the extremal rays of
+the state cone. The rays formed by vertices of the rotated (about
+thez-axis, byπ/4) blue polytope represent the extremal rays of the
+effect cone.
+B. Unipartite Theory
+Let R = e−iπ
+8σ3 be the unitary which, by conjugation
+(R(· )R†), implements a π/4-rotation of the Bloch sphere
+about thez-axis.
+Let Ω be the stretched stabilizer states, for some choice of
+r> 1 :
+Ω :={|˜x±⟩⟨˜x±|,|˜y±⟩⟨˜y±|,|˜z±⟩⟨˜z±|} (36)
+Definition 4 (Unipartite Oblate Stabilizer Theory) . Choose
+r =
+ 
+cos(π
+4 )
+− 1
+2 =
+4√
+2, and define the following:
+1. The unit effect, 1 := 1, the 2× 2 identity matrix.
+2. The effect cone,P(1) := cone
+ 
+RΩR†
+.
+3. The state cone,D(1) := cone
+ 
+Ω
+
+.
+Indeed, we get the following derived objects: The negation
+of an effect is
+¬e = 1−e. (37)
+The state space is simply
+S(1) = conv(Ω). (38)
+Similarly, the effect space is
+E(1) = conv({0, 1}∪ RΩR†). (39)
+It is easily verified that we have a well-defined unipartite
+theory as:
+1. The effect space is closed under negations
+¬E(1) =E(1). (40)
+2. The states are normalised
+ρ∈S (1) ⇒ tr(ρ1) = 1. (41)
+
+=== page 8 ===
+8
+3. Pairing a state and an effect gives a probability, i.e.,
+ρ∈S (1), e∈E (1) ⇒ tr(ρe)∈ [0, 1]. (42)
+It suffices to check (42) for the extremal vertices. Addition-
+ally, due to (40) only the upper bound needs to be checked.
+From Fig. 6, the inner product on the z-axis is unchanged
+from quantum theory and hence bounded between 0 and 1.
+On the equatorial plane the largest inner product is between
+two nearest neighbours. By construction, the angle enclosed
+by the corresponding Bloch vectors isπ/4, meaning
+sup
+ρ,e
+tr(ρe) = 1
+2
+ 
+1 +r2 cos(π/4)
+
+= 1. (43)
+C. Bipartite Theory
+To construct the bipartite theory we first interpret the bi-
+partite states as maps from the unipartite effect cone to the
+unipartite state cone, via partial contraction. Similarly for bi-
+partite effects (refer Fig. 2 (a) (b)). Then, we use the following
+properties of the unipartite theory:
+1. Both the state and effect cones are invariant under con-
+jugation by Pauli matrices. In the Bloch picture, these
+correspond to reflections about thex,y, andz-axes.
+2. Both state and effect cones are invariant under matrix
+transpose. In the Bloch picture, this corresponds to re-
+flections about thexz-plane.
+3. Both the state and effect cones are invariant under con-
+jugation byRm form∈{ 0, 2, 4, 6}. In the Bloch pic-
+ture this corresponds to a mπ/4-rotation about the z-
+axis.
+4. On the other hand, conjugation by Rm for m ∈
+{1, 3, 5, 7} maps the state cone to the effect cone and
+vice-versa.
+Therefore, forµ∈ Z4,m∈ Z8 define the projections
+|Φ+
+µ,m⟩⟨Φ+
+µ,m| := (σµRm)†⊗1|Φ+⟩⟨Φ+|(σµRm)⊗1. (44)
+Further, define the set
+Φ :=
+
+|Φ+
+µ,m⟩⟨Φ+
+µ,m|
+µ∈ Z4, m∈ Z8, modd
+	
+. (45)
+Definition 5 (Oblate Stabilizer Theory) . In the sense of
+Sec. II A, oblate stabilizer theory is the theory specified by the
+following data:
+1. V , the set of 2× 2 Hermitian matrices,
+2. 1 = 1, the 2× 2 identity matrix,
+3. P = cone
+ 
+RΩR†⊗RΩR†∪ Φ
+
+,
+4. D = cone
+ 
+Ω⊗ Ω∪ Φ
+
+.
+Lemma 6. The data specified in Def. 5, can be consistently
+extended to a theory using Alg. 1.
+Proof. We verify that Algorithm 1 accepts the data, which is
+thus consistent by Lemma 2.
+The partial trace of all entangled states introduced is 1
+2 1.
+Partial contractions of entangled effects with unipartite states
+can be viewed as conjugation by a odd rotation, and then by
+a Pauli matrix. This, as discussed before, maps the unipartite
+state cone to the unipartite effect cone. Therefore, by con-
+struction, theD(1) andP(1) assigned by the algorithm are the
+sameD(1) andP(1) as in Def. 4. Hence, we already have
+1∈P (1) and⟨D(1),P(1)⟩≥ 0.
+Since the entangled states and effects are projectors taken
+from quantum theory without modification, the trace inner
+product between them is non-negative.
+We have verified above that pairing unipartite states and ef-
+fects leads to positive outcomes, and this property is preserved
+under tensor products.
+Using identities (30) and (31), it can be easily shown that
+tr
+ 
+|Φ+
+µ,m⟩⟨Φ+
+µ,m|e⊗f
+
+= 1
+2 tr
+ 
+fσµRmet(Rm)†σµ
+
+, (46)
+which is just 1
+2 times the pairing between a unipartite state
+and effect, and hence, is positive. The same argument extends
+to entangled effects and product states. Therefore, we have
+⟨D,P⟩≥ 0.
+For invariance under permutation of systems, we need only
+checkS2 invariance for the set of entangled states and effects,
+since everything else is permutation invariant by construction.
+This is readily verified by using identity (30) since|Φ+⟩⟨Φ+|
+is alreadyS2 invariant.
+The tensor products of the unipartite cones,P(1)⊗P (1) and
+D(1)⊗D (1) are subsets of, respectively,P andD by construc-
+tion.
+It remains to be shown that the theory is closed under en-
+tanglement swapping and dual entanglement swapping. We
+only treat the first case explicitly. The dual version follows
+in complete analogy. We separate the entanglement swapping
+contractions into four types.
+1. The effect factorizes, i.e.,
+q
+•e⊗f•
+y
+. In this case the re-
+sult is an element ofD(1)⊗D (1), because the contrac-
+tion splits as follows:
+ρ
+e
+σ
+f
+2. Both states are product states, i.e., Jρ1⊗ρ2
+•ρ3⊗ρ4 K. In
+this case the result is again an element ofD(1)⊗D (1),
+because the central objects can be grouped as:
+e
+ρ3ρ2ρ1 ρ4
+3. There is one entangled state and one entangled effect,
+i.e.,
+q
+ΦΦρ⊗σ
+y
+for example. In this case the result is
+
+=== page 9 ===
+9
+once again an element ofD(1)⊗D (1), because we can
+split up the contraction as:
+Φ
+Φ σρ
+4. All three objects are entangled. This leads to a simple
+but lengthy calculation, which we have deferred to Ap-
+pendix VIII B. The result is
+q
+Φ
+Φ
+Φ
+y
+⊂ 1
+4Φ. (47)
+Therefore, none of the conditions required to detect incon-
+sistency in Algorithm 1 are met. And hence, it does not return
+“inconsistent”.
+D. Iterated CHSH game
+The theory exhibits a CHSH value of 4 for the observ-
+able (10) and the choices
+ρ =|Φ+
+0,1⟩⟨Φ+
+0,1|,
+A0 =R|˜x+⟩⟨˜x+|R†−R|˜x−⟩⟨˜x−|R† =rRσ1R†,
+A1 =R|˜y+⟩⟨˜y+|R†−R|˜y−⟩⟨˜y−|R† =rRσ2R†,
+B0 =R|˜x+⟩⟨˜x+|R†−R|˜x−⟩⟨˜x−|R† =rRσ1R†,
+B1 =R|˜y+⟩⟨˜y+|R†−R|˜y−⟩⟨˜y−|R† =rRσ2R†.
+(48)
+Since this is the maximum possible value, the CHSH value
+associated with this theory, as defined in Eqn. (12), is also 4.
+Also,∀ρ∈D (2) we have (refer to Appendix VIII A)
+r
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+ρ
+z
+∝ρ (49)
+Therefore, we not only have closure but also stability under
+both entanglement swapping and dual entanglement swap-
+ping.
+Remark 7. It is worth pointing out here that the choice of
+correlators being only on thexy-plane is no coincidence. For
+any situation with a z-measurement, oblate stabilizer theory
+no longer has such a strong CHSH violation.
+The general strategy for the iterated CHSH game for Oblate
+Stabilizer Theory is the same as the optimal strategy for quan-
+tum theory discussed in Sec. III.
+Alice and Charlie have access to two-setting two-outcome
+measurement machines. The Bobs have access to four-
+outcome bipartite measurement machines. In each run of the
+experiment, nearest neighbours share a bipartite Oblate Sta-
+bilizer State. Each Bob performs a bipartite measurement on
+the sub-systems available to him and broadcasts his outcome.
+Based on this, either Alice or Charlie apply a correction lo-
+cally and perform a CHSH test.
+µ∈ Z4 State Correction
+0 |Φ+
+0,1⟩⟨Φ+
+0,1| σ0⊗ 1
+1 |Φ+
+1,−1⟩⟨Φ+
+1,−1| σ1⊗ 1
+2 |Φ+
+2,−1⟩⟨Φ+
+2,−1| σ2⊗ 1
+3 |Φ+
+3,1⟩⟨Φ+
+3,1| σ3⊗ 1
+TABLE I. The output state and correction corresponding to each out-
+come of Bob’s measurement.
+Theorem 8. Oblate stabilizer theory reaches a value ofβ = 4
+in the iterated CHSH game.
+Proof. Build the two-setting two-outcome measurement ma-
+chines of Alice and Charlie out of the correlators
+A0 =rRσ1R†, A 1 =rRσ2R†,
+C0 =rRσ1R†, C 1 =rRσ2R†.
+(50)
+As we have noted in (48), the above are valid correlators of
+the theory. For the four-outcome measurements, choose
+MBi =
+
+|Φ+
+µ,1⟩⟨Φ+
+µ,1|
+µ∈ Z4
+	
+,∀i. (51)
+From (33) it follows that MBi is a measurement. For the
+shared bipartite states, choose
+ρAB1 =ρB1B2 =··· =ρBnC =|Φ+
+0,1⟩⟨Φ+
+0,1|. (52)
+Given these choices one can verify (refer to Ap-
+pendix. VIII B) that the four output states obtained after each
+consecutive entanglement swap are the same. Each state is
+also equiprobable. The output state after n rounds depends
+solely on the multiplicity of each of the four outcomes of
+MBi, in the vector⃗b = (b1,··· ,bn)∈ (Z4)n. Therefore to
+obtain the proper correction one can convert the outcomes to
+binary and perform a bit-wise XOR (equivalent to finding the
+resultant element of the Klein four-group). The output state
+and correction corresponding to each µ∈ Z4 is tabulated in
+Tab. I.
+The correction maps each output state back to|Φ+
+0,1⟩⟨Φ+
+0,1|,
+which gives a CHSH value of 4 with the above choice of cor-
+relators as was stated earlier. And therefore, we have
+β =
+X
+⃗b∈(Z4)n
+pbβb =
+X
+⃗b∈(Z4)n
+  1
+4
+n
+4 = 4 (53)
+VI. CONCLUSION AND OUTLOOK
+We have constructed a GPT in which a CHSH violation of
+4 can be sustained indefinitely under entanglement swapping.
+As a consequence, the iterated CHSH game is insufficient to
+single out QM among GPTs.
+In the process of obtaining this result, we have also set up a
+framework to turn bipartite theories into multipartite theories
+in which entanglement swapping is consistently defined.
+
+=== page 10 ===
+10
+As an outlook to future work, Ref. [20] suggests that the-
+ories should satisfy stronger symmetry conditions, i.e., “...for
+any state and set of local measurements, if the local outcome
+probabilities are permuted, then there is a state that achieves
+these permuted correlations under the same measurements”.
+If this is interpreted as an invarience under permutation of sub-
+systems, then oblate stabilizer theory satisfies this require-
+ment. If instead we interpret this as a symmetry under permu-
+tation of extremal effects, then our construction fails to satisfy
+this requirement. In particular, our construction breaks the
+symmetry betweenz-observables and those on the equatorial
+plane. This raises two complementary questions for further
+work: (1) Are there natural, stronger conditions on multipar-
+tite correlations for which QM is indeed optimal? (2) Can one
+find a theory that beats QM in the iterated CHSH game and
+that is isotropic in the sense of having a transitive symmetry
+group action on all extremal effects?
+VII. ACKNOWLEDGEMENTS
+We thank Roger Colbeck, Marc-Olivier Renou, Mirjam
+Weilenmann, and Elie Wolfe, for their discussions on com-
+posite GPTs, and Markus P. M¨uller for his insight on generat-
+ing examples of GPTs. We also thank Ludovico Lami for his
+discussion on the history of GPTs.
+This work has been supported by Germany’s Excellence
+Strategy – Cluster of Excellence Matter and Light for Quan-
+tum Computing (ML4Q) EXC 2004/1 - 390534769 and the
+German Research Council (DFG) via contract GR4334/2-2.
+[1] I. E. Segal, Postulates for general quantum mechanics, Annals
+of Mathematics , 930 (1947).
+[2] G. Ludwig, Attempt of an axiomatic foundation of quantum
+mechanics and more general theories, ii, Communications in
+Mathematical Physics 4, 331 (1967).
+[3] G. Ludwig, Attempt of an axiomatic foundation of quantum
+mechanics and more general theories, iii, Communications in
+Mathematical Physics 9, 1 (1968).
+[4] G. D ¨ahn, Attempt of an axiomatic foundation of quantum
+mechanics and more general theories. iv, Communications in
+Mathematical Physics 9, 192 (1968).
+[5] P. Stolz, Attempt of an axiomatic foundation of quantum me-
+chanics and more general theories v, Communications in Math-
+ematical Physics 11, 303 (1969).
+[6] P. Stolz, Attempt of an axiomatic foundation of quantum me-
+chanics and more general theories vi, Communications in Math-
+ematical Physics 23, 117 (1971).
+[7] E. B. Davies and J. T. Lewis, An operational approach to quan-
+tum probability, Communications in Mathematical Physics 17,
+239 (1970).
+[8] J. Barrett, Information processing in generalized probabilistic
+theories, Physical Review A 75, 032304 (2007).
+[9] M. Pl ´avala, General probabilistic theories: An introduction,
+Physics Reports 1033, 1 (2023).
+[10] L. Hardy, Quantum theory from five reasonable axioms, arXiv
+preprint quant-ph/0101012 (2001), quant-ph/0101012.
+[11] M. Pawłowski and V . Scarani, Information causality, in Quan-
+tum Theory: Informational Foundations and Foils (Springer,
+2015) pp. 423–438.
+[12] N. Miklin and M. Pawłowski, Information causality without
+concatenation, Physical Review Letters 126, 220403 (2021).
+[13] G. Brassard, H. Buhrman, N. Linden, A. A. M ´ethot, A. Tapp,
+and F. Unger, Limit on nonlocality in any world in which com-
+munication complexity is not trivial, Physical Review Letters
+96, 250401 (2006).
+[14] N. Linden, S. Popescu, A. J. Short, and A. Winter, Quantum
+nonlocality and beyond: limits from nonlocal computation,
+Physical review letters 99, 180502 (2007).
+[15] M. Navascu ´es and H. Wunderlich, A glance beyond the quan-
+tum model, Proceedings of the Royal Society A: Mathematical,
+Physical and Engineering Sciences 466, 881 (2010).
+[16] T. Fritz, A. B. Sainz, R. Augusiak, J. B. Brask, R. Chaves,
+A. Leverrier, and A. Ac ´ın, Local orthogonality as a multipar-
+tite principle for quantum correlations, Nature communications
+4, 2263 (2013).
+[17] J. F. Clauser, M. A. Horne, A. Shimony, and R. A. Holt, Pro-
+posed experiment to test local hidden-variable theories, Physi-
+cal review letters 23, 880 (1969).
+[18] J. S. Bell, On the einstein podolsky rosen paradox, Physics
+Physique Fizika 1, 195 (1964).
+[19] B. S. Cirel’son, Quantum generalizations of bell’s inequality,
+Letters in Mathematical Physics 4, 93 (1980).
+[20] M. Weilenmann and R. Colbeck, Toward correlation self-testing
+of quantum theory in the adaptive clauser-horne-shimony-holt
+game, Physical Review A 102, 022203 (2020).
+[21] S. Popescu and D. Rohrlich, Quantum nonlocality as an axiom,
+Foundations of Physics 24, 379 (1994).
+[22] A. J. Short, S. Popescu, and N. Gisin, Entanglement swapping
+for generalized nonlocal correlations, Physical Review A 73,
+012101 (2006).
+[23] P. Skrzypczyk, N. Brunner, and S. Popescu, Emergence of
+quantum correlations from nonlocality swapping, Physical re-
+view letters 102, 110402 (2009).
+[24] M. Weilenmann and R. Colbeck, Self-testing of physical the-
+ories, or, is quantum theory optimal with respect to some
+information-processing task?, Physical Review Letters 125,
+060406 (2020).
+[25] P. Janotta, C. Gogolin, J. Barrett, and N. Brunner, Limits on
+nonlocal correlations from the structure of the local state space,
+New Journal of Physics 13, 063024 (2011).
+
+=== page 11 ===
+11
+VIII. APPENDIX
+The Bell state can be written concisely as
+|Φ+⟩⟨Φ+| = 1
+4
+3X
+µ=0
+(−1)δ2µσµ⊗σµ (54)
+A. Stability of OST
+To verify that oblate stabilizer theory is stable under entanglement swapping we show that
+r
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+•
+z
+:σµ⊗σν7−→ 1
+4σµ⊗σν (55)
+To this end, note that
+r
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+|Φ+
+0,1⟩⟨Φ+
+0,1|
+σµ⊗σν
+z
+= tr23
+ 
+(R†⊗ 1)12|Φ+⟩⟨Φ+|12(R⊗ 1)12(R†⊗ 1)23|Φ+⟩⟨Φ+|23(R⊗ 1)23(σµ⊗σν)34
+
+= tr23
+ 
+(1⊗R−1)12|Φ+⟩⟨Φ+|12(R−1R⊗ 1⊗2)123|Φ+⟩⟨Φ+|23(R⊗ 1)23(σµ⊗σν)34
+
+= tr3
+
+1
+16
+3X
+α,β=0
+(−1)δ2α+δ2β tr(R−1σασβR)(σα⊗σβ)13(σµ⊗σν)34
+
+= 1
+8
+3X
+α=0
+tr(σασµ)(σα⊗σν) = 1
+4σµ⊗σν
+(56)
+Everyρ∈D (2) is a linear combination ofσµ⊗σν forµ,ν ∈ Z4, hence the claim follows.
+B. Iterated Entanglement Swapping
+In order to find the result of
+q
+ΦΦΦ
+y
+, let us first calculate the following identity: for some operatorsA,B,C,D
+tr23
+ 
+(A⊗ 1)12|Φ+⟩⟨Φ+|12(B⊗ 1⊗2)123|Φ+⟩⟨Φ+|23(1⊗2⊗C)234|Φ+⟩⟨Φ+|34(1⊗D)34
+
+= 1
+64
+3X
+µ,ν,λ=0
+
+(−1)δ2µ+δ2ν+δ2λ tr(σµσν) tr(σνσλ)AσµB⊗CσλD
+
+= 1
+16(A⊗C)
+ 3X
+µ=0
+(−1)δ2µσµ⊗σµ
+
+(B⊗D)
+= 1
+4(A⊗C)|Φ+⟩⟨Φ+|(B⊗D) = 1
+4(ACt⊗ 1)|Φ+⟩⟨Φ+|(DtB⊗ 1).
+(57)
+Using this we can now compute
+tr23
+ 
+(A†⊗ 1)12|Φ+⟩⟨Φ+|12(A⊗ 1)12(B†⊗ 1)23|Φ+⟩⟨Φ+|23(B⊗ 1)23(C†⊗ 1)34|Φ+⟩⟨Φ+|34(C⊗ 1)34
+
+= tr23
+ 
+(A†⊗ 1)12|Φ+⟩⟨Φ+|12(BA⊗ 1⊗2)123|Φ+⟩⟨Φ+|23(1⊗2⊗CB)234|Φ+⟩⟨Φ+|34(1⊗Ct)34
+
+= 1
+4(A†(CB)t⊗ 1)|Φ+⟩⟨Φ+|((Ct)tBA⊗ 1)
+= 1
+4(CBA)†⊗ 1|Φ+⟩⟨Φ+|(CBA)⊗ 1.
+(58)
+Therefore, the entanglement swapping map
+r
+|Φ+
+µ,m⟩⟨Φ+
+µ,m|
+|Φ+
+ν,m′⟩⟨Φ+
+ν,m′|
+|Φ+
+λ,m′′⟩⟨Φ+
+λ,m′′|
+z
+= tr23
+ 
+((σµRm)†⊗ 1)12|Φ+⟩⟨Φ+|12((σµRm)⊗ 1)12
+((σνRm′
+)†⊗ 1)23|Φ+⟩⟨Φ+|23((σνRm′
+)⊗ 1)23
+((σλRm′′
+)†⊗ 1)34|Φ+⟩⟨Φ+|34((σλRm′′
+)⊗ 1)34
+
+(59)
+
+=== page 12 ===
+12
+reduces to (58) with
+A =σµRm, B =σνRm′
+, C =σλRm′′
+.
+which gives
+CBA =σλRm′′
+σνRm′
+σµRm = (±i)σξRm∗
+, (60)
+withξ∈ Z4 andm∗∈ Z8 and odd. Therefore, it follows that
+q
+Φ
+Φ
+Φ
+y
+= 1
+4Φ. (61)
+Finally, we can specialize to the case of the optimal strategy for the iterated CHSH game. Forn = 1:
+A =σ0R, B =σµR, C =σ0R =⇒ CBA =Rσµ
+We can calculate the output ofn = 2 by entering the output of the first round into the second round, i.e.,
+A =Rσµ, B =σνR, C =σ0R =⇒ CBA =σ0RσνRRσµ =Rσνσµ.
+These are the same four states as n = 1 up to scaling and factors of ±i, which are eliminated since they come in complex
+conjugate pairs. This means that the set of output states is closed. Moreover, each time we have conjugation by an additional
+Pauli matrix. The final result therefore depends only on the number of time each Pauli matrix occurs. That is, it depends on the
+multiplicity of each member of Z4 in the outcome vector⃗b = (b1,··· ,bn).

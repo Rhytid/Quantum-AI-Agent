@@ -1,0 +1,3575 @@
+=== page 1 ===
+Stabilizer Testing and Magic Entropy via Quantum Fourier Analysis
+Kaifeng Bu, 1, 2, ∗ Weichen Gu,1, 3, † and Arthur Jaffe 2, 4, ‡
+1Department of Mathematics, The Ohio State University, Columbus, Ohio 43210, USA
+2Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA
+3Department of Mathematics and Statistics, University of New Hampshire, Durham, New Hampshire 03824, USA
+4Department of Mathematics, Harvard University, Cambridge, Massachusetts 02138, USA
+Dedicated to Huzihiro Araki, whose extraordinary insights into
+physics and mathematics inspired many works, including this one.
+Quantum Fourier analysis is an important topic in mathematical physics. We introduce a systematic
+protocol for testing and measuring “magic” in quantum states and gates, using a quantum Fourier ap-
+proach. Magic, as a quantum resource, is necessary to achieve a quantum advantage in computation.
+Our protocols are based on quantum convolutions and swap tests, implemented via quantum circuits. We
+describe this for both qubit and qudit systems. Our quantum Fourier approach offers a unified method
+to quantify magic, in stabilizer circuits, as well as in matchgate and bosonic Gaussian circuits.
+CONTENTS
+I. Introduction 2
+A. Background 3
+B. Summary of main results 3
+II. Preliminary 4
+A. Pauli operators, stabilizer states and Clifford unitaries 4
+B. The BLR linearity test for Boolean functions 5
+III. Quantum convolutions on qubits 6
+IV. Stabilizer testing via convolution-swap tests on qudits and qubits 10
+A. Stabilizer testing for states 10
+B. Clifford testing for gates 14
+V. Magic entropy on qudits and qubits 15
+VI. Discussion and future directions 19
+VII. Acknowledgments 19
+VIII. Appendix 19
+A. Quantum convolution of states 19
+B. Quantum convolution of channels 25
+C. Detailed proof of the results on stabilizer testing 28
+Data Availability 33
+Conflicts of Interest 33
+References 33
+∗ bu.115@osu.edu
+† gu.1213@osu.edu
+‡ Arthur_Jaffe@harvard.edu
+arXiv:2306.09292v2  [quant-ph]  11 Aug 2025
+
+=== page 2 ===
+2
+I. INTRODUCTION
+Fourier analysis is a powerful mathematical framework with diverse applications, that span from information theory
+to computer science. A key example is its use in linearity testing for classical Boolean functions. This involves property
+testing, where the goal is to determine if a given function (or state or circuit) possesses a certain property, or if it is
+within an ϵ-distance of having that property [1].
+In this work, we present a systematic approach for testing and measuring quantum magic by using quantum Fourier
+analysis. This method leverages the observation that stabilizer states can be viewed as quantum Gaussian states in the
+quantum Fourier approach, serving as fixed points under quantum convolution. Due to its universality, our approach
+can also be applied to test and quantify magic in other classically simulable circuits, such as matchgate circuits and
+bosonic Gaussian circuits.
+The key idea in this work stems from the stability of stabilizer states under quantum convolution. The protocols
+we introduce here are inspired by linearity testing in computer science and the study of entanglement entropy in
+quantum physics. (We summarize this diagrammatically in Figure 1). Quantum convolutions have various potential
+applications that are based on their robust properties and intrinsic relations to Fourier transforms. In this regard, we
+propose several applications of quantum convolutions, including stabilizer testing for states, Clifford testing for gates,
+and magic entropy.
+Separability Testing
+The reduced state ρA of a bipartite pure state
+|φ〉AB is pure iff |φ〉AB is a separable state.
+〈ρA, ρA〉 = 1 iff |φ〉AB is separable.
+Linearity Testing
+The self-convolution f ∗ f of a Boolean function f is
+a Boolean function iff f is an affine linear function.
+〈f ∗ f , f ∗ f 〉 = 1 iff f is affine linear.
+Inner product 〈 , 〉 Quantum convolution ⊠
+Stabilizer Testing
+The self-convolution ⊠ψ of a pure state ψ is pure, iff ψ is a stabilizer state
+〈⊠ψ, ⊠ψ〉 = 1, iff ψ is stabilizer state.
+FIG. 1. The stabilizer testing in this work is based on the purity invariance of stabilizer states under quantum convolution. We use
+that convention that self-convolution ⊠ψ means the 2-fold ψ ⊠ ψ for qudits and 3-fold self-convolution ⊠3(ψ, ψ, ψ) for qubits.
+Stabilizer Test
+1. Perform the convolution for the given ψ, yielding 2 copies of
+output states;
+2. Perform the swap test on the 2 copies. If the output is 0, it
+passes the test; otherwise, it fails.
+FIG. 2. The protocol for the stabilizer test, which we explain in detail in §IV.
+
+=== page 3 ===
+3
+A. Background
+Blum-Luby-Rubinfeld (BLR) testing [2] is a crucial tool in the field of theoretical computer science. Its importance
+stems from the use of this test to determine whether or not a function is linear with high probability, using a relatively
+small number of queries of the function. BLR testing and its variants have many applications in code testing and
+cryptography. For example, the BLR test plays a crucial role in determining whether a code (such as the Hadamard
+code [2] or Reed-Muller code [3, 4]) is locally testable. In that case there exists an efficient method to determine with
+high probability whether a given vector is far from any codeword, by only checking a small number of bits in the vector.
+Locally testable codes can be used in the construction of probabilistically checkable proofs (PCP) [5–13]. This is a
+theoretical framework that deals with the verification of proofs using probabilistic tests. We provide a brief review of
+the BLR linearity testing of Boolean functions in §II B.
+In quantum physics, quantum state properties, such as entanglement and magic, are crucial for achieving a quantum
+advantage. This makes their testing and measurement of significant interest. For example, a pure bipartite state φAB
+is separable if it is a tensor product state φA ⊗ φB. A state which is not separable is called “entangled.” Entanglement
+plays a crucial role in quantum information processing and computation, so separability testing is a key task. It is
+well-known that the reduced state ρA of a pure bipartite state φAB is pure, if and only ifφAB is separable. Based on this
+fact, several protocols of separability testing have been proposed [14–18]. For example, Harrow and Montanaro gave
+a separability testing method using partial trace and swap tests, and also discussed the connection with the linearity
+testing of Boolean functions [14]. Pauli braiding testing and its variants, as a quantum generalization of BLR linearity
+testing, was proposed by Natarajan and Vidick [19, 20] for robustly verifying entanglement, and plays a fundamental
+role in their analysis of MIP∗ = RE [21].
+The relation between separability and purity of a reduced state led to the use of entanglement entropy as a measure of
+entanglement in a quantum system. This entropy is the von Neumann entropy of the reduced stateρA of a bipartite pure
+state ρAB. Entanglement entropy also provides insights into the properties of many-body systems, such as quantum
+phase transitions [22], quantum field theory [23], and quantum gravity [24]. Moreover, the entanglement entropy has
+been experimentally measured [25] and has become an increasingly important tool for understanding and controlling
+these systems.
+Besides entanglement, stabilizerness is also an important property of quantum states and circuits. Stabilizer states
+are the common eigenstates of an abelian subgroup of the qubit Pauli group; they were introduced by Gottesman to
+study quantum error correction [26]. From the Gottesman-Knill theorem one knows that stabilizer circuits comprising
+Clifford unitaries with stabilizer states and measurements can be simulated efficiently on a classical computer [27].
+A state which is not a stabilizer is called magic. To test whether an unknown state is a stabilizer, several protocols
+have been proposed [28–32], including the Bell sampling (first introduced by Montanaro [31]), and the Bell difference
+sampling introduced by Gross, Nezami and Walter [32]. Further studies and applications have been developed, based
+on these protocols [33–36]. Along with stabilizer testing, many other measures have been proposed to quantify the
+amount of magic in a given quantum state [36–54]. They have been applied in the classical simulation of quantum
+circuits [41–46, 48] and unitary synthesis [39, 40].
+B. Summary of main results
+(1) We design quantum convolutions for 2-qubit-systems. We prove mathematical properties of these convolutions on
+n-qubit systems, including commutativity with Clifford unitaries, majorization of the spectrum under convolution,
+and the purity invariance of stabilizer states under convolution.
+(2) In §IV, we propose a systematic framework for stabilizer and Clifford testing based on quantum convolutions and
+swap tests on both qudits and qubits (See Figure 2 as an example). We use the Hadamard convolution for qudits
+from our previous work [55–58], and the quantum convolution constructed for qubits in §III. If the maximal overlap
+between the given state ψ and stabilizer states is 1 − ϵ, the probability of acceptance in the protocol is 1 − Θ(ϵ). This
+bound is independent of the numbern of qudits/qubits and of the local dimensiond. We provide both an upper bound
+and a lower bound on the probability of acceptance; these bounds are close to each other, up to an error of order ϵ2.
+By the Choi-Jamiołkowski isomorphism, we can also use this protocol to perform Clifford testing of quantum gates.
+(3) Inspired by entanglement entropy, we introduce "magic entropy" on both qudits and qubits in §V. This is the von
+Neumann entropy (or quantum Rényi entropy) of the self-convolution ⊠ψ for the given state ψ. By the Choi-
+Jamiołkowski isomorphism, we can generalize the concept of the magic entropy to quantum gates. We study the
+properties of magic entropy and show that it can be used as a measure of magic.
+
+=== page 4 ===
+4
+Aside from these main results, we also discuss some possible future directions to extend this work in §VI, including
+experimental realization, the concept of magic spectrum, and potential connections with pseudo-random states, quan-
+tum error-correction codes, among other topics. We also have begun to investigate how quantum higher-order Fourier
+analysis can quantify quantum complexity [59].
+Remark 1. In addition to stabilizer states and circuits, other classically simulable families exist, including fermionic
+Gaussian states/circuits (also known as matchgates) [60–64] and bosonic Gaussian states/circuits [65–67]. It is worth
+noting that the method proposed here for testing stabilizer states can be extended to both fermionic and bosonic Gaus-
+sian states through alternative choices of quantum convolutions. (See follow-up works for details on fermionic Gaussian
+states [68, 69] and bosonic Gaussian states [70].) Therefore, the present work provides a universal quantum Fourier the-
+oretical framework for characterizing Gaussianity in both discrete-variable and continuous-variable quantum systems.
+II. PRELIMINARY
+A. Pauli operators, stabilizer states and Clifford unitaries
+An n-qudit system is a Hilbert space H⊗n, where H ≃ Cd, and d is prime. Let L(H⊗n) denote the set of all linear
+operators on H⊗n, and let D(H⊗n) denote the set of all quantum states on H⊗n. We define one orthonormal set in the
+Hilbert space H, to be the computational basis and denote it by the Dirac notation { | k〉}k∈Zd . The Pauli matrices X
+and Z are defined as
+X |k〉 = |k +1〉 , Z|k〉 = χ(k)|k〉, ∀k ∈ Zd ,
+where χ(k) = ωk
+d and ωd = exp(2πi/d) is a d-th root of unity. If the local dimension d is an odd prime number, the Pauli
+operators (or Weyl operators) are defined as
+w(p, q) = χ(−2−1 pq)Z pX q . (1)
+Here 2−1 denotes the inverse of 2 in Zd. If d = 2, the Pauli operators are Hermitian and defined as
+w(p, q) = i−pq Z pX q . (2)
+The Pauli operators satisfy,
+w(p, q)w(p′, q′) = χ(2−1〈(p, q),(p′, q′)〉s)w(p + p′, q + q′) , (3)
+if d > 2. When d = 2,
+w(p, q)w(p′, q′) = i〈(p,q),(p′,q′)〉s w(p + p′, q + q′) . (4)
+In both cases, the symplectic inner product 〈(p, q),(p′, q′)〉s is defined as
+〈(p, q),(p′, q′)〉s = pq ′ − qp ′ . (5)
+Let us denote V n = Zn
+d × Zn
+d , and for any (⃗p,⃗q) ∈ V n, the Pauli operator w(⃗p,⃗q) is defined as
+w(⃗p,⃗q) = w(p1, q1) ⊗... ⊗ w(pn, qn) ,
+with ⃗p = (p1, p2,..., pn) ∈ Zn
+d, ⃗q = (q1,..., qn) ∈ Zn
+d. The set of the Pauli operators {w(⃗p,⃗q)}(⃗p,⃗q)∈V n forms an orthonormal
+basis in L(H⊗n) with respect to the inner product 〈A,B〉 = 1
+dn Tr
+£
+A†B
+⁄
+.
+Definition 2 (Characteristic function). For any n-qudit state ρ ∈ D(H⊗n), the characteristic function Ξρ : V n → C is
+defined as
+Ξρ(⃗p,⃗q) = Tr
+£
+ρw(−⃗p, −⃗q)
+⁄
+. (6)
+Hence, the state ρ can be written as a linear combination of the Pauli operators with characteristic function
+ρ = 1
+dn
+X
+(⃗p,⃗q)∈V n
+Ξρ(⃗p,⃗q)w(⃗p,⃗q) . (7)
+The process of taking characteristic functions is the quantum Fourier transform that we consider. The characteristic
+function has been used to study quantum Boolean functions [71], and was later applied to study quantum circuit
+complexity [46], and quantum scrambling [72]. (See also a more general framework of quantum Fourier analysis [73].)
+
+=== page 5 ===
+5
+Definition 3 (Stabilizer state [26, 74]). A unit vector |ψ〉 is a stabilizer vector if there exists a maximal abelian
+subgroup S of the Pauli operators with n generators {w(⃗pi,⃗qi)}i∈[n] such that w(⃗pi,⃗qi) |ψ〉 = χ(xi) |ψ〉 with xi ∈ Zd for
+every i ∈ [n]. The corresponding state with density operator
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂis the projection onto the eigenstate. A general mixed
+stabilizer state ρ is a convex linear combination of pure stabilizer states.
+In general, every abelian subgroup S of the Pauli operators has size dr with r ∈ [n]. The operators in S generate an
+abelian C∗-algebra C∗(S). The projections in C∗(S) are called the stabilizer projections associated with S.
+Definition 4 (Minimal stabilizer-projection state). Given an abelian subgroup of Pauli operators S, a minimal
+projection in C∗(S) is called a minimal stabilizer projection associated with S. A minimal stabilizer-projection state
+(MSPS) is a minimal stabilizer projection normalized by dividing by its dimension.
+It is clear that if P is a stabilizer projection associated with a subgroup S of an abelian group S′, then P is also
+associated with S′. In addition, when some stabilizer projection P is given, there is a unique minimal abelian subgroup
+S associated with P, in the sense that for every S′ associated with P, we have S ⊆ S′. For example, let us consider the
+abelian group S = { Z1,..., Zn−1 } for an n-qudit system. The states
+n
+1
+d
+ﬂﬂﬂ⃗j
+ED
+⃗j
+ﬂﬂﬂ⊗ I
+o
+⃗j∈Zn−1
+d
+are MSPS.
+Definition 5 (Clifford unitary). An n-qudit unitary U is a Clifford unitary if conjugation by U maps every Pauli
+operator to another Pauli operator, up to a phase.
+Clifford unitaries map stabilizer states to stabilizer states. We have the following definition of a stabilizer channel:
+Definition 6 (Stabilizer channel). A quantum channel is a stabilizer channel if it maps stabilizer states to stabilizer
+states.
+B. The BLR linearity test for Boolean functions
+Functions f : {0,1}n → { +1, −1} are called Boolean functions. Such a function f is linear, if f (⃗x)f (⃗y) = f (⃗x +⃗y) for any
+⃗x,⃗y ∈ {0,1}n. A famous test to decide whether f is linear was given by Blum-Luby-Rubinfeld [2]:
+BLR Linearity Test
+1. Choose ⃗x,⃗y ∈ {0,1}n to be uniformly random;
+2. Query f (⃗x), f (⃗y), and f (⃗x +⃗y);
+3. Accept if f (⃗x)f (⃗y) = f (⃗x +⃗y). Reject, otherwise.
+The probability of acceptance is
+Praccep(f ) = 1
+2
+£
+1 + E⃗x,⃗y f (⃗x)f (⃗y)f (⃗x +⃗y)
+⁄
+, (8)
+where both E⃗x and E⃗y denote the expectation taken over the uniform distribution on {0,1}n. This expression can be
+rewritten as
+Praccep(f ) = 1
+2 [1 + 〈f , f ∗ f 〉], (9)
+where the convolution f ∗ g of Boolean functions f and g is f ∗ g(⃗x) = E⃗y f (⃗y)g(⃗x +⃗y). The inner product between Boolean
+functions f and g is 〈f , g〉 = E⃗x f (⃗x)g(⃗x).
+Related to this is the affine linearity test:
+Affine Linearity Test
+1. Choose ⃗x,⃗y,⃗z ∈ {0,1}n to be uniformly random;
+2. Query f (⃗x), f (⃗y), f (⃗z), and f (⃗x +⃗y +⃗z);
+3. Accept if f (⃗x)f (⃗y)f (⃗z) = f (⃗x +⃗y +⃗z). Reject, otherwise.
+
+=== page 6 ===
+6
+The probability of acceptance is
+Praccep(f ) = 1
+2
+£
+1 + E⃗x,⃗y,⃗z f (⃗x)f (⃗y)f (⃗z)f (⃗x +⃗y +⃗z)
+⁄
+. (10)
+This probability can be rewritten as
+Praccep(f ) = 1
+2 [1 + 〈f ∗ f , f ∗ f 〉]. (11)
+Thus Praccep(f ) = 1, iff f is an affine linear function. This implies that f ∗ f is a Boolean function, iff f is an affine linear
+function. These tests provide one inspiration for the quantum tests that we explore here.
+III. QUANTUM CONVOLUTIONS ON QUBITS
+We introduce the concept of quantum convolutions forK quantum systems, where each system contains n qubits and
+K = 2N +1 is odd. It is important to note that this differs from the convolution between two n-qubit systems introduced
+in [55, 56]. We choose K to be odd, in order to make the characteristic function of the convolution become multiplication
+of the characteristic functions of the input states.
+In particular, we study the basic properties of quantum convolutions, including the multiplicative behavior charac-
+teristic functions under convolution, the commutativity of Clifford unitaries with convolutions, and purity invariance of
+stabilizer states under convolution. These results follow from the definition of the key unitary V and its action on Pauli
+matrices.
+Definition 7 (Key Unitary). The key unitary V for K quantum systems, with each system containing n qubits, is
+V := U ⊗n = U1,n+1,...,(K−1)n+1 ⊗U2,n+2,...,(K−1)n+2 ⊗... ⊗Un,2n,...,Kn . (12)
+Here U is a K-qubit unitary constructed using CNOT gates:
+U :=
+ˆ
+KY
+j=1
+CNOT j→1
+! ˆ
+KY
+i=1
+CNOT 1→i
+!
+, (13)
+and CNOT 2→1 |x〉 |y〉 = |x + y〉 |y〉 for any x, y ∈ Z2.
+Definition 8 (Convolution of multiple states). Given K states ρ1, ρ2,..., ρK, each with n-qubits, the multiple convo-
+lution ⊠K of ρ1, ρ2,..., ρK maps to an n-qubit state:
+⊠K(ρ1, ρ2,..., ρK) = ⊠K(⊗K
+i=1ρi) = Tr1c
+h
+V ⊗K
+i=1 ρiV †
+i
+. (14)
+Here V is the key unitary in Definition 7, and Tr1c [·] denotes the partial trace taken on the subsystem 2,3...,K, i.e.,
+Tr1c [·] = Tr2,3,...,K [·].
+This convolution ⊠K gives a quantum channel, which we also denote as ⊠K, i.e., ⊠K(·) = Tr1c
+£
+V ·V †⁄
+. Therefore,
+when we refer to ⊠K(ρ1, ρ2,..., ρK) or ⊠K(ρ1 ⊗ · · · ⊗ρK), we are referring to the action of the convolutional channel on
+the input states. In this work, we will use the terms "convolution" and "convolutional channel" interchangeably without
+distinction. If the given K states { ρi }K
+i=1 are the same, we denote their convolution as ⊠K ρ for simplicity.
+We use ⊠K to denote the convolution on K input states, while in our previous work [55, 56] we used ⊠K to indicate
+the repeated 2-fold convolution K times. In fact, these two concepts are almost the same. In Proposition 14, we show
+this by repeating the 3-fold convolution. This is the reason that we use the notation ⊠K in this paper.
+Since the key unitary consists of CNOT gates, its action on the computational basis can be expressed directly as
+follows.
+Lemma 9. The action of the key unitary V on the computational basis { |⃗x〉} is
+V
+‡
+⊗K
+i=1 |⃗xi〉
+·
+= |
+KX
+i=1
+⃗xi〉 ⊗K
+i=2 |⃗xi +⃗x1〉, (15)
+and
+V †
+‡
+⊗K
+i=1 |⃗xi〉
+·
+= |
+KX
+i=1
+⃗xi〉 ⊗K
+i=2 |
+X
+j̸=i
+⃗x j〉. (16)
+
+=== page 7 ===
+7
+Proposition 10. The action of the key unitary V acting on the Pauli operators satisfies:
+V ⊗K
+k=1 w(⃗pk,⃗qk)V † = (−1)N PK
+j=1 ⃗p j·⃗q1 w
+ˆ
+KX
+j=1
+⃗p j,
+KX
+j=1
+⃗q j
+!
+⊗K
+k=2 w
+ˆ
+KX
+j=1
+⃗p j − ⃗pk,⃗q1 −⃗qk
+!
+, (17)
+and thus
+V † ⊗K
+k=1 w(⃗pk,⃗qk)V = (−1)N PK
+j=1 ⃗p1⃗q j w
+ˆ
+KX
+j=1
+⃗p j,
+KX
+j=1
+⃗q j
+!
+⊗K
+k=2 w
+ˆ
+⃗p1 − ⃗pk,
+KX
+j=1
+⃗q j −⃗qk
+!
+, (18)
+for any (⃗pk,⃗qk) ∈ V n.
+Proof. Based on Lemma 11, the left hand side of (17) is equal to
+V ⊗K
+k=1 w(⃗pk,⃗qk)V † = i− P
+j ⃗p j·⃗q j
+‡
+Z
+PK
+j=1 ⃗p j ⊗K
+k=2 Z
+PK
+j=1 ⃗p j−⃗pk
+· ‡
+X
+PK
+j=1 ⃗q j ⊗K
+k=2 X ⃗q1+⃗qk
+·
+.
+The right hand side of (17) has
+w
+ˆ
+KX
+j=1
+⃗p j,
+KX
+j=1
+⃗q j
+!
+⊗K
+k=2 w
+ˆ
+KX
+j=1
+⃗p j − ⃗pk,⃗q1 −⃗qk
+!
+=i−(PK
+j=1 ⃗p j)·(PK
+j=1 ⃗q j)−PK
+k=2(PK
+j=1 ⃗p j−⃗pk)·(⃗q1−⃗qk) ‡
+Z
+PK
+j=1 ⃗p j ⊗K
+k=2 Z
+PK
+j=1 ⃗p j−⃗pk
+· ‡
+X
+PK
+j=1 ⃗q j ⊗K
+k=2 X ⃗q1+⃗qk
+·
+.
+It is easy to verify that
+ˆ
+KX
+j=1
+⃗p j
+!
+·
+ˆ
+KX
+j=1
+⃗q j
+!
++
+KX
+k=2
+ˆ
+KX
+j=1
+⃗p j − ⃗pk
+!
+·(⃗q1 −⃗qk) =
+KX
+j=1
+⃗p j ·⃗q j +(K −1)
+ˆ
+KX
+j=1
+⃗p j
+!
+·⃗q1.
+Then we get the final result by K = 2N +1.
+Lemma 11. The following identities hold:
+U X1U† =
+KY
+i=1
+X i , U XiU† = X1X i, for i ≥ 2, (19)
+and
+UZ 1U† =
+KY
+i=1
+Zi , UZ iU† = Zic, for i ≥ 2, (20)
+where Zic := Z1Z2 · · ·Zi−1IiZi+1 · · ·ZK.
+Proof.
+U X1U† =
+X
+x1,..xK
+U |x1 +1〉 〈x1| ⊗K
+i=2 |xi〉〈xi|U†
+=
+X
+x1,..xK
+|
+X
+i
+xi +1〉 〈
+X
+i
+xi| ⊗K
+i=2 |x1 + xi +1〉 〈x1 + xi|
+=
+X
+y1,..yK
+⊗K
+i |yi +1〉 〈yi|
+=X ⊗ X... ⊗ X =
+Y
+i
+Xi.
+If i ≥ 2, for example i = 2,
+U X2U† =
+X
+x1,..xK
+U |x1〉〈x1| ⊗ |x2 +1〉 〈x2| ⊗K
+i=3 |xi〉〈xi|U†
+=
+X
+x1,..xK
+|
+X
+i
+xi +1〉 〈
+X
+i
+xi| ⊗ |x1 + x2 +1〉 〈x1 + x2| ⊗K
+i=3 |x1 + xi〉〈x1 + xi|
+=
+X
+y1,...,yK
+|y1 +1〉 〈y1| ⊗ |y2 +1〉 〈y2| ⊗K
+i=3 |yi〉〈yi|
+=X1X2.
+
+=== page 8 ===
+8
+Also,
+UZ 1U† =
+X
+x1,..xK
+U(−1)x1 ⊗K
+i=1 |xi〉〈xi|U†
+=
+X
+x1,..xK
+(−1)x1
+ﬂﬂﬂﬂﬂ
+X
+i
+xi
++*
+X
+i
+xi
+ﬂﬂﬂﬂﬂ⊗K
+i=2 |x1 + xi〉〈x1 + xi|
+=
+X
+y1,...,yK
+(−1)
+P
+i yi ⊗K
+i=1 |yi〉〈yi|
+=Z ⊗ Z... ⊗ Z =
+Y
+i
+Zi.
+For i ≥ 2, for example i = 2, we have
+UZ 2U† =
+X
+x1,..xK
+U(−1)x2 ⊗K
+i=1 |xi〉〈xi|U†
+=
+X
+x1,..xK
+(−1)x2
+ﬂﬂﬂﬂﬂ
+X
+i
+xi
++*
+X
+i
+xi
+ﬂﬂﬂﬂﬂ⊗K
+i=2 |x1 + xi〉〈x1 + xi|
+=
+X
+y1,...,yK
+(−1)
+P
+i̸=2 yi ⊗K
+i=1 |yi〉〈yi|
+=Z ⊗ I ⊗ Z... ⊗ Z.
+Proposition 12 (Reduction to the classical convolution). Given K states ρ1, ρ2,..., ρK, where eachρi = P
+⃗x pi(⃗x) |⃗x〉〈⃗x|
+is diagonal in the computational basis, then the convolution ⊠K
+¡
+⊗K
+i=1ρi
+¢
+= P
+⃗x q(⃗x) |⃗x〉〈⃗x| is a diagonal state with
+q(⃗x) = p1 ∗ p2 ∗... ∗ pK(⃗x). (21)
+Here p ∗ q(⃗x) := P
+⃗y∈{0,1}n p(⃗y)q(⃗y +⃗x) is the classical convolution of two probability distributions p and q on {0,1}n.
+Proof. Based on the definition of classical convolution∗, q(⃗x) = p1∗p2∗...∗pK(⃗x) is equal toq(⃗x) = P
+⃗x1,...,⃗xK :P
+i⃗xi=⃗x
+Q
+i p(⃗xi).
+And by Lemma 9, the output state of the quantum convolution ⊠K is
+⊠K(⊗K
+i=1ρi) = Tr1c
+h
+V ⊗K
+i=1 ρiV †
+i
+=
+X
+⃗x1,...,⃗xK
+Y
+i
+pi(xi)
+ﬂﬂﬂﬂﬂ
+X
+i
+⃗xi
++*
+X
+i
+⃗xi
+ﬂﬂﬂﬂﬂ. (22)
+Hence, 〈⃗x| ⊠K (⊗K
+i=1ρi) |⃗x〉 = q(⃗x).
+Proposition 13 (Convolution-multiplication duality). Given K states ρ1,..., ρK, the characteristic function of their
+convolution ⊠K(⊗K
+i=1ρi) satisfies
+Ξ⊠K (⊗K
+i=1ρi)(⃗p,⃗q) = (−1)N⃗p·⃗q
+KY
+j=1
+Ξρ j(⃗p,⃗q), ∀(⃗p,⃗q) ∈ V n. (23)
+Proof. This is because ⊠†
+K(w(⃗p,⃗q)) = V † (w(⃗p,⃗q) ⊗ I... ⊗ I)V, where the action of the key unitary on w(⃗p,⃗q) is given in
+Proposition 10. Hence
+Ξ⊠K (⊗K
+i=1ρi)(⃗p,⃗q) = Tr
+h
+⊠K(⊗K
+i=1ρi)w(⃗p,⃗q)
+i
+= Tr
+h
+⊗K
+i=1ρi ⊠†
+K (w(⃗p,⃗q))
+i
+= (−1)N⃗p·⃗q
+KY
+i=1
+Tr
+£
+ρiw(⃗p,⃗q)
+⁄
+= (−1)N⃗p·⃗q
+KY
+j=1
+Ξρ j(⃗p,⃗q).
+Based on the characteristic function of the convolution ⊠K, we find that any K-fold convolution ⊠K can be generated
+by ⊠3.
+Proposition 14 (⊠3 generates all ⊠K ). Given K n -qubit states ρ1,..., ρK with K = 2N +1, the convolution ⊠K can be
+generated by repeating the 3-fold convolution ⊠3 N times, that is,
+⊠K
+‡
+⊗K
+i=1ρi
+·
+= ⊠3
+‡
+ρ1 ⊗ ρ2 ⊗ ⊠K−2
+‡
+⊗K
+i=3ρi
+··
+. (24)
+
+=== page 9 ===
+9
+Since every convolution ⊠K can be generated by ⊠3, we focus on the properties of ⊠3. Let us first introduce some
+basic concepts, including the magic gap, majorization, and quantum Rényi entropy.
+Definition 15 ([55, 56]). Given an n-qudit state ρ for any integer d, the mean state of ρ is the operator M(ρ) with the
+characteristic function:
+ΞM(ρ)(⃗p,⃗q) =
+(
+Ξρ(⃗p,⃗q) , |Ξρ(⃗p,⃗q)| = 1 ,
+0 , |Ξρ(⃗p,⃗q)| < 1 . (25)
+Definition 16 ([55, 56]). Given an n-qudit state ρ, the magic gap of ρ is
+MG(ρ) = 1 − max
+(⃗p,⃗q)∈Supp(Ξρ):|Ξρ(⃗p,⃗q)|̸=1
+|Ξρ(⃗p,⃗q)| .
+If {(⃗p,⃗q) ∈ Supp(Ξρ) :| Ξρ(⃗p,⃗q)| ̸= 1} = ;, then MG(ρ) := 0, i.e., there is no gap on the support.
+Definition 17 (Majorization [75]). Given two probability vectors ⃗p = { pi }i∈[n] and ⃗q = { qi }i∈[n], ⃗p is said to be ma-
+jorized by ⃗q, denoted as ⃗p ≺ ⃗q, if
+kX
+i=1
+p↓
+i ≤
+kX
+i=1
+q↓
+i , ∀1 ≤ k ≤ n −1 ,
+nX
+i=1
+pi =
+nX
+i=1
+qi = 1 ,
+where p↓ is the vector obtained by rearranging the components of p in decreasing order, i.e., p↓ = (p↓
+1, p↓
+2,..., p↓
+n) and
+p↓
+1 ≥ p↓
+2 ≥ ... ≥ p↓
+n.
+Definition 18 (Quantum Rényi entropy [76]). For any α ∈ [0, +∞], the Rényi entropy Hα(ρ) for a quantum state ρ is
+Sα(ρ) = 1
+1 − α logTr
+£
+ρα⁄
+,
+After introducing these basic concepts, we investigate the properties of quantum convolution and summarize its main
+properties in the following theorem. We prove these properties in Appendix VIII A.
+Theorem 19 (Properties of the quantum convolution). The quantum convolution ⊠3 satisfies:
+(1) ⊠3 is symmetric: ⊠3
+¡
+⊗3
+i=1ρi
+¢
+= ⊠3
+¡
+⊗3
+i=1ρπ(i)
+¢
+, for any permutation π on 3 elements.
+(2) Convolutional stability for states: If ρ1, ρ2, ρ3 are all stabilizer states, then ⊠
+¡
+⊗3
+i=1ρi
+¢
+is a stabilizer state.
+(3) Majorization under convolution: Given 3 n-qubit states ρ1, ρ2, ρ3, with ⃗λ1,⃗λ2,⃗λ3 the vectors of eigenvalues of
+ρ1, ρ2, ρ3 respectively, we have
+⃗λ⊠3
+‡
+⊗3
+i=1ρi
+· ≺⃗λρ j , j = 1,2,3. (26)
+This ensures that the quantum Rényi entropy satisfies the following bound:
+Sα
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+≥ max
+i
+Sα(ρi), ∀α ≥ 0. (27)
+(4) Purity invariance of stabilizer states: given a pure state ψ, the self-convolution ⊠3ψ is pure iff ψ is a stabilizer
+state.
+(5) Commutativity with Clifford unitaries: for any Clifford unitary U, there exists some Clifford unitary U1 such
+that
+U1
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+U†
+1 = ⊠3
+‡
+⊗3
+i=1
+‡
+UρiU†
+··
+, ∀ρ1, ρ2, ρ3 . (28)
+(6) Mean state properties: Let ρ1, ρ2, ρ3 be three n-qudit states. Then
+M
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+= ⊠3
+¡
+⊗3
+i=1M(ρi)
+¢
+. (29)
+(7) Quantum central limit theorem: Let ρ be an n-qubit state and K = 2N +1, then
+°°⊠K ρ − M(ρ#)
+°°
+2 ≤ (1 − MG(ρ))K−1 °°ρ − M(ρ)
+°°
+2 , (30)
+where ρ# = ρ for even N, and ρ# = ρT, i.e., the transpose of ρ, for odd N.
+
+=== page 10 ===
+10
+IV. STABILIZER TESTING VIA CONVOLUTION-SWAP TESTS ON QUDITS AND QUBITS
+We introduce a systematic way to perform stabilizer testing for states, and Clifford testing for gates. These tests are
+based on quantum convolutions and swap tests. The key idea of our tests is the invariance of purity under quantum
+convolution, a property true both for stabilizer states and for Clifford unitaries. (See Propositions 55 and 75.)
+Swap tests are widely-used to compare quantum states. Given two input states ρ, σ and another ancilla state |0〉〈0|,
+the test is performed by applying a Hadamard gate on the ancilla qubit, and then a controlled-SWAP gate, controlled
+by the ancilla qubit; finally one applies a Hadmard gate on the ancilla qubit. One takes a measurement on the ancilla
+qubit in the computational basis. The probability of getting an outcome "0" is
+Pr[0] = 1
+2
+£
+1 +Tr
+£
+ρσ
+⁄⁄
+. (31)
+If ρ = σ, then output probability is equal to
+¡
+1 +Tr
+£
+ρ2⁄¢
+/2, which is what we need in our protocol.
+A. Stabilizer testing for states
+Now, let us start with the stabilizer testing for n-qubit states by using the convolution ⊠3. We will discuss the
+qudit case later. Based on purity invariance of stabilizer states under quantum convolution, we propose the following
+stabilizer testing protocol for qubits.
+Protocol 1: Stabilizer Test for n-qubit states
+1. Prepare 6 copies of ψ, and perform the convolution for
+each 3 copies of ψ, and get 2 copies of ⊠3ψ;
+2. Perform the swap test for the 2 copies of ⊠3ψ. If the
+output is 0, it passes the test; otherwise, it fails.
+The probability of acceptance is
+Praccep[ψ] = 1
+2
+£
+1 +Tr
+£
+(⊠3ψ)2⁄⁄
+. (32)
+Theorem 20. Given an n-qubit pure stateψ, let maxφ∈ST AB |〈ψ|φ〉|2 = 1−ϵ. Then the probability of acceptance is bounded
+by
+1
+2
+£
+1 +(1 − ϵ)6⁄
+≤ Praccep(
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ) ≤ 1 −3ϵ +O(ϵ2). (33)
+Proof. For the qubit case, we need to prove that
+(1 − ϵ)6 ≤ Tr
+£
+(⊠3ψ)2⁄
+≤ 1 −6ϵ +O(ϵ2).
+Since 1 − ϵ = maxφ∈ST AB |〈ψ|φ〉|2, then there exists a Clifford unitary U such that
+|〈⃗0|Uψ〉|2 = 1 − ϵ,
+Let us take |ϕ〉 = U |ψ〉, then ϕ(⃗0) = 1 − ϵ with ϕ(⃗x) = |〈⃗x|ϕ〉|2. Again we have ϕ(⃗x) ≤ δ = min{ϵ,1 − ϵ} for every ⃗x. By the
+commutativity of ⊠3 with Clifford unitaries in Theorem 19, we have Tr
+£
+(⊠3ψ)2⁄
+= Tr
+£
+(⊠3ϕ)2⁄
+.
+For the lower bound, we have
+Tr
+£
+(⊠3ϕ)2⁄
+≥ 〈⃗0| ⊠3 ϕ |⃗0〉
+2
+=
+ˆ
+X
+⃗x,⃗y
+ϕ(⃗x)ϕ(⃗y)ϕ(⃗x +⃗y)
+!2
+≥
+‡
+ϕ(⃗0)ϕ(⃗0)ϕ(⃗0)
+·2
+≥ (1 − ϵ)6,
+
+=== page 11 ===
+11
+where the first inequality comes from the Cauchy-Schwarz inequality, and the second equality is because
+〈⃗0| ⊠3 ϕ |⃗0〉 = Tr
+h
+⊠3(ϕ ⊗ ϕ ⊗ ϕ)
+ﬂﬂﬂ⃗0
+ED
+⃗0
+ﬂﬂﬂ
+i
+= Tr
+h
+ϕ ⊗ ϕ ⊗ ϕ ⊠†
+3
+‡ﬂﬂﬂ⃗0
+ED
+⃗0
+ﬂﬂﬂ
+·i
+=
+X
+⃗x,⃗y
+Tr
+£
+ϕ ⊗ ϕ ⊗ ϕ |⃗x +⃗y〉〈⃗x +⃗y| ⊗ |⃗y〉〈⃗y| ⊗ |⃗x〉〈⃗x|
+⁄
+=
+X
+⃗x,⃗y
+ϕ(⃗x)ϕ(⃗y)ϕ(⃗x +⃗y).
+For the upper bound, since |〈⃗0|ϕ〉|2 = 1 − ϵ, then |ϕ〉 can be written as |ϕ〉 =
+p
+1 − ϵ |⃗0〉 +P
+⃗x̸=⃗0 ϕ⃗x |⃗x〉, where ϕ⃗x = 〈⃗x|ϕ〉,
+ϕ(⃗x) = |ϕ⃗x|2 and P
+⃗x̸=⃗0 ϕ(⃗x) = ϵ. Let us take the stabilizer group G of |⃗0〉, which is G = {(⃗p,⃗0) :⃗p ∈ Zn
+2 }. Hence, (⃗p,⃗q) ∉ G iff
+⃗q ̸=⃗0. And for any ⃗q ̸=⃗0, we have
+|Ξϕ(⃗p,⃗q)| ≤
+X
+⃗x
+|ϕ⃗x||ϕ⃗x+⃗q| = 2|ϕ⃗0||ϕ⃗q| +
+X
+⃗x̸=⃗0,⃗q
+|ϕ⃗x||ϕ⃗x+⃗q| ≤ 2
+p
+(1 − ϵ)ϵ + ϵ.
+That is, max(⃗p,⃗q)∉G |Ξϕ(⃗p,⃗q)| ≤ 2
+p
+(1 − ϵ)ϵ + ϵ. Moreover,
+1 = Tr
+£
+ϕ2⁄
+= 1
+2n
+X
+(⃗p,⃗q)∈V n
+|Ξϕ(⃗p,⃗q)|2 = 1
+2n
+X
+(⃗p,⃗q)∈G
+|Ξϕ(⃗p,⃗q)|2 + 1
+2n
+X
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)|2.
+Since
+1
+2n
+X
+(⃗p,⃗q)∈G
+|Ξϕ(⃗p,⃗q)|2 = 1
+2n
+X
+⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂ(1 − ϵ) +
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂ
+2
+= (1 − ϵ)2 +
+X
+⃗x̸=⃗0
+ϕ(⃗x)2,
+we have
+1
+2n
+X
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)|2 ≤ 1 −(1 − ϵ)2.
+Now,
+Tr
+£
+(⊠3ϕ)2⁄
+= 1
+2n
+X
+(⃗p,⃗q)∈V n
+|Ξϕ(⃗p,⃗q)|6 = 1
+2n
+X
+(⃗p,⃗q)∈G
+|Ξϕ(⃗p,⃗q)|6 + 1
+2n
+X
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)|6,
+where
+1
+2n
+X
+(⃗p,⃗q)∈G
+|Ξϕ(⃗p,⃗q)|6 ≤ 1 −6ϵ(1 − ϵ)5,
+and
+1
+2n
+X
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)|6 ≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i4 1
+2n
+X
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)|2 ≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i4
+·
+£
+1 −(1 − ϵ)2⁄
+= 32ϵ3 + o(ϵ3).
+Hence
+Tr
+£
+(⊠3ϕ)2⁄
+≤ 1 −6ϵ +30ϵ2 + o(ϵ2) = 1 −6ϵ +O(ϵ2).
+Besides the qubit case, let us also consider the stabilizer testing for states inn-qudit systems with d an odd prime. For
+qudit testing, we introduce the Hadamard convolution⊠H of two n-qudit states. Note that, we can also use other convo-
+lutions proposed in [56] to implement the stabilizer testing if the local dimension d satisfies some special requirement.
+For example, discrete beam splitter convolution can be applied to perform stabilizer testing in case d ≥ 7.
+
+=== page 12 ===
+12
+Definition 21 (Hadamard Convolution, [56]). The Hadamard convolution of two n-qudit states ρ and σ is
+ρ ⊠H σ = TrB
+h
+VHρ ⊗ σV †
+H
+i
+, (34)
+where VH = U ⊗n
+H := U(1,n+1)
+H ⊗U(2,n+2)
+H ⊗... ⊗U(n,2n)
+H , where UH is the 2-qudit unitary
+UH =
+X
+x,y∈Zd
+|x〉 〈x + y| ⊗ |y〉 〈x − y| , (35)
+and where U(i,n+ j)
+H denotes the action of UH on the ith qudit of the first state and the jth qudit of the second one. The
+corresponding convolutional channel EH is
+EH( · ) = TrB
+h
+VH · V †
+H
+i
+. (36)
+Lemma 22 ([56]). The Hadamard convolution for any odd, prime d, satisfies the following properties:
+(1) Hadamard convolution is abelian: ρ ⊠H σ = σ ⊠H ρ, for any n-qudit states ρ and σ.
+(2) Convolution-multiplication duality: Ξρ⊠H σ(⃗p,⃗q) = Ξρ(2−1⃗p,⃗q)Ξσ(2−1⃗p,⃗q), ∀(⃗p,⃗q) ∈ V n.
+(3) Purity invariance of stabilizer states: given a pure state ψ, the self-convolution ψ ⊠H ψ is pure iff ψ is a
+stabilizer state.
+(4) Commutativity with Clifford unitaries: for any Clifford unitary U, there exists some Clifford unitary U1 such
+that
+U1
+¡
+ρ ⊠H σ
+¢
+U†
+1 = (UρU†) ⊠H (UσU†) , ∀ρ, σ . (37)
+(5) Mean state properties: Let ρ and σ be two n-qudit states with the same mean state M(ρ) = M(σ). Then
+M(ρ ⊠H σ) = M(ρ) ⊠H σ = ρ ⊠H M(σ) = M(ρ) ⊠H M(σ) . (38)
+Based on purity invariance of stabilizer states under quantum convolution, we propose the following stabilizer testing
+protocol for qudits.
+Protocol 2: Stabilizer Test for n-qudit states
+1. Prepare 4 copies of the state ψ, and perform the con-
+volution to obtain 2 copies of ψ ⊠H ψ;
+2. Perform the swap test for the 2 copies of ψ ⊠H ψ. If
+the output is 0, it passes the test; otherwise, it fails.
+The probability of acceptance is
+Praccep[ψ] = 1
+2
+£
+1 +Tr
+£
+(ψ ⊠H ψ)2⁄⁄
+. (39)
+Theorem 23. Given an n-qudit pure state ψ with d an odd prime, let maxφ∈ST AB |〈ψ|φ〉|2 = 1 − ϵ. Then the probability
+of acceptance is bounded by:
+1
+2
+£
+1 +(1 − ϵ)4⁄
+≤ Praccep[ψ] ≤ 1 −2ϵ +O(ϵ2). (40)
+Proof. We only need to prove that
+(1 − ϵ)4 ≤ Tr
+£
+(ψ ⊠H ψ)2⁄
+≤ 1 −4ϵ +O(ϵ2).
+Since 1 − ϵ = maxφ∈ST AB |〈ψ|φ〉|2, there exists a Clifford unitary U such that
+|〈⃗0|Uψ〉|2 = 1 − ϵ.
+Let us take |ϕ〉 = U |ψ〉, then ϕ(⃗0) = 1 − ϵ with ϕ(⃗x) = |〈⃗x|ϕ〉|2. By the commutativity of ⊠H with Clifford unitaries in
+Lemma 22, we have Tr
+£
+(ψ ⊠H ψ)2⁄
+= Tr
+£
+(ϕ ⊠H ϕ)2⁄
+.
+
+=== page 13 ===
+13
+For the lower bound, we have
+Tr
+£
+(ϕ ⊠H ϕ)2⁄
+≥ 〈⃗0| ϕ ⊠H ϕ |⃗0〉
+2
+=
+ˆ
+X
+⃗y
+ϕ(⃗y)ϕ(−⃗y)
+!2
+≥
+‡
+ϕ(⃗0)ϕ(⃗0)
+·2
+≥ (1 − ϵ)4,
+where the first inequality comes from the Cauchy-Schwarz inequality, and the equality is because for every⃗x we have
+〈⃗x| ϕ ⊠H ϕ |⃗x〉 = Tr
+£
+EH(ϕ ⊗ ϕ) |⃗x〉〈⃗x|
+⁄
+= Tr
+h
+ϕ ⊗ ϕE†
+H(|⃗x〉〈⃗x|)
+i
+=
+X
+⃗y
+Tr
+£
+ϕ ⊗ ϕ |⃗x +⃗y〉〈⃗x +⃗y| ⊗ |⃗x −⃗y〉〈⃗x −⃗y|
+⁄
+=
+X
+⃗y
+ϕ(⃗x +⃗y)ϕ(⃗x −⃗y).
+For the upper bound, since |〈⃗0|ϕ〉|2 = 1 − ϵ, |ϕ〉 can be written as
+|ϕ〉 =
+p
+1 − ϵ |⃗0〉 +
+X
+⃗x̸=⃗0
+ϕ⃗x |⃗x〉,
+where ϕ⃗x = 〈⃗x|ϕ〉, ϕ(⃗x) = |ϕ⃗x|2 and P
+⃗x̸=⃗0 ϕ(⃗x) = ϵ. Since 1 − ϵ = maxφ∈ST AB |〈ϕ|φ〉|2, we have
+ϕ(⃗x) ≤ δ = min{ϵ,1 − ϵ}
+for any ⃗x. Let us take the stabilizer group G of |⃗0〉, which is G = {(⃗p,⃗0) :⃗p ∈ Zn
+d }. Hence ( ⃗p,⃗q) ∉ G iff ⃗q ̸=⃗0. And for any
+⃗q ̸=⃗0, we have
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ=
+ﬂﬂﬂTr
+hﬂﬂϕ
+ﬁ›
+ϕ
+ﬂﬂZ−⃗pX −⃗q
+iﬂﬂﬂ=
+X
+⃗x
+ﬂﬂﬂ〈ϕ| Z−⃗pX −⃗q |⃗x〉〈⃗x| |ϕ〉
+ﬂﬂﬂ
+≤
+X
+⃗x
+|ϕ⃗x||ϕ⃗x+⃗q| = |ϕ⃗0||ϕ⃗q| + |ϕ⃗0||ϕ−⃗q| +
+X
+⃗x̸=⃗0,−⃗q
+|ϕ⃗x||ϕ⃗x+⃗q|
+≤ 2
+p
+(1 − ϵ)ϵ + ϵ.
+That is,
+max
+(⃗p,⃗q)∉G
+|Ξϕ(⃗p,⃗q)| ≤ 2
+p
+(1 − ϵ)ϵ + ϵ.
+Moreover,
+1 = Tr
+£
+ϕ2⁄
+= 1
+dn
+X
+(⃗p,⃗q)∈V n
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 = 1
+dn
+X
+(⃗p,⃗q)∈G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 + 1
+dn
+X
+(⃗p,⃗q)∉G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 .
+Since
+1
+dn
+X
+(⃗p,⃗q)∈G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 = 1
+dn
+X
+⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂ(1 − ϵ) +
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂ
+2
+= (1 − ϵ)2 +
+X
+⃗x̸=⃗0
+ϕ(⃗x)2,
+we have
+1
+dn
+X
+(⃗p,⃗q)∉G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 ≤ 1 −(1 − ϵ)2.
+Then
+Tr
+£
+(ϕ ⊠H ϕ)2⁄
+= 1
+dn
+X
+⃗p,⃗q
+|Ξϕ⊠H ϕ(⃗p,⃗q)|2 = 1
+dn
+X
+⃗p,⃗q
+|Ξϕ(2−1⃗p,⃗q)|4 = 1
+dn
+X
+(⃗p,⃗q)∈G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ4 + 1
+dn
+X
+(⃗p,⃗q)∉G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ4 .
+
+=== page 14 ===
+14
+For the first part,
+1
+dn
+X
+(⃗p,⃗q)∈G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ4
+= 1
+dn
+X
+⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂ(1 − ϵ) +
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂ
+4
+= (1 − ϵ)4 +4(1 − ϵ)3E⃗p∈Zn
+d
+ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+!
++4(1 − ϵ)2E⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂ
+2
++(1 − ϵ)2E⃗p∈Zn
+d
+ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+!2
++(1 − ϵ)2E⃗p∈Zn
+d
+ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈−⃗x,⃗p〉
+d
+!2
++2(1 − ϵ)E⃗p∈Zn
+d
+ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+!2 ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈−⃗x,⃗p〉
+d
+!
++2(1 − ϵ)E⃗p∈Zn
+d
+ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+! ˆ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈−⃗x,⃗p〉
+d
+!2
++E⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂﬂ
+X
+⃗y̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂﬂ
+4
+≤ (1 − ϵ)4 +0 +6(1 − ϵ)2δϵ +4(1 − ϵ)δϵ2 + δϵ3
+≤ 1 −4ϵ(1 − ϵ)3,
+where the second to the last inequality comes from the fact that P
+⃗p∈Zn
+d
+‡P
+⃗x̸=⃗0 ϕ(⃗x)w〈⃗x,⃗p〉
+d
+·
+= 0,
+ﬂﬂﬂP
+⃗x̸=⃗0 ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂ≤ ϵ, and
+E⃗p∈Zn
+d
+ﬂﬂﬂﬂﬂ
+X
+⃗x̸=⃗0
+ϕ(⃗x)w〈⃗x,⃗p〉
+d
+ﬂﬂﬂﬂﬂ
+2
+= E⃗p∈Zn
+d
+X
+⃗x,⃗y̸=⃗0
+ϕ(⃗x)ϕ(⃗y)w〈⃗x−⃗y,⃗p〉
+d =
+X
+⃗x̸=⃗0
+ϕ(⃗x)2 ≤ δ
+X
+⃗x̸=⃗0
+ϕ(⃗x) ≤ δϵ,
+and the similar bounds on higher order terms.
+For the second part,
+1
+dn
+X
+(⃗p,⃗q)∉G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ4 ≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i2 1
+dn
+X
+(⃗p,⃗q)∉G
+ﬂﬂΞϕ(⃗p,⃗q)
+ﬂﬂ2 ≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i2
+·
+£
+1 −(1 − ϵ)2⁄
+= 8ϵ2 + o(ϵ2).
+Hence
+Tr
+£
+(ϕ ⊠H ϕ)2⁄
+≤ 1 −4ϵ +20ϵ2 + o(ϵ2) = 1 −4ϵ +O(ϵ2).
+The bound obtained in our analysis is almost optimal, as the lower bound and upper bound are both equal to 1 − 2ϵ
+up to some higher-order terms of ϵ.
+Remark 24. Note that the upper bound on the probability of acceptance in the Bell difference sampling is dimension-
+dependent, given by 1 − ϵ
+8d2 for any odd prime d [32]. However, using the method proposed in our work, we can also
+provide a lower bound of 1 − 2ϵ + O(ϵ2) and a dimension-independent upper bound of 1 − 2ϵ + O(ϵ2) on the probability
+of acceptance in Bell difference sampling. This improved upper bound is dimension-independent and close to the lower
+bound up to some higher-order terms of ϵ.
+B. Clifford testing for gates
+To test whether the given unitary is a Clifford or isϵ far away from the Clifford group, we can generate the Choi state
+JU of the unitary and apply the stabilizer testing for the Choi state. Hence, the probability of acceptance is
+Praccep[U] = Tr
+£
+(JU ⊠H JU)2⁄
+, (41)
+for any odd prime d, and
+Praccep[U] = Tr
+£
+(⊠3JU)2⁄
+, (42)
+
+=== page 15 ===
+15
+for d = 2.
+Here, let us consider the maximal overlap between a given unitaryU and the set of Clifford unitaries, maxV ∈Cl n |〈V,U〉|2,
+where 〈V,U〉 = 1
+dn Tr
+£
+V †U
+⁄
+. Then we have the following results on the success probability on the testing for both qubits
+and qudits.
+Theorem 25. Given an n-qubit gate U, let maxV ∈Cl n |〈V,U〉|2 = 1 − ϵ. Then the probability of acceptance is bounded by:
+1
+2
+£
+1 +(1 − ϵ)6⁄
+≤ Praccep[U] ≤ 1 −3ϵ +O(ϵ2). (43)
+Theorem 26. Given an n-qudit gate U with d an odd prime number, letmaxV ∈Cl n |〈V,U〉|2 = 1 − ϵ. Then the probability
+of acceptance is bounded by:
+1
+2
+£
+1 +(1 − ϵ)4⁄
+≤ Praccep[U] ≤ 1 −2ϵ +O(ϵ2). (44)
+The proof of Theorems 25 and 26 follows a similar approach as the state testing, but with some additional technique
+lemmas. For the sake of completeness, we present the detailed proof in Appendix VIII C.
+Remark 27. We briefly discuss the sample complexity and circuit depth that one would require to realize the convolution-
+swap test for qubit systems. The qudit case can be analyzed similarly.
+Based on the results in the swap tests [77–79], estimating the success probability in(32) within additive error ε requires
+O(1/ε2) copies of the state ⊠3ψ. For each state ⊠3ψ, we need 3 copies of the input state ψ. Hence, estimation within
+additive error ε requires a total number of state copies O(1/ε2).
+The circuit depth to realize the swap test is O(1), if one uses parallelized controlled-SWAP gates. Similarly, the quan-
+tum convolution ⊠3 also achieves O(1) circuit depth by employing parallelized CNOT gates, as detailed in Definition 7.
+Hence, for each run of the convolution-swap test, the circuit complexity is O(1) for using the CNOT gates and controlled-
+SWAP gates.
+Finally, both the experiments for using swap-tests to measure entanglement entropy by Greiner and his group [25],
+and the high-fidelity realization of entangling gates by the Harvard-MIT-QuEra collaboration [80] suggest promising
+avenues for the potential experimental realization of our convolution-swap test. This could be a compelling direction for
+future work.
+V. MAGIC ENTROPY ON QUDITS AND QUBITS
+We introduce "magic entropy" as a measure of magic based on quantum convolutions.
+Definition 28 (Magic entropy on qubits). Given an n-qubit pure state ψ, the magic entropy is
+ME(ψ) = S
+¡
+⊠3ψ
+¢
+. (45)
+Definition 29 (Higher-order, Rényi magic entropy on qubits). Given an n-qubit pure state ψ and an integer N ≥ 1
+and α ∈ [0, +∞], the order-N, α-Rényi magic entropy is
+ME(N)
+α (ψ) = Sα
+¡
+⊠2N+1ψ
+¢
+. (46)
+For the case of N = 1 and α = 1, it reduces to magic entropy in Definition 28.
+Proposition 30. The order-N, α-Rényi magic entropy ME(N)
+α (ψ) satisfies:
+(1) 0 ≤ ME(N)
+α (ψ) ≤ n, and ME(N)
+α (ψ) = 0 iff ψ is a stabilizer state.
+(2) The ME(N)
+α is invariant under a Clifford unitary acting on states.
+(3) ME (N)
+α (ψ) ≤ ME (N+1)
+α (ψ) for any α ∈ [0, ∞], and integer N ≥ 1.
+(4) For any integer N ≥ 1, ME (N)
+α (ψ) ≥ ME (N)
+β (ψ), ∀α ≤ β.
+(5) ME(N)
+α (ψ1 ⊗ ψ2) = ME(N)
+α (ψ1) +ME(N)
+α (ψ2).
+Proof. (1) 0 ≤ ME(N)
+α (ψ) ≤ n comes directly from the definition. ME (N)
+α (ψ) = 0 iff ⊠3ψ is a pure state, iff ψ is stabilizer
+state by the purity invariance of stabilizer states in Theorem 19.
+(2) comes directly the commutativity of convolution with Clifford unitaries in Theorem 19.
+(3) comes directly from the entropy inequality (27) in Theorem 19.
+(4) comes directly from the monotonicity of quantum Rényi entropy.
+(5) holds because ⊠3(ψ1 ⊗ ψ2, ψ1 ⊗ ψ2, ψ1 ⊗ ψ2) = ⊠3(ψ1 ⊗ ψ1 ⊗ ψ1) ⊗ ⊠3(ψ2 ⊗ ψ2 ⊗ ψ2).
+
+=== page 16 ===
+16
+Remark 31. Similar to quantum Rényi entropy, we can also use the quantum α-Tsallis entropy
+Tα(ρ) =
+Tr
+£
+ρα⁄
+−1
+1 − α
+(or other Schur concave functions 1) to quantify magic. For example, we define the order- N α-Tsallis magic entropy as
+MT (N)
+α (ψ) = Tα(⊠2N+1ψ). It is easy to verify that it also satisfies (1) −(4) for α ≥ 1 in Proposition 30. Moreover, for N = 1
+and α = 2, the corresponding Tsallis magic entropy MT (1)
+2 (ψ) is equivalent to 2(1 − Praccep[ψ]), where Pr accep[ψ] is the
+probability of acceptance in the stabilizer testing as given in (32).
+Example 32. Let us consider the T state |T〉 = T |+〉 = 1p
+2(|0〉 +eiπ/4 |1〉). Then the magic entropy of |T〉 is
+ME(|T〉〈T|) = h(1/4), (47)
+where h(x) = −xlog2 x −(1 − x)log2(1 − x) is the binary entropy. In general, the order-N, α-Rényi magic entropy is
+ME (N)
+α (|T〉〈T|) = hα
+µ1
+2
+‡
+1 −2−N
+·¶
+,
+where hα(x) = 1
+1−α log[xα +(1 − x)α] is the binary α-Rényi entropy. Hence, for m copies of the T state
+ME (N)
+α (|T〉〈T|⊗m) = mh α
+µ1
+2
+‡
+1 −2−N
+·¶
+.
+Example 33. Let us consider another magic state |H〉 with |H〉〈H| = 1
+2
+‡
+I + 1p
+3 X + 1p
+3Y + 1p
+3 Z
+·
+. Then the magic entropy
+of |H〉 is
+ME(|H〉〈H|) = h(1/3). (48)
+In general, the order-N, α-Rényi magic entropy is
+ME (N)
+α (|H〉〈H|) = hα
+µ1
+2
+‡
+1 −3−N
+·¶
+.
+Hence, for m copies of the H state
+ME (N)
+α (|H〉〈H|⊗m) = mh α
+µ1
+2
+‡
+1 −3−N
+·¶
+.
+Remark 34. Note that in the theory of entanglement, the entanglement entropy depends on the spectrum of the reduced
+state, which is also known as the entanglement spectrum. Similarly, we can introduce the concept of the magic spectrum,
+which is defined as the spectrum of the self-convolution ⊠ψ. For instance, the magic spectrum of the state |T〉 is given by
+(3/4,1/4). Further exploration of the properties and applications of the magic spectrum is left for future work.
+Proposition 35. Given an n-qubit input state |ψ〉 and a quantum circuitCt consisting of Clifford unitaries andt 1-qubit
+non-Clifford gates, the magic entropy of the output state Ct |ψ〉 satisfies
+ME
+‡
+Ct
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂC†
+t
+·
+≤ ME
+¡ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ¢
++2t. (49)
+Proof. Since magic entropy is invariant under the action of a Clifford unitary, we only need to prove the effect on entropy
+of the action of a single 1-qubit, non-Clifford gate g. Without loss of generality, let us assume that the 1-qubit gate g
+acts on the first qubit, denoted as g1. We only need to show
+ME(g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1) ≤ ME(
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ) +2.
+Since the reduced states of⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1 and
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂare the same on the (n−1)-qubit system, thenS
+‡
+Tr1
+h
+⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1
+i·
+=
+S
+¡
+Tr1
+£
+⊠3
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ⁄¢
+. By the Araki-Lieb triangle inequality [81], i.e., S(ρAB) ≥ |S(ρA) − S(ρB)| and subadditivity of en-
+tropy, i.e., S(ρAB) ≤ S(ρA) + S(ρB) , we have
+ﬂﬂﬂS
+‡
+⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1
+·
+− S
+‡
+Tr1
+h
+⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1
+i·ﬂﬂﬂ≤ S
+‡
+Tr1c
+h
+⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1
+i·
+≤ 1,
+1 A function f : Rn
++ → R is Schur concave if ⃗p ≺ ⃗q implies that f (⃗p) ≥ f (⃗q).
+
+=== page 17 ===
+17
+and
+ﬂﬂS
+¡
+⊠3
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ¢
+− S
+¡
+Tr1
+£
+⊠3
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ⁄¢ﬂﬂ≤ S
+¡
+Tr1c
+£
+⊠3
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ⁄¢
+≤ 1.
+Hence, we have
+ﬂﬂﬂS
+‡
+⊠3 g1
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂg†
+1
+·
+− S
+¡
+⊠3
+ﬂﬂψ
+ﬁ›
+ψ
+ﬂﬂ¢ﬂﬂﬂ≤ 2.
+The relative entropy of magic was introduced in [38] as the min σ∈STAB D(ρ||σ) where ST AB is the set of quantum
+states, which can be written as the convex combination of pure stabilizer states. In this subsection, we provide a
+modification of (Rényi) relative entropy by replacing the set STAB by the set MSPS in Defintion 4.
+Definition 36 (Quantum Rényi relative entropy [82, 83]). Given two quantum states ρ and σ, the quantum Rényi
+relative entropy of ρ with respect to σ is
+Dα(ρ||σ) = 1
+α −1 logTr
+h‡
+σ
+1−α
+2α ρσ
+1−α
+2α
+·αi
+,
+where α ∈ [0, +∞].
+For example, limα→1 Dα(ρ||σ) = D(ρ||σ) = Tr
+£
+ρ log ρ
+⁄
+−Tr
+£
+ρ log σ
+⁄2, and limα→∞ Dα(ρ||σ) = D∞(ρ||σ) = min{ λ : ρ ≤ 2λσ}.
+Note that quantum Rényi entropy Dα is additive under tensor product, and is monotone under quantum channels for
+α ≥ 1/2 [85].
+Definition 37 (Modified Rényi relative entropy of magic). Given a quantum state ρ and α ∈ [0, +∞], the modified Rényi
+relative entropy of magic is
+MRM α(ρ) = min
+σ∈MSPS
+Dα(ρ||σ). (50)
+Proposition 38. The modified Rényi relative entropy of magic satisfies the following properties:
+(1) 0 ≤ MRM α(ρ) ≤ n, MRM α(ρ) = 0 iff ρ is an MSPS;
+(2) MRM α is invariant under Clifford unitaries;
+(3) For α = 1 or +∞, MRM α is nonincreasing under stabilizer measurement { I ⊗ |⃗x〉〈⃗x|}⃗x, that is,
+X
+⃗x
+p⃗xMRM α(ρ⃗x) ≤ MRM α(ρ), (51)
+where p⃗x = Tr
+£
+ρI ⊗ |⃗x〉〈⃗x|
+⁄
+, and ρ⃗x = I ⊗ |⃗x〉〈⃗x| ρI ⊗ |⃗x〉〈⃗x|/p⃗x.
+Proof. One infers (1) and (2) directly from Definition 37. To prove (3), note that from Lemma 39 one has, for any
+α = 1 or + ∞, that MRM α(ρ) = Dα(ρ||M(ρ)) = Sα(M(ρ)) − Sα(ρ). Hence
+X
+⃗x
+p⃗xMRM α(ρ⃗x) ≤
+X
+⃗x
+p⃗xDα(ρ⃗x||M(ρ)⃗x) ≤ Dα(ρ||M(ρ)),
+where the last inequality comes from the result in [86, 87] that P
+⃗x p⃗xDα(ρ⃗x||M(ρ)⃗x) ≤ Dα(ρ||M(ρ)) when α = 1 or
++∞.
+Lemma 39 ([55, 56]). Given an n-qudit state ρ for any integer d ≥ 2 and α ∈ [1, +∞], one has
+MRM α(ρ) = min
+σ∈MSPS
+Dα(ρ||σ) = Dα(ρ||M(ρ)) = Sα(M(ρ)) − Sα(ρ).
+That is, M(ρ) is closest MSPS to the given state ρ w.r.t. Rényi relative entropy Dα for any α ≥ 1.
+Proposition 40. Given an n-qubit pure state ψ and α ∈ [1, +∞],
+ME (N)
+α (ψ) ≤ MRM α(ψ), (52)
+and
+ME (N)
+α (ψ) N→∞
+− − − − →MRM α(ψ). (53)
+2 A nice formula for the quantum relative entropy on von Neuman algebra was obtained in [84] using modular operator.
+
+=== page 18 ===
+18
+Proof. By Lemma 39, we have 0 ≤ Dα(⊠2N+1ψ||M(⊠2N+1ψ)) = Sα(M(⊠2N+1ψ)) − Sα(⊠2N+1ψ). By Lemma 64, we have
+Sα(M(⊠2N+1ψ)) = Sα(M(ψ)). Hence, we obtain the inequality (52). The limit (53) comes from the quantum central
+limit theorem in Theorem 19 and the continuity of quantum Rényi divergence for α ≥ 1 [83].
+Proposition 41. Given an input state ρ and a quantum circuit Ct, consisting of Clifford unitaries and t magic T gates,
+the MRM α(ρ) with α ≥ 1 of the output state CtρC†
+t satisfies,
+MRM α(CtρC†
+t ) ≤ MRM α(ρ) + t. (54)
+Proof. Without loss of generality, we may assume the single-qubit T gate acts on the first qubit, i.e., T1. We only need
+to show
+MRM α(T1ρT†
+1) ≤ MRM α(ρ) +1.
+By Lemma 39, MRM α(ρ) = Sα(M(ρ)) − Sα(ρ), and MRM α(T1ρT†
+1) = Sα(M(T1ρT†
+1)) − Sα(T1ρT†
+1). Hence, we only
+need to prove
+Sα(M(T1ρT†
+1)) ≤ Sα(M(ρ)) +1. (55)
+Let us denote the abelian groups Gρ := {⃗x : | Ξρ[⃗x]| = 1} and GT1ρT†
+1
+:= {⃗x : | ΞTρT†[⃗x]| = 1}. Since M(ρ) and M(T1ρT†
+1)
+are projectional states, to prove (55) one only need to show that
+ﬂﬂﬂGT1ρT†
+1
+ﬂﬂﬂ≥ 1
+2 |Gρ|.
+Consider the subgroup Gρ,0 = {⃗x ∈ G : x1 = (0,0)}, then Gρ has the following coset decomposition
+Gρ = Gρ,0 ∪(⃗vX +Gρ,0) ∪(⃗vY +Gρ,0) ∪(⃗vZ +Gρ,0),
+where each of ⃗vX +Gρ,0, ⃗vY +Gρ,0 and ⃗vZ +Gρ,0 has size either 0 or |Gρ,0|, and once |⃗vX +Gρ,0| = |⃗vY +Gρ,0| = |Gρ,0| then
+we have |⃗vZ +Gρ,0| = |Gρ,0|. The sets Gρ,0 and ⃗vX +Gρ,0 are invariant under the action of T1, that is, for any ⃗u ∈ Gρ,0 or
+⃗u ∈⃗vZ +Gρ,0 , we have ⃗u ∈ GT1ρT†
+1
+. Hence
+ﬂﬂﬂGT1ρT†
+1
+ﬂﬂﬂ≥ 1
+2
+ﬂﬂGρ
+ﬂﬂ.
+In [88], the minimal number of T gates to generate the W state |Wn〉 = 1pn
+P
+⃗x:|⃗x|=1 |⃗x〉 is Ω(n) under the assumption
+of the classical exponential time hypothesis (ETH) (i.e., solving the classical k-SAT problem requires exponential time
+[89]). Here, we can provide an unconditional proof of this statement by the above lemma, as MRM α(Wn) = n.
+Corollary 42. Any Clifford +T circuit, which starts from the all-zero state and outputs the state |Wn〉 ⊗ |Junk〉, must
+contain Ω(n) T gates.
+Remark 43. Note that for a pure state ψ, MRM α(ψ) for α ≥ 1 is equivalent to stabilizer nullity [40] or stabilizer
+dimension [35]. Besides, for α = 1/2, MRM α(ψ) is equivalent to stabilizer fidelity [44]. Moreover, ME (N)
+2 (ψ) is equivalent
+to stabilizer Rényi entropy [50] or quantum Rényi Fourier entropy [46].
+Let us also consider the n-qudit system, with d being odd prime.
+Definition 44 (Magic entropy on qudit-systems). Given an n-qudit pure state ψ, the magic entropy ME(ψ) is
+ME(ψ) := S(ψ ⊠H ψ). (56)
+The α-Rényi magic entropy ME α(ψ) is
+MEα(ψ) := Sα(ψ ⊠H ψ). (57)
+Proposition 45. The α-Rényi magic entropy MEα(ψ) satisfies:
+(1) 0 ≤ MEα(ψ) ≤ nlogd, and MEα(ψ) = 0 iff ψ is a stabilizer state;
+(2) The MEα is invariant under a Clifford unitary acting on states;
+(3) MEα(ψ1 ⊗ ψ2) = MEα(ψ1) +MEα(ψ2).
+(4) For any α ∈ [1, +∞],
+ME α(ψ) ≤ MRM α(ψ). (58)
+
+=== page 19 ===
+19
+Proof. These properties come directly from the properties of Hadamard convolution in Lemma 22.
+Remark 46. The magic entropy can be also defined on quantum gates by the Choi-Jamiołkowski isomorphism [90, 91].
+That is, we can consider the magic entropy of Choi states
+ME(N)
+α (Λ) := ME(N)
+α (JΛ), (59)
+where JΛ is the Choi state of a given quantum channel Λ. A similar method also works for n-qudit channels. Based on
+the results on states, ME(N)
+α (Λ) can also serve as a measure of magic for quantum gates. For example, for a given unitary
+U, the magic entropy of U vanishes iff U is a Clifford unitary. For α = 2, ME(N)
+α (Λ) is equivalent to the (p, q) group norm
+defined in [47].
+VI. DISCUSSION AND FUTURE DIRECTIONS
+In this work, we have introduced a series of quantum convolutions on qubits/qudits. Based on these quantum convo-
+lutions, we provide a systematic framework to implement the stabilizer testing for states, and Clifford testing for gates.
+We also introduce a magic measure named “magic entropy” by quantum convolutions on qubits/qudits. Moreover, due
+to the universality of Gaussian states and quantum Fourier analysis, the results in this work can also extended to other
+framework such as matchgate and bosonic Gaussian circuits. In addition, there are still several open questions that
+require further investigation and research, and we outline four such problems:
+(1) The quantum convolution in this work can be realized by CNOT gates and swap tests, both of which can be
+implemented experimentally. Thus it is possible to perform the stabilizer testing and measure the magic entropy of
+many-body quantum systems. This would proceed in a fashion similar to the successful measurement of entanglement
+entropy by Greiner and his group [25] and high-fidelity realization of entangling gates by the Harvard-MIT-QuEra
+collaboration [80].
+(2) Inspired by the concept of entanglement spectrum, we introduce the notion of magic spectrum. We define this as
+the spectrum of the self-convolution ⊠ψ for a given state ψ. The properties and characteristics of the magic spectrum,
+especially in the context of many-body quantum systems, warrant further investigation and study.
+(3) Linearity testing of Boolean functions plays an important role in classical error correction, cryptography, and
+complexity theory. It would be interesting to find the application of stabilizer testing and its generalization in quantum
+error correction codes, and in quantum complexity theory. For example, can such testing give insight to obtain a better
+understanding of locally-testable quantum codes [92, 93], or the quantum-PCP conjecture [94].
+(4) One should investigate the central limit theorem with random quantum states, and to study its use in this case.
+If each quantum state ρi is chosen randomly from some given ensemble E, the ⊠K(⊗iρi) is a random state. A natural
+question arises: what is the distribution of the output state ⊠K(⊗iρi)? Is it close to a Haar random state?
+VII. ACKNOWLEDGMENTS
+We thank Chi-Ning Chou, Roy Garcia, Markus Greiner, Yichen Hu and Yves Hon Kwan for helpful discussion. This
+work was supported in part by ARO Grant W911NF-19-1-0302, ARO MURI Grant W911NF-20-1-0082, and NSF Eager
+Grant 2037687.
+VIII. APPENDIX
+A. Quantum convolution of states
+Proposition 47 (⊠K is symmetric). Given K states ρ1, ρ2,..., ρK, the convolution ⊠K of ρ1, ρ2,..., ρK is invariant under
+permutation, that is,
+⊠K
+‡
+⊗K
+i=1ρi
+·
+= ⊠K
+‡
+⊗K
+i=1ρπ(i)
+·
+, (60)
+for any permutation π on K elements.
+Proof. This comes directly from Proposition 13.
+Proposition 48 (Convolutional stability for states). If ρ1, ρ2, ρ3 are all stabilizer states, then ⊠3(⊗3
+i=1ρi) is a stabi-
+lizer state.
+
+=== page 20 ===
+20
+Proof. This comes from the fact that the ⊠3 is a stabilizer channel, as the key unitary only consists of CNOT gates.
+Proposition 49 (Mean state property). Let ρ1, ρ2, ρ3 be three n-qudit states. Then
+M
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+= ⊠3
+¡
+⊗3
+i=1M(ρi)
+¢
+. (61)
+Proof. This comes from the definition of mean states and Lemma 13.
+Lemma 50 ( [95–98]). For any prime d and any integer n, the following holds:
+(1) For each n-qudit Clifford unitary U, there is a sympletic matrix M and a function f : Z2n
+d → Zd such that
+Uw(⃗x)U† = ωf (⃗x)
+d w(M⃗x). (62)
+(2) Conversely, for each symplectic matrixM, there is a Clifford unitary U and a phase function f : Z2n
+d → Zd such that
+the above equation holds. If d is odd, one can choose U such that f ≡ 0 mod d.
+Theorem 51 (Commutativity with Clifford Unitary). Let U be any Clifford unitary, then there exists another Clif-
+ford unitary U1 such that
+⊠K
+‡
+⊗K
+i=1
+‡
+UρiU†
+··
+= U1 ⊠K
+‡
+⊗K
+i=1ρi
+·
+U†
+1 , ∀ρ1,..., ρK ∈ D(H⊗n). (63)
+Moreover, if K = 4N +1, then U1 = U.
+Proof. It follows from Lemma 50 that there exists a function f (⃗p,⃗q) and a symplectic matrix M such that U†w(⃗p,⃗q)U =
+(−1)f (⃗p,⃗q)w(M(⃗p,⃗q)) for any (⃗p,⃗q) ∈ V n. Hence,
+(U†)⊗K ⊠†
+K (w(⃗p,⃗q))U ⊗K =(−1)N⃗p·⃗q(U†)⊗K w(⃗p,⃗q)⊗KU ⊗K
+=(−1)N⃗p·⃗q+K f(⃗p,⃗q)w(M(⃗p,⃗q))⊗K
+=(−1)N⃗p·⃗q+f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K,
+where the last equality comes from the fact that K = 2N + 1 is odd. Let us consider the problem in two cases: (a) N is
+even; (b) N is odd.
+(a) N is even, then (U†)⊗K ⊠†
+K (w(⃗p,⃗q))U ⊗K = (−1)f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K. Let us take U1 = U and denote (⃗p′,⃗q′) = M(⃗p,⃗q),
+we have
+⊠†
+K
+‡
+U†w(⃗p,⃗q)U
+·
+= ⊠†
+K
+‡
+(−1)f (⃗p,⃗q)w(M(⃗p,⃗q))
+·
+=(−1)N⃗p′·⃗q′
+(−1)f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K
+=(−1)f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K.
+Therefore, (63) holds.
+(b) N is odd, ( U†)⊗K ⊠†
+K (w(⃗p,⃗q))U ⊗K = (−1)⃗p·⃗q+f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K. Since M =
+•A B
+C D
+‚
+is symplectic, that is
+MT
+•0 I
+I 0
+‚
+M =
+•0 I
+I 0
+‚
+, then the matrices A,B,C,D satisfies the following properties ATC +CT A ≡ 0, BTD + DTB ≡ 0,
+ATD + CTB ≡ I mod 2. Hence, both ATC and BTD are symmetric, i.e., [ATC]i j = [ATC] ji and [BTD]i j = [BTD] ji . For
+(⃗p′,⃗q′) = M(⃗p,⃗q) = (A⃗p + B⃗q,C⃗p + D⃗q), we have
+⃗p′ ·⃗q′ = (A⃗p + B⃗q)T(C⃗p + D⃗q)
+= ⃗pT ATC⃗p +⃗qTBTD⃗q + ⃗pT(ATD + CTB)⃗q
+≡
+X
+i
+[ATC]ii pi +
+X
+i
+[BTD]ii qi + ⃗p ·⃗q mod 2,
+where the last ≡ comes from the fact that both ATC and BTD are symmetric, p2
+i = pi for pi ∈ {0,1} and ATD +CTB ≡ I.
+Let us denote ⃗a = (a1,.., an) with ai = [ATC]ii , and ⃗b = (b1,.., bn) with bi = [BTD]ii . Then ⃗p′ ·⃗q′ ≡ ⃗a ·⃗p +⃗b ·⃗q +⃗p ·⃗q mod 2.
+Let us define U1 = X ⃗aZ⃗bU, then
+⊠†
+K
+‡
+U†
+1w(⃗p,⃗q)U1
+·
+= ⊠†
+K
+‡
+(−1)f (⃗p,⃗q)+⃗a·⃗p+⃗b·⃗qw(M(⃗p,⃗q))
+·
+=(−1)⃗p′·⃗q′
+(−1)⃗a·⃗p+⃗b·⃗q+f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K
+=(−1)⃗p·⃗q+f (⃗p,⃗q)w(M(⃗p,⃗q))⊗K.
+
+=== page 21 ===
+21
+Therefore, (63) holds.
+Based on the characteristic function of the convolution ⊠3 in Lemma 13, we have the following statement directly.
+Corollary 52. Let ρ1, ρ2, ρ3 be n-qubit states where at least one of them is In/2n, then
+⊠3
+¡
+ρ1, ρ2, ρ3
+¢
+= In
+2n .
+Definition 53 (Schur concavity [75]). A function f : Rn
++ → R is Schur concave if ⃗p ≺ ⃗q implies that f (⃗p) ≥ f (⃗q). A
+function is strictly Schur concave if ⃗p ≺ ⃗q implies that f (⃗p) > f (⃗q) except for ⃗p = ⃗q.
+Let us consider two well-known examples of Schur-concave functions: the subentropy and the generalized quantum
+Rényi entropy.
+Theorem 54 (Majorization under quantum convolution). Given 3 n-qubit states ρ1, ρ2, ρ3, with ⃗λ1,⃗λ2,⃗λ3 the vec-
+tors of eigenvalues of ρ1, ρ2, ρ3. Then we have
+⃗λ⊠3(ρ1,ρ2,ρ3) ≺⃗λρi , i = 1,2,3. (64)
+Thus for any Schur-concave function f ,
+f (⊠3(ρ1, ρ2, ρ3)) ≥ f (ρi) , i = 1,2,3. (65)
+Proof. Here, we prove ⃗λ⊠3(ρ1,ρ2,ρ3) ≺ ⃗λρ1; the other cases can be proved in the same way. Consider the spectral decom-
+positions of the states ρ1 and ρ = ⊠3(ρ1, ρ2, ρ3) as ρ1 = P2n
+j=1 λ j|ψ j〉〈ψ j|, and ρ = P2n
+j=1 µ j|ξ j〉〈ξ j|. We need to prove that
+(µ1,..., µ2n) ≺ (λ1,..., λ2n) . Let τ j := ⊠3
+¡
+|ψ j〉〈ψ j|, ρ2, ρ3
+¢
+. Then τ j is a quantum state. Moreover,
+2n
+X
+j=1
+λ jτ j =
+2n
+X
+j=1
+λ j ⊠3
+¡
+|ψ j〉〈ψ j|, ρ2, ρ3
+¢
+= ⊠3
+¡
+ρ1, ρ2, ρ3
+¢
+= ρ , (66)
+and
+2n
+X
+j=1
+τ j =
+2n
+X
+j=1
+⊠3
+¡
+|ψ j〉〈ψ j|, ρ2, ρ3
+¢
+= ⊠3
+ˆˆ
+2n
+X
+j=1
+ﬂﬂψ j
+ﬁ›
+ψ j
+ﬂﬂ
+!
+, ρ2, ρ3
+!
+= I , (67)
+where the last equality follows from Lemma 52. Consider the 2 n × 2n matrix M =
+¡
+mı j
+¢2n
+ı, j=1, where each entry mı j is
+defined as mı j = 〈ξı|τ j|ξı〉 . By definition, each mı j ≥ 0, and
+X
+ı
+mı j =
+X
+ı
+〈ξı|τ j|ξı〉 = Tr
+£
+τ j
+⁄
+= 1 , (68)
+X
+j
+mı j =
+X
+j
+〈ξk|τ j|ξk〉 = 〈ξk|I|ξk〉 = 1 , (69)
+where (69) comes from (67). Thus M is a doubly stochastic matrix. Moreover, by (66),
+µi = 〈ξı|ρ|ξı〉 =
+2n
+X
+j=1
+λ j〈ξı|τ j|ξı〉 =
+2n
+X
+j=1
+λ jmi j . (70)
+That is, (µ1,..., µ2n)T = M(λ1,..., λ2n)T . Based on Proposition 1.A.3 in [75], (µ1,..., µ2n) ≺ (λ1,..., λ2n) .
+Hence we have the following corollary on the self-convolution ⊠3ψ of a pure state.
+Proposition 55 (Stabilizer purity preservation under convolution). Given a pure n-qubit state ψ, its self-
+convolution ⊠3ψ is pure iff ψ is a stabilizer state.
+Proposition 56. Given 3 n-qubit states ρ1, ρ2, ρ3. For α ∈ [0, +∞],
+Sα
+¡
+⊠3(ρ1, ρ2, ρ3)
+¢
+≥ max{Sα(ρ1),Sα(ρ2),Sα(ρ3)}. (71)
+
+=== page 22 ===
+22
+Proof. This is because Sα is Schur concave.
+Definition 57 (Quantum Tsallis entropy [99]). Given a quantum state ρ, the Tsallis entropy with parameter α ≥ 1 is
+Tα(ρ) := 1
+1 − α
+¡
+Tr
+£
+ρα⁄
+−1
+¢
+. (72)
+Proposition 58. Given 3 n-qubit states ρ1, ρ2, ρ3, for any α ≥ 1 we have
+Tα(⊠3(ρ1, ρ2, ρ3)) ≥ max{Tα(ρ1),Tα(ρ2),Tα(ρ3)} . (73)
+Proof. This is because the Tsallis entropy is Schur concave for α ≥ 1.
+Definition 59 (Subentropy [100]). Given a quantum state ρ with eigenvalues { λi }d
+i=1, the subentropy of ρ is
+Q(ρ) :=
+dX
+i=1
+λd
+i
+Π j̸=i(λ j − λi) log λi. (74)
+Proposition 60. Given 3 n-qubit states ρ1, ρ2, ρ3, we have
+Q(⊠3(ρ1, ρ2, ρ3)) ≥ max
+'
+Q(ρ1),Q(ρ2),Q(ρ3)
+“
+. (75)
+Proof. This is because the subentropy Q is Schur concave.
+Lemma 61. Let ρ1, ρ2, ρ3 be n-qubit states, and let ρk = PT
+j=1 µ jP j be the spectral decomposition of the quantum state
+ρk, where P j is the projection to the eigenspace corresponding to the eigenvalue µ j, and µı ̸= µ j for any ı ̸= j. For any
+α ̸∈ {−∞,0, ∞}, the equality
+Sα
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+= Sα(ρk)
+holds iff each Q j := ⊠K(P j ⊗i̸=k ρi) is a projection of the same rank as P j and Q j1 ⊥ Q j2 whenever j1 ̸= j2.
+Proof. Without loss of generality, let us assume thatk = 1. We follow the notations in the proof of Theorem 54. We have
+the spectral decompositions of the states ρ1 and ρ = ⊠3(ρ1, ρ2, ρ3) as ρ1 = P2n
+j=1 λ j|ψ j〉〈ψ j|, and ρ = P2n
+j=1 µ j|ξ j〉〈ξ j|, and
+assume {λ j} and {µ j} are listed in non-increasing order.
+Since ("⇐") is trivial, we only need to prove (" ⇒"). Recall that we are assuming α ̸∈ {−∞,0, ∞}. Since ( µ1,..., µ2n) ≺
+(λ1,..., λ2n) and we have
+JX
+j=1
+µ j ≤
+JX
+j=1
+λ j, J = 1,2,3,..., 2n . (76)
+Moreover, Sα(⊠3(ρ1, ρ2, ρ3)) = Sα(ρ1) iff every equality in (76) holds, which means (µ1,..., µ2n) = (λ1,..., λ2n).
+Assume L is the largest number such that µ1 = µL. For any l ≤ L,
+µl =
+X
+j
+ml jλ j =
+X
+j
+ml jµ j =
+ˆ
+LX
+j=1
+ml j
+!
+µl +
+X
+j>L
+ml jµ j . (77)
+If there exists ml j > 0 for some l ≤ L and j > L, then
+(77) <
+ˆ
+LX
+j=1
+ml j
+!
+µl +
+X
+j>L
+ml jµL = µL ,
+a contradiction. Hence ml j = 0 whenever l ≤ L and j > L, and therefore for every l ≤ L we have
+LX
+j=1
+ml j = 1 .
+Note that M is a doubly stochastic matrix, so we also have ml j = 0 when l > L and j ≤ L. By the definition of ml j, we
+have 〈ξl|τ j|ξl〉 = 0 whenever l ≤ L < j or j ≤ L < l. Denote σl = |ξl〉〈ξl|, then τ jσl = 0 when l ≤ L < j or when j ≤ L < l.
+Therefore τ j
+PL
+l=1 σl = 0 when j > L, and τ j
+P2n
+l=L+1 σl = 0 when j ≤ L.
+
+=== page 23 ===
+23
+Denote ψ j = |ψ j〉〈ψ j|, then by definition τ j = ⊠3(ψ j, ρ2, ρ3). When l ≤ L,
+〈ξl|
+LX
+j=1
+τ j|ξl〉 =
+LX
+j=1
+ml j = 1 ,
+that is
+〈ξl| ⊠3
+ˆˆ
+1
+L
+LX
+j=1
+ψ j
+!
+, ρ2, ρ3
+!
+|ξl〉 = 1
+L , ∀l ≤ L . (78)
+Let’s denote Φ = 1
+L
+PL
+j=1 τ j = ⊠3
+‡
+1
+L
+PL
+j=1 ψ j, ρ2, ρ3
+·
+. Taking α = 2 in Theorem 54, we have
+∥Φ∥2
+2 ≤
+°°°°°
+1
+L
+LX
+j=1
+ψ j
+°°°°°
+2
+2
+= 1
+L .
+Expanding the matrix Φ under the basis {ξl}, we have
+X
+l,l′
+|〈ξl|Φ|ξl′ 〉|2 ≤ 1
+L ,
+and compared with (78) we have that
+⊠3
+ˆ
+1
+L
+LX
+j=1
+ψ j, ρ2, ρ3
+!
+= Φ = 1
+L
+LX
+l=1
+|ξl〉〈ξl| .
+That is
+⊠3(P1, ρ2, ρ3) = Q1 ,
+where P1 is the spectral projection of ρ1 corresponding to the eigenvalue λ1, and Q1 is the spectral projection of
+⊠3(ρ1, ρ2, ρ3) corresponding to µ1. Repeat this process (by replacing ρ1 by (ρ1 − λ1P1)/Tr[ ρ1 − λ1P1] ) and we obtain
+that, for each spectral projection P j of ρk, Q j := ⊠3(P j, ρ2, ρ3) is a projection of same rank as P j, and Q j is a spectral
+projection of ⊠3(ρ1, ρ2, ρ3).
+Theorem 62 (The case of equality). Let ρ1, ρ2, ρ3 be n-qubit states, α ∉ {−∞,0, +∞}, and
+Gk = {w(⃗p,⃗q) :|Ξρ j(⃗p,⃗q)| = 1 for j ̸= k}. (79)
+The equality
+Sα
+¡
+⊠3
+¡
+⊗3
+i=1ρi
+¢¢
+= Sα(ρk) (80)
+holds for some 1 ≤ k ≤ 3 iff ρk is in the abelian C*-algebra generated by Gk, i.e., ρk is a convex sum of MSPSs associated
+with Gk.
+Proof. We only prove the case where k = 1; the proof is similar for the other cases.
+First, since
+G1 =
+K\
+j=2
+{w(⃗p,⃗q) :|Ξρ j(⃗p,⃗q)| = 1}
+is an intersection of abelian subgroups, G1 is an abelian subgroup.
+Now assume ρ1 is a state in the C*-algebra generated by elements in G1, and we will show the equality (80) holds.
+For each MSPS σ j associated with G1 we have
+|Ξσ j(⃗p,⃗q)| =
+(
+1 w(⃗p,⃗q) ∈ G1,
+0 w(⃗p,⃗q) ̸∈ G1.
+
+=== page 24 ===
+24
+Combined with the definition (79) of G1, we have
+|Ξ⊠3(σ j,ρ2,ρ3)(⃗p,⃗q)| = |Ξσ j(⃗p,⃗q)Ξρ2(⃗p,⃗q)Ξρ3(⃗p,⃗q)| =
+(
+1 w(⃗p,⃗q) ∈ G1,
+0 w(⃗p,⃗q) ̸∈ G1.
+That is, ⊠3(σ j, ρ2, ρ3) is a MSPS associated with the abelian group G1.
+Moreover,
+⊠3(σ j, ρ2, ρ3) = ⊠3(σı, ρ2, ρ3),
+if and only if σ j = σı. Hence the map σ j 7→ ⊠K(σ j, ρ2, ρ3) is a bijection from the set of MSPSs associated with S to the
+set of MSPSs associated with G1. Therefore, if ρ1 = P µ jσ j is a linear sum of MSPSs associated with G1, then
+⊠3(ρ1, ρ2, ρ3) =
+X
+µ j ⊠3 (σ j, ρ2, ρ3),
+is a linear sum (with the same coefficients) of MSPSs associated with G1. Hence, the equality (80) holds.
+On the other hand, let us consider the case where (80) holds. Let P be any spectral projection of ρ1 and assume
+rank(P) = r. In the following, we show P is a stabilizer projection associated with G1. By Lemma 61, ⊠3(P, ρ2, ρ3) is a
+projection Q of rank r, hence ∥ 1
+r P∥2 = ∥ 1
+r Q∥2 and ∥Ξ 1
+r P ∥2 = ∥Ξ 1
+r Q∥2. While
+ﬂﬂﬂΞ 1
+r Q(⃗p,⃗q)
+ﬂﬂﬂ=
+ﬂﬂﬂΞ 1
+r P(⃗p,⃗q)Ξρ2(⃗p,⃗q)Ξρ3(⃗p,⃗q)
+ﬂﬂﬂ, ∀(⃗p,⃗q) ∈ V n .
+Thus, whenever (⃗p,⃗q) ∈ V n satisfies Ξ 1
+r P(⃗p,⃗q) ̸= 0, we have
+ﬂﬂﬂΞ 1
+r P(⃗p,⃗q)Ξρ2(⃗p,⃗q)Ξρ3(⃗p,⃗q)
+ﬂﬂﬂ= 1; or equivalently,
+Ξ 1
+r P(⃗p,⃗q) ̸= 0 ⇒ | Ξρ2(⃗p,⃗q)| = |Ξρ3(⃗p,⃗q)| = 1 .
+That is, the characteristic function Ξ 1
+r P of 1
+r P supports on G1, therefore
+1
+r P = 1
+2n
+X
+(⃗p,⃗q)∈S1
+Ξ 1
+r P(⃗p,⃗q)w(⃗p,⃗q) ∈ C∗(G1) .
+Therefore P is a stabilizer projection associated with G1. Hence ρ1 is a linear sum of projections in the abelian C*-
+algebra generated by G1.
+Remark 63. The entropic inequalities have also been studied in the other quantum case, including the free probability
+theory [101–103], continuous-variable quantum systems [104, 105], subfactor theory [106], and qudit systems [55, 56,
+107, 108].
+Lemma 64. Given an n-qubit state ρ and K = 2N +1, then
+M(⊠K ρ) = M(ρ#), (81)
+where ρ# = ρ for even N, and ρ# = ρT for odd N.
+Proof. By the definition of mean states, ΞM(⊠K ρ)(⃗p,⃗q) = (−1)N⃗p·⃗qΞK
+ρ (⃗p,⃗q) = (−1)N⃗p·⃗qΞρ(⃗p,⃗q) if |Ξρ(⃗p,⃗q)| = 1, otherwise
+M(⊠K ρ)(⃗p,⃗q) = 0. Hence, M(⊠K ρ) = M(ρ#).
+Theorem 65 (Quantum central limit theorem ). Let ρ be an n-qubit state and K = 2N +1, then
+°°⊠K ρ − M(ρ#)
+°°
+2 ≤ (1 − MG(ρ))K−1 °°ρ − M(ρ)
+°°
+2 , (82)
+where ρ# = ρ for even N, and ρ# = ρT for odd N.
+Proof. Let S be the abelian subgroup associated with M(ρ), then ΞM(ρ)(⃗p,⃗q) = ±1 for (⃗p,⃗q) ∈ S, and ΞM(ρ)(⃗p,⃗q) = 0 for
+(⃗p,⃗q) ∉ S. By Proposition 13, we have M(⊠K ρ) = M(ρ#) . Hence
+⊠K ρ − M(ρ#) = 1
+dn
+X
+(⃗p,⃗q)∉S
+Ξ⊠K ρ(⃗p,⃗q)w(⃗p,⃗q) .
+Therefore,
+°°⊠K ρ − M(ρ#)
+°°2
+2 = 1
+dn
+X
+(⃗p,⃗q)∉S
+|Ξ⊠K ρ(⃗p,⃗q)|2 ≤ 1
+dn (1 − MG(ρ))2K−2 X
+(⃗p,⃗q)∉S
+|Ξρ(⃗p,⃗q)2| = (1 − MG(ρ))2K−2 °°ρ − M(ρ)
+°°2
+2 ,
+where |Ξ⊠K ρ(⃗p,⃗q)| = |Ξρ(⃗p,⃗q)|K ≤ (1 − MG(ρ))K−1|Ξρ(⃗p,⃗q)| comes directly from Proposition 13.
+Remark 66. Other versions of the quantum central limit theorem have been considered [109–127], including results in
+DV quantum information theory [55, 56], subfactor theory [122, 123], quantum walks on a lattice [127], CV quantum
+information theory [125, 126], and the free probability theory [128, 129].
+
+=== page 25 ===
+25
+B. Quantum convolution of channels
+We focus here on the convolutions of n-qubit channels, i.e., the quantum channels acting on n-qubit systems. By the
+Choi-Jamiołkowski isomorphism [90, 91], any quantum channel Λ from HA to HA′ can be represented by its Choi state
+JΛ = id A ⊗ Λ(|Φ〉〈Φ|) ,
+where |Φ〉 = 1p
+2n
+P
+⃗j∈Zn
+2
+|⃗j〉A ⊗ |⃗j〉A′. For any input state ρA, the output state of the quantum channel Λ(ρA) can be
+represented via the Choi state JΛ as
+Λ(ρA) = 2n TrA
+h
+JΛ · ρT
+A ⊗ I A′
+i
+. (83)
+On the other hand, for any operator J on HA ⊗ HA′, the map
+ρ → 2n TrA
+h
+J · ρT
+A ⊗ I A′
+i
+,
+is (1) completely positive if and only if J is positive, (2) trace-preserving if and only if TrA′ [J] = In/2n.
+Lemma 67 (The convolution of Choi states is Choi). Given 3 quantum states ρAA ′, σAA ′ and ηAA ′ on HA ⊗HA′ with
+TrA′
+£
+ρAA ′
+⁄
+= TrA′ [σAA ′] = TrA′
+£
+ηAA ′
+⁄
+= I A/2n. Then ⊠3(ρAA ′, σAA ′, ηAA ′) also satisfies that TrA′
+£
+⊠3(ρAA ′, σAA ′, ηAA ′)
+⁄
+=
+I A/2n.
+Proof. By Proposition 13, we have
+Ξ⊠3(ρAA ′ ,σAA ′ ,ηAA ′ )(⃗pA, ⃗pA′,⃗qA,⃗qA′)
+= (−1)⃗pA ·⃗qA +⃗pA′ ·⃗qA′ Ξρ(⃗pA, ⃗pA′,⃗qA,⃗qA′)Ξσ(⃗pA, ⃗pA′,⃗qA,⃗qA′)Ξη(⃗pA, ⃗pA′,⃗qA,⃗qA′) .
+Since TrA′
+£
+ρAA ′
+⁄
+= TrA′ [σAA ′] = TrA′
+£
+ηAA ′
+⁄
+= I A/2n, we have
+Ξρ(⃗pA,⃗0A′,⃗qA,⃗0A′) = Ξσ(⃗pA,⃗0A′,⃗qA,⃗0A′) = Ξη(⃗pA,⃗0A′,⃗qA,⃗0A′) = 0 , ∀(⃗pA,⃗qA) ̸= (⃗0,⃗0) ,
+hence
+Ξ⊠3(ρAA ′ ,σAA ′ ,ηAA ′ )(⃗pA,⃗0A′,⃗qA,⃗0A′) = 0 , ∀(⃗pA,⃗qA) ̸= (⃗0,⃗0) .
+Therefore
+TrA′
+£
+⊠3(ρAA ′, σAA ′, ηAA ′)
+⁄
+= 1
+2n
+X
+⃗pA,⃗qA
+Ξ⊠3(ρAA ′ ,σAA ′ ,ηAA ′ )(⃗pA,⃗0A′,⃗qA,⃗0A′)w(⃗pA,⃗qA) = I A/2n,
+and the proof is complete.
+To distinguish from the convolution ⊠K of states , let us denote the convolution of channels as ⊠K. Here let us first
+consider the K = 3 case as it can generate ⊠K for any odd K.
+Definition 68 (Convolution of channels). Given 3 n-qudit channels Λ1, Λ2 and Λ3, the convolution ⊠3(Λ1, Λ2, Λ3) is
+the quantum channel with the Choi state
+J⊠3(Λ1,Λ2,Λ3) := ⊠3
+¡
+⊗3
+i=1JΛi
+¢
+,
+where the state ⊠3(⊗3
+i=1JΛi) is the convolution of the Choi states JΛ1, JΛ2 and JΛ3.
+Since the convolution of states is invariant under permutation, it follows that the convolution of channels is also
+invariant under permutation.
+Corollary 69. Given 3 n-qubit channels Λ1, Λ2, Λ3, then
+⊠3(Λ1, Λ2, Λ3) = ⊠3(Λπ(1), Λπ(2), Λπ(3)), (84)
+for any permutation π on 3 elements.
+
+=== page 26 ===
+26
+Denote the inverse of the convolution ⊠−1
+3 to be
+⊠−1
+3 (ρ) = V †
+µ
+ρ ⊗ In
+2n ⊗ In
+2n
+¶
+V , (85)
+which satisfies that ⊠3 ◦ ⊠−1
+3 = id. Besides, we observe that ⊠−1
+3 = 1
+22n ⊠†
+3.
+Theorem 70 (Exact formula for convolution of channels). Given 3 n-qubit channels Λ1, Λ2, Λ3, their convolution
+⊠3(Λ1, Λ2, Λ3) is
+⊠3(Λ1, Λ2, Λ3)(·) = ⊠3 ◦(⊗iΛi) ◦ ⊠−1
+3 (·) , (86)
+where ⊠−1
+3 is the inverse of the convolutional channel in (85).
+Proof. First, the Choi state of any channel Λ can be rewritten in terms of Weyl operators as
+JΛ = 1
+22n
+X
+(⃗p,⃗q)∈V n
+(−1)⃗p·⃗qw(⃗p,⃗q) ⊗ Λ(w(⃗p,⃗q)) , (87)
+and thus
+⊠3(JΛ1, JΛ2, JΛ3) = 1
+24n
+X
+⃗p,⃗q
+w(⃗p,⃗q) ⊗(⊠3(Λ1(w(⃗p,⃗q)), Λ2(w(⃗p,⃗q)), Λ3(w(⃗p,⃗q))) .
+Hence for any n-qubit state ρ = 1
+2n
+P
+⃗p,⃗q Ξρ(⃗p,⃗q)w(⃗p,⃗q),
+⊠3(Λ1, Λ2, Λ3)(ρ) = 2n Tr1
+h
+⊠K(JΛ1, JΛ2, JΛ3) · ρT ⊗ I
+i
+=
+X
+⃗p,⃗q
+(−1)⃗p·⃗q Ξρ(⃗p,⃗q)Tr1
+£
+⊠3(JΛ1, JΛ2, JΛ3) · w(⃗p,⃗q) ⊗ I
+⁄
+= 1
+2Kn
+X
+⃗p,⃗q
+(−1)⃗p·⃗q Ξρ(⃗p,⃗q) ⊠3 (Λ1(w(⃗p,⃗q)), Λ2(w(⃗p,⃗q)), Λ3(w(⃗p,⃗q))) .
+Moreover,
+⊠3 ◦(Λ1 ⊗ Λ2 ⊗ Λ3) ◦ ⊠−1
+3 (ρ)
+= 1
+23n
+X
+⃗p,⃗q
+Ξρ(⃗p,⃗q) ⊠3 ◦(Λ1 ⊗ Λ2 ⊗ Λ3) ◦ ⊠†
+3(w(⃗p,⃗q))
+= 1
+23n
+X
+⃗p,⃗q
+Ξρ(⃗p,⃗q) ⊠3 ◦(Λ1 ⊗ Λ2 ⊗ Λ3)((−1)N⃗p·⃗qw(⃗p,⃗q)⊗3)
+= 1
+23n
+X
+⃗p,⃗q
+(−1)N⃗p·⃗q Ξρ(⃗p,⃗q) ⊠3 (Λ1(w(⃗p,⃗q)) ⊗ Λ2(w(⃗p,⃗q)) ⊗ Λ3(w(⃗p,⃗q)))
+= 1
+23n
+X
+⃗p,⃗q
+(−1)N⃗p·⃗qΞρ(⃗p,⃗q) ⊠3 (Λ1(w(⃗p,⃗q)), Λ2(w(⃗p,⃗q)), Λ3(w(⃗p,⃗q)) .
+Therefore, (86) holds for any quantum state ρ.
+The completely depolarizing channel R on n-qubit systems is defined as follows:
+R(ρ) = Tr
+£
+ρ
+⁄In
+2n , ∀ρ . (88)
+We can now present the following result.
+Proposition 71. Given two n-qubit channels Λ1, Λ2,
+⊠3(Λ1, Λ2,R) = R . (89)
+
+=== page 27 ===
+27
+Proof. For any Pauli operator w(⃗p,⃗q),
+⊠3(Λ1, Λ2,R)(w(⃗p,⃗q)) = ⊠3 ◦(Λ1 ⊗ Λ2 ⊗ R) ◦ ⊠−1
+3 (w(⃗p,⃗q)) = 1
+22n ⊠3 ◦(Λ1 ⊗ Λ2 ⊗ R) ◦ ⊠†
+3(w(⃗p,⃗q))
+= (−1)⃗p·⃗q
+22n ⊠3 ◦(Λ1 ⊗ Λ2 ⊗ R)(w(⃗p,⃗q) ⊗ · · · ⊗w(⃗p,⃗q))
+= (−1)⃗p·⃗q
+22n ⊠3 (Λ1(w(⃗p,⃗q)) ⊗ Λ2(w(⃗p,⃗q)) ⊗ In) δ⃗p,⃗0δ⃗q,⃗0
+= Inδ⃗p,⃗0δ⃗q,⃗0 = R(w(⃗p,⃗q)) ,
+where the fifth equality comes from Lemma 52.
+Proposition 72 (Convolutional stability for channels). Given 3 stabilizer channels Λ1, Λ2, Λ3, the convolution
+⊠3(Λ1, Λ2, Λ3) is a stabilizer channel.
+Proof. Since both ⊠3 and ⊠−1
+3 are stabilizer channels, by Theorem 70, ⊠3(Λ1, Λ2, Λ3) is a stabilizer channel.
+Definition 73. Let Λ be an n-qubit channel, the Rényi entropy of Λ is the Rényi entropy of the Choi state JΛ, that is
+Sα(Λ) = Sα(JΛ) .
+As a consequence of Proposition 56 and the definition of the convolution of channels, we have the following proposition.
+Proposition 74 (Convolution increases entropy of channels). Let Λ1, Λ2, Λ3 be three n-qubit channels and α ∈
+[0, +∞]. Then
+Sα(⊠3(Λ1, Λ2, Λ3)) ≥ max{Sα(Λ1),Sα(Λ2),Sα(Λ3)} .
+Hence, we have the following results on the self-convolution ⊠3U for a unitary U.
+Proposition 75. Given a unitary channel U , its self-convolution ⊠3U is a unitary iff U is Clifford.
+Definition 76 (Mean channel [55, 56]). Given a quantum channel Λ, the mean channel M(Λ) is the quantum channel
+with the Choi state JM(Λ) = M(JΛ), where the M(JΛ) is the MS of the Choi state JΛ.
+Example 77 (Mean channel for the T gate). Let us consider the T gate, T =
+•1 0
+0 eiπ/4
+‚
+, which is a 1-qubit non-Clifford
+gate. Then JM(T) = 1
+4(I ⊗ I + Z ⊗ Z). Hence, the mean channel M(T) is the complete dephasing channel w.r.t. Pauli Z
+basis, i.e.,
+M(T)(ρ) =
+X
+x∈{0,1}
+〈x| ρ |x〉 |x〉〈x|. (90)
+Definition 78 ([55, 56]). The magic gap of Λ is the magic gap of the Choi state JΛ, i.e.,
+MG(Λ) := MG(JΛ) .
+Given two n-qudit channels Λ1 and Λ2, the diamond distance [130] between Λ1 and Λ2 is
+∥Λ1 − Λ2∥⋄ = sup
+ρ∈D(HS ⊗HR)
+°°(Λ1 − Λ2) ⊗ id R(ρ)
+°°
+1 ,
+where id R is the identity mapping on the ancilla system.
+Theorem 79 (Central limit theorem for channels). Let Λ be an n-qubit channel with K = 2N +1, then
+°°°⊠K Λ − M(Λ#)
+°°°
+⋄
+≤ 22n(1 − MG(Λ))K−1 °°JΛ − JM(Λ)
+°°
+2 , (91)
+where Λ# = Λ for even N, and Λ# is the channel whose Choi state is (JΛ)T for odd N.
+Proof. We have the estimates
+°°°⊠K Λ − M(Λ#)
+°°°
+⋄
+≤2n
+°°°J⊠K (Λ,...,Λ) − JM(Λ#)
+°°°
+1
+= 2n
+°°°⊠K(JΛ,..., JΛ) − M(JΛ#)
+°°°
+1
+≤22n °°⊠K(JΛ,..., JΛ) − M(JΛ#)
+°°
+2 ≤ 22n(1 − MG(Λ))K−1 °°JΛ − JM(Λ)
+°°
+2 ,
+where the first inequality comes from the fact that ∥Λ1 − Λ2∥⋄ ≤ 2n °°JΛ1 − JΛ2
+°°
+1 (see [131]), the equality comes from the
+definition of mean channels, and the next inequality comes from the fact that ∥·∥1 ≤
+p
+22n ∥·∥2. The last inequality uses
+Theorem 65.
+
+=== page 28 ===
+28
+C. Detailed proof of the results on stabilizer testing
+Proof of Theorem 26. We only need to prove that
+(1 − ϵ)4 ≤ Tr
+£
+(JU ⊠H JU)2⁄
+≤ 1 −4ϵ +O(ϵ2).
+Since maxV ∈Cl n |〈V,U〉|2 = 1−ϵ, then there exist some Clifford unitaryV such that |〈V,U〉|2 = 1−ϵ. By the commutativity
+of ⊠H with Clifford unitaries in Lemma 22, we have
+Tr
+£
+(JU ⊠H JU)2⁄
+= Tr
+£
+(JV †U ⊠H JV †U)2⁄
+.
+Let us define
+|w(⃗p,⃗q)〉 = (w(⃗p,⃗q) ⊗ I) |Bell〉, ∀(⃗p,⃗q) ∈ V n.
+This forms an orthonormal basis for 2n-qudit systems. For any 2n-qudit ρ, let
+ρ(⃗p,⃗q) := 〈w(⃗p,⃗q)| ρ |w(⃗p,⃗q)〉.
+Then the Choi state JV †U = V †U ⊗ I |Bell〉〈Bell|U†V ⊗ I. Let us denote |V †U〉 := V †U ⊗ I |Bell〉 for simplicity, then
+JV †U =
+ﬂﬂV †U
+ﬁ›
+V †U
+ﬂﬂ. Therefore,
+|〈w(⃗0,⃗0)|V †U〉|2 = 〈Bell| JV †U |Bell〉 = 〈Bell|V †U ⊗ I |Bell〉 〈Bell|U†V ⊗ I |Bell〉 = |〈V,U〉|2 = 1 − ϵ.
+For the lower bound, we have
+Tr
+£
+(JV †U ⊠H JV †U)2⁄
+≥ 〈 w(⃗0,⃗0)| JV †U ⊠H JV †U |w(⃗0,⃗0)〉
+2
+=
+ˆ
+X
+⃗p,⃗q
+JV †U(⃗p,⃗q)JV †U(−⃗p, −⃗q)
+!2
+≥
+‡
+JV †U(⃗0,⃗0)2
+·2
+≥ (1 − ϵ)4,
+where the first inequality comes from the Cauchy-Schwarz inequality, and the equality comes from Lemma 80.
+For the upper bound, let us rewrite |V †U〉 as
+|V †U〉 =
+p
+1 − ϵ |w(⃗0,⃗0)〉 +
+X
+(⃗p,⃗q)̸=(⃗0,⃗0)
+〈w(⃗p,⃗q)|V †U〉 |w(⃗p,⃗q)〉,
+where P
+(⃗p,⃗q)̸=(⃗0,⃗0) |〈w(⃗p,⃗q)|V †U〉|2 = ϵ. Let us take the stabilizer group of|w(⃗0,⃗0)〉, which isG = {((⃗p,⃗q),(−⃗p,⃗q) :⃗p,⃗q ∈ Zn
+d)}.
+Hence, ((⃗p,⃗q),(−⃗u,⃗v)) ∉ G iff (⃗p,⃗q) ̸= (⃗u,⃗v). In this case, it can be written as (( ⃗p,⃗q),(−⃗u,⃗v)) = ((⃗u,⃗v),(−⃗u,⃗v)) + ((⃗p −⃗u,⃗q −
+⃗v),(⃗0,⃗0)). That is,
+w(⃗p,⃗q) ⊗ w(−⃗u,⃗v) = χ(−2−1〈(⃗u,⃗v),(⃗p −⃗u,⃗q −⃗v)〉s)w(⃗u,⃗v) ⊗ w(−⃗u,⃗v)(w(⃗p −⃗u,⃗q −⃗v) ⊗ w(⃗0,⃗0)).
+Since
+w(⃗p,⃗q) ⊗ w(−⃗p,⃗q) =
+X
+⃗x,⃗y
+|w(⃗x,⃗y)〉〈w(⃗x,⃗y)| ω−〈(⃗x,⃗y),(⃗p,⃗q))〉s
+d ,
+then
+w(⃗p,⃗q) ⊗ w(−⃗u,⃗v)
+= χ(−2−1〈(⃗u,⃗v),(⃗p −⃗u,⃗q −⃗v)〉s)
+X
+⃗x,⃗y
+|w(⃗x,⃗y)〉 〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)| ω−〈(⃗x,⃗y),(⃗u,⃗v))〉s
+d χ(−2−1〈(⃗x,⃗y),(⃗p −⃗u,⃗q −⃗v)〉s).
+
+=== page 29 ===
+29
+Then, when ((⃗p,⃗q),(⃗u,⃗v)) ∉ G,
+ﬂﬂTr
+£
+JV †U w(⃗p,⃗q) ⊗ w(−⃗u,⃗v)
+⁄ﬂﬂ
+≤
+X
+⃗x,⃗y
+ﬂﬂTr
+£
+JV †U |w(⃗x,⃗y)〉 〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|
+⁄ﬂﬂ
+=
+X
+⃗x,⃗y
+ﬂﬂﬂ〈w(⃗x,⃗y)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ
+=
+ﬂﬂﬂ〈w(⃗0,⃗0)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(−⃗p +⃗u, −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ+
+ﬂﬂﬂ〈w(⃗0,⃗0)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(⃗p −⃗u,⃗q −⃗v)|V †U〉
+ﬂﬂﬂ
++
+X
+(⃗x,⃗y)̸=(⃗0,⃗0),(⃗p−⃗u,⃗q−⃗v)
+ﬂﬂﬂ〈w(⃗x,⃗y)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ
+≤2
+p
+(1 − ϵ)ϵ + ϵ.
+That is,
+max
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ≤ 2
+p
+(1 − ϵ)ϵ + ϵ.
+Moreover,
+1 =Tr
+h
+J2
+V †U
+i
+= 1
+d2n
+X
+(⃗p,⃗q),(⃗u,⃗v)
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+= 1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
++ 1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+,
+where
+1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+= 1
+d2n
+X
+(⃗p,⃗q)∈V n
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(−⃗p,⃗q))
+ﬂﬂﬂ
+2
+= 1
+d2n
+X
+(⃗p,⃗q)∈V n
+ﬂﬂﬂﬂﬂ
+X
+⃗x,⃗y
+JV †U(⃗x,⃗y)ω−〈(⃗x,⃗y),(⃗p,⃗q))〉s
+d
+ﬂﬂﬂﬂﬂ
+2
+= (1 − ϵ)2 +
+X
+(⃗p,⃗q)̸=(⃗0,⃗0)
+JV †U(⃗p,⃗q)2.
+Hence, we have
+1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+≤ 1 −(1 − ϵ)2.
+Then
+Tr
+£
+(JV †U ⊠H JV †U)2⁄
+= 1
+d2n
+X
+(⃗p,⃗q),(⃗u,⃗v)
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+4
+= 1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+4
++ 1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+4
+,
+where
+1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+4
+≤ 1 −4ϵ(1 − ϵ)3,
+
+=== page 30 ===
+30
+and
+1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+4
+≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i2 1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i2
+·
+£
+1 −(1 − ϵ)2⁄
+= 8ϵ2 + o(ϵ2).
+Hence
+Tr
+£
+(JV †U ⊠H JV †U)2⁄
+≤ 1 −4ϵ +O(ϵ2).
+■
+Lemma 80. For any 2n-qudit states ρ, σ, we have
+ρ ⊠ σ(⃗p,⃗q) =
+X
+(⃗a,⃗b)+(⃗c,⃗d)=(⃗p,2⃗q)
+ρ(⃗a,⃗b)σ(⃗c,⃗d), ∀(⃗p,⃗q) ∈ V n. (92)
+Proof. First,
+VH |w(⃗a,⃗b)〉 ⊗ |w(⃗p,⃗q)〉 = VHw(⃗a,⃗b) ⊗ w(⃗p,⃗q) |Bell〉 ⊗ |Bell〉
+= w(⃗a + ⃗p,2−1(⃗b +⃗q)) ⊗ w(⃗a − ⃗p,2−1(⃗b −⃗q))VH |Bell〉 ⊗ |Bell〉
+= w(⃗a + ⃗p,2−1(⃗b +⃗q)) ⊗ w(⃗a − ⃗p,2−1(⃗b −⃗q)) |Bell〉 ⊗ |Bell〉
+= | w(⃗a + ⃗p,2−1(⃗b +⃗q))〉 ⊗ |w(⃗a − ⃗p,2−1(⃗b −⃗q))〉,
+where the second equality comes from the following equality proved in [55, 56],
+VHw(⃗p1,⃗q1) ⊗ w(⃗p2, ⃗p2)V †
+H = w(⃗p1 + ⃗p2,2−1⃗q1 +2−1⃗q2) ⊗ w(⃗p1 − ⃗p2,2−1⃗q1 −2−1⃗q2), (93)
+and the third equality is because
+VH |Bell〉 ⊗ |Bell〉 = 1
+dn VH
+X
+⃗x,⃗y
+|⃗x〉 |⃗x〉 |⃗y〉 |⃗y〉
+= 1
+dn
+X
+⃗x,⃗y
+|2−1(⃗x +⃗y)〉 |2−1(⃗x +⃗y)〉 |2−1(⃗x −⃗y)〉 |2−1(⃗x −⃗y)〉
+= 1
+dn
+X
+⃗x,⃗y
+|⃗x〉 |⃗x〉 |⃗y〉 |⃗y〉
+= | Bell〉 ⊗ |Bell〉.
+Similarly, we can also prove that
+V †
+H |w(⃗a,⃗b)〉 ⊗ |w(⃗p,⃗q)〉 = |w(2−1(⃗a + ⃗p),⃗b +⃗q)〉 ⊗ |w(2−1(⃗a − ⃗p),⃗b −⃗q〉.
+Hence
+ρ ⊠ σ(⃗p,⃗q) = Tr
+h
+(VHρ ⊗ σV †
+H)(|w(⃗p,⃗q)〉〈w(⃗p,⃗q)| ⊗ I)
+i
+= Tr
+h
+ρ ⊗ σ(V †
+H |w(⃗p,⃗q)〉〈w(⃗p,⃗q)| ⊗ IVH)
+i
+=
+X
+⃗c,⃗d
+Tr
+h
+ρ ⊗ σ(V †
+H |w(⃗p,⃗q)〉〈w(⃗p,⃗q)| ⊗
+ﬂﬂﬂw(⃗c,⃗d)
+ED
+w(⃗c,⃗d)
+ﬂﬂﬂVH)
+i
+=
+X
+⃗c,⃗d
+ρ(2−1(⃗p +⃗c),⃗q +⃗d)σ(2−1(⃗p −⃗c),⃗q −⃗d)
+=
+X
+(⃗a,⃗b)+(⃗c,⃗d)=(⃗p,2⃗q)
+ρ(⃗a,⃗b)σ(⃗c,⃗d).
+
+=== page 31 ===
+31
+Proof of Theorem 25. We only need to prove that
+(1 − ϵ)6 ≤ Tr
+£
+(⊠3JU)2⁄
+≤ 1 −6ϵ +O(ϵ2).
+Since maxV ∈Cl n |〈V,U〉|2 = 1−ϵ, then there exist some Clifford unitaryV such that |〈V,U〉|2 = 1−ϵ. By the commutativity
+of ⊠H with Clifford unitaries in Theorem 51, we have
+Tr
+£
+(⊠3JU)2⁄
+= Tr
+£
+(⊠3JV †U)2⁄
+.
+Same as in the proof of Theorem 26, we denote
+|w(⃗p,⃗q)〉 = w(⃗p,⃗q) ⊗ I |Bell〉, ∀(⃗p,⃗q) ∈ V n.
+They form an orthonormal basis of the 2n-qubit systems. For any 2n-qubit state ρ we denote
+ρ(⃗p,⃗q) = 〈w(⃗p,⃗q)| ρ |w(⃗p,⃗q)〉.
+The Choi state JV †U = V †U ⊗ I |Bell〉〈Bell|U†V ⊗ I. Let us denote |V †U〉 = V †U ⊗ I |Bell〉 for simplicity, then JV †U =ﬂﬂV †U
+ﬁ›
+V †U
+ﬂﬂ. Therefore,
+|〈w(⃗0,⃗0)|V †U〉|2 = 〈Bell| JV †U |Bell〉 = 〈Bell|V †U |Bell〉 〈Bell|U†V |Bell〉 = |〈V,U〉|2 = 1 − ϵ.
+For the lower bound, we have
+Tr
+£
+(⊠3JV †U)2⁄
+≥ 〈 w(⃗0,⃗0)| ⊠3 JV †U |w(⃗0,⃗0)〉
+2
+=
+
+ X
+P
+i(⃗pi,⃗qi)=(⃗0,⃗0)
+JV †U(⃗p1,⃗q1)JV †U(⃗p2,⃗q2)JV †U(⃗p3,⃗q3)
+
+
+2
+≥
+‡
+JV †U(⃗0,⃗0)3
+·2
+≥ (1 − ϵ)6,
+where the first inequality comes from the Cauchy-Schwarz inequality, and the equality comes from Lemma 81.
+For the upper bound, let us rewrite |V †U〉 as
+|V †U〉 =
+p
+1 − ϵ |w(⃗0,⃗0)〉 +
+X
+(⃗p,⃗q)̸=(⃗0,⃗0)
+〈w(⃗p,⃗q)|V †U〉 |w(⃗p,⃗q)〉,
+where P
+(⃗p,⃗q)̸=(⃗0,⃗0) |〈w(⃗p,⃗q)|V †U〉|2 = ϵ. Let us take the stabilizer group of |w(⃗0,⃗0)〉, which is G = {((⃗p,⃗q),(⃗p,⃗q) :⃗p,⃗q ∈ Zn
+2)}.
+Hence, ((⃗p,⃗q),(⃗u,⃗v)) ∉ G iff (⃗p,⃗q) ̸= (⃗u,⃗v). In this case, it can be written as ((⃗p,⃗q),(⃗u,⃗v)) = ((⃗u,⃗v),(⃗u,⃗v))+((⃗p−⃗u,⃗q−⃗v),(⃗0,⃗0)).
+That is,
+w(⃗p,⃗q) ⊗ w(⃗u,⃗v) = i−〈(⃗u,⃗v),(⃗p−⃗u,⃗q−⃗v)〉[w(⃗u,⃗v) ⊗ w(⃗u,⃗v)][w(⃗p −⃗u,⃗q −⃗v) ⊗ w(⃗0,⃗0)].
+Since
+(−1)⃗p·⃗qw(⃗p,⃗q) ⊗ w(⃗p,⃗q) =
+X
+⃗x,⃗y
+|w(⃗x,⃗y)〉〈w(⃗x,⃗y)|(−1)〈(⃗x,⃗y),(⃗p,⃗q))〉s
+then
+w(⃗p,⃗q) ⊗ w(⃗u,⃗v)
+= i−〈(⃗u,⃗v),(⃗p−⃗u,⃗q−⃗v)〉(−1)⃗p·⃗q X
+⃗x,⃗y
+|w(⃗x,⃗y)〉 〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|(−1)〈(⃗x,⃗y),(⃗u,⃗v))〉s i−〈(⃗x,⃗y),(⃗p−⃗u,⃗q−⃗v)〉.
+Then
+ﬂﬂTr
+£
+JV †U w(⃗p,⃗q) ⊗ w(⃗u,⃗v)
+⁄ﬂﬂ
+≤
+X
+⃗x,⃗y
+ﬂﬂTr
+£
+JV †U |w(⃗x,⃗y)〉 〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|
+⁄ﬂﬂ
+=
+X
+⃗x,⃗y
+ﬂﬂﬂ〈w(⃗x,⃗y)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ
+=2
+ﬂﬂﬂ〈w(⃗0,⃗0)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(−⃗p +⃗u, −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ+
+X
+(⃗x,⃗y)̸=(⃗0,⃗0),(⃗p−⃗u,⃗q−⃗v)
+ﬂﬂﬂ〈w(⃗x,⃗y)|V †U〉
+ﬂﬂﬂ
+ﬂﬂﬂ〈w(⃗x − ⃗p +⃗u,⃗y −⃗q +⃗v)|V †U〉
+ﬂﬂﬂ
+≤2
+p
+(1 − ϵ)ϵ + ϵ.
+
+=== page 32 ===
+32
+That is,
+max
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ≤ 2
+p
+(1 − ϵ)ϵ + ϵ.
+Moreover,
+1 =Tr
+h
+J2
+V †U
+i
+= 1
+22n
+X
+(⃗p,⃗q),(⃗u,⃗v)
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+= 1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
++ 1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+,
+where
+1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+= 1
+22n
+X
+(⃗p,⃗q)∈V n
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗p,⃗q))
+ﬂﬂﬂ
+2
+= 1
+22n
+X
+(⃗p,⃗q)∈V n
+ﬂﬂﬂﬂﬂ
+X
+⃗x,⃗y
+JV †U(⃗x,⃗y)(−1)〈(⃗x,⃗y),(⃗p,⃗q))〉s
+ﬂﬂﬂﬂﬂ
+2
+= (1 − ϵ)2 +
+X
+(⃗p,⃗q)̸=(⃗0,⃗0)
+JV †U(⃗p,⃗q)2.
+Hence, we have
+1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+(⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+≤ 1 −(1 − ϵ)2.
+Then
+Tr
+£
+(⊠3JV †U)2⁄
+= 1
+22n
+X
+(⃗p,⃗q),(⃗u,⃗v)
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+6
+= 1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+6
++ 1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+6
+,
+where
+1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∈G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+6
+≤ 1 −6ϵ(1 − ϵ)5,
+and
+1
+d2n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+6
+≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i4 1
+22n
+X
+((⃗p,⃗q),(⃗u,⃗v))∉G
+ﬂﬂﬂΞJV†U
+((⃗p,⃗q),(⃗u,⃗v))
+ﬂﬂﬂ
+2
+≤
+h
+2
+p
+(1 − ϵ)ϵ + ϵ
+i4
+·
+£
+1 −(1 − ϵ)2⁄
+= 32ϵ3 + o(ϵ2).
+Hence
+Tr
+£
+(⊠3JV †U)2⁄
+≤ 1 −6ϵ +O(ϵ2).
+■
+
+=== page 33 ===
+33
+Lemma 81. For any 2n-qubit states { ρi }K
+i with odd K, we have
+⊠K
+‡
+⊗K
+i=1ρi
+·
+(⃗p,⃗q) =
+X
+(⃗pi,⃗qi)K
+i=1:P
+i(⃗pi,⃗qi)=(⃗p,⃗q)
+KY
+i=1
+ρi(⃗pi,⃗qi). (94)
+Proof.
+⊠K
+‡
+⊗K
+i=1ρi
+·
+(⃗p,⃗q) =Tr
+h
+⊠K(⊗K
+i=1ρi) |w(⃗p,⃗q)〉〈w(⃗p,⃗q)|
+i
+= Tr
+h
+⊗K
+i=1ρiV †(|w(⃗p,⃗q)〉〈w(⃗p,⃗q)| ⊗K
+i=2 I)V
+i
+=
+X
+(⃗pi,⃗qi)K
+i=2
+Tr
+h
+⊗K
+i=1ρiV † |w(⃗p,⃗q)〉〈w(⃗p,⃗q)| ⊗K
+i=2 |w(⃗pi,⃗qi)〉〈w(⃗pi,⃗qi)|V
+i
+=
+X
+(⃗pi,⃗qi)K
+i=2
+ρ1
+ˆ
+⃗p +
+KX
+j=2
+⃗p j,⃗q +
+KX
+j=2
+⃗q j
+!
+⊗K
+i=2 ρi
+ˆ
+⃗p − ⃗pi,⃗q +
+KX
+j=2
+⃗q j −⃗qi
+!
+=
+X
+(⃗pi,⃗qi)K
+i=1:P
+i(⃗pi,⃗qi)=(⃗p,⃗q)
+KY
+i=1
+ρi(⃗pi,⃗qi),
+where the fourth equality comes from Proposition 10 and the fact that
+V † |Bell〉⊗K = 1
+dnK/2 V † X
+{⃗xi }K
+i=1
+⊗K
+i=1 |⃗xi〉 |⃗xi〉 = 1
+dnK/2
+X
+{⃗xi }K
+i=1
+|
+KX
+i=1
+⃗xi〉 |
+KX
+i=1
+⃗xi〉 ⊗K
+i=2 |
+X
+j̸=i
+⃗x j〉 |
+X
+j̸=i
+⃗x j〉 = |Bell〉⊗K .
+DATA AVAILABILITY
+Data sharing is not applicable to this article as no datasets were generated or analysed during the current study.
+CONFLICTS OF INTEREST
+The authors have no relevant financial or non-financial interests to disclose.
+[1] O. Goldreich, Introduction to property testing (Cambridge University Press, 2017).
+[2] M. Blum, M. Luby, and R. Rubinfeld, Journal of Computer and System Sciences 47, 549 (1993).
+[3] N. Alon, T. Kaufman, M. Krivelevich, S. Litsyn, and D. Ron, IEEE Transactions on Information Theory 51, 4032 (2005).
+[4] A. Bhattacharyya, S. Kopparty, G. Schoenebeck, M. Sudan, and D. Zuckerman, in 2010 IEEE 51st Annual Symposium on
+Foundations of Computer Science (IEEE, 2010) pp. 488–497.
+[5] L. Babai, L. Fortnow, L. A. Levin, and M. Szegedy, in Proceedings of the Twenty-Third Annual ACM Symposium on Theory of
+Computing, STOC ’91 (Association for Computing Machinery, New York, NY, USA, 1991) p. 21–32.
+[6] L. Babai, L. Fortnow, and C. Lund, Computational complexity 1, 3 (1991).
+[7] U. Feige, S. Goldwasser, L. Lovasz, S. Safra, and M. Szegedy, in [1991] Proceedings 32nd Annual Symposium of Foundations
+of Computer Science (1991) pp. 2–12.
+[8] S. Arora, C. Lund, R. Motwani, M. Sudan, and M. Szegedy, J. ACM 45, 501–555 (1998).
+[9] S. Arora and S. Safra, 45, 70–122 (1998).
+[10] E. Ben-Sasson, O. Goldreich, P. Harsha, M. Sudan, and S. Vadhan, inProceedings of the Thirty-Sixth Annual ACM Symposium
+on Theory of Computing, STOC ’04 (Association for Computing Machinery, New York, NY, USA, 2004) p. 1–10.
+[11] O. Goldreich and M. Sudan, J. ACM 53, 558–655 (2006).
+[12] D. Moshkovitz and R. Raz, J. ACM 57, 1 (2008).
+[13] I. Dinur and P. Harsha, SIAM Journal on Computing 42, 2452 (2013).
+[14] A. W. Harrow and A. Montanaro, in 2010 IEEE 51st Annual Symposium on Foundations of Computer Science (2010) pp. 633–
+642.
+[15] G. Gutoski, P. Hayden, K. Milner, and M. M. Wilde, Theory of Computing 11, 59 (2015).
+[16] J. L. Beckey, N. Gigena, P. J. Coles, and M. Cerezo, Phys. Rev. Lett.127, 140501 (2021).
+
+=== page 34 ===
+34
+[17] A. Montanaro and R. d. Wolf, A Survey of Quantum Property Testing, Graduate Surveys No. 7 (Theory of Computing Library,
+2016) pp. 1–81.
+[18] H. Buhrman, R. Cleve, J. Watrous, and R. de Wolf, Phys. Rev. Lett. 87, 167902 (2001).
+[19] A. Natarajan and T. Vidick (Association for Computing Machinery, New York, NY, USA, 2017) p. 1003–1015.
+[20] A. Natarajan and T. Vidick, in 2018 IEEE 59th Annual Symposium on Foundations of Computer Science (FOCS) (2018) pp.
+731–742.
+[21] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen, (2022), arXiv:2001.04383 [quant-ph].
+[22] G. Vidal, J. I. Latorre, E. Rico, and A. Kitaev, Phys. Rev. Lett. 90, 227902 (2003).
+[23] P. Calabrese and J. Cardy, Journal of Physics A: Mathematical and Theoretical42, 504005 (2009).
+[24] T. Nishioka, S. Ryu, and T. Takayanagi, Journal of Physics A: Mathematical and Theoretical 42, 504008 (2009).
+[25] R. Islam, R. Ma, P. M. Preiss, M. Eric Tai, A. Lukin, M. Rispoli, and M. Greiner, Nature 528, 77 (2015).
+[26] D. Gottesman, arXiv:quant-ph/9705052 (1997).
+[27] D. Gottesman, in Proc. XXII International Colloquium on Group Theoretical Methods in Physics, 1998 (1998) pp. 32–43.
+[28] R. A. Low, Phys. Rev. A 80, 052314 (2009).
+[29] G. Wang, Phys. Rev. A 84, 052328 (2011).
+[30] A. Rocchetto, Quantum Information and Computation 18, 541 (2018).
+[31] A. Montanaro, “Learning stabilizer states by bell sampling,” (2017), arXiv:1707.04012 [quant-ph].
+[32] D. Gross, S. Nezami, and M. Walter, Communications in Mathematical Physics 385, 1325 (2021).
+[33] C.-Y. Lai and H.-C. Cheng, IEEE Transactions on Information Theory 68, 3951 (2022).
+[34] S. Grewal, V. Iyer, W. Kretschmer, and D. Liang, in14th Innovations in Theoretical Computer Science Conference (ITCS 2023),
+Leibniz International Proceedings in Informatics (LIPIcs), Vol. 251, edited by Y. Tauman Kalai (Schloss Dagstuhl – Leibniz-
+Zentrum für Informatik, Dagstuhl, Germany, 2023) pp. 64:1–64:20.
+[35] S. Grewal, V. Iyer, W. Kretschmer, and D. Liang, arXiv:2304.13915 (2023).
+[36] T. Haug and M. Kim, PRX Quantum 4, 010301 (2023).
+[37] V. Veitch, C. Ferrie, D. Gross, and J. Emerson, New J. Phys. 14, 113011 (2012).
+[38] V. Veitch, S. A. H. Mousavian, D. Gottesman, and J. Emerson, New Journal of Physics 16, 013009 (2014).
+[39] M. Howard and E. Campbell, Phys. Rev. Lett. 118, 090501 (2017).
+[40] M. Beverland, E. Campbell, M. Howard, and V. Kliuchnikov, Quantum Sci. Technol. 5, 035009 (2020).
+[41] J. R. Seddon, B. Regula, H. Pashayan, Y. Ouyang, and E. T. Campbell, PRX Quantum 2, 010345 (2021).
+[42] S. Bravyi and D. Gosset, Phys. Rev. Lett. 116, 250501 (2016).
+[43] S. Bravyi, G. Smith, and J. A. Smolin, Phys. Rev. X 6, 021043 (2016).
+[44] S. Bravyi, D. Browne, P. Calpin, E. Campbell, D. Gosset, and M. Howard, Quantum 3, 181 (2019).
+[45] K. Bu and D. E. Koh, Phys. Rev. Lett. 123, 170502 (2019).
+[46] K. Bu, R. J. Garcia, A. Jaffe, D. E. Koh, and L. Li, Communications in Mathematical Physics 405, 161 (2024).
+[47] K. Bu, D. E. Koh, L. Li, Q. Luo, and Y. Zhang, Phys. Rev. A 105, 062431 (2022).
+[48] P. Rall, D. Liang, J. Cook, and W. Kretschmer, Phys. Rev. A99, 062337 (2019).
+[49] X. Wang, M. M. Wilde, and Y. Su, New Journal of Physics 21, 103002 (2019).
+[50] L. Leone, S. F. E. Oliviero, and A. Hamma, Phys. Rev. Lett. 128, 050402 (2022).
+[51] T. Haug, S. Lee, and M. S. Kim, (2023), arXiv:2305.19152 [quant-ph].
+[52] T. Haug and L. Piroli, Phys. Rev. B 107, 035148 (2023).
+[53] T. Haug and L. Piroli, (2023), arXiv:2303.10152 [quant-ph].
+[54] J. Jiang and X. Wang, Phys. Rev. Appl. 19, 034052 (2023).
+[55] K. Bu, W. Gu, and A. Jaffe, Proceedings of the National Academy of Sciences 120, e2304589120 (2023).
+[56] K. Bu, W. Gu, and A. Jaffe, arXiv:2302.08423 (2023).
+[57] K. Bu and A. Jaffe, Phys. Rev. Lett. 134, 050202 (2025).
+[58] K. Bu, W. Gu, and A. Jaffe, IEEE Transactions on Information Theory 71, 2726 (2025).
+[59] K. Bu, W. Gu, and A. Jaffe, “Quantum higher order Fourier analysis and the Clifford hierarchy,” (work in progress, 2025).
+[60] L. G. Valiant, in Proceedings of the Thirty-Third Annual ACM Symposium on Theory of Computing, STOC ’01 (Association for
+Computing Machinery, New York, NY, USA, 2001) p. 114–123.
+[61] L. G. Valiant, SIAM Journal on Computing 31, 1229 (2002).
+[62] S. B. Bravyi and A. Y. Kitaev, Annals of Physics 298, 210 (2002).
+[63] B. M. Terhal and D. P. DiVincenzo, Phys. Rev. A65, 032325 (2002).
+[64] D. P. DiVincenzo and B. M. Terhal, Found. Phys.35, 1967 (2004).
+[65] S. D. Bartlett and B. C. Sanders, Phys. Rev. A 65, 042304 (2002).
+[66] A. Mari and J. Eisert, Phys. Rev. Lett. 109, 230503 (2012).
+[67] V. Veitch, N. Wiebe, C. Ferrie, and J. Emerson, New J. Phys. 15, 013037 (2013).
+[68] N. Lyu and K. Bu, arXiv preprint arXiv:2409.08180 (2024).
+[69] N. Lyu and K. Bu, arXiv preprint arXiv:2411.18517 (2024).
+[70] K. Bu and B. Li, arXiv preprint arXiv:2507.10272 (2025).
+[71] A. Montanaro and T. J. Osborne, Chicago Journal of Theoretical Computer Science 2010 (2010).
+[72] R. J. Garcia, K. Bu, and A. Jaffe, Proceedings of the National Academy of Sciences 120, e2217031120 (2023).
+[73] A. Jaffe, C. Jiang, Z. Liu, Y. Ren, and J. Wu, Proceedings of the National Academy of Sciences 117, 10715 (2020).
+[74] D. Gottesman, Phys. Rev. A 54, 1862 (1996).
+
+=== page 35 ===
+35
+[75] A. W. Marshall, I. Olkin, and B. C. Arnold, Inequalities: theory of majorization and its applications(Academic press, New York,
+1979).
+[76] F. Brandão, M. Horodecki, N. Ng, J. Oppenheim, and S. Wehner, Proceedings of the National Academy of Sciences 112, 3275
+(2015).
+[77] A. Barenco, A. Berthiaume, D. Deutsch, A. Ekert, R. Jozsa, and C. Macchiavello, SIAM Journal on Computing 26, 1541 (1997).
+[78] H. Buhrman, R. Cleve, J. Watrous, and R. de Wolf, Phys. Rev. Lett. 87, 167902 (2001).
+[79] R. De Wolf, arXiv:1907.09415 (2019).
+[80] S. J. Evered, D. Bluvstein, M. Kalinowski, S. Ebadi, T. Manovitz, H. Zhou, S. H. Li, A. A. Geim, T. T. Wang, N. Maskara,et al.,
+Nature 622, 268 (2023).
+[81] H. Araki and E. H. Lieb, Communications in Mathematical Physics 18, 160 (1970).
+[82] F. Hiai, M. Mosonyi, D. Petz, and C. Bény, Rev. Math. Phys. 23, 691 (2011).
+[83] M. Müller-Lennert, F. Dupuis, O. Szehr, S. Fehr, and M. Tomamichel, J. Math. Phys.54, 122203 (2013).
+[84] H. Araki, Publications of the Research Institute for Mathematical Sciences 11, 809 (1976).
+[85] M. Tomamichel, Quantum information processing with finite resources: mathematical foundations, Vol. 5 (Springer, 2015).
+[86] V. Vedral and M. B. Plenio, Phys. Rev. A57, 1619 (1998).
+[87] N. Datta, IEEE Transactions on Information Theory 55, 2816 (2009).
+[88] S. Arunachalam, S. Bravyi, C. Nirkhe, and B. O’Gorman, “The parameterized complexity of quantum verification,” (2022),
+arXiv:2202.08119 [quant-ph].
+[89] R. Impagliazzo and R. Paturi, Journal of Computer and System Sciences 62, 367 (2001).
+[90] M.-D. Choi, Linear Algebra and its Application 10, 285 (1975).
+[91] A. Jamiołkowski, Rep. Math. Phys. 3, 275–278 (1972).
+[92] D. Aharonov and L. Eldar, SIAM Journal on Computing 44, 1230 (2015).
+[93] L. Eldar and A. W. Harrow, in 2017 IEEE 58th Annual Symposium on Foundations of Computer Science (FOCS) (2017) pp.
+427–438.
+[94] D. Aharonov, I. Arad, and T. Vidick, SIGACT News 44, 47–79 (2013).
+[95] D. M. Appleby, Journal of Mathematical Physics 46, 052107 (2005).
+[96] D. Gross, J. Math. Phys. 47, 122107 (2006).
+[97] H. Zhu, Phys. Rev. A 96, 062336 (2017).
+[98] N. de Beaudrap, Quantum Information and Computation 13, 0073 (2013).
+[99] C. Tsallis, Journal of Statistical Physics 52, 479 (1988).
+[100] N. Datta, T. Dorlas, R. Jozsa, and F. Benatti, Journal of Mathematical Physics 55, 062203 (2014).
+[101] S. J. Szarek and D. Voiculescu, Communications in Mathematical Physics 178, 563 (1996).
+[102] D. Shlyakhtenko and H. Schultz, Proceedings of the National Academy of Sciences 104, 15254 (2007).
+[103] D. Shlyakhtenko, Advances in Mathematics 208, 824 (2007).
+[104] R. König and G. Smith, IEEE Trans. Inform. Theory 60, 1536 (2014).
+[105] G. De Palma, A. Mari, and V. Giovannetti, Nature Photon 8, 958–964 (2014).
+[106] L. Huang, Z. Liu, and J. Wu, arXiv:2204.04401 (2022).
+[107] K. Audenaert, N. Datta, and M. Ozols, J. Math. Phys. 57, 052202 (2016).
+[108] E. A. Carlen, E. H. Lieb, and M. Loss, J. Math. Phys. 57, 062203 (2016).
+[109] C. Cushen and R. Hudson, J. Appl. Probab. 8, 454 (1971).
+[110] K. Hepp and E. Lieb, Helv. Phys. Acta 46, 573–603 (1973).
+[111] K. Hepp and E. Lieb, Ann. Phys. 76, 360 (1973).
+[112] N. Giri and W. von Waldenfels, Probab. Theory Relat. Fields 42, 129 (1978).
+[113] D. Goderis and P. Vets, Commun. Math. Phys. 122, 249 (1978).
+[114] T. Matsui, Rev. Math. Phys. 14, 675–700 (2002).
+[115] M. Cramer and J. Eisert, New J. Phys. 12, 055020 (2010).
+[116] V. Jaksic, Y. Pautrat, and C.-A. Pille, Commun. Math. Phys. 285, 175 (2009).
+[117] G. B. Arous, K. Kirkpatrick, and B. Schlein, Commun. Math. Phys. 321, 371 (2013).
+[118] T. Michoel and B. Nachtergaele, Probab. Theory Relat. Fields 130, 493 (2004).
+[119] D. Goderis, A. Verbeure, and P. Vets, Probab. Theory Relat. Fields 82, 527 (1989).
+[120] V. Jakši´c, Y. Pautrat, and C.-A. Pillet, J. Math. Phys. 51, 015208 (2010).
+[121] L. Accardi and Y. G. Lu, Acta Math. Hung. 63, 249 (1994).
+[122] Z. Liu, Transactions of the American Mathematical Society 368, 8303 (2016).
+[123] C. Jiang, Z. Liu, and J. Wu, Science China Mathematics 62, 1585 (2019).
+[124] M. Hayashi, Am. Math. Soc. Trans. Ser. 2, 95–123 (2009).
+[125] E. T. Campbell, M. G. Genoni, and J. Eisert, Phys. Rev. A 87, 042330 (2013).
+[126] S. Becker, N. Datta, L. Lami, and C. Rouzé, Commun. Math. Phys. 383, 223 (2021).
+[127] R. Carbone, F. Girotti, and A. Melchor Hernandez, Journal of Statistical Physics 188, 8 (2022).
+[128] D. Voiculescu, Journal of functional analysis 66, 323 (1986).
+[129] D. Voiculescu, Journal of Operator Theory , 223 (1987).
+[130] D. Aharonov, A. Kitaev, and N. Nisan, in Proceedings of the Thirtieth Annual ACM Symposium on Theory of Computing, STOC
+’98 (Association for Computing Machinery, New York, NY, USA, 1998) p. 20–30.
+[131] J. Watrous, The theory of quantum information (Cambridge university press, New York, 2018).

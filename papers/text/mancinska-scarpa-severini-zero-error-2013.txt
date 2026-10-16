@@ -1,0 +1,845 @@
+=== page 1 ===
+IEEE TRANSACTIONS ON INFORMA TION THEORY, VOL. 59, NO. 6, JUNE 2013 4025
+New Separations in Zero-Error Channel Capacity
+Through Projective Kochen–Specker Sets and
+Quantum Coloring
+Laura Mančinska, Giannicola Scarpa, and Simone Severini
+Abstract— We introduce two generalizations of Kochen–Specker
+(KS) sets: projective KS sets and generalized KS sets. We then
+use projective KS sets to characterize all graphs for which the
+chromatic number is strictly larger than the quantum chromatic
+number. Here, the quantum chromatic number is de ﬁned via a
+nonlocal game based on graph coloring. We further show that
+from any graph with separation between these two quantities, one
+can construct a classical channel for which entanglement assis-
+tance increases the one-shot zero-error capacity. As an example,
+we exhibit a new family of classical channels with an exponential
+increase.
+Index Terms— Channel capacity, grap h theory, quantum entan-
+glement, quantum mechanics.
+I. I NTRODUCTION
+W
+E establish a connection between three topics that
+involve the foundations of quantum mechanics
+and quantum Shannon theory. These are generalized
+Kochen–Specker (KS) sets, enta nglement-assisted zero-error
+capacities, and graph coloring games.
+The (Bell–)Kochen–Specker th eorem [6], [23], [30] is one of
+the most striking results in quantum mechanics. Informally, it
+states that it is not possible for all quantum mechanical observ-
+ables to have deﬁnite values that are also noncontextual (i.e., in-
+dependent of the measurement arrangement). One way to prove
+the theorem is by exhibiting a set of vectors for which there
+is no function that singles out exactly one vector for each or-
+thonormal basis in the set. Such collections are called KS sets
+(see, e.g., [11] and [28]).
+Recently, a relaxation of KS sets has been used to construct
+classical channels with quantum advantage [14]. Consider two
+Manuscript received October 09, 2012 ; revised January 10, 2013; accepted
+February 04, 2013. Date of publication February 20, 2013; date of current ver-
+sion May 15, 2013. G. Scarpa was supported by a Vidi Grant from the Nether-
+lands Organisation for Scienti ﬁc Research. S. Severini was supported by the
+Royal Society. This paper was presented in part at the Asian Quantum Infor-
+mation Science Conference 2012 and in p art at the Quantum Information Pro-
+cessing Conference 2013.
+L. Man činska is with the Institute for Quantum Computing, University of
+Waterloo, Waterloo ON N2L 3G1 Canada (e-mail: lmancins@uwaterloo.ca).
+G. Scarpa is with Centrum Wiskunde & Informatica, 1098 XG Amsterdam,
+The Netherlands (e-mail: g.scarpa@cwi.nl).
+S. Severini is with the Department of C omputer Science and the Department
+of Physics and Astronomy, University College London, London WC1E 6BT
+U.K. (e-mail: simoseve@gmail.com).
+Communicated by A. Holevo, Associate Editor for Quantum Information
+Theory.
+Digital Object Identi ﬁer 10.1109/TIT.2013.2248031
+parties that wish to use a noisy classical channel to transfer
+information with zero probability of error. For some channels,
+quantum players using shared entanglement can outperform
+their classical counterparts. More precisely, it has been shown
+that entanglement can increas e both the one-shot [14] and
+asymptotic [3], [25] zero-error capacity. The entanglement-as-
+sisted zero-error capacity is th e quantum analog of Shannon
+zero-error capacity, a well-studi ed concept in classical infor-
+mation theory. The entanglemen t-assisted zero-error capacity
+is known to be upper bounded by the Lovász theta number [5],
+[17], which can be computed ef ﬁciently.
+It is known that KS sets are related to nonlocality (see, for
+example, [7], [22], [32], and [33]). In particular, a relaxation of
+KS sets has been shown to characterize a certain class ofpseudo-
+telepathy games [4], [29]. These are nonlocal games that can be
+won with certainty by quantum players using shared entangle-
+ment, while all classical player s fail with nonzero probability.
+A speci ﬁc class of pseudo-telepathy games is based on graph
+coloring. Here, the advantage of entangled players is quanti-
+ﬁed by the so-called quantum chromatic number . The quantum
+chromatic number can also be interpreted combinatorially via a
+vertex labeling problem using tuples of projectors satisfying cer-
+tain completeness and orthogonality constraints [15]. Remark-
+ably, the computational complexity of the quantum chromatic
+number is unknown.
+This study relates the aforementioned notions. It gives a de-
+scription of different phenomena with the same mathematical
+toolbox, with potential applications in zero-error information
+theory such as nonclassical co mmunication protocols [10],
+quantum analogs of information-hiding methods (e.g., water-
+marking [24]), and novel proof techniques for combinatorial
+problems either in optimization or in extremal set theory [2].
+A. Our Contribution
+We introd uce two generalizations of KS sets: projective
+KS sets , consisting of projectors, and generalized KS sets ,
+consisting of positive-semide ﬁnite operators. We show that
+projective KS sets are useful in a number of ways.
+1) In Sect ion III-A, we show how to use projective KS sets
+to construct classical channels for which entanglement as-
+sistance increases their one-shot zero-error capacity. This
+generalizes a similar construction for KS sets given in [14].
+2) In Sec tion IV-A, we show that projective KS sets com-
+pletely characterize the graphs exhibiting a separation be-
+tween chromatic number and quantum chromatic number.
+The characterization settles the g raph-theoretic discussion
+0018-9448/$31.00 © 2013 IEEE
+
+=== page 2 ===
+4026 IEEE TRANSACTIONS ON INFORMA TION THEORY , VOL. 59, NO. 6, JUNE 2013
+started in [15]; a characteri zation for the rank-1 case was
+already proposed in [31]. Interestingly, Fukawa et al.[ 1 8 ]
+observed a separation between rank-1 and general rank
+quantum chromatic number. H ence, the use of projective
+KS sets is indeed necessary for a full characterization.
+3) In Section V, we show how to use graphs for which the
+chromatic and quantum chromatic number are different to
+construct classical channels w ith a separation between en-
+tanglement-assisted and cla ssical one-shot zero-error ca-
+pacity. This answers an open question formulated in [31].
+Graphs with such separations are useful for quantifying the
+information-theoretic gain permitted by the use of shared
+entanglement.
+4) In Appendix B, we show that there is a correspondence be-
+tween projective KS sets and pseudo-telepathy games that
+can be won by quantum players using only projective mea-
+surements on maximally entangled state. This generalizes
+a similar result about KS sets given in [29].
+It is still an open problem to ﬁnd direct applications of gen-
+eralized KS sets in the context of quantum Shannon theory.
+Throughout the paper, we assume familiarity with the basics of
+quantum information theory. The reader can ﬁnd a good intro-
+duction in [27, Ch. 2].
+II. KS S ETS
+Let . A function is a marking
+function for if for all orthonormal bases ,w eh a v e
+. Gleason’s theorem [20] implies that for any
+, there does not exist a marking function for .B e l l
+[6], and independently Kochen and Specker [23], interpreted
+this statement in the framewor k of contextuality of physical
+theories. For this reason, this statement is also known as the
+(Bell–)Kochen–Specker theorem. Since then, ﬁnite sets of vec-
+tors in some given dimension giving rise to a proof of this the-
+orem are known as KS sets.
+Deﬁnition 1 (KS Set): A set of unit vectors is a KS
+set if there is no marking function for .
+Renner and Wolf [29] considered a generalization of KS sets
+called weak KS sets. (Weak KS sets are also known as “totally
+noncolorable sets” [13].) Intuitively, for a weak KS set, there
+can be marking functions, but ev ery such function evaluates to
+1 for two orthogonal vectors in the set.
+Deﬁnition 2 (Weak KS Set): A set of unit vectors is
+a weak KS set if for all marking functions for ,t h e r ee x i s t
+orthogonal vectors such that .
+As explained in [29], every KS set is clearly a weak KS set
+but the converse does not always hold. However, every weak KS
+set can be completed to a KS set by adding elements.
+Hence, a weak KS set also gives a proof of the KS theorem in
+some speci ﬁc dimension. In fact, it is more convenient to deal
+with weak KS sets, since they capture the essence of KS sets
+and can contain fewer vectors.
+A. Generalizations of KS Sets
+We now de ﬁne a natural generalization of weak KS sets by
+considering subsets of ,t h es e to fa l l orthogonal pro-
+jectors, instead of subsets of . Recall that an orthogonal pro-
+jector is a Hermitian matrix such that .F o rb r e v i t y ,
+from now on, we omit the word “orthogonal” when we talk
+about projectors. Moreover, in naming this generalization of KS
+sets, we omit the word “weak” and use the term “projective KS
+sets.”
+Let be the set of matrices. A marking function
+for is a function such that for all
+with ,w eh a v e .
+Deﬁnition 3 (Projective KS Set): As e t is a projective
+KS set if for all marking functions for ,t h e r ee x i s t
+for which and .
+It is easy to see that each set with
+is a projective measurement. Also, note that weak KS sets are a
+special case of projective KS sets, if we identify a vector with the
+corresponding rank-1 projector . Conversely, starting from any
+projective KS set, one can construct (usually in ﬁnitely many)
+underlying weak KS sets (see Appendix A).
+Although in the rest of the paper we will only deal with pro-
+jective KS sets, we can further generalize weak KS sets by con-
+sidering subsets of ,t h es e to fa l l positive semideﬁnite
+matrices.
+Deﬁnition 4 (Generalized KS Set): As e t is a gen-
+eralized KS set if for all marking functions for ,t h e r ee x i s t
+for which and .
+Note that each set with is a POVM
+(where, as usual, “POVM” stands for positive operator-valued
+measure). Projective KS sets are a special case of generalized
+KS sets, because when is a set of projectors, the condition
+is equivalent to .
+KS-like sets consisting of positive semide ﬁnite matrices have
+already been considered by Cabe llo [9]. Motivated by a recent
+analog of Gleason’s theorem for positive semideﬁnite operators
+in two dimensions [8], [12], Cabello exhibits what we here call a
+generalized KS set in . Hence, generalized KS sets exist even
+in two dimensions and have turned out to be useful for scenarios
+where regular KS sets do not apply (recall that there are no KS
+sets in ).
+III. Z ERO-ERROR CHANNEL CAPACITY
+In this section, we explain the concepts of classical and en-
+tanglement-assisted zero-error capacity of a channel. In what
+follows, every graph is unweighted, undirected, and without
+self-loops.
+A classical channel with input set and output set is
+speciﬁed by a conditional probability distribution ,t h e
+probability to produce output upon input . Two inputs
+are confusable if there exists such that
+and .W et h e nd eﬁne the confusability graph of
+channel , , as the graph with vertex set and edge set
+.
+The one-shot zero-error capacity of , ,i st h es i z e
+of a largest set of nonconfusable inputs. This is just the inde-
+pendence number of the confusability graph. In the
+entanglement-assisted setting, the sender (Alice) and receiver
+(Bob) share an entangled state and can perform local quantum
+measurements on their part of .
+Let us now describe the general form of an entanglement-as-
+sisted protocol used by Alice to send one out of messages
+to Bob with a single use of the classical channel (see
+
+=== page 3 ===
+MANČINSKA et al.: NEW SEPARA TIONS IN ZERO-ERROR CHANNEL CAPACITY THROUGH PROJECTIVE KOCHEN–SPECKER SETS AND QUANTUM COLORING 4027
+also [14]). For each message ,A l i c eh a saP O V M
+with outputs. To send message ,
+she measures her subsystem using and sends through the
+channel the observed . Bob receives some with
+. If the right condition holds (as we will explain
+below), Bob can recover with certainty using a projective
+measurement on his subsystem.
+We now state the necessary and suf ﬁcient condition for the
+success of the protocol. If Alice gets outcome upon
+measuring , Bob’s part of the entangled state collapses to
+. Given channel’s output , Bob can
+recover i fa n do n l yi f
+(1)
+Bob can recover the message with a projective measurement on
+the mutually orthogonal supports of
+for all messages .I ns u c hac a s e ,w es a yt h a ta s s i s t e db yt h e
+entangled state , Alice can use the POVMs as her
+strategy for sending one out of messages with a single use of
+.
+Deﬁnition 5: The entanglement-assist ed one-shot zero-error
+channel capacity of , , is the maximum integer such
+that there exists a protocol for which condition (1) holds.
+Considering more than a single use of the channel, one
+can de ﬁne the asymptotic zero-error channel capacity
+and the asymptotic entangleme nt-assisted zero-error channel
+capacity by and
+. Later in the paper, we directly
+deal only with one-shot capacities.
+Since depends solely on the confusability graph
+[14], we can talk about for a graph , meaning the entan-
+glement-assisted one-shot zero- error capacity of a channel with
+confusability graph . Similarly, we can talk about quantities
+, ,a n d .
+A. Relationship With KS Sets
+As shown in [14], every weak KS set can be used to construct
+ag r a p hf o rw h i c h . Following the line of argu-
+ment of [14], we now prove that also projective KS sets can be
+used for this purpose (see Theorem 7) as well as a weak con-
+verse of this statement (see Theorem 8).
+Let ,w h e r e is the standard
+basis of . We start by proving the following technical lemma.
+Lemma 6: Let b eag r a p hw h o s ev e r t e xs e t
+can be partitioned into cliques , not necessarily of
+the same size. Assume that ther e is an assignment of a projector
+to each vertex such that:
+1) for all edges ,w eh a v e ;
+2) for all ,w eh a v e .
+Then, .
+Proof: We design a strategy for Alice and Bob to send one
+out of messages over a channel with confusability graph .
+Let Alice and Bob share the maximally entangled state de-
+ﬁned previously. To send message , Alice measures her
+part of using the projective measur ement given by the pro-
+jectors assigned to and sends the outcome through
+the channel. For all , ,w eh a v et h a te i t h e r
+if or if .S i n c e
+the projectors assigned to adjacen t (confusable) vertices are or-
+thogonal, the Condition (1) holds. Hence, the aforementioned
+strategy is valid and .
+We relate every multiset of projectors to a graph. The or-
+thogonality graph of is the graph with vertex set and edge
+set . Let us denote by the multiset
+union. We are now ready to prove the following.
+Theorem 7 (Projective KS ): Let be
+a projective KS set. Let be all the subsets of
+such that . Then, the orthogonality graph of
+the multiset satisﬁes .
+Proof: Observe that every is a projective measurement,
+so the vertices of can be partitioned in cliques .
+Let be a maximal independent set in . Suppose toward a
+contradiction that ,i . e . , is a multiset of projectors
+containing exactly one element p er clique. From maximality of
+,w eh a v et h a ti f is part of measurements, then
+contains copies of .D eﬁne a marking function for as
+It is a marking function for because are
+all the projectiv e measurements in and selects exactly one
+element from each . Moreover, does not mark any pair of
+orthogonal elements because is an independent set and is an
+orthogonality graph. The existence of contradicts the assump-
+tion that is a projective KS set. Therefore,
+. To see that , partition the vertices of into
+cliques and use Lemma 6.
+The following theorem provides a weak converse of Theorem
+7. It relates a particular class of classical channels to projective
+KS sets, namely the channels for which Alice can send one out
+of messages using projective measurements on as
+her strategy. To the best of our knowledge, it is an open ques-
+tion whether projective measurements and maximally entangled
+state are always suf ﬁcient to achieve .
+Theorem 8 ( KS Set): Let
+be the confusability graph of a classical channel and
+be such that . If Alice can use the projective
+measurements for all together
+with as her strategy for sending one out of messages over
+,t h e n
+is a projective KS set.
+Proof: We prove that if is not a projective KS set, then
+we can construct an independent set of size and thus
+.I f is not a projective KS set, then there exists a marking
+function such that for any for which
+, ,o r . Consider the set
+
+=== page 4 ===
+4028 IEEE TRANSACTIONS ON INFORMA TION THEORY , VOL. 59, NO. 6, JUNE 2013
+We now show that is an independent set of size . Note that
+in a protocol where Alice measures her part of using ,
+Bob’s state is
+if Alice gets outcome . Since Alice can use this strategy for
+communicating messages with zero error, Condition 1 is re-
+spected and we get that for all distinct :
+1) and hence ;
+2) for all ,w eh a v e and hence
+.
+Recall that cannot assign value one to two orthogonal pro-
+jectors. Hence, from 1) and the fact that selects one projector
+from each of measurements , we obtain that .S i m -
+ilarly, from 2) and the fact that for all distinct
+, we get that is an independent set.
+W er e m a r kt h a tT h e o r e m s7a n d8a l s of o l l o wf r o mT h e -
+orem 20 in Appendix B, by using a reduction from one-shot
+zero-error channel capacity to pseudo-telepathy games given in
+[14]. However, the direct approach taken in the aforementioned
+proofs more clearly shows the relationship between orthogo-
+nality graphs of projective KS sets and graphs having
+.
+IV . CHROMA TIC NUMBER
+In this section, we illustrate the concept of quantum chromatic
+number of a graph [15] and state some of its properties. Then,
+we prove that projective KS sets c ompletely characterize the
+class of graphs for which this parameter is strictly larger than
+the chromatic number.
+A proper -coloring of a graph is an assignment of colors
+to the vertices of the graph such that every two adjacent vertices
+have different colors. The chromatic number of a graph ,d e -
+noted by , is the minimum number of colors such that
+there exists a proper -coloring of .
+Deﬁne the coloring game for as follows. Two
+players, Alice and Bob, claim that they have a proper -coloring
+for . A referee wants to test this claim with a one-round game,
+so he forbids communication between the players and separately
+asks Alice the color for the vertex and Bob the color for
+the vertex . The players win the game if the following holds:
+1) if ,t h e n ;
+2) if ,t h e n ;
+3) .
+A classical strategy consists of two deterministic functions
+for Alice and for Bob. To win with
+probability one, we must have (to satisfy the ﬁrst con-
+dition) and must be a valid -coloring of the graph (to satisfy
+the second and third conditions). Therefore, cla ssical players
+cannot win the game with probability one using fewer than
+colors.
+A quantum strategy for the coloring game uses an entan-
+gled state and two families of POVMs: for all ,
+Alice has a POVM and Bob has a POVM
+. Upon input , Alice measures her part of
+with and responds with the obtained outcome .B o b
+acts similarly and outputs . The requirements for the game
+translate into the following consistency conditions . The players
+win the coloring game with certainty if and only if
+(2)
+(3)
+In this case, we call the strategy a winning strategy or a quantum
+-coloring of . Note that we do not restrict the dimension of
+the entangled state or the rank of the measurement operators; we
+only care about the number of measurement operators needed to
+win the game with certainty.
+Deﬁnition 9: For all graphs ,t h e quantum chromatic
+number is the minimum number such that there exists
+a quantum -coloring of .
+Let be the entrywise complex conjugate of .I ti sk n o w n
+[15], [31] that there always exists a quantum -coloring in a
+special form.
+Deﬁnition 10: A quantum -coloring of is in normal form
+if:
+1) all POVMs are projective measurements with projectors
+of rank ;
+2) the shared state is ;
+3) Alice’s projectors are rela t e dt oB o b ’ sa sf o l l o w s :f o ra l l,
+, ;
+4) the consistency conditions (2) and (3) can be expressed as
+the single condition
+(4)
+Theorem 11 ([15], [31]): If has a quantum -coloring, then
+it has a quantum -coloring in normal form.
+A. Relationship With KS Sets
+We know from [31] that weak KS sets characterize all the
+graphs with a separation between the chromatic number and the
+rank-1 quantum chromatic number (i.e., the minimum such
+that there exists a quantum -coloring of the graph using only
+rank-1 projectors). We now prove that projective KS sets char-
+acterize all the graphs with a separation between the chromatic
+number and the quantum chromatic number.
+Theorem 11 allows us to identify a quantum -coloring with
+Alice’s multiset of projectors, denoted as .
+Theorem 12: For all graphs ,w eh a v et h a t
+if and only if for all quantum -colorings in normal
+form, is a projective KS set.
+Proof: Let and let be the union
+of Alice’s projectors in a quantum -coloring in normal form.
+We now show that if is not a projective KS set, then we can
+properly -color the graph, contradicting the assumption that
+.I f is not a projective KS set, then there exists a
+marking function such that for all orthogonal
+,w eh a v e or .W ec a nu s et h e
+function to -color the graph as follows:
+This is a proper -coloring for the following two reasons. First,
+the quantum coloring associat es each vertex with a projective
+measurement, and since is a marking function, exactly one
+
+=== page 5 ===
+MANČINSKA et al.: NEW SEPARA TIONS IN ZERO-ERROR CHANNEL CAPACITY THROUGH PROJECTIVE KOCHEN–SPECKER SETS AND QUANTUM COLORING 4029
+projector per measurement is ma pped to 1. Second, the property
+of and the consistency condition (4) ensure that we never color
+adjacent vertices with the same color.
+Let and assume that for all quantum -col-
+orings in normal form, the union of Alice’s projectors is a pro-
+jective KS set. Now suppose, toward a contradiction, that it is
+possible to classically -color the graph. Then, for each
+with classical color ,d e ﬁne the projective measurement
+(where the addition is modulo
+). It is easy to see that this is a valid quantum -coloring, and
+the union of its vectors consist s of one projective measurement
+only. Thus, it is not a projective KS set, because you can deﬁne a
+function that maps to 1 and all other projectors to 0. This
+contradicts the assumption that the union of Alice’s projectors
+is a projective KS set.
+As in Section III-A, we remark t hat Theorem 12 also follows
+from Theorem 20 in Appendix B. However, we again prefer the
+direct approach to underline the structural relationship between
+graphs with and orthogonality graphs of projec-
+tive KS sets.
+V. R ELA TIONSHIP BETWEEN CHROMA TIC NUMBER AND
+ZERO-ERROR CHANNEL CAPACITY
+Here, we use the relationships described in the previous
+sections to show that every graph with a separation between
+quantum and classical chromatic number can be used to con-
+struct a channel with separation between entanglement-assisted
+and classical one-shot zero-error capacity. Moreover, using
+this fact, we ﬁnd a new class of channels with large separation
+between the one-shot zero-error capacities.
+For any two graphs and ,w ec a nd e ﬁne their Cartesian
+product as follows. The vertex set of is
+. Two vertices and are adjacent if either
+and or and .
+The main result of this section needs the following lemmas.
+L e m m a1 3[ 3 4 ] :For all graphs , , the independence
+number of their Cartesian product satis ﬁes
+Lemma 14: Let be a graph on vertices with .
+Then, .
+Proof: The vertex set of can be partitioned into
+disjoint cliques of size . Toward a contradiction, suppose
+. Then, an independent set of size must con-
+tain exactly one vertex from each clique in the partition. We
+can get a -coloring for ,a sf o l l o w s :i f belongs to the
+independent set, color with the th color. This is a
+proper coloring because, by de ﬁnition of the Cartesian product
+of graphs, for all ,w eh a v e
+, and hence, and will not both get color .T h i s
+contradicts the assumption that .
+Lemma 15: Let b eag r a p ho n vertices and .
+Then, .
+Proof: Let .W e ﬁrst show that .
+Note that the vertex set of can be partitioned into disjoint
+cliques of size . Now consider an quantum -coloring of
+in normal form, . Assign each projector to
+the vertex of . By the properties of a quantum coloring
+in normal form, this assignment satis ﬁes the requirements of
+Lemma 6. Therefore, .
+Now note that is a subgraph of ,w h e r e
+denotes the strong product of graphs and is the complement
+of . By properties of Lovász [ 2 6 ] ,w eh a v et h a t
+Since Lovász is an upper bound for the asymptotic
+zero-error entanglement-assi sted capacity [5], [17], we have
+. Putting everything together gives
+and the lemma follows.
+Combining the results from the above lemmas, we obtain the
+following theorem.
+Theorem 16: Let be a graph on vertices with
+.T h e n ,f o r
+1)
+2) .
+Proof: Since , ,a n d has vertices,
+we have from Lemmas 14 and 15 that ,a s
+desired. The second bound follows directly from Lemma 13.
+Note that the second upper bound of Theorem 16 is very in-
+teresting in the case . This happens only when
+there is a separation between quantum and classical chromatic
+number, because for the chromatic number, we have
+. Therefore, as we show in Section VI, some graphs
+with a large separation between quantum and classical chro-
+matic number induce graphs with large separation between en-
+tanglement-assisted and classical one-shot zero-error capacity.
+A. Hadamard Graphs
+In this section, we apply the observations made above.
+Speciﬁcally, we isolate a new family of graphs for which the
+one-shot zero-error entanglem ent-assisted capacity is expo-
+nentially larger than its classical counterpart. Each member of
+this family is a Cartesian product of a Hadamard graph with
+a complete graph. Chromatic number and quantum chromatic
+number are known to be different for Hadamard graphs with
+as u fﬁciently large number of ver tices [1], [16], [21]. Graphs
+with such a separation are import ant in the attempt to quantify
+the information-theoretic gain permitted by the use of shared
+entanglement. Results in this re spect have been reported in [3]
+and [25]. Additionally, despite graphs with a separation seems
+to be rare, examples and potential characterizations are valu-
+able. These could provide a cl earer picture on the complexity
+of other related parameters in al gebraic graph theory, like, for
+example, vector colori ngs, rank bounds, etc.
+The Hadamard graph is a graph with vertex set
+and edge set . Hadamard graphs are also
+known in literature as orthogonality graphs and Deutsch–Jozsa
+graphs.
+Theorem 17: For all that are divisible by 4, there exists
+such that
+
+=== page 6 ===
+4030 IEEE TRANSACTIONS ON INFORMA TION THEORY , VOL. 59, NO. 6, JUNE 2013
+Proof: I ti ss h o w ni n[ 1 ]t h a t for all
+.S i n c e , using Lemma 15, we conclude that
+.
+On the other hand from Theorem 1.11 in [19], it follows that
+for all divisible by 4, there exists such that
+. Hence, by Lemma 13, we have that
+. By putting the two observations together, we obtain
+the desired statement.
+To conclude, we give an example that also for small we
+can ﬁnd a large ratio . The following properties are
+proven in [1] and [16].
+1)
+2)
+3) .
+Take a channel with confusability graph .
+It follows from Theorem 16 that ,w h i l e
+.
+VI. C ONCLUSIONS AND OPEN QUESTIONS
+We formally generalized the concept of KS sets and showed
+their applications in various nonlocality settings. In particular,
+we showed that projective KS set s lead to classical channels for
+w h i c has i n g l eu s ea i d e db ye n t a nglement can transfer more in-
+formation than a single use without entanglement assistance. We
+have also shown that projective KS sets completely characterize
+the graphs for which the quantum chromatic number is strictly
+smaller than the chromatic number.
+Furthermore, we used project ive KS sets to relate quantum
+chromatic number to entanglemen t-assisted one-shot zero-error
+capacity. For all channels obtained with our construction, the
+Lovász theta function is equal to the entanglement-assisted
+zero-error capacity. Hence, a lthough our construction con-
+tributes to shed light on the link between the Lovász theta
+function and entanglement-assi sted capacities, it cannot be di-
+rectly used to resolve whether or not the entanglement-assisted
+zero-error capacity equals the Lovász theta function [17].
+As an example application of the above discussed construc-
+tion, we exhibited a new class of graphs with an exponential sep-
+aration between entanglement-assisted and classical one-shot
+zero-error capacities. In Appen dix A, we have shown that pro-
+jective KS sets are in one-to-o ne correspondence with a class
+of pseudo-telepathy games that quantum players can win using
+projective measurements on maximally entangled state.
+A number of questions remain open.
+1) Can generalized KS sets that are not projective KS sets be
+used to construct pseudo-telepathy games? Furthermore,
+can a wider class of pseudo-telepathy games be character-
+ized using generalized KS sets than projective ones?
+2) Can we use a graph with to construct a
+with ? Such a construction would be
+complementary to Theorem 16.
+3) Can generalized KS sets that are not projective KS sets
+also be used to exhibit separat ions between entanglement-
+assisted and Shannon capacity of a channel?
+4) Determining the computational complexity of as a
+f u n c t i o no ft h en u m b e ro fv e r t i c e si nis now a long-
+standing open question. Can we use the characterization
+g i v e ni nS e c t i o nI V - At oa n s w e ri t ?
+5) In Theorem 20 in Appendix B, we show that projective KS
+sets correspond precisely to a class of pseudo-telepathy
+games that quantum players can win using projective
+measurements on maximally e ntangled state. It follows
+from Theorem 11 that graph coloring games on graphs
+where are a subclass of such games. Can
+the whole class be interpreted as pseudo-telepathy games
+based on some graph parameter?
+APPENDIX A
+WEAK KS SETS FROM PROJECTIVE KS SETS
+We show here that starting from any projective KS set, one
+can construct (usually in ﬁnitely many) underlying weak KS
+sets.
+Lemma 18: Let be a projective
+KS set. Consider a set of unit vectors deﬁned as fol-
+lows: ,w h e r e is some
+orthonormal basis of the support of . Then, is a weak KS
+set.
+Proof: Toward a contradiction, assume that is not a
+weak KS set. Then, there exists a marking function
+such that for any two orthogonal vectors ,e i -
+ther or .F r o m , let us construct another
+marking function for set .D eﬁne by
+Let be such that .T h e n ,t h ec o r -
+responding sets of vectors are mutually disjoint. Moreover,
+is a complete orthonormal basis. Since is
+a marking function, we have
+which shows that indeed is a marking function. Consider any
+such that . Since for any two orthog-
+onal vectors either or ,i tf o l l o w s
+that evaluates to 1 for at most one of the vectors in .
+So, from de ﬁnition of , it follows that either or
+and we have reached a contradiction to being a
+projective KS set.
+APPENDIX B
+PROJECTIVE KS SETS AND PSEUDOTELEPA THYGAMES
+This appendix generalizes th e results of [29] concerning
+the relationship between weak KS sets and a class of
+pseudo-telepathy games. We show that there is a relation-
+ship between projective KS sets and a (larger) class of
+pseudo-telepathy games.
+In what follows, we give the canonical de ﬁnition of nonlocal
+games. A nonlocal game is an experimental setup between a ref-
+eree and two players, Alice and Bob. (It can also be de ﬁned with
+more players, but we do not consider this case here.) The game
+is not adversarial, but the playe rs collaborate with each other.
+They are allowed to arrange a str ategy beforehand, but they are
+not allowed to communicate during the game. The referee sends
+
+=== page 7 ===
+MANČINSKA et al.: NEW SEPARA TIONS IN ZERO-ERROR CHANNEL CAPACITY THROUGH PROJECTIVE KOCHEN–SPECKER SETS AND QUANTUM COLORING 4031
+Alice an input and sends Bob an input , according
+to a ﬁxed and known probability distribution on .A l i c e
+and Bob answer with and , respectively, and the
+referee declares the outcome of the game according to a veri ﬁ-
+cation function .
+So, the nonlocal game is completely speci ﬁed by the sets , ,
+, , a distribution ,a n dav e r iﬁcation function .
+A deterministic classical strategy is a pair of functions
+and for Alice and Bob, respectively. A
+quantum strategy consists of a shared bipartite entangled state
+and POVMs , for every for Alice and
+, for every for Bob. On input , Alice uses
+the POVM to measure her part of the entangled state
+and Bob does similarly on his input . Alice (resp. Bob) an-
+swers with (resp. ) corresponding to the obtained measure-
+ment outcome. Therefore, the probability to output , given ,
+is .
+Informally, a nonlocal game is call ed a pseudo-telepathy
+game if players sharing the entangl ed state win with certainty,
+while classical players have non zero probability to lose. More
+formally, we have the follo wing.
+Deﬁnition 19 (Pseudo-telepathy Game): A nonlocal game
+with input sets , , output sets , , input distribution ,a n d
+veriﬁcation function is called a pseudo-telepathy game if:
+1) there exists a quantum strategy such that for any
+with ,i th o l d st h a t implies
+;
+2) for all deterministic classical strategies , ,t h e r e
+exists a tuple with such that
+but and .
+The following theorem relates projective KS sets and a spe-
+cial kind of pseudo-telepathy games. We will only consider KS
+sets for which each projector is part of some projective measure-
+ment from . Note that any KS set contains a KS set that sat-
+isﬁes this property. Therefore, projectors not contained in any
+measurement from are inessential. Let be the entrywise
+complex conjugate of . For short, we say that the set
+together with is a quantum strategy
+for a nonlocal game if , ,a n d are a
+quantum strategy for . We call a strategy optimal if players
+never lose. Let ,w h e r e is the
+standard basis of .
+Theorem 20: Let be a set of projectors such that
+every is contained in some measurement . Then,
+is a projective KS set if and only if there exists a pseudo-
+telepathy game for which together with is an optimal
+quantum strategy.
+Proof: Assume is a projective KS set. Let
+be the set of all projective measurements
+contained in (i.e., each is a set of projectors that sum
+to identity). Consider a nonlocal game where , ,
+, is the uniform distribution, and the
+veriﬁcation function is de ﬁned by
+By de ﬁnition, this game has a optimal quantum strategy in
+which Alice and Bob measure their part of using projective
+measurements and , respectively, upo n receiving inputs
+.
+Toward a contradiction, suppose there is an optimal classical
+strategy . Note that by deﬁnition of .L e tu s
+now construct a marking function for from
+By de ﬁnition of , we see that Alice has to pick a unique ele-
+ment from each projective measurement in a con-
+sistent way. More precisely, whenever for some ,
+the element picked from also has to be . Hence, indeed
+is a valid marking function for .A s is a projective KS set,
+there exist distinct , such that and
+. Then, and
+but ,s i n c e . Hence, classical
+players cannot have a optimal strategy and the desired statement
+follows.
+Assume is a pseudo-telepathy game and
+together with is a winning quantum
+strategy. Every marking function for can be mapped to a
+classical strategy in the following way:
+Since is a pseudo-telepathy game, for every ,t h e r ee x i s t s
+at u p l e such that and (and
+therefore ), but .S i n c e
+quantum players always win, we have and
+this implies by the properties of . Therefore,
+for any marking function for , we can ﬁnd orthogonal pro-
+jectors such that . Hence,
+is a projective KS set.
+ACKNOWLEDGMENT
+The authors thank Jop Briët, Will Matthews, Fernando de
+Melo, David Roberson, Antonis V arvitsiotis, and Ronald de
+Wolf for helpful discussions. We also thank the referees of
+Asian Quantum Information Science’12 for useful comments
+that improved the readability of the paper. We thank the Asso-
+ciate Editor and the anonymous referees for valuable comments
+that helped improving the paper.
+REFERENCES
+[1] D. Avis, J. Hasegawa, Y. Kikuchi, and Y. Sasaki, “A quantum pro-
+tocol to win the graph colouring game on all Hadamard graphs,” IEICE
+Trans. Fundam. Electron. Commun. Comput. Sci. , vol. E89-A, no. 5,
+pp. 1378–1381, 2006.
+[2] N. Alon, “Combinatorial reasoning in information theory,” in IEEE Inf.
+Theory Soc. Newslett. , 2009.
+[ 3 ] J .B r i ë t ,H .B u h r m a n ,a n dD .G i j s w i j t, in Separations between Shannon
+capacity and zero-error entanglement-assisted capacity , 2011.
+[4] G. Brassard, A. Broadbent, and A. Tapp, “Quantum pseudo-telepathy,”
+Found. Phys , vol. 35, no. 11, pp. 1877–1907, 2005.
+[5] S. Beigi, “Entanglement-assisted zero-error capacity is upper-bounded
+by the Lovász theta function,” Phys. Rev. A, vol. 82, pp. 10303–10306,
+2010.
+[6] J. S. Bell, “On the problem of hidden variables in quantum mechanics,”
+Rev. Mod. Phys. , vol. 38, pp. 447–452, 1966.
+[7] H. R. Brown and G. Svetlichny, “Nonlocality and Gleason’s lemma.
+Part I. Deterministic theories,” Found. Phys. , vol. 20, no. 11, pp.
+1379–1387, 1990.
+
+=== page 8 ===
+4032 IEEE TRANSACTIONS ON INFORMA TION THEORY , VOL. 59, NO. 6, JUNE 2013
+[8] P. Busch, “Quantum states and generalized observables: A
+simple proof of Gleason’s theorem,” Phys. Rev. Lett. , vol. 91,
+pp. 120403–120406, 2003.
+[9] A. Cabello, “Koch en–Specker theorem for a single qubit using
+positive operator-valued measures,” Phys. Rev. Lett. , vol. 90, pp.
+190401–190404, 2003.
+[10] J. Chen, T. S. Cubitt, A. W. Harrow, and G. Smith, “Super-duper-ac-
+tivation of the zero-error quantum capacity,” in P r o c .I n t .S y m p .I n f .
+Theory, 2010, pp. 2695–2697.
+[11] A. Cabello, J. M. Estebaranz, and G. García-Alcaine,
+“Bell–Kochen–Specker theorem: A proof with 18 vectors,”
+Phys. Lett. A , vol. 212, no. 4, pp. 183–187, 1996.
+[12] C. Caves, C. Fuchs, K. Manne, and J. Renes, “Gleason-type derivations
+of the quantum probability rule for generalized measurements,” Found.
+Phys., vol. 34, pp. 193–209, 2004.
+[13] A. Cabello and G. García-Alcaine, “Bell–Kochen–Specker theorem for
+any ﬁnite dimension ,” J. Phys. A, vol. 29, no. 5, pp. 1025–1036,
+1996.
+[14] T. S. Cubitt, D. Leung, W. Matthews, and A. Winter, “Improving zero-
+error classical communication with entanglement,” Phys. Rev. Lett. ,
+vol. 104, pp. 230503–230506, 2010.
+[15] P. J. Cameron, A. Montanaro, M. W. Newman, S. Severini, and A.
+Winter, “On the quantum chromatic number of a graph,” Electr. J.
+Comb., vol. 14, no. 1, 2007.
+[16] E. de Klerk and D. V. Pasechnik, “A note on the stability number of an
+orthogonality graph,” Eur. J. Combinat., vol. 28, pp. 1971–1979, 2007.
+[17] R. Duan, S. Severini, and A. Win ter, “Zero-error communication via
+quantum channels and a quantum Lovász function,” in Proc. Int.
+Symp. Inf. Theory , 2011, pp. 64–68.
+[18] J. Fukawa, H. Imai, and F. L. Gall, “Quantum coloring games via sym-
+metric SA T games,” presented at the Asian Conf. Quant. Inf. Sci., 2011.
+[19] P. Frankl and V. Rödl, “Forbidden intersections,” Trans. Amer. Math.
+Soc., vol. 300, no. 1, pp. 259–286, 1987.
+[20] A. M. Gleason, “Measures on the closed subspaces of a Hilbert space,”
+J. Math. Mech. , vol. 6, pp. 885–893, 1957.
+[21] C. D. Godsil and M. W. Newman, “Coloring an orthogonality graph,”
+SIAM J. Discr. Math. , vol. 22, no. 2, pp. 683–692, 2008.
+[22] P. Heywood and M. L. G. Redhead, “Nonlocality and the
+Kochen–Specker paradox,” Found. Phys., vol. 13, no. 5, pp. 481–499,
+1983.
+[23] S. Kochen and E. Specker, “The problem of hidden variables in
+quantum mechanics,” J. Math. Mech. , vol. 17, pp. 59–87, 1967.
+[24] C. Lin and S. Chang, “Zero-error information hiding capacity of dig-
+ital images,” in Proc. Inter. Conf. Image Process. , 2001, vol. 3, pp.
+1007–1010.
+[25] D. Leung, L. Man činska, W. Matthews, M. Ozols, and A. Roy, “En-
+tanglement can increase asymptotic rates of zero-error classical com-
+munication over classical channels,” Commun. Math. Phys. ,v o l .3 1 1 ,
+pp. 97–111, 2012.
+[26] L. Lovász, “On the Shannon capacity of a graph,” IEEE Trans. Inf.
+Theory, vol. 25, no. 1, pp. 1–7, Jan. 1979.
+[27] M. A. Nielsen and I. L. Chuang , Quantum Computation and Quantum
+Information. Cambridge, U.K.: Cambridge Univ. Press, 2000.
+[28] A. Peres, “Two simple proofs of the Kochen–Specker theorem,” J.
+Phys. A , vol. 24, pp. L175–L178, 1991.
+[29] R. Renner and S. Wolf, “Quantum pseudo-telepathy and the
+Kochen–Specker theorem,” in P r o c .I n t .S y m p .I n f .T h e o r y, 2004, pp.
+322–329.
+[30] E. Specker, “Die logik nicht gleichzeitig entsc heidbarer aussagen,”
+Dialectica, vol. 14, no. 2–3, pp. 239–246, 1960.
+[31] G. Scarpa and S. Severini, “K ochen–Specker sets and the rank-1
+quantum chromatic number,” IEEE Trans. Inf. Theory , vol. 58, no. 4,
+pp. 2524–2529, Apr. 2012.
+[32] A. Stairs, “Quantum mechanics, logic and reality,” Ph.D. dissertation,
+Univ. Western Ontario, London, ON, Canada, 1978.
+[33] A. Stairs, “Quantum logic, realism, and value de ﬁniteness,” Philos.
+Sci., pp. 578–602, 1983.
+[34] V. G. Vizing, “The Cartesian product of graphs,” Vycisl. Sistemy, vol.
+9, pp. 30–43, 1963.
+Laura Man činska is a Ph.D. student at the Institute for Quantum Computing,
+University of Waterloo. Her supervisors are Debbie Leung and Andrew Childs.
+Her research in quantum information i s mostly concerned with nonlocal games,
+the local operations and classical communications (LOCC) model and quantum
+Shannon theory.
+Giannicola Scarpa is a Ph.D. student at Centrum Wiskunde & Informatica,
+Amsterdam. His advisor is Ronald de Wolf. In 2009, he received a Master’s
+degree in Computer Science from the University of Salerno, with a thesis on
+quantum game theory. His research interests include quantum computing, non-
+locality, Shannon theory, combinatorial optimization and game theory.
+Simone Severini is a Royal Society University Research Fellow with the De-
+partment of Computer Science and an Honorary Research Fellow of the De-
+partment of Physics & Astronomy at University College London. He obtained
+his Ph.D. from Bristol University supervised by Richard Jozsa. Among other
+positions he was a member of the Combinatorics & Optimization Department
+and the Institute for Quantum Computing at the University of Waterloo. He has
+published extensively in the interplay between Discrete Mathematics, Quantum
+Theory and Complex Systems.

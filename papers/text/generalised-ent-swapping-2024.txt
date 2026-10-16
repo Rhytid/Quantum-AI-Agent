@@ -1,0 +1,1642 @@
+=== page 1 ===
+Activation of entanglement in generalized entanglement swapping
+Pratapaditya Bej 1, 2,∗ and Abhishek Banerjee 1,†
+1Department of Physics and Center for Astroparticle Physics and Space Science,
+Bose Institute, EN Block, Sector V , Saltlake, Kolkata - 700091, India
+2ExamRoom.AI, No: 291-92 /1A, Venkatadri Building, Ground floor,
+Konappa Agrahara, Electronic City Phase 1, Bengaluru - 560100, India
+We study entanglement activation in a generalized entanglement swapping process involving two Bell pairs
+and generalized measurements. The conventional understanding posits entangled measurements as both neces-
+sary and sufficient for establishing entanglement between distant parties. In this study, we reassess the role of
+measurement operators in entanglement generation within a generalized entanglement swapping process. We
+focus on maximally entangled two-qubit initial states and generalized measurements, investigating the neces-
+sity and sufficiency conditions for entangled measurement operators. By utilizing two Bell pairs, (1, 2) shared
+between Alice and Bob, and (3, 4) shared between Bob and Charlie, we demonstrate that while entangled mea-
+surements are sufficient, they are not indispensable for establishing entanglement between spatially separated
+observers. Through a sequential approach, if Bob performs an initial measurement which is not able to establish
+entanglement then followed by another measurement after post-processing the first measurement it is possible
+to establish entanglement. We identify specific criteria for di fferent measurement operators that enable the po-
+tential for performing a second measurement to establish entanglement. Our findings highlight the feasibility
+of generating entanglement between distant parties through a combination of measurements, shedding light on
+entanglement distribution in quantum networks. Additionally, we showcase through illustrative examples how
+successive measurements enhance entanglement compared to single measurements, underscoring the practical
+benefits of our approach in enhancing entanglement. Moreover, our protocol extends beyond bipartite qubit
+states to higher-dimensional maximally entangled states, emphasizing its versatility and applicability.
+I. INTRODUCTION
+Shared entanglement is a valuable resource in quantum in-
+formation theory, as it facilitates various quantum information
+theoretic tasks such as Teleportation [1], Super dense coding
+[2], among others. Distribution of entanglement in itself is a
+highly non-trivial task.
+Entanglement swapping [3, 4] is one of the most well-
+known protocols used to distribute entanglement over distant
+nodes which haven’t interacted in the past. In its canonical
+form, entanglement swapping comprises the following setup
+and steps. Three spatially separated parties namely Alice (A),
+Bob (B), and Charlie (C) share entangled states among them-
+selves such that Alice and Bob share an entangled pair of
+qubits (1, 2). Bob and Charlie share another entangled pair
+of qubits (3, 4). Qubits (2, 3) are in Bob’s possession. The
+goal is to establish entanglement between Alice and Charlie
+(1, 4). This is achieved by performing a measurement in Bell
+basis on Bob’s pair of qubits (2, 3), which leads to Alice and
+Charlie’s qubits (1, 4) being entangled.
+In the original setting, the initially shared entangled states
+were chosen to be maximally entangled states and the mea-
+surement at Bob’s location was Bell basis measurement. This
+can be altered to work in a more general scenario with non-
+maximally entangled states as well as more general measure-
+ment settings [5, 6].
+In operational terms, an operator is referred to as an insep-
+arable operator if its Choi state is entangled while separable
+∗ pratap6906@gmail.com
+† banerjee.abhishek.official@gmail.com
+operators are operators which take separable states to separa-
+ble states and its Choi state is a separable density matrix [7–
+9]. Quantum measurements are a special class of operators.
+The most general form of measurement is called a positive
+operator-valued measure (POVM) [10–12]. A POVM, M is
+defined as a set of positive operators Πn so that P
+n Πn = I
+where I is the identity operator on the corresponding Hilbert
+space. Measurements are characterized by various definitions.
+In papers [13–21], it has been defined that a POVM element
+Πn is considered entangled if the partial transpose of the corre-
+sponding operator, defined as Πn
+Tr(Πn), fails to be positive. The
+POVM element is said to be unentangled if the normalized
+form Πn
+Tr(Πn) is a separable quantum mixed state. A POVM
+measurement is called an entangled measurement if at least
+one of the POVM elements is entangled. Similarly, A POVM
+measurement is called unentangled measurement if each of
+the POVM elements is unentangled. Here, the entanglement
+of the measurement is characterized as anentanglement of the
+detection devices or POVM entanglement. The entire mea-
+surement set is classified into di fferent categories based on
+this definition [16, 18]. In [16, 18], the authors have classi-
+fied the set of measurements into di fferent categories such as
+entangled measurement, unentangled measurement, local op-
+erations and classical communication (LOCC) measurement,
+and classical measurement where classical and LOCC mea-
+surements do not have any capacity to produce the entangled
+state from a separable state. Note that these measurements
+have the inclusion relation: General measurement ⊃ unen-
+tangled measurement⊃ LOCC measurement⊃ classical mea-
+surement, where general measurement corresponds to the set
+of all quantum measurements, including the entangled mea-
+surements [16, 18]. LOCC and classical measurements belong
+to the class of separable operations in an operational sense. It
+arXiv:2403.06518v3  [quant-ph]  23 May 2024
+
+=== page 2 ===
+2
+is important to note that, according to this definition, not ev-
+ery unentangled measurement is considered a separable oper-
+ation, but the converse is true.
+The standard entanglement swapping procedure has been
+generalized to work with non-maximally entangled states, and
+projective measurements have found important applications
+in quantum networks and nonlocality-related problems [22–
+27]. Recent studies have proposed elegant protocols lever-
+aging POVM measurements for entanglement distribution in
+quantum networks [28, 29]. The common understanding sug-
+gests that entangled measurements are required for establish-
+ing entanglement between distant parties [13, 23].
+In this work, we re-evaluate the necessity and su fficiency
+conditions for measurement operators to be entangled when
+initial states are maximally entangled and measurements are
+generalized measurements. We start with two Bell pairs: (1,
+2) shared between Alice and Bob, and (3, 4) shared between
+Bob and Charlie. A POVM measurement is applied to qubits
+(2, 3), leading to the creation of a shared state in (1, 4) between
+the spatially separated observers. We demonstrate that while
+an entangled measurement is sufficient, it is not necessary for
+the measurement operators to be entangled to establish an en-
+tangled state between A and C. By employing a sequential
+approach where Bob conducts an initial measurement, and if
+that does not establish the entanglement, followed by another
+measurement, it is possible to achieve entanglement. This se-
+quential strategy, combined with appropriate post-processing
+after the first measurement, enables the establishment of en-
+tanglement between A and C. We identify the specific criteria
+for different measurement operators that enable the possibil-
+ity of performing a second measurement to establish entan-
+glement. In cases where the first measurement fails to estab-
+lish entanglement, we delineate the protocol accordingly. We
+demonstrate that after the first measurement, the 14|23 biparti-
+tion entanglement of the total system state should be between
+0 and 1, and the rank of the measurement should be greater
+than one to enable a disturbance of the (1,4) state by the sec-
+ond measurement. Additionally, we show that a zero 14 |23
+bipartition entanglement resulting from a measurement that
+is an inseparable operator is not feasible. Our demonstration
+showcases the feasibility of generating entanglement between
+A and C for di fferent measurement operators. Furthermore,
+an illustrative example underscores how successive measure-
+ments yield more substantial entanglement compared to a sin-
+gle measurement. Specifically, when employing one unentan-
+gled measurement incapable of establishing entanglement, a
+second measurement involving purely separable operation be-
+comes effective. Our approach is not limited to bipartite qubit
+states but can also be generalized to higher-dimensional max-
+imally entangled states.
+The remainder of the paper is structured as follows: Sec-
+tion II outlines the protocol and presents the results. Finally,
+Section III provides concluding discussions and highlights av-
+enues for future research.
+II. GENERALIZED PROTOCOL
+We consider a generalized entanglement-swapping sce-
+nario, where Alice and Bob share a Bell pair |ϕ+⟩12 =
+1√
+2(|00⟩ +|11⟩) denoted by (1, 2). Similarly, Bob and Char-
+lie share another Bell pair|ϕ+⟩34 = 1√
+2(|00⟩ +|11⟩) denoted by
+(3, 4). Here Alice, Bob, and Charlie are physically separated
+from each other. The total system state is
+|Φ⟩ =|ϕ+⟩12⊗|ϕ+⟩34, (1)
+a pure state which is separable in 12|34 bipartition. Now Bob’s
+first measurementM1 can be described by a set of two-qubit
+positive-semidefinite elements {Πn
+ n = 1,..., K, Πn ≥
+0, P
+n Πn = I4} where each POVM element Πn can be de-
+composed in the form
+Πn =
+4X
+α=1
+πnα|ϕnα⟩⟨ϕnα|, (2)
+where|ϕnα⟩,α = 1, 2, 3, 4, form a complete orthonormal basis
+on C2⊗ C2,πnα≥ 0 forα = 1, 2, 3, 4. Here, K represents the
+number of POVM elements in a POVM measurement. If Bob
+performs a joint two-qubit generalized quantum measurement
+M1 on (2, 3) of the|Φ⟩ state, then the post-measurement state
+of the nth outcome is
+|Φn⟩ = 1√pn
+p
+Πn⊗ I4|Φ⟩, (3)
+with probability pn where it is understood that Πn is acting on
+(2,3) pair and identity operator ( I4) acting on (1,4) pair. The
+probability of obtaining nth outcome is
+pn = ⟨Φ|Πn⊗ I4|Φ⟩
+= 1
+4Tr(Πn). (4)
+Using Eqs.(1) and (2) in (3) [5], one can get
+|Φn⟩ = 1
+2√pn
+4X
+α=1
+√πnα|ϕnα⟩23|ϕ∗
+nα⟩14, (5)
+where|ϕ∗⟩ denotes the complex conjugate of |ϕ⟩ in the com-
+putational basis. Note that after the measurement, the total
+system state (5) remains pure.
+Now after tracing out (2,3) qubits the post-measurement
+state between Alice and Charlie for nth outcome becomes
+ρ14|n = 1
+4pn
+4X
+α=1
+πnα|ϕ∗
+nα⟩⟨ϕ∗
+nα|14
+= Π∗
+n
+Tr(Πn), (6)
+where Π∗
+n = P4
+α=1πnα|ϕ∗
+nα⟩⟨ϕ∗
+nα|. We also determine the post-
+measurement state of (1,2) and (3,4) pairs; for details, see
+
+=== page 3 ===
+3
+Appendix A. Equation (6) illustrates how Bob’s measure-
+ment fully determines the state of the pair (1, 4). This equa-
+tion also highlights the direct relationship between the post-
+measurement state of the (1,4) pair and the POVM measure-
+ment element. Conventional thought suggests that entangle-
+ment at the (1,4) pair requires an entangled measurement.
+However, we demonstrate that although an entangled POVM
+is sufficient to obtain an entangled state at (1,4), it is not a
+necessary condition
+Our demonstration reveals that through a sequential ap-
+proach, where Bob performs an initial measurementM1 and,
+if necessary, follows it with another measurementM2, entan-
+glement can be achieved. This sequential strategy, coupled
+with appropriate post-processing after the first measurement,
+facilitates the establishment of entanglement between parties
+A and C. Notably, the second measurementM2 does not need
+to be an inseparable operation; a measurement that is separa-
+ble operation can also accomplish the task.
+Now, we consider that Bob post-processes each outcome of
+the first measurement M1 and then performs a second mea-
+surementM2 on the (2,3) qubits of the total system state (5).
+Additionally, Bob classically communicates the outcomes to
+Alice and Charlie during the measurement process.
+We consider the second measurementM2 is also two qubits
+generalized measurement (POVM) which can be specified by
+a collection of two qubits semi-definite operators Em satis-
+fying P
+m=1 Em = I4 where each POVM element Em can be
+decomposed in the previous form as
+Em =
+4X
+δ=1
+µmδ|ψmδ⟩⟨ψmδ|, (7)
+where|ψmδ⟩,δ = 1, 2, 3, 4, form a complete orthonormal basis
+on C2⊗ C2,µmδ≥ 0 forδ = 1, 2, 3, 4.
+The post-measurement state of the four-qubit system, when
+Bob’s outcomes for the successive measurements are the n-th
+element of the measurementM1 and the mth element ofM2,
+is given by
+|Φnm⟩ = 1√snm
+p
+Em⊗ I4|Φn⟩ (8)
+where it is understood that Em is acting on (2,3) pair and
+I4 is acting on (1,4) pair of |Φn⟩ which is given by Eq.(5).
+The probability of obtaining the|Φnm⟩ as the outcome state is
+pnsnm.
+Here, we denote by snm the probability of obtaining the m-
+th outcome of the second measurement, M2 when it acts on
+the n-th outcome of the first measurementM1. Using Eqs.(4),
+(5), and (7), we get
+snm = ⟨Φn|Em⊗ I4|Φn⟩
+= 1
+Tr(Πn)
+4X
+α,δ=1
+πnαµmδ|⟨ψmδ|ϕnα⟩|2. (9)
+Now using Eqs.(5), and (7), the above Eq.(8) can be written
+as
+|Φnm⟩ = 1
+2√pnsnm
+4X
+α,δ=1
+√πnα
+√µmδ⟨ψmδ|ϕnα⟩|ψmδ⟩23⊗|ϕnα⟩14,
+(10)
+where pn and snm are given by Eqs.(4) and (9) respectively.
+After tracing out the (2,3) pair from the above Eq.(10), we
+obtain the post-measurement state between A and C for each
+outcome, given by
+ρ14|nm = 1
+4pnsnm
+4X
+α,β=1
+4X
+δ=1
+µmδ
+√πnα
+√πnβ⟨ϕnα|ψmδ⟩⟨ψmδ|ϕnβ⟩|ϕnα⟩⟨ϕnβ|, (11)
+where|ϕnα(β)⟩, α(β) = 1, 2, 3, 4, are orthonormal basis of the
+nth element Πn of the first measurementM1.
+As we are solely interested in the post-measurement state
+between A and C for successive measurements, we did not
+assess the post-measurement state of the (1,2) and (3,4) pairs
+for the next round of measurement.
+Next, to analyze the bipartition entanglement of post-
+measurement states for each outcome, we utilize the I-
+concurrence [30] for higher-dimensional pure quantum sys-
+tems. Throughout this work, when referring to bipartition
+entanglement, we specifically mean the I-concurrence. The
+bipartition entanglement A|B is defined using the following
+expression:
+CAvsB(ρAB) =
+r
+d
+d− 1[1− Tr(ρ2
+A)] (12)
+where d is the dimension ofρA, which is reduced state ofρAB.
+We have already observed that if Πn ofM1 is entangled,
+then the corresponding post-measurement state between A
+and C is always entangled. Now, instead of an entangled mea-
+surement, if Πn is an unentangled measurement element oper-
+ator, is it possible to obtain an entangled state between A and
+C if Bob conducts a second measurementM2 on the (2,3) pair
+after post-processing the first measurement? To address this
+question, we propose two lemmas for arbitrary measurements:
+Lemma 1. If the first measurement M1 is a projective or
+rank-1 POVM (pure POVM) measurement, meaning each Πn
+element is rank 1 or projective, then any second measurement
+M2 cannot disturb the post-measurement state ofM1 between
+Alice and Charlie, whether by entangling, disentangling, or
+increasing the entanglement.
+
+=== page 4 ===
+4
+Proof: A POVM,M is called as rank 1 when all its ele-
+ments are rank-1 operators. Suppose M1 is a projective or
+rank-1 POVM, implying each element Πn ofM1 measure-
+ment is rank-1, such that forα = 1, Πn =πn1|ϕn1⟩⟨ϕn1|. Then,
+according to Eq.5,|Φn⟩ can be expressed as:
+|Φn⟩ = 1√Πn
+√πn1|ϕn1⟩23⊗|ϕ∗
+n1⟩14 (13)
+This state is separable in the 23|14 bipartition as it can be rep-
+resented as a simple tensor product in this partition. Now, if
+Bob attempts a measurement on (2,3) of |Φn⟩ to disturb the
+(1,4) pair, it will not be possible as |Φn⟩ is already separable
+in the 23|14 bipartition after the first measurement. Therefore,
+no further measurement can disturb the (1,4) pair of the |Φn⟩
+state.
+Hence, if Πn is a projective or rank-1 entangled POVM el-
+ement operator, the post-measurement state between A and C
+will be entangled, but no subsequent measurement can alter
+the entanglement in the (1,4) pair. Similarly, if Πn is a rank-1
+unentangled POVM element or projective element, the post-
+measurement state between (1,4) will be separable, and no
+further sequential measurement on the (2,3) pair can entangle
+the (1,4) pair.
+The above proof indicates that if Bob performs the first
+measurement with a rank greater than one, there is a possi-
+bility to disturb the (1,4) pair using another round of measure-
+ment on the (2,3) pair. This is because, from Eq.5, it can be
+understood that the 14|23 bipartition may exhibit non-zero en-
+tanglement after Bob’s first measurement if its rank is greater
+than one. Consequently, one might pursue a subsequent mea-
+surement on the (2,3) pair to disturb the (1,4) pair.
+Lemma-2: After performing the first measurement M1 on
+the (2,3) pair of the initial state Eq.1, if the bipartition en-
+tanglementCn|14vs23 of the four-qubit state |Φn⟩ (Eq.5) ex-
+hibits non-zero entanglement for a given outcome, i.e., if
+the 14|23 bipartition entanglement lies within the range 0 <
+Cn|14vs23(|Φn⟩⟨Φn|)≤ 1, and the rank of the first measurement
+element is greater than one, then the second measurementM2
+has the potential to disturb the entanglement of the (1,4) pair
+Proof: In the first lemma, we have established that if
+Cn|14vs23(|Φn⟩⟨Φn|) = 0, indicating zero entanglement in the
+14|23 bipartition of the post-measurement four-qubit state
+(Eq.5), then no further measurement can disturb the entangle-
+ment of the (1,4) pair. Here,Cn|14vs23(|Φn⟩⟨Φn|) represents the
+I-concurrence in the 14|23 bipartition of Eq.5. Using Eq.12,
+Cn|14vs23 can be expressed as:
+Cn|14vs23(|Φn⟩⟨Φn|) =
+r
+4
+3
+h
+1− Tr(ρ2
+14|n)
+i
+=
+s
+4
+3
+1−
+P4
+α=1π2nα
+(TrΠn)2
+ (14)
+To disturb the post-measurement state of the (1,4) pair in
+the next round measurement M2, a higher rank measure-
+ment (greater than rank one) M1 is required, and the post-
+measurement state (Eq.5) must exhibit non-zero entanglement
+in the 14|23 bipartition. This condition is necessary for the
+disturbance of the (1,4) pair in the second measurement.
+In the initial state (Eq.1), when no measurement was per-
+formed on the (2,3) pair, the 14 |23 bipartition entangle-
+ment was C14vs23(|Φ⟩⟨Φ|) = 1. However, after a particu-
+lar measurement on the (2,3) pair of Eq.1, one may obtain
+Cn|14vs23(|Φn⟩⟨Φn|) , 0 orCn|14vs23(|Φn⟩⟨Φn|) = 1 for an out-
+come. This implies that the (2,3) pair is correlated with the
+(1,4) pair non-maximally or maximally, respectively. There-
+fore, any suitable further measurement on the (2,3) pair of
+|Φn⟩ (Eq.5) can disturb the (1,4) pair. We will provide some
+examples later.
+Thus far, we establish that for the second measurement
+M2 to disturb the (1,4) pair in the post-measurement state
+|Φn⟩, two conditions must be met: Firstly, the rank of the
+first measurementM1 should exceed one, and secondly,|Φn⟩
+should exhibit non-zero entanglement in the 14|23 bipartition
+(Eq.14). This prompts the following question: What are the
+properties of measurements that can lead to entangled states
+in (1,4) through successive measurements if the first attempt
+fails? To address this inquiry, we present protocols for differ-
+ent categories of measurements in the entanglement swapping
+scenario
+Initially, in the initial state (Eq.1) 12|34 bipartition entan-
+glement is zero i.e.C12vs34(|Φ⟩⟨Φ|) = 0 and in the 14|23 bipar-
+titionC14vs23(|Φ⟩⟨Φ|) = 1. To get (1,4) pair entangled we need
+a measurementM1 that can produce non-zero entanglement
+in 12|34 bipartition. So, until and unless Bob’s first measure-
+mentM1 produces entanglement in the 12|34 bipartition we
+can not disturb the state between (1,4) pair during the second
+measurement even if 14|23 bipartition has non-zero entangle-
+ment. Therefore, Cn|12vs34(|Φ⟩⟨Φ|) > 0 is necessary for any
+type of measurement. However, this condition alone is not
+sufficient to entangle the (1,4) pair. There exist unentangled
+measurements capable of generating non-zero entanglement
+in the 12|34 bipartition but unable to establish entanglement
+between qubits A and C. As previously established, if Πn is
+an unentangled element operator, the post-measurement state
+between the (1,4) pair will also be unentangled.
+To get an entangled state between A and C, we have now
+given the protocols for the full two-qubit measurements of dif-
+ferent measurement categories.
+A. Inseparable operations
+An inseparable operation is defined as follows: let a quan-
+tum operationEA acting on a systemρA∈H A (Hilbert space),
+the Choi state is defined as [31]:
+Choi(EA) = (IA1⊗E A)|ϕ+⟩⟨ϕ+|A1A (15)
+Here, IA1 is the identity operator in HA1 with dimension
+dim(HA1) = dim(HA) = d. The state |ϕ+⟩ is a normalized
+maximally entangled state in HA1⊗H A, given by |ϕ+⟩ =
+1√
+d
+Pd−1
+i=0|i⟩A1|i⟩A where|i⟩A1 and|i⟩A are orthonormal bases in
+HA1 andHA, respectively.
+Consider a quantum operation MAB acting on a bipartite
+stateρAB∈H A⊗H B. One can relabel the bases ofHA⊗H B
+
+=== page 5 ===
+5
+such that it becomesH dA×dB
+=HC. Now, the whole operation
+can be viewed as a single-partite operation on HC, and one
+can represent it as (IC1⊗M C)|ϕ+⟩⟨ϕ+|C1C, where|ϕ+⟩C1C is the
+maximally entangled state inHC1⊗H C.
+Alternatively, one can form two pairs of maximally entan-
+gled states of two qubits|ϕ+⟩⟨ϕ+|A1A and|ϕ+⟩⟨ϕ+|BB1 and apply
+the quantum operation on their tensor product:
+ρA1ABB1 = (IA1⊗M AB⊗ IB1)|ϕ+⟩⟨ϕ+|A1A⊗|ϕ+⟩⟨ϕ+|BB1 (16)
+If the entanglement of the state ρA1ABB1 across the bipar-
+tition A1A| BB1 is non-zero, then the operation is called an
+inseparable operation; otherwise, it is a separable operation
+[32].
+Both approaches are equivalent to define separable and in-
+separable quantum operations, as|ϕ+⟩⟨ϕ+|A1A⊗|ϕ+⟩⟨ϕ+|BB1 =
+|ϕ+⟩⟨ϕ+|CC1. We follow the definition in Eq.16 to differentiate
+the separable and inseparable operations throughout the work.
+In our work, we consider two initial states,|ϕ+⟩, which are
+maximally entangled two-qubit states. The entanglement of
+the four-qubit post-measurement state, |Φn⟩, in the 12|34 bi-
+partition, i.e.,Cn|12vs34(|Φn⟩⟨Φn|), is the inseparability condi-
+tion of the Πn element of any arbitrary two-qubit generalized
+measurement from an operational point of view. We find out
+the exact expression of inseparability criteria [32] for two-
+qubit arbitrary measurement using the I-concurrence relation
+[30] which is given by (for details see Appendix B):
+Cn|12vs34(|Φn⟩⟨Φn|) =
+r
+4
+3
+h
+1− Tr(ρ2
+12|n)
+i
+=
+vuuuuuuut4
+3
+
+1− 1
+(TrΠn)2
+4X
+α,β,
+γ,η=1
+1X
+i, j,i′,k,
+l,k′=0
+√πnα
+√πnβ
+√πnγ
+√πnηa∗
+nα|i janβ|i′ ja∗
+nβ|k′lanα|kla∗
+nγ|i′ janη|i ja∗
+nη|klanγ|k′l
+
+. (17)
+Now, we present protocols for performing two-qubit measure-
+ments of different categories to obtain an entangled state be-
+tween (1,4) pair when the measurement is an inseparable op-
+eration.
+1. Entangled measurements
+If at least one element Πn of measurement M1 is entan-
+gled, then the measurement is termed as an entangled mea-
+surement, which consistently yields non-zero entanglement
+in the 12|34 bipartition, i.e., Cn|12vs34(|Φn⟩⟨Φn|) > 0 (Eq.17).
+This occurs because when an entangled POVM element Πn is
+applied to the (2,3) pair of the initial state, the resulting post-
+measurement state between A and C is Π∗
+n
+Tr(Πn), which remains
+entangled. Therefore, any entangled measurement constitutes
+an inseparable operation, ensuring non-zero entanglement in
+the 12|34 bipartition of the post-measurement state for at least
+one outcome.
+If the first measurement is entangled, the post-measurement
+state between the (1,4) pair is always entangled. However,
+whether a second measurement on (2,3) can disturb the entan-
+glement of the (1,4) pair depends on the 14|23 bipartition en-
+tanglement (Eq.14) of the four-qubit post-measurement state
+resulting from the first measurement M1. So, there are two
+types of entangled measurements for which two situations
+may arise:
+a. Cn|14vs23(|Φn⟩⟨Φn|) = 0
+After the first entangled measurement, if
+Cn|14vs23(|Φn⟩⟨Φn|) = 0 (Eq.14) for all elements of M1,
+then further second measurementM2 cannot disturb the (1,4)
+pair anymore.
+For instance, if Bob conducts a projective non-maximally
+entangled basis measurement, or a Bell basis measurement, or
+any rank-1 entangled POVM on (2,3) of the initial state Eq.1,
+then the resulting post-measurement state (Eq.6) between A
+and C will be an entangled state. However, no further mea-
+surement on the (2,3) pair of Eq.5 can enhance, disentangle,
+or decrease the entanglement in the (1,4) pair.
+b. Cn|14vs23(|Φn⟩⟨Φn|)> 0
+If the four-qubit post-measurement state has non-zero en-
+tanglement in the 14|23 bipartition for at least one outcome,
+i.e., 0 <Cn|14vs23(|Φn⟩⟨Φn|)≤ 1 (Eq.14), after the first mea-
+surementM1, whose rank is greater than one, then there
+would be a second measurement that could disturb the (1,4)
+pair again. Thus, there is a possibility to enhance, decrease,
+or disentangle the entanglement of the (1,4) pair. Examples
+are provided in a later section.
+2. Unentangled measurements
+An unentangled measurement is considered an inseparable
+operation in an operational sense ifCn|12vs34 > 0 (as indicated
+in Eq.17) for at least one element of a measurement. How-
+ever, from the perspective of measurement entanglement, if
+each element Πn of measurementM1 is unentangled, mean-
+ing that the corresponding operator defined as Πn
+Tr(Πn) is a sep-
+arable state [13, 14, 16, 18, 19], then the post-measurement
+state between A and C, i.e., the (1,4) pair, is always sepa-
+rable. However, an unentangled measurement element with
+non-zero entanglement in the 14 |23 bipartition of the post-
+
+=== page 6 ===
+6
+measurement state can still create entanglement between the
+(1,4) pair if it conforms to non-zero entanglement in the 12|34
+bipartition and another suitable measurement M2 is done on
+the (2,3) pair of the post-processed four qubits state. That
+means subsequent measurement can disturb the (1,4) pair only
+if the first measurement is an inseparable operation and retains
+14|23 bipartition entanglement in the post-measurement state.
+Two different circumstances are observed based on the 14|23
+bipartition entanglement of the post-measurement state:
+a. Cn|14vs23(|Φn⟩⟨Φn|) = 0
+It is not possible to find a measurement that can cre-
+ate non-zero entanglement in the 12 |34 bipartition of the
+post-measurement state, i.e., Cn|12vs34(|Φn⟩⟨Φn|) > 0, and
+Cn|14vs23(|Φn⟩⟨Φn|) = 0 for an element. Cn|14vs23 =q
+4
+3[1− Tr(ρ2
+14|n)] = 0 implies that Tr(ρ2
+14|n) = 1, indicating
+that the post-measurement states ρ14|n must be pure, suggest-
+ing the presence of a projective or rank-1 POVM element. For
+an unentangled rank-1 POVM element or an unentangled pro-
+jective element, Πn must be in the form of a tensor product,
+thereby preventing the generation of non-zero entanglement
+in the 12|34 bipartition of|Φn⟩.
+b. Cn|14vs23(|Φn⟩⟨Φn|)> 0
+If the first measurement M1 results in non-zero entangle-
+ment in the 12|34 bipartition of the post-measurement state
+(Eq. 5) for one outcome (i.e., Cn|12vs34(|Φn⟩⟨Φn|) > 0), and a
+second measurementM2 acts on the (2,3) pair successively,
+the final post-measurement state (Eq.11) between A and C
+will become entangled with a suitable choice of measure-
+ments. We determine the entanglement criteria of the final
+post-measurement state ρ14|nm (Eq.11) between A and C in
+terms of measurement operators. We derive the exact expres-
+sion of the negativity [33] of the post-measurement state of
+the (1,4) pair after the sequential measurements in Appendix
+C. To evaluate the entanglement of the final state ρ14|nm, we
+use the negativity measure [33] to accommodate the arbitrari-
+ness of the measurements. We do not utilize the concurrence
+measure due to the di fficulty in obtaining an expression for
+an arbitrary state without further information about the state’s
+parameters.
+When Bob performs an unentangled measurement, M1,
+which is unable to establish entanglement between the (1,4)
+pair, the entanglement in the 14 |23 bipartition is retained in
+the post-measurement state. A second measurement, M2,
+can then establish entanglement in the final post-measurement
+state,ρ14|nm, if the negativity,N(ρ14|nm), is greater than zero.
+As an example, we consider a Bell measurement with white
+noise as the first measurementM1. The POVM elements are
+defined as
+Π1 = λ|ϕ+⟩⟨ϕ+| + 1−λ
+4 I4
+= 3λ + 1
+4 |ϕ+⟩⟨ϕ+| + 1−λ
+4
+
+|ϕ−⟩⟨ϕ−| +|ψ+⟩⟨ψ+| +|ψ−⟩⟨ψ−|
+
+Π2 = λ|ϕ−⟩⟨ϕ−| + 1−λ
+4 I4
+= 3λ + 1
+4 |ϕ−⟩⟨ϕ−| + 1−λ
+4
+
+|ϕ+⟩⟨ϕ+| +|ψ+⟩⟨ψ+| +|ψ−⟩⟨ψ−|
+
+Π3 = λ|ψ+⟩⟨ψ+| + 1−λ
+4 I4
+= 3λ + 1
+4 |ψ+⟩⟨ψ+| + 1−λ
+4
+
+|ϕ−⟩⟨ϕ−| +|ϕ+⟩⟨ϕ+| +|ψ−⟩⟨ψ−|
+
+Π4 = λ|ψ−⟩⟨ψ−| + 1−λ
+4 I4
+= 3λ + 1
+4 |ψ−⟩⟨ψ−| + 1−λ
+4
+
+|ϕ−⟩⟨ϕ−| +|ψ+⟩⟨ψ+| +|ϕ+⟩⟨ϕ+|
+
+(18)
+forλ∈ [0, 1]. The measurement is unentangled for 0≤λ≤ 1
+3
+and entangled for 1
+3 <λ ≤ 1. The rank of the each element Πn
+is four. Then from Eq.4 we find that pn = 1
+4, all outcomes are
+equally probable.
+For the outcome n, the post-measurement states between A
+and C are obtained from Eq.6; in particular,
+ρ14|n = Πn(λ) (19)
+for n = 1, 2, 3, 4. The amount of negativity of ρ14|n for n∈
+{1, 2, 3, 4} is
+N(ρ14|n) = 3λ− 1
+2 . (20)
+Note that, the state ρ14|n is separable for 0≤λ≤ 1
+3 and en-
+tangled for 1
+3 <λ ≤ 1. Hence, it is reflected that the stateρ14|n
+is entangled if and only if the measurement element is entan-
+gled. So, the average negativity after completion of measure-
+mentM1 between A and C is
+Navg(ρ14|M1) =
+4X
+n=1
+pnN(ρ14|n) = 3λ− 1
+2 (21)
+Now using Eq.17, we obtain the concurrence of 12|34 bipar-
+tition of post-measurement state|Φn⟩ (Eq.5) for each POVM
+elements which is given by
+Cn|12vs34 =
+q
+1 +λ2−
+√
+1−λ
+√
+1 + 3λ +λ
+√
+1−λ
+√
+1 + 3λ
+√
+2
+.
+(22)
+∀n ∈ {1, 2,..., 4}. From the above Eq.22, we observe that
+each element Πn exhibits non-zero entanglement in the 12|34
+bipartition of the post-measurement state (Eq.5) for 0<λ ≤ 1.
+Even when each Πn is unentangled for 0 ≤ λ ≤ 1
+3, it still
+demonstrates non-zero entanglement in the 12|34 bipartition
+of the four-qubit post-measurement state (Eq.5), except atλ =
+0.
+In order to determine whether the second measurementM2
+can disturb the post-measurement state ρ14|n of the first mea-
+surementM1 or not, we evaluate the concurrence of 14 |23
+bipartition of the post-measurement state of each element Πn.
+Using Eq.14 we obtain the concurrence of 14 |23 bipartition
+entanglement of the post-measurement state for each element
+Πn as:
+Cn|14vs23 =
+√
+1−λ2 (23)
+
+=== page 7 ===
+7
+which is non-zero for 0≤λ< 1 except atλ = 1. Whenλ = 1,
+the measurement becomes a perfect Bell basis measurement,
+which is a projective measurement. If a Bell measurement is
+performed initially on the (2,3) pair, no subsequent measure-
+ments can affect the post-measurement state ρ14|n. However,
+when the measurement parameter λ is between 0 ≤ λ < 1,
+a subsequent measurement can disturb the post-measurement
+state of the first measurement.
+Now, after post-processing each measurement outcome of
+the first measurement (Eq.18), Bob performs another mea-
+surementM2 on the (2,3) pair. We consider the second mea-
+surementM2 to be a purely separable operation. The POVM
+elements ofM2 are defined as:
+E1 =|ψ11⟩⟨ψ11| +|ψ12⟩⟨ψ12|
+E2 =|ψ21⟩⟨ψ21| +|ψ22⟩⟨ψ22| (24)
+where|ψ11⟩ =|00⟩,|ψ12⟩ =|01⟩,|ψ21⟩ =|10⟩, and|ψ22⟩ =
+|11⟩. This measurement is a single qubit measurement per-
+formed on qubit 2 only, and does not a ffect qubit 3. Each
+element Em is unentangled and does not have any capacity to
+produce an entangled state as it is a purely separable operation
+[32].
+Then, from Eq.9, we find that snm = 1
+2, which is the prob-
+ability of obtaining the m-th outcome of the second measure-
+ment,M2, when it acts on the n-th outcome of the first mea-
+surement,M1. The probability of obtaining the outcome state
+ρ14|nm between A and C is pnsnm = 1
+8, where all outcomes
+are equally probable. The post-measurement states between
+A and C are obtained following Eq.11
+ρ14|11 = (1 +λ)
+2 |ξ11⟩⟨ξ11| + (1−λ)
+2 |01⟩⟨01| (25)
+where|ξ11⟩ =
+√
+1+3λ+
+√
+1−λ
+2
+√
+1+λ |00⟩ +
+√
+1+3λ−
+√
+1−λ
+2
+√
+1+λ |11⟩. Similarly,
+ρ14|nm for other values of n and m can be calculated easily by
+following the similar method.
+We get the amount of negativity of the stateρ14|nm which is
+given by
+N(ρ14|nm) = λ− 1 +
+√
+1− 2λ + 5λ2
+2
+∀n∈{ 1, 2, 3, 4} and ∀m∈{ 1, 2} (26)
+We observe thatN(ρ14|nm) is non-zero for the entire range of
+λ, except forλ = 0. On the other hand, after the first measure-
+mentM1 alone,N(ρ14|n) is zero for 0≤λ≤ 1
+3 as the measure-
+ment is unentangled in that range, and non-zero for 1
+3 <λ ≤ 1
+as the measurement is entangled in that range. However, two
+successive measurements establish entanglement between A
+and C for the entire range of the measurement parameter λ,
+except forλ = 0. Thus, successive measurements open up the
+entanglement between A and C for the entire range ofλ.
+For every outcome, the amount of negativity is same. The
+average negativity between A and C after the completion of
+two measurementsM1 andM2 in succession is
+Navg(ρ14|M1M2) =
+4X
+n=1
+2X
+m=1
+pnsnmN(ρ14|nm)
+= λ− 1 +
+√
+1− 2λ + 5λ2
+2 (27)
+ avg (ρ 14 ℳ 1 ℳ 2 )
+ avg (ρ 14 ℳ 1 )
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Measurement parameterλ
+Amount of entanglement
+FIG. 1: Variation of negativity with the measurement
+parameterλ for the average entanglement between A and C.
+HereNavg(ρ14|M1M2) represents the average negativity
+established between A and C after the completion of two
+measurementsM1 andM2 in succession.Navg(ρ14|M1)
+represents the average negativity between A and C after the
+completion ofM1 measurement.
+In Fig.1, we have plotted the average entanglement (Eq.27
+and Eq.21) established between A and C with respect to the
+measurement parameterλ after the completion of the succes-
+sive two measurements M1 followed by M2 and after the
+completion of the first measurementM1 in terms of negativ-
+ity measure. We make the following observations: (i) After
+the first measurementM1 the average negativityNavg(ρ14|M1)
+established between A and C is zero in between 0 ≤ λ≤ 1
+3
+because the measurement is not entangled in that range. (ii)
+Due to two successive measurements the average negativ-
+ityNavg(ρ14|M1M2) is non-zero for the whole range of the
+0 < λ≤ 1 and increasing with the λ whereM2 is a sepa-
+rable operation. (iii) The average negativity Navg(ρ14|M1M2)
+established between A and C after the two successive mea-
+surements is greater than the first measurement for the whole
+range of theλ.
+An unentangled measurementM1 (Eq. 18) within the range
+0≤ λ≤ 1
+3, along with a purely separable operation M2 (Eq.
+24), individually falls short in establishing entanglement be-
+tween parties A and C. However, when executed sequentially,
+withM1 followed by M2, entanglement between A and C
+emerges across the entire range of λ, except for λ = 0. Fur-
+thermore, this sequential approach yields a greater amount of
+entanglement compared to a single measurementM1, particu-
+larly in terms of the entanglement established between A and
+C.
+Meanwhile, an unentangled measurement, characterized by
+Cn|12vs34 = 0 (Eq. 17) for every outcome, proves ineffective in
+fostering entanglement between A and C, as previously elab-
+orated. In the upcoming section, we delve into the prospect of
+attaining entanglement between A and C through a subsequent
+measurement following Bob’s purely separable operation.
+
+=== page 8 ===
+8
+B. Separable operations
+A measurement that operates as a separable operation is in-
+capable of transforming separable states into entangled ones
+[7]. Therefore, if Bob initiates a measurement that consti-
+tutes a separable operation, it will not induce entanglement
+in the 12|34 bipartition of the post-measurement state, signi-
+fyingCn|12vs34 = 0 (Eq.17) for each POVM element. This
+implies that the post-measurement states of the (1,2) and (3,4)
+pairs must be pure for every outcome, as Cn|12vs34 = 0 im-
+plies Tr(ρ2
+12|n) = 1 and Tr(ρ2
+34|n) = 1. Thus, in our scenario,
+the post-measurement states within the (1,2) and (3,4) pairs
+remain pure.
+Can a second measurement entangle the (1,4) pair after Bob
+conducts a separable operation? We affirmatively address this
+question.
+A separable operation{Πn} can be represented as:
+Πn =An⊗B n (28)
+where P
+n Πn = I andAn,Bn are positive operators acting on
+HA,HB Hilbert spaces respectively. In our scenario, if Bob
+conducts a separable operation on the (2,3) pair and the oper-
+atorsAn andBn are rank-1 for each element, there will be no
+second measurementM2 capable of disturbing the (1,4) pair.
+This is because a rank-one element on each qubit destroys the
+initial entanglement of|ϕ+⟩12 and|ϕ+⟩34 states.
+However, ifAn andBn are rank-2 elements, it may be pos-
+sible to retain entanglement in the post-measurement states
+of the (1,2) and (3,4) pairs. In such a case, during the next
+round of measurement, there may be an opportunity to entan-
+gle the (1,4) pair by selecting a suitable measurement after
+post-processing the first measurementM1. Here, the second
+measurementM2 should be an inseparable operation, i.e., it
+should have Cn|12vs34 > 0 (Eq.17) for at least one element.
+It’s important to note that to achieve an entangled state in the
+(1,4) pair using two successive measurements, Eq.C11 must
+be non-zero for an outcome
+Let’s delve into the evaluation of the An andBn elements
+that preserve the entanglement in the (1,2) and (3,4) pairs fol-
+lowing the first measurementM1, thus allowing the potential
+entanglement of the (1,4) pair through a suitable second mea-
+surement.
+Suppose a single-qubit measurement element, An, acts on
+qubit 2 of the initial state |Ψ⟩12 =|ϕ+⟩12 = 1√
+2(|00⟩ +|11⟩).
+Similarly,Bn acts on qubit 3 of the initial state|Ψ⟩34 =|ϕ+⟩34.
+We assess the post-measurement state forAn while retaining
+the arbitrary nature of the measurement. The same methodol-
+ogy applies toBn also.
+The An element can be decomposed as An =P2
+α=1τnα|φnα⟩⟨φnα| where|φnα⟩,α = 1, 2 form a complete or-
+thonormal basis on C2, andτnα≥ 0 forα = 1, 2. IfAn acts on
+qubit 2 of|ϕ+⟩12, then the post-measurement state becomes:
+|Ψ′⟩n = I2⊗
+p
+An|Ψ⟩12
+=
+1X
+i, j=0
+2X
+α=1
+ai j
+√τnα⟨φnα| j⟩|i⟩1⊗|φnα⟩2 (29)
+which remains a pure state.
+From Eq.29, it is evident that when the measurement ele-
+ment is a rank-1 POVM or projective, the post-measurement
+state is always separable. However, when the measurement
+element’s rank is greater than one, there is a possibility that
+the post-measurement state remains entangled. By consid-
+ering arbitrary orthonormal bases for each element: |φn1⟩ =
+cos θn
+2|0⟩ + eiϕn sin θn
+2|1⟩ and|φn2⟩ = sin θn
+2|0⟩− eiϕn cos θn
+2|1⟩
+on C2, we evaluate the I-concurrence [30] of the post-
+measurement state of each outcome using Eq.12:
+Cn(|Ψ′⟩n⟨Ψ′|) = 2√τn1τn2
+τn1 +τn2
+(30)
+where we assume|Ψ⟩12 =|ϕ+⟩, a Bell state. Eqquation (30)
+reveals that any rank-2 measurement element retains the en-
+tanglement in the (1,2) and (3,4) pairs. Therefore, in the sec-
+ond round of measurement, if Bob conducts an inseparable
+operation on the (2,3) pair after post-processing the first mea-
+surementM1, there’s a possibility of obtaining an entangled
+state in the (1,4) pair. However, it’s crucial to note that the sec-
+ond measurement should be an inseparable operation, ensur-
+ing that the conditionCn|12vs34 > 0 for an outcome [as stated
+in Eq. 17] is met.
+It is noteworthy that our protocols are not only applicable
+for two rounds of successive measurements, but one can pro-
+ceed further for n rounds by following the same procedure
+until the (1,4) pair becomes entangled. After each round of
+measurement, the entanglement between the 14|23 bipartition
+of the four qubits post-measurement state must be non-zero,
+for an outcome, in order for the next round of measurement to
+disturb the (1,4) pair, after post-processing the previous round
+measurements. We already know that a measurement will be
+successful in establishing entanglement in the (1,4) pair if it
+can create entanglement between the 12|34 bipartition of the
+total system state.
+Our protocol is also applicable when starting with two
+copies of d× d maximally entangled states, instead of two-
+qubit maximally entangled states. S. Yokoyama et al. [13]
+have shown that by considering the d× d maximally entan-
+gled states, the post-measurement state in the (1,4) pair will
+be Π∗
+n
+Tr(Πn) if a generalized POVM element Πn is done on the
+(2,3) pair. The proof can be easily carried out by following
+our results and considering that every POVM element can be
+decomposed into d2 complete orthonormal basis on Cd⊗ Cd
+and πnα≥ 0 for all n. To calculate Cn|14vs23 for each POVM
+element using Eq.14, one must follow the same procedure, but
+with the sum running fromα = 1 toα = d2 for d×d maximally
+entangled states. Similarly, in the case of Eq.17, one must
+sum for i, j, l, k, i′, k′ = 0,..., d− 1 and forα,β,γ,η = 1,..., d2.
+Here, Lemma-1 and Lemma-2 are also applicable in this sce-
+nario. Therefore, our protocol is also valid in this scenario, if
+one starts with d× d maximally entangled states. However, in
+this scenario, one must deal with bound entangled states and
+Positive Partial Transpose (PPT) measurements [20, 38–40],
+among other considerations.
+
+=== page 9 ===
+9
+III. CONCLUSIONS
+In this study, we explore entanglement activation in a gen-
+eralized entanglement swapping process involving two Bell
+pairs and generalized measurements. Conventional wisdom
+suggests that entangled measurements are required to estab-
+lish entanglement between distant parties.
+Our work reassesses the necessity and su fficiency condi-
+tions for measurement operators to be entangled within the
+framework of entanglement activation in a generalized entan-
+glement swapping process. We begin with two Bell pairs:
+(1, 2) shared between Alice and Bob, and (3, 4) shared be-
+tween Bob and Charlie. A quantum measurement, character-
+ized by positive operator-valued measure (POVM), is applied
+to qubits (2, 3), resulting in the creation of a shared state in (1,
+4) between the spatially separated observers.
+Our findings demonstrate that while an entangled measure-
+ment is su fficient, it is not mandatory for the measurement
+operators to be entangled to establish an entangled state be-
+tween A and C. We introduce a sequential approach where
+Bob conducts an initial measurement, followed by another
+measurement if the initial one fails to establish the entangle-
+ment. This sequential strategy, in conjunction with appropri-
+ate post-processing after the initial measurement, facilitates
+the establishment of entanglement between A and C. Our in-
+vestigation offers unique insights into the role of measurement
+operators in entanglement generation.
+Our findings have identified specific criteria for di fferent
+measurement operators that enable the potential for perform-
+ing a second measurement to establish entanglement. We have
+delineated protocols for cases where the first measurement
+fails to establish entanglement, showcasing the feasibility of
+generating entanglement between distant parties through a
+combination of measurements. We have found out the exact
+expression inseparability condition of an arbitrary two-qubit
+measurement.
+Furthermore, our demonstration has underscored the signif-
+icance of the 14|23 bipartition entanglement of the total sys-
+tem state, highlighting the role of the measurement’s rank in
+facilitating a disturbance of the (1,4) state by the second mea-
+surement. We establish that following the first measurement,
+the 14|23 bipartition entanglement of the total system state
+must fall within the range of 0 to 1, with the measurement’s
+rank exceeding one to enable such disturbance of the (1,4)
+state by the second measurement. Moreover, we have demon-
+strated that achieving a zero 14 |23 bipartition entanglement
+due to an inseparable operator in the measurement is unattain-
+able.
+We initiated our analysis with an illustration involving a
+measurement in the Bell basis affected by white noise, reveal-
+ing its inability to establish entanglement within the range
+0 ≤ λ ≤ 1
+3 due to its lack of entanglement in this inter-
+val. However, through the implementation of two consec-
+utive measurements, we observed that the average entangle-
+ment remains non-zero across the entire range of 0 < λ≤ 1,
+progressively increasing with λ, where the second measure-
+ment is executed as a separable operation. Notably, the aver-
+age entanglement achieved between parties A and C following
+the two successive measurements surpasses that of the initial
+measurement across the entire λ range. Our analysis eluci-
+dates how successive measurements outperform single mea-
+surements, offering practical benefits of entanglement distri-
+bution in quantum networks.
+Moreover, our approach’s versatility extends beyond bipar-
+tite qubit states to higher-dimensional maximally entangled
+states, highlighting its applicability across various quantum
+scenarios.
+In conclusion, expanding the protocol to include non-
+maximally entangled states would enhance its applicability,
+while extending it to cover a broader range of scenarios holds
+promise for further advancements in the field. We have ad-
+ditionally addressed this matter by considering pure non-
+maximally entangled states (cos θ|00⟩ + sinθ|11⟩) as initial
+states for the qubit pairs (1,2) and (3,4). This state exhibits en-
+tanglement for 0 < θ <π
+2 , reaching maximum entanglement
+atθ = π
+4 with a concurrence of 2 cosθ sinθ. We have then per-
+formed sequential measurements using Bell basis with white
+noise as the first POVM measurement Eq.18, followed by a
+second measurement Eq.24. After the first measurement, the
+entanglement of the output state in the (1,4) pair depends on
+both θ and λ. However, we did not observe a state that re-
+mains entangled across the entire range of λ for a fixed value
+ofθ. Conversely, the sequential application of these two mea-
+surements results in the (1,4) pair being entangled across the
+entire range of λ for 0 < θ < π
+2 . Therefore, our protocol
+is also applicable in scenarios involving pure non-maximally
+entangled states for entanglement distribution. Despite the
+challenges in obtaining a compact expression for the post-
+measurement state in (1,4) pair under arbitrary measurements
+with non-maximally entangled initial states, our findings sug-
+gest promising avenues for future research.
+Future research e fforts should prioritize refining entangle-
+ment activation protocols, exploring innovative measurement
+strategies, and broadening the protocol’s applicability to di-
+verse scenarios, including nonlocality activation [25, 35] and
+network nonlocality [36, 37]. By addressing these research
+directions, we can deepen our understanding of entanglement
+generation and distribution, leading to advancements in quan-
+tum communication and computation.
+Acknowledgements
+The authors express gratitude to Professor S. Bandyopad-
+hyay for fruitful discussions. PB acknowledges S. Halder for
+helpful discussions.
+Appendix
+
+=== page 10 ===
+10
+A. Post-measurement state of (1,2) and (3,4) pairs
+To get the post-measurement state of (1,2) and (3,4) for nth outcome, we rewrite Eq.5 in computational basis form. Every
+orthonormal basis|ϕnα⟩ can be written in the following computational basis form|ϕnα⟩ = P1
+i, j=0 anα|i j|i j⟩ where P1
+i, j=0|anα|i j|2 = 1
+and anα|i j∈ C:
+|Φn⟩ = 1
+2√pn
+4X
+α=1
+1X
+i, j,k,l=0
+√πnαa∗
+nα|i janα|kl|i j⟩14|kl⟩23 (A1)
+The density of state of Eq.A1 is
+ρ1234|n = |Φn⟩⟨Φn|
+= 1
+4pn
+4X
+α,β=1
+1X
+i, j,k,l,
+i′, j′,
+k′,l′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i′ j′a∗
+nβ|k′l′|i j⟩⟨i′ j′|14⊗| kl⟩⟨k′l′|23 (A2)
+From the orthogonality condition of the orthonormal basis, we get
+⟨ϕnβ|ϕnα⟩ =
+1X
+i, j,k,l=0
+a∗
+nβ|klanα|i j⟨kl|i j⟩
+= δβα (A3)
+which reduce to
+1X
+i, j=0
+a∗
+nβ|i janα|i j =δβα (A4)
+Tracing out the three and four qubits from Eq.A2 gives j = j′ and l = l′. So, we get the post-measurement state of n-th
+outcome between (1,2) pair which is given by
+ρ12|n = 1
+4pn
+4X
+α,β=1
+1X
+i, j,k,l,
+i′,k′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i′ ja∗
+nβ|k′l|ik⟩⟨i′k′|12
+= 1
+Tr(Πn)
+4X
+α,β=1
+1X
+i, j,k,l,
+i′,k′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i′ ja∗
+nβ|k′l|ik⟩⟨i′k′|12
+(A5)
+Similarly, tracing out one and two qubits from Eq.A2 gives i = i′ and k = k′. The post-measurement state of (3,4) pair of nth
+outcome is
+ρ34|n = 1
+Tr(Πn)
+4X
+α,β=1
+1X
+i, j,k,l,
+j′,l′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i j′a∗
+nβ|kl′|l j⟩⟨l′ j′|34 (A6)
+From the Eq.A5, and Eq.A6 one can easily compute the post-measurement states of n-th outcome between different pairs (1,2),
+and (3,4) respectively after theM1 POVM measurement.
+B. Inseparable quantum operation condition of an arbitrary two qubits measurement:
+Amount of entanglement in 12|34 bipartition of the post-measurement state for n-th outcome is given by:
+Cn|12vs34(|Φn⟩⟨Φn|) =
+r
+4
+3
+h
+1− Tr(ρ2
+12|n)
+i
+(B1)
+
+=== page 11 ===
+11
+Now, from Eq.A5 we get that
+ρ12|n = 1
+4pn
+4X
+α,β=1
+1X
+i, j,k,l,
+i′,k′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i′ ja∗
+nβ|k′l|ik⟩⟨i′k′|12
+= 1
+Tr(Πn)
+4X
+α,β=1
+1X
+i, j,k,l,
+i′,k′=0
+√πnα
+√πnβa∗
+nα|i janα|klanβ|i′ ja∗
+nβ|k′l|ik⟩⟨i′k′|12 (B2)
+So,ρ2
+12|n can be written as
+ρ2
+12|n = 1
+(TrΠn)2
+4X
+α,β,
+γ,η=1
+1X
+i, j,i′,k,
+l,k′,p,q,
+p′,q′=0
+√πnα
+√πnβ
+√πnγ
+√πnηa∗
+nα|i janβ|i′ ja∗
+nβ|k′lanα|kla∗
+nγ|p janη|p′ ja∗
+nη|q′lanγ|ql|ik⟩⟨i′k′|pq⟩⟨p′q′| (B3)
+The Eq.B3 can be simplified as
+ρ2
+12|n = 1
+(TrΠn)2
+4X
+α,β,
+γ,η=1
+1X
+i, j,i′,k,
+l,k′,
+p′,q′=0
+√πnα
+√πnβ
+√πnγ
+√πnηa∗
+nα|i janβ|i′ ja∗
+nβ|k′lanα|kla∗
+nγ|i′ janη|p′ ja∗
+nη|q′lanγ|k′l|ik⟩⟨p′q′| (B4)
+as p = i′ and k′ = q.
+So, Tr(ρ2
+12|n) is given by
+Tr(ρ2
+12|n) = 1
+(TrΠn)2
+4X
+α,β,
+γ,η=1
+1X
+i, j,i′,k,
+l,k′=0
+√πnα
+√πnβ
+√πnγ
+√πnηa∗
+nα|i janβ|i′ ja∗
+nβ|k′lanα|kla∗
+nγ|i′ janη|i ja∗
+nη|klanγ|k′l. (B5)
+as i = p′ and k = q′.
+The entanglement in the 12|34 bipartition of the post-measurement state when the Πn element of any arbitrary two-qubits
+measurement is performed on the (2,3) pair can be represented using Eq.B5
+Cn|12vs34(|Φn)⟩⟨Φn|) =
+vuuuuuuut4
+3
+
+1− 1
+(TrΠn)2
+4X
+α,β,
+γ,η=1
+1X
+i, j,i′,k,
+l,k′=0
+√πnα
+√πnβ
+√πnγ
+√πnηa∗
+nα|i janβ|i′ ja∗
+nβ|k′lanα|kla∗
+nγ|i′ janη|i ja∗
+nη|klanγ|k′l
+
+(B6)
+C. Negativity of the post-measurement state after sequential measurements
+Negativity of a bipartite stateρAB is defined as [33]
+N(ρAB) =∥ρTB
+AB∥− 1
+2 (C1)
+with∥ρTB
+AB∥ = Tr
+q
+(ρTB
+AB)†ρTB
+AB where TB denote the partial transpose with respect to the subsystem B. We evaluate the entangle-
+ment ofρ14|nm (Eq.11).
+Every orthonormal basis|ϕnα⟩ and|ψmδ⟩ of different POVM elements can be written in the following computational basis form
+|ϕnα⟩ = P1
+i1, j1=0 anα|i1 j1|i1 j1⟩ and|ψmδ⟩ = P1
+l1,k1=0 bmδ|l1k1|l1k1⟩ where P1
+i1, j1=0|anα|i1 j1|2 = 1, anα|i1 j1∈ C and P1
+l1,k1=0|bmδ|l1k1|2 = 1,
+bmδ|l1k1∈ C. So, using the above computational basis form, Eq.11 can be rewritten as:
+ρ14|nm = 1
+4pnsnm
+4X
+α,β,ζ=1
+1X
+i1,...,4,
+j1,...,4=0
+1X
+k1,...,2,
+l1,...,2=0
+µmζ
+√πnα
+√πnβa∗
+nα|i1 j1bmζ|k1l1b∗
+mζ|k2l2anβ|i2 j2anα|i3 j3a∗
+nβ|i4 j4|i3 j3⟩⟨i4 j4| (C2)
+
+=== page 12 ===
+12
+where pn = P4
+α=1
+πnα
+4 and snm = 1
+pn
+P4
+α,δ=1
+P1
+i, j=0πnαµmδ|anα|i jb∗
+mδ|i j|2.
+The square root of any Hermitian, positive semidefinite matrix U is given by [34]:
+√
+U = U +√det(U)Iq
+Tr(U) + 2√det(U)
+(C3)
+Let a matrix U be defined as U = (ρTB
+14|nm)†ρTB
+14|nm, where TB denotes the partial transpose with respect to qubit 4. Using the
+Eq.C2, U can be written as:
+U = (ρTB
+14|nm)†ρTB
+14|nm
+= 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i3 j3anβ|i4 j4
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j7a∗
+nη|i8 j4|i4 j3⟩⟨i8 j7| (C4)
+We denote X = Tr(U) and Y = det U which are given by:
+X = Tr(U)
+= 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i3 j3anβ|i4 j4
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j3a∗
+nη|i4 j4 (C5)
+and
+Y = det U =
+4X
+e, f,g,h=1
+ϵe f ghτ1eτ2 fτ3gτ4h (C6)
+whereϵe f ghis Levi-Civita symbol. The row elements of the matrix (ρTB
+14|nm)†ρTB
+14|nm can be denoted asτ1e,τ 2 f,τ 3g,τ 4h for e, f, g, h∈
+1, 2, 3, 4, where the first, second, third and fourth rows respectively. Using these elements, by settingi4 = 0 and j3 = 0 in Eq.C4,
+we obtain
+τ1e = 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i30anβ|0 j4
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j7a∗
+nη||i8 j4 (C7)
+Similarly, by setting i4 = 0 and j3 = 1 in Eq.C4, we get
+τ2 f = 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i31anβ|0 j4
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j7a∗
+nη||i8 j4, (C8)
+and by putting i4 = 1 and j3 = 0 in Eq.C4 we get
+τ3g = 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i30anβ|1 j4
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j7a∗
+nη||i8 j4, (C9)
+lastly, putting i4 = 1 and j3 = 1 in Eq.C4 we get
+τ4h = 1
+16p2ns2nm
+4X
+α,β,ζ,
+γ,η,δ=1
+1X
+i1,...,8,
+j1,...,8=0
+1X
+k1,...,4,
+l1,...,4=0
+µmζ
+√πnα
+√πnβanα|i1 j1b∗
+mζ|k1l1bmζ|k2l2a∗
+nβ|i2 j2a∗
+nα|i31anβ|1 j4
+
+=== page 13 ===
+13
+× µmδ
+√πnγ
+√πnηa∗
+nγ|i5 j5bmδ|k3l3b∗
+mδ|k4l4anη|i6 j6anβ|i3 j7a∗
+nη||i8 j4. (C10)
+So, the negativity of the final post-measurement stateρ14|nm (Eq.11) is
+N(ρ14|nm) = Tr
+√
+U− 1
+2
+= X + 4
+√
+Y
+2
+q
+X + 2
+√
+Y
+− 1
+2 (C11)
+where X and Y are given above in Eq.C5 and Eq.C6 respectively. We get a relation between the negativity of the post-
+measurement state and the measurement parameters of two successive measurements.
+[1] C. H. Bennett, G. Brassard, C. Crpeau, R. Jozsa, A. Peres,
+and W. K. Wootters, Teleporting an unknown quantum state
+via dual classical and Einstein-Podolsky-Rosen channels, Phys.
+Rev. Lett. 70, 1895 (1993).
+[2] C. H. Bennett and S. J. Wiesner, Communication via one-
+and two-particle operators on Einstein-Podolsky-Rosen states,
+Phys. Rev. Lett. 69, 2881 (1992).
+[3] M. Zukowski, A. Zeilinger, M. A. Horne, and A. K. Ekert,
+“Event-Ready-Detectors” Bell Experiment Via Entanglement
+Swapping, Phys. Rev. Lett. 71, 4287 (1993).
+[4] S. Bose, V . Vedral, and P. L. Knight, Multiparticle generaliza-
+tion of entanglement swapping, Phys. Rev. A 57, 822 (1998).
+[5] P. Bej, A. Ghosal, D. das, A. Roy and S. Bandyopadhyay,
+Information-disturbance trade-off in generalized entanglement
+swapping, Phys.Rev.A. 102, 052416 (2020).
+[6] P. Bej, A. Ghosal, A. Roy, S. Mal, and D. Das, Creating
+quantum correlations in generalized entanglement swapping ,
+Phys.Rev.A. 106, 022428 (2022).
+[7] E. M. Rains, Rigorous treatment of distillable entanglement ,
+Phys.Rev.A 60, 173 (1999).
+[8] E. M. Rains, Bound on distillable entanglement , Phys.Rev.A
+60, 179 (1999).
+[9] E. M. Rains, Entanglement purification via separable superop-
+erators, arXiv:quant-ph/9707002 (1998).
+[10] P. Busch, P. Lahti, and P. Mittelstaedt, The Quantum Theory of
+Measurement, 2nd ed. (Springer, Berlin, 1996).
+[11] P. Busch, M. Grabowski, and P. J. Lathi, Operational Quantum
+Physics (Springer, Berlin, 1997).
+[12] M. G. A. Paris, The modern tools of quantum mechanics , Eur.
+Phys. J. Spec. Top. 203, 61–86 (2012)
+[13] S. Yokoyama, N.D. Pozza, T. Serikawa, K.B. Kuntz, et.al,
+Characterization of entangling properties of quantum measure-
+ment via two-mode quantum detector tomography using coher-
+ent state probes, Optics Express 27, 23/11 (2019).
+[14] I. Hamamura, Separability criterion for quantum e ffects,
+Phys.Letts.A 382, 2573 (2018).
+[15] R. Duan, Y . Feng, Y . Xin, and M. Ying, Distinguishability
+of Quantum States by Separable Operations , IEEE Trans. Inf.
+Theory 55, 1320 (2009).
+[16] T. V ´ertesi and M. Navascu ´es, Certifying entangled measure-
+ments in known Hilbert spaces, Phys.Rev.A 83, 062112 (2011).
+[17] R. Rabelo, M. Ho, D. Cavalcanti, N. Brunner, and V . Scarani,
+Device-Independent Certification of Entangled Measurements ,
+Phys.Rev.Lett 107, 050502 (2011).
+[18] A. Bennet, T. Vertesi, D.J. Saunders, N. Brunner, and G.J. Pryde
+Experimental Semi-Device-Independent Certification of Entan-
+gled Measurements, Phys.Rev.Lett 113, 080405 (2014).
+[19] J. Sperling, I. Gianani, M. Barbieri, and E. Agudelo, Detector
+entanglement: Quasidistributions for Bell-state measurements,
+Phys.Rev.A 107, 012426 (2023).
+[20] S. Virmani and M. B. Plenio, Construction of extremal
+local positive-operator-valued measures under symmetry ,
+Phys.Rev.A 67, 062308 (2003).
+[21] K. Wu, E. B ¨aumer, J. Tang, K. V . Hovhannisyan, M. P. Llobet,
+G. Xiang, C. Li, and G. Guo, Minimizing Backaction through
+Entangled Measurements, Phys.Rev.Lett. 125, 210401 (2020).
+[22] S. Perseguers, C. I. Cirac, A. Acin, M. Lewenstein, and J.
+Wehr. Entanglement distribution in pure-state quantum net-
+works, Phys. Rev. A 77, 022308 (2008).
+[23] S. Perseguers, G. J. Lapeyre Jr., D. Cavalcanti, M. Lewenstein,
+and A. Acin, Distribution of entanglement in large-scale quan-
+tum networks, Rep. Prog. Phys. 76, 096001 (2013).
+[24] A. Wojcik, J. Modlawska, A. Grudka, and M. Czechlewski,Vio-
+lation of Clauser-Horne-Shimony-Holt inequality for states re-
+sulting from entanglement swapping , Phys. Lett. A 374, 4831
+(2010).
+[25] W. Klobus, W. Laskowski, M. Markiewicz, and A. Grudka,
+Nonlocality activation in entanglement-swapping chains, Phys.
+Rev. A 86, 020302(R) (2012).
+[26] G. Gour, and B. C. Sanders, Remote Preparation and Distribu-
+tion of Bipartite Entangled States, Phys. Rev. Lett. 93, 260501
+(2004).
+[27] A. Verma, A. Pandey, S. Nandan, and P. K. Panigrahi,Entangle-
+ment distillation using various quantum channels, Fourth Inter-
+national Conference on Computing, Communications and Net-
+working Technologies (ICCCNT), Tiruchengode, India, pp. 1-6
+(2013).
+[28] P. Halder, S. Mal, and A. Sen De,Measurement-based multipar-
+tite entanglement inflation, Phys.Rev.A 104, 062412 (2021).
+[29] S. Mondal, P. Halder, and A. Sen De,Duality between imperfect
+resources and measurements for propagating entanglement in
+networks, arXiv:2308.10975 (2023).
+[30] P. Rungta and C. M. Caves, Concurrence-based entanglement
+measures for isotropic states, Phys.Rev.A 67, 012307 (2003).
+[31] M. D. Choi, Completely positive linear maps on complex ma-
+trices, Linear Alg. Appl. 10, 285 (1975).
+[32] J. I. Cirac, W. D ¨ur, B. Kraus, and M. Lewenstein, Entangling
+Operations and Their Implementation Using a Small Amount of
+Entanglement, Phys. Rev. Lett. 86, 544 (2001)
+[33] G. Vidal, and R. F. Werner, Computable measure of entangle-
+ment, Phys. Rev. A 65, 032314 (2002).
+[34] Roger A. Horn and Charles R. Johnson, Matrix Analysis, 2nd
+
+=== page 14 ===
+14
+ed. (Cambridge University Press, 2012).
+[35] N. Gisin, Hidden quantum nonlocality revealed by local filters,
+Phys. Lett. A 210, 151 (1996).
+[36] C. Branciard, N. Gisin, and S. Pironio, Characterizing the Non-
+local Correlations Created via Entanglement Swapping , Phys.
+Rev. Lett. 104, 170401 (2010).
+[37] C. Branciard, D. Rosset, N. Gisin, and S. Pironio, Bilocal ver-
+sus nonbilocal correlations in entanglement-swapping experi-
+ments, Phys. Rev. A 85, 032119 (2011).
+[38] R. Horodecki, P. Horodecki, M. Horodecki, and K. Horodecki,
+Quantum entanglement, Rev.Mod.Phys 81, 865 (2009).
+[39] M. Horodecki, P. Horodecki, and R. Horodecki, Separability of
+mixed states: necessary and sufficient conditions, Phys. Lett. A
+223, 1-2 (1996).
+[40] C. H. Bennett, D. P. DiVincenzo, T. Mor, P. W. Shor, J. A.
+Smolin, and B. M. Terhal, Unextendible Product Bases and
+Bound Entanglement, Phys. Rev. Lett. 82, 5385 (1999).

@@ -1,0 +1,2389 @@
+=== page 1 ===
+Digital Object Identiﬁer (DOI) https://doi.org/10.1007/s00220-023-04697-7
+Commun. Math. Phys. 401, 2673–2714 (2023) Communications in
+Mathematical
+Physics
+A Convergent Inﬂation Hierarchy for Quantum Causal
+Structures
+LaurensT. Ligthart1 , Mariami Gachechiladze1,2,D a v i dG r o s s1
+1 Institute for Theoretical Physics, University of Cologne, Cologne, Germany.
+E-mail: ligthart@thp.uni-koeln.de
+2 Department of Computer Science, Technical University of Darmstadt, Darmstadt, Germany.
+Received: 16 February 2022 / Accepted: 10 March 2023
+Published online: 9 June 2023 – © The Author(s) 2023
+Abstract: A causal structure is a description of the functional dependencies between
+random variables. A distribution is compatible with a given causal structure if it can be
+realized by a process respecting these dependencies. Deciding whether a distribution is
+compatible with a structure is a practically and fundamentally relevant, yet very difﬁcult
+problem. Only recently has a general class of algorithms been proposed: These so-called
+inﬂation techniques associate to any causal structure a hierarchy of increasingly strict
+compatibility tests, where each test can be formulated as a computationally efﬁcient
+convex optimization problem. Remarkably, it has been shown that in the classical case,
+this hierarchy is complete in the sense that each non-compatible distribution will be
+detected at some level of the hierarchy. An inﬂation hierarchy has also been formulated
+for causal structures that allow for the observed classical random variables to arise from
+measurements on quantum states—however, no proof of completeness of this quantum
+inﬂation hierarchy has been supplied. In this paper, we construct a ﬁrst version of the
+quantum inﬂation hierarchy that is provably convergent. It takes an additional parameter,
+r , which can be interpreted as an upper bound on the Schmidt rank of the observables
+involved. For each r , it provides a family of increasingly strict and ultimately complete
+compatibility tests for correlations that are compatible with a given causal structure
+under this Schmidt rank constraint. From a technical point of view, convergence proofs
+are built on de Finetti theorems , which show that certain symmetries (which can be
+imposed in convex optimization problems) imply independence of random variables
+(which is not directly a convex constraint). A main technical ingredient to our proof is
+a Quantum de Finetti Theorem that holds for general tensor products of C∗-algebras,
+generalizing previous work that was restricted to minimal tensor products.
+Contents
+1. Introduction ................................. 2674
+1.1 Classical causal models ......................... 2674
+
+=== page 2 ===
+2674 L. T. Ligthart, M. Gachechiladze, D. Gross
+1.2 Quantum causal structures ....................... 2675
+1.2.1 Related problems .......................... 2677
+1.3 Results .................................. 2678
+1.3.1 Auxiliary results .......................... 2680
+1.4 Outline .................................. 2680
+2. Technical Background and Challenges ................... 2681
+2.1 Challenge 1: mathematical models of subsystems ........... 2681
+2.1.1 Hilbert space tensor products versus commuting observable algebras . . 2681
+2.1.2 Bounded versus unbounded local operators ............ 2682
+2.2 C∗-algebras ............................... 2683
+2.2.1 Deﬁnitions and the GNS construction ............... 2683
+2.2.2 C∗-algebras from generators and relations ............. 2684
+2.2.3 The NPO hierarchy ......................... 2685
+2.2.4 Tensor products ........................... 2687
+2.3 Description of quantum causal structures in the commuting-operator model . 2688
+2.3.1 Quantum inﬂation ......................... 2689
+2.4 Challenge 2: inﬁnite quantum de ﬁnetti theorem for general C∗ tensor
+products ................................. 2691
+2.5 Challenge 3: identifying the local observable algebras ......... 2691
+2.5.1 Example of measurement operators that do not generate elements
+from the local algebras ....................... 2692
+3. de Finetti Theorem for the Maximal Tensor Product ............ 2693
+4. A Convergent Hierarchy ........................... 2698
+4.1 Construction of the hierarchy ...................... 2698
+4.1.1 The universal algebra of the quantum causal structure ....... 2698
+4.1.2 Polynomial constraints and objective function ........... 2699
+4.1.3 NPO formulation .......................... 2700
+4.2 Proof of completeness .......................... 2701
+4.3 Arbitrary quantum causal structures .................. 2705
+4.3.1 Network scenarios ......................... 2706
+4.3.2 Latent exogenous causal structures ................. 2706
+4.3.3 Non-exogenous causal structures .................. 2708
+5. Conclusions and Outlook .......................... 2712
+1. Introduction
+1.1. Classical causal models. Gaining information about causal relationships between
+variables from observational data is an important problem in empirical science [ 1–3].
+In the formalization laid out in Ref. [ 4], causal relationships between classical random
+variables are modeled using directed acyclic graphs (DAGs; also: Bayesian networks or
+causal structures). Each vertex corresponds to a random variable. Arrows denote causal
+relationships, in the sense that each variable is taken to be a function of its parents in the
+graph and independent randomness. Causal structures that we consider here may have
+two types of vertices: variables that can be directly observed and variables that are not
+accessible, known as latent or hidden variables. In the graphical notation using DAGs,
+we will use circles to indicate latent variables and squares for observed ones (see Fig. 1
+for an example of a classical and a quantum causal structure).
+We are interested in the following causal hypothesis testing problem: Given a joint
+distribution over the observed random variables and a candidate causal structure, can the
+
+=== page 3 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2675
+distribution be realized in a model that is compatible with the structure? One reason why
+this question is difﬁcult is that we allow for arbitrary functional relationships between
+parent and child variables, and also for the unobserved variables to take values in arbitrary
+sets. (We do, however, restrict attention to the case where the observed variables take
+values in ﬁnite alphabets.)
+Because there is an inﬁnite set of possible functional relationships, it is a priori not
+obvious that the causal hypothesis testing problem is even algorithmically decidable.
+Two computational solutions have recently been developed, though. The ﬁrst makes
+use of the realization that arguments based on Caratheodory’s Theorem can be used
+to upper-bound the size of the sets in which the unobserved variables take values [ 5].
+For ﬁnite-sized alphabets quantiﬁer elimination algorithms can in principle be used to
+decide compatibility (see, e.g. [ 6,7]). The runtime of these solutions, however, renders
+these approaches impractical even for the smallest non-trivial scenarios.
+The second solution is based on linear programming (LP) hierarchies [ 8,9]. Given a
+joint distribution P and a relaxation level n, these approaches construct an LP that runs
+in time polynomial in n and the number of parameters describing P. If the data fails the
+LP test at a level k, the distribution is not compatible with the causal structure. If the data
+passes, no conclusions can be made. As n increases, more and more incompatible distri-
+butions will be recognized. Such hierarchies are called complete if every incompatible
+distribution will be rejected from some level n onward. Geometrically, the set of distri-
+butions accepted at relaxation leveln is an outer approximation to the set of distributions
+compatible with a given structure. A complete hierarchy thus corresponds to a sequence
+of outer approximations that converge to the true set. In a break-through development,
+a convergent LP hierarchy for the classical causal hypothesis testing problem has been
+developed under the name of inﬂation technique [9].
+The high-level idea behind the inﬂation technique is to check for the existence of
+certain symmetric extensions . Indeed, assume that a distribution is compatible with a
+candidate causal structure. One can then deﬁne an inﬂated model that involves n inde-
+pendent copies of the hidden variables. This larger model has a number of symmetries:
+One can exchange a hidden variable from one of the copies with the same hidden variable
+from another copy, without affecting the distribution (see Fig. 3). The n-th level of the
+hierarchy tests whether such an n-fold inﬂated model exhibiting all these symmetries
+exists.
+From a technical point of view, one difﬁculty of the causal compatibility problem lies
+in the fact that the distribution of the variables must not show any dependencies other
+than those that are explicitly modeled by the graph. The set of independent probability
+distributions is not convex as a subset of all multivariate distributions. Therefore, there is
+no direct way of enforcing the independence conditions that are part of the deﬁnition of a
+causal model in a convex optimization problem. The inﬂation hierarchy circumvents this
+problem by imposing the symmetry constraints that follow from independence. These
+symmetries are linear relations, which can easily be incorporated into a convex formu-
+lation. Fortunately, it has long been realized that in an asymptotic sense, symmetries
+conversely often do imply independence. Such results are known as de Finetti Theorems
+[9–14]. It is therefore unsurprising that the completeness proof of the classical inﬂa-
+tion technique builds on a tailor-made de Finetti Theorem [ 9], and that a generalized
+Quantum de Finetti Theorem is at the heart of our own argument.
+1.2. Quantum causal structures. It is natural to generalize the causal hypothesis testing
+problem to quantum causal structures [15–19]. A conceptual difference to classical
+
+=== page 4 ===
+2676 L. T. Ligthart, M. Gachechiladze, D. Gross
+(b)(a)
+Fig. 1. The triangle scenario —a conceptually simple, but mathematically non-trivial causal structure that
+serves as the guiding example in this paper. Round vertices denote latent variables that are not directly
+accessible, while observed variables are written in squares. Arrows represent causal relations. In the classical
+case depicted in ( a), the graph denotes the hypothesis that the observed variables A, B, C arise in a process
+where (1) the latent variables X, Y, Z are chosen from a product distribution, and (2) each observed variable
+A, B, C is computed as a function of its graph-theoretical parents and additional independent randomness.
+Given a joint distribution of the observed variables and a candidate causal structure, we aim to decide whether
+the distribution is compatible with a process as outlined above. For example, take A, B, C to be binary random
+variables. It is easy to see that a joint distribution where the outcomes are random but perfectly correlated is not
+compatible with the triangle scenario. In the quantum case, shown in ( b), each of the round nodes represents
+a bi-partite quantum state. One subsystem is distributed along each outgoing arrow. At each square vertex, a
+bi-partite measurement is performed on the two incoming quantum systems, and the result is assigned to an
+observed classical random variable
+causal models is that, due to the no-broadcasting theorem, quantum states cannot be both
+measured and also serve as an input for further processing. A general framework for a
+graphical notation for quantum causal structures is beyond the scope of this document (a
+detailed discussion can be found e.g. in Refs. [15,18,19]). Here, we mainly focus on the
+subset of quantum causal structures known ascorrelation scenarios[20]. These comprise
+one layer of hidden nodes and one layer of observed nodes, with arrows pointing from
+hidden to observed ones (more general causal structures are discussed in Sect. 4.3).
+The input to the causal hypothesis test for correlation scenarios is a bipartite directed
+graph and a joint probability distribution with one classical variable corresponding to
+every observed node (see Figs. 1b and 3b for examples). The problem is then to decide
+whether the classical distribution could have arisen from the following process:
+1. For each hidden node, prepare a quantum state on as many systems as there are
+outgoing arrows from that node. The quantum state can be entangled among the
+subsystems, but the states associated with different latent nodes must be independent.
+Then, distribute the subsystems along the arrows to the observed nodes.
+2. At each observed node, perform a global measurement on all incoming quantum
+systems. Assign the result to the observed random variable.
+This is the quantum causal hypothesis testing problem we are concerned with in the
+present paper.
+To give an example, we again take the triangle scenario, which is depicted for the
+quantum case in Fig. 1b. The latent variables are now quantum systems with quantum
+states that are labeled according to the observer to which they are sent. For example,
+ρAB is a bipartite quantum state, of which the ﬁrst part is sent to Alice and the second
+part to Bob. The arrows indicate independent quantum channels and whenever an arrow
+
+=== page 5 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2677
+ends in a classical observable node, a measurement is performed at that node. Nodes that
+do not have any incoming edges are called root nodes and are assumed to be prepared
+in independent initial states. Note the abuse of notation that is commonly used in the
+graphical representation of quantum causal structures: The hidden nodes are labeled by
+quantum states, as opposed to the quantum systems on which they live. This is in contrast
+to the classical case, where the hidden nodes are labeled by the random variables and
+not by their probability distributions. Here we have opted to adopt this commonly used
+abuse of notation, as the quantum state is generally considered as the more central object.
+Recently, a hierarchy of semideﬁnite programming tests generalizing the inﬂation
+technique to the quantum case has been proposed [ 16]. However, it is an open problem
+to decide whether it is complete, i.e. whether every distribution that is incompatible with
+a given quantum causal structure will be rejected at some level of the hierarchy.
+1.2.1. Related problems In order to get a feeling for the causal hypothesis testing prob-
+lem, it is instructive to consider a few related examples.
+A closely related and particularly well-studied case is the Bell scenario (Fig. 2). In
+a Bell scenario, observable classical variables come in pairs: A parent variable that is
+interpreted as a party’s choice of which measurement to perform, and a child variable
+that is interpreted as the output of the measurement. There is also one hidden variable
+that connects to every child variable. The celebrated result of Bell says that the set of joint
+distributions observable in such a scenario differs between the case where the hidden
+variable is taken to be classical, and the case where it is allowed to be quantum. The causal
+hypothesis testing problem for Bell scenarios is well-understood, both classically and
+quantum mechanically. In either case, the set of possible distributions of the measurement
+results conditioned on the input forms a convex set [ 21].
+If the hidden variable is classical, this convex set is a polytope. As such, it is deﬁned
+by a ﬁnite number of linear inequalities known as Bell inequalities. This immediately
+gives rise to a ﬁnite algorithm for deciding the causal hypothesis test: A distribution is
+compatible with the causal structure if and only if it satisﬁes all Bell inequalities for the
+scenario.
+Characterising the set of correlations that can arise from a shared quantum state is
+considerably harder. In certain low-dimensional situations, complete analytical formulas
+are known [ 22,23]. For the general case, the most explicit known numerical tool is the
+Navascués–Pironio–Acín (NPA) hierarchy [24–26], a convergent1 SDP hierarchy.
+With the result presented in this paper, the situations for Bell scenarios and correlation
+scenarios are now analogous: If the hidden variables are classical, then compatibility
+with both scenarios can be decided using linear programming; if they are quantum, then
+there exist convergent SDP hierarchies.
+Finally, we remark that mathematical methods different from convex optimization
+hierarchies have been developed for the quantum causal compatibility problem. They are
+usually computationally cheaper, but fail to be complete and might only be applicable
+to certain scenarios. These include: polynomial Bell inequalities tailored for quantum
+networks [27–29]; methods using entropy inequalities [ 15,30–32]; covariance matrices
+[33–35]; methods tailored to bilocality [36] and star network scenarios [37]; correlations
+obtained in the triangle, when each source produces the same pure entangled state of
+two qubits [38].
+1 Convergence assumes that local subsystems are modeled as commuting observable algebras, see Sect.2.1
+for discussion.
+
+=== page 6 ===
+2678 L. T. Ligthart, M. Gachechiladze, D. Gross
+Fig. 2. The Bell scenario, where the latent variable is a quantum state. The set of correlations that can arise
+from this quantum version of the Bell scenario is larger than its classical counterpart. This set of quantum
+correlations can be categorized by the NPA hierarchy, a converging hierarchy of semideﬁnite programs
+1.3. Results. Our main motivation is the approximate quantum causal compatibility
+problem.
+Problem 1. (Approximate quantum causal compatibility) Given ϵ≥ 0, a causal struc-
+ture and a probability distribution over observable variables P, determine whether there
+exists a distribution ˜P that can be produced by a quantum model compatible with the
+causal structure, such that ‖˜P − P‖2
+2 ≤ ϵ.
+Following Refs. [9,16], we will phrase it as a special case of a more general causal
+polynomial optimization problem. There, the goal is to minimize a polynomial function
+f0(ρ) over states ρ that are compatible with the causal structure and in addition satisfy
+a set of polynomial constraints fi(ρ) = 0.
+The notion of a “polynomial function in states” needs to be explained. A quantum
+model associates with each party an algebra of observables. We assume that these al-
+gebras possess a ﬁnite set of generators G ={ gi}i (in the main text, we describe how
+to derive a suitable set of generators for each causal structure and any given number of
+outcomes per party). For now, we treat the gi as (non-commutative) variables—later we
+will optimize over all possible assignments of concrete operators to the gi .L e tF(k)(G)
+be the vector space formed by complex linear combinations of words of length k in the
+symbols gi and g∗
+i . Each element x ∈ F(k) deﬁnes a “linear function f on states” in
+the following sense: Choose an assignment of operators to the gi .L e tD be the resulting
+algebra of observables. Then x can be understood as an element of D.L e tρ be a state
+on D. Then the linear function is just f : ρ ↦→ ρ( x). To deﬁne a degree- g polynomial,
+start with an element x in the g-fold tensor product F(k) ⊗···⊗ F(k) and set
+f : ρ ↦→ ρ⊗g(x). (1)
+We say that x is a polarization of the polynomial f . Note that polarizations x are deﬁned
+independently of any assignments of concrete operators to the generators—so they can
+be used to specify polynomial objective functions for problems that optimize over such
+assignments.2
+2 In the context of quantum inﬂations, there are two distinct sources of “polynomials” that must not
+be confused. First, general operators arise as (non-commutative) polynomials in the generators. The word
+
+=== page 7 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2679
+Problem 2 (Quantum causal polynomial optimization) . Given a causal structure, the
+number of possible measurement outcomes for each party, a polynomial function f 0
+on quantum states (as deﬁned above), and a countable set of polynomial functions
+f1, f2,... that are non-negative on quantum states compatible with the causal structure.
+Find
+f ⋆ = minρ f0(ρ)
+s.t. f i(ρ) = 0 i ≥ 1
+ρ is compatible with the causal structure .
+Problem 1 reduces to Problem 2 by choosing f0 to be the 2-norm distance between
+the observed data P and the one produced by the state. More general objective functions
+can be important in applications—see [ 16, Section VII] for examples.
+The rigorous deﬁnition of a quantum causal structure depends on a mathematical
+model of the notion of a “local subsystem”. In this paper, we model local subsystems
+via commuting observable algebras of bounded operators. One could also consider al-
+ternative models: Instead of via commuting algebras, locality could be formalized in
+terms of tensor products of Hilbert spaces [ 39–42]. Even though the causal compati-
+bility problem only involves bounded operators (the algebra generated by the POVM
+(positive operator-valued measure ) elements that give rise to the observed probabili-
+ties), one could allow for unbounded operators in the local algebras on which they act.
+A detailed discussion of these modeling decisions is given in Sect. 2.1. As we argue
+there, while these distinctions are certainly of mathematical interest, it seems unlikely
+that they will be relevant for data that arises from physical scenarios.
+The SDP hierarchy that we describe differs slightly from the original quantum in-
+ﬂation hierarchy of [ 16]. Most importantly, we add two new parameters: r, C, which
+are related to the Schmidt decomposition of the measurement operators. To deﬁne them,
+consider a node of a quantum causal structure, say the one that gives rise to the random
+variable A in the triangle scenario. Each possible outcome is associated with a POVM
+element E. As there are two incoming arrows to this vertex, E acts on two quantum
+systems. Call the observable algebras acting on the respective subsystems A−, A+.F o r
+ﬁxed values of r, C, we assume that E is of the form
+E =
+r∑
+α=1
+e−(α)e+(α)
+for suitable operators e−(α) ∈ A−, e+(α) ∈ A+ such that
+‖e−(α)‖,‖e+(α)‖≤ C.
+Call models like this rank-constrained with parameters r, C.
+Footnote 2 continued
+“polynomial” in the non-commutative polynomial optimization (NPO) framework refers to this sense. But
+NPO objective functions are still linear in the state. In contrast, the term “polynomial” in the quantum causal
+polynomial optimization problem —both as treated here and in Ref. [ 9,16]—indicates that we are allowing
+for objective functions that are polynomials in the state (in the sense explained above). Using the notions
+introduced in the main text, the degree of polynomial expressions in the generators of the algebra is connected
+to the level k of the NPO hierarchy, while the degree of polynomial functions of the states corresponds to the
+level n of the inﬂation hierarchy.
+
+=== page 8 ===
+2680 L. T. Ligthart, M. Gachechiladze, D. Gross
+Problem 3 (Rank-constrained quantum causal polynomial optimization) . With the no-
+tation of Problem 2, ﬁnd
+f ⋆
+r,C = minρ f0(ρ)
+s. t. f i(ρ) = 0 i ≥ 1
+ρ is a state on a model that is rank -constrained with parameters r, C
+ρ is compatible with the causal structure .
+Here, we construct semi-deﬁnite programming relaxations for these problems:
+Theorem 1. Use the notation of Problems2 and 3. F or every r, C, there exists a hierarchy
+of semi-deﬁnite programs indexed by an inﬂation parameter n and an NPO parameter k.
+Denote the optimal values by f ⋆
+r,C,n,k .
+The hierarchy is complete in the sense that, as n , k →∞ ,t h e f ⋆
+r,C,n,k converge to
+f ⋆
+r,C from below. What is more, as r, C →∞ ,t h e f ⋆
+r,C converge to f ⋆ from above.
+Increasing the parameter C does not come with signiﬁcant computational cost (c.f.
+the discussion of the Archimedean property in [26]). Larger values of r , in contrast, do
+correspond to a larger number of variables and constraints in the SDP formulation. The
+decision to add these additional degrees of freedom must therefore be well-justiﬁed.
+While we cannot prove that they are strictly necessary (which would in particular im-
+ply that the original quantum inﬂation hierarchy is not convergent), we identify some
+challenges that any constructive convergence proof that does not include these extra
+variables would face (Sect. 2.5).
+1.3.1. Auxiliary results A quantum causal structure imposes independence conditions
+on the latent nodes. We deduce independence from the symmetry constraints imposed
+in the SDP hierarchy via a Quantum de Finetti Theorem. A technical challenge arises
+because SDP hierarchies model local subsystems via commuting observable algebras,
+rather than via Hilbert space tensor products (also known as minimal tensor products in
+the C∗-algebraic literature) [39–42]. To the best of our knowledge, the existing literature
+on de Finetti Theorems for inﬁnite systems is phrased only in terms of the minimal tensor
+product [11,43], which is not general enough for our purposes. To address this, we show
+that the arguments in Ref. [ 11] generalize to the maximal tensor product, and hence to
+any way of realizing local observables as commuting subalgebras of a global system.
+This is the content of Theorem 7.
+Both the original quantum inﬂation hierarchy [16] and our work are built on the non-
+commutative polynomial optimization (NPO) hierarchy introduced in Ref. [26]. Because
+the generalized Quantum de Finetti Theorem that is central to our convergence proof
+requires C∗-algebraic methods, we rephrase the framework of Ref. [26] in this language
+in Sect. 2.2. Following Ref. [44, Section II.8.3], we give a description of NPO problems
+as optimizations over the state space of a universal C ∗-algebra. This more abstract
+formulation might be beneﬁcial in arguments that require algebraic methods.
+1.4. Outline. The paper is structured as follows. We start in Sect. 2 by explaining the
+necessary theory on C∗-algebras, causal structures and the inﬂation technique. Here we
+also outline the main challenges that one faces when trying to tackle the question of
+causal compatibility. In Sect. 3 we solve one of the challenges by adapting a proof of
+
+=== page 9 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2681
+a de Finetti Theorem for the minimal C∗ tensor product by Raggio and Werner [ 11]
+to a similar de Finetti Theorem for the maximal C∗ tensor product. Sect. 4 describes
+an SDP hierarchy for the causal optimization problem with Schmidt-rank constraints
+on the measurement operators. We show that this hierarchy is convergent and has the
+causal compatibility problem as a special case. The proof relies heavily on the de Finetti
+Theorem of Sect. 3. While formulating the SDP hierarchy and the proof, we focus
+on the well-known triangle scenario, but in Sect. 4.3 we show that a converging SDP
+hierarchy can be found for any quantum causal structure. We end the main text of the
+paper in Sect. 5 by recounting the most important results of the paper and discussing
+some questions that remain open.
+2. Technical Background and Challenges
+In this section, we introduce the technical tools used in this paper and explain the chal-
+lenges one encounters when trying to rigorously formulate and decide the completeness
+problem for inﬂation hierarchies.
+2.1. Challenge 1: mathematical models of subsystems. The deﬁnition of a quantum
+causal structure depends crucially on the notion of a subsystem. Here, we describe two
+subtle modeling decisions that have to be made when making this term precise.
+2.1.1. Hilbert space tensor products versus commuting observable algebras In elemen-
+tary quantum mechanics, the central object that characterizes a quantum system is its
+Hilbert space. In this framework, one thus associates to each subsystem a Hilbert space
+Hi and takes the joint Hilbert space to be their tensor product H12 = H1 ⊗ H2.T h es e t
+of observables is then derived from the Hilbert space structure. For the individual sub-
+systems, the observables are the linear operators Ai = L(Hi). They can be embedded
+into A12 = L(H12) by taking the tensor product with identities on the other subsystem:
+A1 ≃ A1 ⊗ I, A2 ≃ I ⊗ A2. (2)
+In contrast, in algebraic quantum mechanics (c.f. [ 45, Chapter 8], [ 46]), the set of
+observables is seen as being more central. Consequently, one associates an observable
+algebra Ai with each subsystem. A joint system is then any algebraA12 that contains A1
+and A2 as commuting subalgebras and is generated by them. Clearly, the construction in
+(2) provides an example of algebras standing in such a relation—but it turns out that there
+are more general scenarios that cannot be realized using Hilbert space tensor products.
+Commutativity has physical consequences, e.g. in terms of joint measurability—so if
+we accept the quantum-mechanical description of observable phenomena in terms of op-
+erators, we are forced to conclude that measurements in space-like separated regions are
+described in terms of commuting operators. However, the stronger requirement that the
+underlying Hilbert space forms a tensor product is not obviously physically motivated.
+For a long time, it was an open problem to decide whether there are correlations that
+can be realized by performing measurements on commuting operators, but not on opera-
+tors acting on distinct factors of a tensor product Hilbert space. In quantum information
+theory, this question has been known as Tsirelson’s problem and was shown to be equiv-
+alent to other long-standing open problems in operator theory, most notably Connes’
+embedding problem [39–41]. In a recent break-through result, these questions have been
+
+=== page 10 ===
+2682 L. T. Ligthart, M. Gachechiladze, D. Gross
+decided: The commuting-operator model does capture more general correlations than
+the tensor-product model [ 42].
+The above raises the question which of the two mathematical models to adopt. Here,
+we take a pragmatic approach. It has long been realized (and in fact, has historically
+triggered Tsirelson to speculate) that commutativity is easily encoded as a constraint in
+SDPs that give outer approximations to the set of quantum correlations [ 47]. The same
+is not true for the tensor product property. Since either model is legitimate, but one is
+a better ﬁt for the SDP hierarchies we want to make a statement about, we opt for the
+approach in which locality is modeled by commutativity.
+Therefore, in our work, we will assume throughout that one can associate an algebra
+of observables with each party and that these algebras commute.
+Terms—like product states or separable states—that are commonly deﬁned in quan-
+tum information theory with reference to a Hilbert space tensor product structure will be
+used in this paper in an analogous way that only relies on commutativity. In particular:
+Deﬁnition 2. Let A, B be commuting algebras. A state ρ is said to be a product state
+across A | B if
+ρ( x · y) = ρ( x)ρ( y) ∀x ∈ A, y ∈ B. (3)
+A state is said to be separable across A | B if it can be written as a convex combination
+of such product states, i.e. if
+ρ( x · y) =
+∫
+dμ(σ)σ( x · y) =
+∫
+dμ(σ)σ( x)σ( y), (4)
+for some probability measure μ over product states.
+2.1.2. Bounded versus unbounded local operators In this paper, we are interested in ob-
+servable probabilities that describe measurements on quantum systems. Probabilities are
+associated with POVM elements. POVM elements are bounded: Their operator norm
+does not exceed 1. It follows that the entire observable algebra generated by POVM
+elements consists of bounded operators. Many problems—e.g. the problem of charac-
+terizing the set of correlations compatible with a Bell scenario sketched above—can be
+described solely in terms of this algebra. From a technical point of view, this property
+can provide signiﬁcant simpliﬁcations. For example, the convergence proofs of the NPO
+hierarchy [ 26] or the Quantum de Finetti Theorem for inﬁnite-dimensional quantum
+systems [11] make central use of the fact that operators are bounded.
+It thus comes as bad news that this simplifying property is not obviously available
+for the causal compatibility problem.
+Indeed, consider a node of a quantum causal structure, say the one that gives rise
+to the random variable A in the triangle scenario. Each possible outcome A = a is
+associated with a POVM element Ea . As there are two incoming arrows to this vertex,
+Ea acts on two quantum systems. We therefore assume that the observable algebra A
+of the joint system is generated by two commuting subalgebras A−, A+. These local
+algebras play an important role in the deﬁnition of the causal structure: It is with respect
+to them that the state is required to factorize. But, while Ea is bounded, the authors
+are not aware of any result that would imply that one can assume the same is true for
+elements of A−, A+.
+
+=== page 11 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2683
+More concretely, we cannot exclude the possibility that there is a mathematical model
+of “local quantum systems” in which one can assign a precise meaning to the series
+Ea =
+∞∑
+α=1
+e−(a,α) e+(a,α) (5)
+for suitable unbounded operators e−(a,α) ∈ A−, e+(a,α) ∈ A+, but where no such
+expression for Ea exists if the e−, e+’s are required to be bounded.
+In our precise deﬁnition of a quantum causal model, we will assume that it is not
+necessary to allow for such singular situations. The convergence proof makes use of this
+assumption (implicitly, by virtue of being phrased in terms ofC∗-algebras, which model
+bounded operators). In fact, the main difference between our hierarchy and the original
+quantum inﬂation one [ 16] is that we add explicit generators and norm constraints for
+these local operators (see Sect. 2.5 for further evidence that some such addition may be
+necessary).
+While it is an interesting question about operator algebras whether the assumption is
+actually necessary, it seems that under mild physical conditions, observed correlations
+can be approximated using models for which it is valid. For example, if each subsystem
+is endowed with a non-degenerate Hamiltonian and the state has ﬁnite energy, one
+can always compress the local observables to ﬁnite-dimensional low-energy subspaces
+on which they are obviously bounded. So as long as not both the observable and the
+state display rather singular behavior, an approximate bounded model should always be
+possible in physical situations.
+2.2. C ∗-algebras.
+2.2.1. Deﬁnitions and the GNS construction The mathematical abstraction of an algebra
+of bounded operators on a Hilbert space is captured by the concept of a C∗-algebra.I n
+this section, we introduce the notions that are used in this paper. For more details we
+refer the reader to e.g. Refs. [ 44,46,48].
+Consider a complex algebra A with an anti-linear involution ∗.A C∗-norm on A is
+a norm satisfying
+||xy|| ≤ ||x|| ||y|| ,
+⏐⏐⏐⏐x∗ x
+⏐⏐⏐⏐ = ||x||2 ∀ x, y ∈ A. (6)
+A is a C∗-algebra if it is complete with respect to a C∗-norm. A C∗-algebra is unital
+if it contains the identity I. In this paper, we only consider unital algebras and will no
+longer mention this attribute explicitly. For example, the set of bounded operators on a
+Hilbert space together with the operator norm and the involution given by the adjoint
+realizes a C∗-algebra.
+Conversely, any abstractC∗-algebra can be realized as bounded operators on a Hilbert
+space. To see how, we need to introduce the notion of a state. An element x of a C∗-
+algebra A is positive if it is of the form x = y∗ y for some y ∈ A.As t a t e ρ on a
+C∗-algebra A is a linear functional that is positive in the sense that ρ( x) ≥ 0 for all
+positive x ∈ A and which is normalized in that ρ(I) = 1. We denote the state space of
+A by K(A).
+Any state ρ induces a sesquilinear form on the algebra A via ⟨x, y⟩: = ρ( x† y).
+The form turns the quotient A/{x |⟨ x, x⟩= 0} into a pre-Hilbert space on which
+A acts in a natural way. The Gelfand–Naimark–Segal (GNS) construction makes this
+
+=== page 12 ===
+2684 L. T. Ligthart, M. Gachechiladze, D. Gross
+observation precise and associates with every stateρ a Hilbert space Hρ , a representation
+πρ : A → Hρ , and a vector |/Omega1⟩such that
+ρ( x) =
+⟨
+/Omega1|πρ(x)|/Omega1
+⟩
+∀x ∈ A
+Using the GNS construction, one can prove that any C∗-algebra can be realized as
+an operator algebra acting on a Hilbert space, providing a converse to the motivating
+example of a C∗-algebra above.
+2.2.2. C ∗-algebras from generators and relations To reason numerically about observ-
+able algebras, one needs to express them in a format that can be processed by a computer.
+Both the original quantum inﬂation hierarchy [ 16] and our work are built on the non-
+commutative polynomial optimization (NPO) hierarchy introduced in Ref. [ 26]. There,
+algebras are speciﬁed by generators and relations. We introduce the theory in this sub-
+section.
+Because the generalized Quantum de Finetti Theorem that is central to our conver-
+gence proof requires C∗-algebraic methods, we rephrase the framework of Ref. [ 26]
+in this language. To this end, we employ the terminology of universal C ∗-algebras as
+described in [44, Section II.8.3].
+Let G ={ gi}i be a countable set of symbols. Denote by F(G) the free complex ∗-
+algebra generated by the elements of G. Put differently, F(G) is the set of ﬁnite complex
+linear combinations of words in the symbols gi and g∗
+i , with multiplication deﬁned by
+concatenation of words. Choose a countable setR ⊂ F(G). We aim to deﬁne the “largest
+C∗-algebra with generators G, subject to the constraint that each q ∈ R is positive”. We
+will refer to the elements of R as relations.
+To make this notion precise, deﬁne arepresentation of (G|R) to be a homomorphism
+π : F(G) → B(H) from the free algebra into the set of bounded operators on some
+Hilbert space H, such that π(q) is a positive operator for every q ∈ R.O n F(G), deﬁne
+||x|| := sup{‖π(x)‖| π is a representation of (G|R)}. (7)
+Now assume that the relations imply ||x|| < ∞ for all x ∈ F(G) ( m o r eo nh o ww e
+ensure this in practice below). In this case, ||·|| is a seminorm on F(G).T h e universal
+C∗-algebra on (G|R), abbreviated as C∗(G|R), is then the completion of F(G) with
+respect to this C∗-seminorm.3 We will not differentiate notationally between an element
+x ∈ F(G) and its image in the completion C∗(G|R).
+In our applications, we will consider two types of relations:
+a. Equality constraints. Let x, y ∈ F(G) and assume that R contains both x − y and
+y − x. It then follows easily that x = y in the universal C∗-algebra C∗(G|R).W e
+will always assume that g1 =: I is constrained to commute with all the others and
+obeys Ix = xI = x for all x ∈ F(G), so that C∗(G|R) is unital.
+b. Norm constraints. Let x ∈ F(G), C ∈ R+ and assume that R contains C2I − x∗ x.
+Then ||x|| ≤ C in C∗(G|R).
+3 Recall that, despite the everyday connotations of the word, the process of “completing” a metric space
+does not necessarily only add elements to it. The completion can be deﬁned as the set of Cauchy sequences,
+with two considered equivalent if the norm of their differences converges to zero. Every x ∈ F(G) gives
+rise to an element in C∗(G|R), represented by the sequence that is constant and equal to x. Two elements
+x, y ∈ F(G) induce the same element in C∗(G|R) if and only if ||x − y|| = 0. Put differently, the completion
+adds elements to the quotient space F(G)/{x |‖ x‖= 0}.
+
+=== page 13 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2685
+We can now return to the assumption that ‖x‖ < ∞ for all x ∈ F. First, note that
+it sufﬁces to ensure that the bound holds for every generator. In quantum applications
+[16,24,25], one is often interested in algebras where the generators represent projections,
+i.e. satisfy gi = g∗
+i = g2
+i . Non-trivial projections in a C∗-algebra always have norm
+equal to 1. The modiﬁed quantum inﬂation hierarchy introduced in this paper makes
+use of generators that need not be projections. For those, we must include explicit norm
+constraints ‖gi‖≤ C. (A similar approach is taken in Ref. [ 26] to achieve what is
+referred to as the Archimedean property there.)
+We will need the following lemma, which justiﬁes our characterization of C∗(G|R)
+as the “largest C∗-algebra such that each q ∈ R is positive”.
+Lemma 3. In C∗(G|R), any element q ∈ R is positive.
+Proof. We ﬁrst show that for every representation φ of C∗(G|R), it holds that φ(q) is
+a positive operator for each q ∈ R. (Using the terminology introduced above, this says
+that a representation of C∗(G|R) is also a representation of (G|R)).
+Fix a q ∈ R. There is no loss of generality in assuming ‖q‖≤ 2.
+It holds that q = q∗, because
+‖q − q∗‖= sup
+π representation of (G|R)
+‖π(q − q∗)‖= 0,
+as π(q) is positive (and hence self-adjoint) by deﬁnition of representations of (G|R).
+For every representation π of (G|R), it holds that ‖π(I − q)‖≤ 1[ 44, Proposition
+II.3.1.2(iv)]. From the deﬁnition of the seminorm, this implies that ‖I − q‖≤ 1.
+Now assume for the sake of reaching a contradiction that for some representation φ
+of C∗(G|R), the operator φ(q) is not positive. Using again [44, Proposition II.3.1.2(iv)],
+‖φ(I − q)‖ > 1 ≥‖ I − q‖, which is a contradiction, as representations are norm-
+contractions.
+Next, let ρ ∈ K(C∗(G|R)). By the above, using the GNS representation,
+ρ(q) =⟨/Omega1|πω(q)|/Omega1⟩≥ 0.
+Hence q is positive by [ 44, Corollary II.6.3.5]. ⊓⊔
+2.2.3. The NPO hierarchy Given generators G and relations R, we are interested in
+certain linear optimization problems over states on the algebra they generate.
+In Ref. [ 26], the NPO problem is phrased as an optimization over representations π
+of F(G) and normalized vectors |φ⟩in the representation space. Concretely, choose an
+element y0 ∈ F(G) and a countable set {y1, y2,... }= Y ⊂ F(G) and consider:
+f ⋆
+NPO = min
+π,|φ⟩
+⟨φ|π( y0)|φ⟩
+s. t. π(q) ≽ 0 q ∈ R,
+⟨φ|π( yi)|φ⟩≥ 0 yi ∈ Y.
+(8)
+We prefer to think of this problem more abstractly, as an optimization over the state
+space of the universal algebra C∗(G|R):
+f ⋆
+uni = min
+ρ∈K(C∗(G|R))
+ρ( y0)
+s. t. ρ( yi) ≥ 0 y ∈ Y.
+(9)
+
+=== page 14 ===
+2686 L. T. Ligthart, M. Gachechiladze, D. Gross
+We may write min instead of inf, because the Banach–Alaoglu Theorem implies that
+the state space is weak∗-compact and thus that the inﬁmum over states evaluated on any
+ﬁxed element of the algebra is attained. Following [ 26, Section 3.6], one can in addition
+impose constraints of the form ρ(·z) = 0 for a countable set of z ∈ F(G).W eh a v e
+omitted this type of constraint from the discussion, as it is not needed for our use cases.
+Lemma 4. The solutions of (8) and (9) coincide.
+Proof of Lemma 4. Let ω be an optimizer of ( 9). Let πω be the GNS representation and
+|/Omega1⟩∈ Hω the vector that implements ω. By Lemma 3, (πω,/Omega1 )is feasible for ( 8) and
+achieves the optimal value of ( 9).
+Conversely, let (π, φ) be an optimizer of ( 8). For x ∈ F(G), deﬁne ρ( x) :=
+⟨φ|π(x)|φ⟩. If the seminorm vanishes on x, ‖x‖= 0, then, in particular, ‖π(x)‖= 0
+and hence π(x) = 0. Thus, ρ is constant on cosets of the ideal of elements on which the
+seminorm vanishes and therefore well-deﬁned as a functional on C∗(G|R). As such, it
+is feasible for ( 9) and achieves the optimal value of ( 8). ⊓⊔
+We now brieﬂy describe the semideﬁnite programming hierarchy introduced in Ref.
+[26] and sketch the completeness proof.
+Of course, the difﬁculty in solving ( 9) lies in the fact that C∗(G|R) is, in general,
+inﬁnite-dimensional. The broad idea behind the NPO hierarchy is to partition F(G) into
+an increasing family of ﬁnite-dimensional subspaces F(k) ⊂ F(G).A tt h e k-th level
+of the hierarchy, one imposes the conditions that ρ be a state and that the relations be
+fulﬁlled only to the extent to which they can be expressed using elements from F(2k).
+To carry out this program, let F(k) be the space of all elements x ∈ F(G) that can be
+expressed as a polynomial in the generators and their adjoints of degree at most k.W e
+ﬁx some basis {b(k)
+1 ,..., b(k)
+dk } of each F(k).
+Recall that a linear functional ρ on C∗(G|R) is a state if and only if ρ(I) = 1 and
+ρ( x∗ x) ≥ 0 for all x ∈ C∗(G|R). We impose a related condition by demanding that the
+matrix /Gamma1(k) with elements
+/Gamma1(k)
+ij = ρ
+(
+b(k)
+i
+∗
+b(k)
+j
+)
+, i, j = 1,..., dk (10)
+be positive semideﬁnite and that /Gamma1(k)
+1,1 = ρ(I) = 1.
+Next, consider a relation q ∈ R.L e t l be the smallest integer such that q ∈ F(2l).
+We relax the requirement that q be positive to demanding that the matrix
+(/Lambda1(k)
+q )ij = ρ(b(k−l)
+i
+∗
+qb(k−l)
+j ), i, j = 1,..., dk−l
+be positive semideﬁnite.
+Let k0 be such that x ∈ F(2k0). For each k ≥ k0, one thus arrives at a relaxation of
+Eq. (9) in terms of the semideﬁnite program
+f k = min
+ρ∈(F 2k)∗
+ρ( y0),
+s. t. ρ(I) = 1,
+/Gamma1(k) ≽ 0,
+/Lambda1(k)
+q ≽ 0 q ∈ R ∩ F(2k),
+ρ( yi) ≥ 0 yi ∈ Y ∩ F(2k).
+(11)
+
+=== page 15 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2687
+The completeness result of Ref. [ 26] states that, in the case where |Y|≤∞ is ﬁnite,
+the optimal values f k of the relaxations ( 11) converge to f ⋆
+NPO = f ⋆
+uni =: f ⋆ from
+below.
+Lemma 5. The completeness result limk→∞ f k = f ⋆ extends to the case of a countably
+inﬁnite number of inequality constraints ρ( y) ≥ 0.
+Proof. Choose some enumeration y1, y2,... for the countable set Y.L e tYs ={ y1,...,
+ys}. Assume that (11) with Y replaced by Ys is feasible for every k, s, with optimal value
+f k
+s . Using the convergence proof of Ref. [ 26] and Lemma 4, there exists a sequence of
+statesρ⋆
+s ∈ K(C∗(G|R)) that are feasible for (9) with inequality constraintsYs and attain
+f ⋆
+s := limk→∞ f k
+s . By the Banach-Alaoglu Theorem, there is a convergent subsequence.
+Let ρ⋆ be its limit point. Then, for each yi ∈ Y, ρ⋆(yi) ≥ 0, as this constraint is fulﬁlled
+by all but a ﬁnite number of the ρ⋆
+s . Thus, ρ⋆ is feasible for ( 9) with all inequality
+constraints Y taken into account and attains f ⋆ = lims→∞ f ⋆
+s . ⊓⊔
+Remark. If a space N ⊂ F(G) of elements with vanishing seminorm is known, then
+one can replace F(G) by the quotient space F(G)/N in the constructions above, while
+retaining convergence. This can result in signiﬁcantly smaller matrices that need to be
+treated. In particular, every equality constraintx = y gives rise to an element x − y ∈ N .
+2.2.4. Tensor products We return to the problem of precisely modeling the notion of
+“locality”. If A and B are the C∗-algebras of observables on one subsystem each, then
+the joint system should come with an observable algebra C that contains copies of A
+and B as commuting subalgebras and is generated by them. Unfortunately, these two
+requirements are not quite enough to uniquely determine C. To understand the freedom
+we have in deﬁning the set of global observables, start with the algebraic tensor product
+C0 = A ⊗alg B. This is the ∗-algebra of elements x of the form
+x =
+∑
+i
+ai ⊗ bi ai ∈ A, bi ∈ B (12)
+with multiplication and involution in C0 deﬁned factor-wise as
+(a1 ⊗ b1)(a2 ⊗ b2) = a1a2 ⊗ b1b2,( a1 ⊗ b1)∗ = a∗
+1 ⊗ b∗
+1. (13)
+To promote the ∗-algebra C0 to a C∗-algebra C, we have to endow it with a norm
+satisfying the C∗-norm property in Eq. ( 6) and complete it with respect to this norm.
+The choice of this norm is not unique [ 44,48]. There are two distinguished norms:
+minimal and maximal, named-so because they constrain the value of any C∗-norm on
+the algebraic tensor product by
+‖x‖min ≤‖ x‖≤‖ x‖max. (14)
+In the more general case of n tensor factors, they are deﬁned via their respective values
+on elements of A1 ⊗alg ... ⊗alg An as
+‖x1 ⊗···⊗ xn‖min = sup{‖π1(x1)‖... ‖πn(xn)‖| πi a representation of Ai }, (15)
+‖x1 ⊗···⊗ xn‖max = sup{‖π(x1 ⊗···⊗ xn)‖| π a representation of A1 ⊗alg ... ⊗alg An}, (16)
+where the suprema are taken over representations of the respective C∗-algebras as op-
+erator algebras on a Hilbert space. We denote the C∗-algebra generated by the tensor
+product of A and B and completed with respect to the norm ||.||γ by A ⊗γ B.
+
+=== page 16 ===
+2688 L. T. Ligthart, M. Gachechiladze, D. Gross
+If the Ai ’s arise as bounded operators on Hilbert spaces Ai = B(Hi), the ap-
+proach from elementary quantum mechanics corresponds to their natural embedding
+into B(H1 ⊗···⊗ Hn). The operator norm in this picture corresponds to the minimal
+tensor product. In this way, the elementary approach reappears as a special case of the
+algebraic construction.
+Convergence with respect to the maximal norm implies convergence forany operator
+representation of the global observable algebra, according to the deﬁnition in Eq. ( 16).
+Thus, in order to obtain the most general results, we will focus on the maximal tensor
+product e.g. in Sect. 3.
+2.3. Description of quantum causal structures in the commuting-operator model. We
+can now restate the deﬁnition of quantum causal structures given informally in Sect.1.2 in
+mathematically precise terms. Here, and later for the proof of the main result, we restrict
+attention to the triangle scenario (Fig. 1b). Section 4.3 discusses how to generalize the
+result to arbitrary correlation scenarios and causal structures.
+Let A, B and C be random variables. We say that a probability distributionP(A, B, C)
+is compatible with the quantum triangle scenario, if it can be realized in the following
+mathematical model.
+Assume that there is a C∗-algebra D that is generated by commuting subalgebras
+A, B, C that are each associated with a vertex of the triangle. Each of the algebrasA, B, C
+is in turn generated by two commuting subalgebras: A by A−, A+; B by B−, B+; and
+C by C−, C+. They model the observables measurable on the subsystems that enter the
+respective node from either side in the diagram (that is, A, B, C and D are C∗-tensor
+products in the sense of Sect. 2.2.4—but we take no stance on which particular one).
+Next, we assume that there is a state ρ on D that factorizes according to the causal
+structure:
+ρ( A− A+ B− B+C−C+) = ρ(C+ A−)ρ( A+ B−)ρ( B+C−) (17)
+where A− ∈ A−, A+ ∈ A+, B− ∈ B− and so on. Finally, we assume that there are
+POVMs
+{Ea}a ⊂ A, {Fb}b ⊂ B, {Gc}c ⊂ C (18)
+such that the joint distribution can be realized as
+P(a, b, c) = ρ( Ea Fb Gc), (19)
+where P(a, b, c) is short-hand for P(A = a, B = b, C = c), which is the probability
+corresponding to the values a, b, and c.
+Remark. The GNS construction applied to two commuting algebras acting on a product
+state gives rise to a tensor product Hilbert space. Thus, by ( 17), there is no loss of
+generality in assuming that A = A− ⊗min A+ and likewise for B and C. However,
+the same is not true for the tensor products between A, B, and C. (Certainly the same
+argument doesn’t apply—as ρ does not factorize as a state between the nodes. One can
+combine the results from Refs. [20,42] to see that there are correlations P that cannot be
+modeled using minimal tensor products between nodes at all). This observation does not
+obviate the need for a generalized Quantum de Finetti Theorem, as we will apply it to the
+state that is extracted from the SDP hierarchy, and there is no semideﬁnite constraint that
+can express that A is a minimal, rather than a general, tensor product of its constituents.
+
+=== page 17 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2689
+(a) (b)
+Fig. 3. a The n = 2 inﬂation of the classical triangle scenario. In the inﬂation procedure, the latent variables
+are copied and the observable variables are indexed according to these copies. For example, the variableA12 is
+the result of Z1 and X2. b The n = 2 inﬂation of the quantum triangle scenario. Again the latent variables are
+copied, but instead of obtaining copies of the observable variables, Alice, Bob and Charlie now have a choice
+of measurement operators. The measurements are performed over pairs of copies using the same measurement
+operators {Ea}a,{Fb}b, {Gc}c, labeled by the copies they act on. For example, E12a is acting on the parts of
+the quantum states ρ1
+CA and ρ2
+AB that are sent to Alice
+2.3.1. Quantum inﬂation We give a brief overview of the quantum inﬂation technique,
+which was introduced in Ref. [ 16] and generalizes classical inﬂation [ 8,9] to the case
+of quantum causal structures. This section serves to motivate the construction of the
+hierarchy in Sect. 4—but in the rest of the paper, we will not rely on results and notation
+introduced here. We again focus on the triangle scenario (See Figs. 1b and 3b).
+Given a joint distribution P(A, B, C), assume that there is a quantum model compat-
+ible with the triangle scenario. Using the terminology of Sect. 2.3, we thus know there
+exist a global observable algebraD generated by local algebrasA−, A+, B−, B+, C−, C+,
+a state ρ factorizing as in (17), and POVM elements {Ea}a,{Fb}b,{Gc}c that reproduce
+the correlations P as in (19).
+Denoting the restrictions of ρ to the algebra ⟨C+ · A−⟩generated by C+, A− as ρCA ,
+to ⟨A+ · B−⟩as ρAB , and to ⟨B+ · C−⟩as ρBC ,E q .( 17) is equivalent to demanding that
+ρ factorizes as
+ρ = ρCA ⊗ ρAB ⊗ ρBC .
+For any level n, we construct an inﬂated model as follows. Distribute n independent
+copies of the original states ρAB , ρBC and ρCA among the three nodes A, B, and C.
+At each node, we consider n2 POVMs {Eij
+a }a,{Fkl
+b }b,{G pq
+c }c. The POVM element Eij
+a
+replicates the original Ea , but acts on the i-th copy of the state ρCA and j-th copy of the
+state ρAB . The other two cases are deﬁned analogously. As a result, POVM elements
+Eij
+a , F jl
+b , and Gli
+c reproduce the original probabilities P(a, b, c).
+We now list a number of properties of the inﬂated model. These properties can be
+directly imposed as constraints in an NPO program. It follows that if P is compatible
+with the causal model, then the resulting NPO problem is feasible for any inﬂation level
+n [16]. In Sect. 4 we construct a variant of this NPO hierarchy for which we supply a
+proof of the converse implication.
+First, in Ref. [ 16]i ti sa s s u m e dt h a tt h e{Ea}a , {Fb}b and {Gc}c are orthogonal
+projective measurements, rather than more general POVMs. This simpliﬁes the SDP
+
+=== page 18 ===
+2690 L. T. Ligthart, M. Gachechiladze, D. Gross
+and can be done without loss of generality, because we do not restrict dimension and
+possible dilations would still be compatible with the causal structure.
+(Eij
+a )∗ = Eij
+a ∀i, j, a, (20)
+Eij
+a Eij
+a′ = δa,a′Eij
+a ∀i, j, a, a′, (21)
+∑
+a
+Eij
+a = I ∀i, j, (22)
+and similar for {Fkl
+b } and {G pq
+c }. In later sections we will drop this restriction, and will
+only assume that we have POVM elements, i.e. non-negative operators that sum to the
+identity.
+Second, operators that act on different subsystems commute:
+[
+Eij
+a , Fkl
+b
+]
+=
+[
+Eij
+a , Gkl
+c
+]
+=
+[
+Fij
+b , Gkl
+c
+]
+= 0 ∀i, j, k, l, a, b, c,
+(23)[
+Eij
+a , Ei′j′
+a′
+]
+=
+[
+Fij
+b , Fi′j′
+b′
+]
+=
+[
+Gij
+c , Gi′j′
+c′
+]
+= 0 ∀i ⁄= i′, j ⁄= j′, a, a′, b, b′, c, c′.
+(24)
+Third, there is a permutation symmetry, resulting from the fact that the global state
+is built out of independent copies of the original one. For any polynomial Q in the mea-
+surement operators {Eij
+a },{Fkl
+b },{G pq
+c } up to inﬂation level n and for all permutations
+π,π ′,π ′′of n elements, the following must hold:
+ρ
+(
+Q({Eij
+a , Fkl
+b , G pq
+c })
+)
+= ρ
+(
+Q({Eπ(i)π′( j)
+a , Fπ′(k)π′′(l)
+b , Gπ′′( p)π(q)
+c })
+)
+. (25)
+For example,
+ρ( E11
+a F12
+b F21
+b′ G21
+c ) = ρ( E12
+a F22
+b F11
+b′ G21
+c ) = ρ( E12
+a F21
+b F12
+b′ G11
+c ) = ρ( E22
+a F21
+b F12
+b′ G12
+c ), (26)
+where we have swapped ρ1
+AB ↔ ρ2
+AB in the ﬁrst step, ρ1
+BC ↔ ρ2
+BC in the second and
+ρ1
+CA ↔ ρ2
+CA in the third.
+Fourth and ﬁnally, for the speciﬁc problem of causal compatibility the authors of Ref.
+[16] include constraints of the marginal distribution over g ≤ n copies of the triangle
+scenario. In particular, for the triangle scenario it must hold that
+ρ
+( g∏
+i=1
+Eii
+ai Fii
+bi Gii
+ci
+)
+=
+g∏
+i=1
+P(ai, bi, ci), (27)
+since these variables describe g independent copies of the triangle causal structure. We
+will not be needing these types of constraints for our quantum inﬂation hierarchy, since
+we can already show convergence without them. Instead, for the approximate causal
+compatibility problem we will choose an objective function that, if the optimal value
+is ϵ-close to 0, ensures that Eq. ( 27) approximately holds. If ϵ = 0E q .( 27) will hold
+exactly.
+
+=== page 19 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2691
+2.4. Challenge 2: inﬁnite quantum de ﬁnetti theorem for general C ∗ tensor products.
+In addition to the conceptual problems mentioned in Sect. 2.1, switching to a more
+general notion of locality raises additional technical challenges. Indeed, the basic idea
+underlying the quantum inﬂation hierarchy is to relax independence conditions (which
+deﬁne the causal structure, but are non-convex and thus cannot directly be phrased as an
+SDP constraint) to symmetry conditions (which are linear in elements of the algebra and
+easily incorporated into an SDP). It is easily seen that independence implies symmetries
+in the inﬂated causal structure. Central to convergence arguments is that sometimes, in an
+asymptotic sense, the converse is also true. This is the case for classical causal structures
+[9]. Such converse results that obtain independence from symmetries are known as de
+Finetti Theorems and have been formulated both for classical [ 49,50] and for quantum
+[11–13,43] probability theories.
+Now a problem we face is that the literature on de Finetti Theorems for C∗-algebras
+to our best knowledge only pertains to minimal tensor products—too narrow for our
+use case. One of the main technical contributions of this work is the realization that the
+construction and proof of the Quantum de Finetti Theorem in [ 11] carries over from the
+minimal tensor product case for which it was formulated, to general C∗-tensor products.
+Implementing this program is the role of Sect. 3.
+2.5. Challenge 3: identifying the local observable algebras. We now present what we
+consider to be the most difﬁcult challenge in deciding completeness of quantum inﬂation
+hierarchies.
+Assume that a joined probability distribution P(A, B, C) passes all levels of the
+original quantum inﬂation hierarchy, as outlined in Sect.2.3.1. We thus know that there is
+a C∗-algebra D generated by the observables{Eij
+a , Fij
+b , Gij
+c } and a stateρ that reproduces
+the observed correlations (Eq. ( 27)) and is symmetric (Eq. ( 25)).
+We now need to verify that this quantum model fulﬁlls the causal constraints laid out
+in Sect. 2.3. This involves, in particular, showing that
+1. one can embed the algebra ⟨{Eii
+a }a⟩containing the measured POVM elements into
+a potentially larger algebra Aii of all observables associated with the vertex A, such
+that Aii is generated by two commuting subalgebras Ai
+−, Ai
++, and
+2. that the state ρ can be extended to all of Aii and that it factorizes in the sense that
+for each A− ∈ Ai
+−, A+ ∈ Ai
++ we have ρ( A− A+) = ρ( A−)ρ( A+).
+The second condition can be addressed using the generalized Quantum de Finetti Theo-
+rem presented below. The ﬁrst condition, however, seems much more challenging:There
+is no obvious ansatz for constructing Aii and its commuting generators Ai
+−, Ai
++ from
+the algebra D that results from the original quantum inﬂation hierarchy of Ref. [16]. In
+fact, in the subsection just below, we will give an argument that suggests that D does
+not in general contain local observable algebras Ai
+−, Ai
++ that satisfy the two conditions
+above. It would then follow that if the original hierarchy is complete, any constructive
+proof of that fact would necessarily have to introduce additional operators that are not
+generated by the measured POVMs and their copies.
+Our modiﬁed quantum inﬂation hierarchy follows such an approach (for details,
+see Sect. 4). The modiﬁed hierarchy contains generators ei
+−(a,α) ,e j
++(a,α) , which are
+constrained to commute unless both the upper and lower indices coincide. One can then
+deﬁne
+Ai
+− =⟨ {ei
+−(a,α) }a,α⟩, (28)
+
+=== page 20 ===
+2692 L. T. Ligthart, M. Gachechiladze, D. Gross
+Ai
++ =⟨ {ei
++(a,α) }a,α⟩, (29)
+Aij =⟨Ai
+− · A j
++⟩, (30)
+Ea =
+r∑
+α=1
+e−(a,α) e+(a,α) . (31)
+The observables at the other two vertices are treated analogously. This modiﬁed hierarchy
+thus fulﬁlls condition 1. listed above by construction. Theorem 11 then shows that the
+generalized Quantum de Finetti Theorem implies that there exists a state ρ such that
+condition 2. holds as well.
+2.5.1. Example of measurement operators that do not generate elements from the local
+algebras In this subsection, we provide evidence for the claim that the algebra D that
+results from the original quantum inﬂation hierarchy does not in general contain the
+local observable algebras satisfying the two conditions laid out above. The purpose of
+the material presented here is to motivate our ansatz and guide future research—it is not
+required to understand the rest of the paper.
+The strategy is to give a natural example of mutually commuting observable algebras
+Ai
+−, A j
++ and POVMs Eij
+a ∈ Ai
+− · A j
++ such that the algebra generated by the {Eij
+a }ija
+does not contain any non-trivial local observable, i.e. no element in any of the Ai
+− or A j
++
+other than I. This does not constitute a proof of the claim made above: We do not know
+whether there are correlations P(A, B, C) that will cause the original inﬂation hierarchy
+to output such a model. But it does show that there are natural choices for the operators
+Eij
+a that fulﬁll all the constraints of the hierarchy, while failing to generate the local
+observables with respect to which the factorization properties of the causal structure are
+deﬁned.
+The model is very simple: For i, j = 1,..., n,l e tAi
+−, A j
++ be the observable algebra
+of one qubit each. Consider the maximally entangled magic basis
+|ψ1⟩ij = 1√
+2
+(|00⟩+ |11⟩)ij ,
+|ψ2⟩ij = 1√
+2
+(|01⟩+ |10⟩)ij ,
+|ψ3⟩ij = 1√
+2
+(|00⟩− |11⟩)ij ,
+|ψ4⟩ij = 1√
+2
+(|01⟩− |10⟩)ij ,
+and deﬁne POVMs
+Eij
+a = |ψa⟩⟨ψa|ij .
+Lemma 6. The algebra D generated by {Eij
+a } for i, j = 1,... n; a = 1,..., 4 does not
+contain any non-trivial local operator .
+Proof. The magic basis is a stabilizer basis, and we can thus express the projection
+operator onto each vector by summing over the respective stabilizer group. In terms of
+the usual Pauli operators, this gives
+Eij
+1 = 1
+4(I + Xi
+− X j
++ + Zi
+− Z j
++ − Y i
+−Y j
++ ), (32)
+
+=== page 21 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2693
+Eij
+2 = 1
+4(I + Xi
+− X j
++ − Zi
+− Z j
++ + Y i
+−Y j
++ ), (33)
+Eij
+3 = 1
+4(I − Xi
+− X j
++ + Zi
+− Z j
++ + Y i
+−Y j
++ ), (34)
+Eij
+4 = 1
+4(I − Xi
+− X j
++ − Zi
+− Z j
++ − Y i
+−Y j
++ ). (35)
+Let
+¯X =
+n∏
+i
+Xi
+− Xi
++, ¯Z =
+n∏
+i
+Zi
+− Zi
++.
+Because distinct Pauli operators on the same system anti-commute,
+[ ¯X, Eij
+a ]=[ ¯Z, Eij
+a ]= 0
+and thus D is contained in the commutant of ¯X, ¯Z . But there is no non-trivial local
+operator that commutes with both ¯X and ¯Z . ⊓⊔
+We note that Eqs. ( 32)–(35) imply that the effects Eij
+a have Schmidt-rank ≤ 4 and a
+product decomposition with factors of operator norm C ≤ 1
+4 .
+3. de Finetti Theorem for the Maximal Tensor Product
+To the best of our knowledge, the existing literature on de Finetti Theorems for inﬁnite
+systems is phrased only in terms of the minimal tensor product [11,43]. These results are
+not directly applicable to the quantum models that result from the NPO hierarchy. Indeed,
+the latter naturally guarantees the existence of a representationπρ of the algebraic tensor
+product as operators on a Hilbert space that arise from a stateρ on A1⊗alg... ⊗alg An via
+the GNS construction. While the resulting operator norm‖πρ(x)‖constitutes a C∗-norm
+on the tensor product, we have no a priori control over its value beyond the constraints
+in Eq. ( 14).
+The purpose of this section is therefore to retrace the arguments given by Raggio and
+Werner in Ref. [11] to verify that the inﬁnite de Finetti Theorem established there gener-
+alizes to arbitrary C∗-norms on algebraic tensor products. We also present a somewhat
+simpler formulation that is sufﬁcient for our purposes.
+In fact, we state the results only in terms of the maximal C∗ tensor product norm. A
+priori, it is possible that one can derive stronger results for the GNS norm ‖πρ(·)‖,i n
+particular if the stateρ is known to have symmetries. We leave this possible improvement
+open for later investigations.
+Let D be a unital C∗-algebra and let
+Dn = D⊗maxn
+be the completion of the algebraic tensor product of n copies of D with respect to the
+maximal C∗-norm. The inﬁnite maximal tensor product is deﬁned as the inductive limit
+D∞ = limn→∞ Dn. (36)
+
+=== page 22 ===
+2694 L. T. Ligthart, M. Gachechiladze, D. Gross
+We recall the deﬁnition [44, Section II.8.2]: For any n, k ∈ N, there is a natural embed-
+ding
+Dn → Dn+k, x ↦→ x ⊗ I⊗k.
+It allows us to deﬁne addition and multiplication between elements of the union
+∞⋃
+n=1
+Dn (37)
+by embedding the element living in the smaller tensor power into the larger one and
+performing the operations there. The resulting ∗-algebra is the local algebra, called so
+as each of its elements lives in a ﬁnite tensor power. The inductive limit D∞,t h equasi-
+local algebra, is the completion of the local algebra with respect to the C∗-norm ‖·‖D∞
+on (37) which assigns to every x ∈ Dn the value
+‖x‖D∞ =‖ x‖Dn = lim
+k→∞
+‖x ⊗ Ik‖Dn+k .
+We will not notationally distinguish between an element x ∈ Dn and its embedding
+in D∞. Note that any x ∈ Dn and its extensions x ⊗ Ik are identiﬁed in D∞.
+For any n and permutation π ∈ Sn , there is an automorphism απ on Dn which acts
+by permuting tensor factors
+απ (x1 ⊗···⊗ xn) = xπ1 ⊗···⊗ xπn .
+It extends to any Dn+k by letting π act on the ﬁrst n tensor factors, and by continuity to
+D∞.
+A state ρ on D∞ is symmetric if ρ( x) = ρ(απ(x)) for every x ∈ D∞. Denote the
+set of symmetric states by Ks(D∞). We aim to show:
+Theorem 7 (Max tensor product quantum de Finetti Theorem) . Let ρ ∈ Ks(D∞) be a
+symmetric state on an inﬁnite maximal tensor product
+D∞ = limn→∞ D⊗maxn.
+Then there exists a unique probability measure μ over states on D such that for all
+x ∈ D∞,
+ρ( x) =
+∫
+K(D)
+/Pi1σ (x) dμ(σ),
+where /Pi1σ is the inﬁnite symmetric product state on D∞ associated with the state σ on
+D.
+Key to the proof is to show that symmetric states ρ deﬁne a state on the abelian C∗-
+algebra of symmetric observables whose multiplication law is derived from the tensor
+product. It is established in the general theory of C∗-algebras [46, Chapter 4] that pure
+states φ of abelian algebras are homomorphisms, i.e. that φ( xy) = φ( x)φ( y), and that
+general states of abelian algebras are unique convex combinations of pure states. Using
+the fact that in our case, the product xy is related to the tensor product x ⊗ y, we will
+obtain the claimed decomposition of ρ as a convex combination of symmetric product
+states.
+
+=== page 23 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2695
+To construct the symmetric algebra, deﬁne the symmetrization map
+Symn(x) = 1
+n!
+∑
+π∈Sn
+απ(x), (38)
+and let Sym n(D) be the image of Dn under Symn . Deﬁne the symmetric local algebra
+to be the set
+∞⋃
+n=1
+Symn(D) (39)
+with an associative and abelian multiplication law given by the symmetrized tensor
+product
+⋆: Symn(D) × Symm(D) → Symn+m(D), x ⋆y = Symn+m(x ⊗ y).
+Our aim is to mimic the construction of D∞ to arrive at a symmetric quasi-local
+algebra Sym∞(D). To this end, deﬁne embeddings
+Symn(D) → Symn+k(D), x ↦→ x ⋆I⊗k. (40)
+As was the case for D∞, addition between two symmetric local elements can now be
+deﬁned by embedding the lower power into the higher power and performing the addition
+there. This convention turns the symmetric local algebra into an abelian ∗-algebra. One
+can endow it with a C∗-seminorm [51, Section 6.1] so that the completion Sym ∞(D) is
+an abelian C∗-algebra:
+Lemma 8. The limit
+‖x‖Sym := lim
+k→∞
+‖x ⋆I⊗k‖D∞ (41)
+deﬁnes a C ∗-seminorm on the symmetric local algebra ∪n Symn(D) fulﬁlling
+‖x‖Sym ≤‖ x‖D∞ . (42)
+The completion Sym∞(D) is an abelian C ∗-algebra.
+The central ingredient to the proof is the following combinatorial lemma, which shows
+that the multiplication on ∪n Symn(D) inherited from ∪n Dn and the newly deﬁned ⋆-
+multiplication are asymptotically equivalent.
+Lemma 9. Let x ∈ Symm(D) and y ∈ Symn(D). Then
+lim
+k→∞
+⏐⏐⏐
+⏐⏐⏐(x ⋆I⊗(k−m))(y ⋆I⊗(k−n)) − (x ⋆y ⋆I⊗(k−m−n))
+⏐⏐⏐
+⏐⏐⏐D∞ = 0.
+Proof. Choose two sets of respective size m, n uniformly at random from [k]: =
+{1,..., k}. The probability that any given element is contained in both sets is m
+k
+n
+k .
+By the union bound, the probability that these two sets intersect at all is not larger than
+mn
+k . Thus
+‖(x ⋆I⊗(k−m))(y ⋆I⊗(k−n)) − (x ⋆y ⋆I⊗(k−m−n))‖D∞
+
+=== page 24 ===
+2696 L. T. Ligthart, M. Gachechiladze, D. Gross
+=
+‖‖‖ 1
+(k!)2
+∑
+π,π′∈Sk
+π([m])∩π′([n])⁄=∅
+απ (x ⊗ I⊗(k−m))απ′(y ⊗ I⊗(k−n))
+‖‖‖D∞
+≤ mn
+k ||x||D∞ ||y||D∞ .
+⊓⊔
+Proof of Lemma 8. For x ∈ Symn(D), we have the estimate
+‖x ⋆I‖D∞ =
+‖‖‖ 1
+(n +1 )!
+∑
+π∈Sn+1
+απ(x ⊗ I)
+‖‖‖D∞
+≤ 1
+(n +1 )!
+∑
+π∈Sn+1
+‖απ(x ⊗ I)‖D∞ = ||x ⊗ I||D∞ ≤‖ x‖D∞ .
+Using this estimate repeatedly shows that the sequence ‖x ⋆I⊗k‖D∞ =‖(x ⋆I⊗(k−1))⋆
+I‖D∞ is non-increasing and hence convergent. Subadditivity, absolute homogeneity, and
+invariance under involution of ‖·‖ Sym on ∪n Symn(D) follow directly from the same
+properties of ‖·‖ D∞ .F o r x ∈ Symm(D) and y ∈ Symn(D), Lemma 9 implies the
+C∗-norm property
+‖x ⋆y‖Sym = lim
+k→∞
+‖x ⋆y ⋆I⊗(k−n−m)‖D∞
+= lim
+k→∞
+‖(x ⋆I⊗(k−n))(y ⋆I⊗(k−m))‖D∞
+≤ lim
+k→∞
+‖(x ⋆I⊗(k−n))‖D∞ ‖(y ⋆I⊗(k−m))‖D∞
+=‖ x‖Sym‖y‖Sym
+with equality if y = x∗.
+We have thus veriﬁed the C∗-seminorm properties, and the second advertised claim
+follows from the general theory [ 51, Section 6.1]. ⊓⊔
+Next, we aim to set up a bijection between the space of symmetric statesKs(D∞) and
+the state space K(Sym∞(D)) of the abelian algebra. The connection revolves around
+∪n Symn(D), as it can be interpreted as a subspace of either algebra. We will thus look
+for natural ways of extending a state ρ from ∪n Symn(D) to Sym ∞(D) and to D∞
+respectively.
+For the former case, we can use the fact that∪n Symn(D) is dense in Sym∞(D). Thus,
+if ρ ∈ Ks(D∞), it is natural to try to extend it by continuity from ∪n Symn(D) to a state
+on all of Sym ∞(D). Lemma 10 shows that this ansatz indeed leads to a well-deﬁned
+map
+E : Ks(D∞) → K(Sym∞(D)). (43)
+Conversely, in order to evaluate a stateρ ∈ K(Sym∞(D)) on an element of x ∈ D∞,
+our approach is to map x to a symmetrized version Sym (x) ∈ Sym∞(D) and then to
+apply ρ to Sym(x). To deﬁne the symmetrization operation, note that any element of
+D∞ can be represented by a Cauchy sequence (xn)n with xn ∈ Dn and set
+Sym : (xn)n ↦→ (Symn(xn))n. (44)
+
+=== page 25 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2697
+Lemma 10 establishes that the result lies in Sym ∞(D) and that the adjoint
+(Sym∗(ρ))(x) = ρ(Sym(x)) (45)
+deﬁnes a map
+Sym∗ : K(Sym∞(D)) → Ks(D). (46)
+Lemma 10. The maps Sym∗ and E are well-deﬁned and inverses of each other . What is
+more, Sym∗ is weakly continuous.
+Proof. We will repeatedly make use of the fact [ 44, Prop. II.6.2.5] that the states on a
+C∗-algebra are exactly those functionals ρ that satisfy
+ρ(I) = 1, |ρ( x)|≤‖ x‖. (47)
+Equation (44) indeed deﬁnes a map from D∞ → Sym∞(D):I f (xn)n, xn ∈ Dn is a
+Cauchy sequence with respect to ‖·‖ D∞ , then by Eq. ( 42), the sequence (Symn(xn))n
+is Cauchy with respect to ‖·‖ Sym and therefore an element of Sym ∞(D). Next, let
+ρ ∈ K(Sym∞(D)). Then
+ρ(Sym(I)) = ρ(I) = 1, |ρ(Sym(x))|≤‖ Sym(x)‖Sym ≤‖ x‖D∞ ,
+thus Sym∗(ρ) is a state. Because Sym ◦απ = Sym for any permutation π , Sym∗(ρ) is
+symmetric. The map Sym∗ is weakly continuous: If a netρλ in K(Sym∞(D)) converges
+weakly toρ, then in particularρλ(Sym(x)) → ρ(Sym(x)) for all x ∈ D. Thus Sym∗(ρλ)
+converges weakly to Sym∗(ρ).
+To prove thatE is well-deﬁned, start with a stateρ ∈ Ks(D∞).F o rx ∈∪ n Symn(D),
+using symmetry and Eq. ( 47),
+|ρ( x)|= lim
+k→∞
+|ρ( x ⋆I⊗k)|≤ lim
+k→∞
+‖x ⋆I⊗k‖D∞ =‖ x‖Sym.
+In other words, on ∪n Symn(D), ρ is bounded with respect to the ‖·‖ Sym-norm and
+can thus be uniquely extended by continuity to a functional E(ρ) on Sym∞(D).U s i n g
+Eq. (47) once more, the preceding estimate also shows that E(ρ) is a state.
+Finally, for each ρ ∈ Ks(D∞), x ∈ D∞ and σ ∈ K(Sym∞(D)), y ∈∪ n Symn(D),
+Sym∗(E(ρ))(x) = E(ρ)(Sym(x)) = ρ(Sym(x)) = ρ( x),
+E(Sym∗(σ))( y) = (Sym∗ σ)( y) = σ( y),
+which shows that the two maps are inverses of each other. ⊓⊔
+Proof of Theorem 7. Consider E(ρ) ∈ K(Sym∞(D)).B y[ 46, Example 4.1.30 and
+Proposition 2.3.27], because Sym∞(D) is abelian, there exists a unique measure ˜μ over
+pure states Kpure(Sym∞(D)), such that
+E(ρ)(x) =
+∫
+Kpure(Sym∞(D))
+˜σ( x) d ˜μ(˜σ).
+But then, for xi ∈ D,
+ρ( x1 ⊗ ... ⊗ xn) = ρ( x1 ⋆...⋆ xn) = (E(ρ))(x1 ⋆...⋆ xn)
+
+=== page 26 ===
+2698 L. T. Ligthart, M. Gachechiladze, D. Gross
+=
+∫
+Kpure(Sym∞(D))
+˜σ( x1 ⋆...⋆ xn) d ˜μ(˜σ).
+Consider one ˜σ ∈ Kpure(Sym∞(D)),l e t R : K(Sym∞(D)) → K(D) be the map that
+restricts states
+to D ⊂ Sym∞(D), and let σ = R(˜σ) . Because pure states of abelian algebras are
+homomorphisms,
+˜σ( x1 ⋆...⋆ xn) =˜σ( x1)... ˜σ( xn) = σ( x1)...σ( xn) = /Pi1σ (x1 ⊗···⊗ xn).
+The restriction R is the adjoint of the embedding D → Sym∞(D). As the adjoint
+of a bounded map, it is weak ∗-continuous by the same argument as the one used in the
+proof of Lemma 10. Thus the concatenation R◦ Sym∗ :˜σ ↦→ σ is continuous and hence
+measurable. We can therefore deﬁne a measure μ on K(D) by
+μ(S) =˜μ
+(
+(R ◦ Sym∗)−1(S)
+)
+.
+Then
+ρ( x1 ⊗ ... ⊗ xn) =
+∫
+K(D)
+/Pi1σ (x1 ⊗ ... ⊗ xn) dμ(σ),
+which proves the claim, as ∪n Dn is dense in D∞. ⊓⊔
+4. A Convergent Hierarchy
+Motivated by the difﬁculties that were outlined in Sect. 2, we propose a modiﬁed hier-
+archy of semideﬁnite programs for a Schmidt rank-constrained version of the quantum
+causal optimization problem that is provably complete. We show that by increasing the
+Schmidt rank, one can approximate any POVM arbitrarily well.
+We use the triangle causal structure without settings as a guiding example to demon-
+strate the technique and to keep the notation relatively legible. More general scenarios
+can be accommodated—e.g. it is straight-forward to add additional generators to describe
+several possible POVMs per party. Extensions of these methods to arbitrary quantum
+causal structures are discussed in Sect. 4.3.
+4.1. Construction of the hierarchy.
+4.1.1. The universal algebra of the quantum causal structure First, we deﬁne gener-
+ators and relations for the universal C∗-algebra Dn modeling the most general set of
+observables for the n-th inﬂation level of the causal structure. The algebra depends on a
+number of parameters:
+1. The causal structure (taken to be the triangle scenario for now);
+2. The number of outcomes M per vertex;
+3. The inﬂation level n;
+4. A bound r on the Schmidt rank of the measurement operators;
+5. A bound C on the norm of the generators of the local algebra.
+
+=== page 27 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2699
+The dependency of Dn on the parameters will not be made explicit, with the exception
+of the inﬂation level.
+From this data, deﬁne the set Gn of 6(M − 1)rn + 1 generators to be
+{I}∪
+{
+ei
+−(a,α) ,ei
++(a,α) , f i
+−(a,α) , f i
++(a,α) ,gi
+−(a,α) ,
+gi
++(a,α) | a ∈{ 1,..., M − 1},α ∈{ 1,..., r}, i ∈{ 1,..., n}
+}
+.
+We will use the abbreviations
+Eij
+a :=
+r∑
+α=1
+ei
+−(a,α) e j
++(a,α) , Fij
+a :=
+r∑
+α=1
+f i
+−(a,α) f j
++ (a,α) ,
+Gij
+a :=
+r∑
+α=1
+gi
+−(a,α) g j
++(a,α) (48)
+and
+Xij
+M := I −
+M−1∑
+a=1
+Xij
+a , X ∈{ E, F, G}.
+Four types of constraints are imposed. Locality constraints:
+for all x ∈{ e, f, g}, y ∈{ −, +}, a ∈{ 1,..., M},α ∈{ 1,..., r}, i ∈{ 1,..., n}:
+[xi
+y(a,α) ,x′i′
+y′(a′,α ′)]= 0 unless x = x′, y = y′, and i = i′. (49)
+Measurement constraints:
+Xij
+a is positive, X ∈{ E, F, G}. (50)
+Norm constraints:
+‖g‖≤ C, ∀ I ⁄= g ∈ Gn. (51)
+And ﬁnally that
+Ix = xI = x
+for all generators x. Together, these constraints deﬁne the set of relations Rn .T h eN P O
+will run over states on the universal C∗-algebra Dn = C∗(Gn|Rn).
+4.1.2. Polynomial constraints and objective function The quantum causal polynomial
+optimization problem minimizes a polynomial function f0 over compatible states ρ ∈
+K(D1) that also fulﬁll a number of polynomial constraints fi (ρ) = 0. Here, we construct
+these objects precisely.
+Choose some g, k ∈ N. Recall the deﬁnition of the ﬁnite vector space F(k)(G)
+of polynomials of order k in the generators G from Sect. 2.2.3. We assume that the
+functions are such that for every fi , there exists a yi in the g-fold algebraic tensor
+product F(k) ⊗alg ···⊗ alg F(k) such that fi(ρ) equals the evaluation of the product state
+ρ⊗g on yi :
+fi(ρ) = ρ⊗g(yi) (52)
+
+=== page 28 ===
+2700 L. T. Ligthart, M. Gachechiladze, D. Gross
+For our purposes, it will be enough to take Eq. ( 52) as the deﬁnition of the type of func-
+tions we allow for. We remark, though, that passing from a degree-g polynomial function
+fi on F(k) to a yi ∈ (F(k))⊗alg g such that Eq. ( 52) holds is known as a polarization in
+multi-linear algebra. In this context, it is proven that a unique suitable yi always exists.
+As an example, consider the 2-norm distance that allows one to reduce Problems 1
+to 2 as we will see in Corollary 13. The objective function is then given by
+∑
+a,b,c
+(
+ρ( E11
+a F11
+b G11
+c ) − P(a, b, c)
+)2
+. (53)
+To ﬁnd the polarization, note that for a compatible state ρ it holds that
+∑
+a,b,c
+(
+ρ( E11
+a F11
+b G11
+c ) − P(a, b, c)
+)2
+=
+∑
+a,b,c
+ρ( E11
+a F11
+b G11
+c )ρ( E22
+a F22
+b G22
+c ) − 2P(a, b, c)ρ( E11
+a F11
+b G11
+c ) + P(a, b, c)2
+=ρ⊗2
+( ∑
+a,b,c
+E11
+a F11
+b G11
+c E22
+a F22
+b G22
+c − 2P(a, b, c)E11
+a F11
+b G11
+c + P(a, b, c)2
+)
+, (54)
+which is indeed of the form ρ⊗g(yi).
+We have now assigned a precise meaning to every object that appeared in the quan-
+tum causal polynomial optimization problem (Problem 2), which we restate here with
+constraints on the Schmidt rank of the POVM elements and the norm of the generators
+(i.e. as in Problem 3): Given a causal structure, a choice for the parameters M, r, C,
+and a family of polynomial functions fi on K(D1) as deﬁned above and such that the
+fi, i ≥ 1 are non-negative on states that are compatible with the causal structure. Find
+f ⋆
+r,C = min
+ρ∈K(D1)
+f0(ρ)
+s. t. fi(ρ) = 0 i ≥ 1
+ρ is compatible with the causal structure .
+(55)
+We adopt the common convention that f ⋆
+r,C is ∞ in case the problem is infeasible.
+4.1.3. NPO formulation We now pass to an NPO problem, which we will show is
+asymptotically equivalent to the causal optimization problem in Eq. ( 55). To do so, we
+will replace the polynomial functions fi by their polarizations yi , and replace the causal
+constraint on ρ by symmetry constraints on a degree- n inﬂation.
+Choose some n larger than or equal to the degree of y0. For permutations π,π ′,π ′′∈
+Sn deﬁne an action on generators:
+ei
++ ↦→ eπ(i)
++ , f i
+− ↦→ f π(i)
+− ,
+f i
++ ↦→ f π′(i)
++ , gi
+− ↦→ gπ′(i)
+− ,
+gi
++ ↦→ gπ′′(i)
++ , ei
+− ↦→ eπ′′(i)
+− .
+(56)
+Let απ,π′,π′′be the extension of this action to F(Gn).
+
+=== page 29 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2701
+The NPO problem relaxation of ( 55) at inﬂation level n is
+f n
+r,C = min
+ρ∈K(Dn)
+ρ( y0)
+s. t. ρ( yi) = 0, i ≥ 1, yi ∈ F(n)(G),
+ρ(b(n)
+j − απ,π′,π′′(b(n)
+j )) = 0,
+(57)
+where the ﬁnal symmetry constraint ranges over a basis {b(n)
+j } for F(n)(G) and a gener-
+ating set of permutations in S×3
+n .
+We note that ( 57) is not yet directly a semi-deﬁnite program. Instead, every in-
+stance gives rise to the inﬁnite (but complete) hierarchy of SDP relaxations discussed in
+Sect. 2.2.
+4.2. Proof of completeness. Now follows the proof that the inﬂation hierarchy of Eq. (57)
+is complete, i.e. that in the limit ofn →∞ ,E q s .(57) and (55) are equivalent. Afterwards,
+we show that for every ϵ in the approximate quantum causal compatibility problem
+(Problem 1), there exist a Schmidt rank r and a norm bound C such that any compatible
+distribution can be ϵ-approximated by one that can be realized in a model that respects
+the bounds on r, C.
+Theorem 11. The hierarchy (57) is complete for the problem (55) in the sense that
+f ∞
+r,C := limn f n
+r,C = f ⋆
+r,C.
+Proof. Since each level of the hierarchy is a relaxation of the original problem, it holds
+that
+f n
+r,C ≤ f ⋆
+r,C ∀n. (58)
+The converse inequality is more involved. We start by constructing a stateωn on D∞
+for each n by taking the inﬁnite tensor product of some optimizing state of the problem
+in Eq. ( 57). By the Banach–Alaoglu Theorem applied to the state space K(D∞), there
+exists a weak∗-convergent subsequence of the ωn .L e tω be its limit point.
+For each i ≥ 1, yi has a ﬁnite degree ni . The constraint ρ( yi) = 0i n( 57) implies
+that ωn(yi) = 0 for every n ≥ ni , and therefore the same is true for the limit:
+ω( yi) = 0.
+Because ωn is chosen to be an optimizer, ωn(y0) = f n
+r,C and thus
+ω( y0) = limn→∞ f n
+r,C = f ∞
+r,C.
+Likewise, the symmetry constraints in ( 57) imply that
+ω ◦ απ,π′,π′′= ω. (59)
+Restricting to the diagonal case π = π′ = π′′, we conclude that the limit ω is a
+symmetric state on D∞, so that Theorem 7 applies.
+Next, for each 1 ≤ n ≤∞ , introduce the algebras
+(C+A−)n,( A+B−)n,( B+C−)n,
+
+=== page 30 ===
+2702 L. T. Ligthart, M. Gachechiladze, D. Gross
+Fig. 4. We associate to each quantum system an observable algebra. This means that the POVM elements of
+Alice generate a subalgebra of a larger algebra A− ⊗ A+, and similar for Bob and Charlie. It is with respect
+to the splitting C+A− | A+B− | B+C− that the global state is supposed to factorize
+where (C+A−)n ⊂ Dn is the subalgebra generated by ⋃
+i≤n
+⋃
+a,α{gi
++(a,α) ,ei
+−(a,α) },
+and similar for (A+B−)n and (B+C−)n .A s n ranges over all natural numbers, the linear
+span of elements of the form
+x = uvw,
+with u ∈ (C+A−)n , v ∈ (A+B−)n and w ∈ (B+C−)n is dense in D∞. We therefore lose
+no generality by restricting the analysis of the action of ω to elements of this form.
+Fix one n ∈ N and x = uvw ∈ Dn . Using the cycle notation, deﬁne the permutations
+π = (1, n +1 )( 2, n +2 ) ... ( n, 2n)
+(i.e. exchange the 1st block of n symbols with the 2nd block of n symbols),
+π′= (1, 2n +1 )( 2, 2n +2 ) ... ( n, 3n)
+(i.e. exchange the 1st block of n symbols with the 3rd block of n symbols).
+Then
+ω( x) = ω(αI,π,π′(x)) (60)
+= ω
+(
+u απ (v) απ′(w)
+)
+(61)
+=
+∫
+dμ(σ) /Pi1σ
+(
+u απ (v) απ′(w)
+)
+(62)
+=
+∫
+dμ(σ) /Pi1σ (u)/Pi1σ
+(
+απ(v)
+)
+/Pi1σ
+(
+απ′(w)
+)
+(63)
+=
+∫
+dμ(σ) /Pi1σ (u)/Pi1σ (v) /Pi1σ (w), (64)
+where Eq. ( 61) follows from Eqs. ( 59) and ( 62) from Theorem 7, and in Eqs. ( 63) and
+(64)w eh a v eu s e dt h a t/Pi1σ is a symmetric product state for disjoint sets of layers of the
+inﬂation.
+
+=== page 31 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2703
+For each σ , the integrand in Eq. (64) factorizes (c.f. Fig. 4). The respective marginals
+of /Pi1σ will be denoted as
+/Lambda1C+A−
+σ := /Pi1σ |(C+A−)∞ ,/Lambda1A+B−
+σ := /Pi1σ |(A+B−)∞ ,/Lambda1B+C−
+σ := /Pi1σ |(B+C−)∞, (65)
+so that the product state appearing in the integrand is
+/Lambda1σ := /Lambda1C+A−
+σ ⊗ /Lambda1A+B−
+σ ⊗ /Lambda1B+C−
+σ . (66)
+Therefore, ω is a convex combination
+ω( x) =
+∫
+dμ(σ) /Lambda1σ (x). (67)
+of states /Lambda1σ that are compatible with the causal structure.
+It remains to be shown that we can choose one σ , such that /Lambda1σ (y0) = f ∞
+r,C and
+/Lambda1σ (yi) = 0 for all i ≥ 1.
+By the deﬁnition of Problem 2,t h e yi are non-negative on states compatible with
+the causal structure, i.e. /Lambda1σ (yi) ≥ 0 for all i ≥ 1. Because ω( yi) = 0 as well, the
+constraints must be fulﬁlled on a set E ⊂ K(D) of measure μ(E) equal to one. For
+every /Lambda1σ with σ ∈ E it must hold that /Lambda1σ (y0) ≥ f ∞
+r,C , for else one could have chosen
+μ to be the point measure on a state σ′∈ E with /Lambda1σ′(y0)< f ∞
+r,C , which contradicts the
+fact that f ∞
+r,C is a minimum. As before, there must be a subset F ⊂ E of measure μ(F)
+equal to one such that /Lambda1σ (y0) = f ∞
+r,C for all σ ∈ F. Therefore, any state /Lambda1σ such that
+σ ∈ F is compatible with the constraints of Eq. ( 55), so that we can conclude
+f ∞
+r,C = /Lambda1σ (y0) ≥ f ⋆
+r,C ∀σ ∈ F. (68)
+Combining Eqs. ( 58) and ( 68) yields f ∞
+r,C = f ⋆
+r,C . ⊓⊔
+Remarks. 1. It is not obviously possible to extract a compatible state from the SDP .
+2. The proof of Theorem 11 shows that it is in general not possible to add additional
+constraints of the formρ( x) ≥ 0 to the program for elementsx that are not necessarily
+positive on compatible states: the states /Lambda1σ that are compatible with the causal
+structure might not obey these constraints, since they only apply to ω. That is, the
+set E deﬁned in the proof will in general not have full measure. However, if the
+optimization problem is a feasibility problem, i.e. if it has a trivial objective function,
+it is possible to put one such constraint as the objective function and reject the solution
+if the optimal value does not obey the inequality. We will apply this to the constraints
+of the causal compatibility problem in Corollary 13 below.
+Lemma 12. Consider a probability distribution P that is compatible with a given causal
+structure. Choose ϵ> 0. There exist constants C , r such that there is a distribution ˜P
+that approximates P in the sense that
+‖P − ˜P‖2
+2 ≤ ϵ
+which can be realized using only POVM elements of the form
+˜E =
+r∑
+α=1
+e−(α) · e+(α), such that ‖e−(α)‖,‖e+(α)‖≤ C. (69)
+
+=== page 32 ===
+2704 L. T. Ligthart, M. Gachechiladze, D. Gross
+Proof. Consider the original model that gives rise to P. By the deﬁnition of a C∗-tensor
+product, for each a = 1,..., M − 1, there is a convergent series
+Ea =
+∞∑
+α=1
+e−(a,α) · e+(a,α) , e−(a,α) ∈ A−, e+(a,α) ∈ A+.
+Let E(r)
+a be the truncation of the series to the ﬁrst r terms. Convergence implies that for
+every δ> 0, there exists an r such that
+‖E(r)
+a − E‖≤ δ a = 1,..., M − 1.
+What remains to be proven is that one can turn these partial sums into an exact POVM.
+To this end, set
+˜Ea = 1
+1+2 Mδ(δI + E(r)
+a ) a = 1,..., M − 1. (70)
+Then the ˜Ea are positive. What is more,
+‖‖‖‖‖
+M−1∑
+a=1
+˜Ea
+‖‖‖‖‖ ≤ 1
+1+2 Mδ
+(M−1∑
+a
+‖δI‖+
+‖‖‖‖‖
+M−1∑
+a
+(E(r)
+a + Ea − Ea)
+‖‖‖‖‖
+)
+≤ 1
+1+2 Mδ
+(
+(M − 1)δ +
+‖‖‖‖‖
+M−1∑
+a
+Ea
+‖‖‖‖‖ +
+‖‖‖‖‖
+M−1∑
+a
+(E(r)
+a − Ea)
+‖‖‖‖‖
+)
+≤ 1
+1+2 Mδ
+(
+(M − 1)δ +1+ (M − 1)δ
+)
+< 1
+so that
+˜EM := I −
+M−1∑
+a=1
+˜Ea
+is also positive. Therefore { ˜E1,..., ˜EM} forms a POVM. Repeating the construction,
+one arrives at approximations ˜Fb to Fb and ˜Gc to Gc.
+From Eq. ( 70), the approximating POVM elements converge to the original ones in
+operator norm as δ → 0. The same is thus true for all polynomial expressions in the
+POVM elements. Therefore,
+˜P(a, b, c) := ρ( ˜Ea ˜Fb ˜Gc) → P(a, b, c)( δ → 0)
+and, because there are only ﬁnitely many outcomes,
+‖˜P − P‖2
+2 → 0 (δ → 0).
+Thus, choosing r sufﬁciently high, an arbitrarily good approximation can be achieved.
+The advertised claim follows by choosing C to be the largest operator norm of any factor
+of the partial sums involved. ⊓⊔
+Corollary 13. Given a probability distribution P over observed variables, the SDP hier-
+archy that corresponds to the optimization problem of Eq.(57) can solve the approximate
+quantum causal compatibility problem described in Problem 1.
+
+=== page 33 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2705
+Proof. In order to solve Problem 1, we need to show that there exists a state ρ that is
+compatible with the description of the causal structure and that produces statistics that
+are close in 2-norm to the observed statistics. In particular, for the triangle scenario it
+must hold that
+∑
+a,b,c
+(
+ρ( E11
+a F11
+b G11
+c ) − P(a, b, c)
+)2
+≤ ϵ, (71)
+where ρ is a compatible state. Once again we can polarize the expression, which yields
+the objective function
+min
+ρ∈K(D2)
+∑
+a,b,c
+ρ( E11
+a F11
+b G11
+c E22
+a F22
+b G22
+c ) − 2P(a, b, c)ρ( E11
+a F11
+b G11
+c ) + P(a, b, c)2,
+(72)
+as was shown in Eq. ( 54).
+If the NPO hierarchy attains the optimal value f ∞
+r,C for this objective function, there
+also exists a product state /Pi1σ ∈ K(D∞) that is compatible with the inﬁnitely inﬂated
+causal structure that attains the same optimal value by Theorem 11.I f f n
+r,C >ϵ for
+any n, we reject the hypothesis that the given description of the causal structure with
+measurement operators of rankr and generators with a norm-bound ofC can produce the
+observed statistics. If there does exist a quantum description of P(A, B, C) Lemma 12
+ensures that there exist r and C such that the optimal value is not rejected for any n.
+In that case the restriction of /Pi1σ to D is a product state that is compatible with the
+triangle causal structure and that approximately produces the probability distribution
+P(A, B, C). ⊓⊔
+Remark. Though in the limit of n →∞ the objective function ( 72) is equivalent to
+Eq. (71), Eq.72 is likely to be impractical to detect incompatibility. For low values ofn the
+state will not be separable and this objective function can become negative. Therefore, in
+practice it is more convenient to optimize over the quadratic function (71). The problem is
+then a convex quadratic program, which can still be solved via semideﬁnite programming
+(see e.g. Ref. [ 52]). Alternatively, one can add the requirement that the measurements
+evaluate to the correct probabilities as a set of linear constraints on the state. The objective
+function can then be made trivial, or the problem can be reformulated as an eigenvalue
+optimization problem (see e.g. Ref. [ 53, Sec. 5]). However, as mentioned in the remark
+below Theorem 11, it becomes unclear whether such a hierarchy is still complete.
+4.3. Arbitrary quantum causal structures. In this section we will generalize the results
+presented above to arbitrary causal structures for which all leaf nodes are observed
+classical variables. (Recall that one can also deﬁne quantum causal structures that give
+rise to quantum states rather than classical variables [ 15], but such scenarios are beyond
+the scope of this paper). Ref. [16, Sec. V] discusses a number of transformation rules that
+bring such general causal structures into a form amenable to the hierarchy introduced
+above. It is argued there that these rules are sufﬁcient to treat every structure that gives
+rise to classical random variables. We will not repeat this argument here. However,
+for each of their transformation rules, we will explain how they can be applied in our
+modiﬁed framework.
+We will ﬁrst argue that the approach described in the previous sections is applicable
+to all network scenarios , which are two-layered causal structures with observed leaf
+
+=== page 34 ===
+2706 L. T. Ligthart, M. Gachechiladze, D. Gross
+nodes, i.e. nodes without children. In the second step, we will map any latent exogenous
+causal structure to such a network scenario. Latent exogenous causal structures are those
+in which the only unobservable nodes are root nodes, i.e. nodes that have no parents. The
+ﬁnal step is to map non-exogenous causal structures to exogenous ones by introducing
+a new type of node that can also be treated in our model.
+4.3.1. Network scenarios It is not difﬁcult to see that Theorem 11 and Corollary 13 can
+be extended to arbitrary correlation scenarios, which are the causal structures that only
+have a bottom layer of independent latent systems with arrows pointing to a top layer
+of observed variables. The triangle scenario is an example of a correlation scenario. If
+the causal structure has L latent (quantum) variables, one can employ the proof strategy
+of Theorem 11 with L · g levels of inﬂation. Indeed, for the triangle scenario one has
+3 latent quantum systems, and thus 3 g levels of inﬂation were sufﬁcient. The proof
+that causal polynomial optimization can be solved with an SDP hierarchy as described
+above remains nearly the same, with the only difference that the algebra Dn modeling
+the level-n inﬂated causal structure has to be deﬁned in accordance with the proposed
+causal structure. To show that causal compatibility is also solved, one just needs to write
+down a similar objective function as in Eq. ( 72) for the given probability distribution.
+By allowing classical root nodes that only have one child in two-layered causal
+structures, one obtains so called network scenarios . The Bell scenario from Fig. 2 is
+an example of such a network scenario. Whenever a classical, observed variable is an
+input to another observed variable, we give the POVM elements of the latter variable
+an extra index. For example in the Bell scenario, where Alice has the input variable X ,
+the POVM elements of Alice become {E x
+a }, with ∑
+a E x
+a = I for every x, so that x can
+be interpreted as a measurement setting. POVM elements with different measurement
+settings, e.g. E x
+a and E x′
+a , need no longer commute. Though this description introduces
+more variables to the model, nothing major changes in the proofs.
+4.3.2. Latent exogenous causal structures It is also possible to extend our result to
+quantum causal structures with more than two layers. The reduction of the general
+case to the proof methods considered here is not immediate. We follow Wolfe et al.,
+who generalize to arbitrary causal structures in two steps. In both cases, they offer a
+solution for how to alter the description of these causal structures such that they ﬁt in
+the framework of inﬂation and NPO. We will adopt the ﬁrst and alter the second method
+to adhere to our formalism. One then has to show that these descriptions still obey all
+the results of the previous sections. Here we brieﬂy outline why this is indeed the case
+and give the general transformation rules to map those causal structures to equivalent
+network scenarios.
+In the ﬁrst generalization step, the causal structure is also allowed to contain observed
+nodes that have both one or more parents and one or more children. However, all un-
+observed nodes remain root nodes. Such causal structures are called latent exogenous.
+An example is the instrumental scenario in Fig. 5. The probability distribution of the
+instrumental scenario is denoted by PIS (A, B, X). However, it is more common to ex-
+press the statistics in terms of conditional probabilities. For a set of N random variables
+{A1,..., AN } conditioned on K independent variables {X1,..., X K }, the statistics are
+fully captured by the combination of the conditional probabilities
+P(A1,..., AN | X1,..., X K ) = P(A1,..., AN , X1,..., X K )
+P(X1,..., X K ) , (73)
+
+=== page 35 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2707
+(b)(a)
+Fig. 5. a The instrumental scenario as an example of a latent exogenous causal structure. The variable A is
+both a parent and a child and thus the causal structure is not a network scenario. By splitting A into A and A#
+1,
+as in (b), and post-selecting A#
+1 on the outcome of A, the instrumental scenario can be modeled by a network
+scenario, which happens to be the Bell scenario. This process is an example of maximal interruption
+and the requirement that the setting-associated variables factorize:
+P(X1,..., X K ) = P(X1)... P(X K ). (74)
+We refer to Ref. [54] for a fuller discussion on why this is necessary and how this works
+in more general (classical) setups. Hence, checking for compatibility will consist of two
+separate steps: First one has to conﬁrm that variables that are being conditioned on form
+a product distribution; Secondly, one checks compatibility with the causal structure via
+the procedure outlined below.
+In particular, for the instrumental scenario this simply reduces to checking compati-
+bility of
+PIS (a, b | x) = PIS (a, b, x)
+PIS (x) . (75)
+The classical random variable A is both a child of ρAB and X , as well as a parent of
+B. This problem is resolved by a process known as maximal interruption [55–58]: the
+variable A is split into two random variables A and A#
+1, where A is only a child and A#
+1
+is only a parent. The causal structure is then effectively mapped to the Bell scenario. By
+post-selecting A#
+1 on the outcome A = a, i.e. by setting PIS (A = a, B = b | X = x) =
+PBell (A = a, B = b | X = x, A#
+1 = a), one can still obtain the allowed distributions of
+the original graph.
+In the case that an observable node has multiple children, one applies a similar splitting
+and post-selection procedure. Consider for example the triangle scenario with a shared
+setting X depicted in Fig. 6a. Via maximal interruption the observed variable X is split
+up into three independent and identically distributed random variables X #
+1 , X #
+2 and X #
+3 as
+depicted in Fig.6b. The resulting causal structure is a network scenario. By post-selecting
+on X #
+1 = X #
+2 = X #
+3 = x one can link the (conditional) probability distribution of the
+network scenario to the (conditional) probability distribution P(A, B, C | X = x) of
+the triangle with a shared setting and ﬁnd the allowed distributions in the original causal
+structure.
+In this way, one can map all latent exogenous causal structures to network scenarios.
+The general rule is then as follows: Whenever an observed node is not a leaf node and
+is directly connected to multiple other nodes, split the node into as many copies as there
+are outgoing arrows. Remove every outgoing arrow from the original node and attach it
+to a copy. If there are no incoming arrows to the original node, remove it. Check whether
+
+=== page 36 ===
+2708 L. T. Ligthart, M. Gachechiladze, D. Gross
+(a) (b)
+Fig. 6. a The triangle scenario with a shared setting X . Via maximal interruption the observed variable X
+is split into three independent and identically distributed random variables, producing the network scenario
+(b). The allowed probability distributions of the original causal structure can be obtained from the network
+scenario by post-selection
+the setting-associated variables factorize into a product distribution. Finally, analyze
+this causal structure, which is now a network scenario, and apply post-selection on the
+copies.
+4.3.3. Non-exogenous causal structures The second step in the generalization is more
+involved. The causal structures are now also allowed to have latent (quantum) variables
+with parents. In classical causal structures it is possible to transform thesenon-exogenous
+causal structures into exogenous ones, for which it is then possible to apply maximal in-
+terruption as described above, if necessary [59]. However, for quantum causal structures
+this is in general not possible.
+Ref. [16] gives a clear example (credited there to Stefano Pironio), which is depicted
+in Fig. 7. In this example, the quantum system ρBC in Fig. 7a is non-exogenous. The
+structure in Fig. 7b has been exogenized as if it were a classical causal structure, by
+removing ρBC and drawing arrows from the parents ofρBC to its children. It can be seen
+that in the original causal structure it is possible to maximally violate a Bell inequality
+for either the systems A and B or A and C, based on the setting determined by S.
+However, after the exogenization depicted on the right, the setting S cannot determine
+anymore which pair maximally violates a Bell inequality. Since it is impossible that both
+A and B,a sw e l la s A and C maximally violate a Bell inequality due to monogamy of
+entanglement [60], the causal structure on the right cannot produce the same statistics
+as the one on the left.
+We will split the treatment of non-exogenous causal structures in two parts: First,
+we will consider unobservable systems with one or more observed parents and at most
+one unobservable parent. Secondly, we will regard unobservable systems with multiple
+unobservable parents, but no observed parents. These two solutions can be combined
+to form a general set of rules for treating non-exogenous causal structures. It will turn
+out that, even though we cannot directly apply the exogenization procedure for classical
+causal structures, each observable leaf node will instead get an index associated to each
+of its parents in the classically exogenized causal structure. These indices then contain
+the information about commutation relations and independence constraints for the causal
+structure.
+
+=== page 37 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2709
+(a) (b) (c)
+Fig. 7. a An example of a non-exogenous causal structure. It is not possible to exogenize such a quantum
+causal structure as depicted in (b), like one would do for classical causal structures. This can be seen by noting
+that structure (a) can maximally violate a Bell inequality for A and Bo r for A and C based on the measurement
+setting S. Due to monogamy of entanglement this is not possible for structure (b). In structure (c) this is solved
+by ﬁrst regarding Bob and Charlie as one observer and only choosing the commuting algebras B and C after
+the setting S has been received. This procedure is represented by a new type of node
+In Ref. [16] unobservable systems are eliminated by instead regarding such a system
+as a quantum channel applied to its unobservable parents and regarding any observed
+parents as a classical control for this quantum channel. If there is no observed parent
+to a non-exogenous system, the quantum channel that replaces it does not have such a
+control variable.
+We opt for a slightly different treatment of non-exogenous systems with a similar
+interpretation. Instead of acting with a quantum channel on a state, we alter the POVM
+elements. Consider again the causal structure of Fig. 7a as an example. The intermediate
+state ρBC has the interpretation of redistributing the S subsystem of ρAS among Bob
+and Charlie, based on the observed variable S. Hence, for different outcomes s of S,
+Bob and Charlie will perform measurements over different parts of the S subsystem of
+ρAS . However, for every speciﬁc outcome s, the measurements operators will be given
+by commuting POVMs for Bob and Charlie. We therefore deﬁne for every outcome of
+S the commuting algebras B(s) and C(s) with elements {F(s)
+b }b and {G(s)
+c }c respectively.
+Elements from these algebras obey the commutation relations
+[F(s)
+b , G(s)
+c ]= 0, (76)
+but whenever two operators have different indices s and s′, they are no longer required
+to commute. The difference between this description and the measurement settings in
+network scenarios is that in network scenarios all POVM elements of Bob commute
+with all POVM elements of Charlie, while that is no longer the case here. We therefore
+propose a new graphical notation for this exogenization procedure, in which the nodes
+of Bob and Charlie are initially combined and only become commuting POVMs after
+the measurement setting s has been processed (see Fig. 7c). We will call such nodes
+endogenous nodes.
+One can still apply inﬂation to this causal structure as well. The algebras A, B(s) and
+C(s) will be copied and get the index i corresponding to the i’th copy of ρ. Different
+inﬂation levels will be modeled by commuting subalgebras with an exchange symmetry
+and one can show, using the de Finetti theorem, that in the limit a symmetric global state
+is separable across copies of ρ. The proofs of Theorem 11 and Corollary 13 then also
+follow.
+
+=== page 38 ===
+2710 L. T. Ligthart, M. Gachechiladze, D. Gross
+(a) (b)
+Fig. 8. a A more complicated causal structure, where ρBC has two latent parents and two observable children.
+The inﬂated version of this structure can alternatively be depicted as in ( b). The algebras {Bij }ij and {Cij
+−}ij
+are taken together and do not commute if there is only one overlapping index
+In general, one can apply the following rule to remove a non-exogenous system with
+observed parents and at most one latent parent, starting with non-exogenous systems that
+are closest to a leaf node: Split up each leaf node according to the structure of its local
+algebras, similar to the triangle scenario. Combine all leaf nodes that have a directed
+path from the non-exogenous system to that leaf node into one endogenous node. For
+every observed variable that is a parent of the non-exogenous node, introduce an index
+to the elements of the endogenous node. Elements of the algebra of the endogenous
+node commute if all such setting indices are the same and the elements originated from
+spatially separated systems (e.g. Bob and Charlie).
+The ﬁnal class of causal structures that has not been discussed yet, is the one where
+there are multiple unobserved parents to a latent variable. We will again ﬁrst treat an
+example and then give the general rule.
+Consider the causal structure in Fig.8a. The intermediate nodeρBC is non-exogenous
+and has two latent parents. We start by splitting up the algebras C and D into their
+minus and plus sub-algebras, similar to the triangle scenario. Then we remove the non-
+exogenous node by taking those algebras together into an endogenous node that are its
+descendants, as was done in Fig. 7c. In this case, that will remove ρBC and combine B
+and C− into an endogenous node.
+When the causal structure is inﬂated, the root nodes are copied and given inﬂation
+indices i, j, k respectively. The intermediate state ρBC would then have gotten the two
+inﬂation indices i, j, which in turn are both p a s s e dd o w nt oB and C− (see Fig. 8b). We
+thus have the following algebras after inﬂation: Ai, Bij , Cij
+− , Ck
++, D j
+− and Dk
++. Operators
+from these algebras will be denoted in a similar way. Let En be the algebra describing
+the level-n inﬂated causal structure. Though each of these algebras is a subalgebra of
+En , it is no longer true that En is the tensor product of all these algebras, because some
+of them do not commute. This is due to the “mixing” of the root nodes ρi
+L and ρ j
+M by
+the intermediate nodes ρij
+BC . In particular, for Bij ∈ Bij and Ci′j′
+− ∈ Ci′j′
+−
+[Bij , Ci′, j′
+− ]
+{
+= 0i f i = i′, j = j′or i ⁄= i′, j ⁄= j′,
+⁄= 0i f i = i′, j ⁄= j′or i ⁄= i′, j = j′. (77)
+By requiring that the POVM elements of Bob and Charlie commute when they perform a
+measurement on the same state ρij
+BC , or on independent copies of the state,ρij
+BC and ρi′j′
+BC
+
+=== page 39 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2711
+with i ⁄= i′, j ⁄= j′, we ensure that we still model spatially separated measurements in
+a physical scenario.
+The question is now which independence relations hold and how to properly apply
+the quantum de Finetti theorem to show that these relations hold asymptotically in the
+inﬂation formalism.
+To answer this question, note that the state ρBC masks the independence of the parts
+of ρL and ρM that are sent to Bob and Charlie: The correlations in this causal structure
+could have also been produced by a four-partite state, of which the ﬁrst and fourth
+subsystems are required to be independent, combined with the independent bi-partite
+stateρR . The independence requirements that still have to hold after the quantum channel
+that produces ρBC are thus
+ρ( Ai Bij Cij
+− Ck
++ D j
+− Dk
++) = ρ( Ai Bij Cij
+− D j
+−)ρ(Ck
++ Dk
++) ∀i, j, k, (78)
+ρ( Ai D j
+−) = ρ( Ai)ρ( D j
+−), ∀i, j (79)
+ρ(
+n∏
+i=1
+Ai Bii Cii
+−Ci
++ Di
+− Di
++) = ρ(
+n∏
+i=1
+Aπ(i) Bπ(i)π′(i)Cπ(i)π′(i)
+− Cπ′′(i)
++ Dπ′(i)
+− Dπ′′(i)
++ )
+=
+n∏
+i=1
+ρ( Ai Bii Cii
+−Ci
++ Di
+− Di
++), (80)
+where the ﬁrst two equalities signify independence within layers of inﬂation (namely
+the independence of ρR with respect to ρL and ρM , and the independence of A and
+D), while the last equality corresponds to independence between layers of inﬂation.
+Note, however, that the algebras Bij and Cij
+− do not have this independence between
+inﬂation layers if the state is evaluated over products of operators of either algebra for
+which only one of the two indices coincides, e.g. ρ( Bij Ci′j
+− ) ⁄= ρ( Bij )ρ(Ci′j
+− ) and
+ρ( Bij Bi′j) ⁄= ρ( Bij )ρ( Bi′j).
+Relaxing the independence conditions of Eqs. ( 78)–(80) to their corresponding sym-
+metry constraints and combining this with the commutation relations and the de Finetti
+Theorem, we can still asymptotically solve the (rank-constrained) causal compatibility
+problem even for this causal structure.
+The general rule to map each inﬂation level of a causal structure with non-exogenous
+systems that have multiple latent parents, but no observed parents to an equivalent latent
+exogenous causal structure is then as follows: Start with the non-exogenous system
+that is closest to a leaf node. Split up each leaf node according to the structure of its
+local algebras. Combine all leaf nodes that have a directed path from the non-exogenous
+system to that leaf node into one endogenous node. For every root node that is an ancestor
+of the non-exogenous node, attach the inﬂation index of that root node to the elements
+of the endogenous node. Elements of the algebra of the endogenous node commute if
+either (1) all inﬂation indices are pair-wise the same, i.e. i = i′, j = j′,... , and the
+elements originated from spatially separated systems, e.g. Bob and Charlie, or if (2) all
+inﬂation indices are pair-wise different, i.e. i ⁄= i′, j ⁄= j′,... .
+More succinctly: to reduce a non-exogenous causal structure to an exogenous one,
+we attach to every child of a non-exogenous node an index for all of the root nodes of
+the non-exogenous system, and apply the appropriate commutation relations.
+Our approach is thus applicable to all relevant quantum causal structures, by se-
+quentially applying the techniques outlined above, i.e. by ﬁrst turning a non-exogenous
+causal structure into an exogenous one with a new type of node that can also be treated
+
+=== page 40 ===
+2712 L. T. Ligthart, M. Gachechiladze, D. Gross
+in our model, and then applying maximal interruption to turn it into a network scenario.
+Checking the feasibility of the SDP hierarchy of this network scenario, as well as the re-
+quired factorization of the setting-associated variables is then a necessary and sufﬁcient
+procedure for checking causal compatibility.
+5. Conclusions and Outlook
+Building on the quantum inﬂation hierarchy of Ref. [16], we have constructed a provably
+complete semideﬁnite programming hierarchy for the quantum causal polynomial opti-
+mization problem. Along the way, we have generalized the Quantum de Finetti Theorem
+for inﬁnite systems [ 11] to arbitrary C∗-tensor products, and given a description of the
+NPO hierarchy [26] as an optimization procedure over states of a universal C∗-algebra.
+A number of follow-up questions suggest themselves.
+We could not prove completeness of the original quantum inﬂation hierarchy, due to
+the difﬁculty of constructing the local observable algebras ( A−, A+, etc.). To deal with
+this problem, we had to manually add generators for the algebra to the NPO program,
+and then manually impose norm constraints. While we have argued that any constructive
+completeness proof will have to add elements to the algebra that is extracted from the
+output of the SDP hierarchy, it is not obvious that we have found the most economical
+way of handling the issue. We also do not know whether there are a priori ﬁnite bounds on
+the norm of the local operators that combine to give the POVM elements. Both questions
+merit further researcher.
+We have focused mostly on the quantum causal compatibility problem, and have not
+investigated objective functions beyond the 2-norm distance to measured data. While the
+examples given in [16, Section VII] carry over to our formulation, it would be interesting
+to look into further applications.
+It would be worth investigating what further properties of the universal observable
+algebra can be enforced with suitable constraints. For example, one could impose that
+some of the subalgebras are Abelian in order to model partly classical behavior.
+Numerical results for the SDP hierarchy described in this paper will be presented
+elsewhere.
+Acknowledgments We thank Johan Åberg, Nikolai Miklin, Marc-Olivier Renou, Reinhard Werner, and Elie
+Wolfe for insightful discussions. This work has been supported by Germany’s Excellence Strategy—Cluster
+of Excellence Matter and Light for Quantum Computing (ML4Q) EXC 2004/1 – 390534769.
+Funding Open Access funding enabled and organized by Projekt DEAL.
+Data sharing Data sharing is not applicable to this article as no data sets were generated or analysed during
+the current study.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give
+appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence,
+and indicate if changes were made. The images or other third party material in this article are included in the
+article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is
+not included in the article’s Creative Commons licence and your intended use is not permitted by statutory
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder.
+To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/ .
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+institutional afﬁliations.
+
+=== page 41 ===
+A Convergent Inﬂation Hierarchy for Quantum Causal Structures 2713
+References
+1. Balke, A., Pearl, J.: Bounds on treatment effects from studies with imperfect compliance. J. Am. Stat.
+Assoc. 92(439), 1171–1176 (1997). https://doi.org/10.1080/01621459.1997.10474074
+2. Angrist, J.D., Imbens, G.W., Rubin, D.B.: Identiﬁcation of causal effects using instrumental variables. J.
+Am. Stat. Assoc. 91(434), 444–455 (1996). https://doi.org/10.1080/01621459.1996.10476902
+3. Koller, D., Friedman, N.: Probabilistic Graphical Models: Principles and Techniques. MIT Press, Cam-
+bridge (2009)
+4. Pearl, J.: Causality. Cambridge University Press, Cambridge (2009)
+5. Rosset, D., Gisin, N., Wolfe, E.: Universal bound on the cardinality of local hidden variables in networks
+(2017). arXiv:1709.00707
+6. Geiger, D., Meek, C.: Quantiﬁer elimination for statistical problems (2013). arXiv:1301.6698
+7. Lee, C.M., Spekkens, R.W.: Causal inference via algebraic geometry: feasibility tests for functional
+causal structures with two binary observed variables. J. Causal Inference (2017). https://doi.org/10.1515/
+jci-2016-0013
+8. Wolfe, E., Spekkens, R.W., Fritz, T.: The inﬂation technique for causal inference with latent variables. J.
+Causal Inference (2019). https://doi.org/10.1515/jci-2017-0020
+9. Navascués, M., Wolfe, E.: The inﬂation technique completely solves the causal compatibility problem.
+J. Causal Inference 8(1), 70–91 (2020). https://doi.org/10.1515/jci-2018-0008
+10. De Finetti, B.: Theory of Probability: A Critical Introductory Treatment, vol. 6. Wiley, Hoboken (1974)
+11. Raggio, G., Werner, R.: Quantum statistical mechanics of general mean ﬁeld systems. Helv. Phys. Acta
+62(8), 1–19 (1989)
+12. Caves, C.M., Fuchs, C.A., Schack, R.: Unknown quantum states: the quantum de Finetti representation.
+J. Math. Phys. 43(9), 4537–4559 (2002). https://doi.org/10.1063/1.1494475
+13. Renner, R.: Symmetry of large physical systems implies independence of subsystems. Nat. Phys. 3(9),
+645–649 (2007). https://doi.org/10.1038/nphys684
+14. Brandao, F.G., Harrow, A.W.: Quantum de Finetti theorems under local measurements with applications.
+Commun. Math. Phys. 353(2), 469–506 (2017). https://doi.org/10.1007/s00220-017-2880-3
+15. Chaves, R., Majenz, C., Gross, D.: Information-theoretic implications of quantum causal structures. Nat.
+Commun. 6(1), 1–8 (2015). https://doi.org/10.1038/ncomms6766
+16. Wolfe, E., Pozas-Kerstjens, A., Grinberg, M., Rosset, D., Acín, A., Navascués, M.: Quantum inﬂation:
+a general approach to quantum causal compatibility. Phys. Rev. X 11(2), 021043 (2021). https://doi.org/
+10.1103/PhysRevX.11.021043
+17. Costa, F., Shrapnel, S.: Quantum causal modelling. New J. Phys. 18(6), 063032 (2016). https://doi.org/
+10.1088/1367-2630/18/6/063032
+18. Barrett, J., Lorenz, R., Oreshkov, O.: Quantum causal models (2019). arXiv:1906.10726
+19. Allen, J.-M.A., Barrett, J., Horsman, D.C., Lee, C.M., Spekkens, R.W.: Quantum common causes and
+quantum causal models. Phys. Rev. X 7(3), 031021 (2017). https://doi.org/10.1103/PhysRevX.7.031021
+20. Fritz, T.: Beyond Bell’s theorem: correlation scenarios. New J. Phys. 14(10), 103001 (2012). https://doi.
+org/10.1088/1367-2630/14/10/103001
+21. Brunner, N., Cavalcanti, D., Pironio, S., Scarani, V ., Wehner, S.: Bell nonlocality. Rev. Mod. Phys. 86(2),
+419 (2014). https://doi.org/10.1103/RevModPhys.86.419
+22. Cirel’son, B.S.: Quantum generalizations of bell’s inequality. Lett. Math. Phys. 4(2), 93–100 (1980).
+https://doi.org/10.1007/BF00417500
+23. Masanes, L.: Extremal quantum correlations for n parties with two dichotomic observables per site (2005).
+arXiv:quant-ph/0512100
+24. Navascués, M., Pironio, S., Acín, A.: Bounding the set of quantum correlations. Phys. Rev. Lett. 98(1),
+010401 (2007). https://doi.org/10.1103/PhysRevLett.98.010401
+25. Navascués, M., Feix, A., Araújo, M., V értesi, T.: Characterizing ﬁnite-dimensional quantum behavior.
+Phys. Rev. A 92(4), 042117 (2015). https://doi.org/10.1103/PhysRevA.92.042117
+26. Pironio, S., Navascués, M., Acin, A.: Convergent relaxations of polynomial optimization problems with
+non-commuting variables. SIAM J. Optim.20(5), 2157–2180 (2010). https://doi.org/10.1137/090760155
+27. Rosset, D., Branciard, C., Barnea, T.J., Pütz, G., Brunner, N., Gisin, N.: Nonlinear Bell inequalities
+tailored for quantum networks. Phys. Rev. Lett. 116(1), 010403 (2016)
+28. Chaves, R.: Polynomial Bell inequalities. Phys. Rev. Lett. 116(1), 010402 (2016)
+29. Tavakoli, A., Pozas-Kerstjens, A., Luo, M.-X., Renou, M.-O.: Bell nonlocality in networks (2021).
+arXiv:2104.10700
+30. Henson, J., Lal, R., Pusey, M.F.: Theory-independent limits on correlations from generalized Bayesian
+networks. New J. Phys. 16(11), 113043 (2014)
+31. Weilenmann, M., Colbeck, R.: Analysing causal structures with entropy. Proc. R. Soc. A Math. Phys.
+Eng. Sci. 473(2207), 20170483 (2017)
+
+=== page 42 ===
+2714 L. T. Ligthart, M. Gachechiladze, D. Gross
+32. Budroni, C., Miklin, N., Chaves, R.: Indistinguishability of causal relations from limited marginals. Phys.
+Rev. A 94(4), 042127 (2016)
+33. Kela, A., V on Prillwitz, K., Åberg, J., Chaves, R., Gross, D.: Semideﬁnite tests for latent causal structures.
+IEEE Trans. Inf. Theory 66(1), 339–349 (2019)
+34. Åberg, J., Nery, R., Duarte, C., Chaves, R.: Semideﬁnite tests for quantum network topologies. Phys. Rev.
+Lett. 125(11), 110505 (2020)
+35. Kraft, T., Spee, C., Y u, X.-D., Gühne, O.: Characterizing quantum networks: insights from coherence
+theory. Phys. Rev. A 103(5), 052405 (2021)
+36. Branciard, C., Rosset, D., Gisin, N., Pironio, S.: Bilocal versus nonbilocal correlations in entanglement-
+swapping experiments. Phys. Rev. A 85(3), 032119 (2012)
+37. Tavakoli, A., Skrzypczyk, P ., Cavalcanti, D., Acín, A.: Nonlocal correlations in the star-network conﬁg-
+uration. Phys. Rev. A 90(6), 062109 (2014)
+38. Renou, M.-O., Bäumer, E., Boreiri, S., Brunner, N., Gisin, N., Beigi, S.: Genuine quantum nonlocality in
+the triangle network. Phys. Rev. Lett. 123(14), 140401 (2019)
+39. Scholz, V .B., Werner, R.F.: Tsirelson’s problem (2008). arXiv:0812.4305
+40. Junge, M., Navascues, M., Palazuelos, C., Perez-Garcia, D., Scholz, V .B., Werner, R.F.: Connes’ embed-
+ding problem and Tsirelson’s problem. J. Math. Phys. 52(1), 012102 (2011). https://doi.org/10.1063/1.
+3514538
+41. Fritz, T.: Tsirelson’s problem and Kirchberg’s conjecture. Rev. Math. Phys. 24(05), 1250012 (2012).
+https://doi.org/10.1142/S0129055X12500122
+42. Ji, Z., Natarajan, A., Vidick, T., Wright, J., Y uen, H.: MIP ∗ = RE (2020). arXiv:2001.04383
+43. Størmer, E.: Symmetric states of inﬁnite tensor products of C∗-algebras. Pure Math. Preprint series (1967)
+44. Blackadar, B.: Operator Algebras: Theory of C∗-Algebras and V on Neumann Algebras, vol. 122. Springer,
+Berlin (2006)
+45. Strocchi, F.: An Introduction to the Mathematical Structure of Quantum Mechanics: A Short Course for
+Mathematicians, vol. 28. World Scientiﬁc, London (2008)
+46. Bratteli, O., Robinson, D.W.: Operator Algebras and Quantum Statistical Mechanics: C∗-and W∗-
+Algebras. Symmetry Groups. Decomposition of States, vol. 1. Springer, Berlin (2012)
+47. Navascués, M., Pironio, S., Acín, A.: A convergent hierarchy of semideﬁnite programs characterizing the
+set of quantum correlations. New J. Phys. 10(7), 073013 (2008). https://doi.org/10.1088/1367-2630/10/
+7/073013
+48. Takesaki, M.: Theory of Operator Algebras I, vol. 124. Springer, Berlin (2001)
+49. De Finetti, B.: Funzione caratteristica di un fenomeno aleatorio. In: Atti del Congresso Internazionale
+dei Matematici: Bologna del 3 al 10 de Settembre di 1928, pp. 179–190 (1929)
+50. Diaconis, P ., Freedman, D.: Finite exchangeable sequences. Ann. Probab. 8, 745–764 (1980)
+51. Murphy, G.J.: C∗-Algebras and Operator Theory. Academic Press, San Diego (2014)
+52. Wolkowicz, H., Saigal, R., V andenberghe, L.: Handbook of Semideﬁnite Programming: Theory, Algo-
+rithms, and Applications, vol. 27. Springer, New Y ork (2012)
+53. Pozas Kerstjens, A.: Quantum information outside quantum information (2019)
+54. Richardson, T.S.: A factorization criterion for acyclic directed mixed graphs (2014). arXiv preprint
+arXiv:1406.6764
+55. Gachechiladze, M., Miklin, N., Chaves, R.: Quantifying causal inﬂuences in the presence of a quan-
+tum common cause. Phys. Rev. Lett. 125(23), 230401 (2020). https://doi.org/10.1103/PhysRevLett.125.
+230401
+56. V an Himbeeck, T., Brask, J.B., Pironio, S., Ramanathan, R., Sainz, A.B., Wolfe, E.: Quantum violations
+in the instrumental scenario and their relations to the Bell scenario. Quantum 3, 186 (2019). https://doi.
+org/10.22331/q-2019-09-16-186 https://doi.org/10.22331/q-2019-09-16-186
+57. Agresti, I., Carvacho, G., Poderini, D., Aolita, L., Chaves, R., Sciarrino, F.: Experimental connection
+between the instrumental and bell inequalities. In: Multidisciplinary Digital Publishing Institute Proceed-
+ings, vol. 12, p. 27 (2019). https://doi.org/10.3390/proceedings2019012027
+58. Agresti, I., Poderini, D., Polacchi, B., Miklin, N., Gachechiladze, M., Suprano, A., Polino, E., Milani, G.,
+Carvacho, G., Chaves, R., et al.: Experimental test of quantum causal inﬂuences (2021).arXiv:2108.08926
+59. Evans, R.J.: Graphs for margins of Bayesian networks. Scand. J. Stat. 43(3), 625–648 (2016). https://doi.
+org/10.1111/sjos.12194
+60. Koashi, M., Winter, A.: Monogamy of quantum entanglement and other correlations. Phys. Rev. A 69(2),
+022309 (2004). https://doi.org/10.1103/PhysRevA.69.022309
+Communicated by G. Chiribella

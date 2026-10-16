@@ -1,0 +1,1240 @@
+=== page 1 ===
+arXiv:2002.03477v1  [math.OA]  10 Feb 2020
+QUANTUM FOURIER ANALYSIS
+ARTHUR JAFFE, CHUNLAN JIANG, ZHENGWEI LIU, YUNXIANG REN,
+AND JINSONG WU
+Abstract. Quantum Fourier analysis is a new subject that com-
+bines an algebraic Fourier transform (pictorial in the case of sub-
+factor theory) with analytic estimates. This provides interesting
+tools to investigate phenomena such as quantum symmetry. We
+establish bounds on the quantum Fourier transform F, as a map
+between suitably deﬁned Lp spaces, leading to a new uncertainty
+principle for relative entropy. We cite several applications of the
+quantum Fourier analysis in subfactor theory, in category theory ,
+and in quantum information. We suggest a new topological in-
+equality, and we outline several open problems.
+Table of Contents
+1. Quantum Fourier Analysis 2
+2. QF A on Fusion Rings 3
+3. QF A on Subfactors 4
+3.1. Applications 6
+3.2. Quantum Hausdorﬀ-Young Inequalities 6
+4. QF A on Unitary Fusion Categories 7
+4.0.1. Application: Analytic Obstructions 7
+5. QF A on Locally Compact Quantum Groups 9
+6. Surface Algebras and A Universal Inequality 9
+6.1. Surface Algebras 9
+6.2. A Universal Inequality 10
+7. Relative Inequalities, Entropy, and Uncertainty 11
+7.1. Relative Entropy 12
+7.2. The Relative Entropic Quantum Uncertainty
+Principle 12
+8. QF A and Quantum Entanglement 13
+9. Some Future Directions and Goals 14
+9.1. Questions on the Universal Inequality 14
+9.2. Questions on Subfactor Planar Algebras 15
+9.3. Block Renormalization Map and Quantum Central
+Limit Theorem 15
+1
+
+=== page 2 ===
+2 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, and Jinsong W u
+10. Signiﬁcance Statement 16
+11. Acknowledgement 16
+References 16
+In this paper we explore quantum Fourier analysis (QF A), a new sub-
+ject revolving around the study of Fourier analysis of quantum sym me-
+tries. The discovery of such symmetries emerged in the 1970’s, and has
+ﬂourished ever since. It represents a major advance both in math emat-
+ics and in physics, as well as in the relation between these two subjec ts.
+Thus QF A adds a new dimension to the over 200-year old subject of
+classical Fourier analysis (CF A), analyzing the Fourier transform F .
+CF A led to insights and solutions of problems in almost every ﬁeld of
+mathematics, including partial diﬀerential equations, probability th e-
+ory, number theory, representation theory, topology, geomet ry, etc.
+It ultimately led to the categorization of Fourier duality [ 1, 2]. The
+Hausdorﬀ-Young inequality is a bound on the norm Mp =‖F‖Lp→Lq,
+where q = p/(p− 1). Hirschman discovered that diﬀerentiating Mp
+gives an uncertainty principle for the Shannon entropy, generalizin g
+the well-known Heisenberg principle. He and Everett conjectured t he
+optimal inequality [3, 4]. Deep and beautiful proofs were found [ 5, 6, 7].
+Classical hypercontractivity states
+‖‖e−tH‖‖
+L2→Lq ⩽ 1, where H is a
+simple harmonic oscillator Hamiltonian with unit angular frequency
+ande2t /greaterorequalslantq− 1 /greaterorequalslant1 [8, 9, 10]. The classical Hausdorﬀ-Young inequality
+is a consequence of F =eiπH/2 [5]. Further inequalities can be found in
+many papers as [ 11, 12, 13, 14, 15, 16, 17, 18], suggesting in retrospect
+a bridge from CF A to QF A.
+1. Quantum Fourier Analysis
+A quantum Fourier transform F deﬁnes Fourier duality between
+quantum symmetries, which could be analytic, algebraic, geometric,
+topological and categorical. The quantum symmetries could be ﬁnite
+or inﬁnite, discrete or continuous, commutative or non-commutat ive.
+In certain contexts F can be deﬁned pictorially—as in the picture lan-
+guage program [ 19]. QF A is the study of structures involving F.
+It is possible to estimate various norms ‖F‖Lp→Lq as transformations
+between non-commutative Lp spaces, and results in [ 20, 21] represent
+early breakthroughs in the application and formulation of the new su b-
+ject of QF A. As QF A is more sophisticated than CF A, these subject s
+have diﬀerences as well as similarities; we explore them both.
+
+=== page 3 ===
+Quantum Fourier Analysis 3
+Let us consider an example of similarities and diﬀerences. In CF A,
+the extremizers of the Hausdorﬀ-Young inequality (and many othe rs)
+are Gaussians. In QF A on subfactors, the Hausdorﬀ-Young also h olds.
+The extremiziers are bishifts of biprojections. A biprojection is a pr o-
+jection whose quantum Fourier transform is a multiple of a projectio n
+[22]. So the behavior under Fourier transformation of the extremizer s
+in QF A on subfactors are similar to those in CF A, while their algebraic
+properties diﬀer.
+In this paper we give a uniﬁed view of QF A. We establish a new “rel-
+ative” inequality between pictures that yields an uncertainty princip le
+for relative entropy. We propose a new universal quantum inequalit y,
+namely ( 9), that uniﬁes many other quantum inequalities. This is sim-
+ilar to the way the Brascamp-Lieb inequality unites Young’s inequality,
+H¨ older inequality, and others, in CF A. Throughout the paper we cit e
+applications of QF A. Finally in§9, we state some general goals for the
+future and some open questions.
+QF A reveals insight and intrinsic structure, as well as relations be-
+tween, fusion rings, fusion categories, and subfactors. We show how
+the “Schur product property” provides a powerful obstruction to dis-
+tinguish mathematical objects. QF A also provides a new approach
+to quantum entanglement, uncertainty relations, and other prob lems
+in quantum information. We are certain that QF A will lead to other
+advances in many diﬀerent ﬁelds.
+2. QF A on Fusion Rings
+Let us start with fusion rings, as introduced by Lusztig [ 23]; this is
+an interesting quantum symmetry beyond groups. See [ 24] for further
+results and references. A fusion ring A is a ring which is free as a Z-
+module, with a basis {x1,x 2,...,x m},m ∈ N, with x1 = 1, and such
+that
+[B1] xjxk =∑ m
+s=1Ns
+j,kxs, with Ns
+j,k∈ N, and
+[B2] there exists an involution ∗ on{1, 2,...,m } such that N 1
+j,k =
+δj,k∗ inducing an anti-isomorphism of A, given by x∗
+k :=xk∗ andx∗
+kx∗
+j =
+(xjxk)∗.
+From a fusion ring, one can construct two C ∗-algebras with faithful
+tracial states, and a unitary Fourier transform between them. W e recall
+this construction and the quantum Fourier analysis on fusion rings a s
+studied in [ 25]. Deﬁne a unital ∗-algebra over C with basis{xj}, with
+multiplication given by property [ B1], and with adjoint given by ∗ in
+[B2]. Deﬁne a linear functional τ given by the Dirac measure on the
+basis, τ (xj) = δj,1. From [ B2] we infer that τ is a strictly-positive
+
+=== page 4 ===
+4 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, and Jinsong W u
+trace and deﬁnes an inner product. This gives the C ∗-algebraB by the
+Gelfand-Naimark-Segal construction.
+One can deﬁne a second (in this case abelian) C ∗-algebraA from
+A with multiplication ⋄, adjoint #, given by another strictly positive
+linear functional d onA. Let
+[A1] xj⋄xk =δj,kd(xj)−1xj,
+[A2] x#
+j =xj.
+Here d(·) is deﬁned linear, by sending a basis element xj to d(xj), the
+operator norm of the fusion matrix Mj, with entries ( Mj)s,t = Nt
+j,s.
+This is called the Perron-Frobenius dimension of xj. The trace d (resp.
+τ ) on the ﬁnite-dimensional C ∗-algebraA (resp. B) deﬁnes Lp norms
+onA (resp. Lq norms onB) by,
+‖a‖Ap =d(|a|p)1/p , ‖b‖Bq =τ (|b|q)1/q .
+ThenA andB are two C ∗-algebras with the same basis. We use the
+classical notation F : x↦→ˆx for the Fourier transform as the linear
+map from A toB deﬁned by F(xj) = xj. The Fourier transform can
+be extended to a map from Lp(A,d ) to Lq(B,τ ) for 1 /p + 1/q = 1.
+Plancherel’s formula follows as: ‖F(x)‖B2 =‖x‖A2 .
+We now summarize several theorems proved in [ 25] about QF A on
+fusion rings, including the quantum Schur product theorem (QSP), the
+quantum Hausdorﬀ-Young inequality (QHY) with 1 /p + 1/q = 1, the
+quantum Young inequality (QY) with 1 /p + 1/q = 1 + 1 /r, and the
+basic quantum uncertainty principles (QUP)—deﬁned in terms of the
+von Neumann entropy,
+HA(|x|2) =−d((x#⋄x)⋄ log(x#⋄x));
+HB(|ˆx|2) =−τ ((ˆx∗ˆx) log(ˆx∗ˆx)),
+and in terms of the support SA(x) = d(R(x)),SB(ˆx) = τ (R(ˆx)), where
+R(·) is the range projection.
+Theorem 2.1. For non-zero x,y∈A ,
+[QSP] : F−1(ˆxˆy) /greaterorequalslantA 0, whenever both x,y /greaterorequalslantA 0.
+[QHY] :‖ˆx‖Bq ⩽ ‖x‖Ap, for 1 ⩽ p ⩽ 2.
+[QY] :‖F−1(ˆxˆy)‖Ar ⩽ ‖x‖Ap‖y‖Aq, for 1 ⩽ p,q,r ⩽ ∞.
+[QUP-1] : HA(|x|2) +HB(|ˆx|2) + 2‖x‖2
+A2 log‖x‖2
+A2 /greaterorequalslant0.
+[QUP-2] :SA(x)SB(ˆx) /greaterorequalslant1.
+3. QF A on Subfactors
+Modern subfactor theory was initiated by V. Jones in 1983 by his
+remarkable index theorem [26]. A subfactor of type II 1 is an inclusion of
+II1 factorsN⊂M and its index describes the relative size of these two
+
+=== page 5 ===
+Quantum Fourier Analysis 5
+factors. Jones’ index theorem asserts that the index δ2 of a subfactor
+belongs to the set {4 cos2(π
+n ) : n = 3, 4,···}∪ [4,∞] and every possible
+value can be realized as the index of a subfactor. Subfactor theor y
+turns out to be a natural framework to study quantum symmetry in
+statistical physics and quantum ﬁeld theory, see e.g. [ 27]. Subfactor
+planar algebras [ 28] provide a pictorial tool to study subfactor theory.
+A planar algebra P• ={Pn,± :n /greaterorequalslant0} is a family of ﬁnite-dimensional
+vector spaces with an action of the operad of planar tangles , similar
+to topological quantum ﬁeld theory [29]. One represents an element in
+Pn,± (called an n-box) by a labelled rectangle with 2 n strings attached
+to its boundary. Each vector space Pn,± is equipped with an involution
+∗, which is compatible with the invloution of planar tangles. This
+involution ∗ is called the adjoint, and given pictorially by reﬂection.
+Any w∈ P1,+ satisﬁes the spherical condition, and any x∈ Pn,+
+satisﬁes the “reﬂection-positivity” condition,
+(1) w$ = w$ , · · ·
+x
+x∗
+$
+$ /greaterorequalslant0.
+The action of planar tangles turns Pn,± into C ∗-algebras, and the
+trace gives a Hilbert-space representation by the GNS construct ion.
+We setA = P2,+ andB = P2,−. For elements A, one has pictorial
+representations for x, multiplication xy, the Fourier transform F(x),
+the trace tr(x) as follows,
+x$ , x
+y
+$
+$
+, x$ , x$ .
+Deﬁne the convolution product ∗ onA by
+(2) $ $x y =x∗y = F
+(
+F−1(x)F−1(y)
+)
+.
+TheC ∗-algebraB has a similar pictorial representation. These pictures
+not only make quantum Fourier analysis transparent; they also pro vide
+a precise framework for proofs.
+Theorem 3.1 (Schur product theorem, Theorem 4.1 of [ 20]). For any
+0 ⩽ x,y∈A (or 0 ⩽ x,y∈B ), one has 0 ⩽ x∗y.
+Proof. Since tr is faithful, it suﬃces to show that tr ((x∗y)z) /greaterorequalslant0
+for any 0 ⩽ z ∈ A. Since A is a C ∗-algebra, there exist elements
+
+=== page 6 ===
+6 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, and Jinsong W u
+x
+1
+2,y
+1
+2,z
+1
+2∈A , such that
+tr((x∗y)z) = x$ $y
+$z
+= x$ $y $z(3)
+= x
+1
+2$ $y
+1
+2 $z
+1
+2
+x
+1
+2$ $y
+1
+2 $z
+1
+2
+/greaterorequalslant0.(4)
+Here we infer positivity from the reﬂection positivity in ( 1). This proof
+works onB by switching the shading, since the dual of a subfactor is
+also a subfactor. □
+The Schur product property holds on both A andB for subfactors.
+On fusion rings, it holds on A but not necessarily on B. We discuss
+this essential diﬀerence revealed by QF A in more detail in §4.
+3.1. Applications. An important application of the Schur product
+theorem comes in the classiﬁcation of abelian subfactor planar alge-
+bras [ 20]. One can regard this as the fundamental theorem for abelian
+subfactors, extending the fundamental theorem for ﬁnite abelia n groups.
+This was the ﬁrst classiﬁcation that neither requires a bound on the
+Jones index, nor on the dimension.
+Theorem 3.2 (Theorem 6.7 [ 20]). An irreducible subfactor planar
+algebra is abelian if and only if it is a free product of the sim plest
+(Temperley-Lieb-Jones) planar algebras, and ﬁnite abelia n groups.
+Also one obtains a geometric proof of reﬂection positivity.
+Theorem 3.3. Reﬂection positivity holds for Hamiltonians on planar
+para algebras (Theorem 7.1 of [30]) and on Levin-Wen models (Theo-
+rem 3.2 of [31]).
+3.2. Quantum Hausdorﬀ-Young Inequalities. Many estimates for
+the norm Kp,q =‖F‖Lp→Lq have been established in the quantum case,
+including when p,q are not dual, see [ 21, 32]. Instead of synthesizing
+these estimates into one theorem, we give a picture ( 5) illustrating the
+known bounds for Kp,q, with the extremizers for various regions and
+
+=== page 7 ===
+Quantum Fourier Analysis 7
+boundaries in text.
+(5)
+0
+1
+q
+1 1
+p
+Bishifts of biprojections1
+2•
+1•
+Trace-one projections
+Kp,q=δ− 1+ 2
+q
+•
+Fourier transform of unitariesKp,q=δ
+2
+q − 2
+p
+Unitaries
+Kp,q=δ1− 2
+p
+Fourier transform of
+trace-one projections
+Biunitaries
+• Extremal elementsExtremal unitary elements
+The constantδ is the square root of the Jones index. The extremizers of
+these inequalities have nine diﬀerent characterizations. In particu lar,
+the red line 1 /p + 1/q = 1, for 1 /2 ⩽ 1/p ⩽ 1 corresponds to the
+quantum Hausdorﬀ-Young inequality. Moreover, all the other qua ntum
+inequalities, such as quantum Young’s inequality, in Theorem 2.1 have
+been proved for subfactors planar algebras in [ 21].
+4. QF A on Unitary Fusion Categories
+. The quantum Fourier analysis on subfactors also works for unitar y
+fusion categories through the quantum double construction, see e.g.
+[33]. Let C be a unitary fusion category and I ={X1,X 2,··· ,Xm} be
+the set of simple objects. There is a Frobenius algebra γ inC ⊠C
+whose object is
+m⨁
+i=1
+Xi ⊠ Xi. Following the quantum double con-
+struction, we obtain an irreducible subfactor planar algebra, such that
+A = P2,+ = hom C⊠C(γ) and B = P2,− = homγ−γ(γ⊗γ). Applying
+quantum Fourier analysis to A on this subfactor, we obtain inequal-
+ities on the Grothendieck ring of unitary fusion categories as state d
+in Theorem 2.1. Applying quantum Fourier analysis to B, we obtain
+inequalities on the dual of the Grothendieck ring, which turn out to b e
+highly non-trivial.
+4.0.1. Application: Analytic Obstructions. It is important to de-
+termine whether a fusion ring can be the Grothendieck ring of a unita ry
+fusion category. Quantum Fourier analysis provides powerful ana lytic
+
+=== page 8 ===
+8 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, and Jinsong W u
+obstructions to the unitary categoriﬁcation of fusion rings. The q uan-
+tum inequalities in Theorem 2.1 holds on the dual of Grothendieck
+rings. However, they may not necessarily hold on the dual of fusion
+rings, thereby providing analytic obstructions of the unitary cate gori-
+ﬁcation of fusion rings.
+The Schur product property on the dual of a fusion ring, 0 ⩽ x∗y
+if 0 ⩽ x,y ∈B , is a surprisingly eﬃcient analytic obstruction of the
+unitary categoriﬁcation:
+Theorem 4.1 ([25]). If a fusion ring can be unitarily categoriﬁed, then
+the Schur product property holds on the dual.
+There are 21 exmaples in the classiﬁcation of simple integral fusion
+rings up to rank 8 and global dimension 989. Four of them are group-
+like. Methods based on previously known analytic, algebraic and num-
+ber theoretic obstructions did not determine whether the remainin g 17
+could be unitarily categoriﬁed. Due to Schur product obstruction, 15
+out of the 17 have no unitary categoriﬁcation, as shown in [ 25].
+Example: Let us recall one example from [ 25] to illustrate this ob-
+struction. Let A be the rank-7 simple integral fusion ring with the
+following seven fusion matrices, equal to
+
+
+1 0 0 0 0 0 0
+0 1 0 0 0 0 0
+0 0 1 0 0 0 0
+0 0 0 1 0 0 0
+0 0 0 0 1 0 0
+0 0 0 0 0 1 0
+0 0 0 0 0 0 1
+
+ ,
+
+
+0 1 0 0 0 0 0
+1 1 0 1 0 1 1
+0 0 1 0 1 1 1
+0 1 0 0 1 1 1
+0 0 1 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+
+ ,
+
+
+0 0 1 0 0 0 0
+0 0 1 0 1 1 1
+1 1 1 0 0 1 1
+0 0 0 1 1 1 1
+0 1 0 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+
+ ,
+
+
+0 0 0 1 0 0 0
+0 1 0 0 1 1 1
+0 0 0 1 1 1 1
+1 0 1 1 0 1 1
+0 1 1 0 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+
+ ,
+
+
+0 0 0 0 1 0 0
+0 0 1 1 1 1 1
+0 1 0 1 1 1 1
+0 1 1 0 1 1 1
+1 1 1 1 1 1 1
+0 1 1 1 1 2 1
+0 1 1 1 1 1 2
+
+ ,
+
+
+0 0 0 0 0 1 0
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 2 1
+1 1 1 1 2 0 3
+0 1 1 1 1 3 1
+
+ ,
+
+
+0 0 0 0 0 0 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 1
+0 1 1 1 1 1 2
+0 1 1 1 1 3 1
+1 1 1 1 2 1 2
+
+ .
+The eigenvalue table of these matrices (where ζ 7 = 1) is:
+(6)
+
+
+1 1 1 1 1 1 1
+5 −1 −ζ−ζ 6 −ζ 5−ζ 2 −ζ 4−ζ 3 0 0
+5 −1 −ζ 5−ζ 2 −ζ 4−ζ 3 −ζ−ζ 6 0 0
+5 −1 −ζ 4−ζ 3 −ζ−ζ 6 −ζ 5−ζ 2 0 0
+6 0 −1 −1 −1 1 1
+7 1 0 0 0 0 −3
+7 1 0 0 0 −1 2
+
+
+.
+The ﬁrst column is the Perron-Frobenius dimension of the 7 simple
+objects. Take X =x1 +x5− 3x6 + 2x7, then X =X ∗ =X 2/15.
+The Schur product property on B, equivalent to a dual version of
+(4), yields (with x =y =z =X) that
+(7) d(( ˆXX ∗)⋄ ( ˆXX ∗)⋄ ( ˆXX ∗)) /greaterorequalslant0.
+
+=== page 9 ===
+Quantum Fourier Analysis 9
+However, it follows directly that ( 7) is false in this case, as
+13
+1 + 03
+5 + 03
+5 + 03
+5 + 13
+6 + (−3)3
+7 + 23
+7 =−65
+42 < 0.
+Therefore, the fusion ring A can not be unitarily categoriﬁed.
+5. QF A on Locally Compact Quantum Groups
+The previous results focus on ﬁnite quantum symmetry, such as fu -
+sion rings and ﬁnite-index subfactors. One might ask whether quan tum
+Fourier analysis can be established for inﬁnite quantum symmetry. T he
+answer is “yes;” there are results on inﬁnite-dimensional Kac algebr as
+and locally compact quantum groups.
+We recall the deﬁnition of the Fourier transform on locally compact
+quantum groups, of which the Fourier transform on Kac algebra is a
+special case, see [ 36]. Let G be a locally compact quantum group and
+ϕ the left Haar weight. Suppose W is the multiplicative unitary, φ is a
+normal semi-ﬁnite faithful weight on the commutant of L∞(G), ˆφ is a
+normal semi-ﬁnite faithful weight on the commutant of L∞(ˆG). Let d =
+dϕ
+dφ , ˆd = d ˆϕ
+d ˆφ be the Connes’ spatial derivatives, Lp(φ),Lp( ˆφ) Hilsum’s
+space for any 1 ⩽ p ⩽ ∞. The Fourier transform Fp :Lp(φ)→Lq( ˆφ),
+for 1 ⩽ p ⩽ 2, and 1/p + 1/q = 1, is deﬁned by
+Fp(xd1/p) = (ϕ⊗ι)(W (x⊗ 1)) ˆd1/q,∀x∈T 2
+ϕ .
+HereTϕ⊂ Nϕ∩ N∗
+ϕ is the space of elements analytic with respect to
+ϕ. Even the deﬁnition of the convolution on locally compact quantum
+groups is non-trivial.
+The quantum inequalities in Theorem 2.1 on these inﬁnite quantum
+symmetries have been partially studied in [ 37, 38, 39, 40, 41]. The
+quantum uncertainty principle QUP -2 in Theorem 2.1 becomes a con-
+tinuous family of inequalities on locally compact quantum groups [ 41].
+6. Surface Algebras and A Universal Inequality
+6.1. Surface Algebras. Many inequalities in classical Fourier analysis
+have not been axiomatized in a pictorial framework. The third autho r
+introduced surface algebras in [ 34], formalizing the extension of planar
+algebras from 2D to 3D space, outlined in [ 35]. Surface algebras are an
+extensive framework to capture additional pictorial features of Fourier
+analysis.
+
+=== page 10 ===
+10 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, an d Jinsong W u
+For any subfactor planar algebra, the actions of planar tangles ca n be
+further extended to the actions of surface tangles. (The arrow in pla-
+nar diagrams corresponds to the $ sign in planar algebras. The clock -
+wise/anticlockwise orientation of the arrow indicates the input/out put
+disc in surface algebras.) One can represent Fourier transform, m ul-
+tiplication and convolution on as the action of the following surface
+tangles in the 3D space:
+(8) , , .
+Using 3D pictures, one can consider the Fourier duality for surface
+tangles with multiple inputs and outputs, see applications in [ 34].
+One can consider a ﬁnite-dimensional Kac algebra K asA and its
+dual K ∗ asB, with a Fourier transform from K to K ∗ deﬁned analo-
+gously to§5 The pair of Kac algebras K andK ∗ can be understood as
+A andB for the surface algegra. The co-multiplication is given by the
+following surface tangle:
+.
+The Hopf-axiom that the co-multiplication is an algebraic homomor-
+phism reduces to the string-genus relation of surface tangles [ 35].
+6.2. A Universal Inequality. In a subfactor planar/surface algebra
+P, the Fourier transform, the multiplication, and the convolution can
+be realized by planar/surface tangles. In general, a surface tang le is a
+multi-linear map on ⨁
+n∈N Pn,±. Now we give a new pictorial inequal-
+ity in the quantum case, motivated by the classical Brascamp-Lieb
+inequality. We replace the dual of the linear map Bj : Rn→ Rkj by a
+surface tangle Tj withkj input discs and n output discs, moreover the
+n-output discs are identical for diﬀerent j:
+(9)
+‖‖‖‖‖
+m∏
+j=1
+Tj(xj)
+‖‖‖‖‖
+1
+⩽ C
+m∏
+j=1
+‖xj‖pj ,
+and C is the best constant.
+This topological inequality includes the quantum Hausdorﬀ-Young
+inequality, quantum H¨ older inequality and quantum version of Young’s
+inequality. The best constants of these three inequalities are achie ved
+at biprojections.
+For those familiar with the Quon language [ 35], we can consider the
+new pictorial inequalities whose Tj’s are surface tangles with braided
+charged strings. In particular, if all the inputs and outputs are 2- boxes,
+
+=== page 11 ===
+Quantum Fourier Analysis 11
+corresponding to qudits, then Tj can be any Cliﬀord transformation on
+qudits. These Cliﬀord transformations can be considered as a quan tum
+analogue of the dual of a linear transformation Bj : ( Zd)n→ (Zd)kj .
+Considering the action on density matrices, the n-qudit Cliﬀord gates
+on Pauli matrices are symplectic transformations on 2 n-dimensional
+symplectic spaces over Zd.
+7. Relative Inequalities, Entropy, and Uncertainty
+Here we present a relative, quantum, Hausdorﬀ-Young inequality.
+This leads to a new, relative, quantum, entropic uncertainty princip le.
+Let P• be an irreducible subfactor planar algebra with the Markov
+trace tr. Let ϕ (resp. ψ) be a faithful state on P2,+ (resp. P2,−).
+Let Dϕ (resp. Dψ) be the density operator of ϕ (resp. ψ), namely,
+ϕ(·) = tr(Dϕ·). Note that
+$ xD
+1
+p
+ϕ =
+D
+1
+p − 1
+2
+ϕ
+xD
+1
+2ϕ$
+$
+.
+Now we deﬁne a Fourier transform Fp,ϕ,ψ :Lp(P2,+,tr )→Lq(P2,−,tr )
+for 1 ⩽ p ⩽ 2, q =p/(p− 1) as
+(10) Fp,ϕ,ψ(xD1/p
+ϕ ) = F(xD1/2
+ϕ )D1/q−1/2
+ψ .
+This Fourier transform is represented pictorially as follows,
+(11) Fp,ϕ,ψ :
+D
+1
+p − 1
+2
+ϕ
+xD
+1
+2ϕ$
+$
+↦−→
+D
+1
+q − 1
+2
+ψ
+xD
+1
+2ϕ$
+$
+.
+From Plancherel’s theorem for F, we infer Plancherel’s theorem for
+Fp,ϕ,ψ,
+(12) ‖F2,ϕ,ψ(xD1/2
+ϕ )‖2 =‖F(xD1/2
+ϕ )‖2 =‖xD1/2
+ϕ ‖2.
+Theorem 7.1 (Relative, quantum Hausdorﬀ-Young inequal-
+ity). Let P• be an irreducible subfactor planar algebra and let ϕ,ψ
+be faithful states on P2,±. Then for any x∈ P2,+, 1 ⩽ p ⩽ 2, and dual
+2 ⩽ q =p/(p− 1), we have
+(13) ‖Fp,ϕ,ψ(xD1/p
+ϕ )‖q ⩽ Kp,ϕ,ψ‖xD1/p
+ϕ ‖p.
+HereKp,ϕ,ψ =δ−2/p‖D1/q−1/2
+ψ ‖∞‖F(D1/2−1/p
+ϕ )‖1. Pictorially,
+‖‖‖‖‖‖
+D
+1
+q − 1
+2
+ψ
+xD
+1
+2
+ϕ$
+$
+‖‖‖‖‖‖
+q
+⩽
+( ‖‖‖‖
+‖‖‖‖
+−2/p
+1
+‖‖‖‖ $ D
+1
+q − 1
+2
+ψ
+‖‖‖‖
+∞
+‖‖‖‖ $D
+1
+2 − 1
+p
+ϕ
+‖‖‖‖
+1
+) ‖‖‖‖ $ xD
+1
+p
+ϕ
+‖‖‖‖
+p
+.
+
+=== page 12 ===
+12 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, an d Jinsong W u
+Proof. We give the elementary and insightful picture proof:
+‖‖‖‖‖‖
+D
+1
+q − 1
+2
+ψ
+xD
+1
+2ϕ$
+$
+‖‖‖‖‖‖
+q
+=
+‖‖‖‖‖‖‖‖ xD1/p
+ϕ
+D
+1
+q − 1
+2
+ψ
+D
+1
+2 − 1
+p
+ϕ
+$
+$
+‖‖‖‖‖‖‖‖
+q
+=
+‖‖‖‖‖‖‖
+D
+1
+q − 1
+2
+ψ
+D
+1
+2 − 1
+p
+ϕxD
+1
+p
+ϕ$
+$
+$
+‖‖‖‖‖‖‖
+q
+= sup
+‖y‖p=1
+⏐⏐⏐⏐⏐⏐⏐⏐
+D
+1
+q − 1
+2
+ψ y
+D
+1
+2 − 1
+p
+ϕxD
+1
+p
+ϕ$
+$
+$
+⏐⏐⏐⏐⏐⏐⏐⏐
+= sup
+‖y‖p=1
+⏐⏐⏐⏐⏐⏐⏐⏐
+D
+1
+q − 1
+2
+ψ y D
+1
+2 − 1
+p
+ϕ
+xD
+1
+p
+ϕ$
+$ $
+⏐⏐⏐⏐⏐⏐⏐⏐
+⩽ ~K
+‖‖‖‖ $xD
+1
+p
+ϕ
+‖‖‖‖
+q
+⩽ δ1−2/p~K
+‖‖‖‖ $ xD
+1
+p
+ϕ
+‖‖‖‖
+p
+.
+The ﬁrst inequality is a consequence of the quantum H¨ older inequal-
+ity. The second inequality is a consequence of the quantum Hausdor ﬀ-
+Young inequality (Theorem 4.8 [ 21]), along with
+δ =
+‖‖‖
+‖‖‖
+1
+.
+Here the constant is ~K = sup ‖y‖p=1 ~K(y), with ~K(y) equal to the fol-
+lowing picture:
+‖‖‖‖
+D
+1
+q − 1
+2
+ψ y D
+1
+2 − 1
+p
+ϕ$ $
+‖‖‖‖
+p
+⩽ 1
+δ
+‖‖‖‖ $D
+1
+q − 1
+2
+ψ y
+‖‖‖‖
+p
+‖‖‖‖ $D
+1
+2 − 1
+p
+ϕ
+‖‖‖‖
+1
+⩽ 1
+δ
+‖‖‖‖ $ D
+1
+q − 1
+2
+ψ
+‖‖‖‖
+∞
+‖‖‖‖ $D
+1
+2 − 1
+p
+ϕ
+‖‖‖‖
+1
+‖y‖p .
+To obtain the ﬁrst inequality, we use the quantum Young inequality
+(Theorem 4.13 in [ 21]). To obtain the second inequality, we use the
+quantum H¨ older inequality. □
+7.1. Relative Entropy. We formulate relative-entropy (RE) and the
+corresponding relative entropic quantum (REQ) uncertainty princ iple.
+For two weights ω,ϕ on P2,+, recall that the relative entropy [ 42] is
+S(ω‖ϕ) = tr2(Dω(logDω− logDϕ)).
+7.2. The Relative Entropic Quantum Uncertainty Principle.
+For a weight ω on P2,+, deﬁne ˆω as the weight on P2,− given by the
+density matrix
+(14) Dω
+⋀
+=|F(D1/2
+ω )|2.
+It follows that ω
+⋀
+(1) = ω(1). If ω is a state, so is ˆω.
+
+=== page 13 ===
+Quantum Fourier Analysis 13
+Theorem 7.2 (REQ Uncertainty Principle). Let P• be an irre-
+ducible subfactor planar algebra and ϕ,ψ be faithful weights on P2,±.
+Then for any state ω on P2,+,
+S(ω‖ϕ) +S(ω
+⋀
+‖ψ) ⩽ log‖D−1
+ψ ‖∞− 1
+δ2tr2(logDϕ)− 2 logδ.
+Proof. Note that Fp,ϕ,ψ(D1/2
+ω D1/p−1/2
+ϕ ) = F(D1/2
+ω )D1/q−1/2
+ψ . As‖AB‖p =
+‖|A|B‖p, using (14), we infer that Fp,ϕ,ψ(D1/2
+ω D1/p−1/2
+ϕ ) andD1/2
+ω
+⋀
+D1/q−1/2
+ψ
+have the same q norms. Deﬁne the function f (p) as a picture, where
+q =p/(p− 1),
+f (p) =
+‖‖‖‖‖‖
+D
+1
+q − 1
+2
+ψ
+D
+1
+2
+ω
+⋀$
+$
+‖‖‖‖‖‖
+q
+−
+( ‖‖‖‖
+‖‖‖‖
+−2/p
+1
+‖‖‖‖ $ D
+1
+q − 1
+2
+ψ
+‖‖‖‖
+∞
+‖‖‖‖ $D
+1
+2 − 1
+p
+ϕ
+‖‖‖‖
+1
+) ‖‖‖‖‖‖
+D
+1
+p − 1
+2
+ϕ
+D
+1
+2
+ω$
+$
+‖‖‖‖‖‖
+p
+.
+The picture f (p) is negative for 1 ⩽ p ⩽ 2, by Theorem 7.1. Also
+f (2) = 0 by Plancherel’s theorem, so the left derivative f ′
+−(2) /greaterorequalslant0.
+Then Theorem 7.2 is a consequence of the expressions for the deriva-
+tives in the following lemma. □
+Lemma 7.3. For any weight ω on P2,+, we have
+d
+dp
+‖‖‖‖‖‖
+D
+1
+q − 1
+2
+ψ
+D
+1
+2
+ω
+⋀$
+$
+‖‖‖‖‖‖
+q
+⏐⏐⏐⏐⏐⏐⏐
+p=2
+=
+−1
+4tr2(Dω
+⋀
+)1/2 logtr2(Dω
+⋀
+)
+− 1
+4tr2(Dω
+⋀
+)1/2S(ω
+⋀
+‖ψ)
+,
+d
+dp
+‖‖‖‖‖‖
+D
+1
+p − 1
+2
+ϕ
+D
+1
+2ω$
+$
+‖‖‖‖‖‖
+p
+⏐⏐⏐⏐⏐⏐⏐
+p=2
+=
+−1
+4tr2(Dω)1/2 logtr2(Dω)
++ 1
+4tr2(Dω)1/2S(ω‖ϕ)
+,
+d
+dp
+( ‖‖‖‖
+‖‖‖‖
+−2/p
+1
+‖‖‖‖ $ D
+1
+q − 1
+2
+ψ
+‖‖‖‖
+∞
+‖‖‖‖ $D
+1
+2 − 1
+p
+ϕ
+‖‖‖‖
+1
+) ⏐⏐⏐⏐⏐
+p=2
+=
+1
+2 logδ− 1
+4 log
+‖‖D−1
+ψ
+‖‖
+∞
++ 1
+4δ2tr2(logDϕ).
+.
+8. QF A and Quantum Entanglement
+Here we convert our pictures to the style in [ 30, 43], which are not
+shaded. The Fourier transform of a multiple of the projection onto the
+zero-vector for the group Zd, namely d1/2|0⟩⟨0|, is the identity,
+(15) F = =d−1/2∑
+k∈Zd k
+−k
+.
+
+=== page 14 ===
+14 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, an d Jinsong W u
+One can identify a linear transformation T on Cd as a vector ˆT in
+Cd⊗ Cd, namely
+i
+−j
+←→ −j
+i
+, the picture for |i⟩⟨j|←→|− j,i⟩ .
+Identifying ( 15) in this way gives the illustration of how the Fourier
+transform F acts on product states. In particular,
+F ( ) = d−1/2∑
+k∈Zd
+−k
+k = =d1/2|Max⟩.
+If d = 2, then k =−k∈ Zd, and|Max⟩ is the usual Bell state.
+A similar picture and vector |Max⟩n = F|⃗0⟩n exists for n qudits
+[43]. This vector |Max⟩n generalizes the classical Bell state for d =
+2 for qubits to a maximally-entangled state for n qudits of order d.
+Furthermore, one can apply F to any product basis state; one thereby
+obtains a Max basis (of maximally entangled states). These are relat ed
+to a corresponding n-qudit GHZ basis [ 44]. In §4 of [ 19] one ﬁnds
+expressions for the various|Max⟩n basis states, as well as their relation
+to, and expressions for, the |GHZ⟩n basis states. Also see [ 35] for a
+Quon interpretation.
+The quantum uncertainty principle QUP-1 in Theorem 2.1 for sub-
+factors gives a lower bound for the entanglement entropy. The pr od-
+uct ground state has minimal entanglement entropy. Each Max sta te
+has maximal entanglement entropy. In addition, we obtain a relative
+entropic uncertainty principle for quantum entanglement by applyin g
+Theorem 7.2.
+9. Some Future Directions and Goals
+We propose a few speciﬁc questions, but ﬁrst cite some general di-
+rections that appear ripe for the development of QF A:
+• Establish additive combinatorics for quantum symmetries, such as
+for unitary modular tensor categories.
+• Establish a general theory for F(Pn,±), where F2n = 1.
+• Understand Fourier analysis for inﬁnite quantum symmetries within
+a pictorial framework, such as surface algebras.
+• Seek further applications of QF A to quantum information.
+9.1. Questions on the Universal Inequality. There are three cen-
+tral problems for the classical Brascamp-Lieb inequality on R:
+a. Can one ﬁnd for which tuples of linear maps the best constant is
+ﬁnite?
+
+=== page 15 ===
+Quantum Fourier Analysis 15
+b. Can the best constant be achieved? If so, it is proved in [ 45] that
+there exist Gaussian extremizers.
+c. Are all extremizers Gaussian?
+Since all Pn,±, n ∈ N, are ﬁnite dimensional, the best constant
+C of the universal inequality is ﬁnite and the extremizer exists by
+the compactness. We ask the following questions for the universal
+inequality:
+Question 9.1. In which case, is the best constant achieved by tensor
+product of n-projections (the natural generalization of bi-projectio ns)?
+Question 9.2. If further, all the input belong to P2,±, are the extrem-
+izers all bishifts of biprojections?
+Question 9.3 (Finite abelian groups). What are the best constants
+of the universal inequality on ﬁnite abelian groups?
+9.2. Questions on Subfactor Planar Algebras. Suppose P•,± is
+an irreducible subfactor planar algebra.
+Conjecture 9.4. For any ε> 0, there exists ε′ such that if x∈ P2,±,
+‖x−P‖2 < ε′ and‖F(x)−λQ‖2 < ε′, for some projections P,Q and
+constantλ, then there is a biprojection B, such that ‖x−B‖<ε .
+Question 9.5. Can one characterize the extremizers for the uncer-
+tainty principles on n-boxes, for n /greaterorequalslant3?
+9.3. Block Renormalization Map and Quantum Central Limit
+Theorem. The block map Bλ is a composition of convolution and
+multiplication,
+Bλ
+(
+x$
+)
+= δ2
+‖x‖2
+2
+
+ λ
+‖x‖1 x∗ x
+x∗x
+$ $
+$ $
++ (1−λ)
+‖x‖∞
+x∗
+x x ∗
+x
+$ $
+$ $
+
+.
+The limit points of the iteration of the block map are all biprojections
+for ﬁnite-index, irreducible subfactors [ 46]. We regard this result as a
+quantum 2D central limit theorem.
+Conjecture 9.6. For any f∈L∞(Rn)∩L1(Rn)∩L2(Rn),f converges
+either to 0, or to a Gaussian function, under the action of the iteration
+of the block map 2nBλ.
+Conjecture 9.7. The Hirschman-Beckner entropy decreases under the
+action of the block map 2nBλ, for any f∈L∞(Rn)∩L1(Rn)∩L2(Rn).
+The same question remains for ﬁnite cyclic groups.
+
+=== page 16 ===
+16 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, an d Jinsong W u
+10. Significance Statement
+Quantum methods give a new face to Fourier analysis. Pictorial
+intuition yields new insights, motivates new inequalities, and new un-
+certainty principles for diﬀerent quantum symmetries.
+11. Acknowledgement
+We are grateful for informative discussions with a number of col-
+leagues, and especially thank Dietmar Bisch, Kaifeng Bu, Pavel Eting of,
+Xun Gao, Leonard Gross, J. William Helton, Vaughan Jones, Christo-
+pher King, Robert Lin, Sebastian Palcoux, Terence Tao, Zhenghan Wang,
+Feng Xu, and Quanhua Xu. This research was supported in part by
+a grant TRT 0159 on mathematical picture language from the Tem-
+pleton Religion Trust. AJ was partially supported by ARO Grant
+W911NF1910302. CJ was partially supported by NSFC Grant 118310 06.
+ZL was partially supported by Grant 100301004 from Tsinghua Uni-
+versity. JW was partially supported by NSFC Grant 11771413.
+References
+[1] Tannaka, T. (1939) ¨Uber den Dualit¨ atssatz der nichtkommutativen topolo-
+gischen Gruppen. Tohoku Mathematical Journal, First Series 45:1–12.
+[2] Krein, M. G. (1949) A principle of duality for a bicompact group and block
+algebra. Dokl. Akad. Nauk. SSSR 69:725–728.
+[3] Hirschman, I. (1957) A note on entropy. Am. J. Math. 79:152–156.
+[4] Everett III, H. (1956) The Many-Worlds Interpretation of Qu antum Mechan-
+ics: the theory of the universal wave function.
+http://inspirehep.net/record/1358321/ﬁles/dissertation.pdf.
+[5] Beckner, W. (1975) Inequalities in Fourier analysis.
+Ann. Math. 102(1):159–182.
+[6] Bia/suppress lynicki-Birula, I., Mycielski, J. (1975) Uncertainty relations for informa-
+tion entropy in wave mechanics. Commun. Math. Phys. 44(2):129–132.
+[7] Brascamp, H., Lieb, E. (1976) Best constants in Young’s inequal-
+ity, its converse, and its generalization to more than three functio ns.
+Adv. Math. 20(2):151–173.
+[8] Nelson, E. (1966) A quartic interaction in two dimensions. Mathematical
+Theory of Elementary Particles , pp. 69–73, Eds. R. Goodman and I. Segal,
+MIT Press, Cambridge, MA.
+[9] Glimm, J. (1968) Boson Fields with nonlinear self interaction in two dim en-
+sions.Commun. Math. Phys. 8:12–25.
+[10] Nelson, E. (1973) The free Markoﬀ ﬁeld. J. Funct. Anal. 12(2):211–227.
+[11] Federbush, P. (1969) Partially Alternate Derivation of a Result of Nelson.
+J. Math. Phys. , 10(1):50–52.
+[12] Gross, L. (1975) Hypercontractivity and logarithmic Sobolev in equalities for
+the Cliﬀord-Dirichlet form. Duke Math. J. 43:383–396.
+
+=== page 17 ===
+Quantum Fourier Analysis 17
+[13] Carlen, E. and Lieb, E. (1992) Optimal Hypercontractivity for
+Fermi Fields and Related Non-Commutative Integration Inequalities .
+Commun. Math. Phys. , 155:27–46.
+[14] Stein, E. M., Murphy, T. S. (1993) Harmonic analysis: real-varia ble methods,
+orthogonality, and oscillatory integrals.
+Princeton Mathematics Series, Volume 43. Princeton University Pre ss.
+[15] Janson, S. (1997) On Complex Hypercontractivity.
+J. Funct. Anal. 151(1): 270–280.
+[16] Ricard, ´E. and Xu, Q. (2016) A noncommutative martingale convexity in-
+equality. Annals of Probability , 44(2):867–882.
+[17] Junge, M., Palazuelos, C., Parcet J., Perrin M., and Ricard ´E. (2015) Hyper-
+contractivity for free products. Ann. Sci. ´Ecole Norm. Sup , 48:861889.
+[18] Beigi, S. and King, C. (2016) Hypercontractivity and the logarit hmic Sobolev
+inequality for the completely bounded norm. J. Math. Phys. 57:015206.
+[19] Jaﬀe, A., Liu, Z. (2018) Mathematical Picture Language Progr am.
+Proceedings of the National Academy of Sciences 115(1):81–86.
+[20] Liu, Z. (2016) Exchange relation planar algebras of small rank.
+Transactions of the American Mathematical Society , 368(12):8303–8348.
+[21] Jiang, C., Liu, Z., Wu, J. (2016) Noncommutative uncertainty pr inciples.
+Journal of Functional Analysis , 270:264–311.
+[22] Bisch, D. (1994) A note on intermediate subfactors.
+Paciﬁc Journal of Mathematics , 163:201–216.
+[23] Lusztig, G. (1987) Leading coeﬃcients of character values of Hecke algebras.
+Proc. Symp. Pure Math. , 47(2):235–262.
+[24] Etingof, P., Gelaki, S., Nikshych, D., Ostrik, V. (2015) Tensor Ca tegories.
+AMS Math. Surveys and Monographs, Volume 205.
+[25] Liu, Z., Palcoux, S., and Wu, J. (2019) Fusion Bialgebras and Four ier Anal-
+ysis. arXiv:1910:12059.
+[26] Jones, V. (1983) Index for subfactors. Inventiones Mathematicae, 72:1–25.
+[27] Evans, D., Kawahigashi, Y. (1998) Quantum symmetries on oper ator alge-
+bras. Clarendon Press, Oxford, UK.
+[28] Jones, V. (1999) Planar algebras, I. arXiv:math/9909027v1.
+[29] Atiyah, M. (1988) Topological quantum ﬁeld theory.
+Publications Math´ ematiques de l’IH´ES. 68:175–186.
+[30] Jaﬀe, A. and Liu, Z. (2017) Planar para algebras and reﬂection positivity.
+Commun. Math. Phys. 352(1):95–133.
+[31] Jaﬀe, A. and Liu Z. (2019) Reﬂection Positivity and Levin-Wen Mo dels.
+arXiv:1901.10662, to appear in Expositiones Mathematicae.
+[32] Liu, Z. and Wu, J. (2019) Non-commutative R´ enyi Entropic Uncertainty Prin-
+ciples. arXiv:1904.04292.
+[33] M¨ uger, M. (2003) From subfactors to categories and topology II: The quan-
+tum double of tensor categories and subfactors.
+Journal of Pure and Applied Algebra 180(1-2): 159–219.
+[34] Liu, Z. (2019) Quon language: surface algebras and Fourier du ality.
+Commun. Math. Phys. , 366(3):865–894.
+[35] Liu, Z., Wozniakowski, A., and Jaﬀe, A., (2017) Quon 3D language f or quan-
+tum information. PNAS, 114(10):2497–2502.
+
+=== page 18 ===
+18 Arthur Jaﬀe, Chunlan Jiang, Zhengwei Liu, Yunxiag Ren, an d Jinsong W u
+[36] Kustermans, J., Vaes, S. (2000) Locally compact quantum gro ups.
+Annales Scientiﬁques de l’Ecole Normale Superieure , 33(6) 837–934.
+[37] Cooney, T. (2010) A Hausdorﬀ-Young inequality for locally compact quantum
+groups. International Journal of Mathematics , 21(12):1619–1632.
+[38] Caspers, M. (2013) The Lp-Fourier transform on locally compact quantum
+groups. Journal of Operator Theory , 69:161–193.
+[39] Liu, Z., Wu, J. (2017) Uncertainty principles for Kac algebras.
+J. Math. Phys. , 58:052102.
+[40] Liu, Z., Wang, S., Wu, J.(2017) Young’s inequality for locally compac t quan-
+tum groups. Journal of Operator Theory , 77:109–131.
+[41] Jiang, C., Liu, Z., Wu, J. (2018) Uncertainty principles for locally c ompact
+quantum groups. Journal of Functional Analysis , 274:2399–2445.
+[42] Relative Entropy of States of von Neumann Algebras. Araki, H. (1976)
+Publ. RIMS, Kyoto Univ. 11:809–833.
+[43] Jaﬀe, A., Liu, Z., and Wozniakowski, A. (2018) Holographic softw are for
+quantum networks. Science China Mathematics 61(4):593–626.
+[44] Greenberger, D. M., Horne, M. A., and Zeilinger, A. (1989) Going be-
+yond Bell’s theorem. Bell’s theorem, quantum theory, and conceptions of the
+universe, Kafakos, M., editor, Vol. 37 of Fundamental Theories of Physics ,
+Springer, Heidelberg,
+[45] Bennett, J., Carbery, A., Christ, M., Tao, T. (2008) The Brasc amp-Lieb
+inequalities: ﬁniteness, structure and extremals.
+Geom. Funct. Anal. , 17:1343–1415.
+[46] Jiang, C., Liu, Z., Wu, J. (2019) Block maps and Fourier analysis.
+Science China Mathematics , 62(8):1585–1614.
+Harvard University, Cambridge, MA 02138
+E-mail address : jaffe@g.harvard.edu
+Hebei Normal University
+E-mail address : cljiang@hebtu.edu.cn
+Tsinghua University
+E-mail address : liuzhengwei@mail.tsinghua.edu.cn
+Harvard University, Cambridge, MA 02138
+E-mail address : yren@g.harvard.edu
+Institute for Advanced Study in Mathematics, Harbin Instit ute of
+Technology
+E-mail address : wjs@hit.edu.cn

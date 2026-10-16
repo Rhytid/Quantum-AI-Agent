@@ -1,0 +1,1162 @@
+=== page 1 ===
+Citation: Zangi, S.M.; Shukla, C.;
+ur Rahman, A.; Zheng, B.
+Entanglement Swapping and
+Swapped Entanglement. Entropy
+2023, 25, 415. https://doi.org/
+10.3390/e25030415
+Academic Editors: Hichem Eleuch,
+Mahmoud Abdel-Aty and
+Abdel-Haleem Abdel-Aty
+Received: 11 December 2022
+Revised: 14 February 2023
+Accepted: 20 February 2023
+Published: 25 February 2023
+Copyright: © 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+entropy
+Article
+Entanglement Swapping and Swapped Entanglement
+Sultan M. Zangi 1,*,†
+ , Chitra Shukla 2,†, Atta ur Rahman 3
+ and Bo Zheng 1,4,*
+1 School of Physics and Astronomy and Yunnan Key Laboratory for Quantum Information, Yunnan University,
+Kunming 650500, China
+2 Shenzhen Institute for Quantum Science and Engineering and Department of Physics, Southern University of
+Science and Technology, Shenzhen 518055, China
+3 School of Physics, University of Chinese Academy of Sciences, Yuquan Road 19A, Beijing 100049, China
+4 Collaborative Innovation Center of Advanced Microstructures, Nanjing University, Nanjing 210093, China
+* Correspondence: zangi89@yahoo.com (S.M.Z.); zhengbo@zju.edu.cn (B.Z.)
+† These authors contributed equally to this work.
+Abstract: Entanglement swapping is gaining widespread attention due to its application in entangle-
+ment distribution among different parts of quantum appliances. We investigate the entanglement
+swapping for pure and noisy systems, and argue different entanglement quantiﬁers for quantum
+states. We explore the relationship between the entanglement of initial states and the average entan-
+glement of ﬁnal states in terms of concurrence and negativity. We ﬁnd that if initial quantum states
+are maximally entangled and we make measurements in the Bell basis, then average concurrence and
+average negativity of ﬁnal states give similar results. In this case, we simply obtain the average con-
+currence (average negativity) of the ﬁnal states by taking the product of concurrences (negativities) of
+the initial states. However, the measurement in non-maximally entangled basis during entanglement
+swapping degrades the average swapped entanglement. Further, the product of the entanglement of
+the initial mixed states provides an upper bound to the average swapped entanglement of ﬁnal states
+obtained after entanglement swapping. The negativity work well for weak entangled noisy states
+but concurrence gives better results for relatively strong entanglement regimes. We also discuss how
+successfully the output state can be used as a channel for the teleportation of an unknown qubit.
+Keywords: entanglement; swapping; negativity; concurrence
+1. Introduction
+Schrödinger observed the existence of a unique correlation, called entanglement, in
+some quantum states of two or more systems at the dawn of quantum mechanics [ 1].
+Now, it is well understood that entanglement is a purely quantum phenomena [2,3]. The
+creation, modiﬁcation, control, and practical application of this quantum correlation have
+become signiﬁcant research ﬁelds [ 4,5]. Specially, the ability to distribute entanglement
+between distant systems has the potential to be used in the development of novel quantum
+information protocols [6,7].
+The entanglement swapping is a mechanism for distributing the entanglement correla-
+tion between distant systems. There has been a great deal of theoretical and experimental
+research completed on entanglement swapping [8–13]. It also helps us to connect many sep-
+arable nodes for long-distance communication in a quantum network [14,15]. Speciﬁcally,
+entanglement swapping is a protocol by which quantum systems that have never inter-
+acted in the past can become entangled [6,16]. The nomenclature “entanglement swapping”
+describes the transfer of entanglement from a priori entangled systems to a priori separable
+systems [17]. It is a very useful tool for entanglement puriﬁcation [ 18], teleportation [19],
+and plays an important role in quantum computing and quantum cryptography [4,20]. We
+can also use entanglement swapping for the creation of multipartite entangled states from
+bipartite entanglement [21].
+Entropy 2023, 25, 415. https://doi.org/10.3390/e25030415 https://www.mdpi.com/journal/entropy
+
+=== page 2 ===
+Entropy 2023, 25, 415 2 of 15
+Let us describe the phenomenon of entanglement swapping. Suppose two entangled
+particles (A, B) are shared between Alice and Bob. Similarly Cara and Danny also share
+another entangled pair of particles(C, D). Initially there is no entanglement between Alice’s
+and Danny’s particles(A, D), shown in Figure 1a. If Bob and Cara who are situated in the
+same laboratory make measurement in a suitable basis on the pair (B, C) and classically
+communicate the outcome with distant partners then Alice’s and Danny’s particles who
+are at very large distance become entangled as shone in Figure 1b. This entanglement
+swapping protocol can be generalized in different ways: by modifying the initial states, or
+by modifying the measurement performed by Bob and Cara, or by extending the number
+of parties [21,22].
+Alice Danny
+Bob Cara
+Alice-Bob
+entanglement
+Cara-Danny
+entanglement
+(a)
+Alice Danny
+Bob Cara
+Alice-Danny
+entanglement
+(b)
+Figure 1. Entanglement swapping. Initially in (a) entangled pairs are shared between Alice and Bob,
+and between Cara and Danny. There is no entanglement between Alice and Danny. However, in (b),
+the measurement on Bob and Cara’s qubits project the entanglement between Alice and Danny.
+An ever-increasing body of literature shows that the entanglement swapping and
+puriﬁcation of quantum systems need speciﬁc protocols. Smaller changes may bring huge
+changes to the output state because of the relative sensitivity of the operation and quantum
+systems. For this reason, several previous studies suggest entanglement swapping of initial
+states into maximally entangled states. For example, in Ref. [23], the authors provided a
+scheme of entanglement swapping of initial states into biqubit maximally entangled states
+when inﬂuenced by an amplitude damping channel. The concurrence of the measuring
+basis for entanglement swapping caused a two-fold entanglement matching effect has been
+witnessed in Ref. [24]. The authors of Ref. [25] showed relationship between the ranks of
+the initial states and the rank of the ﬁnal state after swapping, as well as that concurrence of
+partially mixed states remains conserved when is swapped with the Bell state. Our research
+discusses the complement to the earlier ﬁndings in the cited reference. Concurrence-based
+weak entanglement regimes are not detected in the mixed state. It is interesting to note
+
+=== page 3 ===
+Entropy 2023, 25, 415 3 of 15
+that negativity is still more robust than concurrence at the weak entanglement regimes
+of the mixed state when we revisit this using negativity in our work. Recently, Ref. [ 26]
+investigated that hyper-entangled states produce deterministic entanglement swapping
+while considering projections of biqubit systems on symmetric, and iso-entangled states.
+It is found that biqubit entanglement generated through entanglement swapping, will
+depart from a Bell-type inequality even for visibilities smaller than 50% [9]. From the above
+literature, we found that entanglement swapping has been previously considered using
+different procedures, and various important results have been achieved. This research
+work constitutes a relatively more generalized entanglement swapping protocol that covers
+the maximum possible cases of swapping. We consider pure, mixed, and noisy systems
+for entanglement swapping. Ordering the quantum systems with respect to different
+entanglement quantiﬁers is also one of the hot issues of quantum information [27–30]. Here,
+we also investigate the ordering of ﬁnal states via concurrence [31] and negativity [32,33].
+We compare the results of concurrence and negativity and ﬁnd their association under
+different circumstances. We speciﬁcally wish to investigate the relationship between the
+average concurrence and average negativity of the output states and the concurrences and
+negativities of the input states. In case of pure states, it is discovered that the average
+concurrence (average negativity) of the ﬁnal state is simply the sum of the concurrences
+(negativities) of the states used to perform the entanglement swap. Then, for noisy qubits,
+concurrence (negativity) and entanglement swapping are discussed. We observe that week
+entangled ﬁnal noisy states are only detected by negativity but in the relatively higher
+entangled noisy state domains, concurrence remains more favorable. Moreover, we explore
+the application of the ﬁnal state as a channel for the teleportation of an unknown qubit.
+We also investigate the ﬁdelity of teleported qubit with the initial unknown qubit. One
+of the intentions of our work is to provide a theoretical scheme that can easily be used
+in experiments containing swapping protocol. In this case, we demonstrated an easily
+applicable entanglement swapping design compared to the previous studies [9,23–26].
+The article is organized as follows. Section 2 describes the details of the entanglement
+swapping scenario for non-noisy systems and the application of swapped entanglement.
+Next, in Section 3, we demonstrate the entanglement swapping among noisy qubits and
+teleportation using a noisy quantum channel. Finally, we conclude with a short discussion
+in Section 4.
+2. Entanglement Swapping among Qubit Systems
+We consider two pairs of qubits for entanglement swapping. The entangled qubits
+A and B make the ﬁrst pair and the second pair consist of entangled qubits C and D (the
+qubits’ names are chosen such that they make the initial of Alice, Bob, Cara, and Danny,
+shown in Figure 1). In terms of Schmidt decomposition, these subsystems can be written as
+|φ⟩AB =√p0|00⟩AB +√p1|11⟩AB ,
+|φ⟩CD =
+√
+p′
+0|00⟩CD +
+√
+p′
+1|11⟩CD .
+(1)
+The concurrence and negativity of these systems are C(|φ⟩AB ) = 2√p0 p1, C(|φ⟩CD ) =
+2
+√
+p′
+0 p′
+1 andN (|φ⟩AB ) = 2√p0
+√p1,N (|φ⟩CD ) = 2
+√
+p′
+0
+√
+p′
+1. It means for these bi-
+dimensional systems concurrence and negativity produce similar results. The initial state
+of our four-qubit system is|Φ⟩ =|φ⟩AB⊗| φ⟩CD and after rearrangement of the qubits A
+and D together and qubits B and C together we can write
+|Φ⟩ =
+√
+p0 p′
+0|00⟩AD|00⟩BC +
+√
+p0 p′
+1|01⟩AD|01⟩BC +
+√
+p1 p′
+0|10⟩AD|10⟩BC +
+√
+p1 p′
+1|11⟩AD|11⟩BC . (2)
+
+=== page 4 ===
+Entropy 2023, 25, 415 4 of 15
+In order to do measurements over BC qubits, we also need to deﬁne a set of four orthonor-
+mal basis [24]
+| ˜Φ+⟩BC = α0|00⟩BC + β0|11⟩BC ,
+| ˜Φ−⟩BC = β∗
+0|00⟩BC− α∗
+0|11⟩BC ,
+| ˜Ψ+⟩BC = α1|01⟩BC + β1|10⟩BC ,
+| ˜Ψ−⟩BC = β∗
+1|01⟩BC− α∗
+1|10⟩BC ,
+(3)
+where αi and βi are unknown coefﬁcients and for normalization |αi|2 +|βi|2 = 1 for
+i∈{ 0, 1}. Conversely, we have|00⟩BC = α∗
+0| ˜Φ+⟩BC + β0| ˜Φ−⟩BC and, likewise, we can
+ﬁnd expressions for|01⟩BC ,|10⟩BC ,|11⟩BC. Now by using these expressions we can write
+Equation (2) as
+|Φ⟩ =√p ˜Φ+| ¨Φ+⟩AD| ˜Φ+⟩BC +√p ˜Φ−| ¨Φ−⟩AD| ˜Φ−⟩BC
++√p ˜Ψ+| ¨Ψ+⟩AD| ˜Ψ+⟩BC +√p ˜Ψ−| ¨Ψ−⟩AD| ˜Ψ−⟩BC , (4)
+where| ¨Φ+⟩AD =
+(√
+p0 p′
+0α∗
+0|0⟩A|0⟩D +
+√
+p1 p′
+1β∗
+0|1⟩A|1⟩D
+)
+/√p ˜Φ+ with probabilityp ˜Φ+ =
+p0 p′
+0|α0|2 + p1 p′
+1|β0|2, similarly| ¨Φ−⟩AD ,| ¨Ψ+⟩AD , and| ¨Ψ−⟩AD can be obtained.
+We observe in Equation (4) that the state of qubits A and D is similar to the state of the
+basis BC. After measurements in the basis BC, Alice and Danny’s qubitsA, D which are
+initially separable, become entangled in one of the four possible forms. We can compute
+the average concurrence for the ﬁnal state as
+Cav = p ˜Φ+C ¨Φ+ + p ˜Φ−C ¨Φ− + p ˜Ψ+C ¨Ψ+ + p ˜Ψ−C ¨Ψ− ,
+= 4
+√
+p0 p′
+0 p1 p′
+1(|α0β0| +|α1β1|) .
+(5)
+The Bell states are maximally entangled biqubit states. The states in Equation (3)
+transform into maximally entangled Bell states if we take αi = βi = 1√
+2 for i∈{ 0, 1}. The
+measurement in maximally entangled Bell basis return maximally entangled A, D qubits
+states with the average concurrence
+Cav = 4
+√
+p0 p′
+0 p1 p′
+1
+= CABCCD .
+(6)
+Similarly, the average negativity of the qubits A and D states when the measurement is
+completed in Bell basis takes the form
+Nav = 4
+√
+p0 p′
+0 p1 p′
+1
+=NABNCD .
+(7)
+We obtain from Equations (6) and (7) that if initial quantum states are maximally entan-
+gled and we make measurements in the Bell basis, then average concurrence and average
+negativity are equivalent. We simply obtain the average concurrence (average negativ-
+ity) by taking the product of concurrences (negativities) of the initial states. In addition,
+Equation (5) shows that measurement in non-maximally entangled basis during entangle-
+ment swapping degrades the average swapped entanglement.
+Now we extend entanglement swapping between two pairs of qubits to three pairs of
+qubits. We take three pairs of entangled qubits and make a measurement in the GHZ basis
+and analyze the outcome state. If the three pairs of qubits in Schmidt form are |φ⟩AB =
+
+=== page 5 ===
+Entropy 2023, 25, 415 5 of 15
+√λ0|00⟩AB +√λ1|11⟩AB ),|φ⟩CD =√µ0|00⟩CD +√µ1|11⟩CD and|φ⟩EF =√ν0|00⟩EF +√ν1|11⟩EF then the six-qubit system can be written as
+|Φ′⟩ =|φ⟩AB⊗| φ⟩CD⊗| φ⟩EF . (8)
+Let us make measurements on the B, D, and F qubits. For this purpose, we can deﬁne the
+triqubit GHZ basis as [34]
+|G0,1⟩ = 1√
+2
+(|000⟩±| 111⟩) ,
+|G2,3⟩ = 1√
+2
+(|001⟩±| 110⟩) ,
+|G4,5⟩ = 1√
+2
+(|010⟩±| 101⟩) ,
+|G6,7⟩ = 1√
+2
+(|011⟩±| 100⟩) .
+(9)
+Here, the− sign applies to states with odd indices. Now we can write Equation (8) in terms
+of GHZ basis as
+|Φ′⟩ = 1√
+2
+(√
+λ0µ0ν0|000⟩ACE±
+√
+λ1µ1ν1|111⟩ACE
+)
+|G0,1⟩
++ 1√
+2
+(√
+λ0µ0ν1|001⟩ACE±
+√
+λ1µ1ν0|110⟩ACE
+)
+|G2,3⟩
++ 1√
+2
+(√
+λ0µ1ν0|010⟩ACE±
+√
+λ1µ0ν1|101⟩ACE
+)
+|G4,5⟩
++ 1√
+2
+(√
+λ0µ1ν1|011⟩ACE±
+√
+λ1µ0ν0|100⟩ACE
+)
+|G6,7⟩ .
+(10)
+This equation shows that after measurements on BDF qubits, we gain ACE qubits in any
+one of the eight possible forms of entangled state. For example, if measurement gives us
+|G0⟩ then ACE qubits have state
+1√
+2p0
+(√
+λ0µ0ν0|000⟩ACE +
+√
+λ1µ1ν1|111⟩ACE
+)
+. (11)
+Here, probability of obtaining|G0⟩ state is p0 = (λ0µ0ν0 + λ1µ1ν1)/2.
+Yu and Song [35] showed that any good bipartite entanglement measure MA−B can
+be extended to multipartite systems by taking bipartite partitions of them. So a tripartite
+entanglement quantiﬁer can be deﬁned as
+M+
+ABC = 1
+3 (MA−BC + MB−AC + MC−AB ). (12)
+However, M+
+ABC could be non-zero for pure biseparable states. It can be avoided by using
+the geometric mean:
+M×
+ABC = (MA−BC MB−AC MC−AB )
+1
+3 . (13)
+However, we use global entanglement Q for a multiplicative deﬁnition if our entanglement
+quantiﬁer M is tangle (the square of the concurrence) [ 36]. In a more general setting,
+this entanglement quantiﬁer geometric mean concept was put forth in [ 37]. Now by
+considering this bi-partition for the ﬁnal triqubit entangled state, we can compute the
+swapped entanglement in the form of concurrence as
+CACE = (CA−CECC−AECE−AC)
+1
+3 , (14)
+
+=== page 6 ===
+Entropy 2023, 25, 415 6 of 15
+where CA−CE =
+√
+2
+(
+1− Tr
+(
+ρ2
+A
+))
+and similarly we can compute CC−AE, CE−AC. Here,
+ρA is the one-qubit reduced density matrix of the qubit A, obtained after tracing out the
+other qubits. The average concurrence for the ﬁnal three qubits state now can be written as
+Cav
+ACE = CABCCDCEF . (15)
+It is again equal to the product of the concurrences of the initial three states.
+We can compute the the negativity of triqubit state ρACE as
+N (ρACE ) = (NA−CENC−AENE−AC)
+1
+3 , (16)
+whereNA−CE =−2 ∑i λi
+(
+ρTA
+ACE
+)
+, λi
+(
+ρTA
+ACE
+)
+are the negative eigenvalues of ρTA
+ACE, partial
+transpose of ρACE with respect to subsystem A is deﬁned as
+⟨
+iA, jCE
+⏐⏐⏐ρTA
+ACE
+⏐⏐⏐kA, lCE
+⟩
+=
+⟨kA, jCE|ρ|iA, lCe⟩ and, similarly, we can deﬁneNC−AE,NE−AC. The average negativity of
+the ﬁnal triqubit state can be written as
+N av
+ACE =NABNCDNEF , (17)
+whereNAB,NCD andNEF are the negativities of the initial three biqubit states.
+Application of Swapped Entanglement
+The ﬁnal swapped entanglement between Alice and Danny’s qubit has wide range
+of application, however, we are interested in imposing it for teleportation of an unknown
+qubit state. Let, after the entanglement swapping, Alice and Danny attain the state| ¨Φ+⟩AD
+that can also be written as
+| ¨Φ+⟩AD = (a|0⟩A|0⟩D + b|1⟩A|1⟩D) , (18)
+where a = α∗
+0
+√
+p0 p′
+0/p ˜Φ+, b = β∗
+0
+√
+p1 p′
+1/p ˜Φ+ and|a|2 +|b|2 = 1. If a = b = 1√
+2 then
+Equation (18) is maximally entangled otherwise non-maximally entangled. Let Alice and
+Danny win a maximally entangled state after entanglement swapping and Alice wants
+to teleport an unknown quantum state to Danny. We denote the state that Alice wants to
+send as
+|χ⟩ = α|0⟩ + β|1⟩ , (19)
+where|α|2 +|β|2 = 1. Now the state|χ⟩ can be teleported easily as described in Ref. [38].
+However, if|a|⁄ = 1√
+2 then Alice and Danny are not sharing a maximally entangled state
+and in this case, we use probabilistic teleportation to transmit|χ⟩. In such a situation, the
+receiver (Danny) cannot apply single-qubit unitary operations I, X, iY, Z on his collapsed
+state αa|0⟩+βb|1⟩√
+|αa|2+|βb|2 to obtain|χ⟩. Therefore, Danny has to prepare an ancilla qubit |0⟩Auxi
+and applies U0 unitary operation on the combined system as
+U0
+
+ αa|0⟩ + βb|1⟩√
+|αa|2 +|βb|2
+|0⟩Auxi
+
+ , (20)
+where
+U0 =
+
+
+b
+a
+√
+1− b2
+a2 0 0
+0 0 0 −1
+0 0 1 0√
+1− b2
+a2 − b
+a 0 0
+
+
+.
+
+=== page 7 ===
+Entropy 2023, 25, 415 7 of 15
+After implementation of unitary U0, the expression (20) attains the form
+1√
+|αa|2 +|βb|2
+(
+b(α|0⟩ + β|1⟩)|0⟩ + α
+√
+a2− b2|1⟩| 1⟩
+)
+. (21)
+Now Danny makes a measurement on his ancilla (right most) qubit in the compu-
+tational basis{|0⟩ ,|1⟩}. If he obtains |0⟩ then his state collapses to α|0⟩ + β|1⟩, Danny
+further applies I2×2 operation on the state obtained to reconstruct the desired state|χ⟩. If
+the measurement of ancilla gives|1⟩ then protocol fails to teleport the required state due
+to its probabilistic nature. Similarly, we can also explain the teleportation of an unknown
+qubit for other states of qubits A and D that appeared in Equation (4).
+The measurement on Equation (10) gives us a three-qubit entangled state that can be
+any one of the eight three-qubit GHZ states. The teleportation for the three-qubit GHZ
+state has already been considered in Ref. [39,40].
+3. Noisy Qubits and Entanglement Swapping
+We have used so far pure quantum systems. These quantum systems are isolated
+from external environments which comprise a variety of disorders and noises. In reality,
+quantum systems interact with the environment. One of the important types of noise is
+called depolarizing noise or white noise. This type of noise takes a quantum state and
+replaces it with a completely mixed state 1
+N I, where N is the dimension of the quantum
+system and I is identity matrix. Let us consider a biqubit noisy state that is prepared by
+mixing a pure state with white noise:
+ρα = αρ AB + (1− α)I2⊗ I2/4
+=
+
+
+1−α
+4 + αp0 0 0 α√p0
+√p1
+0 1−α
+4 0 0
+0 0 1−α
+4 0
+α√p0
+√p1 0 0 1−α
+4 + αp1
+
+ ,
+(22)
+where ρAB =|φ⟩AB⟨φ| is the density operator of biqubit systemAB described inEquation (1),
+I2 identity matrix and parameter α called visibility of system AB. If we take p0 = p1 = 1/2,
+the Equation (22) becomes an isotropic state [ 41] with maximally entangled ρAB. The
+isotropic states are invariant under all transformations of the form U⊗ U∗, where the
+asterisk denotes complex conjugation in a certain basis.
+We can also represent a biqubit noisy system in the Bloch form as [42]
+ρ = 1
+4 I2⊗ I2 +
+3
+∑
+µ=1
+rµ
+σµ√
+2
+⊗ I2
+2 +
+3
+∑
+ν=1
+sν
+I2
+2⊗ σν√
+2
++
+3
+∑
+µ=1
+3
+∑
+ν=1
+tµν
+σµ√
+2
+⊗ σν√
+2
+, (23)
+where σ represents Pauli matrices, I is identity matrix, rµ = Tr
+(
+ρ σµ√
+2⊗ I2
+2
+)
+and sν =
+Tr
+(
+ρ I2
+2⊗ σν√
+2
+)
+are Bloch vectors of given two qubits and tµν = Tr
+(
+ρ σµ√
+2⊗ σν√
+2
+)
+called a
+correlation tensor. We can construct Bloch matrix from⃗r,⃗s and 3× 3 dimensional correlation
+matrix T as
+˜T =
+( c ⃗s
+⃗r T
+)
+, (24)
+where c is a scalar number. The Bloch matrix form of Equation (22) contains c = α√p0
+√p1,
+⃗r = ⃗s = 0 and correlation matrix
+T =
+(−α√p0
+√p1 0 0
+0 α−1
+4 + 1
+2
+( 1−α
+4 + αp0
+)
++ 1
+2
+( 1−α
+4 + αp1
+) 1−α
+8 + α−1
+8 + 1
+2
+( 1−α
+4 + αp0
+)
++ 1
+2
+( α−1
+4 − αp1
+)
+0 1−α
+8 + α−1
+8 + 1
+2
+( 1−α
+4 + αp0
+)
++ 1
+2
+( α−1
+4 − αp1
+) 1−α
+4 + 1
+2
+( 1−α
+4 + αp0
+)
++ 1
+2
+( 1−α
+4 + αp1
+)
+)
+. (25)
+
+=== page 8 ===
+Entropy 2023, 25, 415 8 of 15
+As the coherence vectors⃗r,⃗s of the subsystems A and B have zero magnitudes that means
+the state is maximally mixed. According to combo separability criteria [ 42] if f (α, p0) =
+‖ ˜Tα‖KF− 1 > 0 then state ρα is an entangled state. We plotted f (α, p0) in Figure 2 which
+represents entanglement of the mixed state ρα.
+Figure 2. The biqubit noisy state ρα remains entangled for f (α, p0) =‖ ˜Tα‖KF− 1 > 0.
+It is clear from the ﬁgure that ρα remains entangled when 0 < p0 < 1 and the
+minimum value of α is 1/3. This state becomes maximally entangled when p0 = 0.5 and α
+approaches 1.
+As ρα is a X-form mixed-state with non-zero entries only along the diagonal and
+anti-diagonal so its concurrence is given by [43]
+C(ρα) = max
+[
+0, 2
+(⏐⏐⏐ρ(14)
+α
+⏐⏐⏐−
+√
+ρ(22)
+α ρ(33)
+α
+)
+, 2
+(⏐⏐⏐ρ(23)
+α
+⏐⏐⏐−
+√
+ρ(11)
+α ρ(44)
+α
+)]
+= max
+[
+0, 2
+(
+α√p0 p1− 1− α
+4
+)]
+.
+(26)
+This relation also gives a lower bound for the probability that keeps the ρα entangled as
+α > 1(
+1 + 4√p0 p1
+) . (27)
+If ρAB is a maximally entangled state then p0 = p1 = 1
+2, in this case the state remains
+entangled for α > 1
+3 that we can also observe from Figure 3a.
+The negativity of X-form state ρα can be computed as
+N (ρX) =−2 min
+{
+0, r+−
+√
+r2
+− +
+(
+ρ(14))2, u+−
+√
+u2
+− +
+(
+ρ(23))2
+}
+, (28)
+where u± =
+(
+ρ(11)± ρ(44)
+)
+/2, r± =
+(
+ρ(22)± ρ(33)
+)
+/2. The Equation (28) can be reduced to
+N (ρα) =−2 min
+{
+0, 1
+4 (1− α− 4α√p0 p1)
+}
+, (29)
+becauseρ(23) = 0 and u+− u− = ρ(44) is a positive number. For a maximally entangled state,
+the Equation(29) also givesα > 1
+3 for entanglement retain and can be observed from Figure 3b.
+
+=== page 9 ===
+Entropy 2023, 25, 415 9 of 15
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.7, 0.3
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.9, 0.1
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+α
+C(ρα )
+(a)
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.7, 0.3
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.9, 0.1
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+α
+N(ρα )
+(b)
+Figure 3. Concurrence and negativity comparison of biqubit noisy states. (a) represents the concur-
+rence of biqubit state against state visibility parameter α and similar (b) represents the negativity of
+biqubit state.
+It is clear from Figure 3 that the concurrence and negativity produce similar results in
+the case of biqubit noisy state.
+Now we want to explore entanglement swapping between two states of the form
+given in Equation (22). For simplicity, we assume that the states are similar and we make
+standard Bell measurements in order to accomplish the entanglement swapping. Therefore
+our four-qubit noisy state in terms of Bell basis is
+ρABCD = α2
+2 (p0|00⟩AD± p1|11⟩AD )( p0⟨00|± p1⟨11|)|Φ±⟩BC⟨Φ±|
++ α2 p0 p1
+2 (|01⟩AD±| 10⟩AD )(⟨01|±⟨ 10|)|Ψ±⟩BC⟨Ψ±|
++ dAD (|Φ±⟩BC⟨Φ±| +|Ψ±⟩BC⟨Ψ±|) ,
+(30)
+where
+dAD = α(1− α)
+8 (( p0|0⟩A⟨0| + p1|1⟩A⟨1|)⊗ ID + IA⊗ (p0|0⟩D⟨0| + p1|1⟩D⟨1|))
++ (1− α)2
+16 IAD s , (31)
+and I is an identity matrix. The measurement of the qubits B and C will give us one of the
+following four Bell states
+|Φ±⟩BC = 1√
+2
+(|00⟩BC±| 11⟩BC) ,
+|Ψ±⟩BC = 1√
+2
+(|01⟩BC±| 10⟩BC) .
+(32)
+
+=== page 10 ===
+Entropy 2023, 25, 415 10 of 15
+If we obtain|Φ±⟩BC then the qubits A and D become entangled in the state
+ρΦ±
+AD = 1
+PΦ
+( α2
+2 (p0|00⟩AD± p1|11⟩AD )( p0⟨00|± p1⟨11|) + dAD
+)
+, (33)
+where PΦ = α2
+2
+(
+p2
+0 + p2
+1
+)
++ 1−α2
+4 is the probability of|Φ+⟩ and|Φ−⟩. If measurement gives
+us|Ψ±⟩BC then the qubits A and D make entangled state
+ρΨ±
+AD = 1
+PΨ
+( α2 p0 p1
+2 (|01⟩AD±| 10⟩AD )(⟨01|±⟨ 10|) + dAD
+)
+. (34)
+Here, PΨ = α2 p0 p1 + 1−α2
+4 is the probability of|Ψ+⟩ and|Ψ−⟩.
+In order to evaluate the transferred entanglement between qubits A and D, we ﬁrst
+compute the concurrence of all four types of density matrix ρAD. As all density matrices of
+qubits A and D in Equations (33) and (34) have X-form state form so, their concurrence can
+easily be computed by using Equation (26). The state ρΦ+
+AD and ρΦ−
+AD have the same amount
+of concurrence and is given by
+C
+(
+ρΦ±
+AD
+)
+= 1
+Pφ
+max
+(
+0, α2 p0 p1− 1
+8
+(
+1− α2
+))
+. (35)
+and similarly, the concurrence of ρΨ±
+AD is
+C
+(
+ρΨ±
+AD
+)
+= 1
+Pψ
+max
+(
+0, α2 p0 p1− 1
+8 (1− α)
+√
+1 + 2α− 3α2 + 16α2 p0 p1
+)
+. (36)
+Now the average of teleported entanglement in terms of concurrence can be computed as
+Cav = 2PΦC
+(
+ρΦ+
+AD
+)
++ 2PΨC
+(
+ρΨ+
+AD
+)
+. (37)
+This average concurrence of the ﬁnal states has been plotted in Figure 4 with solid lines. In
+addition, Figure 4 put forward that for mixed states, the product of the concurrences of the
+initial states (dashed line plots) is an upper bound to the average concurrence of the ﬁnally
+swapped entanglement (solid line plots).
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.9, 0.1
+p0,p 1 =0.9, 0.1
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+α
+C
+Figure 4. It is the comparison of the average concurrence Cav of ﬁnal states (solid lines) with the
+product of concurrences of input states (dashed lines) for different values of p0 and p1 against α.
+
+=== page 11 ===
+Entropy 2023, 25, 415 11 of 15
+We can also evaluate the transferred entanglement between qubits A and D in terms
+of negativity. As all density matrices of qubits A and D in Equations (33) and (34) have
+X-form state, hence, their negativity can easily be computed by Equation (28). The state
+ρΦ+
+AD and ρΦ−
+AD have the same amount of negativity and take the form
+N
+(
+ρΦ±
+AD
+)
+=− 2
+Pφ
+min
+(
+0, 1
+16
+(
+1− α2
+)
+− 1
+2 α2 p0 p1
+)
+. (38)
+and
+N
+(
+ρΨ±
+AD
+)
+=− 2
+Pψ
+min
+(
+0, 1− α2
+16 −
+√
+1
+4 α4 p2
+0 p2
+1 + 1
+64 (1− α)2α2(p0− p1)2
+)
+. (39)
+The average of swapped entanglement computed by negativity can be given as
+Nav = 2PΦN
+(
+ρΦ±
+AD
+)
++ 2PΨN
+(
+ρΨ±
+AD
+)
+. (40)
+The average of swapped entanglement in terms of negativity has been plotted in Figure 5
+with solid lines. The product of the negativities of the initial states (dashed line plots in
+Figure 5)provides an upper bound to the average negativity of the ﬁnal states (solid line
+plots). Moreover, Figure 6 represents the comparison of average concurrence and average
+negativity of ﬁnal states. This plot shows that when p0 = p1 = 0.5 which correspond to
+maximally entangled input states then concurrence and negativity overlap but for other
+cases, dotted and solid lines do not overlap. The rectangular block in this plot shows the
+zoomed view of non-overlapping parts of solid and dotted blue as well as green lines.
+We can see that the dotted green line deviate from zero line before the solid green line.
+In this particular case, we ﬁnd that in the weak entanglement regimes, negativity gives
+better results compared to the concurrence. However, the opposite occurs when the state
+enters into relatively higher entanglement regime. Speciﬁcally, the weak entangled state
+with non-zero negativity has zero concurrence. As negativity detects all types of entangled
+states successfully that means negativity outperforms the concurrence.
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.5, 0.5
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.8, 0.2
+p0,p 1 =0.9, 0.1
+p0,p 1 =0.9, 0.1
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+α
+N
+Figure 5. It is the comparison of the average negativity Nav of ﬁnal states (solid lines) with the
+product of negativities of initial states (dashed lines).
+
+=== page 12 ===
+Entropy 2023, 25, 415 12 of 15
+p0, p1 =0.5, 0.5
+p0, p1 =0.5, 0.5
+p0, p1 =0.8, 0.2
+p0, p1 =0.8, 0.2
+p0, p1 =0.9, 0.1
+p0, p1 =0.9, 0.1
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+α
+Entanglement
+Figure 6. Comparison of entanglement quantiﬁers for swapped entanglement. Solid lines represent
+the average concurrence Cav and the dashed lines represent the average negativity Nav of the
+ﬁnal states.
+T eleportation Using a Noisy Quantum Channel
+The four Bell states for qubits B and C are given in Equation (32). By using the
+similar Bell states for qubits A and D, we can deﬁne the projectors PΦ± =|Φ±⟩AD⟨Φ±|
+and PΨ± =|Ψ±⟩AD⟨Ψ±| associated with the measurements that Alice performs in the
+execution of the teleportation protocol. Equations (33) and (34) represent the density
+matrices of four possible outcomes after entanglement swapping of noisy entangled states.
+We can use these density matrices as a channel for the teleportation of an unknown qubit
+given in Equation (19) from Alice to Danny. Let the teleportation channel is ρΦ+
+AD and the
+density matrix of the qubit to be teleported is given by ρtq =|χ⟩⟨ χ|, where the subscripts
+tq means “teleportation qubit”. The initial three qubits state is given by
+ϱ1 = ρtq⊗ ρΦ+
+AD. (41)
+The ﬁrst two qubits (i.e., ρtq and ﬁrst qubit of ρΦ+
+AD) of ϱ1 are possessed by Alice and the
+third qubit is occupied by Danny. Alice makes a projective measurement on her two qubits.
+After this measurement, we attain the post-measurement state
+˜ϱ1 = PΦ+ ϱ1PΦ+
+˜P1
+, (42)
+where ˜P1 = Tr
+[
+PΦ+ ϱ1
+]
+is the probability of occurrence of state ˜ϱ1 and Tr represents trace
+operation. Alice then communicates her outcomes with Danny via the classical channel.
+The qubit possessed by Danny has the form ˜ϱD1 = Tr12[ ˜ϱ1], where Tr12 means the partial
+trace of qubits 1 and 2. Due to the noisy teleportation channel, Danny has to follow a
+probabilistic teleportation technique to ﬁnd teleported qubit ρtq. He prepares an auxiliary
+qubit ρAuxi =|0⟩⟨ 0| and applies a suitable unitary operator Ui on two qubits system as
+Ui( ˜ϱD1⊗ ρAuxi )U†
+i . (43)
+Then a measurement on Danny’s auxiliary qubit in the basis{|0⟩⟨ 0| ,|0⟩⟨ 1| ,|1⟩⟨ 0| ,|1⟩⟨ 1|}
+is completed. If|0⟩⟨ 0| occurs, we obtain qubit ˜ϱ′
+D1 with some probability P′
+1 otherwise the
+teleportation fails.
+
+=== page 13 ===
+Entropy 2023, 25, 415 13 of 15
+The protocol ends with Danny apply a unitary operation u on his qubit ﬁnal state as
+ρ′
+tq = u ˜ϱ′
+D1
+P′
+1
+u† . (44)
+The unitary operator u is one of the Pauli operators
+{
+I, σx, σy, σz
+}
+, and its choice depends
+not only on the measurement result of Alice but also on the quantum channel shared
+between Alice and Danny in the teleportation protocol.
+Now we can check the efﬁciency of the protocol by using ﬁdelity [ 44]. Since the input
+state ρtq =|χ⟩⟨ χ| is pure, the ﬁdelity can be written as
+F = Tr
+[
+ρtqρ′
+tq
+]
+=⟨χ| ρ′
+tq|χ⟩ . (45)
+The ﬁdelity ranges from 0 to 1 and its maximal value occurs whenever the Danny’s qubit
+ﬁnal state ρ′
+tq is equal to input qubit ρtq and it is 0 when the two states are orthogonal.
+4. Concluding Discussion
+We have studied an entanglement swapping protocol, where Alice and Bob share a
+generalized Bell pair (A, B) whereas, Cara and Danny share another generalized Bell pair
+(C, D). When Bob and Cara, who are situated in the same laboratory perform some mea-
+surements on the pair (B, C) then initially unentangled qubits (A, D) obtain entanglement.
+In the case of two couples of pure qubits, the ﬁnally entangled couple can have one of
+the four possible entangled states. However, if we considered three couples of entangled
+qubits then entanglement swapping gives us a three-qubit entangled state that can be any
+one of the eight possible forms of GHZ quantum states.
+The important results of this study can be summarized as, if initial quantum states
+are maximally entangled and we make measurements in the Bell basis then average con-
+currence and average negativity of ﬁnal states give similar results. We simply obtain the
+average swapped entanglement among ﬁnal quantum states by taking the product of en-
+tanglement of the initially maximally entangled states. The measurement in non-maximally
+entangled basis during entanglement swapping degrades the swapped entanglement. The
+product of the entanglement of the mixed states provides an upper bound to the average
+swapped entanglement of ﬁnal states. The entanglement quantiﬁer concurrence fails to
+detect some weak entangled noisy states but negativity work well in a weak entanglement
+regime. On the contrary, at the higher entanglement regimes, concurrence remained more
+robust than the negativity for the mixed state case. Overall negativity detects all type
+of entangled states so negativity is more appropriate than concurrence. We also use the
+ﬁnal output state as a channel for the teleportation of an unknown qubit from Alice to
+Danny. The teleportation with a pure biquibit Bell state is obvious, but we explored the
+probabilistic teleportation of an unknown qubit not only with non-maximally entangled
+channel but also with the noisy channel that we obtain after entanglement swapping.
+Author Contributions: Writing—review & editing, S.M.Z., C.S. and A.u.R. Review, editing and
+supervision, B.Z. All authors have read and agreed to the published version of the manuscript.
+Funding: Postdoctoral training funds, grant nos. C615300501. This work was supported in part by
+National Natural Science Foundation of China under Grant Nos. 12175193.
+Data Availability Statement: The data that support the ﬁndings of this study available upon reason-
+able request from the authors.
+Acknowledgments: Financial support from the Postdoctoral training funds, grant nos. C615300501.
+This work was supported in part by National Natural Science Foundation of China under Grant Nos.
+12175193. Chitra Shukla thanks to Shenzhen Science Technology and Innovation Commission: Grant
+number: GJHZ2020081109520301, and NSFC-Guangdong joint Fund: Grant number: U1801661.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+
+=== page 14 ===
+Entropy 2023, 25, 415 14 of 15
+References
+1. Schrödinger, E. Discussion of probability relations between separated systems. In Mathematical Proceedings of the Cambridge
+Philosophical Society; Cambridge University Press: Cambridge, UK, 1935; Volume 31, pp. 555–563.
+2. Zangi, S.; Qiao, C.F. Robustness of 2 × N× M entangled states against qubit loss. Phys. Lett. A 2021, 400, 127322. [CrossRef]
+3. Zangi, S.; Li, J.L.; Qiao, C.F. Quantum state concentration and classiﬁcation of multipartite entanglement. Phys. Rev. A 2018,
+97, 012301. [CrossRef]
+4. Galindo, A.; Martin-Delgado, M.A. Information and computation: Classical and quantum aspects. Rev. Mod. Phys. 2002, 74, 347.
+[CrossRef]
+5. Harrow, A.; Hayden, P .; Leung, D. Superdense coding of quantum states. Phys. Rev. Lett. 2004, 92, 187901. [CrossRef]
+6. ˙Zukowski, M.; Zeilinger, A.; Horne, M.A.; Ekert, A.K. “Event-ready-detectors” Bell experiment via entanglement swapping.
+Phys. Rev. Lett. 1993, 71, 4287–4290. [CrossRef]
+7. Shor, P .W.; Smolin, J.A.; Terhal, B.M. Nonadditivity of Bipartite Distillable Entanglement Follows from a Conjecture on Bound
+Entangled Werner States. Phys. Rev. Lett. 2001, 86, 2681–2684. [CrossRef]
+8. Kok, P .; Braunstein, S.L. Entanglement Swapping as Event-Ready Entanglement Preparation. Fortschritte Phys. Prog. Phys. 2000,
+48, 553–557. [CrossRef]
+9. Branciard, C.; Gisin, N.; Pironio, S. Characterizing the Nonlocal Correlations Created via Entanglement Swapping. Phys. Rev.
+Lett. 2010, 104, 170401. [CrossRef] [PubMed]
+10. Adhikari, S.; Majumdar, A.; Home, D.; Pan, A. Swapping path-spin intraparticle entanglement onto spin-spin interparticle
+entanglement. EPL (Europhys. Lett.) 2010, 89, 10005. [CrossRef]
+11. Yurke, B.; Stoler, D. Bell’s-inequality experiments using independent-particle sources.Phys. Rev. A 1992, 46, 2229–2234. [CrossRef]
+[PubMed]
+12. Khalique, A.; Sanders, B.C. Long-distance quantum communication through any number of entanglement-swapping operations.
+Phys. Rev. A 2014, 90, 032304. [CrossRef]
+13. Roa, L.; Muñoz, A.; Grüning, G. Entanglement swapping for X states demands threshold values. Phys. Rev. A 2014, 89, 064301.
+[CrossRef]
+14. Qiu, J. Quantum communications leap out of the lab. Nat. News 2014, 508, 441. [CrossRef]
+15. McCutcheon, W.; Pappa, A.; Bell, B.; Mcmillan, A.; Chailloux, A.; Lawson, T.; Mafu, M.; Markham, D.; Diamanti, E.; Kerenidis, I.;
+et al. Experimental veriﬁcation of multipartite entanglement in quantum networks. Nat. Commun. 2016, 7, 13251. [CrossRef]
+[PubMed]
+16. Sen(De), A.; Sen, U.; Brukner, i.c.v.; Bužek, V .;˙Zukowski, M. Entanglement swapping of noisy states: A kind of superadditivity in
+nonclassicality. Phys. Rev. A 2005, 72, 042310. [CrossRef]
+17. Vedral, V . Introduction to Quantum Information Science ; Oxford University Press on Demand: Oxford, UK, 2006.
+18. Ji, Z.; Fan, P .; Zhang, H. Entanglement swapping for Bell states and Greenberger–Horne–Zeilinger states in qubit systems. Phys.
+A Stat. Mech. Its Appl. 2022, 585, 126400. [CrossRef]
+19. Bennett, C.H.; Brassard, G.; Crépeau, C.; Jozsa, R.; Peres, A.; Wootters, W.K. Teleporting an unknown quantum state via dual
+classical and Einstein-Podolsky-Rosen channels. Phys. Rev. Lett. 1993, 70, 1895–1899. [CrossRef]
+20. Ji, Z.; Zhang, H.; Wang, H.; Wu, F.; Jia, J.; Wu, W. Quantum protocols for secure multi-party summation.Quantum Inf. Process.
+2019, 18, 168. [CrossRef]
+21. Bose, S.; Vedral, V .; Knight, P .L. Multiparticle generalization of entanglement swapping.Phys. Rev. A 1998, 57, 822–829. [CrossRef]
+22. Gour, G.; Sanders, B.C. Remote Preparation and Distribution of Bipartite Entangled States. Phys. Rev. Lett. 2004, 93, 260501.
+[CrossRef]
+23. Song, W.; Yang, M.; Cao, Z.L. Purifying entanglement of noisy two-qubit states via entanglement swapping. Phys. Rev. A 2014,
+89, 014303. [CrossRef]
+24. Roa, L.; Purz, T.L.; Muñoz, A.; Castro, S.; Hidalgo, G.; Montoya, D. Matching for probabilistic entanglement swapping. arXiv
+2021, arXiv:2107.07689.
+25. Kirby, B.T.; Santra, S.; Malinovsky, V .S.; Brodsky, M. Entanglement swapping of two arbitrarily degraded entangled states.Phys.
+Rev. A 2016, 94, 012336. [CrossRef]
+26. Huang, C.X.; Hu, X.M.; Guo, Y.; Zhang, C.; Liu, B.H.; Huang, Y.F.; Li, C.F.; Guo, G.C.; Gisin, N.; Branciard, C.; et al. Entanglement
+swapping and quantum correlations via Elegant Joint Measurements. arXiv 2022, arXiv:2203.16207.
+27. Eisert, J.; Plenio, M.B. A comparison of entanglement measures. J. Mod. Opt. 1999, 46, 145–154. [CrossRef]
+28. Miranowicz, A.; Grudka, A. Ordering two-qubit states with concurrence and negativity. Phys. Rev. A 2004, 70, 032326. [CrossRef]
+29. Horst, B.; Bartkiewicz, K.; Miranowicz, A. Two-qubit mixed states more entangled than pure states: Comparison of the relative
+entropy of entanglement for a given nonlocality. Phys. Rev. A 2013, 87, 042108. [CrossRef]
+30. Miranowicz, A.; Grudka, A. A comparative study of relative entropy of entanglement, concurrence and negativity. J. Opt. B
+Quantum Semiclassical Opt. 2004, 6, 542. [CrossRef]
+31. Vedral, V .; Plenio, M.B. Entanglement measures and puriﬁcation procedures. Phys. Rev. A 1998, 57, 1619–1633. [CrossRef]
+32. Sabín, C.; García-Alcaine, G. A classiﬁcation of entanglement in three-qubit systems. Eur. Phys. J. D 2008, 48, 435–442. [CrossRef]
+33. Lee, S.; Chi, D.P .; Oh, S.D.; Kim, J. Convex-roof extended negativity as an entanglement measure for bipartite quantum systems.
+Phys. Rev. A 2003, 68, 062304. [CrossRef]
+
+=== page 15 ===
+Entropy 2023, 25, 415 15 of 15
+34. Tsujimoto, Y.; Tanaka, M.; Iwasaki, N.; Ikuta, R.; Miki, S.; Yamashita, T.; Terai, H.; Yamamoto, T.; Koashi, M.; Imoto, N. High-
+ﬁdelity entanglement swapping and generation of three-qubit GHZ state using asynchronous telecom photon pair sources. Sci.
+Rep. 2018, 8, 1446. [CrossRef]
+35. Yu, C.S.; Song, H.S. Free entanglement measure of multiparticle quantum states. Phys. Lett. A 2004, 330, 377–383. [CrossRef]
+36. Eltschka, C.; Siewert, J. Quantifying entanglement resources. J. Phys. A Math. Theor. 2014, 47, 424005. [CrossRef]
+37. Love, P .J.; Van Den Brink, A.M.; Smirnov, A.Y.; Amin, M.H.; Grajcar, M.; Il’ichev, E.; Izmalkov, A.; Zagoskin, A.M. A characteriza-
+tion of global entanglement. Quantum Inf. Process. 2007, 6, 187–195. [CrossRef]
+38. Nielsen, M.A.; Chuang, I.L. Quantum Computation and Quantum Information ; 10th Anniversary Edition; Cambridge University
+Press: Cambridge, UK, 2010.
+39. Xiong, P .Y.; Yu, X.T.; Zhan, H.T.; Zhang, Z.C. Multiple teleportation via partially entangled GHZ state. Front. Phys. 2016,
+11, 110303. [CrossRef]
+40. Yan, F.; Yan, T. Probabilistic teleportation via a non-maximally entangled GHZ state. Chin. Sci. Bull. 2010, 55, 902–906. [CrossRef]
+41. Horodecki, M.; Horodecki, P . Reduction criterion of separability and limits for a class of distillation protocols. Phys. Rev. A 1999,
+59, 4206. [CrossRef]
+42. Zangi, S.M.; Wu, J.S.; Qiao, C.F. Combo separability criteria and lower bound on concurrence. J. Phys. A Math. Theor. 2021,
+55, 025302. [CrossRef]
+43. Quesada, N.; Al-Qasimi, A.; James, D.F. Quantum properties and dynamics of X states. J. Mod. Opt. 2012, 59, 1322–1329.
+[CrossRef]
+44. Uhlmann, A. The “transition probability” in the state space of a-algebra. Rep. Math. Phys. 1976, 9, 273–279. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

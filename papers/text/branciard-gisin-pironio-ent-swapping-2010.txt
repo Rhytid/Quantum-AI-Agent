@@ -1,0 +1,531 @@
+=== page 1 ===
+HAL Id: hal-03915153
+https://hal.science/hal-03915153v1
+Submitted on 22 Mar 2023
+HAL is a multi-disciplinary open access archive
+for the deposit and dissemination of scientific re-
+search documents, whether they are published or not.
+The documents may come from teaching and research
+institutions in France or abroad, or from public or pri-
+vate research centers.
+L’archive ouverte pluridisciplinaire HAL, est des-
+tinée au dépôt et à la diffusion de documents scien-
+tifiques de niveau recherche, publiés ou non, émanant
+des établissements d’enseignement et de recherche
+français ou étrangers, des laboratoires publics ou
+privés.
+HAL Authorization
+Characterizing the Nonlocal Correlations Created via
+Entanglement Swapping
+C. Branciard, N. Gisin, S. Pironio
+To cite this version:
+C. Branciard, N. Gisin, S. Pironio. Characterizing the Nonlocal Correlations Created via Entanglement Swap-
+ping. Physical Review Letters, 2023, 104 (17), pp.170401. ⟨10.1103/PhysRevLett.104.170401⟩. ⟨hal-03915153⟩
+
+=== page 2 ===
+Characterizing the Nonlocal Correlations Created via Entanglement Swapping
+C. Branciard,1 N. Gisin,1 and S. Pironio 1,2
+1Group of Applied Physics, University of Geneva, 20 rue de l’Ecole-de-Me ´decine, CH-1211 Geneva 4, Switzerland
+2Laboratoire d’Information Quantique, Universite´ Libre de Bruxelles, 1050 Bruxelles, Belgium
+(Received 7 November 2009; published 26 April 2010)
+Quantum systems that have never interacted can become nonlocally correlated through a process called
+entanglement swapping. To characterize nonlocality in this context, we introduce local models where
+quantum systems that are initially uncorrelated are described by uncorrelated local variables. This
+additional assumption leads to stronger tests of nonlocality. We show, in particular, that an entangled
+pair generated through entanglement swapping will already violate a Bell-type inequality for visibilities as
+low as 50% under our assumption.
+DOI: 10.1103/PhysRevLett.104.170401 PACS numbers: 03.65.Ud, 03.67.Mn
+It is natural to expect that correlations between distant
+particles are the result of causal inﬂuences originating in
+their common past—this is the idea behind Bell’s concept
+of local causality [ 1]. Yet, quantum theory predicts that
+measurements on entangled particles will produce out-
+come correlations that cannot be reproduced by any theory
+where each separate outcome is locally determined by
+variables correlated at the source. This nonlocal nature of
+entangled states can be revealed by the violation of Bell
+inequalities.
+However, remarkable it is that quantum interactions can
+establish such nonlocal correlations, it is even more re-
+markable that particles that never directly interacted can
+also become nonlocally correlated. This is possible
+through a process called entanglement swapping [ 2].
+Starting from two independent pairs of entangled particles,
+one can measure jointly one particle from each pair, so that
+the two other particles become entangled, even though they
+have no common past history. The resulting pair is a
+genuine entangled pair in every aspect, and can, in particu-
+lar, violate Bell inequalities.
+Intuitively, it seems that such entanglement swapping
+experiments exhibit nonlocal effects even stronger than
+those of usual Bell tests. To make this intuition concrete
+and to fully grasp the extent of nonlocality in such experi-
+ments, it seems appropriate to contrast them with the
+predictions of local models where systems that are initially
+uncorrelated are described by uncorrelated local variables.
+This is the idea that we pursue here. To precise it further,
+consider the general scenario depicted below.
+A source S1 sends particles to Alice and Bob, and a
+separate source S2 sends particles to Charles and Bob.
+All parties can perform measurements on their system,
+labeled x, y, and z for Alice, Bob, and Charles, and they
+obtain outcomes denoted a, b, and c, respectively. Bob’s
+measurement y might correspond to a joint measurement
+on the two systems that he receives from each source. The
+correlations between the measurement outcomes of the
+three parties are described by the joint probability distri-
+bution Pða; b; cjx; y; zÞ. An entanglement swapping experi-
+ment is clearly a particular case of this scenario, where
+Bob’s measurement corresponds to a Bell measurement
+entangling Alice’s and Charles’s particles.
+Under the usual assumption, the tripartite distribution
+Pða; b; cjx; y; zÞ would be said to be local if it can be
+written in the factorized form
+Pða; b; cjx; y; zÞ¼
+Z
+d/C21/C26ð/C21ÞPðajx; /C21ÞPðbjy; /C21ÞPðcjz; /C21Þ;
+(1)
+where the variable /C21 with distribution /C26ð/C21Þ describes the
+joint state of the three systems according to the local
+model, and Pðajx; /C21Þ, Pðbjy; /C21Þ, Pðcjz; /C21Þ are the local
+probabilities for each separate outcome given /C21.
+In our scenario, however, there are two separate sources
+S1 and S2. It is thus natural to assume that the local model
+assigns two different states /C211 and /C212, one to each source,
+and to consider instead of ( 1) the decomposition
+Pða; b; cjx; y; zÞ¼
+ZZ
+d/C211d/C212/C26ð/C211;/C212ÞPðajx; /C211Þ
+/C2 Pðbjy; /C211;/C212ÞPðcjz; /C212Þ: (2)
+The local response function for Alice now depends only on
+/C211, the one of Charles only on /C212, while the one of Bob
+depends on both /C211 and /C212. So far, the decompositions ( 1)
+and (2) are equivalent because /C26ð/C211;/C212Þ could be different
+from zero only when /C211 ¼ /C212 ¼ /C21 to recover (1). We now
+introduce our basic assumption: since the two sources S1
+and S2 are supposed to be independent and uncorrelated, it
+is natural to assume that this property carries over to the
+local model. The variables /C211 and /C212 should therefore be
+independent and their joint distribution /C26ð/C211;/C212Þ factorize:
+/C26ð/C211;/C212Þ¼ /C261ð/C211Þ/C262ð/C212Þ: (3)
+PRL 104, 170401 (2010) PHYSICAL REVIEW LETTERS week ending
+30 APRIL 2010
+0031-9007=10=104(17)=170401(4) 170401-1 /C2112010 The American Physical Society
+
+=== page 3 ===
+We refer to models satisfying this independence assump-
+tion as ‘‘bilocal’’ models, since they aim at explaining the
+correlations Pða; b; cjx; y; zÞ with two independent sources
+of local variables.
+Even though the local variables /C211 and /C212 are initially
+independent, once conditioned on the joint measurement
+result of Bob they will bear enough correlations to repro-
+duce nontrivial correlations between the systems of Alice
+and Charles. These correlations, however, are weaker than
+those that can be established through joint measurements
+in quantum theory. We introduce below a (quadratic) Bell
+inequality that is satisﬁed by all bilocal correlations, but
+which is violated by quantum correlations.
+Restricted classes of local models with independent
+sources were considered in [ 3,4] within the context of the
+detection loophole. But apart from these exploratory
+works, little was known about how nonlocality is induced
+through measurements on independent quantum systems.
+Beyond its fundamental interest, nonlocality is also known
+to play a key role in several quantum information protocols
+[5,6], and measurement-induced correlations are at the
+basis of quantum repeaters [ 7] and measurement-based
+quantum computation [ 8]. One of our contribution is to
+introduce a theoretical framework to address broadly the
+role of nonlocality in such contexts.
+Before entering in the details of our results, it might be
+worth justifying further our independence assumption. It is
+strictly speaking an assumption, rather than something
+which follows logically from locality. Indeed, some events
+in the common past of the sources S1 and S2 could in
+principle have inﬂuenced, in a way that is perfectly in
+accord with locality, both /C211 and /C212 such that they wind
+up correlated, in violation of ( 3). However, an assumption
+similar to ( 3) is actually hidden in any standard Bell-type
+experiment. In order to derive a Bell-type inequality, one
+needs (in addition to local causality) an assumption having
+to do with the measurement settings being ‘‘freely
+chosen.’’ What this means in practice is that the measure-
+ment settings are determined by a random mechanism that
+is considered independent of the variable /C21 describing the
+particle source [ 1,9]. Seen from this perspective, the as-
+sumption that the laser sources in the quantum random
+number generators used to choose the measurement set-
+tings in a standard Bell experiment [ 10] are independent of
+the laser source generating the entangled photons is not
+much different from the assumption that the two laser
+sources (which may be of different brands, assembled in
+different parts of the world, and powered by different
+electrical supplies) used in an entanglement swapping
+experiment are independent. Of course we cannot exclude
+in principle that such apparently independent sources are
+signiﬁcantly correlated. But, quoting Bell, ‘‘this way of
+arranging quantum mechanical correlations would be even
+more mind-boggling than one in which causal chains go
+faster than light. Apparently separate parts of the world
+would be deeply and conspiratorially entangled’’ [ 1].
+Characterization of the bilocal set.— We start by giving
+a characterization of the set of bilocal correlations which is
+more convenient than deﬁnitions (2) and (3). First note that
+without loss of generality the local response function
+Pðajx; /C211Þ of Alice can be taken to be deterministic, i.e.,
+such that it assigns a unique measurement output a to every
+input x (any randomness used locally by Alice can always
+be thought of as being included in the shared variable /C211).
+In the case of a ﬁnite number of possible measurement
+inputs and outputs, there is a ﬁnite number of such deter-
+ministic strategies corresponding to an assignment of an
+output /C11x to each of Alice’s N possible inputs x. We thus
+label each of these strategies with the string /C22/C11 ¼ /C111 ... /C11N
+and denote the corresponding response function P /C22/C11ðajxÞ,
+or P /C22/C11 for short. Similarly, the response functions
+Pðbjy; /C211;/C212Þ and Pðcjz; /C212Þ can also be taken determinis-
+tic. We label the associated strategies /C22/C12 and /C22/C13 and the
+corresponding response functions P /C22/C12ðbjyÞ and P /C22/C13ðcjzÞ.
+Let /C3 12
+/C22/C11 /C22/C12 /C22/C13 denote the set of pairs ( /C211, /C212) specifying the
+strategies /C22/C11, /C22/C12, and /C22/C13 for Alice, Bob, and Charles. De-
+ﬁning q /C22/C11 /C22/C12 /C22/C13 ¼ RR
+/C3 12
+/C22/C11 /C22/C12 /C22/C13
+d/C211d/C212/C26ð/C211;/C212Þ, Eq. (2) can then be
+rewritten as
+Pða; b; cjx; y; zÞ¼
+X
+/C22/C11; /C22/C12; /C22/C13
+q /C22/C11 /C22/C12 /C22/C13P /C22/C11ðajxÞP /C22/C12ðbjyÞP /C22/C13ðcjzÞ;
+(4)
+with q /C22/C11 /C22/C12 /C22/C13 /C21 0 and P
+/C22/C11 /C22/C12 /C22/C13q /C22/C11 /C22/C12 /C22/C13 ¼ 1. So far we have not
+used the independence condition (3) and (4) corresponds to
+the well-known decomposition of local correlations as a
+convex sum of deterministic strategies, where the weights
+q /C22/C11 /C22/C12 /C22/C13 can be understood as the probabilities assigned by
+the source to the strategies /C22/C11, /C22/C12 and /C22/C13.
+Let us now deﬁne q /C22/C11 /C22/C13 ¼ P
+/C22/C12q /C22/C11 /C22/C12 /C22/C13, q /C22/C11 ¼ P
+/C22/C12 /C22/C13q /C22/C11 /C22/C12 /C22/C13,
+and q /C22/C13 ¼ P
+/C22/C11 /C22/C12q /C22/C11 /C22/C12 /C22/C13. Using the fact that /C3 12
+/C22/C11 /C22/C12 /C22/C13 ¼ð /C3 1
+/C22/C11 /C2
+/C3 2
+/C22/C13Þ\ /C3 12
+/C22/C12 , as follows from ( 2), the independence condi-
+tion (3) implies that
+q /C22/C11 /C22/C13 ¼ q /C22/C11q /C22/C13: (5)
+Conversely, any correlation Pða; b; cjx; y; zÞ satisfying ( 4)
+and ( 5) can be written in the form ( 2)[ 11]. We thus
+conclude that a tripartite correlation is bilocal if and only
+if it admits the decomposition ( 4) with the restriction ( 5).
+The bilocal set is clearly contained in the local set. The
+extremal points of the local set, corresponding to determi-
+nistic strategies, are also bilocal, but a mixture of determi-
+nistic strategies is not necessarily bilocal due to the
+nonconvex constraint ( 5). Therefore, one cannot use stan-
+dard Bell inequalities to distinguish one set from the other.
+As we will see below, however, correlations can be shown
+to be nonbilocal using nonlinear inequalities (or joint sets
+of linear inequalities).
+Application to entanglement swapping.— We now illus-
+trate how the bilocality constraint restricts the set of pos-
+sible correlations on a simple example. The sources S1 and
+PRL 104, 170401 (2010) PHYSICAL REVIEW LETTERS week ending
+30 APRIL 2010
+170401-2
+
+=== page 4 ===
+S2 send pairs of particles in the singlet state j/C9 /C0 i¼
+ðj01i/C0j 10iÞ=
+ﬃﬃ ﬃ
+2
+p
+. Bob performs a Bell state measurement
+on the two particles he receives, with four possible outputs
+b ¼ b0b1 ¼ 00, 01, 10, 11 corresponding to the four Bell
+states j/C8 þi, j/C9 þi, j/C9 /C0 i, and j/C8 /C0 i, respectively.
+Depending on Bob’s result, Alice and Charles’s particles
+end up in the corresponding Bell state. To check whether
+the entanglement swapping succeeded, we assume that
+Alice and Charles can perform one out of two measure-
+ment x, z 2f 0; 1g with binary outputs a, c 2f 0; 1g on their
+system. This is sufﬁcient, e.g., to test the CHSH inequality
+[13] (or more precisely, for each state prepared by Bob, a
+different version of the CHSH inequality corresponding to
+a relabeling of the inputs and outputs). This scenario is
+characterized by the probabilities PQðabcjxzÞ¼
+PQðbÞPQjbðacjxzÞ, where PQjbðacjxzÞ denote the correla-
+tions seen by Alice and Charles conditioned on Bob’s
+output b, and where for convenience we omitted Bob’s
+input y since he is assumed to make a single, ﬁxed mea-
+surement. Here and below, probabilities indexed by Q
+correspond to the quantum predictions for this entangle-
+ment swapping experiment.
+We are interested in the robustness of PQ to the admix-
+ture of white noise, quantiﬁed by the maximal v 2½ 0; 1/C138
+such that PQðvÞ¼ vPQ þð 1 /C0 vÞPR is bilocal, where PR
+denotes the distribution with completely random out-
+comes. The quantity v can also be interpreted as the
+experimental visibility of the ﬁnal entangled pair.
+If Alice and Charles use the measurement settings opti-
+mal for the CHSH inequality, given by x0 ¼ /C27x, x1 ¼ /C27z,
+z0 ¼ð /C27x þ /C27zÞ=
+ﬃﬃﬃ
+2
+p
+, and z1 ¼ð /C27x /C0 /C27zÞ=
+ﬃﬃﬃ
+2
+p
+, no im-
+provement is obtained over the usual locality condition,
+i.e., the quantum correlations become bilocal for a visibil-
+ity v ¼ 1=
+ﬃﬃﬃ
+2
+p
+, the same point at which they also become
+local. Using the characterization deﬁned by ( 4) and (5), we
+looked numerically for other choices of measurement set-
+tings for Alice and Charles and the best noise resistance
+that we found is v ¼ 1=2 and is obtained for x0 ¼ z0 ¼
+ð/C27x þ /C27zÞ=
+ﬃﬃﬃ
+2
+p
+, x1 ¼ z1 ¼ð /C27x /C0 /C27zÞ=
+ﬃﬃﬃ
+2
+p
+. The corre-
+sponding correlations observed by the three parties are
+given by PQðbÞ¼ 1=4 for all b, and
+PQjbðacjxzÞ¼
+8><
+>:
+1=2 if a /C8 c ¼ b0 and x /C8 z ¼ b1
+0 if a /C8 c /C222b0 and x /C8 z ¼ b1
+1=4 otherwise
+:
+(6)
+For instance, if Alice and Charles end up in the j/C8 þi
+state, corresponding to b ¼ 00, they obtain perfectly cor-
+related results if they performed the same measure-
+ments, and completely uncorrelated results otherwise.
+The above correlations are local as they can be de-
+composed as in ( 4), in the form PQ ¼ð PC þ /C22PCÞ=2,
+where PC ¼ 1
+8
+P
+/C11/C120/C121 P/C11/C11P/C120/C121 Pð/C11/C8 /C120Þð/C11/C8 /C120Þ and /C22PC ¼
+1
+8
+P
+/C11/C120/C121 Pð/C11/C8 /C121Þð/C11/C8 /C121/C8 1ÞP/C120/C121 Pð/C11/C8 /C120Þð/C11/C8 /C120/C8 1Þ. They are
+not bilocal, however, as we now show.
+A quadratic Bell inequality for bilocality.— Let us ﬁrst
+deﬁne, for a given probability distribution PðabcjxzÞ¼
+PðbÞPbðacjxzÞ, the following correlation term between
+Alice and Charles’ outputs, conditioned on Bob’s output:
+EbðxzÞ¼
+X
+a/C8 c¼b0
+PbðacjxzÞ/C0
+X
+a/C8 c/C222b0
+PbðacjxzÞ: (7)
+Inspired by the properties ( 6)o f PQ, we introduce the
+following combination that quantiﬁes the high degree of
+correlations expected between Alice’s and Charles’s out-
+comes when x /C8 z ¼ b1:
+I ¼
+X
+b
+PðbÞ
+X
+x/C8 z¼b1
+EbðxzÞ: (8)
+We quantify the deviation from the expected uncorrelated
+results when x /C8 z /C222b1 through
+E ¼ max
+b
+max
+x/C8 z/C222b1
+4PðbÞjEbðxzÞj: (9)
+For PQ, one gets I ¼ 2 and E ¼ 0. Note that there exist
+bilocal correlations which also reach the value I ¼ 2, for
+instance, the deterministic point deﬁned by /C22/C11 ¼ 00, /C22/C12 ¼
+00, /C22/C13 ¼ 00, or the correlations PC introduced above. For
+these correlations, E ¼ 4 and E ¼ 1, respectively. The
+linear expression I cannot therefore be used as a standard
+Bell inequality to test bilocality. However, as we prove
+below, the following quadratic inequality
+I /C201 þ E2 (10)
+is satisﬁed by all bilocal correlations.
+The noisy point PQðvÞ yields IðvÞ¼ 2v and EðvÞ¼ 0
+and thus violates ( 10) whenever v> 1=2 (see Fig. 1). On
+the other hand, PQðvÞ is bilocal when v /C201=2 [14]. Our
+inequality thus detects optimally the resistance to noise of
+the point PQ.
+Proof of (10).— Let P be a bilocal probability distribu-
+tion with decomposition (4), where /C22/C11 ¼ /C110/C111, /C22/C12 ¼ /C120/C121,
+/C22/C13 ¼ /C130/C131. Let us deﬁne the following weights (where
+^/C110 ¼ /C110 /C8 1 and similarly for the other indices):
+q0
+/C110/C111;/C120/C121;/C130/C131
+¼ð q/C110/C111;/C120/C121;/C130/C131 þ q/C110/C111; ^/C120/C121; ^/C130 ^/C131
+þ q ^/C110 ^/C111; ^/C120/C121;/C130/C131
+þ q ^/C110 ^/C111;/C120/C121; ^/C130 ^/C131 Þ=4;
+q00
+/C110/C111;/C120/C121;/C130/C131
+¼ð q0
+/C110/C111;/C120/C121;/C130/C131
+þ q0
+/C110/C111;/C120 ^/C121;/C131/C130
+þ q0
+/C111/C110;/C120 ^/C121;/C130/C131
+þ q0
+/C111/C110;/C120/C121;/C131/C130
+Þ=4:
+The ‘‘depolarized’’ correlationP00 ¼ P
+/C22/C11 /C22/C12 /C22/C13q00
+/C22/C11 /C22/C12 /C22/C13P /C22/C11P /C22/C12P /C22/C13
+is then also bilocal, i.e., q00
+/C22/C11 /C22/C13 ¼ q00
+/C22/C11q00
+/C22/C13. Moreover, P00 is such
+that I00 ¼ I and E00 /C20E. Because of the symmetries im-
+posed through the above equations, the weights q00
+/C22/C11 /C22/C12 /C22/C13
+depend on only 4 parameters, which we choose to be r ¼
+q00/C110¼/C111 , s ¼ q00/C130¼/C131 , t ¼ q00
+/C120¼0j/C110/C111¼00;/C130/C131¼00 and u ¼
+q00
+/C120¼/C121j/C110/C111¼01;/C130/C131¼01 (with obvious notations, the weights
+q00
+/C22/C11 /C22/C12 /C22/C13 being understood as probabilities [ 11]). Deﬁning
+X ¼ rsð2t /C0 1Þ and Y ¼ð 1 /C0 rÞð1 /C0 sÞð2u /C0 1Þ, we ﬁnd
+PRL 104, 170401 (2010) PHYSICAL REVIEW LETTERS week ending
+30 APRIL 2010
+170401-3
+
+=== page 5 ===
+I00 ¼ 2ðX þ YÞ, E00 ¼j X /C0 Yj. From their deﬁnition, X
+and Y are restricted to satisfy
+ﬃﬃﬃﬃﬃﬃ ﬃ
+jXj
+p
+þ
+ﬃﬃﬃﬃﬃﬃ ﬃ
+jYj
+p
+/C20 ﬃﬃﬃﬃ ﬃrsp þﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ ﬃ
+ð1 /C0 rÞð1 /C0 sÞ
+p
+/C201. One can easily check that under
+this constraint, I00 /C201 þ E002, which implies ( 10). j
+Discussion and open questions.— We have shown that if
+one makes the reasonable assumption, underlying all of
+modern empirical science, that the world is composed of
+different parts that are independent for the purposes at
+hand, then nonlocality is a phenomena even more common
+than usually thought. While the standard analysis leads to
+the conclusion that the ﬁnal singlet pair in an entanglement
+swapping experiment needs a visibility higher than v ¼
+1=
+ﬃﬃﬃ
+2
+p
+’ 71% to violate the CHSH inequality and will not
+violate any Bell inequality (with von Neumann measure-
+ments) for visibilities smaller than v ’ 66% [15], we have
+shown here that under our assumption it already exhibits
+nonbilocal correlations for visibilities as low as 50%. This
+simpliﬁes the requirements for the demonstration of quan-
+tumness in entanglement swapping experiments [ 16].
+Is this v ¼ 50% limit a fundamental limit? It is easy to
+show that there exists a bilocal model for visibilities lower
+than 25% [ 12]; but what happens in-between? Could we
+lower the visibility threshold by considering experiments
+with more inputs? Do we gain anything by letting Bob
+choose between two or more measurements, e.g., be-
+tween two Bell state measurements in different bases?
+Can bilocality be violated for visibilities lower than 33%,
+corresponding to a ﬁnal noisy singlet pair that is sepa-
+rable? This last question is not completely trivial at ﬁrst
+sight: a setting where the source S1 produces a singlet state,
+S2 the separable state /C26 ¼ð j þz; þzihþz; þzjþ
+jþx; /C0 zihþx; /C0 zjÞ=2, where Bob performs a standard
+Bell measurement, Alice measures in the ð/C27x /C6 /C27zÞ=
+ﬃﬃﬃ
+2
+p
+bases and Charles always measures in the z basis, generates
+correlations that are nonbilocal [17]. This shows that a Bell
+measurement can correlate independent systems in ways
+that are even more astonishing that one would ‘‘quantum
+naively’’ think. From this perspective, it would be interest-
+ing to characterize the class of states (including separable
+states) that are nonbilocal when correlated through Bell
+measurements.
+The present work also raises many other questions. In
+particular, the condition ( 3) can be straightforwardly ex-
+tended to models with n independent sources. How do such
+n-local models differ from bilocal ones? How does their
+tolerance to noise scale with n? Finally, it would be inter-
+esting to explore the implications of our approach and
+ﬁndings in the context of quantum information proto-
+cols based on nonlocality, and, in particular, protocols
+that use measurements on independent systems, such as
+quantum repeaters and measurement-based computation.
+We acknowledge support by the Swiss NCCR Quantum
+Photonics, by the European ERC-AG QORE, and from a
+BB2B grant of the Brussels-Capital region.
+[1] J. Bell, Speakable and Unspeakable in Quantum
+Mechanics (Cambridge University Press, Cambridge,
+England, 2004), 2nd ed.
+[2] M. Zukowski et al. , Phys. Rev. Lett. 71, 4287 (1993) .
+[3] N. Gisin and B. Gisin, Phys. Lett. A 297, 279 (2002) .
+[4] D. M. Greenberger, M. Horne, and A. Zeilinger, Phys.
+Rev. A 78, 022110 (2008) ; D. M. Greenberger et al.
+Phys. Rev. A 78, 022111 (2008) .
+[5] R. Cleve and H. Buhrman, Phys. Rev. A 56, 1201 (1997) .
+[6] A. Acin et al. , Phys. Rev. Lett. 98, 230501 (2007) .
+[7] H.-J. Briegel et al. , Phys. Rev. Lett. 81, 5932 (1998) .
+[8] R. Raussendorf and H. J. Briegel, Phys. Rev. Lett. 86, 5188
+(2001).
+[9] T. Norsen, arXiv:0707.0401.
+[10] G. Weihs et al. , Phys. Rev. Lett. 81, 5039 (1998) .
+[11] C. Branciard, N. Gisin, and S. Pironio arXiv:0911.1314.
+[12] C. Branciard et al. , (to be published).
+[13] J. F. Clauser et al. , Phys. Rev. Lett. 23, 880 (1969) .
+[14] PQðvÞ can be decomposed, using the notation of the proof
+of ( 10), as P00 with r ¼ s ¼ 1=2, t ¼ u ¼ 1=2 þ v.
+[15] A. Acı´ n, N. Gisin, and B. Toner, Phys. Rev. A 73, 062105
+(2006).
+[16] M. Halder et al. , Nature Phys. 3, 692 (2007) .
+[17] This experiment can be interpreted as a standard test of the
+CHSH inequality performed on the singlet S1, where
+Charles’s outcomes specify in which basis ( x or z) Bob’s
+particles have been measured. Such an interpretation
+makes the similarity between our independence assump-
+tion and the ‘‘free choice’’ assumption of standard Bell
+experiments more explicit [ 12].
+FIG. 1 (color online). Two-dimensional slice of the correlation
+space, which contains the points PQ, PC, /C22PC, and PR deﬁned in
+the text. The square delimits the quantum correlations achievable
+with entanglement swapping, which coincides with the local
+polytope in this slice. These correlations cannot be all repro-
+duced locally with two independent sources. The four portions of
+parabola delimit the bilocal set [the upper parabola is obtained
+from ( 10). Similar quadratic Bell-type inequalities can be de-
+rived to obtain the other three parabolas]. The quantum point PQ
+enters the bilocal region for a visibility v /C201=2.
+PRL 104, 170401 (2010) PHYSICAL REVIEW LETTERS week ending
+30 APRIL 2010
+170401-4

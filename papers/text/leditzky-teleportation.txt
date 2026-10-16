@@ -1,0 +1,1391 @@
+=== page 1 ===
+1
+On the Duality of Teleportation and Dense Coding
+Eric Chitambar 1,3 and Felix Leditzky 2,3
+1Department of Electrical and Computer Engineering, University of Illinois Urbana-Champaign
+2Department of Mathematics, University of Illinois Urbana-Champaign
+3Illinois Quantum Information Science and Technology (IQUIST) Center, University of Illinois Urbana-Champaign
+Abstract—Quantum teleportation is a quantum communica-
+tion primitive that allows a long-distance quantum channel to
+be built using pre-shared entanglement and one-way classical
+communication. However, the quality of the established channel
+crucially depends on the quality of the pre-shared entanglement.
+In this work, we revisit the problem of using noisy entanglement
+for the task of teleportation. We first show how this problem can
+be rephrased as a state discrimination problem. In this picture,
+a quantitative duality between teleportation and dense coding
+emerges in which every Alice-to-Bob teleportation protocol can
+be repurposed as a Bob-to-Alice dense coding protocol, and
+the quality of each protocol can be measured by the success
+probability in the same state discrimination problem. One of our
+main results provides a complete characterization of the states
+that offer no advantage in one-way teleportation protocols over
+classical states, thereby offering a new and intriguing perspective
+on the long-standing open problem of identifying such states.
+This also yields a new proof of the known fact that bound
+entangled states cannot exceed the classical teleportation thresh-
+old. Moreover, our established duality between teleportation and
+dense coding can be used to show that the exact same states are
+unable to provide a non-classical advantage for dense coding as
+well. We also discuss the duality from a communication capacity
+point of view, deriving upper and lower bounds on the accessible
+information of a dense coding protocol in terms of the fidelity of
+its associated teleportation protocol. A corollary of this discussion
+is a simple proof of the previously established fact that bound
+entangled states do not provide any advantage in dense coding.
+I. I NTRODUCTION
+Quantum teleportation [4] is one of the most important
+protocols in quantum information theory. It provides the
+backbone for a number of applications such as quantum
+communication [5], long-distance entanglement distribution
+via repeaters [7], and quantum computation [12]. From a fun-
+damental perspective, teleportation beautifully demonstrates
+the interplay between different quantum resources: one com-
+munication primitive, a qubit channel, can be simulated using
+two other communication primitives, pre-shared entanglement
+and a two-bit classical channel. Consequently, universal dis-
+tributed quantum computation can be achieved using pre-
+shared entanglement along with local operations and classical
+communication (LOCC). The rich study of entanglement and
+LOCC within quantum information science was largely due to
+this realization [19].
+The discovery of quantum teleportation was preceded by
+the dense coding protocol of Bennett and Wiesner [6]. In
+this task, Alice and Bob use pre-shared entanglement and a
+Email: {echitamb,leditzky}@illinois.edu
+noiseless qubit channel to simulate a two-bit classical channel.
+Thus teleportation and dense coding are dual to one another
+in terms of their resource consumption and communication
+objectives, an observation already made in [4]. However, the
+duality extends even to the level of protocols. As explained
+further in Sec. II, a general teleportation protocol (from Alice
+to Bob) consists of an entangled state shared between Alice
+and Bob, along with an encoding measurement performed by
+Alice and decoding state transformations applied by Bob. As
+discussed in Sec. IV, these exact same elements (entangled
+state, measurement, state transformations) can also be used to
+define a dense coding protocol (from Bob to Alice), where
+now the state transformations serve as encoders of classical
+information while the measurement aims to decode this infor-
+mation.
+In the so-called “tight” setting (see Sec. IV for an ex-
+planation of this terminology) Werner [30] showed that this
+duality leads to matching conditions of optimality: a tele-
+portation protocol achieves perfect transmission of quantum
+information if and only if the associated dense coding protocol
+achieves perfect transmission of “dense” classical information.
+However, beyond this case of perfect transmission, a clear
+relation between figures of merit for these tasks has so far
+been missing. As one of our main results in this paper, we
+prove such a quantitative relationship in the general setting,
+recovering some of Werner’s result along the way.
+The foundational work of Horodecki et al. [16] established a
+direct relation between two quantities: the (average) fidelity of
+a teleportation protocol operating on bipartite states of equal
+local dimension, and the maximal “singlet fraction” of the
+entangled resource state. The latter can be understood as a
+static version of the well-known entanglement fidelity of a
+quantum channel (see Sec. II for a definition). The results
+of [16] reduce the optimization of the average fidelity in
+teleportation to the potentially simpler optimization of the
+singlet fraction. However, it obscures the duality between each
+teleportation protocol and its associated dense coding protocol,
+which we fully explore in this paper.
+A. Main results
+We first show in Lem. 1 that the entanglement fidelity of
+a general teleportation protocol is proportional to the suc-
+cess probability in an associated state discrimination problem
+defined in terms of the same data. This generalizes the cor-
+responding equivalence for port-based teleportation protocols
+[21, 22, 3] to completely general teleportation protocols.
+arXiv:2302.14798v2  [quant-ph]  4 Jun 2024
+
+=== page 2 ===
+2
+Immediate corollaries of this result are a general bound on
+the fidelity in terms of the system dimensions (Cor. 2) and
+a short new proof of the known result [16] that teleportation
+protocols operating on bound entangled states cannot exceed
+the classical fidelity achievable by any separable state (Cor. 3).
+The latter statement is strengthened in Thm. 4, in which
+we show that a bipartite state ρAB can give rise to a non-
+classical teleportation fidelity if and only if there is a locally
+processed version of ρAB violating the reduction criterion for
+separability.
+We then use the operational connection between teleporta-
+tion and state discrimination from Lem. 1 to prove a quanti-
+tative version of the duality between teleportation and dense
+coding. This is achieved using two figures of merit for dense
+coding protocols: a classical analogue of the entanglement
+fidelity called classical correlation fidelity, and the accessible
+information of a quantum state ensemble. We prove in Thm. 5
+an exact relationship between the classical correlation fidelity
+of a dense coding protocol and the entanglement fidelity of
+the associated teleportation protocol. This result is used to
+show in Thm. 6 that a bipartite state gives rise to non-
+classical dense coding fidelity if and only if there is a locally
+processed version of the state violating the reduction criterion,
+in complete analogy to Thm. 4. Finally, in Thm. 7 we prove
+lower and upper bounds on the accessible information in terms
+of the fidelity of the corresponding teleportation protocol. This
+result provides a new proof of some of the exact duality
+results of Werner [30], as well as a new proof of the result
+by Horodecki et al. [18] that bound entangled states do not
+provide an advantage in dense coding.
+B. Definitions and conventions
+Throughout the paper quantum systems are denoted by
+letters A, B, C, etc., and associated with finite-dimensional
+Hilbert spacesHA,HB,HC, etc., whereas classical systems
+are denoted by letters X, Y , Z, etc. The Hilbert space
+associated to a multipartite system AB is defined as HAB :=
+HA⊗H B. We use the notation |A| := dim HA for the
+dimension of a system A. Two systems differing only by
+primes are assumed to be of the same dimension and hence
+isomorphic, e.g., |C| =|C′| =|C′′|. This also means that,
+given an operator XC acting on C, the operator XC′ acting
+on C′ is also defined. The space of linear operators acting
+onHA is denoted byB(HA). The identity operator on HA is
+denoted byIA, whereas the identity map onB(HA) is denoted
+by idA. We denote by XTB
+AB the partial transpose of a bipartite
+operator. A quantum state or density operator ρA∈B (HA)
+is a positive semidefinite operator of trace 1. For a pure state
+|ψ⟩A∈H A we often write ψA≡|ψ⟩⟨ψ|A for the associated
+density operator. A quantum channel E : A→ B is a linear,
+completely positive, trace-preserving map from B(HA) to
+B(HB). We also use the alternative notationEA→B. A positive
+operator-valued measure (POVM) on A is a collection{Πi
+A}i
+of positive semidefinite operators satisfying P
+i Πi
+A =IA.
+II. T ELEPORTATION AND STATE DISCRIMINATION
+We start our discussion by showing that any teleportation
+protocol is equivalent to a quantum state discrimination prob-
+lem: the fidelity in the former is proportional to the success
+probability in the latter. This result generalizes the known
+relationship between fidelity and a state discrimination success
+probability for port-based teleportation, which was proved in
+[21, 22, 3], and applied to generalized port-based teleportation
+protocols in [23, 28].
+To prove our result, we first define general teleportation
+protocols, referring to Fig. 1 for a graphical depiction: Alice
+and Bob share a bipartite state ρAB, and in addition Alice
+controls a quantum system C′ in a state σC′ that she wants to
+teleport to Bob. Note that the systems A,B,C ′ are completely
+arbitrary and not assumed to be of equal dimension. Alice
+performs a measurement on C′A given by a POVM Π =
+{Πi
+C′A}N
+i=1 for some N∈N, and communicates the outcome
+i∈ [N] :={1,...,N } to Bob over an N-message (noiseless)
+classical channel). Finally, depending on the classical message
+i, Bob applies a decoding operation given by a quantum
+channelDi : B → C to his system B. This defines a |C|-
+dimensional teleportation protocol (ρAB,{Πi}N
+i=1,{Di}N
+i=1)
+implementing the following quantum channel Λ: C′ → C,
+usually called teleportation channel:
+Λ(σC′) =
+NX
+i=1
+(trC′A⊗Di)
+ 
+Πi
+C′A⊗IB
+
+(σC′⊗ρAB)
+
+=
+NX
+i=1
+trC′A
+ 
+Πi
+C′A⊗IC
+
+(σC′⊗ωi
+AC)
+
+, (1)
+where in the second line we defined the quantum states
+ωi
+AC = (idA⊗Di)(ρAB) for i = 1,...,N . (2)
+The noise in a quantum channel is typically measured using
+the entanglement fidelity
+F≡F (Λ) := tr
+
+Φ+
+C′′C(idC′′⊗Λ)(Φ+
+C′′C′)
+
+, (3)
+where |Φ+⟩C′′C = |C|−1/2P|C|
+i=1|i⟩C′′|i⟩C for some or-
+thonormal basis{|i⟩C}|C|
+i=1 is a maximally entangled state on
+C′′C, and similarly for C′′C′. For simplicity, we will call
+F = F (Λ) in (3) simply the fidelity of a given teleportation
+protocol (ρAB,{Πi}N
+i=1,{Di}N
+i=1).
+Our main result in this section relates this fidelity to the
+success probability of discriminating theN statesωi
+AC defined
+in (2) with uniform prior probability using Π ={Πi}N
+i=1.
+Lemma 1. Let (ρAB,{Πi}N
+i=1,{Di}N
+i=1) be a |C|-
+dimensional teleportation protocol as described above,
+giving rise to the teleportation channel Λ defined in (1). Then
+the following relation holds:
+F (Λ) = 1
+|C|2
+NX
+i=1
+tr
+ 
+Πi
+ACωi
+AC
+
+= N
+|C|2psucc, (4)
+wherepsucc = 1
+N
+NP
+i=1
+tr
+ 
+Πi
+ACωi
+AC
+
+is the success probability
+of the POVM Π ={Πi
+AC}N
+i=1 discriminating the states ωi
+AC
+drawn uniformly at random.
+Proof. The proof is a direct generalization of the one given
+in [3] for port-based teleportation, and uses the transpose
+
+=== page 3 ===
+3
+CAC' B
+dense coding
+teleportation
+CC'
+XX'
+Fig. 1. A graphical depiction of the operational duality of teleportation and dense coding, both operating on a given bipartite state ρAB (wiggly line). Read
+from left to right, the bottom half of the figure depicts a teleportation protocol, defined in terms of a measurement Π ={Πi}N
+i=1 (purple box) and decoding
+operations{Di
+B→C}N
+i=1 (purple arrow). Classical communication (lower green double arrow) goes from Alice (left) to Bob (right). The protocol implements
+a quantum channel C′→ C (lower blue arrow), indicated by the symbol ≥. Read from right to left, the upper half of the figure depicts a dense coding
+protocol in terms of the same data, the decoding operations {Di
+B→C} and measurement Π. The quantum channel (upper blue arrow) maps C (Bob) to C′
+(Alice). It implements a dense classical channel X→X ′ (upper double green arrow), indicated by the symbol ≥.
+trick: Let C′′ be a copy of the system C with dimension
+|C|, and consider a maximally entangled state |Φ+⟩C′′C′ =
+|C|−1/2P|C|
+i=1|i⟩C′′|i⟩C′ on C′′C′. For any X∈L (HC′) we
+have
+(IC′′⊗XC′)Φ+
+C′′C′ = (XT
+C′′⊗IC′)Φ+
+C′′C′
+Φ+
+C′′C′(IC′′⊗XC′) = Φ+
+C′′C′(XT
+C′′⊗IC′). (5)
+We then use the expression (1) of the teleportation channel
+Λ to compute the entanglement fidelity in (3). We suppress
+identity operators, identity maps, and certain tensor product
+symbols for better readability.
+F = tr
+
+Φ+
+C′′CΛ(Φ+
+C′′C′)
+
+(6)
+=
+NX
+i=1
+tr
+
+Φ+
+C′′C trC′A
+ 
+Πi
+C′A
+ 
+Φ+
+C′′C′⊗ωi
+AC
+
+(7)
+=
+NX
+i=1
+tr
+ 
+Φ+
+C′′C⊗ Πi
+C′A
+ 
+Φ+
+C′′C′⊗ωi
+AC
+
+(8)
+=
+NX
+i=1
+tr
+
+Φ+
+C′′C(Πi
+C′′A)TC′′
+ 
+Φ+
+C′′C′⊗ωi
+AC
+
+(9)
+=
+NX
+i=1
+tr
+
+Φ+
+C′′CΠi
+AC
+ 
+Φ+
+C′′C′⊗ωi
+AC
+
+(10)
+= 1
+|C|2
+NX
+i=1
+tr
+ 
+Πi
+ACωi
+AC
+
+. (11)
+In (8) we used the identity tr(XAYA) = tr((XA⊗IB)YAB),
+and in (9) and (10) we used the transpose trick (5) with respect
+to the C′ and C′′ systems, respectively. Finally, (11) follows
+from taking partial traces first over C′ and then over C′′, each
+time using the fact that trC′ Φ+
+C′′C′ = 1
+|C|IC′′, and similarly
+for Φ+
+C′′C. Using p = 1
+N
+PN
+i=1 tr
+ 
+Πi
+ACωi
+AC
+
+establishes the
+second identity in (4).
+The relation between fidelity and success probability in
+Lem. 1 is suggestive of the operational equivalence between
+teleportation and dense coding (see Fig. 1): the states ωi
+AC
+result from Bob encoding classical information (the label i) in
+his system via the quantum operations Di : B→C. Sending
+theC system through the noiseless quantum channel to Alice,
+she aims to decode the message by performing a measurement
+Π = {Πi
+AC}. We will prove a quantitative version of this
+operational equivalence in Sec. IV below.
+A simple consequence of Lem. 1 is the following general
+upper bound on the fidelity of any teleportation protocol:
+Corollary 2. For any|C|-dimensional teleportation protocol
+with associated teleportation channel Λ: C′→ C, its entan-
+glement fidelity F≡F (Λ) is bounded from above as
+F≤|A|
+|C|. (12)
+This bound is saturated, F =|A|/|C|, if and only if ωi
+AC is
+pure and proportional to Πi
+AC for all i = 1,...,N .
+Proof. The quantum states ωi
+AC = (idA⊗Di)(ρAB) satisfy
+ωi
+AC ≤ IAC for all i = 1,...,N . Using this in the fidelity
+expression (4) gives
+F = 1
+|C|2
+NX
+i=1
+tr
+ 
+Πi
+ACωi
+AC
+
+≤ 1
+|C|2
+NX
+i=1
+tr
+ 
+Πi
+AC
+
+= trIAC
+|C|2 =|A|
+|C|, (13)
+where we used the completeness relation for the POVM
+{Πi
+AC}N
+i=1 in the second-to-last equality.
+Assume now that we have equality in eq. (13),PN
+i=1 tr(Πi
+ACωi
+AC) = PN
+i=1 tr(Πi
+AC), which can be rear-
+ranged to
+0 =
+NX
+i=1
+tr
+ 
+Πi
+AC− Πi
+ACωi
+AC
+
+=
+NX
+i=1
+tr
+
+Πi
+AC− (Πi
+AC)1/2ωi
+AC (Πi
+AC)1/2
+
+. (14)
+The operators Πi
+AC − (Πi
+AC)1/2ωi
+AC (Πi
+AC)1/2 are posi-
+tive semidefinite since ωi
+AC ≤ IAC, so that all traces
+in (14) are non-negative. Hence, the sum is zero iff
+tr
+ 
+Πi
+AC− (Πi
+AC)1/2ωi
+AC (Πi
+AC)1/2
+= 0 for all i. Since the
+trace of a positive semidefinite operator is zero iff the operator
+itself is zero, we have Πi
+AC− (Πi
+AC)1/2ωi
+AC (Πi
+AC)1/2 = 0,
+or in other words
+ωi
+AC =PΠi. (15)
+Here, PX denotes the orthogonal projection onto the support
+supp(X) = (ker X)⊥ of a Hermitian operator X. The ωi
+AC
+are normalized states, hence they can only be equal to a
+projection if their rank equals 1; in other words, ωi
+AC is pure
+
+=== page 4 ===
+4
+for all i, and Πi
+AC =γiωi
+AC for some γi > 0. The sufficiency
+of this condition for equality in (13) is straightforward to
+check.
+The main use of Cor. 2 lies in quantifying the deterioration
+of the teleportation fidelity of protocols attempting to teleport
+a|C|-dimensional system through an entangled state on AB
+with|C| ≫ |A|. We also mention two situations in which
+the equality condition is satisfied: First, let |A| = 1 so that the
+resource stateρAB is trivially separable. In this case, choosing
+decoding operations Di
+B→C(XB) = tr( XB)|i⟩⟨i|C where
+{|i⟩C}|C|
+i=1 is some orthonormal basis gives states ωi
+AC =
+|i⟩⟨i|C. With the POVM elements Πi
+AC = ωi
+AC =|i⟩⟨i|C,
+we obtain a teleportation protocol achieving the classical
+teleportation fidelity F = 1/|C|; this is discussed in more
+detail in Sec. III. Another case of equality can be found when
+|A| =|B| =|C| =d andN =d2. For a maximally entangled
+pure state ρAB the d2 Heisenberg-Weyl unitaries yield an or-
+thonormal basis consisting of maximally entangled pure states
+ωi
+AC for i = 1,...,d 2, which can be perfectly distinguished
+using the corresponding von Neumann measurement (i.e., we
+again have Πi
+AC = ωi
+AC). This is the d-dimensional version
+of the well-known perfect teleportation protocol [4, 30]. It
+is an interesting question to determine protocols based on
+partially entangled resource states ρAB achieving a fidelity
+1/|C|<F =|A|/|C|< 1.
+Traditionally, the figure of merit used to assess the quality
+of a|C|-dimensional teleportation channel Λ has been the av-
+erage transmission fidelity, f(Λ) :=
+R
+dψ⟨ψ|Λ(ψ)|ψ⟩, where
+dψ denotes the Haar integral over pure states |ψ⟩ on C [27].
+In the pioneering work of Horodecki et al. [16], the average
+and entanglement fidelities were shown to be related as
+f(Λ) = F (Λ)|C| + 1
+|C| + 1 . (16)
+Hence our results on the teleportation entanglement fidelity
+F (Λ) can easily be translated into statements about the average
+teleportation fidelity f(Λ). We also note the recent indepen-
+dent work [13] that derives an expression similar to eq. (4)
+for the worst-case fidelity of a general teleportation protocol.
+III. N ON-C LASSICAL TELEPORTATION AND THE
+REDUCTION CRITERION
+In the distributed setting,ρAB is typically considered a fixed
+shared resource, while Alice and Bob are free to choose the
+encoder{Πi}i and decoders {Di}i in order to optimize the
+performance of their teleportation channel. Hence, it is natural
+to consider the quantity
+F(ρAB;|C|) = max
+Λ
+F (Λ), (17)
+where the maximization is taken over all teleportation channels
+Λ defined in terms of a|C|-dimensional teleportation protocol
+(ρAB,{Πi},{Di}) via Eq. (1). Horodecki et al. [16] showed
+thatF(ρAB;|C|) is equivalent to the maximal singlet fraction
+of ρAB obtained after processing ρAB by one-way LOCC.
+The fidelity expression in Lem. 1 reveals that F(ρAB;|C|)
+involves a simultaneous maximization over encoder and de-
+coders leading to a bilinear optimization problem, which is
+challenging to solve in general. In a future manuscript we will
+explore how upper bounds for F(ρAB;|C|) can be efficiently
+computed, and are tight in some cases. We will also explore
+how symmetries of teleportation protocols can naturally be
+taken into account using the fidelity expression in (4).
+In the present work, we direct attention to the so-called
+classical lower bound onF(ρAB;|C|). Observe that by letting
+Di be the CPTP that prepares the computational basis state
+|i⟩⟨i| for i = 1,···| C|, i.e., Di(XB) = tr[XB]|i⟩⟨i| for all
+XB, and by letting Πi
+AC′ =IA⊗|i⟩⟨i|C′ be the POVM effect
+that detects|i⟩⟨i|C′, we obtain from Lem. 1 a fidelity
+F = 1
+|C|2
+|C|X
+i=1
+tr
+ 
+Πi
+ACωi
+AC
+
+= 1
+|C|2
+|C|X
+i=1
+tr(ρA) = 1
+|C|.
+(18)
+Therefore, for all ρAB we have
+F(ρAB;|C|)≥ 1
+|C|. (19)
+We refer to this as the classical bound since it can be achieved
+using only classical resources; moreover, as we will prove
+below, it is tight whenever ρAB is at most bound entangled,
+which includes all classical states. Any state ρAB for which
+F(ρAB;|C|)> 1
+|C| can thus be deemed a legitimate quantum
+resource for teleportation, and we refer to any protocol ex-
+ceeding the classical bound as an instance of non-classical
+teleportation.1 The fundamental question we consider here
+is what type of quantum states provide a resource for non-
+classical teleportation.
+To fully answer this question, let us first recall the reduction
+criterion for separability [15], which states that every separable
+(i.e., non-entangled) state ρAB satisfies the operator inequality
+ρA⊗IB−ρAB≥ 0. (20)
+Even more, a violation of (20) is a sufficient condition for
+ρAB to be distillable [15]. It turns out that this inequality
+is also the key for identifying states supporting non-classical
+teleportation.
+As a warm-up, observe that Lem. 1 immediately implies that
+bound entangled states [17] cannot achieve strict inequality in
+the classical bound (19). To see this, let ρAB be a bound
+entangled state, which is undistillable by definition. Then the
+decoded states ωi
+AC = (idA⊗Di)(ρAB) for i∈ [N] arising
+from a local quantum operation on the B system are clearly
+also undistillable, so that they satisfy the reduction criterion,
+ωi
+AC≤ωi
+A⊗IC =ρA⊗IC. Crucially, the right-hand side of
+this operator inequality is independent of i, and so the sum in
+the fidelity expression (4) can be bounded as
+X
+i
+tr
+ 
+Πi
+ACωi
+AC
+
+≤
+X
+i
+tr
+ 
+Πi
+AC(ρA⊗IC)
+
+= tr(ρA⊗IC) =|C|. (21)
+1An alternative notion of non-classical teleportation has recently been
+proposed in the literature [8]. While this type of non-classicality is well-
+motivated from a quantum resource theory perspective, it refers to a task that
+is considerably different than simulating a noiseless quantum channel, which
+is the standard sense of teleportation and the object of study in this paper.
+
+=== page 5 ===
+5
+We have thus obtained an alternative proof for the well-
+known result [16] that any teleportation protocol using a bound
+entangled state cannot exceed the classical bound.
+Corollary 3 ([16]). Any|C|-dim. teleportation protocol using
+a bound entangled state cannot exceed a fidelity of |C|−1.
+We now show that Cor. 3 can be strengthened considerably,
+providing a complete characterization of states achieving non-
+classical teleportation.
+Theorem 4. A bipartite stateρAB can attain a (one-way) tele-
+portation fidelityF(ρAB;|C|) exceeding the classical fidelity
+|C|−1 if and only if there exists a CPTP map E : B→C such
+that ωAC = idA⊗E(ρAB) violates the reduction criterion.
+Proof. (⇒) Suppose that ωAC≤ωA⊗IC =ρA⊗IC for all
+ωAC = idA⊗E(ρAB). Hence for any teleportation protocol
+we have
+F = 1
+|C|2
+X
+i
+tr[Πiωi]≤ 1
+|C|2
+X
+i
+tr[Πi(ρA⊗IC)]
+= 1
+|C|2 tr[ρA⊗IC] = 1
+|C|. (22)
+(⇐) On the other hand, suppose there exists some CPTP
+mapE : B→C such thatωAC violates the reduction criterion.
+This requires the existence of a bipartite vector |φ⟩AC such
+that⟨φ|ωAC|φ⟩>⟨φ|ρA⊗IC|φ⟩. We will use this inequality
+to construct a teleportation protocol that exceeds the classical
+threshold.
+Let |φ⟩AC = Pr−1
+i=0
+√σi|i⟩A|i⟩C with σi > 0 for i =
+0,...,r − 1 be a Schmidt decomposition of |φ⟩. Introduce
+unitaries U(n) that rotate the Schmidt basis {|i⟩}i into a
+mutually unbiased basis,
+U(n) =
+r−1X
+k=0
+ωkn|k⟩⟨k|, (23)
+with ω =e2πi/r an r-th root of unity. Observe the invariance
+(U(n)⊗ U(n)†)|φ⟩ = |φ⟩ and define the states |αn⟩ =
+(U(n)⊗I)|φ⟩ for n = 0,...,r − 1. This implies that
+⟨αn| idA⊗Un(ωAC)|αn⟩>⟨αn|ρA⊗IC|αn⟩, (24)
+whereUn(ρ) :=U(n)ρU(n)†. A crucial property of the |αn⟩
+is that their ensemble average is classical,
+1
+r
+r−1X
+n=0
+|αn⟩⟨αn|
+= 1
+r
+r−1X
+n=0
+r−1X
+k,k′=0
+ωn(k−k′)(|k⟩⟨k|⊗ I)|φ⟩⟨φ|(|k′⟩⟨k′|⊗ I)
+=
+r−1X
+k=0
+σk|k⟩⟨k|⊗| k⟩⟨k|, (25)
+where we used the orthogonality relation Pr−1
+n=0ωn(k−k′) =
+rδk,k′ in the second equality. Hence, we can complete the set
+{ 1
+r|αn⟩⟨αn|}r−1
+n=0 by the product operators
+Πr+n =
+|A|X
+k=1
+k̸=n
+|k⟩⟨k|⊗| n⟩⟨n| + (1−σn)|n⟩⟨n|⊗| n⟩⟨n|
+(26)
+for n = 0,...,r − 1, so that Pr−1
+n=0( 1
+r|αn⟩⟨αn| + Πr+n) =
+IA⊗Pr−1
+n=0|n⟩⟨n|C. Finally, let
+Π2r+n =IA⊗|r +n⟩⟨r +n| (27)
+for n = 0 ,··· ,|C|− r− 1. The collection of positive
+semidefinite operators
+ 1
+r|αn⟩⟨αn|
+	r−1
+n=0∪{ Πr+n}r−1
+n=0∪{ Π2r+n}|C|−r−1
+n=0 (28)
+constitutes a valid POVM.
+It remains to specify decoding operations for each operator
+corresponding to a measurement outcome: For each of the ele-
+ments{ 1
+r|αn⟩⟨αn|}r−1
+n=0 the corresponding decoder is the map
+Un◦E; for each of the elements{Πr+n}r−1
+n=0∪{Π2r+n}|C|−r−1
+n=r
+the corresponding decoder is the CPTP map that prepares the
+computational basis state |n⟩⟨n|, i.e., Dn(X) = tr[X]|n⟩⟨n|
+for all X. Since ωAC = EB→C(ρAB), the fidelity of this
+protocol is given by
+F = 1
+|C|2r
+r−1X
+n=0
+⟨αn| idA⊗Un(ωAC)|αn⟩
++ 1
+|C|2
+r−1X
+n=0
+tr[Πr+n(ρA⊗|n⟩⟨n|)] + 1
+|C|2
+|C|−r−1X
+n=0
+tr[ρA]
+> 1
+|C|2r
+r−1X
+n=0
+⟨αn|ρA⊗IC|αn⟩
++ 1
+|C|2
+r−1X
+n=0
+tr[Πr+n(ρA⊗IC)] + 1
+|C|2
+|C|−r−1X
+n=0
+tr[ρA]
+= 1
+|C|2 tr[ρA⊗IC]
+= 1
+|C|, (29)
+where we used (24) in the inequality, proving the claim.
+Note that our definition of teleportation protocol includes
+any one-way LOCC pre-processing that might be performed
+on ρAB before Alice and Bob actually decide to use their
+quantum resource for teleportation. Given that F(ρAB;|C|)
+equivalently quantifies the largest singlet fraction obtainable
+by ρAB after one-way LOCC processing [16], Thm. 4 thus
+says that ρAB can achieve a singlet fraction exceeding |C|−1
+by one-way LOCC iff ρAB can violate the reduction criterion
+after local processing on Bob’s side.
+It is interesting to compare this result to the work of [2],
+which shows that if a state’s singlet fraction can exceed
+|C|−1 after local processing on Alice’s side, then the original
+state ρAB must already violate the reduction criterion. In this
+case, the necessary condition stated in Thm. 4 for exceeding
+
+=== page 6 ===
+6
+the classical bound |C|−1 does not require an optimization
+over CPTP maps E : B→ C. However, in general such an
+optimization is needed. Indeed, there are bipartite states that
+do not violate the reduction criterion, yet they can achieve a
+violation after processing on Bob’s side.
+Examples can be found in the family of Werner states [31],
+defined to be U⊗U-invariant bipartite states (for U unitary).
+More precisely, consider a Werner state on two 3-dimensional
+systems,
+ρλ = 1
+24[(3−λ)I3⊗I3 + (3λ− 1)F3], (30)
+whereI3 denotes the identity on C3 andF3 denotes the swap
+operator acting on C3⊗C3. We have λ = tr(ρλF), and ρλ
+is entangled iff λ <0 [31]. Furthermore, a direct calculation
+using the U⊗U-symmetry shows that all Werner states on
+Cd⊗Cd satisfy the reduction criterion whenever d> 2.
+Let now {|e0⟩,|e1⟩} and{|f0⟩,|f1⟩,|f2⟩} be orthonormal
+bases for C2 andC3, respectively, and consider the quantum
+channelE :B(C3)→B (C2) with Kraus operators
+P =|e0⟩⟨f0| +|e1⟩⟨f1| Q =|e0⟩⟨f2|. (31)
+Now the state σλ = (id⊗E)(ρλ)∈B (C3⊗C2) violates the
+reduction criterion if and only if σT1
+λ ≱ 0, where T1 denotes
+the partial transpose on the first system [15]. Equivalently, we
+can check the eigenvalues of the operator
+id⊗E
+
+ρT1
+λ
+
+= 1
+24
+h
+(3−λ)I3⊗ (I2 +|e0⟩⟨e0|)
++ (3λ− 1)(ϕ+
+2 +|f2⟩⟨f2|⊗| e0⟩⟨e0|)
+i
+, (32)
+where|ϕ+
+2⟩ =|f0⟩⊗|e0⟩+|f1⟩⊗|e1⟩. The smallest eigenvalue
+of this operator is equal to
+7 + 3λ−
+p
+13− 30λ + 37λ2, (33)
+which is negative whenever −1≤λ< −3/7. It thus follows
+that id⊗Λ(ρλ) violates the reduction criterion in this range.
+Theorem 4 provides a criterion for testing whether a given
+bipartite state is useful for beating the classical bound in the
+one-way teleportation setting. The criterion can be explicitly
+expressed as a bilinear optimization problem, as we now
+show. For a given bipartite state ρAB, define its “conditional
+state” to be ρB|A = ρ−1/2
+A ρABρ−1/2
+A [1, 25], where we use
+the generalized inverse evaluated on the support of ρA. The
+reduction criterion ρAB≤ρA⊗IB can be rephrased in terms
+of the conditional state ρB|A as ρB|A≤I ˜A⊗IB, where ˜A is
+the support of ρA (we will suppress the tilde from now on). It
+follows that ρAB violates the reduction criterion if and only
+if the largest eigenvalue of ρB|A exceeds 1.
+Now consider any channelEB→C with Choi matrix JBC :=
+idB⊗EB′→C(PB
+i,j=1|ii⟩⟨jj|BB ′) defined in terms of or-
+thonormal bases{|i⟩B}|B|
+i=1 for B and{|j⟩B′}|B|
+j=1 for B′. By
+the Choi isomorphism, the action of EB→C on an input state
+χB is given byEB→C(χB) = trB
+ 
+χT
+BJBC
+
+, whereT denotes
+transposition in the chosen orthonormal basis for B and we
+omitted identity operators for readability. Hence, the action of
+EB→C on the B-part of ρB|A can be written as
+idA⊗EB→C(ρB|A) = trB
+
+ρTB
+B|AJBC
+
+. (34)
+Note that idA⊗EB→C(ρB|A) coincides with the conditional
+state of the output state idA⊗EB→C(ρAB). The largest eigen-
+value of idA⊗EB→C(ρB|A) can be expressed variationally as
+max|φ⟩AC⟨φ| trB(ρTB
+B|AJBC)|φ⟩AC, where the maximization
+is taken over all pure states on system AC. This maximum
+does not change when relaxing the optimization to all (not
+necessarily pure) density operators. Using the argument in
+the preceding paragraph, we thus arrive at the following
+optimization formulation of Theorem 4: a bipartite state ρAB
+can exceed the |C|-dimensional classical teleportation bound
+iffλ∗(ρAB)> 1, where λ∗(ρAB) is defined as the solution to
+the following bilinear optimization problem:
+maximize: tr
+h
+σAC trB
+
+ρTB
+B|AJBC
+i
+subject to: trCJBC =IB;
+trσ = 1;
+σ,J ≥ 0. (35)
+Stated in this form, it becomes manageable to numerically
+explore the states which offer no non-classical advantage for
+teleportation, and we are currently pursuing such an investi-
+gation.
+IV. T ELEPORTATION AND DENSE CODING
+We now make the operational duality between teleportation
+and dense coding concrete and quantitative. To this end,
+we reinterpret a given |C|-dimensional teleportation protocol
+(ρAB,{Πi}N
+i=1,{Di}N
+i=1) as an N-message dense coding pro-
+tocol from Bob to Alice, referring to Fig. 1 for a graphical
+depiction. Bob encodes the message i∈ [N] into his system
+B of the shared state ρAB by applying Di : B→ C, while
+Alice decodes the message by applying the POVM{Πi
+AC′}N
+i=1
+to her systems AC′. Here it is assumed that a|C|-dimensional
+(noiseless) channel idC→C′ connects Bob and Alice. Such
+a protocol thus defines a classical channel W : X → X′
+characterized by the transition probabilities
+p(j|i) = tr(Πj
+AC′ωi
+AC′), (36)
+with ωi
+AC′ as defined in eq. (2).
+We will discuss two different ways of assessing the quality
+of this classical channel, and hence the quality of a dense cod-
+ing protocol. The first one makes use of a classical correlation
+measure called “classical correlation fidelity”. The second one
+is by means of the classical capacity of the channel W , which
+coincides with the accessible information of the state ensemble
+defining the dense coding protocol.
+The advantage of the classical correlation fidelity as a figure
+of merit is that it is a classical analogue of the entanglement
+fidelity in teleportation, allowing us to exhibit a concise quan-
+titative operational duality between teleportation and dense
+coding. On the other hand, the accessible information is an
+information-theoretic measure with a clear operational inter-
+pretation in terms of classical information transmission. The
+two figures of merit can also be related to each other; see the
+discussion after Thm. 7.
+
+=== page 7 ===
+7
+A. Classical correlation fidelity
+For a quantum channel Λ: C′→C, we can interpret F (Λ)
+as a measure of how well Λ preserves maximal coherent cor-
+relations with a reference system C′′. For a classical channel
+τcl : X→ X′, we thus define a corresponding classical cor-
+relation measure F(τcl) called “classical correlation fidelity”
+that quantifies how well τcl preserves maximal incoherent
+correlations with a reference system X′′:
+F(τcl) := tr
+
+γ+
+X ′′X ′ id⊗τcl(γ+
+X ′′X)
+
+, (37)
+where γ+
+X ′′X = 1
+N
+PN
+i=1|ii⟩⟨ii|X ′′X is a perfectly correlated
+state on two N-level classical systems X′′ and X. We use
+a sans-serif font F(τcl) defined for a classical channel τcl to
+distinguish this classical fidelity quantity from the quantum
+entanglement fidelity F (Λ) defined for a quantum channel Λ.
+Evaluating Fcl≡ F(W ) for the classical dense coding chan-
+nel W : X→ X′ defined above with transition probabilities
+p(j|i) given in eq. (36), we obtain
+Fcl = 1
+N
+NX
+i=1
+p(i|i) =psucc, (38)
+where psucc is the success probability of discriminating the
+uniformly drawn states {ωi
+AC} using the POVM {Πi
+AC}N
+i=1,
+previously introduced in eq. (4). This allows us to reformulate
+Lem. 1 as a quantitative link between between teleportation
+and dense coding protocols.
+Theorem 5. Let (ρAB,{Πi}N
+i=1,{Di}N
+i=1) define either a|C|-
+dimensional teleportation protocol from Alice to Bob or an
+N-message dense coding protocol from Bob to Alice. Then
+F = N
+|C|2 Fcl, (39)
+whereF =F (Λ) is the entanglement fidelity of the teleporta-
+tion channel Λ and Fcl = F(W ) is the correlation fidelity of
+the classical dense coding channel W .
+Similar to teleportation, we can now define the measure
+Fcl(ρAB;N,|C|) = max
+W
+F(W ), (40)
+where the maximization is taken over all classical channels W
+induced by an N-message dense coding protocol using a |C|-
+dimensional quantum channel connecting Bob to Alice. Let us
+again identify a classical bound for this quantity. Observe that,
+ifρAB is separable, then so are the ωi
+AC states, and thus they
+satisfy the reduction criterion ωi
+AC ≤ ωi
+A⊗IC = ρA⊗IC.
+Using the same argument as in (21), we then have
+Fcl = 1
+N
+X
+i
+p(i|i)≤|C|
+N . (41)
+In fact, this inequality holds for all bound entangled states. On
+the other hand, the protocol described above eq. (19) allows
+Bob to send |C| messages to Alice over a |C|-dimensional
+quantum channel. Therefore, we conclude that
+Fcl(ρAB;N,|C|)≥ min{|C|/N, 1}, (42)
+and this inequality is tight for all bound entangled states ρAB.
+We identify this as the classical bound for dense coding, and
+any state for which the inequality is strict (for some values of
+N and|C|) is a non-classical resource for dense coding.
+Consider now any state satisfying the conditions of Thm. 4.
+As shown in the proof of Thm. 4, the teleportation protocol
+achievingF >|C|−1 usesN =|C|+r classical messages and
+a|C|-dimensional quantum channel. Hence, by Thm. 5, the
+correlation fidelity in the corresponding dense coding protocol
+satisfies
+Fcl =|C|2
+N F >|C|
+N = min{|C|/N, 1}. (43)
+We therefore obtain the following dual statement to Thm. 4.
+Theorem 6. A bipartite stateρAB can attain a dense coding fi-
+delityFcl(ρAB;N,|C|) exceeding the classical fidelity|C|/N
+iff|C|/N <1 and there exists a CPTP map E : B→C such
+that ωAC = idA⊗E(ρAB) violates the reduction criterion.
+B. Accessible information
+The accessible information is a measure of how much
+classical information can be retrieved from a quantum state
+ensemble (ρx)x with probabilities (px)x [14]. To define it,
+denote by H(X) = −P
+ipi logpi the Shannon entropy of
+a probability distribution (pi)i, and denote by I(X;Y ) =
+H(X) +H(Y )−H(XY ) the mutual information of a pair of
+random variables (X,Y ), with the logarithm taken to base 2.
+For a quantum state ensemble E = (px,ρx)N
+x=1 and a POVM
+M ={Mx}N
+x=1, the accessible informationI(E,M ) is defined
+as the mutual information I(X;X′), where X takes values
+x∈ [N] with probability px, and X′ describes the outcome
+of sampling ρx from X and measuring with respect to M.
+That is, the random variable pair (X,X′) has distribution
+pXX ′ = pX ′|X(x′|x)pX(x) where pX ′|X(x′|x) = tr(Mx′ρx)
+(compare this to (36)) and pX(x) =px. Optimizing I(X;X′)
+over the measurement M yields the accessible information
+I(E) := maxMI(E,M ) of the ensemble E.
+We can now state the following quantitative relationship
+between teleportation and dense coding:
+Theorem 7. Let (ρAB,{Πi}N
+i=1,{Di}N
+i=1) be a teleportation
+protocol for which Π is the optimal measurement maximizing
+the entanglement fidelity F in (4) for the given set {Di}i of
+decoding operations. Denote by p≡ psucc = d2F/N with
+d≡ |C| the success probability of the corresponding state
+discrimination problem of the ensemble E = (1/N,ωi
+AC)N
+i=1.
+Then the accessible information I(E) of the associated dense
+coding protocol satisfies
+logN− (1−p) log(N− 1)−h(p)
+≤I(E)≤ logN + logp, (44)
+where h(p) = −p logp− (1−p) log(1−p) is the binary
+entropy of p. In terms of the entanglement fidelity F≡F (Λ)
+with Λ the teleportation channel defined in (1),
+2 logd + logF + (1−p)
+
+log(1−p)− log(d2F−p)
+
+≤I(E)≤ 2 logd + logF. (45)
+
+=== page 8 ===
+8
+Proof. We first prove the upper bound in (44). The optimal
+success probability of distinguishing the states {ωi
+AC}N
+i=1 can
+be expressed as [24]
+p = exp(−Hmin(X|AC)ρ). (46)
+Here, the min-entropy
+Hmin(A|B)ρ :=− inf
+σB
+inf{λ: ρAB≤ 2λIA⊗σB}, (47)
+with the first infimum over all states σB, is evaluated on the
+classical-quantum state
+ρXAC =
+NX
+i=1
+1
+N|i⟩⟨i|X⊗ωi
+AC. (48)
+Recall furthermore that the min-entropy satisfies the relation
+Hmin(A|B)≤H(A|B) =H(AB)−H(B), (49)
+where H(A)ρ = − trρA logρA denotes the von Neumann
+entropy of a quantum state ρA.
+The data-processing inequality with respect to the measure-
+ment AC→Y gives
+I(E)≡I(E, Π) =I(X;Y )≤I(X;AC)ρ. (50)
+Furthermore, using the fact that H(X)ρ = log N for our
+ensembleE together with (46) and (49), we obtain
+I(X;AC)ρ =H(X)ρ−H(X|AC)ρ
+= logN−H(X|AC)ρ
+≤ logN−Hmin(X|AC)ρ
+= logN + logp, (51)
+which proves the upper bound in (44).
+For the lower bound, we employ Fano’s inequality [11]: Let
+X,Y be random variables with joint distribution pXY (x,y ),
+and let ˜X = f(Y ) be a random variable over the same
+alphabet as X. Defining the decoding error probability pe =
+Prob( ˜X̸=X), we have
+H(X|Y )≤h(pe) +pe log(|X|− 1). (52)
+Choosing X and Y as in the paragraph above Thm. 7 and
+using p = 1−pe as well as h(p) =h(1−p), we obtain
+I(E) =I(X;Y ) =H(X)−H(X|Y )
+≥ logN− (1−p) log(N− 1)−h(p).
+(53)
+This concludes the proof of eq. (44). The bounds in (45) follow
+using the relation F =Np/d2 from Lem. 1.
+Since psucc = Fcl by Thm. 5, the bounds in Thm. 7
+relate our two chosen figures of merit, the classical correlation
+fidelity Fcl and the accessible information I(E).
+Thm. 7 generalizes some of the results of Werner [30] on
+the duality between teleportation and dense coding protocols
+to arbitrary entanglement assistance. To see this, let us first
+assume that we are in the “tight” regime N = d2, where N
+is the number of measurement outcomes and d≡| C| is the
+dimension of the system to be teleported. Then (4) implies that
+F = N
+d2p = p. Hence, the teleportation protocol has perfect
+fidelityF = 1 if and only if the associated state discrimination
+problem has perfect success probability p = 1. In this case,
+I(E) = 2 log d by Thm. 7, the maximal value of any dense
+coding protocol using a |C|-dimensional quantum channel.
+In the more general case when N and d2 may be dif-
+ferent, the second inequality in (45) implies that any dense
+coding protocol achieving the maximal accessible information
+I(E) = 2 logd corresponds to a perfect teleportation protocol
+withF = 1. Interestingly, the converse statement is not neces-
+sarily true, which can for example be observed in port-based
+teleportation protocols achieving a fidelity of F arbitrarily
+close to 1 when d is fixed and N is large [21, 22, 3, 29, 26,
+10]. Here, the accessible information of the associated dense
+coding protocol vanishes in the limit N→∞ [20, 28].
+For certain port-based teleportation protocols, the following
+bound on I(E) was stated (without proof) in [28]:
+I(E)≤ d2
+NF logd2 + logF. (54)
+Using (4) we have d2
+NF =p≤ 1 (as a probability), and hence
+(54) may improve upon the upper bound on I(E) in (45). On
+the other hand, the bounds derived in Thm. 7 hold for arbitrary
+teleportation and dense coding protocols.
+Thm. 7 and Cor. 3 also provide an alternative and self-
+contained proof of the result of [18] that bound entangled
+states do not provide an advantage in dense coding: From
+Cor. 3, any teleportation protocol using a bound entangled state
+has fidelity at most 1/d. It then follows from the upper bound
+(45) of Thm. 7 that I(E)≤ 2 logd+logF≤ 2 logd−logd =
+logd. Hence, we have proved the following statement:
+Corollary 8 ([18]). Any dense coding protocol defined in
+terms of a bound entangled state has accessible information
+at most logd, where d is the dimension of the system sent
+through the noiseless quantum channel.
+V. C ONCLUSION
+In this work provide a new perspective on the dual tasks
+of teleportation and dense coding. We argue that the known
+operational duality between these tasks extends to the level
+of protocols: the measurement and decoding operations in a
+teleportation protocol from Alice to Bob can be repurposed as
+a dense coding protocol from Bob to Alice. The quantitative
+link between these tasks is provided by generalizing an expres-
+sion for the teleportation fidelity in port-based teleportation to
+fully general protocols. This fidelity expression reformulates
+teleportation as a state discrimination problem that Bob and
+Alice aim to solve in the associated dense coding protocol. We
+use this connection to give two different quantitative duality
+theorems between teleportation and dense coding: one in terms
+of a classical version of fidelity called “classical correlation
+fidelity”, and one in terms of the information-theoretically
+relevant accessible information. We also give new proofs of
+the established facts that bound entangled states do not provide
+any advantage over classical resources in either teleportation or
+dense coding. In fact, we strengthen these results by showing
+that for both protocols a bipartite resource state can give
+
+=== page 9 ===
+9
+a quantum advantage if and only if there exists a locally
+processed version that violates the reduction criterion.
+In the dense coding scenario we assumed that the quantum
+channel connecting Bob to Alice is noiseless. It would be
+interesting to consider how the correlation fidelity changes
+in the presence of channel noise. A similar problem was
+recently studied in [9], which considered a setting where
+the noisy channel is fixed and Alice and Bob are allowed
+to choose an optimal entangled state |φ⟩AB for the classical
+communication task. The optimal classical correlation fidelity
+Fcl in this case can then be identified as a function of the given
+channel, known as its entanglement-assisted communication
+value. We can thus interpret the classical correlation fidelity
+in (40) as the entanglement-assisted communication value of
+a noiseless channel, with the assistance restricted to a non-
+optimal entangled resource state ρAB.
+Another interesting future direction of research is to study
+teleportation in the more general setting of two-way LOCC,
+where classical communication is allowed both from Alice to
+Bob and vice versa.
+Acknowledgments: We thank Jamie Sikora for helpful
+feedback. This research was supported by a grant through the
+IBM-Illinois Discovery Accelerator Institute.
+REFERENCES
+[1] M. Asorey, A. Kossakowski, G. Marmo, and E. C. G.
+Sudarshan. “Relations Between Quantum Maps and
+Quantum States”. Open Systems & Information Dynam-
+ics 12.4 (Dec. 2005), pp. 319–329. arXiv: quant- ph/
+0602228.
+[2] Piotr Badziag, Michał Horodecki, Paweł Horodecki, and
+Ryszard Horodecki. “Local environment can enhance
+fidelity of quantum teleportation”. Physical Review A
+62.1 (2000), p. 012311. arXiv: quant-ph/9912098.
+[3] Salman Beigi and Robert König. “Simplified instan-
+taneous non-local quantum computation with applica-
+tions to position-based cryptography”. New Journal of
+Physics 13.9 (2011), p. 093036. arXiv: 1101 . 1065
+[quant-ph].
+[4] Charles H. Bennett, Gilles Brassard, Claude Crépeau,
+Richard Jozsa, Asher Peres, and William K. Wootters.
+“Teleporting an unknown quantum state via dual clas-
+sical and Einstein-Podolsky-Rosen channels”. Physical
+Review Letters 70 (13 1993), pp. 1895–1899.
+[5] Charles H. Bennett, David P. DiVincenzo, John A.
+Smolin, and William K. Wootters. “Mixed-state en-
+tanglement and quantum error correction”. Physical
+Review A 54 (5 1996), pp. 3824–3851.
+[6] Charles H. Bennett and Stephen J. Wiesner. “Communi-
+cation via one- and two-particle operators on Einstein-
+Podolsky-Rosen states”. Physical Review Letters 69 (20
+1992), pp. 2881–2884.
+[7] H.-J. Briegel, W. Dür, J. I. Cirac, and P. Zoller. “Quan-
+tum Repeaters: The Role of Imperfect Local Operations
+in Quantum Communication”. Physical Review Letters
+81 (26 1998), pp. 5932–5935.
+[8] Daniel Cavalcanti, Paul Skrzypczyk, and Ivan Šupi ´c.
+“All Entangled States can Demonstrate Nonclassical
+Teleportation”. Physical Review Letters 119 (11 2017),
+p. 110501. arXiv: 1607.03249 [quant-ph].
+[9] Eric Chitambar, Ian George, Brian Doolittle, and Mar-
+ius Junge. “The Communication Value of a Quan-
+tum Channel”. IEEE Transactions on Information The-
+ory 69.3 (2023), pp. 1660–1679. arXiv: 2109 . 11144
+[quant-ph].
+[10] Matthias Christandl, Felix Leditzky, Christian Majenz,
+Graeme Smith, Florian Speelman, and Michael Walter.
+“Asymptotic performance of port-based teleportation”.
+Communications in Mathematical Physics 381 (2021),
+pp. 379–451. arXiv: 1809.10751 [quant-ph].
+[11] Robert M. Fano. “Class Notes for Course 6.574: Trans-
+mission of Information”. MIT, Cambridge, MA, USA.
+1952.
+[12] Daniel Gottesman and Isaac L. Chuang. “Demonstrat-
+ing the viability of universal quantum computation
+using teleportation and single-qubit operations”. Nature
+402.6760 (Nov. 1999), pp. 390–393.
+[13] Tharon Holdsworth, Vishal Singh, and Mark M. Wilde.
+“Quantifying the performance of approximate teleporta-
+tion and quantum error correction via symmetric 2-PPT-
+extendible channels”. Physical Review A 107 (1 2023),
+p. 012428. arXiv: 2207.06931 [quant-ph].
+[14] Alexander S. Holevo. “Bounds for the quantity of
+information transmitted by a quantum communication
+channel”. Problemy Peredachi Informatsii 9.3 (1973),
+pp. 3–11.
+[15] Michał Horodecki and Paweł Horodecki. “Reduction
+criterion of separability and limits for a class of distil-
+lation protocols”. Physical Review A 59 (6 June 1999),
+pp. 4206–4216. arXiv: quant-ph/9708015.
+[16] Michał Horodecki, Paweł Horodecki, and Ryszard
+Horodecki. “General teleportation channel, singlet frac-
+tion, and quasidistillation”. Physical Review A 60 (3
+Sept. 1999), pp. 1888–1898. arXiv: quant-ph/9807091.
+[17] Michał Horodecki, Paweł Horodecki, and Ryszard
+Horodecki. “Mixed-State Entanglement and Distilla-
+tion: Is there a “Bound” Entanglement in Nature?”
+Physical Review Letters 80 (24 June 1998), pp. 5239–
+5242. arXiv: quant-ph/9801069.
+[18] Michal Horodecki, Pawel Horodecki, Ryszard
+Horodecki, Debbie W. Leung, and Barbara M. Terhal.
+“Classical capacity of a noiseless quantum channel
+assisted by noisy entanglement”. Quantum Inf. Comput.
+1.3 (2001), pp. 70–78. arXiv: quant-ph/0106080.
+[19] Ryszard Horodecki, Paweł Horodecki, Michał
+Horodecki, and Karol Horodecki. “Quantum
+entanglement”. Reviews of Modern Physics 81 (2
+2009), pp. 865–942.
+[20] Satoshi Ishizaka. “Some remarks on port-based tele-
+portation”. arXiv preprint (2015). arXiv: 1506 . 01555
+[quant-ph].
+[21] Satoshi Ishizaka and Tohya Hiroshima. “Asymptotic
+teleportation scheme as a universal programmable quan-
+
+=== page 10 ===
+10
+tum processor”. Physical Review Letters 101 (24 2008),
+p. 240501. arXiv: 0807.4568 [quant-ph].
+[22] Satoshi Ishizaka and Tohya Hiroshima. “Quantum tele-
+portation scheme by selecting one of multiple output
+ports”. Physical Review A 79 (4 2009), p. 042306.
+arXiv: 0901.2975 [quant-ph].
+[23] Piotr Kopszak, Marek Mozrzymas, Michał Studzi ´nski,
+and Michał Horodecki. “Multiport based teleportation–
+transmission of a large amount of quantum informa-
+tion”. Quantum 5 (2021), p. 576. arXiv: 2008.00856
+[quant-ph].
+[24] Robert König, Renato Renner, and Christian Schaffner.
+“The operational meaning of min- and max-entropy”.
+IEEE Transactions on Information Theory 55.9 (2009),
+pp. 4337–4347. arXiv: 0807.1338 [quant-ph].
+[25] Matthew S. Leifer. “Conditional Density Operators and
+the Subjectivity of Quantum Operations”. AIP Confer-
+ence Proceedings 889.1 (2007), pp. 172–186. arXiv:
+quant-ph/0611233.
+[26] Marek Mozrzymas, Michał Studzi ´nski, Sergii Strelchuk,
+and Michał Horodecki. “Optimal port-based teleporta-
+tion”. New Journal of Physics 20.5 (2018), p. 053006.
+arXiv: 1707.08456 [quant-ph].
+[27] Sandu Popescu. “Bell’s inequalities versus teleportation:
+What is nonlocality?” Physical Review Letters 72 (6
+1994), pp. 797–799.
+[28] Sergii Strelchuk and Michał Studzi ´nski. “Minimal port-
+based teleportation”. New Journal of Physics 25.6
+(2023), p. 063012. arXiv: 2111.05499 [quant-ph].
+[29] Michał Studzi ´nski, Sergii Strelchuk, Marek Mozrzy-
+mas, and Michał Horodecki. “Port-based teleportation
+in arbitrary dimension”. Scientific Reports 7 (2017),
+p. 10871. arXiv: 1612.09260 [quant-ph].
+[30] Reinhard F. Werner. “All teleportation and dense coding
+schemes”. Journal of Physics A: Mathematical and
+General 34.35 (2001), p. 7081. arXiv: quant - ph /
+0003070.
+[31] Reinhard F. Werner. “Quantum states with Einstein-
+Podolsky-Rosen correlations admitting a hidden-
+variable model”. Physical Review A 40 (8 1989),
+pp. 4277–4281.

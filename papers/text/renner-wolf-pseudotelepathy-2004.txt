@@ -1,0 +1,345 @@
+=== page 1 ===
+Quantum Pseudo-Telepathy
+and the Kochen-Specker Theorem
+Renato Renner ∗ Stefan Wolf †
+Abstract
+According to results by Specker, Bell, and Kochen and Specker—among others—, quantum
+mechanical systems can generally not be described by hidden variables , i.e., classical pa-
+rameters determining the system’s behavior under all possible measurements. Kochen and
+Specker’s result implies that three- or higher-dimensional systems cannot be deterministi-
+cally and consistently prepared in a classical way for all possible alternative measurements
+simultaneously, whereas Bell showed that the behavior of entangled parts of a quantum
+system can be non-local: classically, it could be explained only by communication between
+the parts, not by shared information. Pseudo-telepathy games , which have been introduced
+as a deterministic version of non-local behavior, are distributed tasks that can be fulﬁlled
+with shared quantum—but not classical—information. We show a close connection between
+the results of Kochen and Specker on one side, and non-locality, i.e., pseudo telepathy, on
+the other: Every set of alternative measurements of a quantum system which is “unpre-
+dictable” in the sense of the Kochen-Specker theorem leads to a pseudo-telepathy game,
+and vice versa . It is a consequence of our results that pseudo-telepathy games exist that
+use a maximally entangled quantum trit pair as a resource, whereas there is no such game
+requiring a quantum bit pair only.
+1 Quantum Mechanics and Hidden Variables
+1.1 The Kochen-Specker Theorem: Weak and Strong Kochen-Specker Sets
+It has been a central objective in the history of quantum mechanics to embed quantum theory
+into a classical theory, based on so-called hidden variables . The fundamental impossibility of
+this approach was shown roughly forty years ago by Specker [8], Bell [1], and Kochen and
+Specker [6]. In [8] and [6] it was shown—by a purely algebraical proof—that the behavior
+of a three- (or higher-) dimensional quantum system cannot be described in a consistent way
+by hidden variables. Roughly speaking, they proved that somebody who claims to be able to
+predict the behavior of such a system under all possible alternative measurements can be forced
+into a contradiction—all these alternative outcomes do simply not co-exist in a deterministic
+and consistent way. More precisely, Specker’s and Kochen and Specker’s results imply that any
+attempt of determining a deﬁnite measurement outcome for any possible measurement basis
+must necessarily be contextual: It is impossible to assign values 0 and 1 to all unit vectors in the
+three-dimensional Hilbert space H = C3 in such a way that every orthonormal basis contains
+exactly one vector with value 1—this vector would be the corresponding measurement outcome.
+Interestingly, Kochen and Specker showed that this impossibility can already hold with respect
+to a ﬁnite set of vectors.
+Deﬁnition 1. A Kochen-Specker set (KS set for short) in H = Cn is a set S ⊆ H of unit
+vectors such that there exists no function f : S → {0, 1} with the property that if b ⊆ S is an
+∗Department of Computer Science, ETH Z¨ urich, Switzerland. Email: renner@inf.ethz.ch .
+†D´ epartement d’Informatique et recherche op´ erationnelle, Universit´ e de Montr´ eal, Canada. E-mail:
+wolf@iro.umontreal.ca .
+1
+
+=== page 2 ===
+orthonormal basis of H, then ∑
+u∈b
+f (u) = 1
+holds.
+Theorem 1. [8], [6] There exists a ﬁnite KS set S ⊆ H = Cn for n ≥ 3. There exists no KS
+set S ⊆ H = C2 (in other words, S = H = C2 is not a KS set).
+The impossibility of consistently predicting—or predetermining—the outcomes of a set of
+alternative measurements can in fact be derived from a slightly weaker notion than the one of
+a KS set—namely from a set of vectors on which any “prediction function” f inevitably assigns
+the value 1 to two orthogonal vectors.
+Deﬁnition 2. A weak Kochen-Specker set (weak KS set for short) in H = Cn is a set S ⊆ H of
+unit vectors such that for every function f : S → { 0, 1} satisfying that for every orthonormal
+basis b ⊆ S of H ∑
+u∈b
+f (u) = 1
+holds, there exist vectors u, v∈ S with ⟨u|v⟩ = 0 and f (u) = f (v) = 1.
+Clearly, every KS set is a weak KS set (since no function f with the mentioned property
+exists at all ); on the other hand, every weak set S can be extended to a KS set S′ with O(|S|2n)
+additional vectors. In particular, there exists a KS set in some Hilbert space H if and only if
+there exists a weak KS set in H.
+Lemma 2. Let H = Cn and let S ⊆ H be a ﬁnite weak KS set. Then there exists a ﬁnite KS
+set S′, S ⊆ S′ ⊆ H with
+|S′ \ S| ≤ |S|(|S| − 1)
+2 (n − 2) . (1)
+Proof. Every pair of orthonormal vectors in S can be extended to an orthonormal basis by
+adding n − 2 vectors. Hence there exists a set S′ ⊇ S satisfying inequality (1) and such that
+every pair of orthogonal vectors in S is contained in some orthonormal basis b ⊆ S′. Let f be
+a function f : S′ → { 0, 1} with ∑
+u∈b f (u) = 1 for every orthonormal basis b ⊆ S′. Clearly,
+the restriction of f to S has the same property, hence there exist u, v∈ S with ⟨u|v⟩ = 0 and
+f (u) = f (v) = 1. For the basis b ⊆ S′ containing u and v we have ∑
+w∈b f (w) ≥ f (u)+ f (v) = 2.
+2
+1.2 Non-Locality, Bell’s Inequality, and Pseudo-Telepathy
+A diﬀerent approach to showing the impossibility of hidden-variable explanations for the be-
+havior of quantum systems was taken by Bell [1]. According to quantum mechanics, two
+two-dimensional systems, called quantum bits or Qbits for short, can—even when physically
+separated—be in a joint state which cannot be completely described by giving the states of
+the two Qbits separately; such a state is called entangled. An example was given by Einstein,
+Podolsky, and Rosen [3] as
+|Φ+⟩ := 1√
+2 (|00⟩ + |11⟩) .
+Bell showed that the joint behavior with respect to diﬀerent measurements on the two sub-
+systems of this state cannot be explained by shared classical information under the assumption
+that no communication is allowed between the two parts of the system. More precisely, Bell
+derived certain inequalities—the Bell inequalities —that are satisﬁed for all systems the behav-
+ior of which do have a classical explanation; he then showed that they are violated by the
+behavior of the EPR state |Φ+⟩. This non-locality or “Spukhafte Fernwirkung—spooky action
+2
+
+=== page 3 ===
+at a distance—”, although it does not allow the parties controlling the distant systems for (in-
+stant) message transmission, implies that no classical hidden-variable theory can explain their
+behavior.
+“Pseudo-telepathy” [2] is a deterministic version of non-local behavior: Two distant parties
+unable to communicate but sharing a certain entangled quantum state—for instance n copies of
+the state |Φ+⟩—can satisfy some deterministic condition on their mutual input-output behavior
+with certainty, whereas parties without shared entanglement—even when having agreed on a
+“classical” strategy beforehand—cannot.
+Deﬁnition 3. Let H = H1 ⊗ H2, and let |Ψ⟩ ∈ H be a pure state. A pseudo-telepathy game
+with respect to |Ψ⟩ (|Ψ⟩-PT game for short) is a pair ( B1, B2), where Bi is a set of orthonormal
+bases of Hi, such that the following holds. Let g be the following function deﬁned on B1 × B2:
+g((b1, b2)) is the set of pairs ( u1, u2) ∈ b1 × b2 satisfying
+⟨Ψ|u1, u2⟩ ⁄= 0 ;
+the latter condition means that the measurement outcome ( u1, u2) has non-zero probability if
+|Ψ⟩ is measured with respect to the basis b1 × b2 of H. Then we must have that, for every pair
+of functions ( s1, s2)—a classical strategy—, where si is deﬁned on Bi and si(bi) ∈ bi holds for
+all bi ∈ Bi, there must exist particular bases b1 ∈ B1 and b2 ∈ B2 such that
+(s1(b1), s2(b2)) ⁄∈ g((b1, b2))
+holds.
+It is the goal of this paper to show a close connection between PT games and the Kochen-
+Specker theorem. More precisely, we show that every weak KS set leads to a PT game
+(Section 2.1), and that every PT game with respect to a maximally entangled state leads
+to a KS set in some Hilbert space (Section 2.2). Two consequences are that there exists a
+PT game between two parties sharing only one maximally entangled “Qtrit”—i.e., the state
+(|00⟩ + |11⟩ + |22⟩)/
+√
+3—, but that no such game exists (at least if only so-called von Neumann
+measurements, i.e., measurements with respect to an orthonormal basis of C2, are carried out)
+when only an EPR state |Φ+⟩ is shared.
+2 Linking the Kochen-Specker Theorem and Pseudo-Telepathy
+Games
+2.1 Pseudo-Telepathy from any Weak Kochen-Specker Set
+Deﬁnition 4. Let H = Cn, and let c = {|0⟩, |1⟩, . . . ,|n − 1⟩} and b = {u0, u1, . . . , un−1}
+be orthonormal bases of H. Then the complex conjugate basis b of b (with respect to c) is
+b = {u0, u1, . . . ,un−1} with ui = U |i⟩, where U is the unitary operator on H satisfying b = U c,
+i.e., ui = U |i⟩ for i = 0 , 1, . . . , n− 1. For a set B of bases, we denote by B the set of complex
+conjugate bases.
+Theorem 3. Let H = Cn, S ⊆ H , c = {|0⟩, |1⟩, . . . ,|n − 1⟩} and b = {u0, u1, . . . , un−1} be
+orthonormal bases of H, and let
+B = {b ⊆ S | b is an orthonormal basis of H} .
+Consider the state
+|Ψ⟩ := 1√n (|00⟩ + |11⟩ + · · · + |n − 1, n− 1⟩) ∈ H ⊗ H .
+If S is a weak KS set in H, then (B, B) is a |Ψ⟩-PT game.
+3
+
+=== page 4 ===
+Proof. Let s1 and s2 be two functions such that for all b ∈ B and b′ ∈ B, we have s1(b) ∈ b and
+s2(b′) ∈ b′. Let now for u ∈ S
+f (u) :=
+{
+1 if there exists u ∈ b ∈ B such that s1(b) = u ,
+0 otherwise .
+Clearly, we have for every b ∈ B that
+∑
+u∈b
+f (u) ≥ 1
+holds. Since S is a weak KS set, there exist u, u′ ∈ S with ⟨u|u′⟩ = 0 and f (u) = f (u′) = 1.
+Let b, b′ ∈ B such that s1(b) = u, s1(b′) = u′. Clearly, we have either s2(b′) ⁄= u′ or s2(b′) = u′.
+We show that the condition for a PT game is satisﬁed in both cases.
+Assume ﬁrst s2(b′) := u′′ ⁄= u′. Then u′ and u′′, which both belong to b′, are orthogonal
+vectors and we get
+⟨Ψ|u′, u′′⟩ = 1√n
+∑
+i
+⟨i|u′⟩⟨i|u′′⟩ = 1√n ⟨u′|u′′⟩ = 0 ;
+hence,
+(s1(b′), s2(b′)) = ( u′, u′′) ⁄∈ g((b′, b′))
+holds since the probability of this output is 0.
+If we have, on the other hand, s2(b′) = u′, we can conclude
+(s1(b), s2(b′)) = ( u, u′) ⁄∈ g((b, b′))
+in a similar way since u and u′ are orthogonal. 2
+A consequence of Theorems 1 and 3 is that there exists a PT game between parties sharing
+only one Qtrit pair. A game using such a small amount of entanglement has not been proposed
+previously.
+Corollary 4. There exists a ((|00⟩ + |11⟩ + |22⟩)/
+√
+3)-PT game.
+In [6], a KS set in H = C3 with 117 elements is given. It has been shown later that there
+exist much smaller such sets; for instance, there exists a KS set with 33 vectors belonging to
+16 diﬀerent orthonormal bases of H. According to Theorem 3, this leads to a PT game where
+each party gets one of 16 possible inputs—one of the 16 bases; the condition for “winning the
+game” is that identical bases must be answered by identical vectors, whereas bases that have a
+vector in common must be answered by the overlapping vector by both parties, or not by this
+vector by both parties.
+2.2 Kochen-Specker Sets from Pseudo-Telepathy Games
+Theorem 5. Let H = Cn, c = {|0⟩, |1⟩, . . . ,|n − 1⟩} be an orthonormal basis of H, let B1 and
+B2 be two sets of orthonormal bases of H, and let
+|Ψ⟩ = 1√n (|00⟩ + |11⟩ + · · · + |n − 1, n− 1⟩) ∈ H ⊗ H .
+Let ﬁnally S be the set
+S :=
+⋃
+b∈B1
+b ∪
+⋃
+b∈B2
+b ⊆ H .
+If (B1, B2) is a |Ψ⟩-PT game, then S is a weak KS set in H.
+4
+
+=== page 5 ===
+Proof. Let f : S → { 0, 1} be a function such that for all orthonormal bases b ⊆ S, we have∑
+u∈b f (u) = 1.
+Let, for any b1 ∈ B1 and b2 ∈ B2, s1(b1) and s2(b2) be the elements u1 and u2 of b1 and
+b2, respectively, satisfying f (u1) = f (u2) = 1. Because ( B1, B2) is a |Ψ⟩-PT game, there exist
+particular bases b1 ∈ B1 and b2 ∈ B2 with
+(s1(b1), s2(b2)) ⁄∈ g((b1, b2)) .
+Let ui = si(bi). Now, ( u1, u2) ⁄∈ g((b1, b2)) implies that this output pair occurs with probability
+0, i.e.,
+0 = ⟨Ψ|u1, u2⟩ = 1√n
+∑
+i
+⟨i|u1⟩⟨i|u2⟩ = 1√n ⟨u1|u2⟩ .
+We conclude that there exist two orthogonal vectors u1 and u2 in S with f (u1) = f (u2) = 1,
+and this concludes the proof. 2
+Theorem 5 implies that any PT game between parties sharing a state of the given form (for
+instance, k copies of |Φ+⟩) leads to a weak KS set in the corresponding Hilbert space (e.g.,
+H = C2k
+). It is, however, not clear how such a set can be derived from a PT game using a
+state of a diﬀerent form.
+Corollary 6, which is an immediate consequence of Theorem 5 and Lemma 2, implies that
+given the existence of a PT game, the corresponding Hilbert space contains a KS set (of limited
+size).
+Corollary 6. Let H = Cn, c = {|0⟩, |1⟩, . . . ,|n − 1⟩} be an orthonormal basis of H, let B1 and
+B2 be two sets of orthonormal bases of H, and let
+|Ψ⟩ = 1√n (|00⟩ + |11⟩ + · · · + |n − 1, n− 1⟩) ∈ H ⊗ H .
+Let S be the set
+S :=
+⋃
+b∈B1
+b ∪
+⋃
+b∈B2
+b ⊆ H .
+If (B1, B2) is a |Ψ⟩-PT game, then there exists a KS set S′ with S ⊆ S′ ⊆ H and such that
+|S′ \ S| ≤ | B1| · |B2| · n3
+holds.
+Proof. According to Theorem 5, S is a weak KS set; more precisely, there exist, for every “KS
+function” f , u ∈ b ∈ B1 and v ∈ b′ ∈ B2 with ⟨u|v⟩ and f (u) = f (v) = 1. As in Lemma 2, S
+can be extended by at most
+⏐⏐⏐⏐⏐⏐
+⋃
+b∈B1
+b
+⏐⏐⏐⏐⏐⏐
+·
+⏐⏐⏐⏐⏐⏐
+⋃
+b′∈B2
+b′
+⏐⏐⏐⏐⏐⏐
+· (n − 2) ≤ |B1|n · |B2|n · (n − 2)
+vectors to a set S′ such that every orthogonal pair u, vwith u ∈ b ∈ B1 and v ∈ b′ ∈ B2 is in
+an orthonormal basis b ⊆ S′ of H. Hence S′ is a KS set. 2
+Corollary 7 is a consequence of Corollary 6 and Theorem 1 and suggests—together with
+Corollary 4—that the minimal quantum primitive allowing for a PT game is a maximally
+entangled Qtrit pair. (Note that Corollary 7 does not imply that the behavior of |Φ+⟩ is local:
+This state does violate Bell’s inequality.)
+5
+
+=== page 6 ===
+Corollary 7. There exists no ((|00⟩ + |11⟩)/
+√
+2)-PT game.
+Theorem 5 can be used to construct new KS sets from PT games. In Example 1, this is
+done for a game proposed by Brassard, Cleve, and Tapp [2] (see also [4]), which uses 4 EPR
+pairs as a resource. The resulting KS set in H = C16 is highly symmetric (but rather large).
+Example 1. In [2], the following PT game was introduced. For n ∈ N, N = 2 n, let
+B1 = B2 =
+
+
+
+
+
+
+1√
+N
+∑
+i∈{0,1}n
+(−1)i·j⊕z(i)|i⟩
+⏐⏐⏐⏐⏐⏐
+j ∈ {0, 1}n
+
+
+
+⏐⏐⏐⏐⏐⏐
+z : {0, 1}n → {0, 1}
+
+
+ ;
+these bases arise when the Hadamard transform is applied to the bases {±|i⟩} of H = CN .
+In [4] it was shown that for
+|Ψ⟩ = |Φ+⟩⊗n = 1√
+N
+∑
+i∈{0,1}n
+|i, i⟩ ,
+and for N ≥ 16, this is a |Ψ⟩-PT game. Hence Theorem 5 implies that in this case the set
+S =
+⋃
+b∈B1
+b ∪
+⋃
+b∈B2
+b =
+
+
+
+1√
+N
+∑
+i∈{0,1}n
+(−1)z(i)|i⟩
+⏐⏐⏐⏐⏐⏐
+z : {0, 1}n → {0, 1}
+
+
+
+is a weak KS set. It is in fact a KS set since every pair of orthogonal vectors can be extended to
+an orthonormal basis of H with vectors in S: The idea is, given two orthogonal vectors u and
+v corresponding to N -bit strings z1 and z2, respectively, with dH (z1, z2) = N/2—which holds
+because u and v are orthogonal—, to choose N − 2 additional strings z such that the strings
+z1 ⊕ z are the code words of a dual Hamming code. Hence, for instance, the set
+S =
+{
+1
+4
+15∑
+i=0
+±|i⟩
+}
+is a—highly symmetric—KS set in H = C16 with 2 16 elements (corresponding to the diﬀerent
+choices of the 16 signs).
+References
+[1] J. S. Bell, On the Einstein-Podolsky-Rosen paradox, Physics, Vol. 1, pp. 195–200, 1964.
+[2] G. Brassard, R. Cleve, and A. Tapp, The cost of exactly simulating quantum entanglement
+with classical communication, Physical Review Letter , Vol. 83, No. 9, pp. 1874–1878, 1999.
+[3] A. Einstein, B. Podolsky, and N. Rosen, Can quantum-mechanical description of physical
+reality be considered complete?, Phys. Rev. , Vol. 41, 1935.
+[4] V. Galliard, A. Tapp, and S. Wolf, The impossibility of pseudo-telepathy without quantum
+entanglement, Proceedings of ISIT 2003 , 2003.
+[5] V. Galliard and S. Wolf, Pseudo-telepathy, entanglement, and graph colorings, Proceedings
+of ISIT 2002 , 2002.
+[6] S. Kochen and E. Specker, The problem of hidden variables in quantum mechanics, Journal
+of Mathematics and Mechanics , Vol. 17, No. 1, 1967.
+[7] A. Peres, Quantum theory: concepts and methods , Kluwer Academic Publishers, 1993.
+[8] E. Specker, Die Logik nicht gleichzeitig entscheidbarer Aussagen, Dialectica, Vol. 14, pp.
+239–246, 1960.
+6

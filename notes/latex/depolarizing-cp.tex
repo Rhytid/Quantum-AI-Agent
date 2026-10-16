@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{qmacros}          % add [notags] to hide provenance tags
+\usepackage[hidelinks]{hyperref}
+
+\title{Complete positivity range of the qubit depolarizing map}
+\author{Alex}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Setting}
+
+\paragraph{Sources.} The proof below is self-contained. The only result from the user's papers
+is Choi's criterion, and it appears only in the optional cross-check:
+\cite[unnumbered statement before Lemma~67, p.~25 (PDF page)]{bu-gu-jaffe-magic}. Other standard
+facts are named where they are used.
+
+\paragraph{Hypotheses.}
+\begin{itemize}
+  \item[H1.] $\Hil=\C^2$ (finite-dimensional). $p\in\R$.
+  \item[H2.] $\Phi_p$ is defined by the formula in Theorem~\ref{thm:main} on all of $M_2(\C)$. It
+    is linear.
+  \item[H3.] Completely positive (CP) means: for every $n\ge1$, $\Phi_p\otimes\mathrm{id}_{M_n}$
+    maps positive semidefinite (PSD) elements of $M_2\otimes M_n$ to PSD elements.
+\end{itemize}
+
+\paragraph{Conventions.}
+\begin{itemize}
+  \item Physics inner product (linear in the second slot). $\{\ket{0},\ket{1}\}$ is the
+    computational basis and $E_{ij}=\ketbra{i}{j}$.
+  \item Choi matrix (unnormalized, with $\Phi$ on the \textbf{second} factor):
+    $J(\Phi)=\sum_{i,j}E_{ij}\otimes\Phi(E_{ij})$. This is what \file{tools/qmath.py: choi}
+    computes.
+  \item $\ket{\Omega}=(\ket{00}+\ket{11})/\sqrt2$, so
+    $\sum_{i,j}E_{ij}\otimes E_{ij}=2\proj{\Omega}$.
+  \item Paulis: $\sigma_0=\id$, $\sigma_1=\PX$, $\sigma_2=\PY$, $\sigma_3=\PZ$. The identity
+    matrix is $\id$ ($\id_2$, $\id_4$, $\id_n$ when the size matters).
+\end{itemize}
+
+\begin{theorem}\label{thm:main}
+For real $p$ let $\Phi_p:M_2(\C)\to M_2(\C)$, $\Phi_p(X)=(1-p)X+p\,\Tr(X)\,\id/2$.
+\begin{enumerate}
+  \item[(a)] $\Tr\Phi_p(X)=\Tr X$ for all $X\in M_2$ and all real $p$.
+  \item[(b)] $\Phi_p$ is completely positive iff $0\le p\le 4/3$.
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Strategy.} Part (a) is a one-line computation. For (b), the proof is self-contained
+and does not need Choi's theorem.
+\begin{itemize}
+  \item \textbf{Necessity:} apply $\Phi_p\otimes\mathrm{id}_2$ to the PSD matrix
+    $2\proj{\Omega}$. The result is $2(1-p)\proj{\Omega}+\tfrac p2 \id_4$, with eigenvalues
+    $2-\tfrac{3p}{2}$ (once) and $\tfrac p2$ (three times). It fails to be PSD exactly when $p<0$
+    or $p>4/3$.
+  \item \textbf{Sufficiency:} for $0\le p\le4/3$, write $\Phi_p$ in Kraus form,
+    $\Phi_p(X)=\sum_\mu K_\mu XK_\mu\dg$ with $K_0=\sqrt{1-3p/4}\,\id$ and
+    $K_k=\sqrt{p/4}\,\sigma_k$. Any such map is CP.
+\end{itemize}
+Choi's theorem gives the same result from the spectrum of $J(\Phi_p)$; it is noted as a
+cross-check.
+
+\begin{proof}
+\begin{enumerate}
+  \item\label{step:trace} \textbf{(Part (a).)} For any $X\in M_2$:
+    \begin{equation}\label{eq:trace}
+      \Tr\Phi_p(X)=(1-p)\Tr X+p\Tr X\cdot\frac{\Tr \id_2}{2}=(1-p)\Tr X+p\Tr X=\Tr X.
+    \end{equation}
+    This uses linearity of the trace and $\Tr\id_2=2$. It holds for every real $p$, and indeed
+    for every complex $p$. \own, \computed{} (C3).
+
+  \item\label{step:choi} \textbf{(Choi matrix.)} By linearity,
+    $\Phi_p(E_{ij})=(1-p)E_{ij}+\tfrac p2\delta_{ij}\id$, because $\Tr E_{ij}=\delta_{ij}$. So
+    \begin{equation}\label{eq:choi}
+      J(\Phi_p)=(1-p)\sum_{i,j}E_{ij}\otimes E_{ij}+\frac p2\sum_i E_{ii}\otimes \id
+      =2(1-p)\proj{\Omega}+\frac p2 \id_4,
+    \end{equation}
+    using $\sum_iE_{ii}=\id_2$. \own, \computed{} (C1).
+
+  \item\label{step:spec} \textbf{(Spectrum.)} $2\proj{\Omega}$ is $2\times$ a rank-one
+    projector. So $J(\Phi_p)$ has:
+    \begin{itemize}
+      \item eigenvalue $2(1-p)+\tfrac p2=2-\tfrac{3p}{2}$ on $\ket{\Omega}$;
+      \item eigenvalue $\tfrac p2$ on the 3-dimensional subspace $\ket{\Omega}^\perp$ (for
+        example $\ket{01}$, $\ket{10}$, $(\ket{00}-\ket{11})/\sqrt2$).
+    \end{itemize}
+    Hence $J(\Phi_p)\ge0 \iff p\ge0$ and $p\le 4/3$. \own{} (spectral theorem for a Hermitian
+    matrix that is a combination of $\id$ and a projector), \computed{} (C2).
+
+  \item\label{step:test} \textbf{(The test matrix under $\Phi_p\otimes\mathrm{id}$.)} Let
+    $P=\sum_{i,j}E_{ij}\otimes E_{ij}=2\proj{\Omega}\in M_2\otimes M_2$. It is PSD because it is
+    $2\times$ a projector. Then
+    \begin{equation}\label{eq:test}
+      (\Phi_p\otimes\mathrm{id}_2)(P)=\sum_{i,j}\Phi_p(E_{ij})\otimes E_{ij}
+      =2(1-p)\proj{\Omega}+\frac p2 \id_4=J(\Phi_p).
+    \end{equation}
+    The middle expression is the same computation as in Step~\ref{step:choi} with the tensor
+    factors swapped. The swap leaves both $\proj{\Omega}$ and $\id_4$ unchanged. So the
+    hypothesis H3 convention ($\Phi$ on the first factor) and the Choi convention ($\Phi$ on the
+    second factor) give the identical matrix here. \own, \computed{} (C8).
+
+  \item\label{step:nec} \textbf{(Necessity.)} Suppose $\Phi_p$ is CP. Apply H3 with $n=2$ to
+    the PSD matrix $P$ from Step~\ref{step:test}: then
+    $(\Phi_p\otimes\mathrm{id}_2)(P)=J(\Phi_p)\ge0$. By Step~\ref{step:spec}, $0\le p\le 4/3$.
+
+    The contrapositive gives explicit witnesses:
+    \begin{itemize}
+      \item If $p<0$: $\matel{01}{J(\Phi_p)}{01}=p/2<0$.
+      \item If $p>4/3$: $\matel{\Omega}{J(\Phi_p)}{\Omega}=2-3p/2<0$.
+    \end{itemize}
+    In both cases $\Phi_p\otimes\mathrm{id}_2$ is not even positive. \own, \computed{} (C10,
+    C11).
+
+  \item\label{step:twirl} \textbf{(Pauli twirl identity.)} For every $X\in M_2$:
+    \begin{equation}\label{eq:twirl}
+      \sum_{\mu=0}^3\sigma_\mu X\sigma_\mu=2\Tr(X)\,\id.
+    \end{equation}
+    \emph{Proof.} Both sides are linear in $X$, and $\{\sigma_\nu\}$ is a basis of $M_2$, so it
+    suffices to check $X=\sigma_\nu$.
+    \begin{itemize}
+      \item For $\nu=0$: the left side is $4\id$, and $2\Tr(\id)\id=4\id$.
+      \item For $\nu=k\in\{1,2,3\}$: $\sigma_\mu\sigma_k\sigma_\mu=\sigma_k$ if $\sigma_\mu$
+        commutes with $\sigma_k$ ($\mu\in\{0,k\}$). It equals $-\sigma_k$ if they anticommute
+        (the other two $\mu$). This uses $\sigma_\mu^2=\id$ and the fact that distinct
+        non-identity Paulis anticommute. So the sum is $(1+1-1-1)\sigma_k=0=2\Tr(\sigma_k)\id$.
+        $\square$
+    \end{itemize}
+    This is a standard result, not from your papers (e.g.\ Nielsen--Chuang, the
+    depolarizing-channel section). \own, \computed{} (C4).
+
+  \item\label{step:kraus} \textbf{(Kraus form.)} By Step~\ref{step:twirl},
+    $p\Tr(X)\id/2=\tfrac p4\left(X+\sum_{k=1}^3\sigma_kX\sigma_k\right)$. Therefore
+    \begin{equation}\label{eq:kraus}
+      \Phi_p(X)=\Bigl(1-\tfrac{3p}{4}\Bigr)X+\tfrac p4\sum_{k=1}^3\sigma_kX\sigma_k
+      \qquad(\text{all real }p).
+    \end{equation}
+    For $0\le p\le4/3$ both coefficients are $\ge0$, so we can set $K_0=\sqrt{1-3p/4}\,\id$ and
+    $K_k=\sqrt{p/4}\,\sigma_k$ ($k=1,2,3$). Then:
+    \begin{itemize}
+      \item $\Phi_p(X)=\sum_{\mu=0}^3K_\mu XK_\mu\dg$, since each $\sigma_k$ is Hermitian;
+      \item $\sum_\mu K_\mu\dg K_\mu=(1-\tfrac{3p}{4}+\tfrac{3p}{4})\id=\id$. This is consistent
+        with Step~\ref{step:trace}.
+    \end{itemize}
+    \own, \computed{} (C5, C6, C7).
+
+  \item\label{step:suff} \textbf{(Sufficiency.)} Let $0\le p\le4/3$, $n\ge1$, and
+    $Y\in M_2\otimes M_n$ with $Y\ge0$. By Step~\ref{step:kraus} and linearity:
+    \begin{equation}\label{eq:ampl}
+      (\Phi_p\otimes\mathrm{id}_n)(Y)=\sum_\mu (K_\mu\otimes \id_n)\,Y\,(K_\mu\otimes \id_n)\dg.
+    \end{equation}
+    To check this identity: both sides are linear in $Y$, and product elements $A\otimes B$ span
+    $M_2\otimes M_n$, so it suffices to check it on them. On $A\otimes B$ the right side is
+    $\bigl(\sum_\mu K_\mu AK_\mu\dg\bigr)\otimes B=\Phi_p(A)\otimes B$ by
+    Step~\ref{step:kraus}, which is the left side. (Also checked exactly for a general symbolic
+    $Y\in M_2\otimes M_2$ by the referee: \computed, \file{scratch/ref_depolarizing_cp_check.py},
+    test 3.) Each term $(K\otimes \id)Y(K\otimes \id)\dg$ is PSD:
+    $\matel{v}{(K\otimes \id)Y(K\otimes \id)\dg}{v}=\matel{w}{Y}{w}\ge0$ with
+    $\ket{w}=(K\otimes \id)\dg\ket{v}$. A sum of PSD matrices is PSD. So $\Phi_p$ is CP. \own,
+    \computed{} (C9, a random numerical spot check with $n=3$).
+
+  \item\label{step:concl} \textbf{(Conclusion.)} Steps~\ref{step:nec} and~\ref{step:suff}
+    together give: $\Phi_p$ is CP $\iff 0\le p\le4/3$. Together with Step~\ref{step:trace},
+    $\Phi_p$ is a CPTP map (a quantum channel) exactly for $p\in[0,4/3]$.
+\end{enumerate}
+\end{proof}
+
+\paragraph{Cross-check via Choi's theorem.} For $n$-qubit maps,
+\cite[unnumbered statement before Lemma~67, p.~25 (PDF page)]{bu-gu-jaffe-magic} states that the
+map $\rho\mapsto 2^n\ptr{A}[J\,(\rho_A^{T}\otimes \id_{A'})]$ is completely positive iff $J\ge0$.
+\paper{} That paper uses the normalized Choi state
+$J_\Lambda=(\mathrm{id}_A\otimes\Lambda)(\proj{\Phi})$. For $n=1$ this equals $J(\Phi_p)/2$, and a
+positive rescaling does not affect $J\ge0$. \own, \computed{}
+(\file{scratch/ref_depolarizing_cp_check.py}, test 1). To apply the criterion we also need
+$\Phi_p(\rho)=2\ptr{A}[J_{\Phi_p}(\rho^{T}\otimes \id)]$. The paper states this reconstruction (its
+eq.~(83)) only for quantum channels, so quoting it for $p\notin[0,4/3]$ would be circular. In fact
+it holds for every linear map: \own, \computed{} exactly for symbolic real $p$ and general $\rho$
+(same script, test 2). The paper also phrases the criterion for maps on states; extending it to
+all of $M_2$ by linearity is implicit. The general statement (a linear map $M_d\to M_m$ is CP iff
+$J(\Phi)\ge0$) is Choi (1975); see also Watrous, \emph{TQI}, Ch.~2. Its hypotheses hold here:
+finite dimension and a linear map (H1, H2). Combined with Step~\ref{step:spec}, it gives (b) at
+once. The argument above does not depend on it.
+
+\paragraph{Remarks.}
+\begin{itemize}
+  \item Boundary cases:
+    \begin{itemize}
+      \item $p=0$ is the identity channel; $J$ has rank 1 (eigenvalues $2,0,0,0$).
+      \item $p=1$ is the completely depolarizing channel; $J=\id_4/2$.
+      \item $p=4/3$ gives $\Phi(X)=\tfrac13\sum_k\sigma_kX\sigma_k$; $J$ has rank 3 (eigenvalues
+        $0,\tfrac23,\tfrac23,\tfrac23$) and $K_0=0$.
+    \end{itemize}
+  \item For $1<p\le4/3$ the channel is still CP, even though the ``weight'' $1-p$ on $X$ is
+    negative.
+  \item Positivity alone (not complete positivity) holds on the larger range $0\le p\le 2$: for a
+    pure state $\Phi_p(\proj{\psi})$ has eigenvalues $1-p/2$ (on $\ket{\psi}$) and $p/2$ (on
+    $\ket{\psi}^\perp$), and every PSD matrix is a nonnegative combination of pure states. So for
+    $4/3<p\le2$ the map $\Phi_p$ is positive but not CP. \own{} (not needed for the claim),
+    \computed{} (C12: the Bloch-vector scaling $r\mapsto(1-p)r$ checked exactly; exact
+    counterexamples at $p=-1/100$ and $p=201/100$).
+\end{itemize}
+
+\section*{Computational checks}
+Independent scripts by the \texttt{quantum-computer} agent:
+\file{scratch/q_depolarizing-cp_*.py} (shared definitions in
+\file{scratch/q_depolarizing-cp_common.py}; the prover's own script
+\file{scratch/depolarizing_cp.py} was not reused). Notation: $J_p=J(\Phi_p)$; matrices are
+$2\times2$ or $4\times4$ over $\C$.
+
+\begin{center}
+\small
+\begin{tabular}{p{1.1cm}p{3.5cm}p{5cm}p{5cm}}
+\hline
+\textbf{ID} & \textbf{Claim} & \textbf{Method} & \textbf{Verdict} \\ \hline
+C0 & PSD range of $J_p$ (i); main statement on a grid (ii)
+   & (i) exact \texttt{solveset} on the eigenvalues of $J_p$, plus factored characteristic
+     polynomial; (ii) 256 $p$ values: $[-0.5,2]$ in steps of $0.01$, plus probes at $4/3$, $4/3\pm10^{-3}$, $\pm10^{-3}$; applying
+     $\Phi_p\otimes\mathrm{id}_n$ ($n=2,3$) directly
+   & (i) Proved symbolically that $J_p\ge0\iff p\in[0,4/3]$; (ii) Supported: negative
+     eigenvalues appear at exactly the grid points outside $[0,4/3]$ (innermost ones $-0.001$
+     and $1.33433$) \\
+C1 & Closed form of $J_p$ & exact & Proved symbolically \\
+C2 & Spectrum of $J_p$ & exact eigenvalues and eigenvectors & Proved symbolically \\
+C3 & Trace preservation & exact, general $X$ & Proved symbolically \\
+C4 & Pauli twirl identity & exact & Proved symbolically \\
+C5, C6 & Kraus form and $\sum K\dg K=\id$
+   & exact, two parametrizations covering $[0,4/3]$, plus 5 rational values
+   & Proved symbolically (a third, $t$-parametrization in the script is inconclusive because
+     SymPy can't use $t\le1$; not relied on) \\
+C7 & \texttt{qmath.choi} $=J_p$ & exact at $p\in\{0,1/7,1/2,1,4/3\}$
+   & Exact at 5 rational points \\
+C8 & Swapped-factor convention & exact & Proved symbolically \\
+C9 & $\Phi_p\otimes\mathrm{id}_3$ preserves PSD
+   & 500 random $\rho$ per $p$, ranks 1/2/3/6; worst $\lambda_{\min}\approx-4\times10^{-16}$
+   & Supported (numerical, not a proof) \\
+C10 & Boundary spectra & exact rationals & Proved symbolically \\
+C11 & Witnesses just outside the range & exact rationals & Proved symbolically \\
+C12 & Positive iff $0\le p\le2$ & exact Bloch scaling, \texttt{solveset}, exact witnesses
+    & Proved symbolically (the step from states to all PSD matrices is own reasoning) \\
+\hline
+\end{tabular}
+\end{center}
+
+Scope: everything is for $M_2$. The CP check for general $n$ rests on the Kraus argument in
+Step~\ref{step:suff}, which is exact via C5/C6. C0(ii) and C9 are numerical evidence only.
+
+\section*{Open doubts}
+\begin{itemize}
+  \item None on the main mathematics: every step is elementary, every concrete identity except
+    the numerical checks C0(ii) and C9 was proved symbolically, and the referee found no errors.
+  \item The cross-check citation is to an unnumbered statement in
+    \cite[p.~25 (PDF page)]{bu-gu-jaffe-magic}. That paper states it for its own normalized Choi
+    state; the $n=1$ rescaling is own reasoning.
+  \item Referee (\texttt{proof-checker}): \textbf{Correct, with minor gaps}. All three gaps are
+    now closed: the Step~\ref{step:suff} spanning argument, the circularity of eq.~(83) in the
+    cross-check, and the table wording. The note states that C0(i) gives the PSD range of $J_p$;
+    getting from there to CP uses Steps~\ref{step:nec}/\ref{step:suff} (or Choi).
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{bu-gu-jaffe-magic} Kaifeng Bu, Weichen Gu, and Arthur Jaffe, \emph{Stabilizer Testing
+  and Magic Entropy via Quantum Fourier Analysis}, arXiv:2306.09292v2 [quant-ph], 11 Aug 2025.
+\end{thebibliography}
+
+\end{document}

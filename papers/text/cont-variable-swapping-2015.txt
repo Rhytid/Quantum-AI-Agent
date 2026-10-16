@@ -1,0 +1,358 @@
+=== page 1 ===
+Entropy 2015, 17, 3152-3159; doi:10.3390/e17053152
+OPEN ACCESS
+entropy
+ISSN 1099-4300
+www.mdpi.com/journal/entropy
+Review
+Continuous-Variable Entanglement Swapping
+Kevin Marshall 1,* and Christian Weedbrook 2
+1 Department of Physics, University of Toronto, Toronto, M5S 1A7, Canada
+2 QKD Corp., 60 St. George St., Toronto, M5S 1A7, Canada; E-Mail: christian.weedbrook@gmail.com
+* Author to whom correspondence should be addressed; E-Mail: marshall@physics.utoronto.ca.
+Received: 26 March 2015 / Accepted: 4 May 2015 / Published: 13 May 2015
+Abstract: We present a very brief overview of entanglement swapping as it relates to
+continuous-variable quantum information. The technical background required is discussed
+and the natural link to quantum teleportation is established before discussing the nature of
+Gaussian entanglement swapping. The limitations of Gaussian swapping are introduced,
+along with the general applications of swapping in the context of to quantum communication
+and entanglement distribution. In light of this, we brieﬂy summarize a collection of
+entanglement swapping schemes which incorporate a non-Gaussian ingredient and the
+beneﬁts of such schemes are noted. Finally, we motivate the need to further study and
+develop such schemes by highlighting requirements of a continuous-variable repeater.
+Keywords: continuous variables; entanglement swapping; quantum teleportation
+1. Introduction
+Information permeates through most, if not all, aspects of our everyday life. Sometimes it’s easy to
+forget the value our culture places on information; for example, a fraction of a second can make the
+difference between a proﬁt or a loss as it does in high-frequency trading [1]. Communicating privately
+in the presence of an adversary makes possible the on-line transactions we take for granted; however,
+the methods we currently use to accomplish this rely on an assumption of the computational difﬁculty of
+some problem. Quantum key distribution (QKD) harnesses the inherently “weird” properties of quantum
+theory to provide a method of privately communicating which is based not on some assumption, but
+instead on the laws of physics as we understand them [2,3].
+
+=== page 2 ===
+Entropy 2015, 17 3153
+An important primitive in quantum communication is that of quantum teleportation [4,5]; this
+provides a method of transferring an unknown quantum state from one party, Alice, to another, Bob,
+given that they already share an entangled state. A closely related primitive is that of entanglement
+swapping [6–8]. Suppose Alice and Bob share an entangled pair and Bob uses quantum teleportation
+to teleport his half to a third party, Charlie. It can be shown that the resulting state between Alice and
+Charlie is entangled. The ability to transfer the non-local correlations characterized by entanglement in
+such a fashion has applications in quantum communication [9–11], where one cannot simply amplify a
+quantum signal as one would do with a classical one.
+In this paper we review entanglement swapping in the framework of continuous-variable (CV)
+quantum information and how it relates to recent advances in the ﬁeld. The paper is structured as follows:
+In Section 2 we review the necessary formalism to discuss entanglement swapping. Next, we present
+the general CV swapping protocol in Section 3. We discuss the special case of Gaussian entanglement
+swapping in Section 3.1 in the covariance matrix framework. In Section 3.2 we discuss both hybrid
+and non-Gaussian protocols and summarize their differences from the Gaussian protocol. Finally, in
+Section 4, we summarize the various approaches and how such protocols are related to applications in
+the ﬁeld.
+2. Formalism Review
+In this section, we develop the necessary formalism to discuss CV entanglement swapping. A CV
+system is a canonical inﬁnite dimensional quantum system comprised of N bosonic modes with an
+associated Hilbert space H =⊗N
+k=1Hk. Each of these modes Hk has an associated annihilation and
+creation operator ˆa, ˆa† respectively. These operators obey the commutation relations [ˆai, ˆa†
+j] = δij and
+[ˆai, ˆaj] = [ˆa†
+i, ˆa†
+j] = 0 . The space Hk is spanned by the Fock basis {|nk⟩}∞
+n=0 of eigenstates of the
+number operator ˆnk = ˆa†
+kˆak. These eigenstates have the property that ˆn|n⟩ =n|n⟩, ˆa|n⟩ =√n|n− 1⟩,
+ˆa†|n⟩ =√n + 1|n + 1⟩, as well as the fact that the vacuum state |0⟩ is annihilated by ˆa|0⟩ = 0. In the
+absence of any interactions, these modes evolve according to the HamiltonianH =∑N
+k=1(ˆa†
+kˆak + 1/2).
+We can deﬁne two quadrature operatorsˆqk = ˆak+ˆa†
+k and ˆpk =i(ˆa†
+k−ˆak) which act in a similar fashion to
+the position and momentum operators in the quantum harmonic oscillator. These commutation relations
+can be compactly written by deﬁning
+ˆ x= (ˆq1, ˆp1,..., ˆqN, ˆpN), (1)
+so that we have [ˆxi, ˆxj] = 2iΩij where
+Ω =
+N⨁
+k=1
+(
+0 1
+−1 0
+)
+(2)
+is the symplectic form.
+Of particular interest in CV systems are Gaussian states and operations [12]. A Gaussian state, with
+density matrix ˆρ, is completely characterized by its ﬁrst two moments; the displacement vector
+¯ x=⟨ˆ x⟩ = Tr(ˆ xˆρ), (3)
+
+=== page 3 ===
+Entropy 2015, 17 3154
+and the covariance matrix
+Vij = 1
+2⟨∆ˆxi, ∆ˆxj⟩, (4)
+where ∆ˆxi = ˆxi−⟨ ˆxi⟩ and{.,.} is the anticommutator. In this form, the uncertainty relation can be
+expressed asV +iΩ≥ 0. We can fully represent an arbitrary quantum state ˆρ by its Wigner function,
+deﬁned as
+W (x) =
+∫
+R2N
+d2N ξ
+(2π)2N exp(−ixT Ωξ)χ(ξ), (5)
+whereχ(ξ) = Tr[ˆρD(ξ)] is the characteristic function and D(ξ) = exp(iˆ xTΩξ) is the Weyl operator.
+For Gaussian states the Wigner function can be written as
+W (x) = 1
+(2π)N
+√
+detV
+e−(x−¯ x)V −1(x−¯ x)/2, (6)
+and thus we have complete knowledge of the state from only the ﬁrst two moments. It is convenient
+for many purposes to deal only with the displacement vector and covariance matrix directly with the
+knowledge that we can always express the state in another form if we so choose.
+Gaussian operations are those that take Gaussian states to other Gaussian states. They correspond to
+Hamiltonians which are linear or quadratic in the quadrature operators. To every unitary transformation
+US,d generated from a quadratic Hamiltonian there exists a symplectic operator S and vector d which
+generate the mapping ˆ x→ Sˆ x+ d. This transforms the moments of a Gaussian state as ¯ x→ S¯ x+ d
+andV→SVS T .
+The Einstein-Podolsky-Rosen (EPR) state
+|λ⟩ =
+√
+1−λ2
+∞∑
+n=0
+(−λ)n|n⟩a|n⟩b, (7)
+withλ = tanhr∈ [0, 1], where r is the squeezing parameter, is one important example of a Gaussian
+state. This two-mode state is entangled, and often used as a resource state in CV protocols. The EPR
+state has zero mean and covariance matrix given by
+VEP R =
+(
+νI
+√
+ν2− 1Z√
+ν2− 1Z ν I
+)
+, (8)
+whereν = cosh 2r, I is the 2×2 identity matrix andZ is the Pauli matrixZ = diag(1,−1).
+Quantum teleportation can be conveniently described in the Wigner function formalism, where one
+makes a Bell measurement between the input state and half of the entangled pair [5]. Suppose we have an
+input state described by a Wigner functionWin(ˆx, ˆp) and an EPR pair described byWEP R(ˆx1, ˆp1, ˆx2, ˆp2).
+To teleport the state Alice mixes the input state and the ﬁrst mode of the EPR pair on a 50:50 beam
+splitter which performs the transformations: ˆx→ ˆX = (ˆx− ˆx1)/
+√
+2, ˆp→ ˆk = (ˆp− ˆp1)/
+√
+2, ˆx1→q =
+(ˆx + ˆx1)/
+√
+2, and ˆp1→ ˆP = (ˆp + ˆp1)/
+√
+2. Alice then measures the pair ( ˆX, ˆP ) and sends the result
+( ¯X, ¯P ) to Bob who displace his mode as ˆx2→ ˆxout = ˆx2 +
+√
+2g ¯X, for some possible gain g >0, and
+similarly for ˆpout. The ﬁnal state is obtained by integrating over all measurement outcomes as
+Wout(x,p ) =
+∫
+d ¯X dkdqd ¯P Wt( ¯X,k,q, ¯P,x −
+√
+2g ¯X,p−
+√
+2g ¯P ), (9)
+
+=== page 4 ===
+Entropy 2015, 17 3155
+whereWt(ζ,ζ A,ζ B) = Win[(ζ +ζA)/
+√
+2]WEP R[(ζA−ζ)/
+√
+2,ζ B] is the Wigner function for the total
+state withζi = (ˆxi, ˆpi).
+3. Entanglement Swapping
+The entanglement swapping procedure follows the spirit of teleportation as presented in the previous
+section, where one simply uses another entangled state as the input state; such schemes have been
+experimentally demonstrated [13,14]. One can allow for a more general protocol by including
+displacements on both remaining modes with different gains. Gain-tuning the displacements to improve
+the ﬁdelity of teleportation has been previously studied in the literature [7,15]. Furthermore, one need
+not use an EPR state as the source of entanglement; one can consider protocols which use non-Gaussian
+entanglement or hybrid approaches which make use of both discrete and continuous elements [16].
+3.1. Gaussian
+In the case of Gaussian quantum information it is convenient to discuss entanglement swapping in
+the covariance matrix framework [8,17]. Supposed we have an entangled state with covariance matrix
+described by
+σ =
+
+
+a 0 c+ 0
+0 a 0 c−
+c+ 0 b 0
+0 c− 0 b
+
+, (10)
+this is a suitable form to study as all two-mode Gaussian states can be brought into this form, with
+zero displacement vector, by local Gaussian operations [18]. If we consider swapping modes 2,3 for
+entangled pairs characterized by covariance matrices σ12 andσ34 we ﬁnd that by choosing the gains on
+both remaining modes in an optimal fashion we obtain the new covariance matrix [19]
+σopt =
+
+
+a−ξ 0 ξ 0
+0 a−ξ 0 −ξ
+ξ 0 b−ξ 0
+0 −ξ 0 b−ξ
+
+, (11)
+whereξ =c2/(a +b) and where we have chosenc+ =−c− =c for simplicity.
+Interestingly, it can be shown that the purity of the resulting state is equal to the purity of the initial
+state. This could be used, for example to obtain a state of higher purity over a lossy channel by sending
+half of two EPR pairs to the middle and swapping as opposed to directly sending half of an EPR pair
+over the full length of the channel. One would hope that this would be useful for building a CV repeater,
+however it has been shown that such direct transmission is always preferable for Gaussian entanglement
+distribution when compared to the swapping scheme considered above [19]. This is different from the
+case of discrete variable (DV) repeaters where swapping can actually be beneﬁcial [20], therefore the
+ﬁrst building block of a CV repeater must be a distillation step.
+
+=== page 5 ===
+Entropy 2015, 17 3156
+3.2. Non-Gaussian
+We present here a brief summary of some alternative entanglement swapping protocols which make
+use of non-Gaussian elements. Entanglement swapping is primarily useful as a primitive in quantum
+communication, however, as seen in the previous section, it is necessary for many protocols of interest
+to have a distillation process. An important result is that one cannot distill entanglement from Gaussian
+states with only Gaussian operations and measurements [21,22]. It is fruitful to then consider schemes
+which add a non-Gaussian element at some stage.
+One such hybrid scheme was proposed by Loock et al. in 2006 [23]. In this scheme one mediates
+entanglement between atomic qubits with a dispersive light-matter interaction and by sending the
+resulting bright coherent states between stations. One advantage of this scheme is that the measured
+light observable is a continuous phase, as opposed to a discrete occupation, which places less
+stringent interferometric requirements on the experiment. Instead of performing the usual homodyne
+detections in the swapping protocol, it can be advantageous to consider performing an unambiguous
+state discrimination measurement. This measurement can allow one to eliminate bit-ﬂip errors,
+however it requires photon detectors [24]. Ideally, such a method could allow for long-distance qubit
+communication with high ﬁdelity.
+Another scheme which uses CV states to mediate DV entanglement was considered by
+Takeda et al. [25]; this method has also been investigated experimentally [26]. This scheme is all optical
+and mediates photonic qubit entanglement, either single or dual-rail, through the use of CV entanglement
+in the form of EPR pairs. By judiciously choosing the gain, one is able to teleport DV entanglement for
+any non-zero amount of squeezing provided the loss on the initial states satisﬁes a constraint.
+The reverse of this protocol has been studied by Andersen et al. where an all optical proposal for
+teleporting CV entanglement with DV resources is discussed [27]. To approach unit ﬁdelity with
+Gaussian entanglement swapping one must continue to increase the squeezing of the EPR pairs, this
+limit is unphysical in the sense that perfect entanglement requires inﬁnite energy. This scheme attempts
+to circumvent this issue by using a ﬁnite number of DV entangled pairs to faithfully teleport CV states.
+A proposal by Brask et al. [28] investigates the nature of a CV repeater which uses non-Gaussian
+states but only Gaussian measurements. In this approach, one uses entangled coherent states
+superpositions, known as “Schrödinger cat states” to distribute entanglement. These states are useful
+for a variety of quantum information protocols including fault-tolerant quantum computation [29] and
+teleportation [30–32]. This scheme takes advantage of the deterministic nature of CVs and readily
+available detectors to attempt to provide an experimentally feasible approach which is capable of
+achieving similar rates to atomic-ensemble repeaters at long distances. The entanglement swapping relies
+on the familiar Bell state measurement with homodyne detectors, and can be made near deterministic
+with additional single-mode resource cat states.
+It is also possible to simply take the Gaussian entanglement swapping protocol and add a
+non-Gaussian element, such as photon subtraction or replacement as a distillation step. Such a notion
+has been considered in detail as it relates to the notion of a CV repeater [33]. It is shown that one can
+extend the maximum distance over which one can extract a secret-key from a noisy channel by using
+such a repeater architecture.
+
+=== page 6 ===
+Entropy 2015, 17 3157
+4. Summary
+We have presented a collection, but by no means all, of CV entanglement swapping protocols
+and brieﬂy discussed their application to quantum key distribution and the notion of distillation and
+quantum repeaters. While Gaussian entanglement swapping is desirable for its simplicity, one requires
+non-Gaussian elements if one hopes to distill entanglement. Thus we presented a host of protocols
+which make use of non-Gaussian states, either discrete or continuous variables, and which offer a
+range of beneﬁts. Such protocols are important in the advancement of continuous-variable quantum
+communication, where there has been limited work on continuous-variable repeaters such as a full rate
+analysis. We know that in order to achieve high key-rates over long distances we need repeaters; there
+is a fundamental limit to the achievable rate over a lossy channel, i.e., its private capacity, which lies
+between the lower bound of Ref. [34] and the upper bound of Ref. [35]. Furthermore, we know such
+repeater stations must include a non-Gaussian element [36]. It will therefore be potentially fruitful going
+forward to build off of the host of entanglement swapping protocols that exist in the literature today.
+Conﬂicts of Interest
+The authors declare no conﬂict of interest.
+References
+1. Lewis, M. Flash Boys: A Wall Street Revolt; WW Norton & Company: New York, NY , USA, 2014.
+2. Bennett, C.H.; Brassard, G. Quantum cryptography: Public key distribution and coin tossing.
+In Proceedings of IEEE International Conference on Computers, Systems, and Signal Processing,
+Bangalore, India, 10–19 December 1984; p. 175.
+3. Grosshans, F.; Grangier, P. Continuous Variable Quantum Cryptography Using Coherent States.
+Phys. Rev. Lett. 2002, 88, 057902.
+4. Bennett, C.H.; Brassard, G.; Crépeau, C.; Jozsa, R.; Peres, A.; Wootters, W.K. Teleporting an
+unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels. Phys. Rev. Lett.
+1993, 70, 1895–1899.
+5. Braunstein, S.L.; Kimble, H.J. Teleportation of Continuous Quantum Variables. Phys. Rev. Lett.
+1998, 80, 869–872.
+6. ˙Zukowski, M.; Zeilinger, A.; Horne, M.A.; Ekert, A.K. “Event-ready-detectors” Bell experiment
+via entanglement swapping. Phys. Rev. Lett. 1993, 71, 4287–4290.
+7. Polkinghorne, R.E.S.; Ralph, T.C. Continuous Variable Entanglement Swapping. Phys. Rev. Lett.
+1999, 83, 2095–2099.
+8. Pirandola, S.; Vitali, D.; Tombesi, P.; Lloyd, S. Macroscopic Entanglement by Entanglement
+Swapping. Phys. Rev. Lett. 2006, 97, 150403.
+9. Briegel, H.J.; Dür, W.; Cirac, J.I.; Zoller, P. Quantum Repeaters: The Role of Imperfect Local
+Operations in Quantum Communication. Phys. Rev. Lett. 1998, 81, 5932–5935.
+10. Braunstein, S.L.; Pirandola, S. Side-Channel-Free Quantum Key Distribution. Phys. Rev. Lett.
+2012, 108, 130502.
+
+=== page 7 ===
+Entropy 2015, 17 3158
+11. Lo, H.K.; Curty, M.; Qi, B. Measurement-Device-Independent Quantum Key Distribution. Phys.
+Rev. Lett. 2012, 108, 130503.
+12. Weedbrook, C.; Pirandola, S.; García-Patrón, R.; Cerf, N.J.; Ralph, T.C.; Shapiro, J.H.; Lloyd, S.
+Gaussian quantum information. Rev. Mod. Phys. 2012, 84, 621–669.
+13. Jia, X.; Su, X.; Pan, Q.; Gao, J.; Xie, C.; Peng, K. Experimental Demonstration of Unconditional
+Entanglement Swapping for Continuous Variables. Phys. Rev. Lett. 2004, 93, 250503.
+14. Takei, N.; Yonezawa, H.; Aoki, T.; Furusawa, A. High-Fidelity Teleportation beyond the
+No-Cloning Limit and Entanglement Swapping for Continuous Variables. Phys. Rev. Lett. 2005,
+94, 220502.
+15. Ide, T.; Hofmann, H.F.; Furusawa, A.; Kobayashi, T. Gain tuning and ﬁdelity in continuous-variable
+quantum teleportation. Phys. Rev. A 2002, 65, 062303.
+16. Furusawa, A.; van Loock, P. Quantum Teleportation and Entanglement: A hybrid Approach to
+Optical Quantum Information Processing; Wiley: Weinheim, Germany, 2011.
+17. Abdi, M.; Pirandola, S.; Tombesi, P.; Vitali, D. Continuous-variable-entanglement swapping and
+its local certiﬁcation: Entangling distant mechanical modes. Phys. Rev. A 2014, 89, 022331.
+18. Duan, L.M.; Giedke, G.; Cirac, J.I.; Zoller, P. Inseparability Criterion for Continuous Variable
+Systems. Phys. Rev. Lett. 2000, 84, 2722–2725.
+19. Hoelscher-Obermaier, J.; van Loock, P. Optimal Gaussian entanglement swapping. Phys. Rev. A
+2011, 83, 012319.
+20. Collins, D.; Gisin, N.; De Riedmatten, H. Quantum relays for long distance quantum cryptography.
+J Mod. Opt. 2005, 52, 735–753.
+21. Eisert, J.; Scheel, S.; Plenio, M.B. Distilling Gaussian States with Gaussian Operations is
+Impossible. Phys. Rev. Lett. 2002, 89, 137903.
+22. Fiurášek, J. Gaussian Transformations and Distillation of Entangled Gaussian States. Phys. Rev.
+Lett. 2002, 89, 137904.
+23. Van Loock, P.; Ladd, T.D.; Sanaka, K.; Yamaguchi, F.; Nemoto, K.; Munro, W.J.; Yamamoto, Y .
+Hybrid Quantum Repeater Using Bright Coherent Light. Phys. Rev. Lett. 2006, 96, 240501.
+24. Van Loock, P.; Lütkenhaus, N.; Munro, W.J.; Nemoto, K. Quantum repeaters using coherent-state
+communication. Phys. Rev. A 2008, 78, 062319.
+25. Takeda, S.; Mizuta, T.; Fuwa, M.; Yonezawa, H.; van Loock, P.; Furusawa, A. Gain tuning
+for continuous-variable quantum teleportation of discrete-variable states. Phys. Rev. A 2013,
+88, 042327.
+26. Takeda, S.; Mizuta, T.; Fuwa, M.; van Loock, P.; Furusawa, A. Deterministic quantum teleportation
+of photonic quantum bits by a hybrid technique. Nature 2013, 500, 315–318.
+27. Andersen, U.L.; Ralph, T.C. High-Fidelity Teleportation of Continuous-Variable Quantum States
+Using Delocalized Single Photons. Phys. Rev. Lett. 2013, 111, 050504.
+28. Brask, J.B.; Rigas, I.; Polzik, E.S.; Andersen, U.L.; Sørensen, A.S. Hybrid Long-Distance
+Entanglement Distribution Protocol. Phys. Rev. Lett. 2010, 105, 160501.
+29. Lund, A.P.; Ralph, T.C.; Haselgrove, H.L. Fault-Tolerant Linear Optical Quantum Computing with
+Small-Amplitude Coherent States. Phys. Rev. Lett. 2008, 100, 030503.
+
+=== page 8 ===
+Entropy 2015, 17 3159
+30. Van Enk, S.J.; Hirota, O. Entangled coherent states: Teleportation and decoherence. Phys. Rev. A
+2001, 64, 022313.
+31. Jeong, H.; Kim, M.S.; Lee, J. Quantum-information processing for a coherent superposition state
+via a mixedentangled coherent channel. Phys. Rev. A 2001, 64, 052308.
+32. An, N.B.; Phien, H.N. Teleportation of a cat-state via attenuated quantum channel using only
+threshold detectors. Physics Letters A 2008, 372, 5666–5670.
+33. Campbell, E.T.; Genoni, M.G.; Eisert, J. Continuous-variable entanglement distillation and
+noncommutative central limit theorems. Phys. Rev. A 2013, 87, 042330.
+34. Pirandola, S.; García-Patrón, R.; Braunstein, S.L.; Lloyd, S. Direct and Reverse Secret-Key
+Capacities of a Quantum Channel. Phys. Rev. Lett. 2009, 102, 050503.
+35. Takeoka, M.; Guha, S.; Wilde, M.M. Fundamental rate-loss tradeoff for optical quantum key
+distribution. Nat. Commun. 2014, 5, doi:10.1038/ncomms6235.
+36. Namiki, R.; Gittsovich, O.; Guha, S.; Lütkenhaus, N. Gaussian-only regenerative stations cannot
+act as quantum repeaters. Phys. Rev. A 2014, 90, 062316.
+c© 2015 by the authors; licensee MDPI, Basel, Switzerland. This article is an open access article
+distributed under the terms and conditions of the Creative Commons Attribution license
+(http://creativecommons.org/licenses/by/4.0/).

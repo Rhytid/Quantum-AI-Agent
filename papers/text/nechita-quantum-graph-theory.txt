@@ -1,0 +1,3028 @@
+=== page 1 ===
+Quantum Graph Theory by Example
+Gian Luca Spitzer ∗1,2 and Ion Nechita †2
+1LaBRI, Université de Bordeaux, CNRS, Bordeaux INP, UMR-5800, France
+2Laboratoire de Physique Théorique, Université de Toulouse, CNRS, UPS, France
+Abstract
+Quantum graphs have been introduced by Duan, Severini, and Winter to describe the zero-error
+behaviour of quantum channels. Since then, quantum graph theory has become a field of study in its own
+right. A substantial source of difficulty in working with quantum graphs compared to classical graphs
+stems from the fact that they are no longer discrete objects. This makes it generally difficult to construct
+insightful, non-trivial examples. We present a collection of non-trivial quantum graphs that can be thought
+of in discrete terms, and that can be expressed in the diagrammatic formalism introduced by Musto,
+Reutter, and Verdon. The examples arise as the quantum graphs acted on by increasingly smaller classical
+matrix groups, and are parametrised by triples of matrices(A, B, C). The parametrisation reveals a clean
+decomposition of quantum graph structure into classical and genuinely quantum components:A and C
+are described by a classical weighted graph called the strange graph, whileB provides a purely quantum
+contribution with no classical analogue. Based on this model, we give exact formulas or establish bounds
+for quantum graph parameters, such as the number of connected components, the chromatic number, the
+independence number, and the clique number. Our results provide the first large, parametric families of
+quantum graphs for which standard graph parameters can be computed analytically.
+Contents
+1 Introduction 2
+2 Preliminaries 4
+2.1 Quantum Sets and String Diagrams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2 Quantum Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.3 Properties of Quantum Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3 Classical Matrix Groups Acting on Quantum Graphs 13
+3.1 The Unitary and the Orthogonal Group . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.2 The Diagonal Unitary and the Diagonal Orthogonal Group . . . . . . . . . . . . . . . . . . . 16
+3.3 The Hyperoctahedral Group . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+3.4 Classical Models of Quantum Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4 Graph Theoretic Properties 24
+4.1 Connected Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.2 Colouring . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+4.3 Independent Sets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.4 Cliques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+5 Conclusion 56
+∗gian-luca.spitzer@u-bordeaux.fr
+†nechita@irsamc.ups-tlse.fr
+1
+arXiv:2603.23651v1  [math.OA]  24 Mar 2026
+
+=== page 2 ===
+1 Introduction
+Graph theory is one of the most versatile branches of discrete mathematics, with applications ranging from
+computer science and combinatorial optimisation to statistical physics and network science. Many of its
+central notions such as colouring, connectivity, independence, cliques, etc. have been studied for over two
+centuries [Die25]. A natural question, motivated by the advent of quantum information theory, is whether
+these notions admit meaningful generalisations to a non-commutative setting, where the vertex set of a graph
+is replaced by a quantum set and the adjacency relation by a suitable operator-algebraic structure.
+The origins ofquantum graph theorycan be traced to the work of Weaver [Wea10] who introduced quantum
+graphs as special cases ofquantum relations, and the work of Duan, Severini, and Winter [DSW13], who
+introduced theconfusability graphof a quantum channel as a non-commutative generalisation of Shannon’s
+classical confusability graph [Sha56]. The former approach introduces a notion of relations on von Neumann
+algebras, defining a quantum graph as a reflexive, symmetric quantum relation. The latter approach considers
+operator spaces of the formspan{K∗
+iKj|i,j∈ [m]}, whereK1,...,K m are the Kraus operators of a quantum
+channel. Such an operator space encodes the channel’s confusability structure and plays the role of the edge
+set of a graph. This perspective opened the door to extending classical zero-error information theory to the
+quantum setting [Sta15], and led to the discovery of striking phenomena such as superactivation of zero-error
+capacity [Dua09, CCH11].
+A systematic mathematical framework for quantum graphs was subsequently developed from two comple-
+mentary perspectives. On the operator-algebraic side, Weaver [Wea21] expanded on the theory of quantum
+relations on von Neumann algebras. This approach, rooted in operator space theory, naturally extends classical
+notions of independent sets and cliques [Wea17] and has led to quantum analogues of Ramsey’s theorem. On
+the categorical side, Musto, Reutter, and Verdon [MRV18] proposed a compositional approach in which a
+quantum graph is defined as anadjacency operatoron a quantum set, the latter being formalised as a special
+symmetric†-Frobenius monoid in the category of finite-dimensional Hilbert spaces. This formulation comes
+equipped with a powerfulstring diagrammatic calculus[HV19, Vic11] that makes many proofs visual and
+intuitive. In the finite-dimensional case, which is the setting of this paper, both approaches are equivalent.
+These foundational works have initiated a rapidly growing body of research; we refer the reader to the
+survey by Daws [Daw24] for a comprehensive account of the different perspectives on quantum graphs and
+their interrelations. Graph-theoretic properties have been generalised to the quantum setting: colouring and
+chromatic numbers via non-local games [BGH22, Gan23], capacity bounds and Lovász-type parameters via
+sandwich theorems [BTW21], connectedness and algebraic connectivity via spectral and operator-algebraic
+methods [CGW25, Mat24], and graph homomorphisms and isomorphisms via categorical and game-theoretic
+frameworks [Ats+19, Bra+20, Gol26]. Classical graph constructions have also been ported to the quantum
+setting, including the Mycielski transformation [BK25]. At the same time, the question of classifying quantum
+graphs and constructing explicit examples has received increasing attention. Gromada [Gro22] classified all
+quantum graphs onM2, finding exactly four non-isomorphic simple quantum graphs, and further constructed
+examples from Hadamard matrices [Gro24]; see also the related work of Matsuda [Mat22].
+Despite this progress, the theory has until now lacked a supply of concrete, parametric families of quantum
+graphs for which graph-theoretic parameters can be computed analytically. Classical graph theory benefits
+enormously from explicit families (circulant graphs, Kneser graphs, Paley graphs, etc.) that serve as examples,
+counterexamples, and testing grounds for conjectures. Recent work of Wasilewski [Was24] on quantum Cayley
+graphs is a step in this direction. The present paper aims to fill this gap more broadly for quantum graphs.
+The contributions of this work are twofold: We introduce and then thoroughly study new families of
+quantum graphs onMn that are invariant under the action of some classical matrix groups.
+On the conceptual side, we introduce and study families of quantum graphs onMn that are invariant
+under the action of classical matrix groups, such as the unitary group, the orthogonal group, and
+their respective diagonal subgroups.
+The guiding principle is the same as in classical graph theory: Just as considering smaller subgroups of
+the symmetric groupSn yields larger and richer families of classical graphs, considering smaller subgroups of
+the unitary groupU(n)yields larger families of quantum graphs. Apart from the unitary group itself, we look
+2
+
+=== page 3 ===
+at the orthogonal groupO(n)and the hyperoctahedral group Hyp(n), as well as the diagonal fragments of
+U(n)and O(n): thediagonal unitary groupDU(n)and thediagonal orthogonal group DO(n). These satisfy
+the following inclusions.
+U(n)⊇O(n)⊇Hyp(n)⊇DO(n)⊆DU(n).
+Requiring invariance under the full unitary groupU(n)yields only the complete quantum graphKn and
+the edgeless quantum graphKc
+n, while the orthogonal groupO(n)additionally permits thesymmetricand
+antisymmetric quantum graphsGsym and Gasym (Proposition 3.13). These are already genuinely quantum
+objects with no classical counterpart.
+The diagonal unitary groupDU (n)and the diagonal orthogonal groupDO(n)are considerably smaller, and
+their invariant quantum graphs form the main object of study of this paper. Building on the characterisation of
+DU (n)- andDO(n)-invariant linear maps [SN21, NS21], we show that these quantum graphs are parametrised
+by threen×n matrices A, B, C with matching diagonals, giving rise to quantum graphs denotedXA,B,C
+(Proposition 3.10). The conditions forXA,B,C to be a quantum graph decompose cleanly:B must be a
+projector, and for alli̸=jthe2×2blocks (
+Aij Cij
+Cji Aji
+)
+must be projectors. Each of the three matrices plays a very distinct role:
+• The matrixA encodes aclassical graphon n vertices. WhenB and C are trivial, the quantum graph
+XA,diagA is precisely the embedding of a classical graph intoMn (Corollary 3.12).
+• The matrixC introduces a new type of edges, which we callstrange edges, annotated with a phase
+θ∈ [0, 2π). Together,A and C determine a classical model called thestrange graphG(A,C ), which can
+be thought of as a classical graph whose edges are either classical or strange (see Section 3.4).
+• The matrixB is apurely quantum contribution: a projector onCn with no classical analogue, which
+can be thought of as attaching a subspace to the quantum graph.
+This decomposition captures an increasing level of “quantumness” as one moves from purely classical graphs
+XA,diagA through AB graphsXA,B (which areDU (n)-invariant) to full ABC graphsXA,B,C havingDO(n)
+symmetry.
+Our second main contribution is the computation of graph-theoretic parameters for these newly introduced
+quantum graphs.
+On the concrete side, we compute graph-theoretic parameters for the newly introduced families of
+quantum graphs, such as connectedness, colouring, independent sets, and cliques.
+A key structural observation underlying our results is a recurringsplitting principle: For each of the graph
+parameters we consider, the defining conditions decompose into independent conditions on the(A,C )part
+and theB part (Proposition 4.5 and analogues for colouring, independent sets, and cliques). This effectively
+reduces problems about quantum graphs to a combination of a classical graph problem determined by the
+strange graph G(A,C ), and a linear-algebraic problem involving the projectorB. We highlight five of our
+most important results:
+1. Connectedness.For n≥ 3, a quantum graphXA,B,C is connected if and only if its strange graph
+G(A,C )is connected (Proposition 4.15). This equivalence can fail forn = 2: Isolated strange edges
+with phaseπ give rise to quantum graphs with strictly more connected components than their strange
+graph (Proposition 4.13).
+2. Independence number.The independence number of quantum graphs of the formXA,diagA,C is
+completely determined by the strange graph:α(XA,diagA,C ) =α(G(A,C ))(Proposition 4.27). For the
+purely quantum part, the independence number ofXdiagB,B can be bounded in both directions in terms
+of the rank ofB. It is also lower bounded byEqRows(B), the maximum number of equal rows ofB in
+the standard basis.
+3
+
+=== page 4 ===
+3. Non-colourability.There exist quantum graphs that are not classically colourable at all (Proposi-
+tion 4.18); this includes the complete quantum graphKn and the symmetric quantum graphGsym for
+n≥ 3. In contrast, quantum graphs of the formXdiagB,B are alwaysn-colourable (Proposition 4.19),
+showing that the obstruction to colourability arises from the interaction betweenA,C, andB.
+4. Clique number.The quantum clique number of the quantum graph induced by a classical graph
+ω(XA,diagA )can differ dramatically from the classical clique numberω(A), in both directions. While
+ω(XA,diagA )≥ω (A)− 1always holds, the classical complete bipartite graph onn vertices satisfies
+ω(A) = 2but ω(XA,diagA )≥n/ 2(Proposition 4.43). On the other hand, the classical complete graph
+satisfies ω(XA,diagA ) = n− 1 < n = ω(A)(Proposition 4.44). The symmetric and antisymmetric
+quantum graphs both have clique number⌈n/2⌉.
+5. The role ofB.The matrix B contributes a form of quantum density that interacts non-trivially with
+the classical structure encoded byA and C. For example,ω(XdiagB,B )≤
+√
+rkB+ 1 (Proposition 4.39),
+whileX diagB,B always hasnconnected components and isn-colourable.
+Most of the results presented in this paper are summarized in Table 1, which classifies quantum graphs
+according to their underlying classical symmetry and gathers all the exact formulas and bounds for their
+graph properties.
+The paper is organized as follows. Section 2 introduces the necessary background on quantum sets,
+quantum graphs, and their diagrammatic calculus, as well as the classical matrix groups and graph-theoretic
+properties studied throughout the paper. Section 3 develops the theory of quantum graphs invariant under
+classical matrix groups, culminating in the parametrisation ofDU (n)- andDO(n)-invariant quantum graphs
+by triples of matrices(A,B,C ). Section 4 computes graph-theoretic parameters for the families of quantum
+graphs introduced in the previous section: connected components, chromatic number, independence number,
+and clique number. Finally, Section 5 summarises our findings and discusses open problems.
+2 Preliminaries
+First, let us fix some general conventions. We assume all projectors to be orthogonal projectors: A linear map
+P on a Hilbert space is a projector ifP 2 =P† =P. We useI to denote different identities. It may refer to
+the identity linear map on some arbitrary vector space, or explicitly to the identity matrix inMn. It will
+always be clear from the context which is meant. When talking about classical graphs, we assume the vertex
+set to be[n] :={1,...,n}. We writei∼jif the verticesiandjare adjacent.
+2.1 Quantum Sets and String Diagrams
+We will view quantum graphs as adjacency operators on a quantum set of vertices. As can be motivated
+through Gelfand duality of sets (viewed as finite spaces with the discrete topology), aquantum setis a
+finite-dimensional C∗-algebra. It is known [Vic11, Theorem 4.7] that the category of C∗-algebras is equal to
+the category ofspecial symmetric†-Frobenius monoidsinfdHilb.
+Definition 2.1.Amonoid X in fdHilb is a finite-dimensional Hilbert space equipped with a linear map
+m:X⊗X→X, calledmultiplication, and a linear mapu:C→X, calledunit, satisfying
+1.m◦(id⊗m) =m◦(m⊗id)(associativity),
+2.m◦(id⊗u) =m◦(u⊗id) = id(unitality).
+Now the categoryfdHilb is canonically equipped with a contravariant endofunctor† that is the identity
+on objects, and maps a linear mapf:X→Y between Hilbert spacesX,Y to its adjointf† :Y→X . In
+particular, a monoid infdHilb is automatically equipped with acomultiplicationm† :X→X⊗X and a
+counit u† :X→C . They satisfy the adjoints of conditions (1) and (2), called coassociativity and counitality.
+Definition 2.2.A†-Frobenius monoidXis a monoid satisfying theFrobenius property,
+4
+
+=== page 5 ===
+1.(id⊗m)◦(m †⊗id) =m †◦m= (m⊗id)◦(id⊗m †).
+It is called
+2.specialifm◦m † = id,
+3.symmetricifσ◦m †◦u=m †◦u,
+whereσis the swap map.
+The advantage of working in a monoidal category likefdHilb is that we get access to a powerful graphical
+calculus that allows us to reason formally by manipulatingstring diagrams. This approach of working with
+quantum sets and quantum graph was first introduced by Musto, Reutter, and Verdon in [MRV18], where we
+also refer the reader for a more detailed introduction. Further exposition of the theory of string diagrams and
+their applications can be found in [HV19, Vic11]. The primitives of the calculus arestrings(orwires) and
+boxes.
+f
+Strings represent objects, while boxes represent morphisms. In our case the strings represent (elements of)
+Hilbert spaces, while boxes are linear maps. Compositiong◦f of functions is represented by serial composition
+of diagrams, while tensor productsf⊗h are represented by parallel composition. Diagrams are read from
+bottom to top.
+f
+g
+f h
+The monoidal unit,C in the case offdHilb, is represented by the empty diagram. Linear mapsC→X are
+thus represented by a box that only has an outgoing wire. For reasons that will become apparent later, we
+generally represent such maps by a triangle with a corner cut off.
+x (1)
+The multiplication and unit maps of monoids are represented as fusion of wires and dots respectively.
+Taking adjoints in the diagrammatic calculus corresponds to mirroring the diagram across a horizontal axis.
+As such, the comultiplication and counit are represented as follows.
+The Frobenius property, for instance, can thus be expressed graphically as
+= = .
+A final important class of maps are the cups and caps.
+:= :=
+5
+
+=== page 6 ===
+These are the duality morphisms forX, and their definition in terms of (co)multiplication and (co)unit shows
+that†-Frobenius monoids are self-dual.1 For our purposes, it suffices to know that they allow us to define the
+transpose of a linear map.
+Definition 2.3.Let f:X→Y be a linear map between two†-Frobenius monoids. Itstransposeis the map
+f T :Y→Xdefined as
+f T = f .(2)
+The power of string diagrams is that they can be used in lieu of symbolic equations to prove equalities.
+Concretely, every equation that can be derived in the diagrammatic calculus by moving and bending strings,
+sliding boxes along wires, and rotating boxes also holds infdHilb. This can be stated formally.
+Theorem 2.4(Theorem 3.28 in [HV19]).In a pivotal category, a well-formed equation between morphisms
+follows from the axioms if and only if it holds in the graphical calculus up to planar oriented isotopy.
+A pivotal category is a category with duals in which every object is naturally isomorphic to its double dual.
+Clearly, fdHilb is a pivotal category, so the theorem applies. Theorems of this form are often calledcoherence
+theorems, and they also exist for other types of categories, cf. [Sel11]. One such planar oriented isotopy would
+be to consider the right-hand side of Equation (2) and pulling the bent wires taut. This will result in a 180
+degree rotation of thef box. We conclude that taking the transpose of a linear map corresponds to rotating
+the corresponding diagram by 180 degrees. By using non-symmetric boxes for maps, we may thus get rid of
+superscripts to represent transposes and adjoints. We let
+ff = , ff T = , ff† = , ff = .
+The last equation corresponds to the conjugate of a linear map, defined asf = (f†)T = (f T)†. The
+corresponding operation in the diagrammatic calculus must thus be mirroring across a horizontal axis, followed
+by a 180 degree rotation (or vice versa). This corresponds to mirroring across a vertical axis. Despite being
+useful, this asymmetric notation has the tendency to introduce visual clutter. Since we will rarely need adjoints
+or transposes of mapsX→X, we reserve this asymmetric notation for mapsC→X, see Equation (1).
+Example 2.5(Classical Sets).By Gelfand duality, the classical set with n elements corresponds to the
+quantum setCn. This becomes a special symmetric†-Frobenius monoid as follows. We choose an orthonormal
+basis|1⟩,...,|n⟩, thestandard basis, and definemas the linear extension of
+Cn⊗Cn→C n,|i⟩⊗|j⟩↦→δij|i⟩.
+In other words, the multiplication onCn is componentwise. The unit with respect to this multiplication must
+then be given by
+C→C n, c↦→c1,
+where
+1 :=
+n∑
+k=1
+|k⟩.
+From this, the comultiplication can be determined to be the linear extension of
+Cn→C n⊗Cn,|i⟩↦→|i⟩⊗|i⟩,
+while the counit is the sum-of-entries mapCn→C . Note that the comultiplication only copies elements of the
+standard basis; this is theno-cloning theorem. Equivalently, we could have started with the comultiplication
+1Otherwise, we would have to annotate our strings with arrows, as is done in [Vic11].
+6
+
+=== page 7 ===
+and defined the standard basis as precisely the elements that are copied by the comultiplication, cf. [CPV13,
+Theorem 5.1]. It is not hard to verify using the above definitions that standard basis elements must be
+self-conjugate,|i⟩ = (|i⟩†)T =|i⟩. Recalling that taking the conjugate of a linear map corresponds to mirroring
+the diagram across a vertical axis, we want the boxes representing self-conjugate maps to have this symmetry.
+We thus represent standard basis elements as full triangles, as opposed to the cut triangles of Equation (1).
+i
+Finally, given some linear mapf:C n→C n, one may verify that the transpose as defined in Definition 2.3
+is precisely given by the transpose of the matrix representation offin the standard basis.⌟
+In this paper, we will mainly be interested in one particular family of quantum sets, thefull matrix algebras
+Mn(C)for n≥ 2. These are obviously objects offdHilb and they form a†-Frobenius monoid by setting
+u(c) =cI, m(X⊗Y ) =XY . They also admit a refinement of the string diagrammatic formalism. Namely,
+there is an isomorphismMn∼= Cn⊗Cn. This means that instead of representingMn as a single wire, we
+may represent it as two parallelCn wires. The isomorphism is then given graphically as
+Mn→C n⊗Cn, x ↦→x .
+This is sometimes called the “vectorisation map” and corresponds to stacking the columns ofx on top of each
+other. The multiplication and unit maps are then given by
+= , = .
+Concretely, this is theendomorphism monoidof Cn, cf. [Vic11, Definition 3.16]. Endomorphism monoids
+always satisfy the Frobenius property, and it is a good exercise to verify thatMn is symmetric sinceCn is.
+However, defined this wayMn is not special. We have
+= = n = n ̸= .
+This is closely related to so calledδ-forms, cf. e.g. [Gro22, Section 1]. We can makeMn special by normalising
+u,u†,m,m†. In fact, there are multiple ways to accomplish this. The normalisation most common in the
+context of string diagrams is
+˜m= 1√nm,˜u= √nu,˜m † = 1√nm†,˜u † =√nu†.
+This normalisation preserves the property that taking the adjoint corresponds to simply mirroring the diagram.
+In what follows, we will generally suppress these normalisation factors. This is because the normalisation
+will lead to factors in unexpected places, at the cost of readability. Since we will mostly be working in the
+diagrammatic calculus, this will have almost no impact on our arguments. We only need to remember the
+normalisation when we want to compute scalars.
+2.2 Quantum Graphs
+There are many different equivalent ways of defining quantum graphs. We will be interested in two of them.
+Firstly, a quantum graph is an adjacency operator on a quantum set of vertices.
+7
+
+=== page 8 ===
+Definition 2.6(cf. Definition V.1 in [MRV18]).Aquantum graphis a tuple( X,G ), whereX is a quantum
+set andG:X→Xis a linear map satisfying
+G G = G and G=G†
+The two properties abstract the defining properties of adjacency matrices. In the classical case, where
+wires are Cn, the first condition says thatG is idempotent under the entrywise (Schur) product. The second
+condition says thatG is self-conjugate, or in the classical case that its matrix representation in the standard
+basis has real entries.2 When the quantum setX is clear from the context, we will also identify a quantum
+graphGwith its adjacency operator.
+Definition 2.7.A quantum graph(X,G)
+1. isundirectedif
+= GG
+2. hasno loopsif
+G = 0
+3. hasloops at every vertexif
+G = .
+Remark 2.8.Recall that we will generally suppress the normalisation of multiplication and comultiplication
+that makes the†-Frobenius monoidMn special. This will have an impact on what constitutes an adjacency
+operator of a quantum graph. However, it is straightforward to recover the adjacency operators for special
+†-Frobenius monoids: We simply multiply the adjacency operator byn. Indeed, letA be a valid adjacency
+operator in the non-normalised setting, that is
+m◦(A⊗A)◦m † =A.
+LetA′ =nA. The realness condition is invariant under multiplication by real scalars. Moreover, per definition
+we get
+˜m◦(A′⊗A′)◦˜m† = 1
+nm◦(nA⊗nA)◦m † =nA=A ′,
+so A′ is an adjacency operator in the normalised setting. The same reasoning applies to the undirectedness
+and loop conditions.
+2Note that in the classical case, the second property is redundant, since being idempotent under the Hadamard product
+already requires the matrix entries in the standard basis to be in the set{0, 1}. However, adding the realness condition leads to a
+more coherent theory.
+8
+
+=== page 9 ===
+The second important characterisation of quantum graphs will be in terms of operator spaces. From now
+on we will only consider quantum graphs onMn. The isomorphismMn∼= Cn⊗Cn allows us to define the
+realignmentmap,
+(−)R : End(Mn)→End(M n), F ↦→ F ,
+which swaps the bottom-right and top-left tensor legs of a linear mapMn→M n. In the quantum information
+literature, the realignment map is used for entanglement detection [Rud00, Rud03], and the resulting map is
+called theChoi matrix[Cho75]; see also [BZ06, Section 10.2]. It is easy to see that the realignment is an
+involution, that is,(FR)R =F. We can thus give an equivalent definition of quantum graphs by taking the
+realignment of the conditions in Definition 2.6.
+Proposition 2.9.A linear map G is the adjacency operator of a quantum graph if and only ifGR is a
+projector.
+Proof.Taking the realignment of the Schur idempotency condition and writing it in terms ofGR yields
+GR = GRGR =
+GR
+GR
+,
+where the second equality follows from isomorphism of diagrams. The realness condition becomes
+(GR)†G†G = G†= =GR = .
+These are precisely the conditions(GR)2 =G R and(G R)† =G R.■
+Every projector onMn uniquely defines a subspaceS⊆M n, so quantum graphs can equivalently be viewed
+asoperator spaces[Pau02]. This is a perspective that is often taken in the operator algebra- and the quantum
+information literature. The latter is because one can naturally associate to a quantum channelΦwith Kraus
+operators K1,...,K m the operator spacespan{K†
+iKj|i,j∈ [m]}, called thequantum confusability graphof
+Φ. This generalises classical confusability graphs [Sha56], extending the theory of Shannon capacities to the
+quantum case [DSW13].
+Analogous to the proof of Proposition 2.9 one may translate the conditions for undirectedness and having
+(no) loops into the operator space picture. This yields the following characterisation, see also [Wea21].
+Proposition 2.10.LetGbe a quantum graph andS= imgG R the operator space associated to it. Then
+1.Gis undirected if and only ifX∈S⇒X †∈S,
+2.Ghas loops at every vertex if and only ifI∈S.
+9
+
+=== page 10 ===
+3.Ghas no loops if and only ifX∈S⇒Tr(X) = 0.
+As is usual in classical graph theory, we will restrict our attention tosimplequantum graphs, that is
+undirected quantum graphs without loops. Note that in the literature, many authors instead work in a
+setting where quantum graphs have loops at every vertex. This setting is more natural in the context of
+confusability graphs, cf. [DSW13]. However, just as for classical graphs, there is a natural correspondence
+between loopless quantum graphs and quantum graphs with loops at every vertex, which is a direct corollary
+of Proposition 2.10.
+Proposition 2.11.Let S be the operator space of a loopless quantum graph. ThenS⊕CI is the operator
+space of a quantum graph with loops at every vertex. Conversely, for every operator spaceS′ of a quantum
+graph with loops at every vertex,S′⊖CIis the operator space of a loopless quantum graph.
+This is equivalent to the following statement about adjacency operators, which directly generalises the
+classical case.
+Proposition 2.12.Let G be a loopless quantum graph. ThenG +I is a quantum graph with loops at every
+vertex. Conversely, for a quantum graphHwith loops at every vertex,H−Iis a loopless quantum graph.
+Proof. By Proposition 2.10,GR projects onto a subspace orthogonal toCI. This means thatGR + ΩΩ† is
+a projector, whereΩΩ† is the rank-1projector onto the identity matrixI∈M n. LettingS = imgGR, this
+projects precisely ontoS⊕CI. At the same time, the realignment of the identity onMn is given by
+= ,
+which is preciselyΩΩ†. It follows that(G +I)R = GR + ΩΩ† as desired. Similarly, HR projects onto a
+subspaceS′ withI∈S ′. This implies that(H−I) R =H R−ΩΩ† is a projector with imageS′⊖CI.■
+2.3 Properties of Quantum Graphs
+Most fundamental definitions of classical graph theory have been generalised to the quantum case. In this
+paper, we focus on four concepts: connected components, colouring, independent sets, and cliques.
+Connected Components.Let G be a quantum graph. Courtney, Ganesan, and Wasilewski [CGW25]
+defineGto beconnectedif
+LpG=GL p =⇒p∈{0,I}
+for all projectorsp∈M n, whereLp denotes left multiplication byp. Note that this is equivalent to saying
+thatGisdisconnectedif there exists a non-trivial projectorpsuch that
+LpGLp⊥ = 0,
+wherep⊥ is the projector ontokerp. Left multiplication can be expressed graphically in a simple way:
+x
+x
+x
+==
+We can thus restate the definition of connectedness nicely in graphical terms.
+10
+
+=== page 11 ===
+Definition 2.13.A quantum graph G isdisconnectedif there exists a non-trivial projectorP:C n→C n
+such that
+G
+P
+= 0
+P⊥
+.(3)
+OtherwiseGis calledconnected.
+As mentioned in [CGW25],Lp should be thought of as the projector onto a connected component ofG.
+This immediately suggests the following definition for connected components.
+Definition 2.14.A quantum graph G has (at least) k connected componentsif there exist projectors
+P1,...,P k onC n with∑
+sPs =Isuch that
+G
+Ps
+= 0
+Pt
+for alls̸=t.
+Observe that fork = 1the condition is satisfied vacuously, so a connected graph still has at least1
+connected component. Conversely, ifG is disconnected then there exists a projectorP satisfying Equation (3).
+In this case the choiceP1 =P,P 2 =P ⊥ witnesses thatGhas at least two connected components.
+Colouring.A definition of graph colouring for quantum graphs was introduced by Brannan, Ganesan, and
+Harris [BGH22] in the context of non-local games. As common in the non-local games literature, they actually
+introduce multiple versions of colouring that differ in strength based on how correlated the answers of players
+in a certain non-local game are allowed to be. We will only considerclassicalcolourings, which correspond
+to classical winning strategies in the colouring game. Translated into our language, the definition reads as
+follows.
+Definition 2.15(cf. Definition 2.15 in [Gan23]).Let G be a quantum graph andS = imgGR its associated
+operator space. ThenGhas ak-colouringif there exist projectionsP 1,...,P k with∑
+sPs =Isuch that
+PsXPs = 0
+for allX∈Sands∈[k].
+We can express this condition graphically as
+GR
+x
+Ps
+Ps
+= 0,
+11
+
+=== page 12 ===
+which has to hold for allx∈M n and s∈ [k]. We can get rid of thex and write the condition in terms of the
+adjacency operator, which yields
+= 0
+G Ps
+Ps
+⇐⇒ = 0G
+Ps
+Ps
+.
+Finally, we can take the conjugate of both sides, which recovers an equivalent condition analogous to the one
+for connected components.
+Definition 2.15’.A quantum graph G has ak-colouringif there exist projectors P1,...,P k on Cn with∑
+sPs =Isuch that
+G
+Ps
+= 0
+Ps
+for alls∈[k].
+Thechromatic number χ(G)of a quantum graph G is defined as the smallestk such that G has a
+k-colouring.
+Independent Sets.There are multiple possible generalisations of independent sets to quantum graphs—cf.
+[DSW13, Proposition 2]—that are more or less natural depending on whether one approaches the problem
+from the perspective of classical graph theory, or operationally from the perspective of quantum channels and
+their confusability graphs. In this paper, we will define an independent set as follows.
+Definition 2.16(cf. Definition 1.1 in [Wea17]).Let S⊆M n be the operator space corresponding to a
+quantum graphG. Ak-independent setof G is a projectorP∈M n of rankk such thatPSP⊆CP . The
+independence numberα(G)is the largestksuch thatGhas ak-independent set.
+Note that our definition slightly differs from that given by Weaver in [Wea17] and Duan, Severini, and
+Winter in [DSW13]. There they require that PSP = CP, which is precisely the Knill-Laflamme error
+correction condition [KL97]. This means that ifS represents the confusability graph of a quantum channel,
+then an independent set is precisely a code that allows for zero-error communication. The reason why we
+modify this definition is that for confusability graphs,S is an operatorsystem, that is it is closed under
+adjoints and, crucially, contains the identity. This means thatPSP always contains at leastPIP =P, and
+thus CP⊆PSP . We work in a more general framework, where quantum graphs are arbitrary operator spaces.
+Since we want to work with loopless quantum graphs, our definition needs to account for the possibility that
+there is noX∈S such thatPXP =P. This yields the conditionPSP⊆CP . Graphically, we can express
+Definition 2.16 as follows, whereGR is the projector onto the operator space andcx∈C is a (potentially
+zero) scalar.
+GR
+x
+P
+P
+= cx· P ⇐⇒ GR
+x
+P P
+= cx· P
+The condition has to hold for allx∈Mn.
+12
+
+=== page 13 ===
+Cliques.To define cliques, we again stick to the definition given in [Wea17]. While other natural definitions
+exist, this one has been studied in-depth and for example permits a generalisation of Ramsey’s theorem to
+quantum graphs, as proved in the above-mentioned paper. Just as for independent sets, we adapt Weaver’s
+definition to account for quantum graphs without loops.
+Definition 2.17(cf. Definition 1.1 in [Wea17]).Let S⊆M n be the operator space corresponding to a
+quantum graphG. Ak-cliqueof G is a projectorP∈M n of rankk, such thatP (S⊕CI )P =PMnP. The
+clique numberω(G)is the largestksuch thatGhas ak-clique.
+3 Classical Matrix Groups Acting on Quantum Graphs
+To construct our examples of quantum graphs, we turn our attention to group actions. Classically, subgroups
+of the symmetric groupSn act on a classical graph by permuting its vertices. Concretely, given such a
+subgroup X⊆S n, realised asn×n permutation matrices, and a classical graphG with adjacency matrix
+A∈{ 0, 1}n×n, we say thatX acts onG if PA =AP for allP∈X . Now it is easy to see that ifX =Sn,
+the only loopless graphs thatX acts on are the complete graphA =J−I and the empty graphA = 0. As
+one considers smaller and smallerX⊆S n, one obtains larger and larger classes of graphs. The cyclic group
+Zn⊆S n, for instance, yields precisely the circulant graphs. We apply this reasoning to quantum graphs on
+Mn, where the unitary groupU(n)takes the role ofSn. Natural choices of subgroupsX⊆U (n)will yield
+different classes of quantum graphs, which have in common that they can be thought of in discrete terms and
+are amenable to study in the diagrammatic calculus.
+We begin by establishing what it means for a classical matrix group to act on a quantum graph. Recall
+that just as in the classical case, a quantum graph is a (quantum) set of vertices together with some extra
+structure. In particular, a group acting on a quantum graph should first and foremost act on the set of vertices.
+Note that we haveMn∼= End(Cn). This means that there is already a very natural action of subgroups of
+GL(Cn)⊆End (Cn)—conjugation. However, since we viewMn as a C∗-algebra, we require the group action
+to preserve the C∗-involution. In the case ofMn this is the Hermitian adjoint, so we must restrict to the
+unitary group.
+Observation 3.1.A subgroup ofU(n)acts on Mn by conjugation, that is,α:U (n)×Mn→M n defines a
+group action withα(g,x) =gxg †.
+This group action takes a particularly nice graphical form.
+x
+x
+x
+==
+x† x†
+x
+Now just as in the classical case, we say that a group acts on a quantum graph if the adjacency matrix
+commutes with the group action on the underlying set.
+Definition 3.2.LetGbe a quantum graph. A groupX⊆U(n)acts onGif
+(x⊗ x)◦G=G◦(x⊗ x)
+for allx∈X.
+3.1 The Unitary and the Orthogonal Group
+Let us now investigate which graphs are acted on by different subgroups ofU(n), starting withU(n)itself.
+Lemma 3.3.The linear maps invariant under the group action ofU(n)are precisely those of the form
+α + β .
+13
+
+=== page 14 ===
+Proof. The statement follows from an application of Schur-Weyl duality [GW09, Chapter 9]. A linear map
+F:C n⊗Cn→C n⊗Cn satisfies the group action condition for the unitary group if and only if
+F
+u u
+u† uT
+F=
+for allu∈U(n). Taking the partial transpose of both sides and sliding boxes along wires yields
+F
+u†
+u u
+u†
+= F .
+Schur-Weyl duality now tells us that this is satisfied if and only ifF Γ is a linear combination of the identity
+and the swap map,
+α + βF = .
+The identity is invariant under the partial transpose, and the partial transpose of the flip map is the rank-1
+projection onto the identity matrix. Consequently, taking the partial transpose of both sides yields the desired
+result. ■
+This result is a slight generalisation of the well-known fact that the unitary covariant quantum channels
+are precisely thedepolarizing channels, see [Wer89, KW99], or [NP25, Proposition 3.1] for a modern treatment.
+Now we have determined the linear maps that are invariant under the group action, but not every linear
+mapF:M n→M n is the adjacency operator of a quantum graph. For that, the linear map has to be Schur
+idempotent and real. In order to classify the quantum graphs thatU(n)acts on, we need to determine the
+range of parametersα, β that lead toF satisfying these properties. However, instead of treatingF as an
+adjacency operator, it will be more convenient to view it as the projector onto an operator space. In this case,
+we have to determine whenF is idempotent and self-adjoint, which is much easier to verify. As the following
+lemma shows, we can start from the same conditions.
+Lemma 3.4.Let X⊆U (n)be a group and letαx :M n→M n be the action of a group elementx∈X on
+Mn. Then for anyF:M n→M n,α xFα†
+x =Fif and only ifα xFRα†
+x =F R.
+Proof. We know thatαx is of the formx⊗ x∈M n⊗Mn. The statement thus follows by sliding boxes along
+wires.
+F
+x x
+x† xT
+F
+x x
+x† xT
+= ■
+14
+
+=== page 15 ===
+The conditions that make a linear map the adjacency operator of a loopless quantum graph restrict the
+possible values of the complex parametersα and β from Lemma 3.3 to only two possible values:α =β = 0,
+leading to the zero map, andα =−1/n,β = 1, leading to the map whose realignment is the projector onto the
+space of traceless matrices. The former is the empty graphKc
+n, while the latter is known as the (irreflexive)
+quantum complete graph onMn, which we denote byKn.
+Proposition 3.5.The quantum graphs onMn acted on byU(n)are precisely the edgeless graphKc
+n and the
+complete graphKn.
+Proof. We will determine which projectors correspond to quantum graphs acted on byU(n), the adjacency
+operators are then obtained by realigning. By Lemmas 3.3 and 3.4, we may assume that the projectors are of
+the form
+α+β .
+Recall that the realignment of the identity is the rank-1projector onto the identity matrix and vice versa,
+which simply swaps the roles ofα and β in this case. Composing a linear map of this form with itself yields
+2βα+α 2n+β2 ,
+so for the map to be an idempotent, it needs to hold that
+β=β 2
+α= 2αβ+α 2n.
+The first condition requires thatβ∈{ 0, 1}. If β = 0, then α = 0or α = 1/n. If β = 1, then α = 0or
+α =−1/n. All these values are real, so they all make the map self-adjoint. It follows that they all correspond
+to quantum graphs. However, by plugging in these values and realigning, one finds that only the choices
+α =β = 0and α =−1/n,β = 1yield an adjacency operator that satisfies the looplessness condition. These
+choices correspond precisely toKc
+n andK n.■
+We recover in this way the simplest possible quantum graphs onMn. To obtain more interesting examples,
+one can consider the action of other subgroups ofU(n); the first such candidate is the orthogonal groupO(n).
+Lemma 3.6.The linear maps invariant under the group action ofO(n)are precisely those of the form
+α + β + γ .
+Proof. The statement also follows from Schur-Weyl duality [GW09, Chapter 10]. In the orthogonal case,
+the role of the symmetric group is replaced by the Brauer algebra. A graphical basis of the Brauer algebra
+B2 consists of all perfect matchings of the classical complete graph on4vertices, which are precisely the
+components of the linear combination above.■
+This result is again closely related to an existing result in the quantum information literature. Namely
+that the space spanned byO(n)covariant quantum channels is spanned by three maps: the identity channel,
+the completely depolarizing channel, and the transpose map, see [Wer89, EW01] or [NP25, Proposition 3.1].
+Completely analogous to Proposition 3.5 one can determine the values ofα,β,γ that make the linear map the
+adjacency operator of a loopless quantum graph. Choosingγ = 0recovers the U(n)-invariant quantum graphs,
+and we obtain two additional quantum graphs forγ =±1/2. We omit the (straightforward, but tedious)
+proof.
+Proposition 3.7.The quantum graphs onMn acted on byO(n)are precisely Kc
+n, Kn, and the following two
+graphs:
+15
+
+=== page 16 ===
+• theantisymmetric quantum graph Gasym, having as realignment the projector onto the antisymmetric
+subspace ofCn⊗Cn
+• thesymmetric quantum graphGsym, having as realignment the projector onto the orthogonal complement
+of the identity inside the symmetric subspace ofCn⊗Cn.
+Diagrammatically, these quantum graphs are given by:
+Gasym = −1
+2
+
+
+
+ &G sym = +1
+2
+
+
+
+ − 1
+n .
+It was shown in [Gro22] that there exist precisely four non-isomorphic simple quantum graphs onM2,
+which are uniquely determined by their number of edges. It turns out that these are exactly the graphs acted
+on by the orthogonal groupO(2).
+Proposition 3.8.There are four non-isomorphic quantum graphs onM2. They are the edgeless graphKc
+2,
+Gasym,G sym, and the complete graphK2.
+Proof. The number of edges of a quantum graphG is given byu†Gu. We show thatKc
+2, Gasym, Gsym, and
+K2 have0,4,8, and12edges respectively. Clearly Kc
+2 has0edges. The rest can be seen by a diagrammatic
+calculation. Note that we have to include the normalisation constants that we suppressed.
+√
+2
+√
+2
+−
+√
+2
+√
+2
+= 23−2 2 = 4, +
+√
+2
+√
+2
+√
+2
+√
+2
+−
+√
+2
+√
+2
+= 23 + 22−2 2 = 8,
+√
+2
+√
+2
+−
+√
+2
+√
+2
+2 = 24−2 2 = 12.
+This implies that they are pairwise non-isomorphic and thus must be the four graphs in question.■
+3.2 The Diagonal Unitary and the Diagonal Orthogonal Group
+One way to make the matrix groups even smaller and hence obtain more quantum graphs, is to look at their
+diagonal fragments. This gives rise to thediagonal unitary groupDU (n)and thediagonal orthogonal group
+DO(n), which consist of diagonal unitary and orthogonal matrices respectively. The matrices inDO(n)in
+particular are exactly the diagonal matrices that have±1on the main diagonal. In particular the group
+is finite! The linear maps onMn that satisfy the corresponding relation have been characterised in [NS21,
+Propositions 6.4 and 7.2], where they are called CLDUI (conjugatelocaldiagonalunitaryinvariant) and
+LDOI (localdiagonalorthogonalinvariant) respectively. The CLDUI maps are given by
+˚A + BXA,B = ,
+16
+
+=== page 17 ===
+while the LDOI maps are given by
+˚A + BXA,B,C = + ˚C .
+TheA,B,Care matrices inM n such thatdiagA= diagB= diagC, and we write for arbitrary matricesX
+˚X:=X−diagX.
+Again, we have to restrict to the cases where the linear map corresponds to a quantum graph, and again this
+will be easiest if we view these maps as as projectors instead of adjacency operators. To relate the conditions
+to adjacency, we make use of the following lemma.
+Lemma 3.9(Proposition 4.3 in [SN21]).For allA,B,C∈M n we have(XA,B,C)R =X B,A,C.
+The conditions that makeXA,B,C a quantum graph can now be stated nicely in terms ofA,B,C.
+Proposition 3.10.A linear map of the formXA,B,C is the adjacency operator of a quantum graph if and
+only if
+1.Bis a projector,
+2.
+(Aij Cij
+Cji Aji
+)
+is a projector for alli̸=j∈[n].
+It is undirected if and only if
+3. ˚Ais self-adjoint,
+4.B=B T,
+It has no loops if and only if
+5.1∈kerB.
+Proof. Recall that the projector corresponding to an adjacency matrix is obtained by realigning. In order to
+show thatXA,B,C is the adjacency operator of a quantum graph, we thus have to show that(XA,B,C)R =
+XB,A,C is a projector. Now it can be shown, cf. [NS21, Equation 41], that
+XB,A,C =B⊕
+⨁
+i<j
+(Aij Cij
+Cji Aji
+)
+.(4)
+Both the adjoint and multiplication are componentwise on the direct summands, soXB,A,C is a projector if
+and only ifBand allAC-blocks are.
+To derive the conditions for undirectedness, recall that a quantum graph with adjacency operatorG is
+undirected ifG =GT. SinceG is required to be real, this is equivalent toG being self-adjoint. Taking the
+adjoint ofXA,B,C yields
+˚A† + B + ˚C† ,
+where we used thatB is a projector and hence self-adjoint. This is equal toXA,B,C if and only if both˚A† = ˚A
+and ˚C† = ˚C, as well as
+B B= .
+17
+
+=== page 18 ===
+The latter holds if and only ifB=BT: We have
+B B= B = ,
+where the second equality holds by isomorphism of diagrams, or more explictly by the Frobenius equations.
+The converse can be seen by plugging units in the bottom left and top right. The self-adjointness condition
+for ˚Cis satisfied automatically: As projectors, theAC-blocks in Equation (4) have to be self-adjoint, which
+implies thatCij =Cji for alli<j∈[n]. This is equivalent to ˚C† = ˚C.
+Finally, recall that a quantum graph with adjacency operatorGhas no loops if and only if
+G = 0.
+OnM n, the condition becomes
+G = 0 ⇐⇒ G = 0 .
+ForXA,B,C not to have loops, we thus want
+˚A + B + ˚C = 0,
+which is equivalent to
+˚A + B + ˚C T 0= .
+The A and theC terms are the diagrams for the Schur products˚A•I and I• ˚C T respectively, which are
+both0since ˚A and ˚C have zero diagonal by definition. TheB term thus has to be0as well, which happens
+precisely ifB◦u= 0or equivalently, since the wires areC n,1∈kerB.■
+Corollary 3.11.A linear map of the formXA,B is the adjacency operator of a quantum graph if and only if
+1.Bis a projector,
+2. ˚Ais the adjacency matrix of a classical graph onnvertices.
+It is undirected if
+3.B=B T,
+18
+
+=== page 19 ===
+4. ˚Ais the adjacency matrix of a loopless undirected classical graph onnvertices.
+It has no loops if
+5.1∈kerB.
+Proof. We haveXA,B =XA,B,C with C = diagA = diagB, hence the conditions of Proposition 3.10 apply.
+It follows that forXA,B to be a quantum graph,Bmust be a projector. Moreover, the2×2matrices
+(Aij Cij
+Cji Aji
+)
+=
+(Aij 0
+0A ji
+)
+must be projectors fori<j . This is only the case ifAij,Aji∈{ 0, 1}. It follows that˚A must be the adjacency
+matrix of a loopless classical graph onn vertices. For the quantum graph to be undirected we know we must
+haveB =BT and ˚A† = ˚A. The latter condition is implies that˚A is moreover the adjacency matrix of an
+undirected loopless classical graph. Finally, the loop condition stays equivalent to whether1∈kerB.■
+We will sometimes be interested in looking at special cases ofXA,B andXA,B,C graphs where one or more
+of the matricesA,B,C are trivial, i.e. zero except on the diagonal (which has to match that of the remaining
+matrices). We denote these special cases by replacing the trivial matrices by a dot. For example, we let
+XA,· :=X A,diagA,
+XA,·,C :=X A,diagA,C.
+We also haveXA,B = XA,B,· and XA,· = XA,·,· . Graphically, the adjacency operators are obtained by
+simply dropping the terms corresponding to the trivial matrices. For quantum graphs of the formXA,·,C ,
+this requires some justification, since theB term contributes the diagonal. However, note that a for loopless
+quantum graphs we haveB1= 0, and for a diagonalB we haveB1= diagB. It follows thatdiagB = 0and
+thusB= 0. We thus have
+˚A + ˚CXA,·,C =
+as desired. Now a particularly interesting special case occurs whenAis the only non-trivial matrix.
+Corollary 3.12.A linear map of the formXA,· is the adjacency operator of a (loopless, undirected) quantum
+graph if and only ifAis the adjacency matrix of a (loopless, undirected) classical graphG.
+Proof. Note thatXA,· =XA,B for B = diagA. Corollary 3.11 implies thatXA,B is a quantum graph if only
+if B is a projector and˚A is the adjacency matrix of a classical graph. SinceB is diagonal, it follows that
+diagA = diagB∈{ 0, 1}n. Consequently,A = ˚A + diagA is also the adjacency matrix of a classical graph,
+potentially containing loops. Now for diagonalB, we haveB =BT, soXA,· is undirected if and only ifA is
+the adjacency matrix of an undirected classical graph. Finally,XA,· is loopless if and only ifB1= 0. For a
+diagonal matrixB we haveB1= 0if and only if diagB = 0. Since diagA = diagB, it follows thatA has
+zero diagonal and is thus the adjacency matrix of a loopless classical graph.■
+Since U(n)⊇DU (n)and O(n)⊇DO (n), theXA,B and XA,B,C graphs must subsume the complete-,
+edgeless-, symmetric-, and antisymmetric quantum graphs. In particular,Kn and Kc
+n must be of the form
+XA,B, whileG sym andG asym must be of the formXA,B,C.
+Proposition 3.13.It holds that
+1.K c
+n =X·,·
+2.K n =X nJ−I
+n ,nI−J
+n
+3.G asym =X J−I
+2 ,·, I−J
+2
+19
+
+=== page 20 ===
+4.G sym =X J+I
+2 −I
+n,nI−J
+n ,J+I
+2 −I
+n
+Proof. Can be verified by a straightforward calculation. We show this representatively for the case ofKn. We
+haveJ=uu †. The ˚Apart is thus given graphically by
+− ,
+since we have to remove the diagonal. Together with theBpart, we get
+− + − 1
+n = − 1
+n ,
+which is precisely the adjacency operator ofKn.■
+3.3 The Hyperoctahedral Group
+We now consider an intermediate group that sits between the diagonal orthogonal group and the full orthogonal
+group: thehyperoctahedral group. This group arises naturally as a semi-direct product construction and
+imposes strong structural constraints on the matricesA,B, andCparameterizing invariant linear maps.
+Definition 3.14.Thehyperoctahedral groupHyp(n)is defined as the semi-direct product
+Hyp(n) :=S n ⋉DO(n),
+where Sn denotes the symmetric (permutation) group onn elements and DO(n)denotes the diagonal
+orthogonal group. Concretely,Hyp(n)consists of all n×n matrices that have exactly one nonzero entry in
+each row and column, and that entry is±1. Equivalently,Hyp(n)is the group ofsigned permutation matrices.
+The hyperoctahedral group fits into the following chain of inclusions:
+DU(n)⊇DO(n)⊆Hyp(n)⊆O(n)⊆U(n).
+On the diagonal side, we have the containments
+DO(n)⊆DU(n)andDO(n)⊆Hyp(n),
+where DO(n)is a subgroup of both. On the other hand,DU(n)and Hyp(n)are in generalnotcomparable:
+DU (n)contains diagonal unitaries with arbitrary phases, which do not belong toHyp(n), while Hyp(n)
+contains non-diagonal permutation matrices, which do not belong toDU(n). Since the invariance group is
+larger thanDO(n), the family ofHyp(n)-invariant linear maps is asubclassof the LDOI maps from [SN21].
+At the same time, sinceHyp(n)⊆O(n), this family contains theO(n)-invariant maps from Section 3.1.
+Proposition 3.15.A linear mapX:M n→M n of the LDOI formXA,B,C satisfies
+(O⊗O)X A,B,C (O⊗O) ⊤ =X A,B,C for allO∈Hyp(n)
+if and only if the matricesA, B, andC each lie inspan{I,J} , whereI denotes then×n identity matrix and
+Jdenotes then×nall-ones matrix.
+Proof. Since DO(n)⊆Hyp (n), any Hyp(n)-invariant map is in particularDO(n)-invariant and hence of the
+LDOI formXA,B,C, whereA,B,C∈M n satisfy diagA = diagB = diagC . It remains to determine what the
+additional invariance under all permutation matricesPσ (σ∈S n) imposes onA,B, andC.
+By the same argument as in [SN21, Section 3] (see also [GNS25, Section IV.A]), the invariance condition
+(Pσ⊗Pσ)XA,B,C (P−1
+σ ⊗P−1
+σ ) =X A,B,C for allσ∈S n
+20
+
+=== page 21 ===
+is equivalent to requiring
+PσAP−1
+σ =A, P σBP−1
+σ =B, P σCP−1
+σ =C
+for every permutation matrixPσ with σ∈S n. Indeed, expanding the invariance condition forXA,B,C and
+plugging in the standard basis, we get
+˚A + B + ˚C
+Pσ Pσ
+P T
+σ P T
+σ
+Pσ Pσ
+P T
+σ P T
+σ
+Pσ Pσ
+P T
+σ P T
+σ
+j ℓ j ℓ j ℓ
+i k i k i k
+˚A + B + ˚C
+j ℓ j ℓ j ℓ
+i k i k i k
+= .
+Using thatPσ|k⟩ =|σ(k)⟩, the definitions of multiplication and comultiplication, and the fact thatσ is a
+bijection one finds this to be equivalent to
+(1−δ ij)δikδℓj·Aσ(i)σ(j) +δijδkℓBσ(i)σ(j) + (1−δ ij)δiℓδjk·Cσ(j)σ(i)
+= (1−δ ij)δikδℓj·Aij +δijδkℓBij + (1−δ ij)δiℓδjk·Cji
+Comparing the two sides of the equation for all choices ofi,j,k,ℓ∈ [n]yields Aσ(i)σ(j) =Aij for alli,j and
+all σ∈S n, where the casei =j follows from theB-term and the conditiondiagA = diagB. The same can
+be concluded forB andC. This is precisely the condition thatA, B, andC commute with every permutation
+matrix (via conjugation), i.e.,PσMP−1
+σ =MforM∈{A,B,C}and allσ∈S n.
+We now show that a matrixM∈M n satisfiesPσMP−1
+σ =M for allσ∈S n if and only ifM∈span{I,J} ,
+i.e., M =αI +βJ for someα,β∈C . The conditionPσMP−1
+σ =M means Mσ(i)σ(j) =Mij for alli,j∈ [n]
+and allσ∈S n. In particular:
+• Takingi̸ =j: For any two pairs(k,l )with k̸ =l, the2-transitivity ofSn provides a permutationσ with
+σ(i) =k and σ(j) =l. It follows thatMkl =Mij. Hence all off-diagonal entries ofM are equal; call
+this common valueβ.
+• Takingi =j: For any two diagonal indicesk,l∈ [n], there existsσ∈S n with σ(i) = k and σ(i) = l
+only ifk =l. Instead, for anyk, chooseσ with σ(i) =k; thenMkk =Mii. Hence all diagonal entries of
+Mare equal; call this common valueα+β.
+Consequently,Mij =αδij +β for alli,j, i.e.,M =αI +βJ. The converse is immediate: Any matrixαI +βJ
+commutes with every permutation matrix, sincePσIP−1
+σ =I and PσJP−1
+σ =J. Applying this to each ofA,
+B, andCcompletes the proof. ■
+It follows that a hyperoctahedral-invariant linear mapXA,B,C is described by at most four free parameters,
+compared to the3n2− 2n parameters needed for a general LDOI map. Explicitly, writingA = aI +a′ ˚J,
+B =bdI +b˚J, andC =cdI +c˚J, the diagonal-matching conditiondiagA = diagB = diagC forcesa =bd =cd,
+leaving precisely4real parameters( a,a′,b,c ). This exactly matches the parameterization of hyperoctahedral
+statesX Hyp
+a,a′,b,c from [Par+24].
+Proposition 3.16.A linear map of the formX Hyp
+a,a′,b,c is the adjacency operator of a quantum graph if and
+only if
+1.(a,b)∈{(0,0),(1/n,1/n),(1,0),(1−1/n,−1/n)},
+2.(a ′,c)∈{(0,0),(1,0),(1/2,1/2),(1/2,−1/2)}.
+Every such quantum graph is automatically undirected. It has no loops if and only if
+21
+
+=== page 22 ===
+3.(a,b) = (0,0)or(a,b) = (1−1/n,−1/n).
+Proof. By Proposition 3.10,X Hyp
+a,a′,b,c = XA,B,C for A = aI +a′ ˚J, B = aI +b˚J, andC = aI +c˚J is the
+adjacency operator of a quantum graph if and only ifBis a projector and the off-diagonal2×2blocks
+Xij =
+(Aij Cij
+Cji Aji
+)
+are projectors for alli̸ =j. The only projections in the span ofI andJ are0,J/n,I−J/n , andI. This yields
+the four cases in the first point. For the second condition, observe that
+Xij =
+(a′ c
+c a ′
+)
+.
+ForXij to be a projector, this real symmetric matrix must be zero, the identity, or a rank-1projector. The
+latter condition is equivalent toa′ = 1/2and c =±1/2. This produces the four cases in the second point.
+Since( a,a′,b,c )are real parameters and ˚J is symmetric, the matrices˚A =a′ ˚J, B =aI +b˚J, and ˚C =c˚J are
+inherently symmetric and self-adjoint. By Proposition 3.10, this guarantees every such quantum graph is
+automatically undirected. Finally, the graph has no loops if and only if1∈kerB . This is the case for two of
+the four options in the first point, finishing the proof.■
+Note that the four graphs in Proposition 3.13 have automatically hyperoctahedral symmetry and correspond
+to the following choices of parameters:
+1.K c
+n→(a,a ′,b,c) = (0,0,0,0)
+2.K n→(a,a ′,b,c) = (1−1/n,1,−1/n,0)
+3.G sym→(a,a ′,b,c) = (1−1/n,1/2,−1/n,1/2)
+4.G asym→(a,a ′,b,c) = (0,1/2,0,−1/2).
+Each of the four graphs above corresponds to a different choice of parameters(a′,c ). The other four graphs
+correspond to the same four choices of(a′,c )with value of(a,b )∈{ (0, 0), (1− 1/n,− 1/n)} swapped. In other
+words, these extra four quantum graphs areKc
+n, Kn, Gsym, andGasym with theB =I−J/n part added (for
+Kc
+n andG asym) or removed (forKn andG sym).
+3.4 Classical Models of Quantum Graphs
+The structure of theXA,B and XA,B,C quantum graphs nicely captures an increasing level of “quantumness”
+as we relax the symmetry requirements. The easiest class of quantum graphs acted on by the diagonal
+unitary group are those of the formXA,·. By Corollary 3.11, quantum graphs of this form satisfy that˚A
+is the adjacency matrix of a classical graph. In fact,XA,· is precisely the adjacency operator of a classical
+graph G under the diagonal embedding of Cn into Mn. Moreover, it is an enlightening exercise to see
+that the corresponding projector, obtained by realigning, is precisely the projector onto the operator space
+S= span{|i⟩⟨j||i∼j}.
+Moving from purely classical graphs into the quantum realm, our first stop are the quantum graphs of the
+form XA,B, which we will simply call AB graphs. As one can see in Corollary 3.11, the conditions onA and
+B that makeXA,B a quantum graph are almost completely independent. Except for the diagonal—which has
+to coincide with that ofB—A is still the adjacency matrix of a classical graph.B has to be a projector. We
+may hence think ofXA,B simply as a classical graph to which a subspace ofCn is attached.
+If instead of requiring full diagonal unitary symmetry, we only require diagonal orthogonal symmetry,
+we end up with ABC graphs: quantum graphs of the formXA,B,C. Taking this step, we lose the direct
+connection to classical graphs. As we have seen in Proposition 3.10, the conditions onA are much less strict,
+in particular ˚A no longer has to be an adjacency matrix. There is, however, still enough structure to think
+of these quantum graphs in terms of a classical model, at least wheneverXA,B,C is undirected. The central
+22
+
+=== page 23 ===
+observation is that condition (2) of Proposition 3.10 restricts howA and C must interact, whileB is still
+almost entirely independent. Condition (2) requires that
+Xij :=
+(Aij Cij
+Cji Aji
+)
+be a projector for alli<j. In particular, one of three cases must apply.
+Xij has rank 0.In this caseX ij = 0and thusA ij =A ji =C ij =C ji = 0.
+Xij has rank 2.In this case, Xij has full rank and is thus equal to the identity. It follows thatAij =Aji = 1.
+Xij has rank 1.In this case, we must haveTrXij = rkXij = 1. SinceXij is a projector and hence positive-
+semidefinite, the diagonal elementsAij, Aji must be non-negative reals. AssumingXA,B,C is undirected,
+we have ˚A† = ˚A and henceAij =Aji. ConsequentlyAij =Aji = 1/2. SinceXij is rank-deficient, we have
+detXij = AijAji−CijCji = 0, and sinceX†
+ij = Xij, we haveCji = Cij. It follows thatAijAji =|Cij|2
+and thus|Cij|2 = 1/4. This occurs precisely whenCij =eθi/2. It follows that every rank-1Xij is uniquely
+determined by a phaseθ.
+Consequently, we may interpret an undirected quantum graph of the formXA,·,C as an undirected classical
+graph onnvertices with two kinds of edges: Classical edges, which correspond to rank-2Xij, and “strange”
+edges, which are annotated with a phaseθand correspond to rank-1Xij.
+Definition 3.17(Strange Graphs).Let G be an undirected quantum graph onMn of the formXA,B,C. The
+strange graphG(A,C )associated to G is an undirected graph with vertex set[n]and edge setE∪⋃
+θ∈[0,2π) ˜Eθ,
+where
+E={{i,j}⊆[n]|X ij =I}& ˜Eθ ={{i,j}⊆[n]|i<j,X ij = 1
+2
+( 1e θi
+e−θi 1
+)
+}.
+A quantum graph of the formXA,B,C can then be thought of as a strange graph to which a subspace of
+Cn is attached. We have seen that in particularGsym andG asym are of this form.
+Proposition 3.18.The strange graph associated toGsym is the complete graph consisting only of strange
+edges with phase0. The strange graph associated toGasym is the complete graph consisting only of strange
+edges with phaseπ.
+Proof.By Proposition 3.13, we haveGsym =X A,B,C forA= (J+I)/2andC= (J+I)/2and thus
+Xij = 1
+2
+(1 1
+1 1
+)
+= 1
+2
+( 1e 0i
+e0i 1
+)
+.
+Similarly, we haveGasym =X A,B,C forA= (J−I)/2−I/nandC= (I−J)/2−I/n. It follows that
+Xij = 1
+2
+( 1−1
+−1 1
+)
+= 1
+2
+( 1e πi
+e−πi 1
+)
+.■
+To be precise,Gsym additionally has a subspace attached. A counterpart without the subspace contribution
+also exists and has hyperoctahedral symmetry instead of full orthogonal symmetry, see Section 3.3. We have
+also seen thatXA,· is a classical graph embedded intoMn. It turns out that this classical graph is precisely
+the strange graph associated toXA,·.
+Proposition 3.19.Let A be an undirected classical graph. Then the strange graph associated toXA,B has no
+strange edges and satisfiesG(A,·)∼=A.
+Proof. We haveXA,B =XA,B,C for someC∈M n with Cij = 0for all i̸ =j. This implies thatXij =AijI
+for alli̸=j∈[n]and thusG(A,C) ∼=A.■
+23
+
+=== page 24 ===
+4 Graph Theoretic Properties
+With our examples in hand, we now want to take a closer look at their graph theoretic properties. This
+section is structured as follows. To each graph theoretic property introduced in Section 2.3, we dedicate a
+subsection. We start with the number of connected components, continue with the chromatic number, and
+conclude with the independence- and the clique number. Within each subsection we look at the corresponding
+property for each of the above-mentioned graphs. In the first subsection, to get used to the diagrammatic
+arguments involved, we start easy with the empty and complete graphs, moving on through the symmetric and
+antisymmetric graphs, AB graphs, and finally ABC graphs in full generality. In the subsequent subsections,
+we invert this order, starting with ABC graphs, the most general case, to avoid proving redundant results.
+4.1 Connected Components
+Recall that a quantum graph has at leastk connected components if there existk non-zero projectors
+P1,...,P k onC n that sum to the identity, such that
+G
+Ps
+= 0
+Pt
+.(5)
+for alls̸ =t∈ [k]. This condition can obviously be satisfied vacuously, so every quantum graph has at least
+one connected component. On the other hand, the non-zero requirement on the projectors shows that a
+quantum graph can have at mostn connected components. This upper bound is achieved by the empty graph:
+Since the adjacency operator ofKc
+n is the zero map, any complete collection of pairwise orthogonal rank-1
+projectors trivially satisfies Equation (5). We hence conclude the following.
+Proposition 4.1.K c
+n hasnconnected components.
+We would also expect the complete graphKn to be connected, and indeed this is what we find.
+Proposition 4.2.K n is connected.
+Proof.ForK n, Equation (5) reads
+Ps
+Pt
+− 1
+n
+Ps
+Pt
+= 0.
+Since thePs sum to the identity,Ps and Pt must project onto orthogonal subspaces, and hencePsPt = 0.
+The condition thus simplifies to
+Ps
+Pt
+= 0.
+Observe that for non-zeroPs,Pt, the left-hand side is a rank-1 matrix and hence cannot be equal to zero. It
+follows that any collection of projectors satisfying Equation (5) contains only the identity and henceKn is
+connected. ■
+24
+
+=== page 25 ===
+4.1.1 The Symmetric and Antisymmetric Cases
+The number of connected components of the Symmetric and Antisymmetric quantum graphs is also limited
+by rank constraints. Generally, both graphs are connected, althoughn= 2is a special case forGasym.
+Proposition 4.3.Forn≥3,G asym is connected. Forn= 2,G asym has2connected components.
+Proof.ForG asym, Equation (5) is equivalent to
+Ps
+Pt
+=
+Ps
+Pt
+.(6)
+Note that the left-hand side has rank1, while the right-hand side has rankrkPs·rkP t. Consequently, the
+condition is satisfiable only ifrkPs = rkPt = 1. We hence must havePs =|ψs⟩⟨ψs|, where⟨ψs|ψt⟩ =δst for
+alls,t. Plugging these definitions into Equation (6) yields
+ψs
+ψt
+=
+ψs
+ψt
+ψt
+ψt
+ψs
+ψs
+=
+ψs
+ψt ψs
+ψt
+=
+ψs
+ψt ψt
+ψs
+.
+This is true if and only if|ψs⟩ = c|ψt⟩ and|ψt⟩ = d|ψs⟩ where cd = 1. Now if n≥ 3, then there exist
+pairwise orthogonal|ψ1⟩,|ψ2⟩,|ψ3⟩, while the condition implies that|ψ1⟩∼| ψ2⟩∼|ψ 3⟩. This contradicts
+their orthogonality, so the only way to satisfy Equation (6) is vacuously and it follows thatGasym is connected
+forn≥ 3. On the other hand, ifn = 2, then|ψ1⟩ = (|1⟩ +i|2⟩)/
+√
+2 and|ψ2⟩ = (|1⟩−i|2⟩ )/
+√
+2 form a maximal
+set of orthonormal vectors, and we have|ψ1⟩ =|ψ2⟩. It follows thatGasym has2connected components for
+n= 2. ■
+ForG sym, the same reasoning shows that it is connected even forn= 2.
+Proposition 4.4.G sym is connected.
+Proof.ForG sym, Equation (5) becomes
+Ps
+Pt
+=
+Ps
+Pt
+Ps
+Pt
+− 2
+n − .
+Again, since thePs sum to the identity, the condition simplifies to
+Ps
+Pt
+=
+Ps
+Pt
+− .(7)
+25
+
+=== page 26 ===
+Just as forGasym, the condition is satisfiable only ifrkPs = rkPt = 1. We hence must havePs =|ψs⟩⟨ψs|,
+where⟨ψ s|ψt⟩=δ st for alls,t. Plugging these definitions into Equation (7) yields
+ψs
+ψt
+=
+ψs
+ψt
+ψt
+ψt
+ψs
+ψs
+=
+ψs
+ψt ψs
+ψt
+=
+ψs
+ψt ψt
+ψs
+− − .
+This is true if and only if|ψs⟩=c|ψ t⟩and| ψt⟩=d|ψ s⟩wherec d=−1. But at the same time we have
+|ψt⟩= d|ψs⟩=c d|ψt⟩,
+so cd = 1 ̸=−1. It follows that the only way to satisfy Equation (7) is vacuously and henceGsym is
+connected. ■
+4.1.2 A Splitting Principle
+We now move on to the classes of quantum graphs parameterised by matricesA,B,C with diagA = diagB =
+diagC . We have seen in Section 3.4 that we can think of these quantum graphs in discrete terms: A quantum
+graph of the formXA,B,C is uniquely determined by a classical graph onn vertices, whose edges may be
+annotated with phases. This graph only depends onA and C, whereas B—always a projector—can be
+thought of as attaching some subspace ofCn. If ˚C = 0, we even recover embeddings of classical graphs. It
+turns out that these models are not just ways to visualise quantum graphs, they also are a useful model for
+graph-theoretic investigations. Concretely, we will be able to give tight bounds on graph-theoretic parameters
+in terms of the strange graphsG(A,C), and the subspaceB.
+The first such result is that the conditions for the existence of connected components split into independent
+conditions forA,C—which we may phrase in terms ofG(A,C )—and B. We will later find that analogous
+results hold for the other graph parameters as well. We call this thesplitting principle. We begin by expanding
+the connected component condition forXA,B,C.
+B˚A + ˚C
+Ps
+Pt Pt
+PsPs
+Pt
++ = 0
+We can plug the standard basis into the right tensor legs,
+B˚A + ˚C
+Ps
+Pt Pt
+Psi
+j
+Ps
+Pt
++ = 0
+j j
+ii
+.
+26
+
+=== page 27 ===
+Evaluating the (co)multiplications yields two distinct conditions:
+˚A
+i
+Ps
+Pt
+i
+j
++ = 0
+j
+˚C
+j
+Ps
+Pt
+i
+ji
+(8)
+fori̸=j, and since per definition ˚Aii = ˚Cii = 0,
+B
+Ps
+Pt
+i
+= 0
+fori =j. These conditions need to hold for alli,j∈ [n]. It follows that a set of projectorsP1,...,P k witnesses
+the existence ofk connected components of a quantum graphXA,B,C if and only if they formk connected
+components of bothXA,·,C andX·,B individually. We may thus conclude the following.
+Proposition 4.5.Let kAC be the number of connected components of a quantum graphXA,·,C and kB the
+number of connected components of a quantum graphX·,B. ThenXA,B,C has at mostmin(kAC,kB)connected
+components.
+4.1.3 AB Graphs
+It turns out that the number of connected components ofXA,B only depends onA. We first show thatXA,B
+has at least as many connected components ofA.
+Proposition 4.6.For allk∈N, it holds that ifAhaskconnected components then so doesX A,B.
+Proof.LetC 1,...,C k be the connected components ofA. For alls∈[k], we let
+Ps =
+∑
+i∈Cs
+|i⟩⟨i|.
+Since theCs form a partition of[n], thePs sum to the identity. If we plug in the definition ofPs into the
+connected component condition, we get a sum with summands
+˚A
+j
+i
++
+j
+i
+B
+i
+i
+j
+j
+27
+
+=== page 28 ===
+for alli∈C s andj∈C t. These are equal to
+˚A
+j
+i
++
+j
+i
+j
+i
+= 0B
+i
+i
+j
+j
+j
+Since Cs and Ct are disjoint, we always havei̸ =j, so theB term vanishes. Sincei and j are in different
+connected components by assumption, we have thati̸∼j and thusAij = 0. This makes the remaining terms
+vanish, which completes the proof.■
+The converse is slightly more involved.
+Proposition 4.7.For allk∈N, it holds that ifX A,B haskconnected components then so doesA.
+Proof. Suppose thatP1,...,P k are projectors witnessing thatXA,B has k connected components. By the
+splitting principle of Section 4.1.2, we know thatP1,...,P k also formk connected components ofXA,·. The
+projectors thus satisfy
+˚A
+i
+Ps
+Pt
+i
+jj
+= 0 (9)
+for alli,j∈ [n], cf. Equation (8). This implies that whenever we have an edgei∼j , that isAij̸= 0, then we
+must have
+Ps|i⟩= 0orP t|j⟩= 0.
+Consider the following family of sets
+Cs :={i∈[n]|P s|i⟩̸= 0}.
+First note that all theCs are non-empty. Indeed, suppose there was ans∈ [k]with Cs = ∅. ThenPs|i⟩ = 0
+for alli∈ [n]and hence Ps = 0, contradicting the assumption that allPs are non-zero. Along similar lines,
+we can prove that theCs cover[n]. Assume for contradiction that there is somei∈ [n]such that i̸∈C s for
+alls∈[k]. ThenP s|i⟩= 0for alls, and since theP s sum to the identity, we get
+|i⟩=I|i⟩=
+∑
+s∈[k]
+Ps|i⟩= 0,
+contradiction. Next, we claim that theCs almost partition[n].
+Claim 1.Lets 1̸=s 2∈[k]. Ifi∈C s1∩Cs2 theniis an isolated vertex inA.
+Proof. Suppose for contradication that there exists somei∈C s1∩Cs2 that is not isolated. Then there exists
+somej̸=i∈[n]such that{i,j}is an edge inA. By Equation (9), we have
+Ps1|i⟩= 0orP t|j⟩= 0for allt̸=s 1
+Ps2|i⟩= 0orP t|j⟩= 0for allt̸=s 2
+By assumptionPs1|i⟩̸ = 0and Ps2|i⟩̸ = 0, so we havePt|j⟩ = 0for all t̸ =s1 and for allt̸ =s2. Buts1̸=s2,
+so we havePt|j⟩= 0for allt, contradicting that theP s sum to the identity.□
+28
+
+=== page 29 ===
+Most importantly, there do not exist edges between differentCs.
+Claim 2.Leti̸=j∈[n]ands 1̸=s 2∈[k]such thati∈C s1 andj∈C s2. ThenA ij = 0.
+Proof.If{i,j}was an edge inA, then by Equation (9)
+Ps1|i⟩= 0orP t|j⟩= 0
+for allt̸ =s1. Sincei∈C s1, we havePs1|i⟩̸ = 0and thus Pt|j⟩ = 0for all t̸ =s1. In particular this holds for
+t=s 2̸=s 1, soPs2|j⟩= 0, contradictingj∈C s2.□
+We now show thatA has at leastk connected components. Define the setsBs :=Cs\⋃
+t̸=sCt and the
+set F := [n]\⋃
+sBs. By Claim 1, every non-isolated vertex ofCs belongs toBs, and every vertex inF lies
+in at least two distinctCt’s and is therefore isolated. Since theBs are pairwise disjoint and there are no
+edges between differentCs by Claim 2, each non-emptyBs is a union of connected components ofA, and
+each vertex inF forms an isolated connected component. It follows thatA has at leastm +|F| connected
+components, wheremis the number of non-empty setsBs.
+It remains to show thatm +|F|≥k . For everyi∈B s and t̸ =s, we havePt|i⟩ = 0since i /∈Ct. Since∑
+tPt =I, this gives|i⟩ =Ps|i⟩, so|i⟩∈imgP s. The vectors{|i⟩|i∈B s} are orthonormal, so|Bs|≤rkP s.
+Settingr s := rkPs≥1, we have∑
+srs =nand ∑
+s|Bs|+|F|=n, so
+|F|=
+k∑
+s=1
+(rs−|Bs|)≥
+∑
+s∈[k]
+Bs=∅
+rs≥k−m.
+Consequently,Ahas at leastm+|F|≥kconnected components as desired.■
+Since Propositions 4.6 and 4.7 hold for anyA and B—subject to the condition thatXA,B be a quantum
+graph—we obtain the following corollaries.
+Corollary 4.8.For allk∈N, it holds thatX A,· haskconnected components if and only ifAdoes.
+Corollary 4.9.X·,B hasnconnected components.
+Proof.It isX ·,B =X A,B for ˚A= 0, which is a graph withnisolated vertices.■
+4.1.4 ABC Graphs
+It turns out that Proposition 4.6 can be generalised to ABC graphs using the same ideas.
+Proposition 4.10.A quantum graph of the formXA,B,C has at least as many connected components as the
+strange graphG(A,C).
+Proof. Let C1,...,C k be a partition ofG(A,C )into k connected components. We show that the projectors
+P1,...,P k with
+Ps =
+∑
+i∈Cs
+|i⟩⟨i|
+witness thatXA,B,C also haskconnected components. The condition
+B˚A + ˚C
+Ps
+Pt Pt
+PsPs
+Pt
++ = 0
+29
+
+=== page 30 ===
+becomes
+= ˚A
+j
+i
++
+j
+i
+j
+i
+j
+i
+˚C
+j
+i
+= 0
+j
+i
+B
+i
+i
+j
+j
+j
++
+for alli∈C s and j∈C t. SinceCs, Ct are disjoint, the middle term vanishes. Sincei and j are in different
+connected components by assumption, we have thati̸∼jinG(A,C)and thusA ij =C ji = 0.■
+However, there is no hope to generalise the converse direction. Take the Antisymmetric quantum graph
+Gasym. We have shown that its corresponding strange graph is the complete graph, whose edges all have phase
+π. Forn = 2in particular, we get a single edge with phaseπ. This graph is obviously connected, but we have
+shown in Proposition 4.3 that forn = 2, Gasym has2connected components. While Gasym is connected for
+n≥ 3, the problem persists for arbitraryn. The reason for this is given by the next lemma, which shows that
+connected components of two quantum graphs are connected components of their disjoint union.
+Definition 4.11.The disjoint union of two quantum graphsG1 = (Mk,A 1)and G2 = (Mℓ,A 2)is the
+quantum graphG 1⊔G 2 onM k+ℓ with adjacency operatorA1⊕A 2.3
+Recalling that
+XR
+A,B,C =B⊕
+⨁
+i<j
+(Aij Cij
+Cji Aji
+)
+,
+it is not hard to see that the strange graph of disjoint union of two ABC graphs is given by the disjoint union
+of their strange graphs.
+Lemma 4.12.Let XA1,·,C 1,...,X Ak,·,C k be quantum graphs that respectively decompose into connected
+componentsP (i)
+1 ,...,P (i)
+mi for i∈ [k]. Then there exists a decomposition of the disjoint union⨆
+iXAi,·,C i into
+connected componentsR(1)
+1 ,...,R (k)
+mk.
+Proof. Without loss of generality supposeXAi,·,C i is a quantum graph onMni. Letn =∑
+ini and define
+n↓
+i =∑
+j<inj and n↑
+i =∑
+j>inj for alli∈ [k]. The projectors witnessing the connected components of the
+disjoint union are then given by
+R(i)
+s = 0n↓
+i
+⊕P (i)
+s ⊕0n↑
+i
+.
+Per assumption, P (i)
+1 ,...,P (i)
+mi sum to Ini, so R(1)
+1 ,...,R (k)
+mk sum to In. Now recall that the connected
+component condition is equivalent to
+˚A
+i
+Ps
+Pt
+i
+j
++ = 0
+j
+˚C
+j
+Ps
+Pt
+i
+ji
+,
+for alli,j∈ [n]and s̸ = t. This is always satisfied ifi̸∼j in the strange graph of⨆
+iXAi,·,C i. Suppose
+then thati∼j . Then i and j must both be in the part of the strange graph belonging to someXAa,·,C a.
+This implies that if anyP∈{P s,Pt} is equal toR(b)
+s for b̸ =a, thenP|i⟩ =P|j⟩ = 0and the condition is
+3In the literature, the vertex set of the disjoint union is usally defined asMk⊕M ℓ, but since we work with quantum graphs
+onM n we view the direct sum as a suitable subspace ofMk+ℓ.
+30
+
+=== page 31 ===
+satisfied. In the remaining case, wherePs and Pt are equal toR(a)
+s and R(a)
+t respectively, we recover one of
+the connected component conditions ofXAa,·,C a (up to padding), which is satisfied by assumption.■
+We can use this lemma to prove the following proposition, showing that the equivalence between the
+number of connected components ofXA,B,C and of the strange graphG(A,C )fails for everyn. The case for
+oddnfollows by taking the disjoint union with an isolated vertex.
+Proposition 4.13.For every even n∈N there exists a quantum graph onMn of the formXA,·,C such that
+XA,·,C has twice as many connected components asG(A,C).
+Proof. Consider the strange graph obtained by taking the disjoint union ofn/2strange edges with phaseπ.
+The strange graph hasn/2connected components, while by Lemma 4.12, the corresponding quantum graph
+hasnconnected components. ■
+However, ifn≥ 3then we can still recover the equivalence for the question of connectedness. To show
+this, we first prove the following lemma, which might be interesting in its own right.
+Lemma 4.14.If G(A,C )contains at least one classical edge, thenXA,B,C is connected if and only ifG(A,C )
+is.
+Proof. The forward direction follows contrapositively from Proposition 4.10: IfG(A,C )is disconnected it
+has at least2connected components, soXA,B,C also has at least2connected components and is thus also
+disconnected.
+Conversely, suppose thatXA,B,C is disconnected. Then in particularXA,·,C is disconnected. There thus
+exists a projectorPthat satisfies
+˚A
+i
+P
+P⊥
+i
+j
++ = 0
+j
+˚C
+j
+P
+P⊥
+i
+ji
+,
+cf. Equation (8). We show that there exists a decomposition of G(A,C )into2connected components.
+Consider the following sets of vertices
+C :={i∈[n]|P|i⟩=|i⟩},
+C⊥ :={i∈[n]|P|i⟩= 0},
+C∼ := [n]\(C∪C ⊥).
+Clearly,C,C⊥,C∼ partition[ n]. We show that edges ofG(A,C )can only exist inside these sets. Leti∼j .
+We have to exclude the following cases.
+•i∈C , j∈C ⊥: In this case we haveP|i⟩ =|i⟩̸ = 0and P⊥|j⟩ =|j⟩, so theA-term is non-zero. This
+already excludes classical edges. We moreover haveP|j⟩ = 0, so theC-term is zero and thus cannot
+cancel out theAcontribution. This excludes strange edges as well.
+•i∈C , j∈C ∼: In this case we haveP|i⟩ =|i⟩̸ = 0and P⊥|j⟩̸ = 0, which excludes classical edges. We
+also haveP⊥|i⟩= 0, so theC-term is zero. This excludes strange edges.
+•i∈C ⊥, j∈C ∼: Follows from the previous case by considering the condition withP↔P ⊥ exchanged.
+31
+
+=== page 32 ===
+The cases withi and j exchanged are follow by undirectedness. Finally, we show that there cannot be
+any classical edges insideC∼. Indeed, i,j∈C ∼ implies P|i⟩̸∈{ 0,|i⟩} and P|j⟩̸∈{ 0,|j⟩}, and thus also
+P⊥|j⟩̸∈{ 0,|j⟩}. It follows that theA-term is non-zero and thus the condition unsatisfiable for classical edges.
+Now by assumption,G(A,C )has at least one classical edge. This implies that eitherC or C⊥ must be
+non-empty. Without loss of generality assumeC is non-empty. ThenC andC⊥∪C∼ partition[ n]and by our
+previous observations there is no edge between the two sets. It follows thatG(A,C )is disconnected, which
+completes the proof. ■
+Note that there is no hope to extend Lemma 4.14 to the number of connected components: The disjoint
+union of a classical(n− 2)-clique and a strange edge of phaseπ has2connected components, but the
+corresponding quantum graph has at least3by Lemma 4.12. We now prove that connectedness is preserved
+in general forn≥3.
+Proposition 4.15.For n≥ 3, a quantum graph of the formXA,B,C on Mn is connected if and only if
+G(A,C)is.
+Proof. The forward direction again follows contrapositively. For the backward direction we may moreover
+assume by the previous proposition thatG(A,C )does not have any classical edges. Assume for contradiction
+that G(A,C )is connected butXA,B,C has at least2connected components. By the splitting principle,XA,·,C
+also has at least2connected components. There thus exists a projectorPsuch that
+˚A
+i
+P
+P⊥
+i
+j
++ = 0
+j
+˚C
+j
+P
+P⊥
+i
+ji
+(10)
+for alli,j∈ [n]. We claim that every such projector must have full-coordinate support. Otherwise there exists
+an i∈ [n]such that P|i⟩ = 0. Since the strange graph is connected andP is non-zero, there also exists a
+j∈ [n]with i∼j such thatP|j⟩̸ = 0. But then Equation (10) cannot be sastisfied. Indeed, theA-term is0
+since P|i⟩ = 0, but theC-term is not: Per assumption,G(A,C )contains no classical edges, so˚Cij̸= 0. At
+the same timeP|j⟩̸= 0andP ⊥|i⟩=|i⟩̸= 0.
+Since per assumption G(A,C )contains no classical edges, ˚Cij is always non-zero, so we can rewrite
+Equation (10) as
+i
+P P⊥
+j
+=e (π−γij)i
+j
+P P⊥
+i
+,
+where we substituted ˚Aji and ˚Cij by their values1/2and1 /2times a phase, multiplied both sides by2,
+rotated the input wire to the output, and moved theC-term to the right-hand side. This requires that
+P|i⟩=αP|j⟩(11)
+P⊥|j⟩=β P⊥|i⟩(12)
+withαβ=e (π−γij)i =:cij.
+Choose an orthonormal basisψ1,...,ψ k of imgP and complete it to an orthonormal basis ofCn by vectors
+ψk+1,...,ψ n. We define a unitary matrixH byHis =⟨ψs|i⟩. The fact thatP has full coordinate support
+implies that every row ofH has at least one non-zero entry in the firstk columns. Equation (11) now implies
+k∑
+s=1
+⟨ψs|i⟩|ψs⟩=P|i⟩=αP|j⟩=α
+k∑
+s=1
+⟨ψs|j⟩|ψs⟩.
+32
+
+=== page 33 ===
+Since theψs are orthogonal, this is only the case if
+His =⟨ψ s|i⟩=α⟨ψ s|j⟩=αH js.
+for alls≤k. Similarly, by Equation (12) we have
+n∑
+t=k+1
+⟨ψt|j⟩|ψt⟩= P⊥|j⟩=β P⊥|i⟩=β
+n∑
+t=k+1
+⟨ψt|i⟩|ψt⟩,
+which implies
+Hjt =⟨ψt|j⟩=β⟨ ψt|i⟩=β Hit.
+for allk<t≤n. We thus conclude that
+His
+Hjs
+= Hit
+Hjt
+cij and Hjt
+Hit
+= Hjs
+His
+cij
+for alls≤k , k<t≤n wheneveri∼j . This means that ifi∼j , the rowsHi∗ and Hj∗ split into two parts:
+the firstk columns and the lastn−k columns, which are respectively scalar multiples of each other. Call this
+property (M). SinceG(A,C )is connected and n≥ 3, there are at least three vertices connected by a path. It
+follows that the corresponding rows must satisfy property (M). We show that no unitary matrix satisfies this
+constraint.
+Claim 1.Let x,x′ be a pair of rows of a unitary matrix that satisfy property (M). Supposex splits intox1
+andx 2. Thenx 2̸= 0.
+Proof. Suppose otherwise. SinceH is unitary,x and x′ are orthogonal. We thus havex′
+1x†
+1 =x′
+1x†
+1 +x′
+2x†
+2 =
+x′x† = 0, butx 1 is a scalar multiple ofx′
+1 by property (M), so their inner product cannot be0.□
+Claim 2.Let k<n and H be a unitary matrix such that every row has at least one non-zero entry in the
+firstkcolumns. ThenHdoes not contain three rows that pairwise satisfy property (M).
+Proof. Assume for contradiction that there are rowsu,v,w pairwise satisfying property (M). This means that
+v1 =αu 1 andv 2 =βu 2
+w1 =γu 1 andw 2 =δu 2
+SinceHis unitary, they must be mutually orthogonal. It follows that
+α∥u1∥2 +β∥u2∥2 =u 1(αu1)† +u 2(βu2)† =uv† = 0
+γ∥u1∥2 +δ∥u2∥2 =u 1(γu1)† +u 2(δu2)† =uw† = 0
+Set ξ =∥u1∥2/∥u2∥2. Note that this is well-defined sinceu2̸= 0by Claim 1. It is moreover positive, since by
+assumptionu 1 contains at least one non-zero entry. Substitutingξinto the orthogonality equations yields
+β=−ξαandδ=−ξγ.(13)
+Now consider the remaining orthogonality constraint, which yields
+αγ∥u1∥2 +βδ∥u2∥2 =αu 1·(γu 1)† +βu 2·(δu 2)† =vw† = 0.
+By Equation (13) this is equivalent to
+αγ∥u1∥2 + (−ξα)(−ξγ)∥u2∥2 =αγ∥u1∥2 +ξ 2αγ∥u2∥2 = 0
+Dividing both sides byαγ∥u2∥2 leaves us with
+ξ+ξ 2 = 0,
+but this is unsatisfiable for positiveξ, contradiction.□
+We have seen that Equation (10) is only satisfied for alli,j∈ [n]if the unitary matrixH = (⟨ψs|i⟩)is
+contains at least three rows that pairwise satisfy property (M). ButH satisfies the constraints of Claim 2 and
+thus cannot contain such a collection of rows. This is a contradiction, soXA,B,C must be connected.■
+33
+
+=== page 34 ===
+4.2 Colouring
+We now move on to colouring. Recall that a quantum graph isk-colourable if there existk non-zero projectors
+P1,...,P k onC n that sum to the identity, such that
+G
+Ps
+= 0
+Ps
+for alls∈ [k]. There is a trivial lower bound: Every quantum graph can be at most1colourable, which is
+satisfied if and only ifG is the zero map. However, contrary to the case of connected components, there is no
+trivial upper bound on the number of colours that are needed. We will see that there are quantum graphs
+that are not colourable at all.
+4.2.1 ABC Graphs
+Since the colouring condition is very similar to that for connected components, it is unsurprising that we can
+also prove a splitting principle for colouring. In fact, it is proved the exact same way we did for connected
+components in Section 4.1.2, so we refrain from repeating the proof here. Merely the conclusion for the
+chromatic number is different. The splitting principle for colouring states that a collection of projectors is
+a colouring forXA,B,C if and only if it is a colouring for bothXA,·,C and X·,B. While for the number of
+connected components we were interested in the maximum possible number of projectors, the chromatic
+number is equal to the minimum number of projectors needed. We thus obtain the following result.
+Proposition 4.16.We haveχ(X A,B,C)≥max{χ(X A,·,C ),χ(X·,B )}.
+Similarly, an analogous argument as for connected components shows that everyk-colouring of the strange
+graphG(A,C)induces ak-colouring ofX A,·,C .
+Proposition 4.17.For all k∈N it holds that ifG(A,C )is k-colourable then so isXA,·,C. In particular, we
+haveχ(X A,·,C )≤χ(G(A,C)).
+Proof.LetC 1,...,C k be the colour classes of ak-colouring ofG(A,C). We set
+Ps =
+∑
+i∈Ci
+|i⟩⟨i|.
+Then thePs are orthogonal projectors summing to the identity and the condition
+˚A + ˚C
+Ps
+Ps Ps
+Ps
+= 0
+34
+
+=== page 35 ===
+becomes
+˚A
+i′
+i
++ ˚C
+i′
+i
+i′
+i
+i′
+i
+= ˚A
+i′
+i
++
+i′
+i
+i′
+i
+i′
+i
+˚C
+i′
+i
+= 0
+i′
+i
+.
+Since Cs is a colour class, we haveii′̸∈E (G(A,C ))for all i̸ =i′∈C s and thusAii′ =Ci′i = 0as desired.
+Fori=i ′, we have˚Aii′ = ˚Cii′ = 0by definition. This completes the proof.■
+Note that unlike the corresponding result for connected components, this result only holds for ABC graphs
+with trivialB. This is related to the splitting principle: In the case of connected components we were lucky
+that our translation of the connected components ofG(A,C )also happened to be a decomposition into
+connected components ofX·,B. We have no such luck for colouring. While it would generally be possible that
+there exists a different translation that does work, the next section will show that this is not the case.
+4.2.2 AB Graphs
+The first observation we make is that AB graphs can be arbitrarily difficult to colour.
+Proposition 4.18.There exist quantum graphs of the formXA,B that are not colourable.
+Proof.Recall that the complete graphKn satisfies
+Kn =X nJ−I
+n ,nI−J
+n
+and is thus of the formXA,B. However, it is not colourable: The colouring condition reads
+Ps
+Ps
+= 1
+n Ps ,
+but the left-hand side has rank1, while the right-hand side has rankn·rkP s. This is unsatisfiable for
+n≥2. ■
+Since every strange graph is at leastn-colourable, this shows that Proposition 4.17 cannot be generalised
+to non-trivialB. This is a symptom of the colourings forXA,·,C and X·,B generally being incompatible; it is
+not exclusively caused byB. Indeed,X·,B is always at leastn-colourable.
+Proposition 4.19.Every quantum graph of the formX·,B isn-colourable.
+Proof.ForX ·,B the colouring condition becomes
+B = 0
+Ps
+Ps
+,
+35
+
+=== page 36 ===
+which is equivalent to
+B
+= 0
+Ps Ps
+.(14)
+Now letv1,...,v n be the orthonormal DFT basis ofCn, that is thekth entry ofvj is exp(jk· 2iπ/n)/√n.
+Let Ps =|vs⟩⟨vs|. Plugging invi into the bottom left- andvj into the bottom right of Equation (14) yields0
+if i̸ =s or j̸ =s, andB◦m (vs⊗vs)otherwise. Since m is entrywise multiplication onCn and the entries
+of vs have norm1, we havem(vs⊗vs) =1. Since we assumeB to be loopless, we haveB1= 0, and thus
+B◦m( vs⊗vs) = 0. Since both thevi and thevi form a basis, we conclude that Equation (14) holds.■
+In this case, the colourability is limited by the dimension of the kernel ofB.
+Proposition 4.20.It holds thatχ(X·,B )≥n/dim kerB.
+Proof.Recall that the colouring condition forX·,B is equivalent to
+B
+= 0
+Ps Ps
+.
+Let Ts = imgPs. The condition requires that the subspacesT 2
+s = span{m(v⊗w )|v,w∈T s} must be
+contained in the kernel ofB. Now suppose there existed ak-colouring P1,...,P k of X·,B. Since thePs sum
+to the identity, there needs to exist ans such that rkPs≥n/k . We claim thatdimT 2
+s ≥dimT s, and thus
+dim kerB≥n/k.
+Without loss of generality assume that for allj∈ [n]there exists a v∈T s such thatvj̸= 0. Otherwise we
+considerT s as a subspace ofCm for some suitablem<n.
+Claim 1.There exists aw∈T s such thatwj̸= 0for allj∈[n].
+Proof. Choose some arbitraryw(0)∈T s. Let i be minimal withw(0)
+i = 0. By assumption, there exists a
+u∈T s such thatui̸= 0. Let
+α := max
+i
+|w(0)
+i |β := min{|ui||u i̸= 0}γ := inf{r∈R +|rβ >α},
+and setw(1) =w(0) +ru. Thenw(1)∈T s, w(1)
+i ̸= 0and for all j∈ [n], w(0)
+j ̸= 0implies w(1)
+j ̸= 0. Iterating
+this procedure for at mostnsteps yields the desiredw.□
+Let w be as in the claim and observe thatT 2
+s ⊇{m (v⊗w )|v∈T s}. Recall thatm is componentwise
+multiplication, and thusm(v⊗w ) =v•w . This in turn is equal toWv forW = diagw. Now dimTs = dimTs
+andWis invertible. It follows that
+dimT 2
+s≥dim{m(v⊗w)|v∈T s}= dim{Wv|v∈ Ts}= dim Ts = dimTs
+as desired. As shown above, this implies thatdim kerB≥dimT 2
+s ≥dimT s≥n/k for anyk-colouring. In
+particular, for an optimalχ(X·,B )-colouring, we get
+χ(X·,B )≥ n
+dim kerB
+as desired. ■
+ForAalone, we recover precisely the chromatic number.
+36
+
+=== page 37 ===
+Proposition 4.21.For allk∈N, it holds thatX A,· isk-colourable if and only ifAis.
+Proof. Proposition 4.17 and Proposition 3.19 establish thatXA,· is k-colourable ifA is. Conversely, suppose
+thatP 1,...,P k are ak-colouring ofX A,·. Then per definition, we have
+˚A
+Ps
+Ps
+= 0
+for alls∈[k]. This is equivalent to
+˚A
+Ps
+Ps
+i
+j
+= 0
+for alli,j∈[n]. We can simplify the (co)multiplications, which yields
+˚A
+j
+i
+Ps
+Ps
+i
+j
+= 0.
+This in turn is only satisfied ifAij̸= 0impliesP|i⟩= 0orP|j⟩= 0. LetC 1,...,C k⊆[n]be defined as
+Cs ={i∈[n]|P s|i⟩= 0} c
+The Cs are valid colour classes: Assume for contradiction that there werei,j∈C s with i∼j . ThenAij̸= 0
+and thusPs|i⟩ = 0or Ps|j⟩ = 0. This implies thati̸∈C s or j̸∈C s, contradicting our assumption. They also
+cover[n]. Suppose there was somex∈ [n]such that x̸∈C s for alls. Then we havePs|x⟩ = 0for all s and
+thus
+|x⟩=I|x⟩=
+∑
+s
+Ps|x⟩= 0̸=|x⟩.
+We have proved that there exist colour classesC1,...,C k that jointly cover[n]. To obtain a graph colouring,
+we let
+˜Cs =C s\
+⋃
+t>s
+Ct
+Then the ˜Cs form a partition of[n]and we have ˜Cs ⊆C s, so the colouring condition is still satisfied.
+Consequently, ˜C1,..., ˜Ck is ak-colouring ofA.■
+37
+
+=== page 38 ===
+4.2.3 The Symmetric and Antisymmetric Cases
+We now turn our attention to the Symmetric and Antisymmetric quantum graphs. The Antisymmetric
+quantum graph turns out to ben-colourable, which we show by another rank-based argument.
+Proposition 4.22.It holds thatχ(G asym) =n.
+Proof. In Proposition 3.13 we have seen thatGasym is of the formXA,·,C , and by Proposition 3.18 its
+corresponding strange graph is the complete graph of strange edges with phaseπ. Proposition 4.17 thus
+implies thatχ(G asym)≤n. On the other hand, the colouring condition forGasym is equivalent to
+=
+Ps
+Ps
+Ps
+Ps
+.
+The left-hand side has rank1, while the right-hand side has rank(rkPs)2. The only way to satisfy the
+equation is thus whenrkPs = 1for alls, which implies thatχ(G asym)≥n.■
+For the Symmetric quantum graph we find a similar situation as for the connected components ofGasym,
+wheren= 2is a special case. We also find that forn≥3,G sym is not colourable at all.
+Proposition 4.23.Forn= 2,G sym is2-colourable. Forn≥3,G sym is not colourable.
+Proof.The colouring condition forG sym is equivalent to
++
+
+
+1
+2
+
+ Ps= 1
+n
+Ps
+Ps
+Ps
+Ps
+.
+Note that the right-hand side has rankn·rkP s, while the left-hand side has rank at most1 + (rkPs)2.
+An elementary computation shows that this is only compatible ifn = 2or rkPs =n. Suppose n̸ = 2and
+rkPs =n. The only projector of rankn is the identity, in which case the right-hand side becomes a multiple
+of the identity onCn⊗Cn, while the left-hand side becomes the projector onto the symmetric subspace of
+Cn⊗Cn. These are obviously different maps, so the equality cannot be satisfied forn̸ = 2. It follows that
+Gsym is not colourable forn≥3.
+On the other hand, supposen = 2. We know thatPs̸∈{ 0,I}, so we must haverkPs = 1. This means
+that we can rewrite the condition equivalently as
++
+
+
+1
+2
+
+
+Ps= 1
+2
+ψs
+ψs
+ψs
+ψs
+ψs ψs
+ψs ψs
+.
+38
+
+=== page 39 ===
+Moving wires and simplifying yields
++
+
+
+1
+2
+
+
+Ps= 1
+2
+ψs
+ψsψs
+ψs
+PsPs .
+We can factor thePs term, in which case the condition simplifies to
+1
+2(|ψs⟩⟨ψs|+|ψ s⟩⟨ψs|) = 1
+2I,
+which is satisfied forψs = (|1⟩+i|2⟩)/
+√
+2.■
+4.2.4 The Complete and Empty Graphs
+The cases of the complete and empty graphs are now straightforward. Since the adjacency operator ofKc
+n is
+the zero map, the identity satisfies the colouring condition, which implies thatχ(Kc
+n) = 1. On the other hand,
+we have shown in Proposition 4.18 that the complete graphKn is not colourable at all. This concludes our
+investigation of the chromatic number.
+Proposition 4.24.We haveχ(K c
+n) = 1, whileKn is not colourable.
+4.2.5 Notes on (Non-)Colourability of Quantum Graphs
+We have seen that there exist quantum graphs that are not classically colourable. On first glance, this might
+seem like a flaw in the definition ofk-colourability. We argue that this is not the case: the obstruction is
+intrinsic to the non-commutativity of the quantum edge space. A classicalk-colouring requires orthogonal
+projections P1,...,P k summing to the identity and satisfyingPsXPs = 0for every X∈S . For quantum
+graphs whose adjacency operator has large rank (see Proposition 4.18, where the colouring condition leads to
+an irreconcilable rank mismatch) no non-zero projection can satisfy this simultaneously for all edges. This
+is natural: In the classical setting, adjacency matrices have entries in{0, 1} and one can always assign one
+colour per vertex. For quantum graphs, however, the edge spaceS can be non-commutatively too dense for
+any classical partition of the identity to separate.
+In [BGH22], see also [Gan23], the authors also propose a definition of quantum colouring. While the
+colouring notion we used so far corresponds to the existence of aclassicalwinning strategy in a suitably
+chosen non-local game played on the quantum graph, quantum colourings correspond toquantumstrategies.
+More precisely, the classical chromatic numberχ restricts to an ancilla algebraN = C, whereas the quantum
+chromatic numberχq allows any finite-dimensional von Neumann algebraN. The entanglement encoded in
+N provides the players with shared quantum resources, enabling correlations that are impossible classically
+and making every quantum graph onMn finitely colourable.
+Proposition 4.25(Theorem 6.6. in [BGH22]).For every quantum graphGonM n, we haveχq(G)≤n 2.
+The boundn2 is tight: It holds thatχq(Kn) =n2 = dimMn [BGH22, Gan23]. By constrast, we have seen
+in Proposition 4.18 thatKn is not classically colourable. In particular,Kn exhibits a strict separation
+χ(Kn) =∞> n 2 =χ q(Kn),
+demonstrating that quantum entanglement yields a decisive advantage in the colouring game for quantum
+graphs. Then2 projections achieving the quantum colouring are given by a “shift and multiply” unitary error
+basis forMn, see [BGH22, Theorem 6.6] for details.
+39
+
+=== page 40 ===
+4.3 Independent Sets
+Recall that the notion of independent sets for quantum graphs was introduced in Definition 2.16 via the
+operator space point of view: Ak-independent setof a quantum graphG is a projectorP∈M n of rank
+k such thatPSP⊆CP , whereS is the operator space associated toG. Clearly, any rank one projector
+P=|v⟩⟨v|has this property, hence every quantum graphGhasα(G)≥1.
+Before moving on to the study of the independent sets of quantum graphs with symmetry, let us comment
+on the fact that the independent set condition from Definition 2.16 is very close to the notion ofisotropic
+subspaceintroduced in [Bei+21]: A subspaceU⊆C n is an isotropic subspace of an alternating matrix space
+A⊆{X∈M n :X ⊤ =−X}
+if, for anyA∈A and anyu,u′∈U , we haveuTAu′ = 0. Comparing this definition with the independent set
+definition in our work, we spot two important differences:
+• On the one hand, we only require thatPSP is a multiple ofP, not necessarilyPSP = 0as in the
+definition of the isotropic subspace from [Bei+21].
+• On the other hand, we work exclusively in the complex case scenario, so the forms we are considering are
+sesquilinear, not bilinear: We would work with conditions of the formu†Au′ = 0instead of uTAu′ = 0.
+Although not strictly equivalent, these conditions are closely related: In [Bei+21, Theorem 1.3], the authors
+show that the independence number of a graphG is equal to the maximum dimension of an isotropic subspace
+of the alternating matrix spaceA(G) ={|i⟩⟨j|−|j⟩⟨i||i∼j} , a result similar to our Proposition 4.28. Note
+thatA(G)is precisely the operator space associated toXG/2,·,−G/2. A similar comment applies to the case
+of the coloring graph parameters.
+4.3.1 ABC Graphs
+Just as for colourings and connected components, it turns out that the independent set condition forXA,B,C
+splits into independent conditions for theAC part and theB part. Indeed, a projector P witnesses an
+independent set ofXA,B,C if
+B+˚A + ˚C = cx· P
+x x x
+PP PP PP
+.
+for allx∈M n. Plugging in the standard basis forxand simplifying, we get
+˚A
+i
++ = cij· P
+j i j
+PP ˚C
+i
+j j i
++
+B
+i
+δij
+PP
+PP
+.
+Fori̸ =j, theB-term is zero and we recover the independent set condition forXA,·,C . Fori =j, we have
+˚Aji = ˚Cij = 0, and we recover the independent set condition forX·,B. It thus follows that an independent set
+for XA,B,C must simultaneously be an independent set ofXA,·,C and X·,B. We thus get the following result.
+Proposition 4.26.We haveα(X A,B,C)≤min{α(X A,·C ),α(X·,B ))}.
+40
+
+=== page 41 ===
+For the independence number, this result is particularly useful, since we can determineα(XA,·,C )exactly.
+Proposition 4.27.For quantum graphs of the formXA,·,C we haveα(XA,·,C ) =α(G(A,C)).
+Proof. We first show thatα(XA,·,C )≥α (G(A,C )). We show the stronger results that every independent set
+of G(A,C )induces an independent set ofXA,·C of the same size. By realigning, we find that the projector
+onto the operator space corresponding toXA,·,C is given by
+˚A + ˚C .
+Now letCbe an independent set ofG(A,C)of sizekand let
+P=
+∑
+c∈C
+|c⟩⟨c|.
+ThenPis a rank-kprojector and the independent set condition becomes
+˚A
+c c′
++ ˚C
+c c′
+= cx· P
+x x
+c c′ c c′
+∑
+c,c′∈C
+,
+which is equivalent to
+˚A
+cc′
++ = cx· Px
+c c′
+c c′
+∑
+c,c′∈C
+˚C
+c′c′
+x
+c c
+c c′ .(15)
+Now supposec̸ =c′. Sincec,c′ are part of an independent set, we havec̸∼c ′ and thus ˚Ac′c = ˚Cc′c = 0. The
+same holds forc =c′, since ˚A and ˚C have no diagonal. It follows that Equation (15) is satisfied forcx = 0,
+and thusPwitnesses an independent set ofX A,·,C .
+Now supposeP is a rank-k projector witnessing an independent set ofXA,·,C . Without loss of generality,
+we assume thatk> 1. We show that there exists a corresponding independent set ofG(A,C ). To see this,
+we rewrite the independent set condition by plugging in a basis ofMn for x, concretely the outer products
+formed by the standard basis ofCn.
+˚A
+i
++ ˚C = cij· P
+P P P P
+i
+jj
+41
+
+=== page 42 ===
+Simplifying the (co)multiplications and moving tensor legs yields
+˚A
+i
+j + ˚C = cij· P
+P
+P
+P
+P
+j
+i
+i
+i j
+j
+.(16)
+We now choose our independent set asX ={i∈ [n]|P|i⟩ = 0}c. Then we have|X|≥n−dim kerP = rkP =k.
+Suppose then thati∼j in G(A,C ). If Equation (16) is satsfied forcij = 0then it is straightforward to see
+that eitherP|i⟩ = 0or P|j⟩ = 0and thus i̸∈X or j̸∈X . Suppose then that the equation is satisfied for
+cij̸= 0. Dividing bycij yields
+αP|i⟩⟨j|P+βP|j⟩⟨i|P=P.
+SincePis a projector, we must have
+(αP|i⟩⟨j|P+βP|j⟩⟨i|P) 2 =α 2PjiP|i⟩⟨j|P+αβP jjP|i⟩⟨i|P+βαP iiP|j⟩⟨j|P+β 2PijP|j⟩⟨i|P
+=αP|i⟩
+(
+αPji⟨j|P+βP jj⟨i|P
+)
++βP|j⟩
+(
+βPij⟨i|P+αP ii⟨j|P
+)
+!
+=αP|i⟩⟨j|P+βP|j⟩⟨i|P
+Since i∼j , we know thatα = ˚Aji/cij̸= 0. The equation is thus only satisfied ifβ = 0, Pjj = 0, or⟨i|P = 0.
+If⟨i|P = 0we have P|i⟩ = 0and thus i̸∈X . IfPjj = 0, then∥P|j⟩∥ 2 =⟨j|PP|j⟩ =⟨j|P|j⟩ = 0and thus
+P|j⟩= 0andj̸∈X. Suppose then thatβ= 0. Then we have
+P=αP|i⟩⟨j|P,
+which implies thatrkP = 1, contradicting our assumption. It follows thatX is indeed an independent set,
+which completes the proof. ■
+4.3.2 AB Graphs
+An immediate corollary of Proposition 4.27 is that the independence number ofXA,· coincides with that ofA.
+Proposition 4.28.It holds thatα(X A,· ) =α(A).
+Proof. By Proposition 3.19 we haveA∼= G(A,· )and by Proposition 4.27 we haveα(XA,· ) =α(G(A,· )). ■
+While we cannot determine the independence number ofX·,B precisely, we can give strong bounds. We
+will see that the bounds are not only tight, but the upper and lower bounds coincide for certainX·,B.
+Concretely, it turns out that the independence number is closely related to both the rank ofB and the matrix
+representation ofBin the standard basis.
+Definition 4.29.LetXbe ann×nmatrix. We denote by
+EqRows(X) := max{k∈[n]|∃j 1 <···<j k∈[n],X j1∗ =X j2∗ =···=X jk∗}
+the maximum number of equal rows ofX.
+Towards proving our bounds, we begin by rephrasing the independent set condition forX·,B. By realigning
+the adjacency operator, we find that the projector onto the corresponding operator space is given by
+B .
+42
+
+=== page 43 ===
+The independent set condition thus becomes
+B
+P P
+x
+= Pcx· .
+Like we did forXA,·,C , we can plug in the standard basis forx, which yields
+B
+P P
+i
+= Pcij·
+j
+.
+Fori̸ = j, this is satisfied forcij = 0. Otherwise, by bending the right wire downwards, we find that the
+condition is equivalent to
+B
+P
+P
+i
+= Pβi .(17)
+Let Di :C n→C n be left-multiplication byB|i⟩. Then in the standard basis, we haveDi = diag(B|i⟩), and
+equation Equation (17) becomes
+PDiP=β iP.(18)
+This phrasing of the independence condition suggests to constructPexplicitly as follows.
+Proposition 4.30.LetBbe a projector. Every set of equal rows ofBinduces an independent set ofX·,B.
+Proof. Suppose B containedk equal rows, indexed byj1,...,j k. This means thatBjsi =Bjti for alli∈ [n]
+ands,t∈[k]. The rank-kprojector
+P=
+∑
+s∈[k]
+|js⟩⟨js|
+then satisfies
+PDiP=
+∑
+s,t∈[k]
+|js⟩⟨js|Di|jt⟩⟨jt|=
+∑
+s∈[k]
+Bjsi|js⟩⟨js|=β iP
+as desired. ■
+We hence get the following corollary regarding the independence number ofX·,B.
+Corollary 4.31.We haveα(X ·,B )≥EqRows(B).
+43
+
+=== page 44 ===
+We can also lower boundα(X·,B )in terms of rkB. The proof is a nice application ofTverberg’s theorem
+[Tve66], which states that any set of at least1 + (k− 1)(r + 1)vectors in Rr can be partitioned intok groups
+whose convex hulls share a common point. For what follows, it will be convenient to rephrase Equation (18)
+in terms of isometries instead of projectors. Concretely,X·,B has ak-independent set if and only if there
+exists an isometryV:C k→C n such that
+V†DiV=β iIk (19)
+Equation (18) follows from Equation (19) by multiplying both sides from the left withV and from the right
+with V†. Conversely, any isometryV with imgV = imgP satisfies P =VV †, so multiplying Equation (18)
+from the left withV† and from the right withVrecovers Equation (19).
+Proposition 4.32.It holds that
+α(X·,B )≥1 +
+⌊n−1
+rkB+ 1
+⌋
+.
+Proof. First, note that since we assumeX·,B to be undirected, it holds by Proposition 3.10 thatB = B.
+Let r := rkB and letk be the right hand side of the ineqality in the statement. Our goal is to construct an
+isometryV:C k→C n such that
+V† diag(B∗i)V=β iIk ∀i∈[r],(20)
+for someβi∈R ; actually we are going to construct below arealisometryV. The condition above implies, for
+alls∈[k],
+n∑
+j=1
+Bji|Vjs|2 =β i ∀i∈[r].
+Since for a fixeds, the vector(|Vjs|2)j∈[n] is a probability vector, we can interpret the equation above as
+β∈R r lying in the convex hull of the vectorsBj∗∈R r forj∈[n].
+To construct the (real) orthonormal vectorsvs and the vectorβ∈R r, we are going to apply Tverberg’s
+theorem. From the assumption in the statement we haven≥ 1 + (k− 1)(r + 1), hence we can partition the
+set[n]intokparts
+[n] =J 1⊔J 2⊔···⊔J k
+such that
+k⋂
+s=1
+conv{Bj∗|j∈J s}̸=∅.
+Letβ∈R r be an arbitrary element of the intersection above. For alls∈[k], we can write
+βi =
+∑
+j∈Js
+p(s)
+j Bji ∀i∈[r]
+for some probability vectorp(s). Now we define the isometryVas follows: for alls∈[k]andj∈[n],
+Vjs :=
+{√
+p(s)
+j ifj∈J s
+0ifj /∈J s.
+First, note that thek column vectorsV∗s∈R n have unit norm by construction. Moreover, fors̸ =t, it holds
+thatV∗s⊥V∗t because they have disjoint supports. For anys∈[k]we have
+[V† diag(B∗i)V]ss =
+n∑
+j=1
+Bji|Vjs|2 =
+∑
+j∈Js
+Bjip(s)
+j =β i ∀i∈[r].
+Using one more time the disjoint support property, we have fors̸=t∈[k]:
+[V† diag(B∗i)V]st =
+n∑
+j=1
+BjiVjsVjt = 0.
+We have constructed thus an isometry as in (20), finishing the proof.■
+44
+
+=== page 45 ===
+We remark that the proof is conceptually very similar to that of Lemma 2.9 in [Wea19]. In fact, we could
+have applied their result directly to obtain the bound: As required by their lemma, the operator systems
+corresponding to quantum graphs of the formX·,B consist only of diagonal matrices. The only difference
+is that we need to account for the fact that our graphs do not have loops, which results in the+1in the
+denominator. We now proceed to prove a simple upper bound for the independence number that also depends
+on the rank of the matrixB.
+Proposition 4.33.It holds thatα(X ·,B)≤n−rkB.
+Proof. Let V:C k→C n be an isometry witnessing the independence number of the quantum graphX·,B
+with k =α(X·,B ). Letb1,...,b r∈R n be vectors that span the image of the projectionB. The isometryV
+satisfies
+∀i∈[r]∃β i∈RV ∗ diag(bi)V=β iIk.(21)
+Writingci :=bi−βi1, the relation above can be re-written asV∗ diag(ci)V = 0for i∈ [r]. SettingV := imgV ,
+we can rephrase the condition as
+diag(ci)V⊆V ⊥.
+Pick a vectorv∈V having non-zero coordinates; if such a vectorv does not exist, thenV is effectively an
+isometry V:C k→C m with m < nand the bound in the statement can be improved toα(X·,B)≤m−r .
+We have
+di := diag(ci)v= diag(v)c i.
+Since1 /∈imgB, the vectorsc1,...c r are linearly independent, hence so are the vectorsd1,...,d r∈C ⊥,
+proving thatr≤n−k. ■
+Note that this upper bound nicely complements the lower bound in Corollary 4.31: A natural inequality is
+that rkB≤n−EqRows (B) + 1. For looplessX·,B, we have1∈kerB , which implies that the column-sums
+ofB must be0. The inequality thus becomesrkB≤n−EqRows (B), or equivalentlyEqRows(B)≤n−rkB .
+Crucially, there exist projectorsB that saturate this inequality. Take, for instance, the rank-1projection onto
+a vectorv with v1 =··· =vn−1 =c and vn =−(n− 1)c. It follows that there exist quantum graphsX·,B for
+which our upper and lower bounds coincide.
+Finally, note that a naive dimension count for the existence of a complex isometryV:C k→C n witnessing
+the independence number ofX·,B indicates that the real dimension of the complex Stiefel manifold of isometries
+Ck→C n needs to be larger than the total number of constraints in Equation (21):
+2nk−k 2≥r(k 2−1) =⇒k≤ n
+r+ 1 +
+√
+n2 +r 2 +r
+(r+ 1) 2 .
+We plot below the difference between the lower bound in Proposition 4.32 and, respectively, the upper bound
+in Proposition 4.33 (left panel) and the parameter cound in the equation above (right panel).
+45
+
+=== page 46 ===
+4.3.3 The Symmetric and Antisymmetric Cases
+Given our knowledge ofα(XA,·,C )and α(X·,B ), the treatment of the Symmetric and Antisymmetric quantum
+graphs is straightforward. The independence number ofGsym can be determined using Proposition 4.27 and
+the splitting principle, but it also follows from the more elemental proof below.
+Proposition 4.34.It holds thatα(G sym) = 1.
+Proof. Every non-empty quantum graph has an independent set of size1, so it suffices to show that there
+exists no independent set of size≥ 2. Suppose thatP is a projector witnessing an independent set. Then
+P̸ = 0, so there exists ani∈ [n]such that P|i⟩̸ = 0. Now the operator space corresponding toGsym plus CI
+is spanned by{|i⟩⟨j|+|j⟩⟨i||i,j∈[n]}, soPin particular satisfies
+P|i⟩⟨i|P=c iP.
+SinceP|i⟩̸= 0, the left-hand side has rank1, which implies thatci̸= 0andrkP= 1.■
+The case for the Antisymmetric quantum graph is again an immediate corollary of Proposition 4.27.
+Proposition 4.35.It holds thatα(G asym) = 1.
+Proof.G asym is of the formXA,·,C so Proposition 4.27 applies. By Proposition 3.18 the strange graph
+corresponding toG asym is a complete graph, which has independence number1.■
+4.3.4 The Complete and Empty Graphs
+We conclude with the independence numbers of the complete and the empty quantum graphs.
+Proposition 4.36.We haveα(K c
+n) =nandα(K n) = 1.
+Proof. The operator space corresponding toKc
+n is the trivial space, so any projectorP satisfies PSP⊆P , in
+particular this holds forP =I. The complete graph satisfiesKn =XnJ−I
+n ,nI−J
+n
+, so its corresponding strange
+graph is the complete graph with only classical edges. Proposition 4.26 thus implies thatα(Kn)≤ 1. The
+trivial lower boundα(Kn)≥1then establishes the equality.■
+4.4 Cliques
+Finally, we want to turn our attention to cliques. We will find it more convenient to phrase the definition of
+cliques in terms of isometries instead of projectors. As such, ak-clique of a loopless quantum graph with
+operator spaceS is given by an isometryV:C k→C n such thatV†(S⊕CI )V =Mk. This rephrasing suggests
+the following strategy to prove the (non-)existence ofk-cliques. LetPS :M n→M n be the projector ontoS.
+Then an isometryV:C k→C n gives ak-clique if and only if the map
+LV :M n⊕C→M k,(x,α)↦→V†(PS(x) +αI)V
+has full image. Since(imgLV )⊥ = kerL†
+V, this is happens if and only ifL†
+V has trivial kernel. Now we have
+⟨(x,α),L†
+V (y)⟩=⟨L V (x,α),y⟩=⟨V †PS(x)V,y⟩+ α⟨I,y⟩=⟨x,P S(VyV †)⟩+ αTry
+for allx∈M n,α∈C . This implies that an arbitraryy∈M k is in the kernel ofL†
+V if and only ifPS(VyV †) = 0
+and Try = 0. To find ak-clique it is thus necessary and sufficient to find an isometryV:C k→C n such that
+there are no tracelessy∈M k in the kernel ofx↦→PS(VxV †).
+Proposition 4.37.Given a quantum graph with operator spaceS, the clique numberωis given by
+ω= max{k|∃V:C k→C n isometry such that
+[
+Try= 0andP S(VyV †) = 0
+]
+⇒y= 0}.
+46
+
+=== page 47 ===
+4.4.1 ABC Graphs
+We will not be able to prove bounds forXA,B,C in terms ofA,B,C , but we are able to extend the splitting
+principle proved in the case of independent sets (see Proposition 4.26) to cliques.
+Proposition 4.38.Let XA,B,C be a quantum graph. Then we haveω(XA,B,C)≥max{ω (XA,·,C ),ω (X·,B )}.
+Proof. Denote the operator spaces ofXA,B,C, XA,·,C , andX·,B bySABC, SAC, andSB respectively. Recall
+from the proof of Proposition 3.10 that the projector ontoSABC decomposes as
+(XA,B,C)R =X B,A,C =B⊕
+⨁
+i<j
+(
+Aij Cij
+Cji Aji
+)
+.
+The B-summand is the projector ontoSB, while the remaining summands form the projector ontoSAC.
+Since the image of a direct sum is the direct sum of the images, we haveSABC = SAC⊕S B, and in
+particular SABC ⊇S AC and SABC ⊇S B. Now suppose V:C k→C n witnesses ak-clique ofXA,·,C , i.e.
+V†(SAC⊕CI)V=M k. SinceS ABC⊇S AC, we have
+Mk =V †(SAC⊕CI)V⊆V †(SABC⊕CI)V⊆M k,
+so V also witnesses ak-clique ofXA,B,C. The same argument withSB in place ofSAC yields the result. ■
+4.4.2 AB Graphs
+Moving on to AB graphs, we start with the case ofX·,B. It turns out that we can upper boundω(X·,B )in
+terms ofrkB.
+Proposition 4.39.It holds thatω(X ·,B )≤
+√
+rkB+ 1.
+Proof.Recall that the projectorP S onto the operator space associated withX·,B is given by
+B .
+We want to find out under which conditions on an isometryV:C k→C n there exists a tracelessy∈M k in
+the kernel ofPS(VyV †). We have
+B
+V
+y
+V†
+= 0⇐⇒ B
+V
+y
+V†
+= 0⇐⇒ B
+dy
+= 0,
+where dy := diagVyV †. LetT :={diagVyV †|y∈M k,Try = 0}. The question then becomes under which
+conditions we can find an isometryV such that (i)diagVyV †̸= 0for all non-zero tracelessy∈M k and (ii)
+T∩kerB={0}.
+Note that condition (ii) is satisfied if and only if for every basist1,...,t ℓ of T and b1,...,b ℓ′ of kerB the
+set{t1,...,t ℓ,b 1,...,b ℓ′} is linearly independent. It is thus necessary thatdimT≤n−dim kerB = rkB.
+Condition (i) on the other hand is equivalent to the mapΦV :sl k(C)→C n,x↦→diagVxV† being injective.
+It follows thatdimT= rk Φ V = dimslk(C) =k 2−1, and thusk≤
+√
+rkB+ 1.■
+47
+
+=== page 48 ===
+It turns out that this upper bound can generally be achieved, and this question is closely related to the
+existence of specificinformationally complete POVMs(IC-POVMs, see e.g. [HZ11, Section 3.3]). The easiest
+case isB=I−J/n.
+Proposition 4.40.LetB=I−J/n. Thenω(X ·,B ) =⌊√n⌋.
+Proof. We havekerB = span{1}, where1= (1 ,..., 1)T∈C n. The upper bound on the clique number follows
+from Proposition 4.39. For the lower bound, we shall use the same proof strategy as in Proposition 4.39: It
+suffices to show that fork=⌊√n⌋there exists an isometryV:C k→C n satisfying the following conditions:
+(i)diagVyV †̸= 0for all non-zero tracelessy∈M k
+(ii){diagVyV †|y∈M k,Try= 0}∩kerB={0}.
+We first observe that condition (ii) is automatically satisfied whenever condition (i) holds. Indeed, let
+y∈M k be traceless and letv1,...,v n∈C k denote the rows ofV, so that(diagVyV †)i =v†
+iyvi. Then
+n∑
+i=1
+(diagVyV †)i =
+n∑
+i=1
+v†
+iyvi = Tr
+(
+y
+n∑
+i=1
+viv†
+i
+)
+= Tr(y) = 0,
+where we used that∑
+iviv†
+i =Ik sinceV is an isometry. In other words, the image ofΦV on traceless matrices
+is contained in the hyperplane1⊥ = (kerB )⊥. Thus for any non-zero tracelessy satisfying diagVyV †̸= 0, the
+vector diagVyV † cannot lie inkerB = span{1}, and condition (ii) is automatic. The problem therefore reduces
+to finding the largestk for which condition (i) can be satisfied: The mapΦV :sl k(C)→C n, x↦→diagVxV†,
+must be injective.
+It remains to show that fork =⌊√n⌋, an isometry satisfying condition (i) exists. Setm =k2≤n . We will
+construct n vectorsv1,...,v n∈C k with∑
+iviv†
+i =Ik whose rank-one operatorsviv†
+i span Mk. Note that
+this is the defining property of an IC-POVM. Consider the standard basis|1⟩,...,|k⟩ of Ck, and define the
+followingm=k 2 vectors:
+(a) Thekbasis vectors|1⟩,...,|k⟩.
+(b) For each pair1≤s<t≤k, the vector(|s⟩+|t⟩)/
+√
+2.
+(c) For each pair1≤s<t≤k, the vector(|s⟩+i|t⟩)/
+√
+2.
+This givesk + 2
+(k
+2
+)
+= k2 vectors. Their rank-one outer products spanMk: The vectors in (a) yield the
+diagonal matrix units|s⟩⟨s|; the vectors in (b) yield operators whose off-diagonal part is proportional to
+|s⟩⟨t| +|t⟩⟨s| (recovering the real parts of off-diagonal matrix units); and the vectors in (c) yield operators
+whose off-diagonal part is proportional toi(|s⟩⟨t|−|t⟩⟨s| )(recovering the imaginary parts). Together these
+span all ofMk. Denote thesemvectors byw 1,...,w m and let
+F :=
+m∑
+l=1
+wlw†
+l.
+Since the operatorswlw†
+l spanM k, the matrixFis positive definite. Setu l :=F −1/2wl for eachl. Then
+m∑
+l=1
+ulu†
+l =F −1/2
+(∑
+l
+wlw†
+l
+)
+F−1/2 =I k.
+Moreover, the operatorsulu†
+l =F−1/2wlw†
+lF−1/2 still spanMk, since conjugation by the invertible matrix
+F−1/2 preserves linear independence.
+If m = n, we setvl = ul and are done. If m < n, we extend the collection ton vectors as follows.
+Choose anyu1̸= 0and split it inton−m + 1copies: Set vl =u1/√n−m+ 1 for l = 1,...,n−m + 1, and
+vl =ul−n+m for l =n−m + 2,...,n . Thesen vectors still satisfy∑n
+i=1viv†
+i =Ik, and the set{viv†
+i} still
+48
+
+=== page 49 ===
+spans Mk since it contains all the originalulu†
+l (up to rescalingu1u†
+1, which remains non-zero). We thus
+obtain an isometryV:C k→C n with having the vectorsv1,...,v n∈C k as rows:
+V=
+n∑
+i=1
+|i⟩⟨vi|.
+For any tracelessy∈M k,
+ΦV (y)i =v†
+iyvi = Tr(viv†
+i·y) = Tr
+(
+(viv†
+i−∥vi∥2
+k Ik)·y
+)
+,
+where the last equality usesTr(y) = 0. The centred operatorsviv†
+i−∥vi∥2Ik/k are traceless, and they span all
+of slk(C)since the viv†
+i span Mk. IfΦ V (y) = 0, theny is orthogonal (in the Hilbert–Schmidt inner product)
+to everyviv†
+i−∥vi∥2Ik/k, hence to all ofslk(C). Since y is itself traceless, this forcesy = 0. ThusΦ V is
+injective, establishing condition (i).■
+The case forXA,· is curious. Given our previous results, we would expect thatω(XA,· ) =ω(A). However,
+this is not the case. Weaver had already noticed this discrepancy in [Wea17]: Recall that he works with
+operator spaces that correspond to quantum graphs with loops at every vertex. One such operator space is
+Dn, the space of all diagonal matrices. He proves the following.
+Proposition 4.41(Proposition 2.2 in [Wea17]).Ifn≥k 2 +k−1thenD n has ak-clique.
+Consider the empty graph with loops at every vertex. Just as for loopless graphs, we can consider the
+quantum graphXA,·, which in this case is equal toXA,I (note that this quantum graph has loops since
+1̸∈kerB ). The corresponding operator space is given precisely byimgXR
+A,· =Dn. Weaver’s result can thus
+be interpreted as the empty graph onn vertices having ak-clique ifn is large enough. The problem persists
+when restricting to loopless quantum graphs.
+Proposition 4.42.LetAbe the adjacency matrix of the complete classical graph. Thenω(XA,· )<ω(A).
+Proof.The projector onto the operator space corresponding toXA,· is given by
+−
+The operator space is thus given by
+S= span{|i⟩⟨j||i̸=j∈[n]},
+the space of all matrices with zero diagonal. We haveω(A) =n. If there were ann-clique, there would be an
+isometry V:C n→C n such thatV (S⊕CI )V† =Mn. This is impossible, sincedimMn =n2 >n 2−n + 1 =
+dimS⊕CI. ■
+There are also loopless graphs for whichω(XA,· )>ω(A). In fact, the former can be arbitrarily larger.
+Proposition 4.43.Let A be the adjacency matrix of the classical complete bipartite graph. Thenω(A) = 2
+andω(X A,· )≥n/2.
+Proof. It is straightforward to see that the complete bipartite graph has clique number2, since any larger
+clique must contain an odd cycle. The operator spaceS corresponding toω(XA,· )is spanned by the non-zero
+coordinates of the matrix
+A=
+(
+0J
+J0
+)
+.
+Choosing the isometryV:C n/2→C n as
+V= 1√
+2
+(I
+I
+)
+,
+we getV†SV=M k and thus in particularV†(S⊕CI)V=M k.■
+49
+
+=== page 50 ===
+In general, we can slightly lower the trivial upper bound onω(XA,· )from n to n− 1, but not any further.
+Proposition 4.44.For all A, we haveω(XA,· )≤n− 1. IfA is the adjacency matrix of the complete classical
+graph, thenω(XA,· ) =n−1.
+Proof. Since the operator spaceS associated toXA,· is a coordinate subspace ofMn, andA has zero diagonal,
+we havedim(S⊕CI )≤n 2−n + 1. It follows that for any isometryV, dimV†(S⊕CI )V≤n 2−n + 1<n 2,
+soX A,· cannot have ann-clique.
+We now claim that ifSis maximal subject to these constraints, that is
+S= span{|i⟩⟨j||i,j∈[n],i̸=j},
+then there exists an isometryV:C n−1→C n such that for ally∈M n−1 withTry= 0we have
+PS(VyV †) = 0 =⇒y= 0.(22)
+Proposition 4.37 then implies that ifAis the complete classical graph thenXA,· has a clique of sizen−1.
+Lety∈M n−1 be arbitrary and letQ :=VyV †. Theny =V†QV and thusQ =VV †QVV † =RQR, where
+Ris the projector ontoimgV. NowRhas rankn−1, so it is of the form
+R=I−uu †
+for some unit-normu∈C n. Choose u = 1/√n1. Suppose then that PS(VyV †) = PS(Q) = 0. Then
+Q∈S ⊥ = Dn. Then diagQ = Q1= RQR1= 0. Since Q is diagonal, this implies thatQ = 0and thus
+y=V †QV= 0as required. ■
+Despite Proposition 4.42, there is some hope for lower bounds onω(XA,· )in terms of ω(A). It turns out
+that the lower bound just barely fails. Concretely, we can prove the following.
+Proposition 4.45.It holds thatω(X A,· )≥ω(A)−1.
+Proof. Let k =ω(A). Then the classical graphA has a clique of sizek. Concretely, there exists a setC⊆ [n],
+such thatAij = 1for alli̸=j∈C. For the operator spaceSofX A,·, this implies that
+span{|i⟩⟨j||i,j∈C,i̸=j}⊆spanS.
+Enumerate the elements ofCasc 1,...,c k, and define an isometryWby
+W=
+k∑
+i=1
+|ci⟩⟨i|.
+ThenW†SW = span{|i⟩⟨j||i̸ =j∈ [k]}⊆M k. But this is the operator space ofXKk,·! By Proposition 4.44,
+we know that there exists an isometryV:C k−1→C k such thatV†(W†SW⊕CI k)V =Mk−1. We also have
+W†InW=I k, so
+W†(S⊕CI n)W=W †SW⊕CI k.
+It follows that
+V†W†(S⊕CI n)WV=V †(W†SW⊕CI k)V=M k−1,
+soWV:C k−1→C n witnesses a clique of sizek−1.■
+One may wonder whyω(A)fails to be a lower bound by such a close margin. We can shed some light on
+this by considering the role of loops, and the different operator spaces that may be associated to a classical
+graph. Recall that Weaver’s original definition of ak-clique requires the existence of a rank-k projector such
+that PSP =PMnP, whereS is the operator space associated to the quantum graph. As Weaver mentions in
+[Wea21], the operator spaceS should be seen as the edge relation of the quantum graph (in analogy to the
+edge relationE(G)⊆V (G)×V (G)of a classical graphG), while the “sandwiching” operationPSP should
+be seen as a restriction of a relation to some subset of the underlying set. In terms of classical graphs, the
+50
+
+=== page 51 ===
+condition PSP =PMnP may thus be interpreted as the existence of an induced subgraph that is isomorphic
+to an induced subgraph of the complete graph with loops at all vertices (the largest possible relation).
+This seems to suggest that intuitively, we need our quantum graph to have loops in order to find cliques.4
+However, the quantum graphs that we are considering do not have loops. To address this issue, we have
+modified the definition of cliques to require the existence of a projectionP with P (S⊕CI )P = PMnP.
+Adding the identity to the operator space of a loopless quantum graph yields a quantum graph with loops
+at every vertex, which then allows us to use Weaver’s definition. This way of adding loops is very natural,
+because the resulting operator space is the smallest superspace ofSthat has loops at every vertex.
+The problem arises when considering quantum graphs of the formXA,·. We have seen in Corollary 3.12
+that XA,· is loopless if and only ifA is loopless, and adding the identity to the corresponding operator space
+turns it into a quantum graph with loops at every vertex as desired. However, there is a second natural way
+to add these loops. Namely, we can add the loops to the classical graphA, lettingA◦ =A +I, and then
+considerX A◦,·. This does not result in the same operator space. The former approach yields
+S′ =S⊕CI= span({|i⟩⟨j||A ij̸= 0}∪{I})
+while the latter approach yields
+S◦ = span{|i⟩⟨j||A ij̸= 0ori=j}.
+Concretely,S◦ contains the diagonal elements|i⟩⟨i| for i∈ [n], whileS′ does not. OtherwiseS′ and S◦ are
+the same. We thus expectS◦ to have larger cliques. This suggests thatS◦ instead ofS′ might be the more
+natural choice to upper boundω(A).
+Conveniently, our framework allows us to recoverS◦ exactly. Let us consider some arbitrary loopless
+classical graphA and considerXA+diag(1−1/n),B for B =I−J/n .5 Then the projectorXR
+A+diag(1−1/n),B onto
+the operator space is given by
+˚A + − 1
+n .
+Adding the identity as in our clique definition gets rid of the last term,
+˚A + .
+It is not hard to see that this projector precisely has imageS◦: The first term providesS, while the second
+term provides the diagonal elements. And indeed, we find that its clique number is lower bounded byω(A).
+Proposition 4.46.IfAis the adjacency matrix of a graphG, thenω(X A+diag(1−1/n),I−J/n)≥ω(G).
+Proof. Let k =ω(G)and let C ={c1,...,c k}⊆ [n]be a k-clique ofG, so thatAcsct = 1for all s̸ =t. Define
+the isometryV:C k→C n byV|s⟩ =|cs⟩. Recall from the discussion above thatS⊕CI =S◦ = span{|i⟩⟨j||
+Aij̸= 0 ori =j}. For alls,t∈ [k], the matrix unit|cs⟩⟨ct| lies inS◦: Ifs̸ =t, this follows fromAcsct = 1,
+and ifs = t from the diagonal condition. SinceV†|cs⟩⟨ct|V =|s⟩⟨t|, it follows thatV†S◦V = Mk, soV
+witnesses ak-clique ofX A+diag(1−1/n),I−J/n.■
+4.4.3 The Symmetric and Antisymmetric Cases
+For the symmetric and antisymmetric quantum graphs, we can determineωexactly.
+4This is not actually true, as the proof of Proposition 4.43 shows. This is because the mental model of viewingP SP as the
+restriction of a relation to some set is already not rigorous. Nevertheless, it will suffice for the point we are making.
+5This choice ofB has non-zero diagonal, so we need to add the diagonal toA as well. This is merely a notational quirk, since
+the diagonal is removed again in the resulting linear map.
+51
+
+=== page 52 ===
+Proposition 4.47.The clique number of the Symmetric and the Antisymmetric quantum graphs onn vertices
+is
+ω(Gsym) =ω(G asym) =
+⌈n
+2
+⌉
+.
+Proof. Let Pa
+S and Ps
+S be the projection onto the operator spaces ofGasym and Gsym respectively. By
+Proposition 4.37, we want to determine the maximumk such that there exists an isometryV:C k→C n
+with Pa
+S(VyV †)̸= 0respectively Ps
+S(VyV †)̸= 0for all traceless non-zero matricesy∈M k. Concretely, the
+conditions become
+Pa
+S(VyV †) = V V
+y
+V V
+y
+− ̸= 0
+and
+Ps
+S(VyV †) = V V
+y
+V V
+y
++
+̸= 0.
+− 2
+n
+y
+V V
+y
+V V
+y
++=
+We thus want to understand under which conditions the map
+PX
+VV
+LV =
+has traceless matrices in its kernel, whereX∈{Sym,Asym} . First note thatV⊗ V maps y↦→VyV† and
+thus preserves the trace. We need to find a tracelessx∈img(V⊗V)∩X ⊥.
+First considerX = Sym. We havex∈img (V⊗ V )if and only ifx =VyV
+T
+. This in turn is equivalent to
+imgx⊆imgV and imgx T⊆img V. Now ifx is required to be antisymmetric thenimgx T =−imgx = imgx.
+We thus need to determine when there exists an antisymmetricx∈M n with imgx⊆imgV∩img V. Let
+SV := imgV∩img V. IfdimS V ≥2, such anxexists. Indeed, choose orthogonalψ 1,ψ 2∈S V and let
+x=ψ 1ψT
+2−ψ 2ψT
+1.
+Then x is antisymmetric (and thus automatically traceless) andimgx⊆imgS V as desired. On the other
+hand, ifdimS V <2then no such non-zero map exists because there are no rank1asymmetric matrices.
+The story is analogous forX = Asym. We are looking for a traceless symmetricx∈img (V⊗ V ). Since
+imgx T = imgx, we again requireimgx⊆imgV∩img V=S V. FordimS V ≥2, we may choose
+x=ψ 1ψ†
+2 +ψ2ψT
+1,
+52
+
+=== page 53 ===
+which is symmetric and satisfies the image condition sinceSV is closed under conjugation. Moreover,x is
+traceless: We have
+Trψ1ψ†
+2 +ψ2ψT
+1 = Trψ1ψ†
+2 + Trψ2ψT
+1
+=⟨ψ 2,ψ 1⟩+⟨ ψ1,ψ2⟩
+= 2⟨ψ2,ψ 1⟩= 0.
+Conversely, ifdimSV <2no such non-zeroxexists. IfS V =Cψ, the only choice is
+x=ψψ T
+which has trace⟨ψ,ψ⟩̸= 0.
+We have shown thatV:C k→C n witnesses ak-clique if and only ifdimSV < 2. We first show that this
+is unsatisfiable fork >⌈n/2⌉. It holds that
+dimSV = dim(imgV∩img V) = dim imgV+ dim img V−dim(imgV+ img V).
+Since V is an isometry, we haverkV = rkV =k. We thus havedimSV < 2if and only if2k−dim (imgV⊕
+imgV)<2, or equivalently
+2k−2<dim(imgV⊕img V)≤n.(23)
+This is only satisfiable if
+k≤ n+ 1
+2 .
+Fornodd, we have
+n+ 1
+2 =
+⌈n
+2
+⌉
+while forneven andk∈Nwe have
+k≤ n+ 1
+2 ⇐⇒k≤ n
+2 =
+⌈n
+2
+⌉
+,
+which yields the desired bound. Conversely, letk =⌈n/2⌉ and choose a random isometryV:C k→C n. Then
+dim(imgV+ img V) =n−dim(imgV∩img V) =nby the lemma below. This completes the proof.■
+Lemma 4.48.Let1 ≤k≤n/ 2. IfE is a Haar-distributed randomk-dimensional complex subspace ofCn,
+then
+E∩ E={0}
+almost surely.
+Proof. We generate a randomk-dimensional subspaceE⊆C n as the range of a complex Ginibre matrix. Let
+A∈M n×k(C)be a matrix whose entries are independent complex Gaussian random variables. With probability
+one, A has rankk, and its column spaceE = im(A)is a random element of the complex Grassmannian with
+the unitarily invariant distribution.
+Suppose thatE∩ E̸ ={0}. Then there existsv̸ = 0such that v∈E∩ E and thus there exist vectors
+x,y∈C k, not both zero, such thatv=Ax= Ay. Equivalently,Ax− Ay= 0. Define the matrix
+M(A) =
+[
+A− A
+]
+∈M n×2k(C).
+Then the above condition becomes
+M(A)
+(x
+y
+)
+= 0.
+ThusE∩ E̸ ={0} if and only ifkerM (A)̸={0}, or equivalentlyrankM (A)< 2k. Sincek≤n/ 2, we have
+2k≤n , soM(A)can have full column rank2k. The conditionrankM (A)< 2k is equivalent to the vanishing
+of all2k× 2k minors ofM(A), which are polynomial functions of the real and imaginary parts of the entries
+of A. Since the entries ofA are independent continuous random variables, to show that the probability that
+these polynomial vanish is zero we need to prove that the polynomials are not identically zero.
+53
+
+=== page 54 ===
+To this end, we shall exhibit a matrixAwithrankM(A) = 2k. Consider the deterministic matrix
+A=
+
+
+Ik
+iIk
+0
+
+∈M n×k(C),
+where the last block has size(n−2k)×k. Then
+M(A) =
+
+
+Ik −Ik
+iIk iIk
+0 0
+
+.
+If
+M(A)
+(x
+y
+)
+= 0,
+then x−y = 0and ix +iy = 0which gives x =y = 0. Therefore kerM (A) ={0} and rankM (A) = 2k for
+our choice ofA, finishing the proof.■
+4.4.4 The Complete and Empty Graphs
+We conclude by considering the empty and the complete graph. We have seen that the operator space
+corresponding to the empty graph isSKc = 0, while the operator spaceSK corresponding to the complete
+graph is the set of all traceless matrices. In the former case, we haveSKc⊕CI = CI. It follows that any
+isometry V:C→C n satisfies V†(SKc⊕CI )V =M1 and we cannot do any better by dimensionality. On the
+other hand, we haveSK⊕CI =Mn, so the identity is an isometryCn→C n witnessing a clique of sizen.
+We can thus state the final result of our graph theoretic investigation.
+Proposition 4.49.We haveω(K n) =nandω(K c
+n) = 1.
+We summarise our findings in the table below. Note that while we only list graph properties, we have in
+certain cases proved even stronger results, such as correspondences between the quantum graph structure and
+structure of matrices or classical graphs. We have also proved stronger bounds in certain special cases that we
+do not list for the sake of legibility.
+54
+
+=== page 55 ===
+Group
+Action
+Quantum
+Graph
+Connected
+Components
+χ α ω
+U(n)
+Kc
+n n 1 n 1
+Kn 1 not colourable1n
+O(n)
+Gsym 1
+2forn= 2
+not colourable forn≥3 1 ⌈n/2⌉
+Gasym 2forn= 2
+1forn≥3 n1⌈n/2⌉
+DU(n)
+XA,· same asA χ(A) α(A) ≥ω(A)−1
+≤n−1
+X·,B n
+≤n
+≥n/dim kerB
+≤n−rkB
+≥max{EqRows(B),1 +
+⌊
+n−1
+rkB+1
+⌋
+} ≤
+√
+rkB+ 1
+XA,B same asA
+not colourable in general
+≥max{χ(A),χ(X ·,B )} ≤min{α(A),α(X ·,B )} ≥max{ω(X A,· ),ω(X·,B )}
+DO(n)
+XA,·,C ≥G(A,C) ≤χ(G(A,C))α(G(A,C))
+XA,B,C ≥G(A,C) ≥max{χ(X A,·,C ),χ(X·,B )} ≤min{α(G(A,C)),α(X ·,B )} ≥max{ω(X A,·,C ),ω(X·,B ))}
+Table 1: Summary of quantum graph properties.
+55
+
+=== page 56 ===
+5 Conclusion
+In this work, we have introduced and systematically studied families of quantum graphs onMn that are
+invariant under the action of classical matrix groups. By considering the chain of subgroups U(n) ⊇
+O(n)⊇Hyp (n)⊇DO (n)⊆DU (n), we have shown that progressively smaller symmetry groups give rise
+to progressively richer classes of quantum graphs, mirroring the classical situation. Our main conceptual
+contribution is the parametrisation ofDU(n)- andDO(n)-invariant quantum graphs by triples of matrices
+(A,B,C ), building on previous work in quantum information theory [SN21, NS21]. This parametrisation
+reveals a clean separation of roles of the three matrices:A encodes a classical graph (Corollary 3.12),C
+introducesstrange edgescarrying a phase (Proposition 3.18), andB provides a purely quantum contribution
+with no classical analogue. We call the resulting classical model the strange graphG(A,C ). Importantly, we
+prove asplitting principlethat decomposes graph-theoretic conditions into independent conditions on the
+(A,C)andBparts.
+To the best of our knowledge, this is the first time that large, parametric families of non-trivial quantum
+graphs have been exhibited for which standard graph parameters such as the number of connected components,
+the independence number, the clique number, and the chromatic number, can all be computed or tightly
+bounded analytically. Our work provides a rich source of examples, counterexamples, and a guiding framework
+for future study of quantum graph theory.
+Several questions remain open. The clique number of general ABC graphsXA,B,C remains undetermined
+(see Propositions 4.39 and 4.44 for the partial results obtained in this work), as do tight bounds on the
+chromatic number ofXA,B in terms ofA and B. The difficulty of this problem lies in the very complex
+interaction between the strange graph parts described by the matricesA and C, and the purely quantum
+parts described by the projectorB.
+Another direction concerns the connectedness equivalence established in Proposition 4.15: while connect-
+edness ofXA,B,C and of the strange graphG(A,C )agree for n≥ 3, the correspondence breaks down at the
+level of connected components, as shown by Proposition 4.13. It would be interesting to determine the exact
+number of connected components ofXA,·,C in terms ofG(A,C ), and in particular to understand the role
+played by isolated strange edges with phaseπ. More broadly, the quantum clique numberω(XA,· )can differ
+from the classical clique numberω(A)in both directions, and the precise relationship between these two
+quantities remains unclear beyond the boundω(XA,· )≥ω(A)−1.
+A natural next step is to considerquantumsymmetries instead. It is known that the quantum symmetries
+of Mn are given by the projective free unitary quantum groupPU +
+n [Ban99, Corollary 4.1]. It would thus be
+interesting to consider which classes of quantum graphs are acted on by quantum subgroups ofPU +
+n , and
+whether they can also be described in discrete terms.
+Acknowledgements.The authors were supported by the ANR projects ESQuisses grant number ANR-20-
+CE47-0014-01 and TAGADA grant number ANR-25-CE40-5672. The first author moreover acknowledges
+support from the CNRS 80Prime grant “QuantGraphe”.
+References
+[Ats+19] Albert Atserias, Laura Mančinska, David E. Roberson, Robert Šámal, Simone Severini, and Anto-
+nios Varvitsiotis. “Quantum and non-signalling graph isomorphisms”. In:Journal of Combinatorial
+Theory, Series B136 (May 2019), pp. 289–328.doi:10.1016/j.jctb.2018.11.002 (cit. on p. 2).
+[Ban99] Teodor Banica. “Symmetries of a generic coaction”. en. In:Mathematische Annalen314.4 (Aug.
+1999), pp. 763–780.doi:10.1007/s002080050315(cit. on p. 56).
+[Bei+21] Xiaohui Bei, Shiteng Chen, Ji Guan, Youming Qiao, and Xiaoming Sun. “From independent sets
+and vertex colorings to isotropic spaces and isotropic decompositions: Another bridge between
+graphs and alternating matrix spaces”. In:SIAM Journal on Computing50.3 (2021), pp. 924–971.
+doi:10.1137/19M1299128(cit. on p. 40).
+[BGH22] Michael Brannan, Priyanga Ganesan, and Samuel J. Harris. “The quantum-to-classical graph
+homomorphism game”. In:Journal of Mathematical Physics63.11 (Nov. 2022), p. 112204.doi:
+10.1063/5.0072288(cit. on pp. 2, 11, 39).
+56
+
+=== page 57 ===
+[BK25] Arkadiusz Bochniak and Paweł Kasprzak. “Quantum Mycielski graphs”. In:Journal of Noncom-
+mutative Geometry2025 (2025).doi:10.4171/jncg/629(cit. on p. 2).
+[Bra+20] Michael Brannan, Alexandru Chirvasitu, Kari Eifler, Samuel Harris, Vern Paulsen, Xiaoyu Su, and
+Mateusz Wasilewski. “Bigalois Extensions and the Graph Isomorphism Game”. In:Communications
+in Mathematical Physics375.3 (2020), pp. 1777–1809.doi:10.1007/s00220-019-03563-9 (cit. on
+p. 2).
+[BTW21] Gareth Boreland, Ivan G Todorov, and Andreas Winter. “Sandwich theorems and capacity bounds
+for non-commutative graphs”. In:Journal of Combinatorial Theory, Series A177 (2021), p. 105302.
+doi:10.1016/j.jcta.2020.105302(cit. on p. 2).
+[BZ06] Ingemar Bengtsson and Karol Zyczkowski.Geometry of quantum states: an introduction to quantum
+entanglement. Cambridge University Press, 2006.doi:10.1017/CBO9780511535048 (cit. on p. 9).
+[CCH11] Toby S. Cubitt, Jianxin Chen, and Aram W. Harrow. “Superactivation of the Asymptotic Zero-
+Error Classical Capacity of a Quantum Channel”. In:IEEE Transactions on Information Theory
+57.12 (Dec. 2011), pp. 8114–8126.doi:10.1109/TIT.2011.2169109(cit. on p. 2).
+[CGW25] Kristin Courtney, Priyanga Ganesan, and Mateusz Wasilewski.Connectivity for quantum graphs
+via quantum adjacency operators. 2025.doi:10.48550/arXiv.2505.22519. arXiv: 2505.22519
+[math.OA](cit. on pp. 2, 10, 11).
+[Cho75] Man-Duen Choi. “Completely positive linear maps on complex matrices”. In:Linear algebra and
+its applications10.3 (1975), pp. 285–290.doi:10.1016/0024-3795(75)90075-0(cit. on p. 9).
+[CPV13] Bob Coecke, Dusko Pavlovic, and Jamie Vicary. “A new description of orthogonal bases”. In:
+Mathematical Structures in Computer Science23.3 (June 2013), pp. 555–567.doi: 10.1017/
+S0960129512000047(cit. on p. 7).
+[Daw24] Matthew Daws. “Quantum graphs: different perspectives, homomorphisms and quantum automor-
+phisms”. In:Communications of the American Mathematical Society4.05 (2024), pp. 117–181.
+doi:10.1090/cams/30(cit. on p. 2).
+[Die25] Reinhard Diestel.Graph theory: Springer GTM. Vol. 173. Reinhard Diestel, 2025.doi:10.1007/
+978-3-662-70107-2(cit. on p. 2).
+[DSW13] Runyao Duan, Simone Severini, and Andreas Winter. “Zero-Error Communication via Quantum
+Channels, Noncommutative Graphs, and a Quantum Lovász Number”. In:IEEE Transactions
+on Information Theory59.2 (Feb. 2013). Conference Name: IEEE Transactions on Information
+Theory, pp. 1164–1174.doi:10.1109/TIT.2012.2221677(cit. on pp. 2, 9, 10, 12).
+[Dua09] Runyao Duan.Super-Activation of Zero-Error Capacity of Noisy Quantum Channels. June 15,
+2009.doi:10.48550/arXiv.0906.2527. arXiv:0906.2527[quant-ph](cit. on p. 2).
+[EW01] Tilo Eggeling and Reinhard F Werner. “Separability properties of tripartite states with U⊗ U⊗
+U symmetry”. In:Physical Review A63.4 (2001), p. 042111.doi: 10.1103/PhysRevA.63.042111
+(cit. on p. 15).
+[Gan23] Priyanga Ganesan. “Spectral bounds for the quantum chromatic number of quantum graphs”. In:
+Linear Algebra and its Applications674 (Oct. 1, 2023), pp. 351–376.doi:10.1016/j.laa.2023.
+06.007(cit. on pp. 2, 11, 39).
+[GNS25] Aabhas Gulati, Ion Nechita, and Satvik Singh. “Entanglement in cyclic sign invariant quantum
+states”. In:Journal of Mathematical Physics66.12 (2025).doi: 10.1063/5.0285294 (cit. on
+p. 20).
+[Gol26] Adina Goldberg. “Quantum games and synchronicity”. In:Quantum10 (Jan. 2026), p. 1964.issn:
+2521-327X.doi:10.22331/q-2026-01-14-1964(cit. on p. 2).
+[Gro22] Daniel Gromada. “Some examples of quantum graphs”. In:Letters in Mathematical Physics112.6
+(Dec. 2022), p. 122.doi:10.1007/s11005-022-01603-5(cit. on pp. 2, 7, 16).
+[Gro24] Daniel Gromada. “Quantum symmetries of Hadamard matrices”. In:Transactions of the American
+Mathematical Society377.09 (2024), pp. 6341–6377.doi:10.1090/tran/9153(cit. on p. 2).
+57
+
+=== page 58 ===
+[GW09] Roe Goodman and Nolan R Wallach.Symmetry, representations, and invariants. Vol. 255. Springer,
+2009.doi:10.1007/978-0-387-79852-3(cit. on pp. 14, 15).
+[HV19] Chris Heunen and Jamie Vicary.Categories for Quantum Theory: An Introduction. 1st ed. Oxford
+University PressOxford, Nov. 19, 2019.doi: 10.1093/oso/9780198739623.001.0001 (cit. on
+pp. 2, 5, 6).
+[HZ11] TeikoHeinosaariandMárioZiman.The mathematical language of quantum theory: from uncertainty
+to entanglement. Cambridge University Press, 2011.doi:10.1017/CBO9781139031103 (cit. on
+p. 48).
+[KL97] Emanuel Knill and Raymond Laflamme. “Theory of quantum error-correcting codes”. In:Physical
+Review A55.2 (1997), p. 900.doi:10.1103/PhysRevA.55.900(cit. on p. 12).
+[KW99] Michael Keyl and Reinhard F Werner. “Optimal cloning of pure states, testing single clones”. In:
+Journal of Mathematical Physics40.7 (1999), pp. 3283–3299.doi: 10.1063/1.532887 (cit. on
+p. 14).
+[Mat22] Junichiro Matsuda. “Classification of quantum graphs on M2 and their quantum automorphism
+groups”. In:Journal of Mathematical Physics63.9 (2022).doi: 10.1063/5.0081059 (cit. on p. 2).
+[Mat24] Junichiro Matsuda. “Algebraic connectedness and bipartiteness of quantum graphs”. In:Commu-
+nications in Mathematical Physics405.8 (Aug. 2024), p. 185.doi:10.1007/s00220-024-05046-y
+(cit. on p. 2).
+[MRV18] Benjamin Musto, David Reutter, and Dominic Verdon. “A compositional approach to quantum
+functions”. In:Journal of Mathematical Physics59.8 (Aug. 31, 2018), p. 081706.doi:10.1063/1.
+5020566(cit. on pp. 2, 5, 8).
+[NP25] Ion Nechita and Sang-Jun Park. “Random covariant quantum channels”. In:Annales Henri
+Poincaré(2025), pp. 1–61.doi:10.1007/s00023-025-01558-y(cit. on pp. 14, 15).
+[NS21] Ion Nechita and Satvik Singh. “A graphical calculus for integration over random diagonal unitary
+matrices”. In:Linear Algebra and its Applications613 (2021), pp. 46–86.doi:10.1016/j.laa.
+2020.12.014(cit. on pp. 3, 16, 17, 56).
+[Par+24] Sang-Jun Park, Yeong-Gwang Jung, Jeongeun Park, and Sang-Gyun Youn. “A universal framework
+for entanglement detection under group symmetry”. In:Journal of Physics A: Mathematical and
+Theoretical57.32 (2024), p. 325304.doi:10.1088/1751-8121/ad6413(cit. on p. 21).
+[Pau02] Vern Paulsen.Completely bounded maps and operator algebras. Vol. 78. Cambridge University
+Press, 2002.doi:10.1017/CBO9780511546631(cit. on p. 9).
+[Rud00] Oliver Rudolph. “A separability criterion for density operators”. In:Journal of Physics A: Math-
+ematical and General33.21 (2000), p. 3951.doi: 10 . 1088 / 0305 - 4470 / 33 / 21 / 308(cit. on
+p. 9).
+[Rud03] Oliver Rudolph. “On the cross norm criterion for separability”. In:Journal of Physics A: Math-
+ematical and General36.21 (2003), p. 5825.doi: 10 . 1088 / 0305 - 4470 / 36 / 21 / 311(cit. on
+p. 9).
+[Sel11] P. Selinger. “A Survey of Graphical Languages for Monoidal Categories”. In:New Structures for
+Physics. Ed. by Bob Coecke. Berlin, Heidelberg: Springer Berlin Heidelberg, 2011, pp. 289–355.
+doi:10.1007/978-3-642-12821-9_4(cit. on p. 6).
+[Sha56] C. Shannon. “The zero error capacity of a noisy channel”. In:IRE Transactions on Information
+Theory2.3 (1956), pp. 8–19.doi:10.1109/TIT.1956.1056798(cit. on pp. 2, 9).
+[SN21] Satvik Singh and Ion Nechita. “Diagonal unitary and orthogonal symmetries in quantum theory”.
+In:Quantum5 (2021), p. 519.doi:10.22331/q-2021-08-09-519(cit. on pp. 3, 17, 20, 56).
+[Sta15] Dan Stahlke. “Quantum zero-error source-channel coding and non-commutative graph theory”. In:
+IEEE Transactions on Information Theory62.1 (2015), pp. 554–577.doi:10.1109/TIT.2015.
+2496377(cit. on p. 2).
+[Tve66] Helge Tverberg. “A generalization of Radon’s theorem”. In:J. London Math. Soc41.1 (1966),
+pp. 123–128.doi:10.1112/jlms/s1-41.1.123(cit. on p. 44).
+58
+
+=== page 59 ===
+[Vic11] Jamie Vicary. “Categorical Formulation of Finite-Dimensional Quantum Algebras”. In:Communi-
+cations in Mathematical Physics304.3 (June 1, 2011), pp. 765–796.doi:10.1007/s00220-010-
+1138-0(cit. on pp. 2, 4–7).
+[Was24] Mateusz Wasilewski. “On quantum Cayley graphs”. In:Documenta Mathematica29.6 (2024),
+pp. 1281–1317.doi:10.4171/DM/987(cit. on p. 2).
+[Wea10] Nik Weaver.Quantum relations. 2010.doi: 10.48550/arXiv.1005.0354 . arXiv: 1005.0354
+[math.OA](cit. on p. 2).
+[Wea17] Nik Weaver. “A “quantum” Ramsey theorem for operator systems”. In:Proceedings of the American
+Mathematical Society145.11 (2017), pp. 4595–4605.doi: 10.1090/proc/13606 (cit. on pp. 2, 12,
+13, 49).
+[Wea19] Nik Weaver. “The "quantum" turan problem for operator systems”. In:Pacific Journal of Mathe-
+matics301.1 (2019), pp. 335–349.doi:10.2140/pjm.2019.301.335(cit. on p. 45).
+[Wea21] Nik Weaver. “Quantum graphs as quantum relations”. In:The Journal of Geometric Analysis
+31.9 (2021), pp. 9090–9112.doi:10.1007/s12220-020-00578-w(cit. on pp. 2, 9, 50).
+[Wer89] Reinhard F Werner. “Quantum states with Einstein-Podolsky-Rosen correlations admitting a
+hidden-variable model”. In:Physical Review A40.8 (1989), p. 4277.doi: 10.1103/PhysRevA.40.
+4277(cit. on pp. 14, 15).
+59

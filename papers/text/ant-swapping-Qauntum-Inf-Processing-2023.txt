@@ -1,0 +1,993 @@
+=== page 1 ===
+Quantum Information Processing (2023) 22:438
+https://doi.org/10.1007/s11128-023-04189-6
+Measurement-device-independent quantum key
+agreement based on entanglement swapping
+Yu-Guang Yang 1 · Rui-Chen Huang 1 · Guang-Bao Xu 2 · Yi-Hua Zhou 1 ·
+Wei-Min Shi 1 · Dan Li 3
+Received: 10 May 2023 / Accepted: 22 November 2023 / Published online: 12 December 2023
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023
+Abstract
+Quantum key agreement (QKA) is an important cryptographic primitive that plays
+a pivotal role in private communications. However, in practical implementations
+of QKA, the ﬂaws in participants’ detectors may be exploited to compromise the
+security and fairness of the protocol. To address this issue, we propose a two-party
+measurement-device-independent QKA protocol, effectively eliminating all detector-
+side-channel loopholes. This protocol is based on quantum entanglement swapping
+and Bell-state measurements, making it feasible under current technological condi-
+tions. A thorough security analysis is conducted, demonstrating its ability to guarantee
+both security and fairness.
+Keywords Quantum key agreement · Measurement-device-independent ·
+Detector-side-channel attack · Quantum entanglement swapping · Bell-state
+measurement
+1 Introduction
+In recent years, securing group communication has garnered signiﬁcant attention
+within the academic community. The approach to ensuring secure group commu-
+nication revolves around maintaining a conﬁdential key, known exclusively to all
+members of the group. This process of key generation is commonly referred to as
+group key establishment. There exist two principal methods to achieve this goal. The
+B Y u-Guang Y ang
+yangyang7357@bjut.edu.cn
+1 Faculty of Information Technology, Beijing University of Technology, Beijing 100124, China
+2 College of Computer Science and Engineering, Shandong University of Science and Technology,
+Qingdao 266590, China
+3 College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics,
+Nanjing, China
+123
+
+=== page 2 ===
+438 Page 2 of 18 Y.-G. Yang et al.
+ﬁrst is centralized key establishment, which involves a single party generating the
+group’s secret key. This method is well-suited for two-party communications (such as
+client–server or peer-to-peer scenarios) as well as large multicast groups. However,
+in many collaborative group settings such as remote board meetings, teleconferences,
+whiteboard sessions, shared instrument control, secure and efﬁcient data sharing, col-
+laborative workspaces, cloud computing, and command-and-control systems becomes
+imperative. This entails employing distributed group key agreement techniques.
+A key agreement protocol seeks to generate a shared conference key for multiple
+participants, ensuring the security of subsequent group communications in a manner
+where all participants exert inﬂuence on the outcome. Since its inception in the seminal
+paper by Difﬁe-Hellman [1], key agreement protocols have evolved into fundamental
+cryptographic primitives. However, classical key agreement protocols rely on public
+key cryptography, which hinges on computational complexity assumptions for secu-
+rity. The emergence of quantum computing has introduced new security threats to
+classical cryptosystems, leading to the development of quantum cryptography.
+In 1984, Bennett and Brassard introduced the renowned BB84 quantum key distri-
+bution (QKD) protocol [2]. Since the inception of QKD, various branches of quantum
+cryptography have been developed, encompassing QKD [3, 4], quantum secure direct
+communication (QSDC) [ 5–8], quantum secret sharing (QSS) [ 9, 10], quantum pri-
+vate comparison (QPC) [ 11–13], quantum signature [ 14–16], quantum private query
+(QPQ) [17–24], quantum identity authentication (QIA) [ 25–27], quantum key agree-
+ment (QKA) [ 28–48] and anonymous quantum communication [ 49].
+In 2004, Zhou et al. [28] introduced an innovative QKA protocol that utilizes quan-
+tum teleportation. However, Tsai and Hwang identiﬁed fairness concerns in Zhou
+et al.’s [29] protocol, highlighting its susceptibility to participant attacks, which enable
+one party to unilaterally determine the agreement key and distribute it to the other
+party without detection. Subsequently, a series of novel QKA protocols were proposed
+[30–48]. A secure QKA protocol should adhere to the following criteria: (C1) Correct-
+ness: At the protocol’s conclusion, all participants should possess the correct agreement
+key provided they have executed the protocol honestly. (C2) Fairness: Each partici-
+pant should wield an equivalent level of inﬂuence over the agreement key, rendering it
+impossible for any non-trivial subset of participants to unilaterally determine it. (C3)
+Security: The protocol should be designed such that external eavesdroppers cannot
+acquire information about the agreement key without triggering detection mecha-
+nisms.
+While the security of quantum cryptographic protocols is theoretically guaranteed
+by the fundamental principles of quantum mechanics, their real-world implementa-
+tions often encounter overlooked vulnerabilities, particularly in the imperfections of
+detector devices. Attackers can exploit these vulnerabilities to access agreement key
+information by employing quantum hacking techniques such as beam-splitting attacks,
+time-shift attacks, and blinding attacks [ 50–52]. Consequently, the burgeoning ﬁeld
+of quantum hacking presents a signiﬁcant threat to the practical security of quantum
+cryptographic protocols. To address the aforementioned challenges, Acín et al. [ 53]
+proposed the concept of Device-Independent QKD (DI-QKD) in 2006. However, the
+security of DI-QKD relies on loophole-free Bell tests between distant communica-
+tion parties. Additionally, DI-QKD demands detectors with close-to-unit efﬁciency,
+123
+
+=== page 3 ===
+Measurement-device-independent quantum key agreement based … Page 3 of 18 438
+and its key generation rate is relatively low, rendering it impractical for real-world
+implementations.
+Among all the concerns related to device security, vulnerabilities at the measure-
+ment device were historically considered the most challenging issue in the practical
+application of quantum cryptography. V arious attacks, including phase remapping
+attacks, time-shift attacks, and SPD blinding attacks [50–52], have long stood as signif-
+icant barriers to progress in this ﬁeld. In response to these severe measurement device
+attacks and to address various shortcomings in DI protocols, researchers have intro-
+duced a specialized protocol known as the Measurement-Device-Independent (MDI)
+protocol. In 2012, Lo et al. [ 54] ﬁrst introduced MDI-QKD. This protocol necessi-
+tates both communicating parties, Alice and Bob, to prepare the required single-qubit
+quantum states and transmit them to the untrusted third party, Charlie, for Bell state
+measurement. MDI-QKD remains immune to attacks targeting detectors, providing
+high key rates and communication distances. It effectively eliminates all detector
+side channels by assuming that legitimate participants possess trusted quantum state
+preparation devices. The ﬁeld of MDI-QKD has witnessed numerous groundbreak-
+ing contributions. For example, the initial implementation of a free-space MDI-QKD
+protocol [55] was founded on a practical scheme from the literature [56], signiﬁcantly
+surpassing the effective atmospheric thickness and paving the way for satellite-based
+MDI-QKD. Furthermore, various novel MDI-QKD protocols, such as twin-ﬁeld QKD
+[57–61], mode-pairing QKD [ 62], and MDI-QKD network [ 63, 64], have been pro-
+posed.
+However, there is a scarcity of research on MDI-QKA. Recently, Cai et al. [ 65]
+introduced a three-party MDI-QKA protocol. In this protocol, participant Charlie is
+tasked with measuring the Greenberger-Horne-Zeilinger (GHZ) state particle ’ c’ that
+he possesses, and his Z basis measurement results are employed for key generation.
+However, if an external eavesdropper were to target Charlie’s measurement device and
+gain control over it, the measurement results could be pilfered by the eavesdropper,
+resulting in key leakage and posing a substantial threat to the security of the MDI-QKA
+protocol.
+To eliminate all detector-side-channel vulnerabilities in QKA, this study presents
+an innovative two-party MDI-QKA protocol. This protocol leverages quantum entan-
+glement swapping techniques, allowing participants to delegate measurement tasks to
+an untrusted third party, thereby eliminating the potential for detector-side-channel
+attacks. The proposed protocol delivers signiﬁcantly enhanced practical security com-
+pared to existing two-party QKA protocols.
+The subsequent sections of this paper follow this structure: Sect. 2 provides
+preliminaries, encompassing the characteristics of Bell states and the principles of
+quantum entanglement swapping. Section 3 introduces a two-party MDI-QKA pro-
+tocol. Section 4 conducts a thorough analysis of the protocol, assessing correctness,
+fairness, and security. Finally, the paper concludes with a discussion and summary.
+123
+
+=== page 4 ===
+438 Page 4 of 18 Y.-G. Yang et al.
+2 Preliminaries
+Bell states are deﬁned as follows:
+⏐⏐φ± ⟩/equal11√
+2 (|00⟩±|11⟩),
+⏐⏐ψ± ⟩/equal11√
+2 (|01⟩±|10⟩).
+The principle of quantum entanglement swapping can be explained as follows. Suppose
+there are two EPR pairs which are in the Bell states
+⏐⏐φ+ ⟩12 /equal11√
+2 (|00⟩+ |11⟩) and⏐⏐ψ+ ⟩34 /equal11√
+2 (|01⟩+|10⟩), respectively. The subscripts 1 and 2 represent the two qubits
+initially associated with the ﬁrst Bell state, while the subscripts 3 and 4 represent the
+two qubits initially associated with the second Bell state. The state of the composite
+system can be rearranged by
+⏐⏐φ+ ⟩12 ⊗
+⏐⏐ψ+ ⟩34 /equal11
+2 (|00⟩+ |11⟩)12 ⊗ (|01⟩+ |10⟩)34
+/equal11
+2 (|0001⟩+ |1101⟩+ |0010⟩+ |1110⟩)1234
+/equal11
+2(|01⟩14|00⟩23 + |11⟩14|10⟩23 + |00⟩14|01⟩23 + |10⟩14|11⟩23)
+/equal11
+4 (
+⏐⏐ψ+ ⟩+
+⏐⏐ψ− ⟩)14(
+⏐⏐φ+ ⟩+
+⏐⏐φ− ⟩)23 +(
+⏐⏐φ+ ⟩−
+⏐⏐φ− ⟩)14
+(⏐⏐ψ+ ⟩−
+⏐⏐ψ− ⟩
+)
+23
++(
+⏐⏐φ+ ⟩+
+⏐⏐φ− ⟩)14
+(⏐⏐ψ+ ⟩+
+⏐⏐ψ− ⟩
+)
+23 +
+(⏐⏐ψ+ ⟩−
+⏐⏐ψ− ⟩
+)
+14
+(⏐⏐φ+ ⟩−
+⏐⏐φ− ⟩
+)
+23
+/equal11
+2
+(⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23 +
+⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23 +
+⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23 −
+⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23
+)
+.
+(1)
+If we make Bell state measurements (BSM) on qubits 1 and 4, the state in
+Eq. (1) will collapse to one of the following four states
+⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23,
+⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23,⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23,
+⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23 with equal probability. Similarly, the results of quantum
+entanglement swapping for other combinations of initial Bell states are summarized
+in Table 1.
+If we adopt the binary encoding "00" for
+⏐⏐φ+ ⟩, "01" for
+⏐⏐φ− ⟩, "10" for
+⏐⏐ψ+ ⟩, and
+"11" for
+⏐⏐ψ− ⟩, then the initial Bell states and the corresponding BSM outcomes will
+satisfy the following relationships:
+O12 ⊕ O34 /equal1M14 ⊕ M23,( 2 )
+O12 ⊕ M14 /equal1O34 ⊕ M23,( 3 )
+O12 ⊕ M23 /equal1O34 ⊕ M14,( 4 )
+where Omn and Mij represent the binary representations of the initial Bell state of
+qubits m and n, and the BSM result on qubits i andj, respectively, and ⊕ denotes the
+bitwise XOR operation. The properties in Eqs. ( 2)–(4) will be used in the proposed
+MDI-QKA protocol.
+123
+
+=== page 5 ===
+Measurement-device-independent quantum key agreement based … Page 5 of 18 438
+Table 1 Entanglement swapping for different initial Bell states
+⏐⏐φ+ ⟩12
+⏐⏐φ− ⟩12
+⏐⏐ψ+ ⟩12
+⏐⏐ψ− ⟩12
+⏐⏐φ+ ⟩34
+⏐⏐φ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐φ− ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ+ ⟩23⏐⏐φ− ⟩34
+⏐⏐φ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐φ− ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ+ ⟩34
+⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐φ− ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ− ⟩34
+⏐⏐φ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐φ− ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ− ⟩23⏐⏐φ− ⟩14
+⏐⏐φ+ ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ− ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ+ ⟩23
+⏐⏐φ+ ⟩14
+⏐⏐φ+ ⟩23⏐⏐φ− ⟩14
+⏐⏐φ− ⟩23⏐⏐ψ+ ⟩14
+⏐⏐ψ+ ⟩23⏐⏐ψ− ⟩14
+⏐⏐ψ− ⟩23
+3 ProposedMDI-QKAprotocol
+We consider a scenario where two participants Alice and Bob, seek to establish an
+agreement key K in a secure and fair manner over a quantum channel. First, Alice
+and Bob prepare their respective EPR pairs ( a1,a2) and (b3,b4), where each EPR pair
+is randomly in one of the four Bell states {
+⏐⏐φ+ ⟩,
+⏐⏐φ− ⟩,
+⏐⏐ψ+ ⟩,
+⏐⏐ψ− ⟩}. Then, Alice
+and Bob transmit particles a2 and b3 to the untrusted third party Charlie, respectively.
+Charlie performs BSM on particlesa2 and b3 and announces the measurement outcome
+M23. Following that, Alice and Bob send the remaining particles a1 and b4 to Charlie
+for BSM, and Charlie announces the measurement outcome M14. Finally, Alice can
+compute the key K A /equal1O12 ⊕ M14, and Bob can compute the key K B /equal1O34 ⊕ M23.
+It is evident that K A /equal1K B . So, the agreement key can be chosen as K /equal1K A /equal1K B .
+The two-party MDI-QKA protocol is illustrated in Fig. 1.
+The ﬂowchart of the protocol is illustrated in Fig. 2.
+Next, let’s describe the details of the two-party MDI-QKA protocol as follows:
+(1) Alice and Bob have pre-agreed that the four Bell states {
+⏐⏐φ+ ⟩,
+⏐⏐φ− ⟩,
+⏐⏐ψ+ ⟩,
+⏐⏐ψ− ⟩}
+can encode two bits of classical information according to the rules:
+⏐⏐φ+ ⟩: "00",⏐⏐φ− ⟩: "01",
+⏐⏐ψ+ ⟩: "10", and
+⏐⏐ψ− ⟩: "11".
+(2) Alice (Bob) prepares a large number of EPR photon pairs each of which is ran-
+domly in one of the four Bell states {
+⏐⏐φ+ ⟩,
+⏐⏐φ− ⟩,
+⏐⏐ψ+ ⟩,
+⏐⏐ψ− ⟩}. Alice (Bob) selects
+123
+
+=== page 6 ===
+438 Page 6 of 18 Y.-G. Yang et al.
+Fig. 1 (Color online) The schematic diagram of a two-party MDI-QKA protocol based on entanglement
+swapping. In a–c, the particles connected by solid lines represent the EPR pairs used for potential key
+generation. The colored single particles denote single photons employed for eavesdropping detection.
+In d–f, particles connected by dotted lines depict EPR pairs generated through entanglement exchange.
+Different-colored particle pairs connected by solid lines represent four distinct Bell states, namely,
+⏐⏐φ+ ⟩,⏐⏐φ− ⟩,
+⏐⏐ψ+ ⟩,
+⏐⏐ψ− ⟩. The red rectangular boxes symbolize BSM, and the blue boxes denote single-particle
+measurements in the Z or X basis
+a photon of each EPR pair to form the Sa1 (Sb3}) sequence, and the other photon
+from each photon pair forms the sequence Sa2 (Sb4). Alice (Bob) stores the Sa1
+(Sb4) sequence in the quantum memory devices. Meanwhile, Alice (Bob) prepares
+a set of decoy particles, denoted as~Ra2 (~Rb3 ), which are enough for eavesdropping
+check. Each decoy particle is randomly prepared in either the Z-basis ( |0⟩, |1⟩)
+or the X-basis (| + ⟩/equal11/
+√
+2(|0⟩+ |1⟩), | −⟩/equal11/
+√
+2(|0⟩−|1⟩)). Subsequently,
+Alice (Bob) randomly inserts the decoy photons into the Sa2(Sb3) sequence and
+generates the new sequence denoted as S∗
+a2
+(
+S∗
+b3
+)
+. Finally, the sequence S∗
+a2
+(
+S∗
+b3
+)
+is sent to Charlie.
+(3) After the BSM on each received photon pair, Charlie announces the BSM results.
+Then, Alice and Bob announce the positions and quantum states of the decoy
+photons in a random order. According to the positions of decoy photons, there
+are three different scenarios. In the ﬁrst scenario, the two photons for the BSM
+come from two EPR pairs. In this scenario, the corresponding remaining photons
+of these two EPR pairs form a new Bell state by the entanglement swapping.
+In the second scenario, for a BSM, one photon is from the EPR pair and the
+other one is a decoy photon. In this scenario, Alice and Bob should discard the
+BSM result and the remaining photon of the EPR pair. In the third scenario, the
+photons for a BSM are both decoy photons. When the two photons are prepared
+123
+
+=== page 7 ===
+Measurement-device-independent quantum key agreement based … Page 7 of 18 438
+Fig. 2 The ﬂowchart of the MDI-QKA protocol
+123
+
+=== page 8 ===
+438 Page 8 of 18 Y.-G. Yang et al.
+Table 2 The relationships between the BSM result and the decoy states
+Quantum states The probability of possible BSM results
+Alice Bob
+⏐⏐φ+ ⟩
+⏐⏐φ− ⟩
+⏐⏐ψ+ ⟩
+⏐⏐ψ− ⟩
+|0⟩ |0⟩ 0.5 0.5 0 0
+|0⟩ |1⟩ 00 0 . 5 0 . 5
+|1⟩ |0⟩ 00 0 . 5 0 . 5
+|1⟩ |1⟩ 0.5 0.5 0 0
+|+⟩ |+⟩ 0.5 0 0.5 0
+|+⟩ |−⟩ 0 0.5 0 0.5
+|−⟩ |+⟩ 0 0.5 0 0.5
+|−⟩ |−⟩ 0.5 0 0.5 0
+with the same basis, the BSM result can be used for checking security. The
+relationships between the BSM result and the decoy states are shown in Table 2.
+For example, the states of Alice and Bob are |0⟩~Ra2
+|0⟩~Rb3
+which can be written
+as |0⟩~Ra2
+|0⟩~Rb3
+/equal11√
+2 (
+⏐⏐φ+ ⟩~Ra2 ~Rb3
++
+⏐⏐φ− ⟩~Ra2 ~Rb3
+). In this way, both
+⏐⏐φ± ⟩~Ra2 ~Rb3
+correspond to the correct results. If the BSM result is
+⏐⏐ψ± ⟩~Ra2 ~Rb3
+, the parties can
+ﬁnd an error. After the security checking, if the error rate exceeds the threshold,
+Alice and Bob have to discard the communication and restart step (2). Otherwise,
+they conﬁrm the security of the ﬁrst photon transmission round and go on to the
+next step.
+(4) Alice (Bob) prepares the other decoy photon sequence, denoted as ~Ra1 (~Rb4 ),
+and randomly inserts ~Ra1 (~Rb4 ) into the Sa1(Sb4) sequence to generate the new
+sequence denoted as S∗
+a1
+(
+S∗
+b4
+)
+. Finally, the sequence S∗
+a1
+(
+S∗
+b4
+)
+is sent to Charlie.
+(5) After the BSM on each received photon pair, Charlie announces the BSM results.
+Then, Alice and Bob announce the positions and quantum states of the decoy
+photons in a random order. If one photon is from the EPR pair and the other one
+is a decoy photon, Alice and Bob should discard the BSM result. If the photons
+for a BSM are both decoy photons and the two photons are prepared with the
+same basis, the BSM result can be used for the second round of security checking.
+The security checking rule is the same as that in step 3. If the error rate exceeds
+the tolerable threshold, the second round of photon transmission is insecure and
+thus the BSM results should be discarded. Otherwise, the security of the second
+round of photon transmission can be guaranteed.
+Finally, after the two rounds of photon transmission, the remained BSM results
+corresponding to the sequences Sa2 and Sb3 are denoted as M1
+a2, b3, M2
+a2, b3, ... ,
+M N
+a2, b3, and the remained BSM results corresponding to the sequencesSa1 and Sb4
+are denoted as M1
+a1, b4, M2
+a1, b4, ... , M N
+a1, b4. According to Table1, Charlie’s BSM
+results and her initial Bell states, Alice can determine the raw agreement keyK′/equal1
+Oa1, a2 ⊕ Ma1, b4. And according to Table 1, Charlie’s BSM results and his initial
+123
+
+=== page 9 ===
+Measurement-device-independent quantum key agreement based … Page 9 of 18 438
+Bell states, Bob can determine the raw agreement key K′/equal1Ob3, b4 ⊕ Ma2, b3.
+Alice and Bob keep the generated raw agreement key K′.
+(6) Alice and Bob apply error correction and privacy ampliﬁcation on K′to generate
+the ﬁnal agreement key K .
+4 Analysisofcorrectness,fairness,securityandeﬃciency
+4.1 Correctness
+Theorem 1 Assuming that Alice and Bob are honest, they can achieve a consensus on
+the agreement key K .
+Proof If Alice and Bob faithfully follow the protocol, it is evident that they can col-
+laboratively generate the raw agreement key K′. This is achieved through Charlie’s
+successful implementation of BSM on the received photon pairs in the two rounds of
+photon transmission. Assume that the two received photon pairs in the two rounds of
+photon transmission for the BSM come from two EPR pairs, for example, ( Pi(a1), Pi
+(b4)) and ( Pi(a2), Pi(b3)), which results in quantum entanglement swapping and the
+measurement results are presented in Table 1. In Table 1, Omn represents the binary
+encoding of the initial states of EPR particlesm and n, while Mij denotes the binary rep-
+resentation of the BSM results for EPR particlesi andj. Notably, the relationships hold,
+i.e., Oi
+a1, a2 ⊕ Mi
+a2, b3 /equal1Oi
+b3, b4 ⊕ Mi
+a1, b4 and Oi
+a1, a2 ⊕ Mi
+a1, b4 /equal1Oi
+b3, b4 ⊕ Mi
+a2, b3,
+for i /equal11, 2, …, N. Therefore, according to Table 1, Charlie’s BSM results and her
+initial Bell states, Alice can determine the raw agreement key K′/equal1Oa1, a2 ⊕ Ma1, b4.
+And according to Table 1, Charlie’s BSM results and his initial Bell states, Bob can
+determine the raw agreement key K′/equal1Ob3, b4 ⊕ Ma2, b3. Based on this, Alice and
+Bob can perform error correction and privacy ampliﬁcation on K A′and K B′to obtain
+the ﬁnal agreement key K , respectively.
+4.2 Fairness
+Theorem 2 There is no subset of participants that has the capability to determine the
+agreement key K alone.
+Proof The proposed MDI-QKA protocol is symmetric, with identical roles for Alice
+and Bob. According to Theorem 1, it can be deduced that if either of Alice and Bob
+intends to determine the ﬁnal agreement key K , they must ﬁrst generate the raw
+agreement key K′, which, in practical terms, is unattainable. The raw agreement key
+K′is derived from the information of the initial Bell states of EPR pairs held by Alice
+and Bob as well as Charlie’s BSM results. Here, we assume Alice is dishonest and
+her purpose is to determine the raw agreement key K′alone, and succeed in cheating
+Bob to accept this fake key. The same conclusion can be obtained for dishonest Bob.
+The ﬁrst strategy is the intercept-resend attack, i.e., Alice tries to intercept the photons
+sent by Bob and replace them with fake photons. However, the decoy particles are
+123
+
+=== page 10 ===
+438 Page 10 of 18 Y.-G. Yang et al.
+randomly distributed in the sequence. Moreover, the density operators of the decoy
+photons and the reduced density operator of one photon of the Bell state are same,
+i.e., the decoy photons and the EPR particles are in the maximally mixed state ρ /equal11
+2 (
+|0⟩⟨0| + |1⟩⟨1|). Thus, Alice cannot obtain any information about only from Bob’s
+traveling particle. Since the agreement key is generated by K′/equal1Ob3, b4 ⊕ Ma2, b3
+which depends on Bob’s initial Bell state, Alice cannot determine the raw agreement
+key K′alone without the knowledge of Bob’s initial Bell state even if she performs a
+BSM attack on her and Bob’s traveling particles.
+4.3 Security
+Security means that no external eavesdropper can obtain the information about the
+agreement key without being detected. In our protocol, the security of all the photon
+transmission processes is guaranteed by the two rounds of security checking. Sup-
+pose Eve is an external eavesdropper who attempts to eavesdrop on the agreement
+key. Since the decoy photons and the EPR particles are in the maximally mixed state
+ρ /equal11
+2 (|0⟩⟨0| + |1⟩⟨1|), Eve cannot discriminate the decoy photons and the EPR parti-
+cles. Thus, Eve cannot obtain any information only from Alice’s and Bob’s traveling
+particles. To see this in a sufﬁcient way, we will consider two possible cases, in which
+Eve may execute two common attacks: intercept-resend attack and collective attack.
+For the intercept-resend attack, it is unavoidable for Eve to intercept some decoy pho-
+tons. As Eve does not know the bases of the decoy photons, she may choose wrong
+measurement bases. Obviously, the probability that Eve selects a wrong measurement
+basis is approximately 50%. In this way, after she sends the photons to Charlie, Charlie
+may obtain a BSM result which may mismatch Alice’s and Bob’s decoy photon states
+and increase the error rate of the security checking. As a result, the intercept-resend
+attack can be detected by Alice and Bob.
+Another more general attack is the collective attack. The general idea of this attack is
+that Eve performs a collective attack on both Alice-Charlie and Bob-Charlie channels.
+Concretely, ﬁrst, Eve prepares two ancillary particles, i.e., e1 and e2, in the initial
+states, |0⟩e1 and |0⟩e2 . In step 2, when the sequence S∗
+a2
+(
+S∗
+b3
+)
+is sent to Charlie, Eve
+entangles the ﬁrst ancillae1 with the jth particle in the sequence S∗
+a2, and then sends the
+jth particle to Charlie, and she also entangles the second ancilla e2 with the jth particle
+in the sequence S∗
+b3, and then sends the jth particle to Charlie. Eve tries to obtain the
+information about Alice’s and Bob’s initial Bell states by measuring two ancillary
+particles. In the following, we will show that Eve cannot obtain the information about
+Alice’s and Bob’s initial Bell states under the condition that no error occurs.
+Here, we can write the most general operations, E1 and E2, which Eve could apply
+to Alice’s and Bob’s particles and two ancillary particles, as follows:
+E1 : |0⟩a|0⟩e1 →| 0⟩a|ε00⟩e1 + |1⟩a|ε01⟩e1 , |1⟩a|0⟩e1 →| 0⟩a|ε10⟩e1 + |1⟩a|ε11⟩e1 ,
+(5)
+E2 : |0⟩b|0⟩e2 →| 0⟩b|τ00⟩e2 + |1⟩b|τ01⟩e2 , |1⟩b|0⟩e2 →| 0⟩b|τ10⟩e2 + |1⟩b|τ11⟩e2 ,
+(6)
+123
+
+=== page 11 ===
+Measurement-device-independent quantum key agreement based … Page 11 of 18 438
+where the states |εij ⟩and |τij ⟩are pure ancilla states uniquely determined by E1 and
+E2. The following conditions can be derived from the unitary features of these two
+operations:
+(7)
+⟨ε00 |ε10⟩+ ⟨ε01| ε11⟩/equal10, ⟨τ00 |τ10⟩+ ⟨τ01| τ11⟩/equal10,
+⟨ε00 |ε00⟩+ ⟨ε01| ε01⟩/equal1⟨ε10 |ε10⟩+ ⟨ε11| ε11⟩/equal11,
+⟨τ00 |τ00⟩+ ⟨τ01| τ01⟩/equal1⟨τ10 |τ10⟩+ ⟨τ11| τ11⟩/equal11.
+To be useful for the security check, the states of Alice’s and Bob’s decoy parti-
+cles must be one of the following combinations { |0⟩a|0⟩b,|0⟩a|1⟩b,|1⟩a|0⟩b,|1⟩a|1⟩b,
+|+⟩a|+⟩b,|+⟩a|−⟩b,|−⟩a|+⟩b,|−⟩a|−⟩b}. For simplicity and without loss of generality,
+we assume that the combined state of Alice’s and Bob’s decoy particles is |0⟩a|0⟩b.
+In the collective attack, Alice’s and Bob’s particles and the two ancillary particles are
+in an initial state |α0⟩abe1e2 /equal1|0⟩a|0⟩b|0⟩e1|0⟩e2 . After Eve’s two unitary interactions
+between particles a and e1 and between b and e2, the whole system including Alice’s
+and Bob’s particles and the two ancillary particles is in the state
+|α1⟩abe1e2 /equal1E1
+⏐⏐0⟩a|0⟩e1 E2
+⏐⏐0⟩b|0⟩e2
+/equal11√
+2
+[⏐⏐φ+ ⟩ab
+(
+|ε00⟩e1 |τ00⟩e2 + |ε01⟩e1 |τ01⟩e2
+)
++
+⏐⏐φ− ⟩ab
+(
+|ε00⟩e1|τ00⟩e2 −| ε01⟩e1|τ01⟩e2
+)
++
+⏐⏐ψ+ ⟩ab
+(
+|ε00⟩e1|τ01⟩e2 + |ε01⟩e1|τ00⟩e2
+)
++
+⏐⏐ψ− ⟩ab
+(
+|ε00⟩e1 |τ01⟩e2 −| ε01⟩e1 |τ00⟩e2
+)]
+. (8)
+In the case without eavesdropping, the composite state of Alice’s and Bob’s particles
+is |0⟩a|0⟩b which can be written as|0⟩a|0⟩b /equal11√
+2 (
+⏐⏐φ+ ⟩ab +
+⏐⏐φ− ⟩ab ). In this way, both⏐⏐φ± ⟩ab correspond to the correct results. If Charlie’s BSM result is
+⏐⏐ψ± ⟩ab , Alice and
+Bob will ﬁnd an error. In the eavesdropping check process, in order for there to be no
+error, the state |α1⟩abe1e2 should satisfy the following conditions:
+⟨ψ+|α1⟩abe1e2 /equal10, ⟨ψ−|α1⟩abe1e2 /equal10. (9)
+From Eqs. (8) and ( 9), the following equation can be derived:
+|ε00⟩|τ01⟩/equal1|ε01⟩|τ00⟩/equal1−→0, (10)
+where −→0 denotes a zero vector.
+For other state combinations { |0⟩a|1⟩b,|1⟩a|0⟩b,|1⟩a|1⟩b,|+⟩a|+⟩b,|+⟩a|−⟩b,
+|−⟩a|+⟩b, |−⟩a|−⟩b}, we obtain the following equations:
+(11)
+|ε00⟩| τ10⟩/equal1|ε01⟩| τ11⟩/equal1−→0, |ε10⟩| τ00⟩/equal1|ε11⟩| τ01⟩
+/equal1−→0, |ε10⟩| τ11⟩/equal1|ε11⟩| τ10⟩/equal1−→0 .
+123
+
+=== page 12 ===
+438 Page 12 of 18 Y.-G. Yang et al.
+Based on Eq. ( 11), we obtain the following constraints:
+|ε01⟩/equal1|ε10⟩/equal1|τ01⟩/equal1|τ10⟩/equal1−→0. (12)
+The constraint in Eq. (12) implies that Eve cannot obtain any information under the
+condition that no errors are introduced. Hence, the proposed protocol is secure against
+the collective attack.
+On the other hand, we need to consider the attack from Charlie. Charlie’s dishonest
+behavior means that he announces wrong BSM results deliberately. This behavior
+may cause Alice and Bob to obtain wrong agreement keys, so that it can disturb the
+key agreement. However, as Charlie does not know the position of the decoy photons
+before announcing the BSM result, it is unavoidable that Charlie announces wrong
+BSM results for a decoy photon pair. As a result, Charlie’s dishonest behavior will
+increase the error rate in both security checking processes, and thus can be checked out
+by Alice and Bob. If the error rate exceeds the tolerable threshold, the key agreement
+will be terminated and the generated agreement keys will be discarded. Meanwhile,
+although two rounds of BSM results are announced, no one except Alice and Bob can
+obtain the generated agreement keys, for only Alice and Bob know their respective
+initial Bell states.
+4.4 Efficiency
+Efﬁciency of a quantum cryptographic protocol is deﬁned as [ 66]
+η /equal1c
+q + b , (13)
+where the parameter c represents the length of the ﬁnal secret key, q denotes the total
+number of qubits utilized, and b indicates the classical bits exchanged for decoding the
+secret key. In the context of two-party MDI-QKA protocols, disregarding the resources
+consumed by security checks, for two pair of Bell states generated by Alice and Bob,
+as well as Charlie’s four-bit BSM results, a 2-bit key is generated. Thus, the efﬁciency
+of our two-party MDI-QKA protocol is
+η /equal12
+4+4 /equal125%. (14)
+In Table 3, we provide a comparison with existing two-party QKA protocols [ 30,
+31, 35, 36, 41, 43, 44, 47, 48].
+From Table3, although the efﬁciency of our two-party MDI-QKA protocol is lower
+than that of other existing ones [ 31, 35, 36, 41], it can remove all the detector-side
+channel loopholes thereby having a higher practical security.
+123
+
+=== page 13 ===
+Measurement-device-independent quantum key agreement based … Page 13 of 18 438
+Table 3 Performance
+comparison between our
+protocol and the protocols [ 30,
+31, 35, 36, 41, 43, 44, 47, 48]
+Scheme QR NQO QE
+(%)
+Ref. [30] Single particles SQM +
+SQUO
+16.67
+Ref. [31] Cluster states FQOM +
+SQUO
+26.67
+Ref. [35] Two-particle states SQM +
+SQUO
+33
+Ref. [36] EPR pairs BSM 33.33
+Ref. [41] Cluster states FQOM +
+SQUO
+30.77
+Ref. [43] Single particles SQM 16.67
+Ref. [44] Single particles SQM +
+SQUO
+25
+Ref. [47] Single particles BSM +
+SQUO
+16.67
+Ref. [48] EPR pairs SQM 25
+Ours Single particles, EPR
+pairs
+BSM 25
+QR Quantum resource, NQO Necessary quantum operation, QE Quan-
+tum efﬁciency, SQUO Single-qubit unitary operation, SQM Single-
+qubit measurement, FQOM Four-qubit orthogonal measurement,BSM
+Bell basis measurement
+5 Discussionandconclusion
+Our work represents more than a mere extension of existing research. Currently,
+QSDC/DSQC has been proposed for QKA protocols. However, a majority of the
+current QKA protocols remain susceptible to detector-side-channel vulnerabilities.
+Remarkably few studies have ventured into MDI-QKA, with only the protocols in
+[65, 67] tackling this domain. Nonetheless, even among the existing MDI-QKA stud-
+ies [ 65, 67], substantial practical ﬂaws persist. First and foremost, the protocol in
+[65] does not qualify as a genuine MDI-QKA protocol, as it remains susceptible to
+security attacks. In this protocol, Charlie, a participant in the key agreement process,
+is tasked with measuring the GHZ state particle ’c’ using his measurement device
+to generate the key based on the measurement result. However, Charlie’s measure-
+ment device may be eavesdropped upon or even controlled by an external attacker,
+compromising the entire protocol’s security. For an MDI-QKA protocol claiming to
+withstand all side-channel vulnerabilities, the existence of such a vulnerability is catas-
+trophic. Recently, Liu et al. [ 67] presented a multiparty MDI-QKA protocol. In their
+protocol, the post-selected GHZ states are used to generate a secure agreement key
+between legitimate participants. However, GHZ-state measurements are required and
+this protocol is probabilistic because only two of 2 N N-particle GHZ-state measure-
+ment results can be identiﬁed by using the linear optical elements. In contrast, our
+two-party MDI-QKA protocol is deterministic. Since multi-party MDI-QKA is more
+123
+
+=== page 14 ===
+438 Page 14 of 18 Y.-G. Yang et al.
+desirable for practical quantum networks, it is natural to study the deterministic mul-
+tiparty MDI-QKA protocol based on entanglement swapping. In fact, the two-party
+MDI-QKA can be used as a subprotocol for the construction of multiparty MDI-QKA.
+For concreteness, assume that there be M participants who intend to engage in key
+negotiation, divided into m pairs (where M /equal12 m): { Ali ce1, Bob1}, { Ali ce2, Bob2},
+…, { Ali cem , Bobm }. They encode the four Bell states according to the rules:
+⏐⏐φ+ ⟩:
+"00",
+⏐⏐φ− ⟩: "01",
+⏐⏐ψ+ ⟩: "10", and
+⏐⏐ψ− ⟩: "11". Each pair { Ali cei , Bobi }r u nt h e
+two-party MDI-QKA protocol and generate a two-party agreement key Ki ,f o ri /equal11,
+2, …, m. For each Ali cei (Bobi ), they transmit their respective Ki to Ali ce j (Bob j )
+using the MDI-QSDC method [ 68] where j ∈{ 1, 2, ··· , m}\{i}. Subsequently, the
+raw key K′is obtained as:
+K′/equal1K1 ⊕ K2 ⊕ ... ⊕ Km. (15)
+Finally, they utilize error correction and privacy ampliﬁcation techniques on K′to
+generate the ﬁnal agreement key K . However, it is easily seen that this generalization
+is inefﬁcient due to so many rounds of invoking two-party MDI-QKA and MDI-QSDC
+protocols. So, we will study the efﬁcient multiparty MDI-QKA in the future work.
+To summarize, we have presented an innovative two-party MDI-QKA protocol
+based on entanglement swapping. Signiﬁcantly, this protocol guarantees that no sub-
+set of participants can independently ascertain the ﬁnal shared key. Moreover, we also
+show that the proposed protocol is secure against the intercept-resend attack and collec-
+tive attack of external attackers, and it is also secure against participant attacks, thereby
+ensuring both fairness and security. Furthermore, the generation of Bell states and sin-
+gle photons is achievable with current technologies. In addition, our protocols need
+complete Bell state analysis. Though Bell state measurement has not been generally
+accomplished [69], it was experimentally realized based on some certain techniques
+[70–73]. Furthermore, the realizations of entanglement swapping have been proposed
+[74]. Therefore, our protocols are within the reach of current technology. Finally, we
+hope that the MDI technique should be taken into account in the design of practical
+quantum cryptographic protocols [ 75–92].
+Acknowledgements This work is supported by the National Natural Science Foundation of China (Grant
+Nos. 62071015, 62171264); Shandong Provincial Natural Science Foundation (ZR2023MF080).
+Data availability No data was used for the research described in the article.
+Declarations
+Conﬂict of interests We declare that we have no ﬁnancial and personal relationships with other people or
+organizations that can inappropriately inﬂuence our work, there is no professional or other personal interest
+of any nature or kind in any product, service and/or company that could be construed as inﬂuencing the
+position presented in, or the review of, the manuscript.
+References
+1. Difﬁe, W., Hellman, M.E.: New directions in cryptography. IEEE Trans. Inf. Theory 22(6), 644–654
+(1976)
+123
+
+=== page 15 ===
+Measurement-device-independent quantum key agreement based … Page 15 of 18 438
+2. Bennett, C.H., Brassard, G.: Quantum cryptography: public key distribution and coin tossing. Proceed-
+ings on IEEE International Conference on Computing, Systematic Signal Processing, pp. 175–179.
+IEEE, New Y ork (1984).
+3. Ekert, A.K.: Quantum cryptography based on Bell’s theorem. Phys. Rev. Lett. 67(6), 661–663 (1991)
+4. Dutta, A., Pathak, A.: New protocols for quantum key distribution with explicit upper and lower bound
+on secret-key rate. arXiv preprint arXiv:2212.13089 (2022).
+5. Boström, K., Felbinger, T.: Deterministic secure direct communication using entanglement. Phys. Rev.
+Lett. 89, 187902 (2002)
+6. Deng, F.G., Long, G.L., Liu, X.S.: Two-step quantum direct communication protocol using the Einstein-
+Podolsky-Rosen pair block. Phys. Rev. A 68, 042317 (2003)
+7. Lucamarini, M., Mancini, S.: Secure deterministic communication without entanglement. Phys. Rev.
+Lett. 94(14), 140501 (2005)
+8. Dutta, A., Pathak, A.: Controlled secure direct quantum communication inspired scheme for quantum
+identity authentication. Quantum Inf. Process. 22(1), 13 (2022)
+9. Hillery, M., Bužek, V ., Berthiaume, A.: Quantum secret sharing. Phys. Rev. A 59, 1829–1834 (1999)
+10. Karlsson, A., Koashi, M., Imoto, N.: Quantum entanglement for secret sharing and secret splitting.
+P h y s .R e v .A59, 162–168 (1999)
+11. Y ang, Y .G., Wen, Q.Y .: An efﬁcient two-party quantum private comparison protocol with decoy photons
+and two-photon entanglement. J. Phys. A: Math. Theor. 42(5), 055305 (2009)
+12. Y ang, Y .G., Cao, W.F., Wen, Q.Y .: Secure quantum private comparison. Phys. Scr.80(6), 065002 (2009)
+13. Chen, X.B., Xu, G., Niu, X.X., Wen, Q.Y ., Y ang, Y .X.: An efﬁcient protocol for the private compar-
+ison of equal information based on the triplet entangled state and single particle measurement. Opt.
+Commun. 283(7), 1561–1565 (2010)
+14. Zeng, G.H., Keitel, C.H.: An arbitrated quantum signature algorithm. Phys. Rev. A 65, 042312 (2002)
+15. Y ang, Y .G., Liu, Z.C., Li, J., Chen, X.B., Zuo, H.J., Zhou, Y .H., Shi, W.M.: Theoretically extensible
+quantum digital signature with starlike cluster states. Quantum Inf. Process. 16(1), 12 (2017)
+16. Y ang, Y .G., Lei, H., Liu, Z.C., Zhou, Y .H., Shi, W.M.: Arbitrated quantum signature scheme based on
+cluster states. Quantum Inf. Process. 15(6), 2487–2497 (2016)
+17. Jakobi, M., Simon, C., Gisin, N., Bancal, J.D., et al.: Practical private database queries based on a
+quantum-key-distribution protocol. Phys. Rev. A 83, 022301 (2011)
+18. Y ang Y .G., Liu B.X., Xu G.B., Zhou Y .H., and Shi W.M.: Practical quantum anonymous private
+information retrieval based on quantum key distribution. IEEE Trans. Inf. Forens. Secur. 18, 4034-
+4045 (2023)
+19. Y ang, Y .G., Liu, Z.C., Chen, X.B., Zhou, Y .H., Shi, W.M.: Robust QKD-based private database queries
+based on alternative sequences of single-qubit measurements. Sci. Chin. Phys. Mech. Astron. 60(12),
+120311 (2017)
+20. Y ang, Y .G., Liu, Z.C., Li, J., Chen, X.B., Zuo, H.J., Zhou, Y .H., Shi, W.M.: Quantum private query
+with perfect user privacy against a joint-measurement attack. Phys. Lett. A380(48), 4033–4038 (2016)
+21. Y ang, Y .G., Liu, Z.C., Chen, X.B., Cao, W.F., Zhou, Y .H., Shi, W.M.: Novel classical post-processing
+for quantum key distribution-based quantum private query. Quantum Inf. Process. 15, 3833–3840
+(2016)
+22. Gao, F., Liu, B., Wen, Q.Y .: Flexible quantum private queries based on quantum key distribution. Opt.
+Exp. 20, 17411–17420 (2012)
+23. Gao, F., Qin, S.J., Huang, W., Wen, Q.Y .: Quantum private query: a new kind of practical quantum
+cryptographic protocols. Sci. China-Phys. Mech. Astron. 62, 070301 (2019)
+24. Y ang, Y .G., Guo, X.P ., Xu, G., Chen, X.B., Li, J., Zhou, Y .H., Shi, W.M.: Reducing the communica-
+tion complexity of quantum private database queries by subtle classical post-processing with relaxed
+quantum ability. Comput. Secur. 81, 15–24 (2019)
+25. Zhang, Z., Zeng, G., Zhou, N., Xiong, J.: Quantum identity authentication based on ping-pong technique
+for photons. Phys. Lett. A 356(3), 199–205 (2006)
+26. Dutta, A., Pathak, A.: A short review on quantum identity authentication protocols: How would Bob
+know that he is talking with Alice? Quantum Inf. Process. 21(11), 369 (2022)
+27. Chen, G., Wang, Y ., Jian, L., Zhou, Y ., Liu, S., Luo, J., Y ang, K.: Quantum identity authentication
+protocol based on ﬂexible quantum homomorphic encryption with qubit rotation. J. Appl. Phys.133(6),
+064402 (2023)
+28. Zhou, N., Zeng, G., Xiong, J.: Quantum key agreement protocol. Electron. Lett. 40, 1149 (2004)
+123
+
+=== page 16 ===
+438 Page 16 of 18 Y.-G. Yang et al.
+29. Tsai, C.W., Hwang, T.: On quantum key agreement protocol. Technical Report C-S-I-E, NCKU, Taiwan
+(2009).
+30. Chong, S.K., Hwang, T.: Quantum key agreement protocol based on BB84. Opt. Commun. 283,
+1192–1195 (2010)
+31. He, Y .F., Ma, W.P .: Quantum key agreement protocols with four-qubit cluster states. Quantum Inf.
+Process. 14, 3483–3498 (2015)
+32. Y ang, Y .-G., Wang, Y .-C., Li, J., Zhou, Y .-H., Shi, W.-M.: Semi-device-independent quantum key
+agreement protocol. Quantum Inf. Process. 20(11), 376 (2021)
+33. Y ang, Y .G., Li, B.R., Li, D., et al.: New quantum key agreement protocols based on Bell states. Quantum
+Inf. Process. 18, 322 (2019)
+34. Zhu, H.F., Liu, T.H., Wang, C.N.: A one-round quantum mutual authenticated key agreement protocol
+with semi-honest server using three-particle entangled states. Int. J. Theor. Phys. 60, 929–943 (2021)
+35. Huang, X., Zhang, S.B., Chang, Y ., Qiu, C., Liu, D.M., Hou, M.: Quantum key agreement protocol
+based on quantum search algorithm. Int. J. Theor. Phys. 60, 838–847 (2021)
+36. Shi, R.H., Zhong, H.: Multi-party quantum key agreement with Bell states and Bell measurements.
+Quantum Inf. Process. 12, 921–932 (2013)
+37. Liu, B., Gao, F., Huang, W., Wen, Q.Y .: Multiparty quantum key agreement with single particles.
+Quantum Inf. Process. 12, 1797–1805 (2013)
+38. Sun, Z., Huang, J., Wang, P .: Efﬁcient multiparty quantum key agreement protocol based on commu-
+tative encryption. Quantum Inf. Process. 15(5), 2101–2111 (2016)
+39. Y ang, Y .-G., Gao, S., Li, D., Zhou, Y .-H., Shi, W.-M.: Two-party quantum key agreement over a
+collective noisy channel. Quantum Inf. Process. 18(3), 74 (2019)
+40. Wang, P ., Sun, Z., Sun, X.: Multi-party quantum key agreement protocol secure against collusion
+attacks. Quantum Inf. Process. 16, 170 (2017)
+41. Y ang, Y .G., Li, B.R., Kang, S.Y ., et al.: New quantum key agreement protocols based on cluster states.
+Quantum Inf. Process. 18, 77 (2019)
+42. Zhou, N.R., Zhu, K.N., Wang, Y .Q.: Three-party semi-quantum key agreement protocol. Int. J. Theor.
+Phys. 59, 663–676 (2020)
+43. Naresh, V .S., Reddi, S.: Multiparty quantum key agreement with strong fairness property. Comput.
+Syst. Sci. Eng. 35(6), 457–465 (2020)
+44. Naresh, V .S., Nasralla, M.M., Reddi, S., García-Magariño, I.: Quantum Difﬁe-Hellman extended to
+dynamic quantum group key agreement for e-Healthcare multi-agent systems in smart cities. Sensors
+20(14), 3940 (2020)
+45. Li, L., Li, Z.: A veriﬁable multiparty quantum key agreement based on bivariate polynomial. Inf. Sci.
+521, 343–349 (2020)
+46. Lin, S., Zhang, X., Guo, G.D., Wang, L.L., Liu, X.F.: Multiparty quantum key agreement. Phys. Rev.
+A 104, 042421 (2021)
+47. Y ang, Y .G., Lv, X.L., Gao, S., et al.: Detector-device-independent quantum key agreement based on
+single-photon Bell state measurement. Int. J. Theor. Phys. 61(2), 50 (2022)
+48. Huang, W., Wen, Q.Y ., Liu, B., Gao, F., Sun, Y .: Quantum key agreement with EPR pairs and single
+particle measurements. Quantum Inf. Process. 13, 649–663 (2014)
+49. Y ang, Y .-G., Liu, X.-X., Gao, S., Zhou, Y .-H., Shi, W.-M., Li, J., Li, D.: Towards practical anonymous
+quantum communication: A measurement-device-independent approach. Phys. Rev. A104(5), 052415
+(2021)
+50. Lydersen, L., Wiechers, C., Wittmann, C., et al.: Hacking commercial quantum cryptography systems
+by tailored bright illumination. Nature Photon. 4(10), 686–689 (2010)
+51. Xu, F., Qi, B., Lo, H.K.: Experimental demonstration of phase-remapping attack in a practical quantum
+key distribution system. New J. Phys. 12(11), 113026 (2010)
+52. Gerhardt, I., Liu, Q., Lamas-Linares, A., et al.: Full-ﬁeld implementation of a perfect eavesdropper on
+a quantum cryptography system. Nature Commun. 2(1), 349 (2011)
+53. Acín, A., Brunner, N., Gisin, N., et al.: Device-independent security of quantum cryptography against
+collective attacks. Phys. Rev. Lett. 98(23), 230501 (2007)
+54. Lo, H.K., Curty, M., Qi, B.: Measurement-device-independent quantum key distribution. Phys. Rev.
+Lett. 108, 130503 (2012)
+55. Cao, Y ., Li, Y .H., Y ang, K.X., et al.: Long-distance free-space measurement-device-independent quan-
+tum key distribution. Phys. Rev. Lett. 125(26), 260503 (2020)
+123
+
+=== page 17 ===
+Measurement-device-independent quantum key agreement based … Page 17 of 18 438
+56. Zhou, Y .H., Y u, Z.W., Wang, X.B.: Making the decoy-state measurement-device-independent quantum
+key distribution practically useful. Phys. Rev. A 93(4), 042324 (2016)
+57. Lucamarini, M., Y uan, Z.L., Dynes, J.F., Shields, A.J.: Overcoming the rate–distance limit of quantum
+key distribution without quantum repeaters. Nature 557, 400 (2018)
+58. Ma, X., Zeng, P ., Zhou, H.: Phase-matching quantum key distribution. Phys. Rev. X 8, 031043 (2018)
+59. Lin, J., Lütkenhaus, N.: Simple security analysis of phase-matching measurement-device-independent
+quantum key distribution. Phys. Rev. A 98, 042332 (2018)
+60. Wang, X.B., Y u, Z.W., Hu, X.L.: Twin-ﬁeld quantum key distribution with large misalignment error.
+P h y s .R e v .A98, 062323 (2018)
+61. Wang, S., Yin, Z.Q., He, D.Y ., et al.: Twin-ﬁeld quantum key distribution over 830-km ﬁbre. Nat.
+Photon. 16, 154–161 (2022)
+62. Zeng, P ., Zhou, H.Y ., Wu, W.J., Ma, X.F.: Mode-pairing quantum key distribution. Nat. Commun. 13,
+3903 (2022)
+63. Fan-Y uan, G.J., Lu, F.Y ., Wang, S., et al.: Measurement-device-independent quantum key distribution
+for nonstandalone networks. Photon. Res. 9(10), 1881–1891 (2021)
+64. Fan-Y uan, G.J., Lu, F.Y ., Wang, S., et al.: Robust and adaptable quantum key distribution network
+without trusted nodes. Optica 9, 812–823 (2022)
+65. Cai, X.Q., Liu, Z.F., Wei, C.Y ., Wang, T.Y .: Long distance measurement-device-independent three-
+party quantum key agreement. Phys. A: Stat. Mech. Its Appl. 607, 128226 (2022)
+66. Cabellon, A.: Quantum key distribution in the Holevo limit. Phys. Rev. Lett. 85, 5635 (2000)
+67. Liu, B.X., Huang, R.C., Y ang, Y .G., Xu, G.B.: Measurement-device-independent multi-party quantum
+key agreement. Front. Quantum Sci. Technol. (2023). https://doi.org/10.3389/frqst.2023.1182637
+68. Zhou, Z., Sheng, Y ., Niu, P ., et al.: Measurement-device-independent quantum secure direct commu-
+nication. Sci. China Phys. Mech. Astron. 63, 230362 (2020)
+69. Lütkenhaus, N., Calsamiglia, J., Suominen, K.-A.: Bell measurements for teleportation. Phys. Rev. A
+59, 3295 (1999)
+70. Welte, S., Thomas, P ., Hartung, L., et al.: A nondestructive Bell-state measurement on two distant
+atomic qubits. Nat. Photon. 15, 504–509 (2021)
+71. Barrett, S.D., Kok, P ., Nemoto, K., et al.: Symmetry analyzer for nondestructive Bell-state detection
+using weak nonlinearities. Phys. Rev. A 71, 060302 (2005)
+72. Ren, X.F., Guo, G.P ., Guo, G.C.: Complete Bell-states analysis using hyper-entanglement. Phys. Lett.
+A 343(1–3), 8–11 (2005)
+73. Li, T., Miranowicz, A., Hu, X., et al.: Quantum memory and gates using a -type quantum emitter
+coupled to a chiral waveguide. Phys. Rev. A 97(6), 062318 (2018)
+74. Ul Haq, S., Khalique, A.: Long distance cavity entanglement by entanglement swapping using atomic
+momenta. Opt. Commun. 334, 290–293 (2015)
+75. Y ang, Y .-G., Sun, S.-J., Xu, P ., Tian, J.: Flexible protocol for quantum private query based on B92
+protocol. Quantum Inf. Process. 13, 805–813 (2014)
+76. Y ang, Y .-G., Sun, S.-J., Tian, J., Xu, P .: Secure quantum private query with real-time security
+check.Optik. 125, 5538–5541 (2014)
+77. Y ang, Y .-G., Zhang, M.-O., Y ang, R.: Private database queries using one quantum state. Quantum Inf.
+Process. 14, 1017–1024 (2015)
+78. Y ang, Y .-G., Gao, S., Li, D., Zhou, Y .-H., Shi, W.-M.: New secure quantum dialogue protocols over
+collective noisy channels. Int. J. Theor. Phys. 58(9), 2810–2822 (2019)
+79. Y ang, Y .-G., Gao, S., Li, D., Zhou, Y .-H., Shi, W.-M.: Three-party quantum secret sharing against
+collective noise. Quantum Inf. Process. 18(5), 215 (2019)
+80. Cao, W.-F., Y ang, Y .-G.: V eriﬁable quantum secret sharing protocols based on four-qubit entangled
+states. Int. J. Theor. Phys. 58(4), 1202–1214 (2019)
+81. Y ang, Y .-G., Y ang, J.-J., Zhou, Y .-H., et al.: Quantum network communication: A discrete-time
+quantum-walk approach. Sci. Chin. Inf. Sci. 61, 042501 (2018)
+82. Y ang, Y .-G., Y ang, R., Cao, W.-F., Chen, X.-B., Zhou, Y .-H., Shi, W.-M.: Flexible quantum oblivious
+transfer. Int. J. Theor. Phys. 56(4), 1286–1297 (2017)
+83. Li, J., Y ang, Y .-G., Chen, X.-B., Zhou, Y .-H., Shi, W.-M.: Practical quantum private database queries
+based on passive round-Robin differential phase-shift quantum key distribution. Sci. Rep. 6, 31738
+(2016)
+84. Y ang, Y .-G., Sun, S.-J., Pan, Q.-X., Xu, P .: Quantum oblivious transfer based on unambiguous set
+discrimination.Optik. 126(23), 3838–3843 (2015)
+123
+
+=== page 18 ===
+438 Page 18 of 18 Y.-G. Yang et al.
+85. Y ang, Y .-G., Wang, Y .-C., Y ang, Y .-L., Chen, X.-B., Li, D., Zhou, Y .-H., Shi, W.-M.: Participant attack
+on the deterministic measurement-device-independent quantum secret sharing protocol. Sci. Chin.
+Phys. Mech. Astron. 64(6), 121–124 (2021)
+86. Y ang, Y .-G., Liu, X.-X., Gao, S., Chen, X.-B., Li, D., Zhou, Y .-H., Shi, W.-M.: A stronger par-
+ticipant attack on the measurement-device-independent protocol for deterministic quantum secret
+sharing.Quantum Inf. Process. 20(7), 223 (2021)
+87. Y ang, Y .-G., Cao, G.-D., Huang, R.-C., Gao, S., Zhou, Y .-H., Shi, W.-M., Xu, G.B.: Multiparty anony-
+mous quantum communication without multipartite entanglement. Quantum Inf. Process. 21(6), 196
+(2022)
+88. Y ang, Y .-G., Y ang, Y .-L., Lv, X.-L., et al.: Examining the correctness of anonymity for practical
+quantum networks (vol 101, 062311, 2020). Phys. Rev. A. 106(4), 049901 (2022)
+89. Y ang, Y .-L., Y ang, Y .-G., Zhou, Y .-H., Shi, W.-M., Li, J.: Efﬁcient quantum multi-hop communication
+based on Greenberger-Horne-Zeilinger states and Bell states. Quantum Inf. Process. 20(5), 189 (2021)
+90. Y ang, Y .-L., Y ang, Y .-G., Zhou, Y .-H., et al.: Measurement-device-independent quantum wireless
+network communication. Quantum Inf. Process. 21(4), 154 (2022)
+91. Y ang, Y .-G., Y ang P .-Z., Xu G.-B., et al.: Quantum private information retrieval over a collective noisy
+channel. Mod. Phys. Lett. A 38(1), 2350001(2023)
+92. Y ang, Y .-G., Huang R.-C., Xu G.-B., et al.: New multiparty measurement-device-independent quantum
+secret sharing protocol based on entanglement swapping. Mod. Phys. Lett. A https://doi.org/10.1142/
+S0217732323501456 (2023)
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps
+and institutional afﬁliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds exclusive rights to this article under
+a publishing agreement with the author(s) or other rightsholder(s); author self-archiving of the accepted
+manuscript version of this article is solely governed by the terms of such publishing agreement and applicable
+law.
+123

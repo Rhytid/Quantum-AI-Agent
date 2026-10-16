@@ -1,0 +1,2082 @@
+=== page 1 ===
+Resource-Dependent Complexity of Quantum Channels
+Roy Araiza1, Yidong Chen2, Marius Junge1, Peixue Wu3,∗
+1Department of Mathematics and Illinois Quantum Information Science and Technology Center (IQUIST), University of Illinois at Urbana-
+Champaign
+2Department of Physics, University of Illinois at Urbana-Champaign
+3Institute for Quantum Computing and Department of Applied Mathematics, University of Waterloo
+We introduce a new framework for quan-
+tifying the complexity of quantum channels,
+grounded in a suitably chosen resource set.
+This class of convex functions is designed to
+analyzethecomplexityofbothopenandclosed
+quantum systems. By leveraging Lipschitz
+norms inspired by quantum optimal trans-
+port theory, we rigorously establish the fun-
+damental properties of this complexity mea-
+sure. The flexibility in selecting the resource
+set allows us to derive effective lower bounds
+for gate complexities and simulation costs of
+both Hamiltonian simulations and dynamics
+of open quantum systems. Additionally, we
+demonstrate that this complexity measure ex-
+hibits linear growth for random quantum cir-
+cuits and finite-dimensional quantum simula-
+tions, up to the Brown-Susskind threshold.
+1 Introduction
+Background.—Determining the resources required to
+perform a quantum task is a fundamental question in
+quantum information theory. In this letter, we aim
+to provide certificates for the complexity of quantum
+operations.
+Certifying that a large number of elementary gates
+is required to approximate a given unitary operation
+is a challenging task in the study of gate complex-
+ity. This difficulty is compounded by the existence
+of numerous, often nonequivalent, notions of quan-
+tum complexity measures [47, 58, 60, 26, 23, 40, 9, 7,
+6, 5, 4]. Beyond gate counts, these complexity mea-
+sures have been extended to broader contexts, includ-
+ing quantum many-body systems [37, 36, 10, 11, 1]
+and chaotic quantum systems [49, 25, 3, 53, 54]. A
+pivotal development in this field was made by Brown
+and Susskind in [10, 11], where they conjectured that
+the complexity of a typical random quantum circuit
+grows linearly with its depth before saturating at a
+Roy Araiza 1, Yidong Chen 2, Marius Junge 1, Peixue Wu 3,∗ :
+R.A. was supported as a J.L. Doob Research Assistant Profes-
+sor. M.J. was partially supported by NSF Grants DMS-2247114,
+DMS-1800872, and NSF RAISE-TAQS-1839177. P.W. is the cor-
+responding author and was supported by the Canada First Research
+Excellence Fund (CFREF)
+value exponential in the system size. This conjecture
+underscorestheintrinsicincompressibilityofquantum
+circuits and the fundamental difficulty of performing
+most quantum operations within finite resources.
+Motivated by this conjecture, researchers have fo-
+cused on establishing sharper lower bounds for gate
+complexities. Notable progress has been made in
+proving theBrown-Susskindconjecture in specific set-
+tings, such as gate counts for different designs of ran-
+dom quantum circuits [32, 31, 17]. Furthermore, in
+[34], the conjecture was validated from a resource-
+theoretic perspective, by defining and analyzing a re-
+source theory for uncomplexity. These advancements
+havesignificantlyenrichedourunderstandingofquan-
+tum complexity and its implications for both theoret-
+ical and practical aspects of quantum computation.
+Our contribution.—We introduce a flexible, resource-
+dependent quantum complexity measure inspired by
+the axiomatic approach to complexity considered in
+[41] and ideas from quantum optimal transport the-
+ory [48, 15, 16, 61, 63, 13, 30] and noncommutative
+geometry [20, 55, 56]. The novelty of our approach
+lies in the flexibility of choosing resource sets and the
+ability to treat both closed and open quantum sys-
+tems. This flexibility allows us to recover several ex-
+isting complexity measures, including the Wasserstein
+complexity introduced in [41] and the geometric com-
+plexity introduced in [43, 44, 45].
+Our complexity measure possesses desirable mathe-
+matical properties such as convexity, additivity under
+tensor products, and Lipschitz continuity. Notably, it
+provides a lower bound for the gate count, enabling
+us to propose effective lower bounds on the number
+of gates required to accomplish a given task. Our
+method is completely different from the techniques
+developed in [33, 57].
+Finally, we prove a version of the Brown-Susskind
+conjecture, demonstrating the linear growth of com-
+plexity for a random unitary drawn from the uni-
+tary resource setS. We also establish a similar lower
+bound on the complexity of Hamiltonian simulation
+via the quantum stochastic drift (qDRIFT) protocol
+considered in [14], as implemented in Qiskit [52].
+Definition of the Complexity Measure.—SupposeHis
+a finite-dimensional quantum system (Hilbert space).
+Denote:
+-D(H)as the set of density operators onH, corre-
+1
+arXiv:2303.11304v5  [quant-ph]  5 Jan 2026
+
+=== page 2 ===
+sponding to quantum states.
+-B(H)as the set of linear operators onH.
+-O(H)as the set of Hermitian operators, correspond-
+ing to observables in quantum mechanics.
+We say thatSis aresource seton systemHifS
+is a subset ofB(H). For any resource setS, we can
+define an inducedLipschitz semi-normonB(H)given
+by
+|||x|||S := sup
+s∈S
+∥[s,x]∥ op, x∈B(H),(1.1)
+where[s,x] =sx−xsis the commutator, and∥·∥ op
+is the operator norm, given by the largest singular
+value of the operator. This semi-norm is motivated
+from noncommutative geometry, initiated by Connes
+[21].
+WhenScontains only Hermitian operators, we can
+considers∈Sas generating a unitary evolution
+x(t) =e itsxe−its on observables (Heisenberg picture).
+The commutator relates to the time derivative of the
+evolution of observables at timet= 0:
+d
+dtx(t)
+⏐⏐⏐⏐
+t=0
+=i[s,x].(1.2)
+Therefore,|||x||| S represents the maximal rate at
+which the observablexchanges under the dynamics
+generated by the elements ofS.
+The Lipschitz semi-norm(1.1)naturally induces
+an Earth Mover’s distance, also referred to as the
+Wasserstein-1 distance [22] in the context of quantum
+states. More generally, any semi-norm on observables
+inducesatruedistanceonquantumstatesviathedual
+formulation [30, 55, 56]. We will see a variant of(1.1)
+in Section 3.3. For any quantum statesρ,σ∈D(H),
+the Earth Mover’s distance is defined by
+WS(ρ,σ) = sup
+{
+|tr(x(ρ−σ))|:|||x||| S≤1, x=x †}
+.
+(1.3)
+In ann-qudit system, if we chooseSto be the set of
+single-qudit Pauli gates, our Earth Mover’s distance
+WS(ρ,σ)recovers the Wasserstein-1 distance intro-
+duced in [22]. Compared to the expression of the
+Wasserstein-1 distance, the Lipschitz norm(1.1)as
+the dual picture is easier to compute or estimate in
+some cases.
+We introduce the complexity measure based on the
+above Lipschitz semi-norm and its induced distance
+on quantum states. SupposeΦis a quantum channel
+acting on density operators onH, and denoteΦ∗ as
+the dual map acting on observables onH. Denotetr
+as the trace; we have
+tr(Φ(ρ)X) = tr(ρΦ∗(X)),(1.4)
+whereρis a density operator andX∈O(H)is an
+observable. Given a resource setS, our resource-
+dependent complexityCS is defined by
+CS(Φ) = sup
+ρ∈D(H)
+WS (Φ(ρ),ρ)(1.5)
+= sup
+|||x|||S≤1, x=x†
+∥Φ∗(x)−x∥ op.(1.6)
+From a physical perspective,C S(Φ)captures the
+largest possible deviation that the channelΦinduces
+relative to the Lipschitz geometry defined by the re-
+sources inS.
+In the Schrödinger picture, this means asking: for
+the worst-case input state, how far doesΦpush it
+away, as measured by the Wasserstein distance associ-
+ated withS. Equivalently, in the Heisenberg picture,
+CS(Φ)quantifies the maximal disturbance of observ-
+ables caused byΦ∗. If an observablexis simple with
+respect toS(i.e., it has Lipschitz norm bounded by
+one), thenΦ∗(x)−xmeasures how much the dynam-
+ics reshapes that observable.
+This dual interpretation highlights the operational
+meaning:C S is the worst-case cost to simulate or re-
+verseΦunder the constraints ofS.
+2 Preliminaries
+2.1 Definitions and Basics
+A quantum channelΦ :D(H)→ D(H)is a linear
+map that is completely positive and trace-preserving
+(CPTP). The dual mapΦ∗, is unital and completely
+positive (UCP).
+Given a resource setS⊆B(H), recall that we de-
+fine the induced Lipschitz semi-norm(1.1)onB(H)
+as|||x||| S := sup s∈S∥[s,x]∥ op, x∈ B(H), where
+[s,x] =sx−xsdenotes the commutator, and∥·∥ op
+is the operator norm.
+The environment-assisted (also known as complete
+in [50]) Lipschitz norm is defined when we allow the
+quantum system to be coupled with an additionald-
+dimensional quantum systemHd:
+|||Xd|||d
+S := sup
+s∈S
+∥[s⊗I d,Xd]∥op, X d∈B(H⊗H d),
+(2.1)
+whereI d denotes the identity operator onHd.
+Then, the resource-dependent complexity of a
+quantum channelΦis defined asC S(Φ) =
+sup|||x|||S≤1, x=x†∥Φ∗(x)−x∥ op.For notational sim-
+plicity, we will omit the conditionx=x † from now
+on.
+We also introduce the environment-assisted
+resource-dependent complexity, which has better
+mathematical properties and can provide us with
+sharper lower bounds in some applications. It is
+defined by
+Ccb
+S (Φ) = sup
+d≥1
+sup
+|||Xd|||d
+S≤1
+∥(Φ∗⊗idB(Hd))(Xd)−X d∥op,
+(2.2)
+whereid B(Hd) is the identity super-operator on
+B(Hd). As a remark,cbis the abbreviation of com-
+pletely bounded [50].
+2
+
+=== page 3 ===
+To simplify notation, following the convention in
+[50], the above can be abbreviated as
+Ccb
+S (Φ) = sup
+|||X||| cb
+S≤1
+∥Φ∗(X)−X∥ cb.(2.3)
+Using elementary properties such as submultiplica-
+tivity and the triangle inequality for (semi-)norms,
+we can show thatCcb
+S (Φ)has the following desirable
+properties (Since the proof is straightforward, we refer
+the interested reader to [2] for the full mathematical
+details in the von Neumann algebra setting):
+Lemma 2.1.1.C cb
+S (Φ) = 0if and only ifΦ = id.
+2.(Subadditivity under concatenation)For
+any quantum channelsΦandΨ, we have
+Ccb
+S (Φ◦Ψ)≤C cb
+S (Φ) +C cb
+S (Ψ).
+3.(Convexity)For any probability distribution
+{pi}i∈I and quantum channels{Φi}i∈I, we have
+Ccb
+S
+(∑
+i∈I
+piΦi
+)
+≤
+∑
+i∈I
+piCcb
+S (Φi).(2.4)
+4.(Maximal complexity given by expected
+length ofS)Under the assumption that the
+commutantS ′ is a∗-algebra,Φ ∗|S′ = id, and
+κ(S)is defined in(2.8), we have
+Ccb
+S (Φ)≤κ(S)∥Φ−id∥ ⋄.(2.5)
+5.(Tensor additivity)For any quantum channels
+ΦandΨ, we have
+Ccb
+S∨S(Φ⊗Ψ) =C cb
+S (Φ) +C cb
+S (Ψ),(2.6)
+whereS∨S:={I⊗s 1, s2⊗I|s 1,s 2∈S}.
+2.2 Quantum Expected Length and Estimates
+of Complexity
+We first introduce the definition of the expected
+lengthκ(S)of the resource setS, which provides
+a universal upper bound for the resource-dependent
+complexity of any quantum channel. Throughout this
+letter, we assume that
+S′ :={x∈B(H) :xs=sx,∀s∈S}
+is a∗-algebra.
+The key technical ingredient is theconditional ex-
+pectationE fix :B(H)→S ′. Intuitively, this map
+“forgets” all the information in an operatorXthat
+is invisible to the algebraS′. More precisely,E fix is
+unital and satisfies
+Efix(s1Xs2) =s 1Efix(X)s2,∀s 1,s 2∈S′, X∈B(H).
+(2.7)
+It is well known that such maps are unital completely
+positive, and henceE∗
+fix is a valid quantum channel.
+Appendix A summarizes the minimal properties we
+need here, and we refer the reader to [59] for a com-
+prehensive overview.
+Example 2.2.IfSis given by all single-qubit Pauli
+operators in then-qubit system, thenS′ consists only
+of multiples of the identity. In this caseE fix(X) =
+tr(σX)Ifor some stateσ, so the dual channel always
+outputsσ, i.e.E ∗
+fix(ρ) =σfor every input stateρ. In
+this case, the complexity of this conditional expecta-
+tion measures the worst-case cost to map any input
+state to the target stateσunder the constraints of
+single Pauli operators.
+We may now define thequantum expected lengthof
+the resource setSby
+κ(S) :=C cb
+S (E∗
+fix).(2.8)
+Physically,κ(S)quantifies the maximum “stretch”
+needed to recover the action that erases everything
+except what is fixed byS. It is central because it sets
+a universal upper bound for the resource-dependent
+complexity of any quantum channel.
+Now we discuss how to compute or estimate the
+complexity measure we propose. In general, it is chal-
+lenging to compute the complexity numerically (this
+worst-casecomplexityisexpectedtobeNP-hard), but
+we can provide lower bound estimates by constructing
+a certificate observable that nearly achieves the supre-
+mum in(1.6). We illustrate a simple case introduced
+in Example 2.2: in then-qubit system, suppose
+S={σ j
+x : 1≤j≤n}∪{σ j
+y : 1≤j≤n},
+whereσ j
+x andσ j
+y are Pauli-X and Pauli-Y operators
+acting on thej-th qubit.
+Using the observableX= ∑n
+j=1σj
+x, we can achieve
+a lower bound ofκ(S)for the trace-preserving condi-
+tional expectationE fix. Indeed, one can easily verify
+thatS′ =C·I 2n andE fix(X) = tr(X)
+2n I. Then,
+|||X|||S = sup
+s∈S
+∥[s,X]∥∞
+= sup
+1≤k≤n
+∥[σk
+y,
+n∑
+j=1
+σj
+x]∥∞ =∥[σ y,σx]∥= 2;
+∥X∥op =n,
+which provides a lower bound
+CS(E∗
+fix)≥ ∥Efix(X)−X∥ op
+|||X|||S
+= n
+2.
+On the other hand, using the tensor product struc-
+tureE fix =E⊗n
+τ , whereEτ = tr(X)
+2 I2 acts on a single-
+qubit system, we can show via tensor additivity that
+Ccb
+S (E∗
+fix)≤n. In summary, the quantum expected
+length with a resource set given by single Pauli gates
+has ordern.
+As another example, we can also construct resource
+set
+S={|ψ k⟩⟨ψk|: 1≤k≤2 n},(2.9)
+3
+
+=== page 4 ===
+where for eachk= 1,2,···,2 n, we define
+|ψk⟩=|i 1···i n⟩, k−1 =
+n∑
+t=1
+it2t−1.(2.10)
+Using the similar argument as before, we can show
+thatC S(E∗
+fix)≥c2 n for some universal constantc >
+0using the testing operatorX= ∑2n
+k=1k|ψk⟩⟨ψk|,
+which is a sharp contrast to Wasserstein complexity,
+which can achieve at mostn(see [41]).
+3 Comparison of Complexities
+3.1 Gate Complexity
+Forquantumcircuits, anaturalmeasureofcomplexity
+is the gate count. Suppose a gate setS⊆U(H)is
+given. Then, the (approximate) gate count forU∈
+U(H)relativetoS, givenafixederrorthresholdδ≥0,
+is defined by [32, 31, 46]:
+CountS
+δ (U)
+:= min{l≥1 :∥U−V 1···V l∥op≤δ, Vi∈S}.
+(3.1)
+Any unitaryUcan be viewed as a quantum channel
+adU:
+adU(ρ) =UρU †.(3.2)
+Suppose we can implement a circuit using a se-
+quence of random gates, and the average gate (a
+mixed-unitary channel) is close to the target circuit.
+This motivates the convexified gate count, defined by
+[14]:
+lS
+δ (U) := inf
+{
+l≥1 :∃µ∈P(S l)such that‖‖‖‖adU−
+∫
+Sl
+adu1◦···◦ad ul dµ(u1,...,u l)
+‖‖‖‖
+⋄
+≤δ
+}
+,
+(3.3)
+whereP(S l)is the set of probability measures onSl =
+S×···×S, the Cartesian product ofSwith itselfl
+times.
+Note that using the well-known relation for two uni-
+tary operatorsU,V,
+∥adU−adV∥⋄ = 2∥U−V∥ op,
+we havelS
+δ (U)≤Count S
+δ/2(U), which follows directly
+by choosing the random gates as the deterministic
+ones in(3.3).
+As a first application, we show that our notion of
+complexity provides a lower bound for the (convexi-
+fied) gate count. A more intricate application of this
+idea can be found in [24].
+Theorem 3.1.Given a unitary operatorU∈U(H)
+and a resource setSof unitary operators, we have
+Ccb
+S (adU)≤l S
+0 (U).(3.4)
+Moreover, ifU∈S ′′ (the double commutant ofS,
+defined as the operators commuting withS′), then for
+anyδ≥0,
+Ccb
+S (adU)≤l S
+δ (U) +δκ(S),(3.5)
+whereκ(S)is the quantum expected length defined in
+(2.8).
+Note that in most cases,S′ consists of scalars; thus,
+S′′ is the entire matrix algebra, and the technical as-
+sumptionU∈S ′′ is always satisfied. The proof of the
+theorem is provided in Appendix B.
+3.2 Wasserstein Complexity
+Quantum Wasserstein complexity of order 1 for quan-
+tum channels,CW1(·), was first introduced in [41]. We
+show that by choosing our resource setSappropri-
+ately (e.g., Pauli gates),CS(·)is equivalent toCW1(·).
+We first review the definition of Wasserstein complex-
+ity of order 1.
+The underlying Hilbert space isH= (C d)⊗n, and
+the Lipschitz norm is given by [48, Eq. (6.46)]:
+∥x∥L = 2 max
+1≤i≤n
+min
+H (i)
+∥x−I i⊗H (i)∥op,(3.6)
+where the minimum is over Hermitian operatorsH(i)
+acting on then−1qudits excluding thei-th register.
+The above Lipschitz norm naturally defines an
+Earth Mover’s distance on the state space, known as
+the Wasserstein-1 distance (see explicit expressions in
+[22, 48]):
+W1(ρ,σ) = sup
+{
+|tr(x(ρ−σ))|:∥x∥ L≤1, x=x †}
+.
+(3.7)
+The Wasserstein complexity of quantum channels,
+introduced in [41], can be rewritten as
+CW1(Φ) = sup
+ρ∈D(H)
+W1 (Φ(ρ),ρ)
+= sup
+∥x∥L≤1
+∥Φ∗(x)−x∥ op.
+Theorem3.2.SupposeS={σ j
+i : 1≤j≤d 2−1,1≤
+i≤n}is the generalized Pauli gate set, where for each
+1≤j≤d 2−1,σ j is a generalized Pauli operator, and
+for each1≤i≤n,
+σj
+i :=I⊗(i−1)
+d ⊗σj⊗I⊗(n−i)
+d .(3.8)
+Then for any quantum channelΦ,
+1
+2Ccb
+S (Φ)≤C cb
+W1(Φ)≤
+(
+2− 2
+d2
+)
+Ccb
+S (Φ).
+The proof is given in Appendix C.
+4
+
+=== page 5 ===
+3.3 Geometric Complexity
+In this section, we discuss another aspect of the flexi-
+bility of our resource-dependent complexity measure.
+In the definition(1.1), we take the maximum over all
+possible resources, which can be viewed as anℓ∞-type
+norm. We can also introduce anℓ2-type norm. Sup-
+poseS={s 1,...,s m}; we define
+|||x|||S,2 :=
+‖‖‖‖‖‖‖
+
+
+m∑
+j=1
+|[sj,x]| 2
+
+
+1/2‖‖‖‖‖‖‖
+op
+.(3.9)
+We can naturally define a complexity measure based
+on the above Lipschitz semi-norm:
+CS,2(Φ) = sup
+|||x|||S,2≤1
+∥Φ∗(x)−x∥ op.(3.10)
+Our complexity measureCS,2 provides a lower bound
+for the geometric complexity introduced in [43, 44,
+45].
+First, we briefly review the idea of defining geomet-
+ric complexity using a metric on the space of Hamil-
+tonians. For anyU∈SU(2 n)(unitary operators with
+determinant 1), there exists a time-dependent Hamil-
+tonian connecting the identity operator toUvia the
+following evolution:
+dU(t)
+dt =−iH(t)U(t), U(0) =I, U(1) =U.
+(3.11)
+We denote
+U(t) =Pexp
+(
+−i
+∫t
+0
+H(s)ds
+)
+(3.12)
+as the path-ordered unitary operator, which is the
+unique solution to(3.11). Thegeometric complexity
+is defined by
+Cgeom(U) = inf
+{∫1
+0
+∥H(t)∥costdt:
+U=U(1) =Pexp
+(
+−i
+∫1
+0
+H(s)ds
+)}
+.
+(3.13)
+The norm∥H(t)∥ cost encapsulates the cost metric,
+which must be specified based on the context or phys-
+ical considerations. One particular choice given in
+[43, 44, 45] is as follows. SupposeH={σ ⃗k : ⃗k=
+(k1,...,k n), ki = 0,1,2,3}is the set of tensor prod-
+ucts of Pauli operators,
+σ⃗k =
+n⨂
+i=1
+σki,
+where the Pauli operators are given byσ0 =I 2,σ 1 =
+σx,σ 2 =σ y,σ 3 =σ z. For any Hermitian operator
+H(t), we have
+H(t) =
+∑
+⃗k
+α⃗k(t)σ⃗k.(3.14)
+We associate to each direction⃗ka penalty factorp⃗k∈
+(0,∞]; then the cost metric is defined as
+∥H(t)∥cost =
+√∑
+⃗k
+p⃗k|α⃗k(t)|2.(3.15)
+Theorem 3.3.Suppose our resource setSis given
+by
+S=
+{
+1
+√p⃗k
+σ⃗k : ⃗k= (k 1,...,k n), ki = 0,1,2,3
+}
+.
+(3.16)
+Then for anyU∈SU(2 n), we have
+CS,2(adU)≤C geom(U),(3.17)
+with the cost metric given by(3.15).
+The proof is given in Appendix D. The above lower
+bound can be viewed as a resource-dependent version
+of the lower bound on the cost of circuits, which has
+been studied extensively in [12, 41]. By generalizing
+this framework to arbitrary Lie groups, our approach
+exhibits greater flexibility in the choice of the cost
+function and the underlying basis for the Lie algebra.
+We can even achieve equality via approximation using
+the components of the left regular representation; see
+[2] for full details.
+4 Linear growth lower bound for closed
+and open systems
+In [10, 11], it is conjectured that the complexity of a
+typical quantum circuit grows linearly with depth and
+saturates at a value that is exponential in the system
+size. In this section, we show that for our resource-
+dependent complexity measure, this phenomenon also
+occurs in both closed and open quantum systems.
+The saturation value, denoted asκ(S)in our paper,
+depends on the system size and the resource setS,
+which can be constant, polynomial, or exponential in
+the system size.
+4.1 Random Circuits
+In this subsection, we construct random circuits that
+exhibit linear growth of Lipschitz complexity, provid-
+ing a lower bound for gate count. To be precise, let
+us fix a resource setSconsisting of unitary operators,
+which can be one-qubit or two-qubit gates, or parallel
+circuits with certain geometric structures. Our ran-
+dom circuit model consists of concatenating random
+samples fromS:
+···
+···
+···
+|ψ⟩
+U1 U2 Ul|ψ⟩
+|ψ⟩
+5
+
+=== page 6 ===
+To achieve a rigorous analysis, we further assume
+that there is a spectral gap for the probability dis-
+tributionν. That is, for the mixed-unitary channel
+induced byν, defined by
+Φν :=E U∼νadU =
+∫
+S
+adUν(dU),(4.1)
+and for the trace-preserving conditional expectation
+Efix ontoS′, we have
+1−λ spec :=∥Φ ν−E fix∥2 <1,(4.2)
+where the2-norm of the super-operator is induced by
+the Schatten 2-norm (also known as the Frobenius
+norm or Hilbert-Schmidt norm):
+∥Φν−E fix∥2 = sup
+∥X∥ 2≤1
+∥Φν(X)−E fix(X)∥2,
+and the Schattenp-norm of operators is given by
+∥X∥p = (tr(|X|p))1/p, forp>0.
+Using spectral decomposition under the Hilbert-
+Schmidt norm, ifΦ ν is symmetric (i.e.,Φ ν = Φ∗
+ν),
+then(4.2)always holds in the finite-dimensional case.
+However, our analysis allows for more general mixed-
+unitary channels. Under the assumption(4.2), we can
+show the following:
+Proposition 4.1.Suppose{U l}l≥1 is a sequence of
+independent random unitaries with the same distribu-
+tionν. Then for anyl≥1,
+E
+[
+Ccb
+S (adUl···U1)
+]
+≥
+(
+1−I cb(Efix)·(1−λ spec)l)
+κ(S),
+(4.3)
+where the indexIcb(Efix)is defined in Definition A.2.
+The constantI(E fix), defined for arbitrary condi-
+tional expectations, was first introduced in [51]. We
+refer the reader to Appendix A for more details. Us-
+ing the above proposition, we can obtain the following
+Brown-Susskind behaviorfor the resource-dependent
+complexity of random circuits (see Table 1 for a sum-
+mary):
+Theorem 4.2.Suppose{U l}l≥1 is a sequence of in-
+dependent random unitaries with the same distribu-
+tionν. For the Brown-Susskind threshold
+L= −log
+(
+4Icb(Efix)
+)
+log(1−λ spec) ,(4.4)
+we have forl≤L,
+P
+(
+Ccb
+S (adUl···U1)≥l κ(S)
+8L
+)
+≥ l
+4(l+L) .(4.5)
+The proofs of Proposition 4.1 and Theorem 4.2 are
+given in Appendix E.
+Note that our theorem can verify the existence of
+quantum circuits with high complexity (exponential
+in the number of qubits) ifκ(S)is exponential. Com-
+pared to [32], where the author used a specific archi-
+tecture, our theorem is more general in the sense that
+Scan be arbitrary. This leads to some sacrifice on the
+probability estimate in the sense that the probability
+of linear growth is not close to one.
+4.2 Hamiltonian Simulation
+Inthissubsection, weillustrateournotionofcomplex-
+ity by providing a lower bound on the gate count for
+Hamiltonian simulation via theqDRIFTprotocol in-
+troduced in [14]. The starting point is a Hamiltonian
+given byH= ∑m
+j=1hjHj, whereH j are elementary
+components such that∥H∥op≤1, andh j are positive
+weights. We denote
+λ:=
+m∑
+j=1
+hj.(4.6)
+In this setting, we consider theresource set
+S={H j|1≤j≤m}.(4.7)
+Our goal is to approximate the unitaryU(t) =
+exp(itH)using a product of gates from{U j(r) =
+exp(irHj)|1≤j≤m,|r|≤τ}up to some desired
+precision, whereτ >0is a predetermined constant.
+Note that a well-established approach is the Trotter-
+Suzuki formula; see [19] for a comprehensive overview
+ofthemethod. Moreover, ithasbeenshownin[14,18]
+that by allowingU j(r)to be randomly chosen, the
+number of elementary gates needed to approximate
+exp(itH)can be lower than the number given by the
+Trotter-Suzuki formula, although the approximation
+is only achieved in an average sense. This motivates
+us to define theconvexified simulation costusing the
+gate set
+Uτ :={exp(irH j)|1≤j≤m,|r|≤τ}.(4.8)
+Definition 4.3.The convexified simulation cost of
+exp(itH)using gates fromU τ with errorδ >0is de-
+fined by
+l
+Uτ
+δ (exp(itH)) := inf
+{
+l≥1
+⏐⏐⏐⏐∃µ l∈P
+(
+Ul
+τ
+)
+such that
+‖‖‖‖‖adexp(itH)−
+∫
+Ulτ
+adu1···ad ul dµl(u1,...,u l)
+‖‖‖‖‖
+⋄
+≤δ
+}
+,
+(4.9)
+whereP
+(
+Ul
+τ
+)
+is the set of probability measures on
+Ul
+τ =U τ×···×U τ, the Cartesian product ofUτ with
+itselfltimes.
+Note that in [14], the author choseτ0 =
+t
+∑
+jhj
+N ≤
+τ, whereNis the length of the approximating ran-
+dom circuit, andνis a discrete probability measure
+supported on{exp(iτ 0Hj)|1≤j≤m}⊆U τ, de-
+fined byν({exp(iτ 0Hj)}) = hj∑
+khk
+. Then one has
+[14, Eq. (B13)]:
+‖‖ΦN
+ν −adU(t)
+‖‖
+⋄≤2 λ2t2
+N exp
+(2λt
+N
+)
+,(4.10)
+which provides an upper bound forl
+Uτ
+δ (exp(itH))us-
+ing the probability measureνN =ν×···×νby setting
+6
+
+=== page 7 ===
+Gate Sets Complexity, Threshold, Probability
+Sufficiently connected circuits [32] Exact gate count,
+Exponential,
+Linear growth with probability 1
+Universal gate sets [31, 17] Approximate gate count,
+Exponential,
+Linear growth with probability close to 1
+This Letter: Arbitrary Gate Set Resource-dependent complexity,
+Brown-Susskind threshold,
+Linear growth with positive probability
+Table 1: A summary of linear growth behavior for random circuits
+(4.10)less thanδ:
+l
+Uτ
+δ (exp(itH))≤C λ2t2
+δ .
+Using our complexity measure, we can provide a
+lower bound forl
+Uτ
+δ (exp(itH)):
+Theorem 4.4.SupposeH̸= 0. Then fort≤ 1
+3∥H∥ op
+,
+we have
+l
+Uτ
+δ (exp(itH))≥ λHt−δκ(S)
+τ ,(4.11)
+whereλ H >0is given by
+λH := sup
+x/∈S′
+∥[H,x]∥ op
+2|||x|||S
+.(4.12)
+We present the proof in Appendix F. As an applica-
+tion, we show an explicit lower bound for the simula-
+tion cost of the Ising Hamiltonian. Using the bounds
+in [35], it is possible to generalize the argument to
+other local Hamiltonians.
+Example 4.5.Suppose we have an Ising Hamilto-
+nian in then-qubit system given by
+H=
+∑
+1≤k̸=l≤n
+γklσk
+zσl
+z +
+n∑
+j=1
+αjσj
+z +
+n∑
+s=1
+βsσs
+x,(4.13)
+whereγ kl,αj,βs∈R, andσ j denotes the Pauli oper-
+atorσacting on thej-th qubit. The resource set is
+given by
+S=
+{
+σk
+zσl
+z, σj
+z, σs
+x|∀k,l,j,s
+}
+.
+Then we have
+λH≥
+⏐⏐⏐
+∑
+k̸=lγkl + 1√
+2
+∑
+jαj− 1√
+2
+∑
+sβs
+⏐⏐⏐
+4 .
+In particular, if the coefficients are positive and
+γkl,αj,βs = Θ(1), thenλH≥Ω(n 2).
+Proof.We use the expression (4.12). To obtain a
+lower bound, we choose a special test operator:
+X=
+n∑
+j=1
+σj
+y.(4.14)
+We have
+[H,X] =
+∑
+1≤k̸=l≤n
+γkl
+(
+[σk
+zσl
+z,σk
+y] + [σk
+zσl
+z,σl
+y]
+)
++
+n∑
+j=1
+αj[σj
+z,σj
+y] +
+n∑
+s=1
+βs[σs
+x,σs
+y]
+=−2i
+( ∑
+1≤k̸=l≤n
+γkl(σk
+xσl
+z +σk
+zσl
+x)
++
+∑
+j
+αjσj
+x−
+∑
+s
+βsσs
+z
+)
+.
+Now define|ϕ⟩= cos
+(π
+8
+)
+|0⟩+ sin
+(π
+8
+)
+|1⟩. We have
+⟨ϕ|σx|ϕ⟩= sin
+(π
+4
+)
+= 1√
+2,
+⟨ϕ|σz|ϕ⟩= cos
+(π
+4
+)
+= 1√
+2.
+Therefore,
+∥[H,X]∥ op≥
+⏐⏐⏐⟨ϕ|⊗n [H,X]|ϕ⟩ ⊗n
+⏐⏐⏐
+= 2
+⏐⏐⏐⏐⏐⏐
+∑
+k̸=l
+γkl + 1√
+2
+∑
+j
+αj− 1√
+2
+∑
+s
+βs
+⏐⏐⏐⏐⏐⏐
+.
+Moreover, it is routine to check that
+sup
+s∈S
+∥[s,X]∥ op = max
+{
+∥[σk
+zσl
+z,σk
+y] + [σk
+zσl
+z,σl
+y]∥op
+}
+= 2∥σx⊗σz +σz⊗σx∥op = 4.
+Therefore, the conclusion is derived as follows:
+λH = sup
+x/∈S′
+∥[H,x]∥ op
+2|||x|||S
+≥∥[H,X]∥ op
+2|||X|||S
+≥
+⏐⏐⏐∑
+k̸=lγkl + 1√
+2
+∑
+jαj− 1√
+2
+∑
+sβs
+⏐⏐⏐
+4 .
+7
+
+=== page 8 ===
+In practice, to simulateexp(itH), we first simu-
+late the small-time evolutionexp(i∆tH)and iterate
+it⌈t/∆t⌉times. Our accessible gate set is defined
+up to a small-time thresholdτ= ∆t. Our theorem
+demonstrates that for the Ising Hamiltonian defined
+in(4.13), where all coefficients are equal to the same
+constant, each small-time simulation requires at least
+Ω(n2)gates, even when allowing random gates and
+approximation in the average sense.
+4.3 Open Systems
+Our notion can be naturally generalized to open sys-
+tems since the complexity measures are defined for
+quantum channels. Suppose we have a purely dis-
+sipative quantum Markov semigroupT t = exp(tL),
+where
+Lx=
+m∑
+j=1
+VjxV†
+j − 1
+2
+(
+V†
+jVjx+xV †
+jVj
+)
+is a Lindbladian generator (see [42]). We now use the
+jump operatorsas theresource setS= ⋃m
+j=1{Vj,V†
+j}
+and we assumeT ∗
+t ◦E fix =E fix. Using elementary
+properties of Lipschitz complexity, an immediate con-
+sequence is
+Ccb
+S (Tt)≤κ(S)∥L∥ ⋄t.
+To obtain a lower bound, we use amixing timear-
+gument. Recall that the mixing time of the semigroup
+Tt is defined by
+tmix(ε) := inf{t>0 :∥T t−E∗
+fix∥⋄≤ε}.(4.15)
+If the Lindbladian generator is GNS symmetric (or
+satisfies theσ-detailed balance condition), the mixing
+time is finite. Using a similar argument as in Propo-
+sition 4.1, we can show the following:
+Theorem 4.6.The lower bound estimate ofCcb
+S (Tt)
+grows linearly beforetmix(ε)for anyε>0and is com-
+parable toκ(S)aftert mix(ε).
+Using standard tools in optimal transport theory,
+we can provide generic upper estimates forκ(S)when
+{Vj}m
+j=1 form the jump operators of a Lindbladian
+generator withσ-detailed balance. In particular, us-
+ing Corollary 6.8 in [27], we obtain
+κ(S)≤c 0 CLSI(L)−1/2√m
+√
+logI cb(Efix),(4.16)
+whereCLSI(L)denotes the constant in the Logarith-
+mic Sobolev Inequality for the LindbladianLand the
+numbermof jump operators appears when we com-
+pare|||·||| S and|||·||| S,2 introduced in(3.9).
+By using Pauli gates as the jump operators of the
+Lindbladian generator (see Section 2.2), we recover
+the upper and lower qubit bounds obtained in [41].
+The above technique can be generalized to provide
+a lower-bound framework for the simulation cost of
+open quantum systems in general cases; see [24] for
+more details.
+5 Conclusion
+Our flexible notion of complexity for quantum chan-
+nels falls into the axiomatic framework from [41]. By
+suitably choosing the resource setS, we can establish
+a lower bound for the complexity of random circuits
+and continuous-time evolutions which is only known
+in restricted settings before. Previous lower bound
+trick is to reduce the problem to computing parity
+function [8, 62], and our lower bound is based on
+quantum optimal transport theory. The flexibility in
+the choice ofSallows us to explore different regimes
+of complexity, which can be constant, polynomial in
+the number of qubits, or exponential in the number
+of qubits. We leave the discussion about the relation
+to non-stabilizerness for future work, as discussed in
+[12].
+Finally, the linear aspect of the Brown-Susskind
+conjecture [10, 11] is confirmed in our context, up
+to a threshold given by the mixing time, which is de-
+termined by the geometric properties of the resource
+set.
+References
+[1] M. Alishahiha.“Holographic complexity”. Phys.
+Rev. D92:126009 (2015).
+[2] R. Araiza, M. Junge, and P. Wu.“Transportation
+cost and contraction coefficient for channels on
+von Neumann algebras”, (2025). Available online:
+https://arxiv.org/abs/2506.04197.
+[3] A. Avdoshkin, A. Dymarsky, and M. Smolkin.
+“Krylov complexity in quantum field theory, and
+beyond”. Journal of High Energy Physics
+2024(6) (2024).
+[4] S. Beigi and P. W. Shor.“On the Complexity
+of Computing Zero-Error and Holevo Capacity
+of Quantum Channels”, (2008). Available online:
+https://arxiv.org/abs/0709.2090.
+[5] M. Bellare, O. Goldreich, and M. Sudan.
+“Free bits, PCPs and non-approximability-
+towards tight results”. InProceedings of
+IEEE 36th Annual Foundations of Com-
+puter Science, pages 422–431, (1995),
+DOI:10.1109/SFCS.1995.492573.
+[6] A. Ben-Aroya, O. Schwartz, and A. Ta-Shma.
+“Quantum Expanders: Motivation and Construc-
+tions”. In2008 23rd Annual IEEE Conference
+on Computational Complexity, pages 292–303,
+(2008), DOI:10.1109/CCC.2008.23.
+[7] E. Bernstein and U. Vazirani.“Quantum Com-
+plexity Theory”. SIAM Journal on Computing
+26(5):1411–1473 (1997).
+[8] D. W. Berry, A. M. Childs, and R. Kothari.
+“Hamiltonian Simulation with Nearly Optimal
+Dependence on all Parameters”. In2015
+8
+
+=== page 9 ===
+IEEE 56th Annual Symposium on Foundations
+of Computer Science, page 792–809, (2015),
+DOI:10.1109/focs.2015.54.
+[9] H.BlierandA.Tapp.“All Languages in NP Have
+Very Short Quantum Proofs”. In2009 Third
+International Conference on Quantum, Nano
+and Micro Technologies, pages 34–37, (2009),
+DOI:10.1109/ICQNM.2009.21.
+[10] A. R. Brown and L. Susskind.“Second law of
+quantum complexity”. Phys. Rev. D97:086015
+(2018).
+[11] A. R. Brown and L. Susskind.“Complexity geom-
+etry of a single qubit”. Phys. Rev. D100:046020
+(2019).
+[12] K. Bu, R. J. Garcia, A. Jaffe, D. E. Koh, and
+L. Li.“Complexity of Quantum Circuits via Sen-
+sitivity, Magic, and Coherence”. Communica-
+tions in Mathematical Physics405(7) (2024).
+[13] E. Caglioti, F. Golse, and T. Paul.“To-
+wards Optimal Transport for Quantum Densi-
+ties”, (2021). Available online:https://arxiv.
+org/abs/2101.03256.
+[14] E. Campbell.“Random Compiler for Fast Hamil-
+tonian Simulation”. Physical Review Letters
+123(7) (2019).
+[15] E. A. Carlen and J. Maas.“Gradient flow and
+entropy inequalities for quantum Markov semi-
+groups with detailed balance”. Journal of Func-
+tional Analysis273(5):1810–1869 (2017).
+[16] E. A. Carlen and J. Maas.“Non-commutative
+Calculus, Optimal Transport and Functional
+Inequalities in Dissipative Quantum Systems”.
+Journal of Statistical Physics178(2):319–378
+(2019).
+[17] C.-F. Chen, J. Haah, J. Haferkamp, Y. Liu,
+T. Metger, and X. Tan.“Incompressibility and
+spectral gaps of random circuits”, (2024). Avail-
+able online:https://arxiv.org/abs/2406.
+07478.
+[18] A. M. Childs, A. Ostrander, and Y. Su.“Faster
+quantum simulation by randomization”. Quan-
+tum3:182 (2019).
+[19] A. M. Childs, Y. Su, M. C. Tran, N. Wiebe, and
+S. Zhu.“Theory of Trotter Error with Commu-
+tator Scaling”. Phys. Rev. X11:011020 (2021).
+[20] A. Connes, J. Cuntz, and M. A. Rieffel.“Non-
+commutative geometry”. Oberwolfach Reports
+6(3):2271–2334 (2010).
+[21] A. Connes and J. Lott.“The metric aspect of
+noncommutative geometry”. InNew symmetry
+principles in quantum field theory, pages 53–93.
+Springer (1992).
+[22] G. De Palma, M. Marvian, D. Trevisan, and
+S. Lloyd.“The Quantum Wasserstein Distance
+of Order 1”. IEEE Transactions on Information
+Theory67(10):6627–6643 (2021).
+[23] D. Deutsch and R. Penrose.“Quantum theory,
+the Church–Turing principle and the universal
+quantum computer”. Proceedings of the Royal
+Society of London. A. Mathematical and Physi-
+cal Sciences400(1818):97–117 (1985).
+[24] Z. Ding, M. Junge, P. Schleich, and P. Wu.
+“Lower Bound for Simulation Cost of Open
+Quantum Systems: Lipschitz Continuity Ap-
+proach”. Communications in Mathematical
+Physics406(3) (2025).
+[25] A. Dymarsky and M. Smolkin.“Krylov complex-
+ity in conformal field theory”. Physical Review D
+104(8) (2021).
+[26] L. Fortnow and J. Rogers.“Complexity Limi-
+tations on Quantum Computation”. Journal of
+Computer and System Sciences59(2):240–252
+(1999).
+[27] L. Gao, M. Junge, and N. LaRacuente.“Fisher
+information and logarithmic Sobolev inequality
+for matrix-valued functions”. Annales Henri
+Poincaré21(11):3409–3478 (2020).
+[28] L. Gao, M. Junge, and N. LaRacuente.“Relative
+entropy for von Neumann subalgebras”. Internat.
+J. Math.31(6):2050046, 35 (2020).
+[29] L. Gao, M. Junge, N. LaRacuente, and H. Li.
+“Relative entropy decay and complete positivity
+mixing time”, (2023). Available online:https:
+//arxiv.org/abs/2209.11684.
+[30] L. Gao and C. Rouzé.“Coarse Ricci curvature of
+quantum channels”. Journal of Functional Anal-
+ysis286(8):110336 (2024).
+[31] J. Haferkamp.“On the moments of random quan-
+tum circuits and robust quantum complexity”,
+(2023). Available online:https://arxiv.org/
+abs/2303.16944.
+[32] J. Haferkamp, P. Faist, N. B. T. Kothakonda,
+J. Eisert, and N. Yunger Halpern.“Linear growth
+of quantum circuit complexity”. Nature Physics
+18(5):528–532 (2022).
+[33] A. Hahn, P. Hartung, D. Burgarth, P. Facchi,
+and K. Yuasa.“Lower Bounds for the Trot-
+ter Error”, (2024). Available online:https:
+//arxiv.org/abs/2410.03059.
+[34] N. Y. Halpern, N. B. Kothakonda, J. Haferkamp,
+A.Munson, J.Eisert, andP.Faist.“Resource the-
+ory of quantum uncomplexity”. Physical Review
+A106(6):062417 (2022).
+[35] A. W. Harrow and A. Montanaro.“Extremal
+eigenvalues of local Hamiltonians”. Quantum1:6
+(2017).
+9
+
+=== page 10 ===
+[36] S. Hollands and A. Ranallo.“Channel Diver-
+gences and Complexity in Algebraic QFT”. Com-
+munications in Mathematical Physics404:927–
+962 (2023).
+[37] R. A. Jefferson and R. C. Myers.“Circuit com-
+plexity in quantum field theory”. Journal of High
+Energy Physics2017(10) (2017).
+[38] M. Junge and J. Parcet.Mixed-norm inequalities
+and operator spaceLp embedding theory. volume
+203, American Mathematical Society (2010).
+[39] M. Junge and P. Wu.“Stability property for
+the quantum jump operators of an open system”,
+(2022). Available online:https://arxiv.org/
+abs/2211.07527.
+[40] H. Klauck.“Quantum Communication Complex-
+ity”, (2000). Available online:https://arxiv.
+org/abs/quant-ph/0005032.
+[41] L. Li, K. Bu, D. E. Koh, A. Jaffe, and S. Lloyd.
+“Wasserstein Complexity of Quantum Circuits”,
+(2022). Available online:https://arxiv.org/
+abs/2208.06306.
+[42] G. Lindblad.“On the generators of quantum dy-
+namical semigroups”. Communications in math-
+ematical physics48:119–130 (1976).
+[43] M. A. Nielsen.“A Geometric Approach to Quan-
+tum Circuit Lower Bounds”. Quantum Informa-
+tion and Computation6(3):213–262 (2006).
+[44] M. A. Nielsen, M. R. Dowling, M. Gu, and A. C.
+Doherty.“Optimal control, geometry, and quan-
+tum computing”. Phys.Rev.A73:062323(2006).
+[45] M. A. Nielsen, M. R. Dowling, M. Gu, and A. C.
+Doherty.“Quantum Computation as Geometry”.
+Science311(5764):1133–1135 (2006).
+[46] A. Nietner, M. Ioannou, R. Sweke, R. Kueng,
+J. Eisert, M. Hinsche, and J. Haferkamp.“On the
+average-case complexity of learning output distri-
+butions of quantum circuits”. Quantum9:1883
+(2025).
+[47] R. Oliveira and B. M. Terhal.“The Com-
+plexity of Quantum Spin Systems on a Two-
+Dimensional Square Lattice”. Quantum Info.
+Comput.8(10):900–924 (2008).
+[48] G. D. Palma and D. Trevisan.“Quantum Opti-
+mal Transport: Quantum Channels and Qubits”,
+(2023). Available online:https://arxiv.org/
+abs/2307.16268.
+[49] D. E. Parker, X. Cao, A. Avdoshkin, T. Scaffidi,
+and E. Altman.“A Universal Operator Growth
+Hypothesis”. Physical Review X9(4) (2019).
+[50] V. Paulsen.Completely Bounded Maps and Op-
+erator Algebras. Cambridge University Press
+(2003).
+[51] M. Pimsner and S. Popa.“Entropy and index for
+subfactors”. InAnnales scientifiques de l’Ecole
+normale supérieure, volume 19, pages 57–106,
+(1986), DOI:10.24033/asens.1504.
+[52] Qiskit contributors.“Qiskit: An Open-source
+Framework for Quantum Computing”, (2023).
+DOI:10.5281/zenodo.2573505.
+[53] E. Rabinovici, A. Sanchez-Garrido, R. Shir, and
+J. Sonner.“Operator complexity: a journey to the
+edge of Krylov space”. Journal of High Energy
+Physics (62) (2021).
+[54] E. Rabinovici, A. Sanchez-Garrido, R. Shir, and
+J. Sonner.“Krylov complexity from integrability
+to chaos”. Journal of High Energy Physics (151)
+(2022).
+[55] M. A. Rieffel.“Metrics on state spaces”. Docu-
+menta Mathematica4:559–600 (1999).
+[56] M. A. Rieffel.“Compact quantum metric
+spaces”. Contemporary Mathematics365:315–
+330 (2004).
+[57] G. Rosenthal, H. Aaronson, S. Subramanian,
+A. Datta, and T. Gur.“Quantum Channel Test-
+ing in Average-Case Distance”, (2024). Available
+online:https://arxiv.org/abs/2409.12566.
+[58] B. Rosgen and J. Watrous.“On the hard-
+ness of distinguishing mixed-state quantum com-
+putations”. In20th Annual IEEE Conference
+on Computational Complexity (CCC’05), pages
+344–354, (2005), DOI:10.1109/CCC.2005.21.
+[59] E. Størmer.“Conditional expectations and pro-
+jection maps of von Neumann algebras”. Oper-
+ator Algebras and Applications pages 449–461
+(1997).
+[60] J. Watrous.“PSPACE has constant-round quan-
+tum interactive proof systems”. Theoretical Com-
+puter Science292(3):575–588 (2003).
+[61] M. Wirth.“A Noncommutative Transport Metric
+and Symmetric Quantum Markov Semigroups as
+Gradient Flows of the Entropy”, (2021). Avail-
+able online:https://arxiv.org/abs/1808.
+05419.
+[62] X.-M. Zhang and X. Yuan.“Circuit complexity
+of quantum access models for encoding classical
+data”. npj Quantum Information10(1) (2024).
+[63] K. Zyczkowski and W. Slomczynski.“The
+Monge distance between quantum states”. Jour-
+nal of Physics A: Mathematical and General
+31(45):9095–9104 (1998).
+10
+
+=== page 11 ===
+A Non-commutative conditional expectations and their index
+In this paper, we assume thatS ′ is a∗-algebra. This means that for any operatorsX,Y∈S ′, we have
+XY∈S ′ and for anyX∈S ′, we haveX†∈S′. In the finite-dimensional setting,∥X†X∥op =∥X∥ 2
+op, soS′ is
+automatically aC∗-algebra.
+In the finite-dimensional case, letNfix⊆B(H)be aC ∗-subalgebra ofB(H). A conditional expectation onto
+Nfix is defined as follows:
+Definition A.1.A unital, completely positive mapEfix :B(H)→N fix is called aconditional expectation
+if:
+•for alla∈N fix,E fix(a) =a.
+•for alla,b∈N fix andX∈B(H),E fix(aXb) =aE fix(X)b.
+Note that the dual mapE∗
+fix is trace-preserving, making it a quantum channel. Recall that a finite-dimensional
+C∗-algebra is unitarily equivalent to
+n⨁
+i=1
+B(Hi)⊗C·I Ki,H=
+n⨁
+i=1
+Hi⊗Ki.
+Without loss of generality, we can assumeNfix =⨁n
+i=1 B(Hi)⊗C·I Ki. DenotePi as the projection ofHonto
+Hi⊗Ki. Then, there exists a family of density operatorsτi∈D(K i)such that
+Efix(X) =
+n⨁
+i=1
+trKi
+(
+PiXPi(IHi⊗τi)
+)
+⊗IKi,(A.1)
+E∗
+fix(ρ) =
+n⨁
+i=1
+trKi
+(
+PiρPi
+)
+⊗τi,(A.2)
+wheretrKi denotes the partial trace with respect toKi. It is easy to see that a stateσis invariant underEfix,
+i.e.,E∗
+fix(σ) =σ, if and only if
+σ=
+n⨁
+i=1
+piσi⊗τi,
+for some density operatorsσi∈D(H i)and a probability distribution{p i}n
+i=1. The conditional expectation is
+completely determined if an invariant state is specified, and we denote it asEfix,σ. We drop the indexσwhen
+it is clear from the context. Note that the invariant state is not unique, and the flexibility comes from different
+choices ofσi and the probability distribution{pi}n
+i=1.
+Now, let us introduce the index, which quantifies the "size" of aC∗-algebra.
+Definition A.2.For aC∗-algebraN fix and a conditional expectationEfix ontoN fix, the (completely bounded)
+indexI(E fix)(respectivelyI cb(Efix)) is defined as
+I(Efix) := inf{c>0|ρ≤cE ∗
+fix(ρ)for all statesρ},(A.3)
+Icb(Efix) := sup
+n∈N
+I(Efix⊗id Mn).(A.4)
+We illustrate the calculation by choosing the trace-preserving conditional expectationEfix,tr, i.e., we take
+τi = 1
+dKi
+IKi in(A.1). The following properties of the index are useful (see [28] for proofs):
+Proposition A.3.AssumeN fix has the form
+Nfix =
+n⨁
+i=1
+B(Hi)⊗C·I Ki,H=
+n⨁
+i=1
+Hi⊗Ki.
+Then, the index for the trace-preserving conditional expectation is given by
+I(Efix,tr) =
+n∑
+i=1
+min{dHi,dKi}dKi,(A.5)
+Icb(Efix,tr) =
+n∑
+i=1
+d2
+Ki.(A.6)
+11
+
+=== page 12 ===
+B Proof of Theorem 3.1
+Proof of Theorem 3.1.For the proof of (3.4), we assumel=lS
+0 (U)<+∞(the casel= +∞is trivial). Then,
+there exists a probability measureµl∈P(S l)such that
+adU =
+∫
+Sl
+adu1···ad uldµl(u1,...,u l).
+Using triangle inequalities, we have for anyx∈B(H):
+∥ad∗
+U(x)−x∥ op≤
+∫
+Sl
+∥adu1···ad ul(x)−x∥ opdµl(u1,...,u l).
+This simplifies as follows:
+∥ad∗
+U(x)−x∥ op =
+∫
+Sl
+∥[u1···u l,x]∥opdµl(u1,...,u l).
+Using the Leibniz rule for commutators,[AB,C] =A[B,C] + [A,C]B, and triangle inequalities,
+∥[u1···u l,x]∥op≤∥u l[ul−1···u 1,x]∥op +∥[ul,x]ul−1···u 1∥op.
+Thus:
+∥ad∗
+U(x)−x∥ op≤
+∫
+Sl
+∥[ul,x]∥op +∥[ul−1···u 1,x]∥opdµl(u1,...,u l).
+Inductively, this yields:
+∥ad∗
+U(x)−x∥ op≤
+∫
+Sl
+l∑
+j=1
+∥[uj,x]∥opdµl(u1,...,u l)≤lsup
+u∈S
+∥[u,x]∥op =l|||x||| S.(B.1)
+Taking the supremum over allx∈B(H)with|||x||| S≤1, we obtainC S(adU)≤l S
+0 (U). The same argument
+applies if we replace the elements ofB(H)with those ofB(H⊗Hd), givingCcb
+S (adU)≤l S
+0 (U).
+For the proof of (3.5), assumel=l S
+δ (U)<+∞. Then, there exists a probability measureµ l∈P(S l)such
+that ‖‖‖‖adU−
+∫
+Sl
+adu1···ad uldµl(u1,...,u l)
+‖‖‖‖
+⋄
+≤δ.
+DefineΨ l =
+∫
+Sl adu1···ad uldµl(u1,...,u l). SinceU∈S ′′,Ucommutes with any element inS ′, and we have
+ad∗
+U◦E fix = Ψ∗
+l◦E fix =E fix,
+whereE fix is the conditional expectation ontoS′. For anyx∈B(H), this implies:
+∥ad∗
+U(x)−x∥ op≤∥ad∗
+U(x)−Ψ ∗
+l (x)∥op +∥Ψ∗
+l (x)−x∥ op≤∥(ad∗
+U−Ψ∗
+l )(Efix(x)−x)∥ op +∥Ψ∗
+l (x)−x∥ op
+Using operator norms and previous argument (B.1),
+∥ad∗
+U(x)−x∥ op≤∥ad∗
+U−Ψ∗
+l∥∞∥Efix(x)−x∥ op +l|||x|||S.
+Here, the first term follows from the norm equivalence:
+∥T∗∥∞ = sup
+∥x∥op≤1
+∥T∗(x)∥op =∥T∥ 1 = sup
+∥y∥1≤1
+∥T(y)∥ 1.
+Taking the supremum over allx∈B(H)and replacing elements inB(H)with those inB(H⊗H d), we get:
+Ccb
+S (adU)≤l S
+δ (U) +∥ad U−Ψl∥⋄Ccb
+S (E∗
+fix)≤l S
+δ (U) +δκ(S).
+12
+
+=== page 13 ===
+C Proof of Theorem 3.2
+We first review the basics of generalized Pauli gates in ad-dimensional quantum systemH d =
+span{|0⟩,|1⟩,···,|d−1⟩}. The generalized Pauli-Xand Pauli-Zoperators are given by
+σX,d =
+d−1∑
+j=0
+|j+ 1⟩⟨j|, σ Z,d =
+d−1∑
+j=0
+exp
+(2πi
+d j
+)
+|j⟩⟨j|.
+The entire set of generalized Pauli operators is given by
+{σj}1≤j≤d2 ={σ t
+X,dσs
+Z,d}0≤t,s≤d−1.
+A key observation is that a quantum channel with Kraus representation given by the set of generalized Pauli
+operators is actually a replacer channel. This phenomenon holds as long as the Kraus operators form an
+orthonormal basis [39, Lemma 4.1]:
+1
+d2
+d2
+∑
+j=1
+(σj)†xσj = tr(x) Id
+d, x∈B(H d).
+Applying this operation locally, for any1≤i≤n, we have
+Ei(X) := 1
+d2
+d2
+∑
+j=1
+(σj
+i )†Xσj
+i =I i⊗ 1
+d tri(X), X∈B(H ⊗n
+d ),(C.1)
+whereI i denotes the identity operator oni-th system.
+Using the above discussion, we show that the minimizationminH (i)∥X−I i⊗H (i)∥op is almost achieved
+atE i(X), which implies that our Lipschitz norm is comparable to the Lipschitz constant of the Wasserstein-1
+distance when we choose our resource set as the generalized Pauli gate set.
+Lemma C.1.SupposeS={σ j
+i : 1≤j≤d 2,1≤i≤n}is the generalized Pauli gate set. Then for any
+X∈B(H ⊗n
+d ), we have
+1
+2|||X|||S≤∥X∥ L≤
+(
+2− 2
+d2
+)
+|||X|||S.
+Proof.Fix1≤i≤n. Following the above discussion, we aim to show thatmin H (i)∥X−I i⊗H (i)∥op and
+sup1≤j≤d2∥[σj
+i,X]∥op are both comparable to∥X−E i(X)∥op. Maximizing overiwill then complete the proof.
+Step I:∥X−E i(X)∥op∼min H (i)∥X−I i⊗H (i)∥op.
+It is clear thatmin H (i)∥X−I i⊗H (i)∥op ≤ ∥X−Ei(X)∥op by choosingH (i) = 1
+d tri(X). For the reverse
+inequality, for anyH(i)∈B(H⊗(n−1)
+d )that avoids thei-th register, we have
+∥X−E i(X)∥op =∥X−E i(X) +Ii⊗H (i)−Ii⊗H (i)∥op.
+This expands as
+∥X−E i(X)∥op =∥X−I i⊗H (i)−Ei
+(
+X−I i⊗H (i)
+)
+∥op≤2∥X−I i⊗H (i)∥op,
+where we use the contraction property of the quantum channelEi, i.e.,∥Ei∥op≤1. In summary, we have shown
+1
+2∥X−E i(X)∥op≤min
+H (i)
+∥X−I i⊗H (i)∥op≤∥X−E i(X)∥op.(C.2)
+Step II:∥X−E i(X)∥op∼sup 1≤j≤d2∥[σj
+i,X]∥op.
+Using (C.1), we have
+∥X−E i(X)∥op =
+‖‖‖‖‖‖
+1
+d2
+d2
+∑
+j=1
+(
+X−(σ j
+i )†Xσj
+i
+)
+‖‖‖‖‖‖
+op
+≤ d2−1
+d2 sup
+1≤j≤d2
+∥[σj
+i,X]∥op,
+where we use the fact that one of theσj
+i is the identity operator. For the reverse inequality, for any1≤j≤d2,
+we have
+∥X−(σ j
+i )†Xσj
+i∥op =∥X−E i(X) +Ei(X)−(σ j
+i )†Xσj
+i∥op≤2∥X−E i(X)∥op.
+13
+
+=== page 14 ===
+In summary, we obtain
+d2
+d2−1∥X−E i(X)∥op≤sup
+j
+∥[σj
+i,X]∥op≤2∥X−E i(X)∥op.
+Combining the inequality (C.2), we conclude
+min
+H (i)
+∥X−I i⊗H (i)∥op∈
+[1
+4,d2−1
+d2
+]
+·sup
+j
+∥[σj
+i,X]∥op.
+Maximizing overiand using the definition of∥·∥ L, we finally have
+1
+2|||X|||S≤∥X∥ L≤
+(
+2− 2
+d2
+)
+|||X|||S.
+Using the definition of the two complexity measures, the comparison is a direct corollary of the above lemma.
+Note that the above argument works exactly the same if we replace the elements inB(H)by the elements in
+B(H⊗H d), so thecbversion also holds.
+D Proof of Theorem 3.3
+Proof.Suppose the time-dependent HamiltonianH(t)achieves the infimum ofC geom(U), and letU(t) =
+Pexp
+(
+−i
+∫t
+0H(s)ds
+)
+withU(1) =U. For any observableX, we aim to bound∥U(1) †XU(1)−X∥ op. The
+derivative att∈[0,1]is given by
+d
+dtU(t)†XU(t) =iU(t) †H(t)XU(t)−iU(t) †XH(t)U(t) =iU(t) †[H(t),X]U(t).
+Therefore, we have
+∥U(1)†XU(1)−X∥ op =
+‖‖‖‖
+∫1
+0
+d
+dtU(t)†XU(t)dt
+‖‖‖‖
+op
+≤
+∫1
+0
+∥[H(t),X]∥ opdt.
+Note that
+H(t) =
+∑
+⃗k
+α⃗k(t)σ⃗k =
+∑
+⃗k
+√p⃗kα⃗k(t) σ⃗k√p⃗k
+,
+plugging it in, we get
+∥U†XU−X∥ op≤
+∫1
+0
+∥[H(t),X]∥ opdt=
+∫1
+0
+‖‖‖‖‖‖
+∑
+⃗k
+√p⃗kα⃗k(t)
+[
+σ⃗k√p⃗k
+,X
+]‖‖‖‖‖‖
+op
+dt.
+Using the triangle inequality and Cauchy-Schwarz, we further obtain:
+∫1
+0
+‖‖‖‖‖‖
+∑
+⃗k
+√p⃗kα⃗k(t)
+[
+σ⃗k√p⃗k
+,X
+]‖‖‖‖‖‖
+op
+dt≤
+∫1
+0
+√∑
+⃗k
+p⃗k|α⃗k(t)|2dt·
+‖‖‖‖‖‖‖
+
+∑
+⃗k
+⏐⏐⏐⏐⏐
+[
+σ⃗k√p⃗k
+,X
+]⏐⏐⏐⏐⏐
+2
+
+1/2‖‖‖‖‖‖‖
+op
+.
+Using the definition of the semi-norm|||X|||S,2, we have:
+∥U†XU−X∥ op≤|||X||| S,2
+∫1
+0
+∥H(t)∥costdt.
+By the definition ofCgeom(U)in (3.10), we conclude the proof:
+CS,2(adU)≤C geom(U) =
+∫1
+0
+∥H(t)∥costdt.
+14
+
+=== page 15 ===
+E Linear growth for random circuits
+Conditional norm trick.—To prove Proposition 4.1, we exploit the fact that for sufficiently largel,Φl
+ν approx-
+imatesE fix closely in the presence of a spectral gap. To establish a lower bound, we employ the concept of
+return time, systematically studied in [29]. We begin by reviewing theconditional norm trick, which links the
+spectral gap∥Φl
+ν−E fix∥2 to the completely positive (cp) order:
+(1−ε)E fix≤cp Φl
+ν≤cp (1 +ε)Efix.
+The cp order between two super-operatorsT1 andT 2 is defined asT1≤cp T2 ifT 2−T 1 is completely positive.
+To establish this connection, we introduce the non-commutative conditionalLq
+p norm. For a detailed treat-
+ment, refer to [38]. Here, we focus on a specific case. For aC∗-algebraN fix⊆B(H), theL 1
+∞ norm is defined
+as:
+∥X∥L1∞(Nfix) = sup
+a,b∈Nfix,∥a∥2,∥b∥2≤1
+∥aXb∥1.
+The induced norm for super-operators is given by:
+∥T∥ 1→∞ := sup
+∥X∥L1∞ (Nfix )≤1
+∥T(X)∥op.
+The completely bounded (cb) version is defined as:
+∥T∥ 1→∞,cb := sup
+n≥1
+sup
+∥Xn∥L1∞ (Mn⊗Nfix )≤1
+∥(idMn⊗T)(X n)∥op.
+One application of theL1
+∞ norm is its ability to recover the index of trace-preserving conditional expectations
+as defined in Definition A.2 (see [28, Theorem 3.9] for details):
+I(Efix) =∥idB(H)∥1→∞,I cb(Efix) =∥idB(H)∥1→∞,cb.
+Another significant property is the connection between theL1
+∞ norm, the spectral gap, and the cp order. Recall
+that a mapT:B(H)→B(H)is called anN fix-bimodule map if:
+T(axb) =aT(x)b,∀a,b∈N fix,x∈B(H).
+The following properties, derived in [27, Lemma 3.14, 3.15], establish the link between the spectral gap and the
+cp order:
+Proposition E.1.LetΦ :B(H)→B(H)be anN fix-bimodule map. Then:
+∥Φ∥1→∞,cb≤I cb(Efix)∥Φ∥2.
+Moreover, ifΦis unital and completely positive, then forε∈(0,1),∥Φ−E fix∥1→∞,cb≤εif and only if:
+(1−ε)E fix≤cp Φ≤ cp (1 +ε)Efix.
+Now we are ready to prove the main results presented in Section 4.1:
+Proof of Proposition 4.1.Recall that∥Φν−E fix∥2 = 1−λ spec. For anyl≥1, denoteΦ l = Φ◦···◦Φas the
+l-composition ofΦ, we have
+∥Φl
+ν−E fix∥2 =∥(Φ ν−E fix)l∥2≤(1−λ spec)l.
+where we use the fact that for trace-preserving conditional expectationEfix, we haveEfix◦Φν = Φν◦Efix =E fix.
+Then use Proposition E.1, we have
+∥Φl
+ν−E fix∥1→∞,cb≤I cb(Efix)(1−λ spec)l.
+which implies
+Φl
+ν≤cp (1 +Icb(Efix)(1−λ spec)l)Efix.
+15
+
+=== page 16 ===
+Denoteε=I cb(Efix)(1−λ spec)l, and note thatΦν andE fix are both unital quantum channels, thus there exists
+another quantum channelRsuch that
+Efix = 1
+1 +ε Φl
+ν + ε
+1 +εR.
+Then using convexity and the upper bound ofCcb
+S , see Lemma 2.1, we have
+κ(S) :=C cb
+S (Efix)≤ 1
+1 +εCcb
+S (Φl
+ν) + ε
+1 +εCcb
+S (R)≤ 1
+1 +εCcb
+S (Φl
+ν) + 2ε
+1 +εκ(S),
+which impliesCcb
+S (Φl
+ν)≥(1−ε)κ(S). Finally, using the fact thatE(ad Ul···U1) = Φl
+ν and convexity, we have
+ECcb
+S (adUl···U1)≥C cb
+S (E(adUl···U1)) =C cb
+S (Φl
+ν)≥(1−ε)κ(S) =
+(
+1−I cb(Efix)(1−λ spec)l)
+κ(S).
+From Proposition 4.1, it is easy to see that for anyε∈(0,1), define
+L0(ε) := logε−logI cb(Efix)
+log(1−λ spec) ,(E.1)
+for anyl≥L 0(ε),EC cb
+S (adUl···U1)≥(1−ε)κ(S). Using a standard probabilistic argument, we can prove
+Theorem 4.2:
+Proof of Theorem 4.2.First, we claim that for anyl≥L 0(ε)and any sufficiently smallδ >0, the following
+holds:
+P(Ccb
+S (adUl···U1)≥δκ(S))≥ 1−ε−δ
+2 .(E.2)
+To see this, observe that for anyl≥L0(ε),
+(1−ε)κ(S)≤EC cb
+S (adUl···U1)
+=E
+[
+Ccb
+S (adUl···U1);Ccb
+S (adUl···U1)≥δκ(S)
+]
++E
+[
+Ccb
+S (adUl···U1);Ccb
+S (adUl···U1)≤δκ(S)
+]
+≤2κ(S)P(C cb
+S (adUl···U1)≥δκ(S)) +δκ(S),
+where in the last inequality we used the universal upper bound ofCcb
+S from Lemma 2.1 (4). Rearranging terms
+yields (E.2).
+Next, we setε=δ= 1
+4 and defineL=L 0
+(1
+4
+)
+. For anyl≤L, there exists an integerksuch thatkl≥Land
+(k−1)l≤L. This implies bounds on 1
+k:
+l
+l+L ≤ 1
+k≤ l
+L.(E.3)
+Using these bounds, we can write:
+P
+(
+Ccb
+S (adUl···U1)≥ κ(S)
+4k
+)
+≤P
+(
+Ccb
+S (adUl···U1)≥ lκ(S)
+4(l+L)
+)
+.(E.4)
+Using the subadditivity ofCcb
+S under concatenation, we get:
+P
+( k⋃
+i=1
+{
+Ccb
+S (adU(i−1)l+1···U(i−1)l+l)≥ κ(S)
+4k
+})
+≥P
+(
+Ccb
+S (adUkl···U1)≥ κ(S)
+4
+)
+≥ 1
+4. (E.5)
+On the other hand, by the i.i.d. property of{Ul}l≥1, for any1≤i≤k, we have:
+P
+(
+Ccb
+S (adU(i−1)l+1···U(i−1)l+l)≥ κ(S)
+4k
+)
+=P
+(
+Ccb
+S (adUl···U1)≥ κ(S)
+4k
+)
+.(E.6)
+Combining these results, we find:
+1
+4 ≤
+(E.5)
+P
+( k⋃
+i=1
+{
+Ccb
+S (adU(i−1)l+1···U(i−1)l+l)≥ κ(S)
+4k
+})
+16
+
+=== page 17 ===
+≤
+k∑
+i=1
+P
+(
+Ccb
+S (adU(i−1)l+1···U(i−1)l+l)≥ κ(S)
+4k
+)
+=
+(E.6)
+kP
+(
+Ccb
+S (adUl···U1)≥ κ(S)
+4k
+)
+≤
+(E.4)
+kP
+(
+Ccb
+S (adUl···U1)≥ lκ(S)
+4(l+L)
+)
+≤kP
+(
+Ccb
+S (adUl···U1)≥ lκ(S)
+8L
+)
+.
+Finally, using (E.3), we have:
+P
+(
+Ccb
+S (adUl···U1)≥ lκ(S)
+8L
+)
+≥ 1
+4k≥ l
+4(l+L) ,
+which concludes the proof.
+F Proof of Theorem 4.4
+To prove the theorem, the first step is to adapt Theorem 3.1 to derive the following:
+Lemma F.1.For anyδ≥0,
+Ccb
+S (adexp(itH))≤τ· l
+S
+δ (adexp(itH)) +δκ(S),(F.1)
+whereκ(S)is the quantum expected length defined in(2.8).
+Proof.The proof follows exactly the same as in Appendix B, except for∥Ψ∗
+l (x)−x∥ op≤τl|||x||| S,∀x, where
+Ψl =
+∫
+Ulτ
+adu1···ad uldµl(u1,···,u l)
+minimizes l
+S
+δ (adexp(itH)). The additional factorτarises becauseC cb
+S (adexp(irHj))≤|r|≤τ.
+Now we are ready to prove the main theorem:
+Proof of Theorem 4.4.Our goal is to show
+Ccb
+S (adexp(itH))≥λ Ht, t≤ 1
+3∥H∥op
+.
+It suffices to present the lower bound forCS(adexp(itH)). Using the definition, for anyx /∈S′,
+CS(adexp(itH))|||x|||S≥∥x−ad ∗
+exp(itH)(x)∥op =∥x−e −iHtxeiHt∥op.
+We aim to establish a lower bound on∥x−e−iHtxeiHt∥op. Denotingδ 0
+H(x) =x,δ n+1
+H (x) = [H,δn
+H(x)], we have:
+∥x−e −iHtxeiHt∥op =∥x−e it[H,x]∥op =∥i[H,x]t+
+∑
+n≥2
+(it)n
+n! δn
+H(x)∥op
+≥∥[H,x]∥ opt−∥
+∑
+n≥2
+(it)n
+n! δn
+H(x)∥op.
+Moreover,
+∥
+∑
+n≥2
+(it)n
+n! δn
+H(x)∥op≤
+∑
+n≥2
+tn
+n!∥δn
+H(x)∥op≤
+∑
+n≥2
+tn(2∥H∥op)n−1
+n! ∥[H,x]∥op
+= (e2∥H∥opt−1−2∥H∥ opt)∥[H,x]∥op
+2∥H∥op
+≤(e−2)(2∥H∥ opt)2∥[H,x]∥op
+2∥H∥op
+= 2(e−2)∥H∥ op∥[H,x]∥opt2,
+17
+
+=== page 18 ===
+if2∥H∥ opt≤1. Here, we used∥δ n
+H(x)∥op≤(2∥H∥ op)n−1∥[H,x]∥op in the second inequality and the estimate
+ea−a−1≤(e−2)a 2 fora∈[0,1]in the last inequality. Combining these results:
+∥x−e −iHtxeiHt∥op≥∥[H,x]∥ opt
+(
+1−2(e−2)∥H∥ opt
+)
+≥∥[H,x]∥op
+2 t,if4(e−2)∥H∥ opt≤1.
+In summary, we showed:
+CS(adexp(itH))|||x|||S≥∥[H,x]∥op
+2 t,(F.2)
+if4(e−2)∥H∥ opt≤1.
+Finally, applying Lemma F.1, we have:
+l
+Uτ
+δ (exp(itH))≥ CS(adexp(itH))−δκ(S)
+τ ≥ λHt−δκ(S)
+τ .
+18

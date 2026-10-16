@@ -1,0 +1,514 @@
+=== page 1 ===
+A SOLUTION TO HAAGERUP’S PROBLEM AND POSITIVE HAHN-BANACH SEPARATION THEOREMS IN
+OPERATOR ALGEBRAS
+IKHAN CHOI
+ABSTRACT. We affirmatively resolve a question posed by Uffe Haagerup in 1975 on the positive version of the bipolar theorem
+on the dual spaces of C∗-algebras. As a direct consequence, we obtain a complete set of four positive Hahn-Banach separation
+theorems on von Neumann algebras, their preduals, C∗-algebras, and their duals. Furthermore, with the idea used to solve
+the problem, we simplify Haagerup’s original solution to Dixmier’s problem on normal weights.
+1. INTRODUCTION
+In this paper, we prove the following theorem.
+Theorem.Let M be a von Neumann algebra, and let A be a C ∗-algebra.
+(1)If F is aσ-weakly closed convex hereditary subset of M +, then for any x′∈M +\F there existsω∈M +
+∗ such
+thatω(x ′)>1andω(x)≤1for all x∈F.
+(2)If F ∗ is a norm closed convex hereditary subset of M +
+∗ , then for anyω′∈M +
+∗\F∗ there exists x∈M + such that
+ω′(x)>1andω(x)≤1for allω∈F ∗.
+(3)If F is a norm closed convex hereditary subset of A +, then for any a′∈A +\F there existsω∈A ∗+ such that
+ω(a′)>1andω(a)≤1for all a∈F.
+(4)If F ∗ is a weakly∗ closed convex hereditary subset of A∗+, then for anyω′∈A∗+\F∗ there exists a∈A + such that
+ω′(a)>1andω(a)≤1for allω∈F ∗.
+Recall that a subsetFof the positive coneE + of a partially ordered real vector spaceEis calledhereditaryifx∈F
+whenever 0≤x≤yinEwithy∈F, or equivalentlyF= (F−E +)+. Here, we useF ∗ andF ∗ just for symbolic
+notations to emphasize that they are contained inM ∗ andA∗ respectively , so they should not be perceived as a star
+operation of another setF.
+The first three parts of the above theorem were originally proved by Uffe Haagerup in his master’s thesis[Haa75].
+In his monumental paper, he answered Dixmier’s question[Dix53]by proving that several conditions for normality
+of weights on a von Neumann algebra are in fact all equivalent, and posed three problems on normal weights, 1.10,
+1.11, and 2.7. Among these, the last one is the problem that asks whether the item (4) holds, and the solution to
+this problem is the main result of this paper. The other two problems are also of independent interest and, as far as
+the author is aware, remain open.
+The first part (1) plays a major role in the proof of thatσ-weakly lower semi-continuous weight of a von Neumann
+algebra is given by the pointwise supremum of a set of positive normal linear functionals. This is a second half of
+Dixmier’s problem on normal weights. The statements of the above collection of theorems in his original paper are
+written in terms of positive versions of the bipolar theoremFr+r+ =Finstead of the Hahn-Banach separation theorem
+as presented above, where the positive polarF r+ can be defined as the positive part of the real polar
+F r+ :=F r∩E∗+ ={x ∗∈E∗+ : sup
+x∈F
+x∗(x)≤1}
+in an ordered real locally convex spaceE. They are easily checked to be equivalent using the usual Hahn-Banach
+separation theorem.
+Although the first three are already known results by Haagerup on the contrary to (4), we provide different proofs
+of them in order to motivate the idea of the proof of (4). In more detail, when Haagerup proved (1), he heavily used
+theσ-strong topology and the strong continuity of continuous bounded functions, but such a nice dual topology for
+2020Mathematics Subject Classification.46L05, 46L10, 47L50.
+Key words and phrases.C ∗-algebras, von Neumann algebras, normal weights.
+1
+arXiv:2501.16832v3  [math.OA]  6 Oct 2025
+
+=== page 2 ===
+2 I. CHOI
+the dual pair of a von Neumann algebra and itsσ-weak dual has no analogue in the dual of a C ∗-algebra. In this
+context, we provide a new proof of (1) using only theσ-weak topology , and extend the idea to prove (4) within the
+weak∗ topology . This notably simplifies Haagerup’s solution of the Dixmier problem by removing the usage of the
+strong operator topology from the proof of (1). On the other hand, Haagerup used (1) to prove (2), but we will
+show that the Krein-Šmulian theorem, which is essential in the proof of (1) and (4), is not required in (2) by proving
+it directly . The part (3) is a straightforward corollary of (1), and it gives a different proof for the Combes theorem
+[Com68], the C∗-algebraic counterpart of Dixmier’s problem. See Theorem 1.1.1 in[Tho24]for a C ∗-algebraic proof
+of Combes’ theorem. Finally , combining these four results, we can also obtain the following correspondences.
+Corollary.For a von Neumann algebra M and a C ∗-algebra A, there are one-to-one correspondences
+
+
+
+normal
+subadditive
+weights on M
+
+
+
+↔
+
+
+
+σ-weakly closed
+convex hereditary
+subsets of M +
+
+
+
+↔
+
+
+
+norm closed
+convex hereditary
+subsets of M +
+∗
+
+
+
+and 
+
+
+lower semi-continuous
+subadditive
+weights on A
+
+
+
+↔
+
+
+
+norm closed
+convex hereditary
+subsets of A+
+
+
+
+↔
+
+
+
+weakly∗ closed
+convex hereditary
+subsets of A∗+
+
+
+
+In Section 2, we introduce some preliminaries for the main proofs, most of which are well-known. The notations
+introduced in Section 2 will be repeatedly used in Section 3, where we give the proofs of the four positive Hahn-
+Banach separation theorems.
+2. PRELIMINARIES
+2.1.Suppression by the one-parameter family of functional calculi.The first step of the proof is the reformulation
+of the theorem into an inclusion problem. This idea is due to Haagerup. More precisely , we can transform each
+positive bipolar theorem equivalently to a statement of the form( F−E +)+⊂F. In other words, whenx i is a net
+inF−E + convergent tox≥0 in a partially oredered real locally convex spaceE, there is a majorizing nety i∈F
+satisfyingx i≤y i, we then need to findy∈Fsuch thatx≤yin order to deducex∈Fwith the hereditarity ofF.
+An obstacle of this argument is that a nety i has of course no limit points in general. To address this, we suppress
+the nety i to make it bounded with the following one-parameter family of real functions.
+Definition 2.1.Forδ>0, we define a functionf δ :(−δ−1,∞)→Rsuch that
+fδ(t):=t(1+δt) −1,t>−δ −1.
+It has many interesting properties such as operator monotonicity and concavity , strong convergence to the identity as
+δ→0, and the semi-group property in the sense thatf δ(fδ′ (t)) =f δ+δ′ (t)on a suitable domain oft∈R. We will only
+use the operator monotonicity and the boundedness from above, given each fixedδ>0. With these functions, for
+example in the situation of (1), we can suppress the nety i to define a bounded netf δ(y i)of positive elements. This
+net is bounded above byy i∈Fso thatf δ(y i)∈Fby the hereditarity ofF, and we can take aσ-weakly convergent
+subnet to getf δ(x)∈Ffromf δ(x i)≤f δ(y i)∈Fby the closedness and the hereditarity ofF. Then, the limitδ→0
+and the closedness ofFwill givex∈F.
+However, when we try to apply this strategy , we encounter two technical issues. One is that the netx i should
+be bounded for the netf δ(x i)to be well-defined for a sufficiently small but fixedδ >0. It can be overcome by
+Haagerup’s trick involving the Krein-Šmulian theorem. The other is, unlike theσ-strong topology that Haagerup
+used, that we cannot expect the operation of taking functional calculus to be continuous with respect to theσ-weak
+topology . For instance, when a self-adjoint netxi∈B(H) sa satisfies an assumption−(2δ)−1≤x i for alliandx i→x
+σ-weakly , it does not necessarily followf δ(x i)→f δ(x)σ-weakly . Our solution is to approximate the functionsf δ
+with affine functions. The following lemma will be frequently used, and it allows us to approximatef δ(x)directly
+with theσ-weakly convergent netx i instead off δ(x i), while accompanied by small errors.
+Lemma 2.2.Letδ>0and t∈R.
+
+=== page 3 ===
+POSITIVE HAHN-BANACH SEPARATION THEOREMS 3
+(1)If|t|≤2 −1δ− 1
+4 andδ≤1, then t≤f δ(t) +δ
+1
+2 .
+(2)If t≥0and c≥0, then f δ(t+c)≤f δ(t) +c.
+(3)If0≤t≤1, then(1+δ) −1t≤f δ(t).
+Proof.(1) Sinceδ≤1<2
+4
+3 impliest≥−2 −1δ− 1
+4>−δ−1, the valuefδ(t)is well-defined. The inequality is equivalent
+toδ
+1
+2 t2−δt≤1, and it holds for|t|≤2 −1δ− 1
+4 .
+(2) The inequality holds fort=0, so we can check by differentiation with respect totfor fixedc.
+(3) It follows fromt(1+δt)≤t(1+δ).
+2.2.Bounded commutant Radon-Nikodym derivatives.In the proofs of (2) and (4), we need to suppress linear
+functionals instead of operators, so we introduce the notion of Radon-Nikodym derivatives to convert functionals to
+operators as follows.
+Definition 2.3.LetMbe a von Neumann algebra, and letψ∈M +
+∗ . Consider the Gelfand-Naimark-Segal represen-
+tationπ:M→B(H)associated toψ, together with the canonical cyclic vectorΩ∈H. Then, we have a positive
+bounded linear mapθ:π(M) ′→M∗ defined such that
+θ(h)(x):=〈hπ(x)Ω,Ω〉,h∈π(M) ′,x∈M.
+Although it is not a standard terminology , we will call this linear mapθthe (bounded)commutant Radon-Nikodym
+mapassociated toψin this paper.
+Letθbe the commutant Radon-Nikodym map associated toψ∈M +
+∗ . WhenMis commutative so thatπ(M) =
+π(M)′, the inverse mapθ−1 assigns to a linear functional an operator, which is exactly the Radon-Nikodym derivative
+with respect toψin the classical measure-theoretic sense. We include the adjective “commutant” to avoid confusion
+with other Radon-Nikodym derivatives in the theory of operator algebras such as the one of Takesaki-Pedersen or
+Connes’ cocycle derivatives. In the proof of (4), we will make use of this for the enveloping von Neumann algebra
+A∗∗ of a C∗-algebraA.
+The image ofθassociated toψis described by
+imθ={ω∈M ∗ : there isC>0 such that|ω(x)|≤Cψ(x)for allx∈M +},
+and the Radon-Nikodym derivativeθ −1(ω)∈π(M) ′ ofω∈imθsatisfies the bound∥θ −1(ω)∥≤C, whereCis a
+constant in the above description of the image ofθ. In the proof of (2), for a sequenceω n∈F ∗−M +
+∗ , a single
+reference functionalψ∈M +
+∗ is constructed such that|ω n(x)|≤Cψ(x)for allnandx∈M +, however in (4), we
+takeψ i∈A∗+ depending on the netω i∈F ∗−A∗+ to have|ω i(a)|≤Cψ i(a)for alla∈A + andi. The dependence of
+ψi oniis a key idea of the proof of (4), and we can check this dependence is reflected in the definitioin of the set
+G∗ in the proof.
+Letω∈M sa
+∗ . The Jordan decomposition theorem gives a unique pairω +,ω−∈M +
+∗ of positive normal linear
+functionals such thatω=ω +−ω− and∥ω∥=∥ω +∥+∥ω−∥. The absolute value ofωis defined as[ω]:=ω + +ω−.
+Note that we always have|ω(x)|≤[ω](x)for allx∈M +, but unlessMis commutative, then forω∈M sa
+∗ and
+ψ∈M +
+∗ we cannot expect[ω]≤ψwhen|ω(x)|≤ψ(x)for allx∈M +. Note also that whenAis a C ∗-algebra and
+ωi is a net inA∗sa, we haveω i+→0 in norm ifω i→0 in norm, but we do not haveω i+→0 weakly∗ in general if
+ωi→0 weakly∗ inA∗. For further details, see IV .3 for the commutant Radon-Nikodym map and III.4 for the Jordan
+decomposition theorem in[Tak02].
+3. PROOFS OF THEOREMS
+Theorem 3.1.Let M be a von Neumann algebra, and consider the dual pair(M sa,M sa
+∗ ). If F is aσ-weakly closed convex
+hereditary subset of M +, then F=F r+r+ . Equivalently, if x′∈M +\F, then there isω∈M +
+∗ such thatω(x ′)>1and
+ω(x)≤1for x∈F.
+Proof.Since the positive polar is represented by the real polar
+F r+ =F r∩M +
+∗ =F r∩(−M +)r = (F∪−M +)r = (F−M +)r,
+
+=== page 4 ===
+4 I. CHOI
+the positive bipolar can be written asF r+r+ = (F−M +)rr+ = (F−M +)+ by the usual real bipolar theorem, where the
+closure is for theσ-weak topology . BecauseF= (F−M +)+⊂( F−M +)+, it suffices to prove the opposite inclusion
+(F−M +)+⊂F.
+Define
+G:=
+
+
+
+x∈M sa :
+for any sufficiently smallδ>0
+there isy δ∈Fsuch that
+∥yδ∥≤δ −1 andx≤y δ +δ
+1
+2
+
+
+
+.
+We prove( F−M +)+⊂Fvia three steps,F−M +⊂G,G +⊂F, and G⊂G.
+Letx∈F−M +, withy∈Fsuch thatx≤y. If we definey δ :=f δ(y), then for sufficiently smallδ>0 such that
+∥x∥≤2 −1δ− 1
+4 andδ≤1, we havex≤f δ(x) +δ
+1
+2≤y δ +δ
+1
+2 , sox∈G.
+Letx∈G +. Takey δ∈Fsuch that∥y δ∥≤δ −1 andx≤y δ +δ
+1
+2 for sufficiently smallδ. For anyδ ′>0, we have
+0≤(1+δ ′∥x∥)−1x≤f δ′ (x)≤f δ′ (yδ +δ
+1
+2 )≤f δ′ (yδ) +δ
+1
+2 .
+Sincef δ′ (yδ)∈Fis bounded for fixedδ ′, by considering the limit along a cofinal ultrafilter on the set ofδ, we have
+(1+δ ′∥x∥)−1x∈F, so the limitδ ′→0 givesx∈F.
+Now it suffices to showGisσ-weakly closed. We claim that for anyr>0 we have
+(F−M +)∩M 2r⊂G,G∩M r⊂ (F−M +)∩M 2r ,
+whereM r :={x∈M:∥x∥≤r}. It these are true, then
+G∩M r = (F−M +)∩M 2r∩M r
+isσ-weakly closed and convex inMfor allr>0, so the Krein-Šmulian theorem proves thatGisσ-weakly closed.
+Letx i∈(F−M +)∩M 2r be a net such thatx i→xσ-weakly inMand∥x i∥≤2rfor alli. Takey i∈Fsuch that
+xi≤y i for alli. For sufficiently smallδ>0 such that 2r≤2 −1δ− 1
+4 andδ≤1, we havex i≤f δ(x i)+δ
+1
+2≤f δ(y i)+δ
+1
+2 .
+By considering a cofinal ultrafilter on the index set ofi, if we definey δ as theσ-weak ultralimit off δ(y i)of this
+ultrafilter, then we have∥y δ∥≤δ −1 andx≤y δ +δ
+1
+2 , sox∈G.
+Letx∈G∩M r. Takey δ∈Fsuch that∥y δ∥≤δ −1 andx≤y δ +δ
+1
+2 for sufficiently smallδ. Ifδ
+1
+2 <r, then
+x−δ
+1
+2∈(F−M +)∩M 2r σ-weakly converges toxasδ→0, sox∈ (F−M +)∩M 2r . This completes the proof.
+Theorem 3.2.Let M be a von Neumann algebra, and consider the dual pair(M sa
+∗ ,M sa ). If F∗ is a norm closed convex
+hereditary subset of M +
+∗ , then F∗ =F r+r+
+∗ . Equivalently, ifω′∈M +
+∗\F∗, then there is x∈M + such thatω′(x)>1and
+ω(x)≤1forω∈F ∗.
+Proof.It is enough to prove( F∗−M +
+∗ )+⊂F∗, where the closure is for the weak topology or equivalently for the norm
+by the convexity ofF ∗−M +
+∗ , so we begin our proof by fixingω∈( F∗−M +
+∗ )+ and a sequenceω n∈F ∗−M +
+∗ such
+thatω n→ωin norm ofM ∗. Takeϕ n∈F∗ such thatω n≤ϕ n for alln. We may assume∥ω n−ω∥≤2 −n for allnby
+passing to a subsequence. Define
+ψ:=ω+
+X
+n
+[ωn−ω] +
+X
+n
+2−n ϕn
+1+∥ϕ n∥
+inM +
+∗ , and letθbe the commutant Radon-Nikodym map associated toψ. Since−ψ≤ω n≤ψimplies the bound-
+edness∥θ −1(ωn)∥≤1 for alln, the weak convergenceω n→ωinM ∗ implies the convergenceθ−1(ωn)→θ −1(ω)in
+the weak operator topology ofπ(M) ′. By the Mazur lemma, we can take a netω i in the convex hull ofω n such that
+θ−1(ωi)→θ −1(ω)strongly inπ(M) ′, and the correspondingϕ i∈F ∗ can be defined such thatω i≤ϕ i for alli. In
+fact, the netω i can be taken to be a sequence because the commutant isσ-finite by the existence of the separating
+vector, but it is not necessary in here. For eachiand 0<δ<1, define
+ωδ :=θ(f δ(θ−1(ω))),ω i,δ :=θ(f δ(θ−1(ωi))),ϕ i,δ :=θ(f δ(θ−1(ϕi))),
+where the functional calculusf δ(θ−1(ωi))is well-defined because−1≤θ −1(ωi)for alli. Sincef δ(θ−1(ωi))→
+fδ(θ−1(ω))strongly in the commutant by the strong continuity off δ, we haveω i,δ→ωδ weakly inM ∗ for eachδ.
+Taking a cofinal ultrafilter on the index set ofi, defineϕ δ by the image of theσ-weak ultralimit off δ(θ−1(ϕi))in
+
+=== page 5 ===
+POSITIVE HAHN-BANACH SEPARATION THEOREMS 5
+the commutant under the Radon-Nikodym mapθ. Then,ϕ i,δ→ϕ δ weakly inM ∗ for eachδ. Sinceϕ i∈F ∗, the
+inequality 0≤ϕ i,δ≤ϕ i impliesϕ i,δ∈F∗, and the weak convergenceϕ i,δ→ϕδ inM∗ impliesϕδ∈F∗. Furthermore,
+ωi≤ϕ i impliesω i,δ≤ϕ i,δ and 0≤ω δ≤ϕδ, soω δ∈F∗. The weak convergenceω δ→ωinM ∗ asδ→0 finally
+impliesω∈F ∗, so we get( F∗−M +
+∗ )+⊂F∗.
+Theorem 3.3.Let A be a C∗-algebra, and consider the dual pair(Asa,A∗sa ). If F is a norm closed convex hereditary subset
+of A+, then F=F r+r+ . Equivalently, if a′∈A +\F, then there isω∈A ∗+ such thatω(a′)>1andω(a)≤1for a∈F.
+Proof.We directly prove the separation without invoking the arguments of positive bipolars. Denote byF ∗∗ theσ-
+weak closure ofFin the universal von Neumann algebraA ∗∗. We first show thatF ∗∗ is hereditary subset ofA ∗∗+.
+Suppose 0≤x≤yinA ∗∗ andy∈F ∗∗. Then, there isz∈A ∗∗ such thatx
+1
+2 =z y
+1
+2 . Take bounded netsb i inFandc i
+inAsuch thatb i→yandc i→zσ-strongly ∗ inA∗∗ using the Kaplansky density theorem. We may assume the indices
+of these two nets are shared by considering the product directed set. Since both the multiplication and the involution
+of a von Neumann algebra on bounded parts are continuous in theσ-strong∗ topology , and since the square root on
+a positive bounded interval is strongly continuous, we have theσ-strong∗ limit
+x=y
+1
+2 z∗z y
+1
+2 =lim
+i
+b
+1
+2
+i c∗
+i ci b
+1
+2
+i ,
+so we obtainx∈F ∗∗ fromb
+1
+2
+i c∗
+i ci b
+1
+2
+i ∈F. Thus,F ∗∗ is hereditary inA∗∗+.
+Leta′∈A +\F. Ifa ′∈F ∗∗, then we have a neta i inFsuch thata i→a′σ-weakly inA∗∗, which means thata i→a′
+weakly inA, and by the weak closedness ofFinAwe get a contradictiona ′∈F ∗∗∩A=F. It impliesa ′∈A∗∗+\F∗∗,
+so by Theorem 3.1, there isω∈A ∗+ such thatω(a′)>1 andω(a)≤1 for alla∈F⊂F ∗∗, and we are done.
+Theorem 3.4.Let A be a C ∗-algebra, and consider the dual pair(A∗sa,Asa ). If F∗ is a weakly∗ closed convex hereditary
+subset of A∗+, then F∗ = (F∗)r+r+ . Equivalently, ifω′∈A∗+\F∗, then there is a∈A + such thatω′(a)>1andω(a)≤1
+forω∈F ∗.
+Proof.As above, we will prove( F∗−A∗+)+⊂F ∗. Define
+G∗ :=
+
+
+
+ω∈A ∗sa :
+there isψ∈A ∗+, and there isϕδ∈F ∗
+for any sufficiently smallδ>0, such that
+∥ψ∥≤1,∥ϕ δ∥≤δ −1, andω≤ϕ δ +δ
+1
+2ψ
+
+
+
+.
+It suffices to showF ∗−A∗+⊂G∗,G ∗+⊂F ∗, and G∗⊂G∗.
+Letω∈F ∗−A∗+. Takeϕ∈F ∗ such thatω≤ϕ. Define, forδ>0,
+ψ:= [ω]
+1+∥ω∥ + ϕ
+(1+∥ω∥)(1+∥ϕ∥) ,ϕ δ :=θ(f δ(θ−1(ϕ))),
+whereθis the commutant Radon-Nikodym map associated toψ. The norm conditions∥ψ∥≤1 and∥ϕ δ∥≤δ −1 are
+easily checked. For sufficiently smallδ>0 such that∥θ −1(ω)∥≤1+∥ω∥≤2 −1δ− 1
+4 andδ≤1, we have
+θ−1(ω)≤f δ(θ−1(ω)) +δ
+1
+2≤f δ(θ−1(ϕ)) +δ
+1
+2 ,
+soω≤ϕ δ +δ
+1
+2ψandω∈G ∗.
+Letω∈G ∗+. Takeψ∈A ∗+ andϕδ∈F ∗ such that∥ψ∥≤1,∥ϕ δ∥≤δ −1, andω≤ϕ δ +δ
+1
+2ψ, for any sufficiently
+smallδ>0. Letψ δ :=ω+δϕ+ψ, and letθ δ be the associated commutant Radon-Nikodym map. For any fixed
+δ′>0, since 0≤θ −1
+δ (ω)≤1, we have
+0≤(1+δ ′)−1θ−1
+δ (ω)≤f δ′ (θ−1
+δ (ω))≤f δ′ (θ−1
+δ (ϕδ +δ
+1
+2ψ))
+≤f δ′ (θ−1
+δ (ϕδ) +δ
+1
+2 )≤f δ′ (θ−1
+δ (ϕδ)) +δ
+1
+2 ,
+and it implies 0≤(1+δ ′)−1ω≤θ δ(fδ′ (θ−1
+δ (ϕδ)))+δ
+1
+2ψδ. Since∥ψ δ∥≤∥ω∥+2 is bounded andθ δ(fδ′ (θ−1
+δ (ϕδ)))∈
+F∗ is also bounded for fixedδ′, by considering the limit along a cofinal ultrafilter on the set ofδ, we have(1+δ′)−1ω∈
+F∗, soδ′→0 givesω∈F ∗.
+
+=== page 6 ===
+6 I. CHOI
+To showG∗ is weakly∗ closed, we claim for anyr>0 that
+(F∗−A∗+)∩A∗
+2r⊂G∗,G ∗∩A∗
+r⊂ (F∗−A∗+)∩A∗
+2r ,
+whereA∗
+r :={ω∈A ∗ :∥ω∥≤r}. If these are true, then
+G∗∩A∗
+r = (F∗−A∗+)∩A∗
+2r∩A∗
+r
+is weakly∗ closed and convex inA∗ for allr>0, so the Krein-Šmulian theorem shows thatG ∗ is weakly∗ closed.
+Letω i∈(F ∗−A∗+)∩A ∗
+2r be a net such thatω i→ωweakly ∗ inA∗. Following the proof ofF ∗−A∗+⊂G ∗, we
+can take in the same wayψ i∈A∗+ andϕ i,δ∈F ∗ such that∥ψ i∥≤1,∥ϕ i,δ∥≤δ −1, andω i≤ϕ i,δ +δ
+1
+2ψi, for
+uniformly sufficiently smallδsuch that 1+2r≤2 −1δ− 1
+4 because∥ω i∥is bounded by 2r. Since the three conditions
+are preserved by the weak ∗ convergence, taking the limit along a cofinal ultrafilter on the index set ofi, we can
+obtain limit pointsψandϕ δ so thatω∈G ∗.
+Letω∈G ∗∩A∗
+r. Takeψ∈A ∗+ andϕ δ∈F ∗ with∥ψ∥≤1,∥ϕ δ∥≤δ −1, andω≤ϕ δ +δ
+1
+2ψ, for any sufficiently
+smallδ >0. Ifδ
+1
+2 <r, thenω−δ
+1
+2ψ∈(F ∗−A∗+)∩A ∗
+2r converges toωweakly ∗ inA ∗ asδ→0, we have
+ω∈ (F∗−A∗+)∩A∗
+2r . This completes the proof.
+Haagerup left in his paper[Haa75]a comment without a proof that Theorem 3.4 is not difficult when a C∗-algebra
+is commutative. As a final remark, we give a direct proof of this.
+Corollary 3.5.Let A be a commutative C∗-algebra, and consider the dual pair(A∗sa,Asa ). If F∗ is a weakly∗ closed convex
+hereditary subset of A∗+, then F∗ = (F∗)r+r+ .
+Proof.We first see thatω + ≤ω ′
++ ifω≤ω ′ inA ∗sa. Consider the ramp functionst7→t + :=max{0,t}and
+t7→t − :=max{0,−t}defined ont∈R. Letω∈A ∗sa andψ∈A ∗+ such thatωbelongs to the image of the
+commutant Radon-Nikodym mapθassociated toψ. Letπ:A→B(H)be the Gelfand-Naimark-Segal representation
+associated toψwith the canonical cyclic vectorΩ∈H. Letp∈π(A) ′ be a projection such that|θ −1(ω)|=θ −1(ω)p.
+Then,p∈π(A) ′′ becauseπ(A)′′ is a maximal commutative subalgebra ofB(H)by Theorem III.1.2 in[Tak02], or
+in a straightforward way because we can identifyp∈π(A) ′ with a bounded linear functionalπ(A) ′′
+∗ →C:(x7→
+〈xπ(a)Ω,π(b)Ω〉)7→〈pπ(a)Ω,π(b)Ω〉, wherex∈π(A) ′′ anda,b∈A. If we takea∈Asuch that∥π(a)∥≤1 and
+|〈θ−1(ω)(p−π(a))Ω,Ω〉|<ϵfor arbitrarily chosenϵ>0 using the Kaplansky density , then the limitϵ→0 on
+∥θ(θ−1(ω)+)∥+∥θ(θ −1(ω)−)∥=〈|θ −1(ω)|Ω,Ω〉=〈θ −1(ω)pΩ,Ω〉
+≤|〈θ−1(ω)π(a)Ω,Ω〉|+ϵ≤∥ω∥+ϵ
+shows that the positive partω+ in the Jordan decomposition ofωis given by the functional calculusω+ =θ(θ −1(ω)+)
+by the ramp function. Moreover, every monotone function can behave like an operator monotone function on a
+commutative C∗-algebra, so we can deduceω +≤ω′
++ ifω≤ω ′ inA∗sa.
+Now we prove the theorem. Define
+G∗ :=
+¤
+ω∈ F∗−A∗+ : there is a bounded netω i∈F ∗−A∗+
+such thatω i→ωweakly ∗ inA∗
+«
+.
+It suffices to showF ∗−A∗+⊂G∗,G∗+⊂F ∗, and G∗⊂G∗. We can easily checkF ∗−A∗+⊂G∗ by considering constant
+sequences.
+Ifω∈G ∗+, then there exist a bounded netω i∈F ∗−A∗+ and a netϕ i∈F ∗ such thatω i≤ϕ i for alliandω i→ω
+weakly∗ inA∗ by definition ofG ∗. Since 0≤ω i+≤ϕ i∈F ∗ impliesω i+∈F ∗, and since the netω i+ is bounded so
+that we may assumeω i+→ω′ weakly∗ inA∗, we have 0≤ω≤ω ′∈F ∗, whenceω∈F ∗.
+To showG∗ is weakly∗ closed, take a bounded netω i∈G ∗ in the spirit of the Krein-Šmulian theorem such that
+ωi→ωweakly ∗ inA∗. Then, for eachiwe have a bounded netω i j∈F ∗−A∗+ and a netϕ i j∈F ∗ such thatω i j≤ϕ i j
+for alljandω i j→ω i weakly∗ inA∗ by definition ofG ∗. Note thatω i j≤ϕ i j implies 0≤ω i j+≤ϕ i j∈F ∗, and
+ωi j+∈F ∗ is a bounded net for eachiso that we may assumeω i j+→ω′
+i weakly∗ inA∗ withω′
+i∈F ∗. Again,ω i≤ω′
+i
+implies 0≤ω i+≤ω′
+i∈F ∗, andω i+∈F ∗ is a bounded net so that we may assumeω i+→ω′ weakly∗ inA∗ with
+ω′∈F ∗. Then,ω≤ω ′∈F ∗ implies thatω∈F ∗−A∗+⊂G∗.
+
+=== page 7 ===
+POSITIVE HAHN-BANACH SEPARATION THEOREMS 7
+ACKNOWLEDGMENTS
+The author is grateful to his advisor Yasuyuki Kawahigashi for his enormous support and encouragement during
+the master’s studies. The author would also like to thank Narutaka Ozawa for his fruitful comments, particularly
+pointing out a mistake of the author in the original version, and for extremely valuable suggestions on a simpler
+proof than the complicated original proof. Finally the author thanks Hikaru Awazu and Ayoub Hafid for helpful
+discussions.
+REFERENCES
+[Com68]François Combes. Poids sur uneC ∗-algèbre.J. Math. Pures Appl. (9), 47:57–100, 1968.
+[Dix53]J. Dixmier. Formes linéaires sur un anneau d’opérateurs.Bull. Soc. Math. France, 81:9–39, 1953.
+[Haa75]Uffe Haagerup. Normal weights onW ∗-algebras.J. Functional Analysis, 19:302–317, 1975.
+[Tak02]M. Takesaki.Theory of operator algebras. I, volume 124 ofEncyclopaedia of Mathematical Sciences. Springer-Verlag, Berlin, 2002. Reprint
+of the first (1979) edition, Operator Algebras and Non-commutative Geometry , 5.
+[Tho24]Klaus Erik Thomsen.An introduction to KMS weights, volume 2362 ofLecture Notes in Mathematics. Springer, Cham,[2024]©2024.
+GRADUATESCHOOL OFMATHEMATICALSCIENCES, THEUNIVERSITY OFTOKYO, 3-8-1 KOMABAMEGURO-KUTOKYO153-8914, JAPAN
+Email address:choi@ms.u-tokyo.ac.jp

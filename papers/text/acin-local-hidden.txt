@@ -1,0 +1,3486 @@
+=== page 1 ===
+Journal of Physics A:
+Mathematical and
+Theoretical
+             
+PAPER
+Local hidden–variable models for entangled
+quantum states
+To cite this article: R Augusiak et al 2014 J. Phys. A: Math. Theor. 47 424002
+ 
+View the article online for updates and enhancements.
+You may also like
+Entanglement without hidden nonlocality
+Flavien Hirsch, Marco Túlio Quintino,
+Joseph Bowles et al.
+-
+Quantum steering with positive operator
+valued measures
+H Chau Nguyen, Antony Milne, Thanh Vu
+et al.
+-
+Smallest state spaces for which bipartite
+entangled quantum states are separable
+Hussain Anwar, Sania Jevtic, Oliver
+Rudolph et al.
+-
+This content was downloaded from IP address 96.227.90.235 on 07/01/2026 at 23:08
+
+=== page 2 ===
+Review
+Local hidden–variable models for entangled
+quantum states
+R Augusiak 1, M Demianowicz 1 and A Acín 1,2
+1 ICFO–Institut de Ciencies Fotoniques, Mediterranean Technology Park, 08860
+Castelldefels (Barcelona), Spain
+2 ICREA–Institucio Catalana de Recerca i Estudis Avançats, Lluis Companys 23,
+08010 Barcelona, Spain
+Received 28 May 2014, revised 13 August 2014
+Accepted for publication 14 August 2014
+Published 8 October 2014
+Abstract
+While entanglement and violation of Bell inequalities were initially thought to
+be equivalent quantum phenomena, we now have different examples of
+entangled states whose correlations can be described by local hidden-variable
+models and, therefore, do not violate any of the Bell inequalities. We provide
+an up-to-date overview of the existing literature regarding local hidden-vari-
+able models for entangled quantum states, in both the bipartite and multipartite
+cases, and discuss some of the most relevant open questions in this context.
+Our review covers twenty ﬁve years of this line of research, beginning with the
+seminal work by Werner (1989 Phys. Rev. A 40 8), which provided the ﬁrst
+example of an entangled state with a local model. Werner ʼs work, in turn,
+appeared twenty ﬁve years after the seminal work by Bell (1964 Physics 1
+195), about the impossibility of recovering the predictions of quantum
+mechanics using a local hidden-variable theory.
+This article is part of a special issue of Journal of Physics A: Mathematical
+and Theoretical devoted to ‘50 years of Bell ’s theorem ’.
+Keywords: Bell ’s theorem, local hidden variables, nonlocality
+(Some ﬁgures may appear in colour only in the online journal)
+1. Introduction
+In 1935, the concepts of the local –hidden variable model and entanglement were introduced
+in the works by, respectively, Einstein, Podolsky and Rosen [ 1], and Schrödinger [ 2]. After
+them, very few works (see, e.g., [ 3, 4]) considered the problem of whether local models could
+provide a more intuitive, and complete, alternative to the quantum formalism. This continued
+Journal of Physics A: Mathematical and Theoretical
+J. Phys. A: Math. Theor. 47 (2014) 424002 (41pp) doi:10.1088/1751-8113/47/42/424002
+1751-8113/14/424002+41$33.00 © 2014 IOP Publishing Ltd Printed in the UK 1
+
+=== page 3 ===
+until 1964, when Bell showed that local models are in fact in contradiction with quantum
+predictions. In particular, he proved that local models satisfy some inequalities, known
+thereafter as Bell inequalities, that are violated by the statistics of local measurements on a
+singlet state [ 5].
+The work of Bell started the study of quantum nonlocality, that is, of those correlations
+obtained when performing local measurements on entangled states that do not have a classical
+analogue. Initially, it was believed that entanglement and quantum nonlocality were
+equivalent phenomena. And, in fact, entanglement and nonlocality do coincide for pure states,
+as any pure entangled state violates a Bell inequality [ 6]. However, in 1989 Werner intro-
+duced a family of highly symmetric mixed entangled states, today known as the Werner
+states, and exploited their symmetries to construct an explicit local model reproducing the
+correlations for some of them [ 7]. The work by Werner then implied that the relation between
+nonlocality and entanglement is subtler than expected and, in particular, these two notions do
+not coincide in the standard scenario originally introduced by Bell.
+After Wernerʼs work, several other results have appeared providing new local models for
+other entangled states. The main purpose of this article is to review all these existing models.
+Our hope is that this review will be useful to have a broad vision of what is known today on
+the relation between entanglement and quantum nonlocality, in particular in the case when an
+entangled state satis ﬁes all Bell inequalities. As will become clear below, the explicit con-
+struction of local models has turned out to be an extremely dif ﬁcult problem and, at the
+moment, we only have a few models beyond Werner ʼs original construction. In fact, in our
+view, most, if not all, of the existing models can be interpreted in one way or another as
+variants of Werner ʼs model.
+The structure of the review is as follows: after introducing the main concepts and de ﬁ-
+nitions used in our work, we go through the existing models, both in the bipartite and
+multipartite scenarios. We then brie ﬂy discuss other possible de ﬁnitions of nonlocality, such
+as the concept of hidden nonlocality introduced by Popescu [ 8]. Finally, we present our
+conclusions and a list of open questions.
+2. Preliminaries and notation
+We start by introducing notions and de ﬁnitions repeatedly used throughout the manuscript:
+entanglement and genuine multipartite entanglement, measurement in quantum theory, and
+the Bell experiment setup with the corresponding notions of locality.
+In what follows by B( ), d2, Ωd, and ωd we denote, respectively, the set of bounded
+linear operators acting on a ﬁnite-dimensional Hilbert space , the d × d identity matrix, the
+set Ωλ λ λ=〉 ∈〈〉 ={| | | 1}d d , and the unique density over Ωd invariant under any unitary
+operation U acting on d .
+2.1. Entanglement
+Let us consider two parties, traditionally called Alice ( A) and Bob ( B), sharing a bipartite
+quantum state ρAB acting on a product Hilbert space =⊗ ddAB . We say that ρAB is
+separable iff it can be written as a convex combination of pure product states [ 7], that is
+∑∑ρψ ψ ϕ ϕ=⊗ ⩾ =pp p ,0 , 1 ( 1 )AB
+i
+i A
+i
+A
+i
+B
+i
+B
+i
+i
+i
+i
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+2
+
+=== page 4 ===
+with some ψ 〉∈| A
+i dA and ϕ 〉∈| B
+i dB. Otherwise, it is called entangled. In a general
+multiparty scenario with N parties we will denote them …= AA A,, : N(1) ( ) . Let Ak be a k-
+element subset of A and Ak its complement in the said set. Then, an N partite state ρA is said
+to be biseparable if it can be written as
+∑∑ρρ == pp ,1 , ( 2 )A
+AA
+AA AA
+AA
+AA
+kk
+kk kk
+kk
+kk
+where each ρAA|kk is separable (see ( 1)) across the bipartition AA|kk and the sum goes over
+all such bipartitions. If a state cannot be written as ( 2), it is called genuinely multiparty
+entangled (GME).
+2.2. Measurement in quantum theory
+We call a collection =
+−P{ }a a
+k
+0
+1 of k projections acting on d a k-outcome projective mea-
+surement (PM; also called von Neumann measurement ) if the Pa are supported on orthogonal
+subspaces, i.e., δ=′′PP Paa a a a , and
+∑ =
+=
+−
+P .( 3 )
+a
+k
+ad
+0
+1
+2
+With a projective measurement with outcomes αa, =⋯ −a k0, 1, , 1 , we associate an
+operator α= ∑ =
+− Pa
+k
+aa0
+1 , called an observable, which is measured in the measurement
+process. In what follows, we talk about performing measurement . Performed on a state ϱ,a
+measurement will give the ath outcome αa corresponding to Pa with the probability pa(| )
+given by the Born rule
+ϱ= ()pa P() t r . ( 4 ) a
+The mean value of an observable in the state ϱ is given by
+∑ϱα==
+=
+−
+  pa:t r ( ) ( ) . ( 5 )
+a
+k
+a
+0
+1
+Clearly, when d = 2, a projective measurement can have only two outcomes represented by
+rank-one projections Pa (of course, there is also a trivial single-outcome projective
+measurement with =P d0 2 , which we do not need to consider here). In general, however, the
+projectors Pa do not necessarily have to be rank one, and, in fact, if <k d there must exist at
+least one projector of rank larger than one.
+A collection of k operators = =
+− {} a a
+k
+0
+1 acting on d is called a k-outcome POVM,
+where POVM stands for positive-operator valued measure, or k-outcome generalized mea-
+surement if they are positive, i.e., ⩾ 0a , and
+∑ =
+=
+−
+ .( 6 )
+a
+k
+ad
+0
+1
+2
+The latter, in particular, means that every a is upper bounded by the identity, i.e.,
+⩽ad 2. The probability of obtaining the outcome a corresponding to a is given again by
+the Born rule, that is, by equation ( 4) with Pa replaced by a.
+In what follows, the operators Pa forming a projective measurement as well as a
+forming a generalized measurement will be called measurement operators . Obviously, every
+projective measurement is also a POVM; the opposite, however, is in general not true.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+3
+
+=== page 5 ===
+Equivalently speaking, for a given dimension d, the set of all projective measurements forms
+a proper subset of the set of all generalized measurements 3. It is important to note, however,
+that whenever we deal with d outcome measurements on d they are necessarily projective.
+For further bene ﬁts, we also notice that in our considerations we can in fact assume that
+measurement operators, both in the case of projective and generalized measurements, are of
+rank one, or, in other words, the measurements are nondegenerate. This is because any
+measurement whose operators are of rank larger than one can always be realized as a mea-
+surement with rank-one operators. More precisely, since every element a of a generalized
+measurement is a positive operator, it admits the form η= ∑ Pa i i
+a
+i
+a() () with η⩽⩽01 i
+a()
+and Pi
+a() being, respectively, the eigenvalues and the rank-one eigenprojectors of a.
+Moreover, due to equation ( 6), all the eigenvalues must satisfy
+∑η = d.( 7 )
+ia
+i
+a
+,
+()
+Now, denoting all these new rank-one operators as η= Pai i
+a
+i
+a
+,
+() () it is clear that they
+also form a POVM which is a ‘ﬁner-grained’version of { }a . To reproduce the statistics of
+the ‘coarse-grained’ original POVM, one simply applies the ﬁner POVM { }ai, and forgets
+the result i. In this way, a local model (see the upcoming section for the relevant notion) for
+POVMs with rank-one measurement operators will imply a local model for any POVM.
+It is also worth mentioning that whenever we work with qubits it is bene ﬁcial to exploit
+the Bloch representation of quantum states and projection operations. A state ρ acting on 2
+can be expressed as
+ ρσρ =+ ()1
+2 ·, ( 8 )2
+with ρ ∈ 3 being the so-called Bloch vector of length ρ ⩽| | 1 and σ σσσ= (, , )xyz standing
+for a vector consisting of the standard Pauli matrices 4. Bloch vectors of unit length correspond
+to rank-one projectors (pure states).
+Within the Bloch representation the measurement operators Pa associated to a in a
+generalized measurement (see the discussion above) are represented by the Bloch vectors pa
+that, due to ( 6), must satisfy
+∑η =
+=
+−
+p 0. (9)
+a
+k
+a a
+0
+1
+In particular, if k = 2, the projections Pa form a projective measurement and the above
+condition simpli ﬁes to
++=pp 0. (10)01
+This implies that any two-outcome measurement de ﬁned on a qubit Hilbert space is fully
+represented by a single vector, say ≡pp 0. Also, in the case of two-outcome projective
+measurements, we will mainly use the more standard notation for the outcomes denoting them
+3 The restriction to the ﬁxed dimensions is very important here since any POVM can be realized formally as a PM in
+a larger space.
+4 The Pauli matrices are de ﬁned as:
+σσ σ== − = −() ( ) ( )
+i
+i
+01
+10 , 0
+0 , 10
+01xy z
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+4
+
+=== page 6 ===
+±1 instead of 0, 1. Then, in the Bloch representation, the projectors corresponding to the
+outcomes can be represented as
+ σ=±± ()P p1
+2 · , (11)2
+and the mean value of an observable  is just 〈 〉= − − pp(1 | ) ( 1 | ).
+2.3. Bell-type experiment and local models
+Let us now consider N spatially separated parties …= AA A,, N(1) ( ) sharing some N-partite
+quantum state ρA acting on a product Hilbert space =⊗ … ⊗ dd N1 with <∞di
+=…iN(1 , , ) denoting the local dimensions. On their share of ρA, each party is allowed to
+perform one of m (possibly generalized) measurements x
+i()
+i =…xm(1 , , )i , each with d
+outcomes, which we label as =… −a d0, 1, , 1i . We usually refer to such a scenario as
+Nmd( ,,) scenario (of course, one can consider a more general case of different numbers of
+measurements and outcomes at each site, but such a scenario is a straightforward general-
+ization of the present one). In the case of a small number of parties N = 2,3 we will rather
+denote them by A B C,, , and the corresponding measurements and outcomes by  ,, and
+a bc,, , respectively.
+The correlations generated in such an experiment are described by the set of probabilities
+⎡⎣ ⎤⎦ρ
+…… = … …
+=⊗ ⋯ ⊗
+
+
+()
+()
+()pa a x x pa a,, ,, : ,, ,,
+tr (12) A
+NN N xx
+N
+xx
+N
+11 1
+(1) ( )
+(1) ( )
+N
+N
+1
+1
+of obtaining results …a a,, N1 upon measuring … ,,xx
+N(1) ( )
+N1 . In what follows, the set of
+(12) will also be referred to as quantum correlations or simply correlations, and the
+probabilities themselves will often be called ‘quantum’. Also, it is useful to think of the set
+……pa a x x{ (, , | , , ) }NN11 , after some ordering, as a vector from D with =D dmNN .
+Actually, by using nonsignalling constraints (see, e.g., [ 9, 10]) one ﬁnds that a signi ﬁcantly
+lower number ′= − + −D md[ (1 ) 1 ] 1N of probabilities is suf ﬁcient to fully describe the
+correlations ( 12). For further purposes, let us ﬁnally notice that in the case d = 2, one can
+equivalently describe the correlations by the collection of expectation values
+⊗…⊗() () , (13)x
+i
+x
+i
+ii k
+k
+1
+1
+with …= …xx m,, 1 ,,ii k1 , <…< = …ii N 1, ,k1 , and k =1 , … ,N. Here, x
+i()
+ik
+k are
+dichotomic observables with outcomes ±1. There are precisely +−m[1 ]1 N of such
+expectation values, which matches the number of independent probabilities ′D in this
+scenario. Importantly, this equivalence does not hold if >d 2 simply because the number of
+independent probabilities exceeds that of the correlators ( 13) (see, nevertheless, [ 11, 12] for
+possible ways to overcome this problem).
+It is known that the set of quantum correlations, denoted here by Nmd,, , that can be
+produced in the above experiment from all states and measurements is convex (provided one
+does not constrain the dimension of the underlying Hilbert space). A proper subset of Nmd,,
+is formed by those correlations that the parties can obtain by using local strategies and, as the
+only resource, some shared classical information, often called shared randomness , λ, dis-
+tributed among them with probability density ωλ() . Mathematically, this is equivalent to
+saying that each probability ( 12) can be expressed as
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+5
+
+=== page 7 ===
+∫ λω λ λ λ…… = …
+Ω
+  () ( ) ( )pa a pa pa,, ,, d( ) ,· · ,, ( 1 4 )N xx
+N
+x N x
+N
+1
+(1) ( )
+1
+(1) ( )
+N N11
+with Ω denoting the set over which the random variable λ is distributed and λpa(| ,)i x
+i()
+i
+being local probability distributions conditioned additionally on λ.
+It follows that in any Nmd( ,,) scenario, the set of local correlations, i.e., those admitting
+the representation ( 14), is a polytope, Nmd,, , whose vertices are the local deterministic
+correlations of the form
+…… = …  () ( ) ( )pa a pa pa,, ,, · · , ( 1 5 )N xx
+N
+x N x
+N
+1
+(1) ( )
+1
+(1) ( )
+NN11
+with the local probabilities being deterministic, that is, ∈pa(| ) { 0 , 1 }i x
+i()
+i for all outcomes
+and settings. In passing, let us notice that as Nmd,, has a ﬁnite number of vertices, the
+integration in ( 14) can always be replaced by a ﬁnite sum over these vertices; for further
+purposes it is, however, easier for us to use the integral representation.
+As already mentioned, Nmd,, is strictly larger than Nmd,, and quantum correlations that
+fall outside Nmd,, are named nonlocal. Natural tools to witness nonlocality in correlations are
+the so-called Bell inequalities [5] (see also [ 13] and references therein for examples thereof).
+These are linear inequalities that constrain the set of local correlations, and their violation is a
+signature of nonlocality (see ﬁgure 1). For a given Nmd( ,,) scenario, Bell inequalities can be
+most generally written as
+∑∑ββ=… … ⩽
+…=
+−
+…=
+…
+… ()Tp a a x x: , , , , , (16)
+aa
+d
+xx
+m
+xx
+aa
+NN L
+,, 0
+1
+,, 1
+,,
+,,
+11
+NN
+N
+N
+11
+1
+1
+where T is a tensor whose entries can always be taken as non-negative and βL is the so-called
+classical bound of the inequality and is given by β β= maxL Nmd,, (clearly, here it suf ﬁces to
+maximize only over the vertices of Nmd,, in order to determine βL ).
+Figure 1. Quantum and local correlations . Local correlations form a polytope
+(blue–gray region), denoted Nmd,, , with vertices being the local deterministic
+correlations of the form ( 15) (blue points). This set forms a proper subset of the set
+of quantum correlations, Nmd,, , given by ( 12) (orange region). Correlations falling
+outside Nmd,, are called nonlocal (red point) and can always be detected with the help
+of a Bell inequality. On the scheme, we give two examples of such inequalities (thick
+lines), the one corresponding to the facet of the polytope (on the right) is called tight,
+and, accordingly, the other is said to be not tight.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+6
+
+=== page 8 ===
+An illustrative example of a Bell inequality in the simplest (2, 2, 2) scenario is the
+famous Clauser –Horne–Shimony–Holt (CHSH) Bell inequality [ 14]:
+∑∑ ⊕= − − ⩽
+==
+pa b x y x y( (1 ) ( 1)) 3, (17)
+ab xy,0
+1
+,1
+2
+which can be restated in terms of the expectation values ( 13)a s
+⊗+⊗+ ⊗− ⊗ ⩽      2. (18)11 12 21 22
+Here, i and i =i(1 , 2 ) are pairs of dichotomic observables with eigenvalues of ±1
+measured by the parties A and B, respectively. It is known that in the (2, 2, 2) scenario the
+CHSH inequality (18) is the only ‘relevant’Bell inequality as it de ﬁnes all facets of 2,2,2 [15].
+In other words, if a bipartite state ρAB does not violate the inequality ( 18) for any choice of the
+measurements i and i, then it does not violate any other Bell inequality in this scenario.
+The CHSH inequality is an example of a correlation Bell inequality , in which only the joint
+expectation values 〈 ⊗ 〉ij appear.
+A schematic depiction of all the above concepts is provided in ﬁgure 1.
+Now, within this framework, we call a state ρ local in the scenario Nmd( ,,) if the
+probability distribution that can be generated from it is local for any choice of the mea-
+surements x
+i()
+i with =…xm 1, ,i and i =1 , … ,N. Notice that if ρ is local in the scenario
+Nmd( ,,) , then it is local in any scenario ′′Nm d( ,,) with either ′<mm or ′<d d. On the
+other hand, there are states that are local in some scenarios Nmd( ,,) , but their nonlocality
+can be revealed only when the number of measurements or outcomes is increased.
+Finally, a state ρ is called local if it is local in the scenario with any number of mea-
+surements and outcomes. Equivalently, one says that ρ has a local–hidden variable (LHV)
+model or simply a local model. Notice that in such cases, one can drop all the subscripts xi in
+(14) because any probability generated from ρ must take such a form. As a result, ( 14)
+simpliﬁes to
+∫ λω λ λ λ…… = …
+Ω
+  () ( ) ( )pa a pa pa,, ,, d( ) ,· · ,. ( 1 9 )N N N N1 (1) ( ) 1 (1) ( )
+On the other hand, if there is a scenario Nmd( ,,) in which for some choice of mea-
+surements the resulting probability distribution ( 12) does not admit the form ( 14), we call it ρ
+nonlocal.
+Of course, one can further distinguish the case when ρ is local only under projective
+measurements, i.e., ( 14) holds if the measurements  i() with i =1 , … ,N are projective. Then,
+one can say that ρ has a local model for projective measurements. Moreover, for d = 2, one
+can also formulate the de ﬁnition of locality of quantum states in terms of expectation values
+(13). Then, every expectation value involving more than two parties admits the form ( 19) with
+local probabilities replaced by the corresponding one-body mean values ‘conditioned’ on λ.
+Notice, furthermore, that a model reproducing global probability distribution auto-
+matically reproduces local probability distributions (those seen individually by the parties) as
+the latter are just the marginals of the former. The situation is more subtle when we work with
+the expectation values ( 13). Here, a local model realizing expectation values involving some
+number of parties, say k, does not necessarily describe in a proper way expectation values
+involving less than k parties. In particular, in the bipartite case, a model reproducing joint
+expectation values 〈 ⊗〉 may not reproduce 〈〉 and 〈 〉 ; we refer to such model as a
+model for joint correlations. This observation will be of particular importance in section 3.3.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+7
+
+=== page 9 ===
+From the point of view of the resources shared by the parties, the question of whether a
+state has a local model is the question of whether shared classical randomness can replace it in
+the described setup (see ﬁgure 2).
+It is clear that an unentangled state is trivially local in any scenario as the global
+probability of local measurements is a sum of factorized components. In the remainder of this
+paper, we thus focus on providing LHV models for entangled states and for genuinely
+multipartite entangled states in the multipartite case (cf section 4). In the most general setting,
+such a model simulating statistics of the measurements  and  with the results a and b,
+respectively, will be given as follows (for brevity we give a bipartite version):
+General local model
+(0) Alice and Bob are distributed some classical information λ belonging to some Ω with
+probability density ωλ() ,
+(1) Alice outputs a according to some probability distribution λpa(| , ) conditioned on
+ and λ,
+(2) and, likewise, Bob outputs b according to the probability distribution λpb(| ,) .
+In the example above, λpa(| , ) and λpb(| ,) , also called response functions ,
+determine the strategies that parties need to employ in order to simulate measurements on a
+given quantum state (it is not dif ﬁcult to see that without loss of generality they could be
+taken as deterministic [ 15]). Once these mappings are proposed, the main task will be to
+verify whether ( 19) holds with lhs arising from measurements on a quantum state of interest.
+Figure 2. Simulating quantum probabilities with classical information . A schematic
+illustration of the concept of locality of quantum states. For simplicity, we consider the
+bipartite case. Imagine that the parties A and B perform a pair of measurements  and
+ on some bipartite (entangled) state ρAB obtaining results a and b, respectively.
+Locality of ρAB means that the resulting probability distribution pa b(, | , ) for any
+pair  , could also be obtained if the parties shared some classical information
+represented by λ instead of ρAB. Phrasing differently, one can simulate statistics arising
+from local quantum states by using purely classical resources.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+8
+
+=== page 10 ===
+Notice that in the general model we stated, the nature of λ is not an issue. It can be a
+single variable (discrete or continuous), a set of variables, etc. Also, the case of Alice and Bob
+receiving different λs is covered in this very general formulation.
+3. Bipartite quantum states
+We start our tour through local models with bipartite scenarios. In such settings, the ﬁrst and
+most famous model is due to Werner [ 7]. Who already in 1989 realized that projective mea-
+surements on some entangled states give rise to statistics describable with a local hidden-
+variable model. These states belong to the class that is usually referred to as the Werner states.
+Besides presenting the original model, we will also discuss several of its modi ﬁcations. Many
+years later, Wernerʼs result was generalized by Barrett [ 16], who proved that local models may
+account for statistics even of generalized measurements on some entangled Werner states. The
+price one had to pay for such extension was the diminishment of the region of parameters of the
+applicability of the model. At this moment, it is not known whether Werner states are local for
+projective and generalized measurements in the same region of the parameter.
+An important line of research in the area has been the analysis of the nonlocal properties
+of noisy states, i.e., the ones arising as the mixture of some state with the white (completely
+depolarized) noise. This problem was addressed in detail by Acín et al [17] and Almeida et al
+[18]. In the former work, nonlocal properties of such states were related to the Grothendieck
+constant [19], establishing, in particular, the region in which a two-qubit Werner state is local
+for projective measurement. In the latter, building on the previous works by Werner and
+Barrett about local models and the protocol by Nielsen for the deterministic conversion
+between pure entangled states by local operations and classical communication (LOCC) [ 20],
+lower bounds on the values of the noise thresholds for the locality of noisy states were
+obtained. Upper bounds on these threshold values, on the other hand, have been obtained by
+analyzing the violation of the Collins –Gisin–Linden–Massar–Popescu (CGLMP) [ 21] and
+CHSH inequalities [ 22].
+We will conclude this section with a recent result by Hirsch et al [23] who found a
+method of constructing states with local models for POVMs from states with local models
+only for two-outcome projective measurements.
+3.1. Werner ʼs model
+The class of states considered by Werner consists of all two-qudit states that are invariant
+under a bilateral action of any unitary operation, i.e., that commute with ⊗U U for any
+unitary U acting on d . Such states are of the form
+⎜⎟
+⎛
+⎝
+⎞
+⎠
+
+
+ρ = − +−
+= −
+−+ −
+−
+dp p P
+dd p
+d
+dd
+dp
+d pV
+( , ) 2
+(1 ) (1 )
+1
+(1 )
+1 , (20)
+d d
+d d
+W
+()
+2
+2
+2
+where −Pd
+() ( +Pd
+() ) stands for the projector onto the antisymmetric (symmetric) subspace of
+ ⊗dd and Vd denotes the so-called swap operator de ﬁned through
+ϕϕ ϕ ϕ =V (21)d 12 21
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+9
+
+=== page 11 ===
+for any pair ϕϕ〉〉 ∈| ,| d
+12 . It is useful to recall that =±±PV () 2d dd
+() 2 . Also, when d =2 ,
+ψψ=〉 〈−
+−−P ||2
+() is just the projection onto the two-qubit singlet state
+ψ =〉 − 〉−
+1
+2
+(|01 |10 ). (22)
+It was shown in [ 7] that Werner states ρ dp(, )W are separable if and only if ⩽pp sep
+W, c
+with
+≡ +p d
+1
+1. (23)sep
+W, c
+The ‘only if ’ direction is particularly easy to verify as for any >+pd 1( 1 ) the swap
+operator Vd is also an entanglement witness [ 24, 25] detecting them, i.e., ρ <dp VTr[ ( , ) ] 0 dW
+in this region.
+Let us now show, following [ 7], that for any ⩽pp PM
+W, c with
+≡ −p d
+d
+1 (24)PM
+W, c
+these states, when measured with projective measurements, always give rise to statistics with
+a local model. In fact, it is enough to show this for the boundary value of the mixing
+parameter =pp PM
+W, c, for which equation ( 20) reduces to
+⎜⎟ ⎜ ⎟
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠ρ − = + −d d
+d d
+d
+d V, 11 1 . (25)d
+ddW 2
+2
+For all values of <pp PM
+W, c the result will follow immediately because one can always
+obtain the corresponding ρ dp(, )W by mixing ρ dp(, )W PM
+W, c with some portion of the white
+noise  dd 22 which itself clearly admits a local model and the state given by the mixture of
+states with local models also has a local model.
+Now, it directly stems from equation ( 25) that the quantum probability of obtaining
+outcomes a and b when performing the von Neumann measurements  and  represented by
+projections P{ }a and Q{ }b , respectively, amounts to
+⎡
+⎣⎢
+⎤
+⎦⎥= + − ()pa b
+d
+d
+d PQ(, , ) 11 Tr , (26)Q
+W
+ab2
+where we have used the well-known property of the swap operator that
+⊗=VX Y X YTr( ) T r( )d for any pair of matrices XY, and have assumed that the projectors
+Pa and Qb are of rank one (see section 2.2).
+To simulate ( 26) with local strategies, Werner proposed the following model:
+LHV model for projective measurements on Werner states (Werner ’s model) [ 7]
+(0) Alice and Bob are distributed shared randomness represented by a one-qudit pure state
+λ〉∈| d (the hidden state space is Ωλ λ λ=〉 ∈ 〈 〉 ={| | | 1}d d ) with the unique
+density invariant under any unitary operation ωλ()d ,
+(1) Alice returns the outcome a for which the overlap λλ〈〉 P|| a is the smallest one, i.e., her
+response function reads
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+10
+
+=== page 12 ===
+⎪
+⎪
+⎧
+⎨
+⎩
+λ λλ λ λ= =
+α
+α
+pa PP(, ) 1, if min
+0, otherwise
+, (27)
+a
+(2) Bob returns the outcome b with probability
+λλ λ=pb Q( , ) . (28) b
+It is worth noting that the response functions ( 27) and ( 28) have the following equiv-
+ariance property
+λλ λ λ==  () ()pa U p a U U pb U p b U U( , ) , , ( , ) , (29) ††
+for any unitary U acting on d . Let us mention in passing that originally in [ 7] both the
+response functions were exchanged. This, however, does not affect the ﬁnal result as the
+Werner states are permutationally invariant. The latter also means that we can even
+symmetrize the roles of the parties in the protocol. This can be easily done by augmenting the
+protocol with an additional two-valued hidden variable determining which type of the
+function, ( 27)o r( 28), each party must choose as a response.
+Having all the necessary ingredients, we can now demonstrate that indeed
+pa b(, | , )Q
+W admits the form ( 19), i.e.,
+∫ λω λ λ λ=
+Ω
+  pa b p a p b( , , ) d ( ) ( , ) ( , ). (30)Q
+W
+d
+d
+To be more instructive and explanatory, we will exploit for this purpose the approach of
+[26] rather than the original one by Werner. We start by noting that the value of the integral in
+(30) is, by the very construction of the model, invariant under any unitary rotation applied to
+λ〉| . This means that we can decompose λ〉| in the eigenbasis 〉i{|} of Alice ʼs observable ,
+i.e.,
+∑λλ = i , (31)
+i
+i
+with λi being some complex coef ﬁcients such that λλ +…+ =| || | 1 d122 . In what follows, we
+will exploit their polar representation, that is, λ ϕ= r exp (i )ii i with ⩽⩽r0 1i and
+ϕπ∈ [0, 2 )i for any i. Clearly, +…+ =r r 1d1
+22 . In addition, without any loss of generality,
+we can assume that the projection corresponding to the particular outcome a appearing in (30)
+is simply =〉 〈P |1 1|a . All this allows us to rewrite the probabilities ( 27) and ( 28)a s
+⎪
+⎪
+⎧
+⎨
+⎩
+λ =
+=
+α α=…pa
+rr
+(, )
+1, min
+0, otherwise
+(32)d1
+2
+2, ,
+2
+and
+∑
+∑∑
+λ =
+=+
+ϕϕ
+ϕϕ
+=
+−
+=≠
+−
+ ()
+()
+pb i Q jr r
+iQ i r iQ j r r
+(, ) e
+e , (33)
+ij
+d
+bi j
+i
+d
+b i
+ij
+d
+bi j
+,1
+i
+1
+2 i
+ji
+ji
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+11
+
+=== page 13 ===
+respectively. Inserting these into ( 30) and performing integrations over all the angles ϕi
+(clearly, the second summand in the above formula gives zero), one arrives at
+∫ ∑λω λ λ λ =
+Ω =
+pa pb N iQ i J ud( ) ( , ) (, ) 1 ( ), (34)d
+i
+d
+bi
+1d
+with the functional
+∫∫ ∫ δ=… … + … + − ()Jh u u uhu u u u( ) d d d ( ,,) 1 , ( 3 5 )
+uu
+dd d
+0
+1
+1
+1
+2
+1
+11
+11
+where we have made the substitution =r ui i
+2 and we have denoted by …hu u(, , ) d1 an
+arbitrary function of the variables …uu,, d1 . The Dirac delta in the above is due to the
+normalization of λ〉| , while the lower limits of the integrations over …uu,, d2 follow from the
+condition in ( 32). Finally,
+∫∫ δ=… + … + − ()Nu u u u d d 1 . (36)dd
+0
+1
+1
+0
+1
+1
+One can signi ﬁcantly simplify the computation of the rhs of ( 34) by noting that the
+integrals in ( 35) are manifestly symmetric under any permutation of the variables …uu,, d2
+(but not u1!) and, therefore, =…=Ju Ju() ( )d2 . Moreover, the delta function in ( 35) allows
+us to conclude that +…+ = −Ju Ju J Ju() () ( 1 ) () d21 , which in turn means that
+=− −Ju J Ju d( ) [ (1) ( )] ( 1)i 1 for any i =2 ,… ,d. Putting the pieces together, we have that
+⎡⎣ ⎤⎦ ⎡⎣ ⎤⎦
+∫ λω λ λ λ
+=
+−+ −
+−
+Ω
+
+() ()
+pa pb
+dP Q J u P Q J
+Nd
+d( ) (, ) (, )
+Tr 1 ( ) 1 Tr (1)
+(1 ) , (37)
+d
+ab ab 1
+d
+where we have substituted back Pa for 〉〈|11 | , which in particular means that 〈〉 Q1| |1 b is
+now PQTr( )ab , and we have also used the fact that =QTr 1b for any b. To complete the
+proof, one then needs to determine the values of the integrals J(1) and Ju()1 . Computation of
+the latter has been done in the appendix and its value has been found to be
+=Ju Nd( ) . (38)1 3
+The value of J(1) can be inferred directly from the above formula ( 37); exploiting the
+fact that λpa(| , ) and λpb(| ,) are proper probability distributions, by summing both its
+sides over a and b, one obtains that =JN d(1) . Inserting both integrals into the rhs of
+equation ( 37), one ﬁnally obtains the quantum probability ( 26).
+As a result, the above model allows one to show that the probabilities arising from
+projective measurements performed on the subsystems of the Werner states can always be
+simulated with a local model for any ⩽−pd d(1 ) . Since the boundary value −dd( 1) is
+larger than the separability threshold +d1( 1 ) of ρ dp(, )W , this means that for any d there are
+entangled states with a local model for projective measurements. Noticeably, the critical value
+for locality grows with d, while the one for separability drops, meaning that the models
+become more powerful for larger d (cf ﬁgure 3).
+Remark 1. Let us also notice that the above model, initially designed for projective
+measurements at each site, works also if a generalized measurement with any number of
+outcomes (recall that a projective measurement can have at most d outcomes) is allowed at
+Bobʼs site. This directly follows from the facts that Bob ʼs response function is linear in the
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+12
+
+=== page 14 ===
+measurement operators and that the measurement operators of a POVM  can be taken as
+ξ= Qbb b with rank-one operators Qb and some positive constants ξb (see section 2.2).
+Therefore, the probabilities realized by the model in this case are
+ξ=′ pa b pa b(, | , ) (, | , ) bLL , where ′pa b(, | , )L denote unnormalized ‘prob-
+abilities’ obtained by measuring projectors Qb on Bob ʼs site. At the same time, one realizes
+that the quantum probabilities are ξ=′ pa b pa b(, | , ) (, | , ) bQQ , and, there-
+fore, = pa b p a b(, | , ) (, | , )LQ .
+Remark 2. Interestingly, as shown by Gisin and Gisin in [ 27], one can simulate the statistics
+of the singlet state (or, equivalently, the ⊗22 Werner state for p = 1) with a local model if
+Alice or Bob (or both) is allowed not to provide outcomes. To state the model we now switch,
+for simplicity, to the Bloch representation; however, all that follows can be restated in terms
+of vectors from d .
+Assume that Alice and Bob receive unit vectors a and b representing local projective
+measurements  and , respectively, and a unit vector λ from the Bloch sphere generated
+according to the uniform density λωπ =∼() 14 . Now, Alice follows the same strategy as in
+Wernerʼs model, that is, she always outputs λ− asgn ( · ) withsgn denoting the sign function.
+Then, with probability λb| ·| , Bob ‘accepts’λ and outputs λbsgn ( · ) in this case, while if he
+does not accept λ, he does not give any outcome. The local expectation values
+〈 〉=〈 〉= 0, while the correlations produced by this model taken over all the accepted
+λ are given by
+∫
+∫
+λλ λ λ
+λλ λ
+π
+π
+⊗= −
+=−
+=−
+ ba b
+ab
+ab
+1
+2 d · sgn ( · ) sgn ( · )
+1
+2 ds g n (·) (·)
+· , (39)
+where to obtain the last equation we have followed the calculation from the appendix. The
+corresponding probabilities are given by
+Figure 3. Critical probabilities for the Werner states . Comparison of three critical
+values of the probabilites for the Werner states for ⩽⩽d2 20: psep
+W, c (green dots),
+pPOVM
+W, c (red squares), pPM
+W, c (green triangles). Noticeably, while psep
+W, c decays with d, the
+critical value pPM
+W, c grows, implying that for large d almost all the entangled Werner
+states are simulable by local models.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+13
+
+=== page 15 ===
+=− = ±pa b a b a b ab(, , ) 1
+4(1 · ) ( , 1), (40)
+and they agree with ( 26) for d =2 .
+Looking at equation ( 39), one can realize that this model can also be understood as one
+with density λπ b(12 ) | · | which depends on the measurement of Bob. In other words, a
+model with a density that depends on the measurements of one of the parties can reproduce
+even highly nonlocal correlations. In fact, this observation was used in [ 28] to construct
+models for the simulation of entangled states using classical communication or supra-
+quantum resources.
+Remark 3. Building on the above result, one can introduce a local model reproducing
+statistics obtained on a two-qubit state that differs from a two-qubit Werner state [ 23]. Alice
+follows the same strategy as above, while Bob, whenever he does not accept λ, outputs
+=±b 1 with probability σηη±〈 〉 b(1| · | ) 2. After some calculation, one ﬁnds that the
+class of states whose correlations are simulated by this model is given by
+ρψ ψ η η=+ − ⊗−−pp (1 ) 2 (41)2
+with ⩽p 1 2.
+Remark 4. Let us conclude by noting that one can also extend the applicability of Werner ʼs
+model by playing with the density ω. An example of a density different from the uniform one
+has recently been given in [ 29] and reads λωλ π =+() ( 1 )4 3 , where λ3 is the third
+coordinate of the Bloch vector λ. In that case, the model corresponds to the two-qubit state
+⎛
+⎝⎜ ⎞
+⎠⎟ρψ ψ =+ − ⊗+ ⊗−−pp p() 1
+5 200 2 3 2 1 1 (42)22
+with ⩽p 1 2. Notice that this state is a convex combination of two states given in
+equation ( 41).
+3.2. Barrett ʼs model for the Werner states
+Let us now present the local model for general measurements for the Werner states due to
+Barrett [ 16]. Now, Alice and Bob want to simulate the probability distribution arising from
+some generalized measurements,  and , with the measurement operators η= Pa a a and
+ξ= Qbb b (cf section 2.2) performed on the Werner states ( 20). One quickly ﬁnds that this
+distribution is not much different from that for projective measurements ( 26) and simply reads
+⎡
+⎣⎢
+⎤
+⎦⎥
+ηξ= −
+−+ − ()pa b dd
+dp
+d pP Q(, , ) (1 )
+1 Tr . (43)Q
+W a b
+ab
+The model now goes as follows:
+LHV model for POVMs on Werner states (Barrett ’s model) [ 7]
+(0) As in Werner ʼs model, the set of hidden states and the density are, respectively, Ωd
+and ωd,
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+14
+
+=== page 16 ===
+(1) Alice returns the outcome a according to the response function:
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟∑
+λλ λ Θ λ λ
+λλ Θ λ λ η
+=−
++− −
+α
+α
+
+
+()
+()
+pa P d
+Pd d
+(, ) 1
+1 1 , (44)
+aa
+a
+a
+(2) Bob returns the outcome b with probability
+λ ξ λλ= − − ()pb d Q(, ) 1 1 . (45)b
+b
+In the above, Θ is the Heaviside step function, i.e., Θ =x() 1 for any ⩾x 0 and Θ =x() 0
+for <x 0.
+To demonstrate that the above model recovers ( 43) and also to determine the range of p
+for which this is the case, let us insert the response functions ( 44) and ( 45) into ( 30). After
+some algebra, this leads us to
+∑
+∑∑
+ηξ ξ
+ηη ξ
+=− − + −
++ − − −
+β
+β
+α
+α
+αβ
+αβ
+pa b
+d d J d J
+dd J dd J
+(, , ) 1
+11
+(1 ) (1 ) (46)
+L
+W a b
+ab
+b
+a
+a
+b
+a b
+2
+with
+∫ηξ λ ω λΘ λ λ λ λ λ λ=−
+Ω ()JP d P Q d ( ) 1 . (47)ab a bd a a b
+d
+In order to perform the above integration, let us decompose λ〉| as in ( 31) with
+λ ϕ= r exp (i )ii i and the basis 〉i{|} chosen so that it contains the vector corresponding to Pa
+(recall that now the projectors Pa as well as Qb do not have to be orthogonal). As determined
+previously, we can assume that =〉 〈P |1 1|a . With this parametrization, one ﬁnds that ( 47) now
+becomes
+∑
+ηξ λλ= ∼
+=
+J N QJ u u [ ], (48)ab
+a b
+k
+d
+bk
+1
+1
+where the normalization factor N is given by ( 36), while the functional ∼Jh[] is de ﬁned as
+∫∫ ∫ δ=… … + … + −∼ ()Jh u u u hu u u u[ ] d d d ( ,,) 1 . ( 4 9 )
+d
+dd d
+1
+1
+1
+0
+1
+2
+0
+1
+11
+By noting that =…=∼∼Ju u Ju u[] [ ]d12 1 , one easily sees that
+=− −∼∼ ∼Ju u Ju Ju d[] { [ ][ ] } (1 )k11 1
+2 , which allows one to further simplify ( 48)t o
+⎡⎣ ⎤⎦ ⎡⎣ ⎤⎦ ⎡⎣ ⎤⎦
+ηξ= − −+ −∼∼
+{} () ()J Nd dP Q J u P Q J u(1 ) Tr 1 1 Tr [ ] . (50)ab
+a b
+ab ab 1
+2
+1
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+15
+
+=== page 17 ===
+After inserting this into ( 46), one arrives at the following expression
+⎧
+⎨⎪
+⎩⎪
+⎡⎣ ⎤⎦ ⎡
+⎣⎢
+⎤
+⎦⎥
+⎫
+⎬⎪
+⎭⎪ηξ=+
+−
+−
+−
+∼∼
+ ()pa b
+d
+dJ u J u
+Nd d PQ(, , ) 1 []
+(1 )
+1 Tr , (51)L a ba b
+W
+2
+1
+2
+1
+2
+which, when compared with ( 43), shows that the above model reproduces joint probabilities
+for the Werner states for any ⩽pp POVM
+W, c with the critical probability given by
+⎡⎣ ⎤⎦=
+−
+−
+∼∼
+pd
+dJ u J u
+Nd
+[]
+(1 ) . (52)POVM
+W, c 1
+2
+1
+To ﬁnally determine the explicit value of pPOVM
+W, c one has to compute the integrals ∼Ju( )1
+and ∼Ju()1
+2 . This can be done by exploiting basically the same approach as in the case of
+projective measurements (the detailed calculations are moved to the appendix), which leads
+us to
+⎜⎟ ⎜ ⎟
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠= −−∼ −
+Ju N
+d
+d
+d
+d
+d[] 21 1 (53)
+d
+1
+1
+and
+⎜⎟ ⎜ ⎟⎡⎣ ⎤⎦
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠= −
++
+−∼ −
+Ju N
+d
+d
+d
+d
+d
+53
+1
+1 , (54)
+d
+1
+2
+2
+1
+and, in consequence,
+⎜⎟
+⎛
+⎝
+⎞
+⎠= −
++
+− −
+p d
+dd
+d
+d
+31
+(1 )
+1 . (55)
+d
+POVM
+W, c
+1
+Interestingly, >ppPOVM
+W, c
+sep
+W, c for any d, and as a result Barrett ʼs model reproduces sta-
+tistics of generalized measurements for entangled Werner states for any d. However, unlike in
+Wernerʼs model, pPOVM
+W, c is a (monotonically) decreasing function of d. Moreover, it decreases
+faster than psep
+W, c, meaning that the range of p for which this is the case, i.e.,
+∈pp p(, ]sep
+W, c
+POVM
+W, c , shrinks with → ∞d . Figure 3 compares the three critical values psep
+W, c,
+pPM
+W, c, and pPOVM
+W, c for various values of the local dimension d.
+Remark 5. As noticed by Barrett [ 16], a bipartite state ρ ∈⊗B() ddAB that has a local
+model for generalized measurements induces a whole family of states with local models
+(some of which might naturally be separable). The construction goes as follows: let Ω, ωλ() ,
+λpa(| ,)A
+1 and λpb(| , )B
+1 denote, respectively, the space of local variables, the density
+and the response functions in the local model for ρ for general measurements = {} a and
+= {} b . Consider then two (in general different) quantum
+channels5 Λ → ′BB:( ) ( )X ddX X , =XA B, , and the state σ obtained from ρ through
+σΛ Λ ρ=⊗() ( ). (56)AB
+Now, σ has a local model for generalized measurements with the same hidden state space
+Ω, density ω and response functions de ﬁned as
+5 Recall that a linear map Λ →BB:() ( ) with  and  being two ﬁnite-dimensional Hilbert spaces is called a
+quantum channel iff it is completely positive and trace-preserving.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+16
+
+=== page 18 ===
+λλ λ λ=′ = ′ pa pa pb pb( ,) ( ,) , ( ,) ( ,) ( 5 7 )AA B B
+21 21
+with the measurements operators of the generalized measurements ′ and ′ given by
+ΛΛ′ = ′ =  () () , , (58)aA a bB b
+††
+where Λ† is the dual 6 map of Λ. As the dual map of a quantum channel is positive and unital
+(it preserves the identity operator), the operators ′a and ′b form proper quantum
+measurements. To see eventually that the functions ( 57)d od e ﬁne a local model for σ,i ti s
+enough to apply the following argument
+⎡⎣ ⎤⎦
+⎡⎣ ⎤⎦
+∫ λω λ λ λ ρ
+ΛΛ ρ
+ΛΛ ρ
+σ
+= ′ ⊗ ′
+=⊗
+=⊗ ⊗
+=⊗
+Ω
+ 
+
+
+[]
+()
+() ()
+()
+pa pbd( ) (, ) ( , ) T r
+Tr
+Tr ( )
+Tr , (59)
+AB ab
+A a B b
+ab AB
+ab
+22
+††
+where to pass from the second to the third line we have exploited the de ﬁnition of the dual
+map to Λ.
+Let us conclude by noting that the above argument can also be applied to multipartite
+states, provided such states with local models for generalized measurements exist. Actually, it
+applies to any state that has a ‘mixed’ local model, i.e., one which works for projective
+measurements at some sites and for generalized measurements at the rest. In such cases, to
+obtain a new state the local quantum channels discussed above can be applied only to those
+sites. An example of such a state and the corresponding ‘mixed’local model will be discussed
+in section 4.1.
+3.3. Nonlocality of noisy states: the Grothendieck constant
+We now move to the analysis of nonlocal properties of noisy quantum states, that is, states of
+the form
+ ρρ ρ =+ − ∈ ⊗ ()dp p p
+d
+B( , )( 1 ) , . (60)d dd
+2
+2
+As mentioned at the beginning of this section, this problem can be related to the
+mathematical constant KG known as the Grothendieck constant [ 19]. The connection between
+the latter and nonlocality was ﬁrst recognized in 1987 by Tsirelson (a.k.a. Cirel ʼson) [30] who
+considered the problem of how large the set of quantum correlations is compared to the set of
+classical ones. The interest in this surprising relationship had its revival almost thirty years
+later when it was analyzed in greater detail by Acín et al in [ 17]. The results of the latter
+paper, relevant for our review, may be summarized as follows (the terminology and necessary
+deﬁnitions will be introduced in what follows):
+〈1〉 projective measurements on a two –qubit Werner state, ρ p(2, )W (see equation ( 20)),
+can be simulated with an LHV model if and only if ⩽pK 1( 3 )G ,
+〈2〉 local models for ρ p(2, )W exist in the whole range where the state does not violate the
+CHSH inequality ( 17), that is, for ⩽p 12 , when at least one of the parties is
+restricted to perform planar measurements,
+6 The dual map to a linear map Λ →BB:() ( ) is a linear map Λ →BB:( ) ( )† that satis ﬁes
+ΛΛ =XY X YTr [ ( )] Tr [ ( ) ]† for all ∈ XB ( ) and ∈ YB ( ).
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+17
+
+=== page 19 ===
+〈3〉 whenever ⩽pK d1( 2 )G 2 there is a local model reproducing joint correlations of
+traceless two-outcome observables for the state ( 60) with any ρ. Moreover, for
+⎢⎣ ⎥⎦>+pK d1 (2 log 1)G 2 there exists ρ dp(, ) without such a model. In particular, in
+the limit of → ∞d , both bounds match and every noisy state is local below K1 G , and
+this number cannot be made larger.
+Before we proceed, we need the de ﬁnition of the Grothendieck constant. Let ⩾n 2 be an
+integer, and let M be an arbitrary m × m real matrix such that for all real numbers
+⋯a aa,,, m12 , ⋯b bb,,, m12 from the range −+[1 , 1 ], it holds
+∑ ⩽
+=
+Ma b 1. (61)
+ij
+m
+ij i j
+,1
+The Grothendieck constant of order n, KG(n), is de ﬁned to be the smallest number such that
+∑ ⩽
+=
+MK nab· ( ), (62)
+ij
+m
+ij i j G
+,1
+for all unit vectors ∈ab,kk n. The Grothendieck constant, KG, is then de ﬁned through
+=
+→∞
+KK n lim ( ). (63)G
+n
+G
+It is quite remarkable that such constant even exists; it is also interesting that the exact
+values of the constants, besides =K (2) 2G [31], are not known. The bounds for the
+constants appearing in our analysis are as follows [ 31–34]:
+⩽⩽K1.6770 1.7822, (64)G
+⩽K (8) 1.6641, (65)G
+π⩽⩽K c1.417 (3) 2 , (66)G
+3
+where c3 is the unique, in the interval π[0, 2 ], solution of the equation
+∫ =−cx x x d sin 2. (67)
+c
+3
+0
+32
+3
+Numerically, one then ﬁnds that
+⩽K (3) 1.5163. (68)G
+Let us now elaborate on each of the items 〈 〉1 –〈 〉3 from the list above.
+As to the point 〈 〉1 , let us ﬁrst notice that the reconstruction of the mean values 〈 ⊗〉 ,
+〈〉 , and 〈 〉 is enough to retrieve full probability distribution as we deal here with two-
+outcome measurements, in which case the number of mean values matches the number of
+independent probabilities necessary for this task (see the discussion in section 2). Further, on
+states with maximally mixed reductions (for two qubits, these are the Bell diagonal states),
+including the discussed Werner state ρ p(2, )W , local expectation values vanish (recall that the
+outcomes of all observables are labeled ±1), 〈 〉=〈 〉= 0. The key point of the analysis
+now is that given a model reproducing correctly only 〈 ⊗〉 , we can turn it into one for
+which also local mean values vanish. We augment the old protocol with an extra random bit,
+and in the new model parties just multiply outputs of the old one by the value of this bit,
+ensuring that joint predictions are still the same and local ones are vanishing. Thus, nonlocal
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+18
+
+=== page 20 ===
+properties of ρ p(2, )W are uniquely determined by the joint correlations solely, and in the
+following analysis we can restrict ourselves to correlation Bell inequalities . The latter in the
+most general case can be written as
+∑ β⊗⩽ ∈
+=
+MM , , (69)
+ij
+m
+ij i j L ij
+,1
+where βL denotes the local bound of a given Bell inequality, that is,
+∑β =
+=± =
+Ma bmax (70)L ab ij
+m
+ij i j
+,1 ,1ij
+since deterministic strategies are suf ﬁcient to achieve it (we stress again that we assume here
+that the results of the measurements are ±1). Clearly, we can normalize our inequality such
+that β = 1L and we will assume this has been done.
+Now, correlations on the maximally mixed state vanish, and thus, the violation of any
+correlation Bell inequality by Werner states is determined by its violation by the singlet state.
+Since for the latter we have 〈 ⊗〉 = −ψ− ab·ij i j with ai, ∈b j 3 being Bloch vectors
+representing the observables i, j, this violation maximized over all Bell inequalities can be
+written as
+∑β =
+→∞ =
+M ab: lim sup max · . (71)QW m M ij
+m
+ij i j
+ab, , ,1ij ij
+From this, it immediately follows that no Werner state ρ p(,2 )W can violate a correlation
+Bell inequality in the range β⩽p 1 Q W, . As one can easily see, βQW, is just the Grothendieck
+constant K (3)G , and so we have recovered that whenever ⩽pK 1( 3 )G a two-qubit Werner
+Figure 4. Regions of the parameter p in which the two-qubit Werner states
+ρ p(2, )W are local/nonlocal . Any state with ⩽p 13 , and only then, is separable and
+trivially has a local model. Werner ʼs model (section 3.1) for projective measurements
+(PMs) works in the region ⩽p 12 , Barrettʼs model (section 3.2), which is designed for
+POVMs, is valid for ⩽p 51 2. When one of the parties is restricted to perform planar
+measurements, there is a model (section 3.3)u pt o =p 12 , which is the threshold
+value above which ρ p(2, )W violates the CHSH inequality. The model based on the
+bounds on the Grothendieck constant (section 3.3) works up to =pK 1( 3 )G , which
+with current state of the knowledge is not smaller than 0.6595. On the other hand, it is
+known that ρ p(2, )W is nonlocal at least in the region ⩾p 0.7056. How large this gap
+is in reality is unknown at this moment.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+19
+
+=== page 21 ===
+state is local for projective measurements and no local model can exist for values outside this
+range. Taking into account ( 68), we realize that this result is an improvement over Werner ʼs
+⩽p 1 2,a s ⩾K1 (3) 0.6595G . It is known that there is a gap between the exact value and
+≃1 2 0.7071 as the Werner states have been demonstrated to violate some Bell inequality
+for >p 0.7056 [33] (cf ﬁgure 4). Recall that ρ p(2, )W is entangled iff >p 13 .
+As announced in 〈 〉2 , there is no such separation when (at least) one of the parties is
+restricted to perform measurements on a plane in the Bloch sphere. In this case, vectors ai are
+two-dimensional; moreover, b j can be taken to lie in the same plane since only the scalar
+products of a and b are contributing to the value of the Bell operator. In this way, it is clear
+that the bound now involves K (2)G , which, as mentioned, is equal to 2 . The result, which is
+an improvement over π2 from [ 35], then follows.
+The statement of 〈 〉3 is a result of the attempt to generalize 〈 〉1 to general noisy states ( 60)
+in arbitrary dimensions. However, we encounter two dif ﬁculties in such generalization. First,
+we need to restrict ourselves to two-outcome measurements (for the reason discussed in
+section 2). Second, even in this case we cannot hope to give full characterization of nonlocal
+properties of a state with the aid of the correlation Bell inequalities only. This stems from the
+fact that in the general approach we pursue here we cannot assume anything about reductions
+of the state (in particular, they might not be maximally mixed) and it might be necessary to
+use inequalities with local terms [ 36] for this purpose. Thus, we can only hope here to fully
+characterize the joint correlations. Further, an additional requirement will have to be met:
+tracelessness of the observables. This condition ensures that the averages on the maximally
+mixed state are zero (in other words, outcomes are completely random on such state) and the
+Grothendieck constant approach in the form put forward above can be employed.
+To proceed, it might be useful to rephrase 〈 〉3 using the threshold probability pd
+thr for
+states of the form ( 60) (this quantity will also be used in the upcoming section 3.4). For a
+given d, this is the minimum over all states ρ of the maximal p for which there exists a local
+model. With this notion in hand, the claims are that
+⎢⎣ ⎥⎦
+⩽⩽
++() ()Kd
+p
+Kd
+1
+2
+1
+2 log 1
+(72)
+G
+d
+G2
+thr
+2
+and
+==∞ →∞
+pp K: lim 1 . (73)
+d d
+G
+thr thr
+We start with the lhs of ( 72) and consider ﬁrst states ρ dp(, )i() of the form ( 60), with ρ
+being an arbitrary pure state ψ 〉| i . From [ 17, 30] we know that for any observables ,  and a
+state ψ〉∈ ⊗| dd , one can ﬁnd vectors a and b from  d2 2
+such that
+⊗= ab· . (74)
+With the assumption of observables being traceless and the de ﬁnition of the
+Grothendieck constant in mind, we conclude that the threshold probability for states
+ρ dp(, )i() is at least equal to Kd1( 2 )G 2 . Since any ρ can be expressed as a convex combi-
+nation of pure states, ρ ψψ= ∑ 〉〈q ||i i ii , the bound we have just established for ρ dp(, )i() must
+also hold for general ρ(d, p). This follows from the fact that our local model for these states
+might be just taken to be the convex combination of models for ρ dp(, )i() with weights qi.I n
+conclusion, whenever ⩽pK d1( 2 )G 2 the state ρ dp(, ) is local regardless of the form of ρ.
+Now, let us move to the rhs of ( 72). Assume we have a set of unit vectors ∈ab,ij n
+with ⩽⩽ij m1, and =⌊ ⌋ +n d2 log 1 , maximizing the lhs of equation ( 62) that is
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+20
+
+=== page 22 ===
+achieving ⌊⌋ +Kd(2 log 1)G . It is known that there exist traceless observables i, j such
+that 〈 ⊗〉 = ϕ+ ab·ij i j for the two-qudit maximally entangled state
+∑ϕ =+
+=
+−
+d
+ii1 (75)d
+i
+d
+0
+1
+with = ⌊ ⌋d 2 n 2 . In equation (60), take now ρ ϕϕ=〉 〈++|| dd and ϵ=+ ⌊ ⌋ +pK d(1 ) (2 log 1)G
+for some ϵ > 0. From the above, it follows that we will achieve ϵ+1 for the value of the Bell
+operator, which means the violation of a Bell inequality and rules out existence of a local model
+for these states. To sum up, for >⌊ ⌋ +pK d1 (2 log 1)G there exist states (60)w i t hn o n l o c a l
+joint correlations.
+Taking the limit of both sides clearly results in the threshold value equal to K1 G . This
+concludes the proof of the claims made in 〈 〉3 .
+Let us now comment about possible applications of 〈 〉3 . We list them below and then
+explain the underlying reasoning:
+〈3.1〉 for the noisy qubit states ρ p(2, ) of the form ( 60) there always exists a local model
+for joint correlations whenever ⩽pK 1( 8 )G , and
+〈3.2〉 for the isotropic states (that is, those with ρ ϕϕ=〉 〈++|| dd in (60); see also section 3.4)
+there is a local model simulating the full probability distribution for traceless
+observables whenever ⩽−pK d1( 1 )G 2 .
+The statement of 〈〉3.1 follows from the already-mentioned facts that in the qubit scenario
+observables are two-outcome and traceless, just as required. Taking into account ( 65), this
+gives the threshold at around 0.6009. On the other hand, 〈〉3.2 stems from the following: (i)
+previously mentioned possibility of adding an extra random bit to the protocol to reproduce
+local mean values, which are zero for the considered state, and (ii) a re ﬁnement of one of the
+facts mentioned earlier, namely, that when the state is maximally entangled, to reproduce
+mean values in the form ab· both vectors can be drawn from  −d 12
+.
+Interestingly, the results by Grothendieck [ 19] and Krivine [ 31], or more precisely their
+proofs concerning upper bounds on the Grothendieck constant, allowed Toner [ 34] to obtain
+explicit local models for the above-considered cases. We conclude this section by giving one
+of these models with a sketch of the proof (details can be found in [ 34]), namely, the one for
+projective measurements on the two-qubit Werner states in the range of <p 0.6595.
+Let ab, be unit vectors from 3 representing Alice and Bob measurements. Let further f
+and g be mappings  →⊕ ⊕=∞
+=− ++k mkk3 0 (2 1)21 2 deﬁned by the following set of equations:
+⎡⎣ ⎤⎦
+π
+=⊕ ⊕
+=−
+=
+∞
+=− +
++
++
++
++ +
+++() ()
+ff
+f Jc
+c
+YY
+aa
+aa a
+() () ,
+() () 4( )
+2
+Re ( ) , Im ( ) (76)
+km k
+k
+km
+km
+k k
+k
+m
+k
+m
+0( 2 1 )
+21
+21 ,
+21 ,
+1
+32 23 23
+3
+21 21
+and
+⎡⎣ ⎤⎦
+π
+=⊕ ⊕
+=
+=
+∞
+=− +
++
++
++
++
+++() ()
+gg
+g Jc
+c
+YY
+bb
+bb b
+() () ,
+() 4( )
+2
+Re ( ) , Im ( ) , (77)
+km k
+k
+km
+km
+k
+k
+m
+k
+m
+0( 2 1 )
+21
+21 ,
+21 ,
+32 23 23
+3
+21 21
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+21
+
+=== page 23 ===
+where c3 is de ﬁned through ( 67), Yl
+m are the spherical harmonics, and νJ are the Bessel
+functions of the ﬁrst kind of order ν. The model reads as follows 7:
+LHV model for projective measurements for the two-qubit Werner states [ 34]
+(1) Alice and Bob each get an in ﬁnite sequence of numbers λ λλ=… ∈ ∞[, , ]12 , where
+each λi is drawn from a normal distribution with the mean equal to 0 and the standard
+deviation equal to 1,
+(2) Alice outputs λ=a f asgn ( ( ) · ) with f deﬁned through equation ( 76),
+(3) Bob outputs λ=b g bsgn ( ( ) · ) with g deﬁned through equation ( 77).
+Let us now recall some important steps from the proof [ 34] that the model works in the
+required range.
+First one needs to verify that f a( ) is a unit vector (for g b() the reasoning will be similar
+so in further parts we omit it) . One obtains
+∫
+∑π=+
+=
+=
+=
+∞
++
+−
+ff c kJ c
+c xx x
+aa()· () 2 (4 3) ( )
+2 ds i n
+1, (78)
+k
+k
+c
+3 0
+23 23
+3
+0
+32
+3
+with the last equality following from the de ﬁnition of c3. Further:
+∑π=− +
+=
+∞
++ ++fg c kJ c Pab a b()· () 2 ( ) (4 3) ( ) ( · ), (79)
+k
+k kk
+3 0
+1 23 2321
+where Pl are the Legendre polynomials. One further veri ﬁes that
+∑−= − +
+=
+∞
++ ++cx k J c P xsin ( ) ( ) (4 3) ( ) ( ), (80)
+k
+k kk3
+0
+1 23 2321
+which in turn means that
+=− ()fg cab a b( ) · ( ) sin · . (81)3
+Now, given the random variable λ speciﬁed by the conditions given in the frame above
+and λ=a xsgn ( · ) , λ=b ysgn ( · ) , the average of ab over λ is equal
+π〈 〉= −ab xy(2 ) sin ( · )1 for arbitrary ∈ ∞x y, [5, 19, 34]. We thus ﬁnd that:
+π⊗= − c ab2 · . (82)3
+Having in mind ( 66) and ( 68), we conclude the correctness of the model falls within the
+claimed range of <p 0.6595.
+7 Notice that the model ﬁts the general scheme given in section 2 since we can write the corresponding response
+functions as
+⎧⎨
+⎩
+λ
+λλ±= =±
+=∓p f
+f
+a
+a(1, ) 1, sgn ( ()· ) 1
+0, sgn ( ()· ) 1
+and analogously for Bob.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+22
+
+=== page 24 ===
+The results of this and previous sections concerning existence of local models for two-
+qubit Werner states are summarized in ﬁgure 4.
+Let us conclude by noting that with the aid of the complex Grothendieck constant, it is
+possible to generalize some of the above statements to Bell inequalities with an arbitrary
+number of outcomes [ 12].
+3.4. Noise robustness of correlations: Almeida et al ʼs approach and the CGLMP and CHSH
+inequalities perspective
+The research on the robustness of nonlocality in a general scenario was further pursued by
+Almeida et al [18]. The starting point of their analysis was to check to what extent the
+nonlocality of maximally entangled states of arbitrary dimension is affected by the white
+noise. That is, the goal was to determine when a local model exists for states of the form
+ρϕ ϕ =+ − ++dp p p
+d( , )( 1 ) , (83)dd d
+iso 2
+2
+where ⩽⩽p0 1 and ϕ 〉+| d is the maximally entangled state ( 75). These states are known in
+the literature as the isotropic states and are the unique states which are invariant under
+bilateral unitary rotations of the form ⊗ ⋆U U [37]. Note that the isotropic states have a clear
+physical meaning, as they correspond to noisy versions of maximally entangled states, while
+this physical interpretation is missing for Werner states of dimension larger than two. In the
+case of qubits, however, the isotropic and Werner states are equivalent up to local unitary
+transformations.
+Inspired directly by Werner ʼs construction (see section 3.1) the local model simulating
+projective measurements  and  with measurement operators P{ }a and Q{ }b , respectively,
+on the isotropic states is given by the LHV model for projective measurements on the
+isotropic states [ 18, 38]
+(1) Alice and Bob each get λΩ λ λ λ〉∈ = 〉∈ 〈 〉=| {| | | 1}d d with the uniform
+density ωd,
+(2) Alice ʼs response function is:
+⎪
+⎪
+⎧
+⎨
+⎩
+λ λλ λ λ= = ααpa PP(, ) 1, if max
+0, otherwise
+, (84)a
+iso
+(3) Bob ʼs response function is:
+λλ λ=pb Q( , ) , (85) b
+T
+iso
+where T stands for the transposition.
+Direct calculation, which can be carried out with techniques analogous to those already
+presented in section 3.1, shows that the probabilities realized by this model assume the same
+form (37) with Qb replaced by Qb
+T and the integral Jh[] replaced by  h[ ] given by (notice the
+change of the integration limits)
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+23
+
+=== page 25 ===
+∫∫ ∫ δ=… … + … + − ()hu uu h u u uu[ ] d d d ( ,,) 1 . ( 8 6 )
+uu
+dd d
+0
+1
+1
+0
+2
+0
+11
+11
+As before,  [1] can be directly determined from ( 37) and amounts to N d, while  u[]1 is
+computed in the appendix and is proportional to the so-called harmonic number, i.e.,
+∑=
+=
+ u N
+d k[] 1. (87)
+k
+d
+1 2
+1
+After inserting all this into ( 37), one arrives at the following critical probability
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟∑=≡ − −+
+=
+pp dk
+1
+1 1 1 (88)c
+k
+d
+PM
+iso,
+1
+for which the above model reproduces the statistics of the isotropic states, meaning that the
+isotropic states are local at least up to p c
+PM
+iso, . Clearly, for d = 2 this reproduces the critical
+value1 2 by Werner as it should since, as noted above, the isotropic and the Werner states are
+related to each other via local unitary rotations. Noticeably, in the limit of large d, the above
+critical probability scales as ddlog . On the other hand, it is known [ 37] that the isotropic
+states are separable whenever ⩽pp sep
+iso, c with
+≡ +p d
+1
+1 (89)sep
+iso, c
+and, thus, the critical probability for the local model is asymptotically dlog larger than the
+corresponding value for entanglement (cf ﬁgure 5).
+We can now move to the general case of arbitrary ρ. As it was already noted in
+section 3.3, it is enough to construct a model for a pure state ρ ψψ=〉 〈|| , as the model for a
+mixed state can be taken to be a convex combination of models for pure states.
+The key point of the general approach is the local model for the following mixture of ρ
+with a state-dependent noise
+ϱψ ψ σ=+ − ⊗ ()pp d˜ 1 , (90)cc d
+PM
+iso,
+PM
+iso,
+Figure 5. Critical probabilities for the isotropic state . Comparison of three critical
+values of probabilities for the isotropic states ( 83) for ⩽⩽d2 20: psep
+iso, c (green dots),
+pPOVM
+iso, c (red squares), pPM
+iso, c (green triangles). Notice that contrary to the case of the
+Werner states, here the critical probability pPM
+iso, c drops with d.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+24
+
+=== page 26 ===
+where σψ ψ=〉 〈tr | |B . This state can be further transformed into a one of the form ( 60)b y
+admixing it with the following separable state
+∑σ− ⊗
+=
+−
+dd
+1
+1 , (91)
+k
+d
+k
+d
+1
+1
+where σα= ∑ 〉〈+ jj||k j jk d (mod ) with α 〉j{ ,| }j being the eigensystem of σ. The resulting state
+then reads
+∑Θϱ σ=+ −
+− ⊗
+=
+−
+q q
+dd˜ 1
+1 . (92)
+k
+d
+k
+d
+1
+1
+It is easy to see that this state is of the desired form ( 60) when the weights ful ﬁll the
+condition −=− −qp q d(1 ) (1 ) ( 1 ). Since the state ϱ˜ has been shown to be local, the state
+Θ is also local as it is just a convex combination of local states. The condition on q, however,
+implies that the price we have to pay for this transformation is the diminishment of the value
+of the critical probability, denoted hereafter by p˜ c
+PM, for which we can construct a model.
+Let us now move to the details of the construction of the model for ϱ˜. The main tool is
+Nielsenʼs protocol for the LOCC conversion between pure states [ 20]. The idea is that some
+preprocessing based on such transformations can be performed by the source itself on the
+hidden state λ〉| , producing with some probabilities λ 〉| i
+A and λ 〉| i
+B , which are later sent to the
+parties. The parties then follow the protocol for the isotropic state (see the frame above),
+taking these hidden states instead of the standard one. Thus, having in hand the model for the
+isotropic states, we get almost for free the model for the noisy states ϱ˜.
+To understand the details, we need to see how the conversion of ϕ 〉+| d to some ψ〉| works.
+Assume that in the Schmidt form the state ψ reads ψ〉= ∑ 〉 〉sk k| ||k k . Denoting
+=⋯ −S ss sdiag( , , , )d01 1 and = ∑ 〉〈 +=
+−U jj k d|( m o d ) |k j
+d
+0
+1 with =⋯ −k d0, 1, , 1 ,w e
+can write
+ψϕ =⊗ = +()dX U X S U , . (93)kk
+d
+kk
+Observe that ≡⩾MX X 0k k k
+† and ∑ =Mk kd 2, which means that the operators Mk constitute
+valid elements of a POVM measurement; let us call this measurement . The conversion
+protocol appears obvious now: Alice performs  with probability ϕϕ〈 〉=++ Md|| 1d
+k
+d
+obtaining the outcome k, and then sends the index of the obtained result to Bob, who performs
+appropriate unitary rotation Uk, which in turn results in sharing ψ〉| between the parties.
+As announced earlier, some preprocessing is simulated at the source before the dis-
+tribution stage of the protocol. More precisely, the measurement  with elements
+≡N XXk k
+T
+k* on the hidden state λ〉| is simulated. The outcomes are obtained with probabilities
+λλ=〈 〉λpN ||k k, and with these probabilities the following states (more precisely their
+classical descriptions) are sent to Alice and Bob: λλ 〉≡ 〉λXp| () |k
+A
+k k* , and λλ 〉≡ 〉U| |k
+B
+k .
+Alice and Bob give their outputs according to the response functions λpa˜(| , ) i
+A and
+λpb˜(| , ) i
+B , respectively, which are the same as in the protocol for the isotropic states, but
+with λA and λB replacing λ. The statistics they generate are now ( Ωd and ωd are the same as in
+Wernerʼs model):
+∫ ∑λω λ λ λ=∼∼ ∼
+Ω λ
+=
+−
+   () ()p a b ppa pb( , , ) d ( ) , , , (94)L d
+i
+d
+i i
+A
+i
+B
+0
+1
+,
+d
+and one can easily show that they indeed reproduce the quantum prediction for ϱ˜.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+25
+
+=== page 27 ===
+To complete the protocol for the general state, one must add noise to Alice ʼs share, which
+can be done as mentioned above. The model for an arbitrary noisy state is summarized in the
+frame below (see the text above for the notation). LHV model for projective measurements on
+general noisy states ( 60)[ 18].
+The parties follow the protocols  and  listed below with respective fractions q and
+− q1 of times.
+Protocol  :
+(0) λ〉| are drawn from Ωd according to the uniform density ωd,
+(1) with probability λλ=〈 〉λpN ||k k, Alice gets λλ 〉≡ 〉λXp| () |k
+A
+k k* , and Bob
+gets λλ 〉≡ 〉U| |k
+B
+k ,
+(2) Alice ʼs response function is
+⎪
+⎪
+⎧
+⎨
+⎩
+λ λλ λλ= =∼ α
+α
+()pa PP, 1, if max
+0, otherwise
+, (95)k
+A k
+A
+a k
+A
+k
+A
+k
+A
+(3) Bob ʼs response is:
+λλ λ =∼ ()pb Q , . (96)k
+B
+k
+B
+b
+T
+k
+B
+Protocol :
+(1) Alice simulates the statistics of measurements on σ∑ −=
+− d(1 )k
+d
+k1
+1 ,
+(2) Bob outputs random results simulating in this way the statistics of measurements on
+the maximally mixed states.
+As noted above, the critical value p˜ c
+PM for the model presented above is now reduced in
+comparison to the one for the isotropic state and is equal to
+=
+−− +()
+p
+p
+pd
+˜
+1 ( 1) 1
+. (97)c
+c
+cPM
+PM
+iso,
+PM
+iso,
+In the limit of large d this scales as ddlog 2. In comparison, the threshold value p˜c
+sep for
+the separability of states ( 60) lies in the following interval [ 39]:
+⎡
+⎣⎢
+⎤
+⎦⎥∈
+−+
+p
+dd
+˜ 1
+1
+, 2
+2
+. (98)c
+sep 22
+This means, as previously, that the locality threshold is at least asymptotically dlog
+larger than the corresponding separability value.
+Exploiting Barrettʼs model (see section 3.2), the ideas presented above can be adapted to
+the general case of POVMs. The resulting protocol for the general noisy states is as follows:
+LHV model for POVMs on the noisy states (60)[ 18].
+Fraction q of times, the parties follow the below-described protocol ′ , and for fraction
+− q1 , the parties follow the admixing protocol  described in the frame above. Protocol ′ :
+(0′) λ〉| are drawn from Ωd according to the density ωλ()d ,
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+26
+
+=== page 28 ===
+(1′) with probability λλ=〈 〉λpN ||k k, Alice gets λλ 〉≡ 〉λXp| () |k
+A
+k k* , and Bob
+gets λλ 〉≡ 〉U| |k
+B
+k ,
+(2′) Alice ʼs response function is
+⎜⎟
+⎜⎟
+⎛
+⎝
+⎞
+⎠
+⎡
+⎣
+⎢
+⎢
+⎛
+⎝
+⎞
+⎠
+⎤
+⎦
+⎥
+⎥∑
+λλ λ Θ λ λ
+λλ Θ λ λ η
+′= −
++− −
+
+
+()pa P d
+P dd
+, 1
+1 1 , (99)
+k
+A
+k
+A
+a k
+A
+k
+A
+a k
+A
+j
+k
+A
+j k
+A
+k
+A
+j k
+A a
+(3′) Bob ʼs response is:
+λξ λ λ′= ()pb Q , . (100)k
+B
+b k
+B
+b
+T
+k
+B
+The steps ′( )2 – ′( )3 are the ones required to simulate statistics for the isotropic state and
+obviously could be performed separately on λ〉| if this was the task. The step ′() 1 ,a s
+previously, originates from Nielsen ʼs protocol. We need to combine the protocol with  to
+ensure that the resulting state has the proper form.
+Let us now take a closer look at the range of parameters for which the model works. The
+critical value pPOVM
+iso, c for the isotropic state is
+= −−
++
+−
+p dd
+dd
+(3 1)( 1)
+(1 )
+, (101)
+d
+dPOVM
+iso, c
+1
+which for large d scales as d3 (e ). In the general case (i.e., arbitrary ρ in ( 60)) the critical
+threshold value, in analogy to the projective measurement case, is
+=
+−− +()
+p
+p
+pd
+˜
+1 ( 1) 1
+, (102)c
+POVM
+POVM
+iso, c
+POVM
+iso, c
+which asymptotically scales as d3 (e )2 .
+It is important to realize that the results presented above constitute only lower bounds on
+the noise thresholds. This stems from the fact that they have been obtained for particular local
+models with no guarantee that a better model could exist in a wider range of p. The question
+of how much these values might differ from the ultimate ones has been addressed in [ 21]
+through the analysis of the violation of the CGLMP inequality and in [ 22] through the
+analysis of the CHSH inequality.
+In particular, it has been shown in [ 21] that the isotropic states violate the CGLMP
+inequality with projective measurements, and consequently also with general measurements,
+thus being necessarily nonlocal, at least for
+⎜⎟
+⎡
+⎣
+⎢
+⎢
+⎛
+⎝
+⎞
+⎠
+⎤
+⎦
+⎥
+⎥∑>= − − −
+=
+−
+−+
+−
+()pp d k
+d qq:24 1 2
+1 , (103)d
+k
+d
+kk
+iso, upp
+0
+[2 ]1
+(1 )
+1
+where π=+ ( )qd k 12s i n [ ( ) ]k
+32 1
+4 and x[ ] denotes the integer part of x. It is a decreasing
+function of the dimension d and asymptotically it achieves the value of
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+27
+
+=== page 29 ===
+π== ≃∞ →∞
+pp G: lim 16 0.67344, (104)
+d d
+iso, upp iso, upp
+2
+where ≃G 0.91597 is Catalan ʼs constant.
+Summing up, we have that the noise threshold value, pd
+iso, thr, separating the locality and
+nonlocality of the isotropic states, satis ﬁes
+⩽⩽ =pp p X , PM, POVM, (105)Xd d
+iso, c iso, thr iso, upp
+which asymptotically gives
+⎜⎟
+⎛
+⎝
+⎞
+⎠Θ π⩽⩽∞
+d
+d p G
+log
+16 , (106)iso, thr
+2
+⎜⎟
+⎛
+⎝
+⎞
+⎠Θ π⩽⩽∞d p G
+3
+e1 6 (107)iso, thr
+2
+for projective and general measurements, respectively.
+In the case of an arbitrary state ρ in equation ( 60), one needs a different notion of the
+noise threshold value. Such a quantity, pd
+thr, has already been introduced in section 3.3. Recall
+that now one wants to ﬁnd the value of p below which all states ( 60), regardless of the state ρ,
+are local and above which there certainly exists a nonlocal state.
+With the aim of ﬁnding good upper bound on this value, one needs to ﬁnd an example of
+a noisy state particularly resistant to noise. It turns out [ 22] that a two-qudit state of the form
+(60) with ρ ϕϕ=〉 〈++|| 22 is such a candidate, as it violates the CHSH inequality with projective
+measurements for >pp d
+upp with
+=
+−
+−
+−
+−
+()
+()
+p :
+1
+2
+. (108)d
+d
+d
+d
+d
+upp
+2 2
+2 2
+Thus, we have:
+⩽⩽ =pp p X˜ , PM, POVM. (109)Xd d
+c thr upp
+Usefulness of this bound is fully recognized in the limit of large d. Then, denoting
+=∞ →∞pp : lim d d
+thr thr , one ﬁnds that this results in the following bounds
+⎛
+⎝⎜ ⎞
+⎠⎟
+⎛
+⎝⎜
+⎞
+⎠⎟ΘΘ ⩽⩽
+−∞
+d
+d
+p
+d
+log 4
+( 21 )
+, (110)2
+thr
+⎛
+⎝⎜ ⎞
+⎠⎟
+⎛
+⎝⎜
+⎞
+⎠⎟ΘΘ ⩽⩽
+−∞d
+p
+d
+3
+e
+4
+( 21 )
+(111)2
+thr
+for projective and general measurements, respectively.
+3.5. From projective to generalized measurements —Hirsch et al ʼs construction
+An interesting approach to the construction of states with local models for POVMs was put
+forward by Hirsch et al [23]. The innovation of their construction consisted in the somewhat
+different logic compared to the constructions reported above. As already discussed in
+section 3.2, it had been known that by applying a local channel to a state with a local model
+for POVMs one obtains another state with an underlying local model for the same type of
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+28
+
+=== page 30 ===
+measurements. Hirsch et al proposed a method of constructing states with local models for
+arbitrary measurements departing from states with models for projective measurements.
+Assume ϱ ∈⊗B( )dd
+0 has a local model for any dichotomic projective measure-
+ments with measurement operators given by  −PP{ ,}aa and  −QQ{ ,}bb for Alice and
+Bob, respectively. In what follows, we will show that the state
+ϱ ϱ ϱσ σϱ σσ=+ − ⊗ + ⊗ + − ⊗{} ()d
+dd1 ( 1) ( 1) , (112)A BA B AB2 0
+2
+where ϱAB, are the reductions of the original state ϱ0 and σAB, are arbitrary, is local for
+arbitrary POVMs with elements (see section 2) η= Pa a a and ξ= Qbb b , respectively, for
+Alice and Bob. The proof of this fact relies on the explicit construction of the corresponding
+local model, which is the following: LHV model for POVMs for ϱ from equation ( 112)[ 23]
+(1) Alice (Bob) chooses Pa (Qb) with probability η da (ξ db ),
+(2) they simulate the measurement of the dichotomic observables =−͠ ⊥ PPaa a and
+=−∼ ⊥ QQbb b , respectively, on the state ϱ0 with =−⊥PPa a and =−⊥Q Qb b,
+(3) if the result in step (2) is +1, Alice (Bob) announces a (b) as the result of the simulation
+of the measurement on ϱ,
+(4) if the result in step (2) is −1, Alice (Bob) gives arbitrary a (b) as the output with
+probability σ tr( )Aa ( σ tr( )Bb ).
+Let us now argue that indeed this model correctly reproduces the quantum probability,
+which, as can be easily veri ﬁed, reads
+⎡⎣ ⎤⎦
+⎡⎣ ⎤⎦
+ηξ ϱσ σ
+ϱσ σρ
+=⊗ + −
++− +
+
+}
+{
+()()
+() ( ) ( )
+()( )
+pa b
+d
+PQ d P Q
+dP Q P Q
+(, , ) t r ( 1 )t r t r
+( 1) tr tr tr tr . (113)
+Q
+a b
+ab a A b B
+a A bB aA b B
+2 0
+2
+Both Alice and Bob, following the above protocol, may possibly output either in step (3)
+or (4), resulting in four probabilities of outputting the pair of outcomes ( a,b).
+Let us begin with the case of both Alice and Bob outputting in step (3). Since the
+simulation in this step concerns the original state ϱ0, this will happen with probability
+ηξ ϱ ⊗dP Q( )t r[( ) ]a ba b 2
+0 , which is the ﬁrst term in ( 113). Another possibility is that Alice
+produces an output in step (3) but Bob fails to do the same and outputs in the next step. As
+one can easily verify this will occur with probability ϱσ− dd[( 1 ) ]t r( )t r( )a A bB2 . On the
+other hand, the event when Alice produces the output in the last step, but Bob does it in the
+third one, will occur with the probability σϱ− dd[( 1 ) ]t r( )t r( )aA b B
+2 ; these two prob-
+abilities are, respectively, the third and fourth terms in equation ( 113). The remaining case of
+both Alice and Bob outputting in the last step will happen with probability
+σσ− dd[( 1 ) ]t r( )t r( )aA bB2 , which agrees with the second term of ( 113). Adding up all
+the terms we eventually arrive at ( 113).
+One might worry that the resulting state ( 112) will never be entangled so its locality will
+always be trivial. To show that this is not the case, it suf ﬁces to apply the above method to the
+state8 ϱ ψψ=〉 〈 + 〉 〈 ⊗−−(1 2)| | (1 4)|0 0|0 2. Moreover, this state has an interesting property:
+despite having a local model, it displays hidden nonlocality when subject to sequences of
+measurements [ 23]. More details about the concept of hidden nonlocality are given in
+section 5 below.
+8 The corresponding local model for this states is provided in section 3.1
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+29
+
+=== page 31 ===
+Let us ﬁnally comment that, in principle, the construction described above can also be
+applied to the multiparty scenario. We discuss this possibility in section 4.2.
+4. Multipartite quantum states
+Let us now move to the multipartite scenario. In this case, we will mostly be interested in
+genuinely multipartite entangled states for two main reasons. First of all, it is trivial to
+construct an N-party entangled state that is not GME but has a local model: it is enough to
+take the tensor product of a bipartite state with a local model for two of the parties and a
+product state for the remaining −N 2 parties. Second, any entangled state that is not GME
+has a notion of locality, as it can always be decomposed into a probabilistic mixture of states
+that are separable with respect to some bipartition (see equation ( 2)). This, in turn, allows one
+to directly construct a hybrid local model for such states combining different local models for
+these bipartitions.
+Unfortunately, to our knowledge, the literature on the subject is very limited and boils
+down to a single local model for a three-qubit GME state, which we discuss below, and its
+recent extension, which we mention in section 4.2. The question about existence of local
+models in the general multipartite setup remains open, and at this moment it is far from clear
+whether there exist local N-partite GME states for ⩾N 4.
+4.1. Local model for projective measurements on GME tripartite states
+In what follows, we will recall the result of [ 40] showing that there exist three-qubit GME
+states with a local model for projective (two-outcome) measurements. Here, we present this
+result in a slightly different manner than in the original work [ 40].
+Let us consider three parties A, B, and C and the following simple extension of Werner ʼs
+model in which parties A and B behave as in the bipartite case, and the additional party,
+Charlie (C), applies the same strategy as Bob.
+Our goal is to show that this local model simulates the outcome probabilities of pro-
+jective measurements performed on some GME tripartite states. To simplify the problem we
+assume that all the parties perform two-outcome measurements with measurement operators
+acting on 2; in other words, we aim to obtain a three-qubit state. Accordingly, the shared
+randomness is represented by normalized vectors λ〉∈| 2 sampled with the probability
+density ωλ()2 .
+In more precise terms, we ask if there exists a three-qubit state ρ such that the probability
+ρ=⊗ ⊗p abc P Q R(, , | , , ) T r [ ( )]Q ab c can be written as
+∫ λω λ λ λ λ
+=
+≡
+ 
+
+p abc p abc
+pa pb pc
+(, , , , ) (, , , , )
+d ( ) ( , ) ( , ) ( , ), (114)
+QL
+2
+where the response functions of Alice, Bob, and Charlie are given by ( 27), ( 28), and
+λλ λ=pc R( , ) , (115) c
+respectively, with local measurement operators Pa, Qb, and Rc =abc( ,, 0 , 1 ) acting on 2.
+To verify that this is the case, let us ﬁrst compute the above integral. Then we will argue
+that there exists a quantum state giving such predictions. It will be particularly useful to
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+30
+
+=== page 32 ===
+exploit the Bloch representation of one-qubit quantum states (see section 2.2). Then let pa, qb,
+and rc denote the Bloch vectors representing, respectively, Pa, Qb, and Rc on the Bloch
+sphere9 and let λ represent λλ〉〈| |. Then, exploiting the fact that λλλ〈 〉= +P p| | (1 2)(1 · )a a
+etc, equation ( 114) can be rewritten as
+∫ λλλπ=+ +
+λ<
+ () ()p abc qr(, , , , ) 1
+16 d 1 · 1 · , (116)L b cp·0a
+where the fact that the integration is taken over the half-sphere given by λ <p ·0a stems
+from the condition in ( 27). After computing all integrals (see the appendix for details), the
+probabilities can be ﬁnally expressed in terms of the Bloch vectors pa, qb, and rc as
+=− + + ()p abc pq pr q r(, , , , , ) 1
+8
+1
+16 ·· 1
+24 · . (117)L ab a c b c
+Now, it is fairly easy to construct a three-partite state realizing these probabilities. First,
+we notice that the scalar product of two normalized vectors ∈x y, 3 can be expressed in the
+‘quantum-mechanical’ form as
+⎡
+⎣
+⎢
+⎢
+⎤
+⎦
+⎥
+⎥∑∑ σσ σ σ=⊗ = ⊗ ⊗
+==
+  ()xy· Tr Tr ( ) , (118)
+i
+ii
+i
+ii
+1
+3
+1
+3
+where  and  are projectors corresponding, respectively, to x and y in the Bloch
+representation. Applying the above rule to each scalar product in ( 117), one sees that the state
+that leads to probabilities ( 117) takes the form
+  ∑∑ρσ σ σ σ σ σ= − ⊗⊗+⊗⊗ + ⊗⊗
+==
+()8
+1
+16
+1
+24 . (119)ABC
+i
+ii i i
+i
+ii
+8
+1
+3
+22
+1
+3
+2
+It remains to be seen that it is genuinely multipartite entangled. The state is manifestly
+invariant under ⊗⊗U UU , ∈U SU(2), since σσ∑ ⊗i ii is ⊗U U invariant. This allows
+us to apply the necessary and suf ﬁcient criteria developed in [ 41] which con ﬁrm that ρABC
+does indeed contain genuine multipartite entanglement. Interestingly, the state is a symmetric
+extension of the two-qubit Werner state.
+Remark 6. A slight modiﬁcation of the model allows us to extend the states ( 119). Precisely,
+let us assume that instead of λ, the party A uses in its response function a modi ﬁed Bloch
+vector given by λ λλλ′= aa a[, , ]11 22 33 with some ﬁxed parameters −⩽ ⩽ a11 i with
+=i 1, 2, 3(notice that λ′⩽| |1 ).
+By repeating the above calculations, one then ﬁnds that
+=− ′ + ′ + ()p abc pq pr q r(, , , , , ) 1
+8
+1
+16 ·· 1
+24 · (120)L a b ac b c
+with ′pa being pa with coordinates multiplied by ai. These probabilities correspond to the
+following class of states
+  ∑∑ρσ σ σ σ σ σ′ = − ⊗⊗+⊗⊗ + ⊗⊗
+==
+()a8
+1
+16
+1
+24 . (121)ABC
+i
+ii i i i
+i
+ii
+8
+1
+3
+22
+1
+3
+2
+9 Recall from section 2 that we need a single vector to characterize a dichotomic measurement. For notational
+convenience, however, we do not exploit this fact here.
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+31
+
+=== page 33 ===
+Although these states are in general no longer ⊗⊗U UU -invariant, the criteria from
+[41] can still be applied and it follows that whenever <++⩽aa a23 123 holds ρ′ABC are
+GME states. It is worth mentioning that for == =c aa a: 123 ,( 121) reproduces the one-
+parameter class of states considered in [ 40] which, as it follows from the example above, is
+GME if ⩾>c12 3. This, in turn, provides an improvement over the range
+⩾> −c1 ( 13 1) 3 , found originally in [ 40].
+Clearly, in the same way one can also modify the Bloch vector λ at Bobʼs and Charlie ʼs
+sites. This would give us some additional parameters in the state ( 121).
+Remark 7. Let us also notice that the above model works also if generalized measurements
+with any number of outcomes are allowed at Bob ʼs and Charlieʼs sites. The argument in favor
+of this fact is the same as in the case of the Werner states (see remark 1 in section 3.1). This
+makes it, in particular, possible to construct more examples of three-partite states (not
+necessarily GME) following the reasoning outlined in remark 5 in section 3.2. That is, any
+state of the form σΛ Λ ρ=⊗ ⊗ ()ABC A B C ABC with ΛX =XA B(, ) being some quantum
+channels has also a local model for projective measurements at Alice ʼs site and generalized
+measurements at Bob ʼs and Charlie ʼs sites.
+4.2. Generalizations and discussion
+Let us now discuss how one could apply the results described in previous sections for two
+parties to a multiparty scenario.
+As already mentioned in section 3.5, the method described there for the construction of
+states with a local model for general measurements from states with a local model for two-
+outome projective measurements can be automatically applied to a multiparty scenario. More
+precisely, assume an N-partite state ρA acting on 
+⊗
+()
+d N
+has a local model for dichotomic
+projective measurements on each of the sites A i() . Then, the following state has a local model
+for arbitrary measurements:
+∑
+∑
+σρ ρ σ
+ρσ σ
+σ
+=+ − ⊗
++− ⊗ ⊗
++⋯
++− ⊗
+⧹
+<
+⧹
+=
+d
+d
+d
+d
+1 {( 1 )
+(1 )
+( 1) }, (122)
+A AA
+A
+N
+i
+A A
+ij
+AA AA
+N iN A
+2
+1
+i i
+ij ij
+i
+() ()
+() () () ()
+()
+where ρ ρ≡⧹ trAAA Ai i() () etc. are the reduced states of ρA, and σ A i() are arbitrary states acting
+on d .
+The local model for σA is the same as the one in section 3.5. Assuming that measurement
+operators for party A i() are = xPk
+i
+k
+i
+k
+i() () () , =⋯ −k d0, 1, , 1 , it goes as follows: with
+probability xdk
+i() each party chooses Pk
+i() and simulates dichotomic measurement with ele-
+ments Pk
+i() and  − Pk
+i() and the corresponding outcomes +1 and −1. If the result +1 is
+obtained, the party outputs xk
+i() ; otherwise, arbitrary xl
+i() is outputted with probability
+σ tr( )A l
+i()i() . Direct calculation con ﬁrms the validity of the model for σA.
+At the moment, the question of whether this construction may lead to GME states with a
+local model remains open. Interestingly, however, a slightly modi ﬁed approach allows one
+[42] to obtain a tripartite qutrit-qubit-qubit state with a local model for generalized mea-
+surements starting from the qubit state given by Tóth and Acín [ 40] (see section 4.1).
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+32
+
+=== page 34 ===
+A priori , another interesting question is whether it is possible to apply the machinery
+based on the Grothendieck constant (see section 3.3) to the multipartite scenario. Unfortu-
+nately the corresponding universal constant does not exist even for three parties. In particular,
+it is known that in the multiuser case it is not possible to bound the violation of general
+correlation Bell inequalities for dichotomic observables [ 43].
+Finally, one is tempted to generalize the approach used in section 4.1 for the construction
+of a GME tripartite state with a local model to a larger number of parties by appending more
+parties that behave as in Werner ʼs original model. It turns out, however, that even for N =4
+the resulting state fails to be ⊗U 4 invariant so the straightforward generalization of the
+tripartite case is not possible [ 40]. Moreover, it has also been proven in [ 40] that in fact there
+is no four-partite ⊗U 4 invariant state for which the model with response functions for A, B,
+and C taken as in section 4.1 and for D the same as B and C works. Finally, the tripartite
+extension of Werner ʼs model for systems of dimension larger than two does not work
+either [ 40].
+5. Other locality scenarios
+In this work, we have reviewed the state of the art concerning local models for entangled
+states in the original and more standard Bell scenario where the parties perform local mea-
+surements on a single copy of an entangled state. It is, however, possible to consider other
+scenarios in which the parties have access to a larger set of operations and where different
+notions of locality appear. In these alternative scenarios, states that have a local model in the
+standard scenario might display nonlocal correlations. Without going into details, we high-
+light in what follows some of the known results in these alternative scenarios:
+• Copies of a state : The ﬁrst possibility consists of a scenario in which the parties have
+access to several copies of a state and can perform joint measurements on the copies of
+their subsystems. In this scenario, it has been shown that nonlocality can be activated:
+there exist states ρ that have a local model; nevertheless, ρ⊗k is nonlocal for suf ﬁciently
+large k. Leaving aside some previous partial results for some speci ﬁc inequalities (e.g.,
+[44, 45]; see also [ 46, 47] for other activation scenarios), the proof of this result is due to
+Palazuelos [ 48]. His result was later generalized in [ 49], where it was shown that all
+bipartite entangled states that are useful for teleportation are nonlocal when considering
+an arbitrary large number of copies.
+• Network approach : Similar to the previous case, but a more general scenario was
+introduced in [ 50] and consists of a setup in which k copies of a state, say bipartite, are
+distributed among N parties. Now, one has to test whether the resulting N-partite state,
+made of k copies of a bipartite state, is nonlocal. In this scenario, activation effects are
+also possible in the sense that there exist networks of local states that display nonlocal
+correlations. Moreover, all states that have one-way distillable entanglement are nonlocal
+in this scenario [ 50].
+• LOCC preprocessing : Given a state, it is possible to perform some LOCC (local
+operations and classical communication) preprocessing before running the Bell test.
+While classical communication seems at odds with the concept of nonlocality, this is not
+the case if it takes place before the measurements to be performed have been decided.
+That is, under this sequential arrangement classical communication does not create any
+nonlocality. Bell tests including LOCC preprocessing were introduced by Popescu in [ 8]
+(see also [ 51]),who proved that some local Werner states for ⩾d 5 become nonlocal in
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+33
+
+=== page 35 ===
+this scenario. Popescu coined the term hidden nonlocality to describe this phenomenon.
+While Popescu proved existence of hidden nonlocality for states that have a local model
+for projective measurements, his result has been generalized to general measurements
+in [ 23].
+• Copies together with LOCC preprocessing : Finally, one can also consider a
+combination of all the previous possibilities. The resulting scenario is basically the
+same as that studied for entanglement transformations, and, in particular, entanglement
+distillation. Here, the goal is to distill with LOCC from copies of a given state a new state
+that violates a Bell inequality. It is clear that in this more general scenario, all
+entanglement distillable states are nonlocal. The natural question is whether nondistill-
+able states, such as states with positive partial transposition (PPT) are also nonlocal. This
+question, known as the Peres conjecture [ 52], was ﬁrst proven to be false by Dür in the
+multipartite case [ 53] (see also [ 54–57]). The more challenging bipartite case remained
+open until recently, when Vértesi and Brunner showed existence of a PPT state violating
+a Bell inequality [ 58].
+As this brief overview shows, there exist several operationally meaningful notions of
+nonlocality. What is remarkable is that in all these scenarios it is still open whether it is
+possible to derive an equivalence between entanglement and nonlocality (while this
+equivalence is known to fail in the standard scenario).
+6. Conclusions and outlook
+We ﬁnish our review with a summary of the main results we have considered and a short
+discussion about open questions.
+As to the ﬁrst part, we feel that the best way to provide such a summary is to recall in a
+systematized way the constructions covered in the main body of the paper. We thus have:
+• Wernerʼs model (section 3.1): proof of existence of a local model for projective
+measurements (PM) on bipartite entangled states. The model was constructed for the
+Werner states ( 20) in the region
+⩽ −p d
+d
+1,
+• Barrettʼs model (section 3.2): proof of existence of a local model for generalized
+measurements (POVM) on entangled bipartite states. The model was constructed for the
+Werner states in the region
+⎜⎟
+⎛
+⎝
+⎞
+⎠⩽ −
++
+− −
+p d
+dd
+d
+d
+31
+(1 )
+1 ,
+d 1
+• the Grothendieck constant approach (section 3.3): use of the constant to study the
+robustness of nonlocal correlations of entangled bipartite states. In particular:
+– there exists a model for PM on a two-qubit Werner state ρ p(2, )W iff ⩽pK (3)G , where
+K (3)G is the Grothendieck constant of order 3; in particular, ρ p(2, )W is local at least up
+to 0.6595;
+– ρ p(2, )W is local for planar (at least at one site) PM up to the CHSH threshold =p 12 ;
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+34
+
+=== page 36 ===
+– for every noisy state
+σϱ=+ −pp
+d(1 ) , (123)d
+2
+2
+there is a local model for joint correlations of traceless two-outcome observables for
+<pK d1( 2 )G 2 for any ϱ;
+– for ⩾⌊ ⌋ +pK d1 (2 log 1)G there exists a state of the form ( 123) whose joint
+correlations cannot be reproduced;
+– (stems from the previous two facts) in the limit → ∞d a state ( 123) with arbitrary ϱ and
+⩽pK 1 G (KG –the Grothendieck constant) is local and this number gives the ultimate
+limit;
+– there is a local model simulating full probability distribution for traceless observables for
+the isotropic state whenever ⩽−pK d1( 1 )G 2 (see also below).
+• Almeida et al ʼs construction (section 3.4): local model for the isotropic states ( 83) and
+general results for the nonlocality of noisy entangled states ( 123). One has:
+– a local model for PM on the isotropic states ( 83) for
+⩽≡
+∑
+−
+=p p d 1 ,c k
+d
+k
+PM
+iso, 2
+1
+– a model for POVM on the isotropic states ( 83) for
+⎜⎟
+⎛
+⎝
+⎞
+⎠⩽≡ −
++
+− −
+p p d
+dd
+d
+d
+31
+(1 )
+1 ,
+d
+POVM
+iso, c
+1
+– a local model for PM on arbitrary states of the form ( 123) for
+⩽
+−− +()
+p
+p
+pd1 ( 1) 1
+,
+c
+c
+PM
+iso,
+PM
+iso,
+– a local model for POVM on arbitrary states of the form ( 123) for
+⩽
+−− +()
+p
+p
+pd1 ( 1) 1
+,POVM
+iso, c
+POVM
+iso, c
+• CGLMP and CHSH perspective on the noise rubustness of nonlocality:
+– all isotropic states ( 83) are nonlocal for
+⎜⎟
+⎡
+⎣
+⎢
+⎢
+⎛
+⎝
+⎞
+⎠
+⎤
+⎦
+⎥
+⎥∑>− − −
+=
+−
+−+
+−
+()pd k
+d qq24 1 2
+1 , (124)
+k
+d
+kk
+0
+[2 ]1
+(1 )
+1
+where π=+ ( )qd k 12s i n [ ( ) ]k
+32 1
+4 ,
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+35
+
+=== page 37 ===
+– there always exists a nonlocal noisy state ( 60) whenever
+>
+−
+−
+−
+−
+()
+()
+p
+1
+2
+, (125)
+d
+d
+d
+d
+2 2
+2 2
+• Hirsch et al ʼs construction (section 3.5): novel examples of local states. The work
+provides a systematic method for deriving states local for POVMs from states local for
+PMs of two outcomes. Given a state ϱ0 local for dichotomic PM, one builds the state
+ϱ ϱϱ σ σ ϱ σ σ=+ − ⊗ + ⊗ + − ⊗dd d(1 )[ ( 1)( ) ( 1) ]A BA B AB2
+0
+2 with ϱAB, being the
+reductions of ϱ0 and σAB, arbitrary, which is local for POVM,
+• Tóth–Acín model (section 4.1): proof of existence of genuinely entangled three-qubit
+states with a local model for PMs. The model is based on a symmetric extension of the
+two-qubit Werner model. Building on this result, existence of three-partite GME states
+local under general measurements has been proven recently [ 42].
+It is worth mentioning that all the previous construction are, in one way or another, based
+on Werner ʼs original model. In this sense, it would be interesting to have a model that does
+not use, at any point, some of the ingredients of Werner ʼs model.
+Finally, let us conclude with a brief discussion of the main open questions in the relation
+between entanglement and nonlocality. In the case of two parties, we can think of the
+following three main questions:
+1. It is known that in the standard Bell scenario, entanglement and nonlocality are
+inequivalent. Is it possible to identify a more general scenario in which these two
+quantum phenomena become equivalent?
+2. For many of the families of states considered above, a gap always appears between the
+region where a local model exists for projective measurements and the one for general
+measurements. It is an open question whether this gap is an artifact of the construction
+or if it actually exists. That is, do general measurements offer any advantage to detect
+the nonlocality of quantum states?
+3. An almost unexplored question is to study local models from a quantitative point of
+view. Existence of a local model for a quantum state operationally means that the
+correlations of the state can be reproduced using shared randomness. How much shared
+randomness is needed? How does it scale with the entanglement in the state?
+Moving to the multipartite case, basically all questions remain open. To our knowledge,
+there is not a single example of a local model for an entangled state of more than three parties.
+But, perhaps the most interesting questions concern whether gaps exist for any number of
+parties. Thus, we can identify the following questions:
+1. The ﬁrst question concerns whether for any number of parties it is possible to ﬁnd GME
+states that have a fully local model. We do not have any strong intuition about this. In
+principle, based on all the existing results, one may expect a gap for any number of
+parties. However, when going to many parties, it could be that GME are so entangled
+that a fully local model cannot reproduce their statistics. If this was the case, it would be
+interesting to estimate the minimal number of parties such that local models do not
+exist. Thus, the question is: Is there a ﬁnite number of parties such that all GME violate
+a standard Bell inequality?
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+36
+
+=== page 38 ===
+2. Perhaps a more fair comparison between entanglement and nonlocality in the
+multipartite scenario consists of comparing GME with genuinely multipartite
+nonlocality. Here, we are interested in understanding whether there exist for any
+number of parties GME states that can be described by a local model in which some of
+the parties join, as ﬁrst considered by Svetlichny [ 59] (see also [ 60, 61]). Thus, the
+question is: Is there a ﬁnite number of parties such that all GME violate a
+Svetlichny–Bell inequality? While ﬁnishing writing this manuscript, we have proven
+that the answer to this question is negative. That is, for any number of parties, we have
+found GME states that can be described by local models in which subset of the parties
+join [ 62].
+After all these discussions, the main message of this review becomes clear: ﬁfty years
+after Bell ʼs seminal paper [ 5] we are still very far from understanding the relation between
+entanglement and nonlocality.
+Acknowledgments
+This work is supported by the EU project SIQS, ERC CoG QITBOX, ERC AdG OSYRIS the
+Spanish Chist-Era DIQIP project. This publication was made possible through the support of
+a grant from the John Templeton Foundation. R. A. also acknowledges the Spanish MINECO
+for the support through the Juan de la Cierva program.
+Appendix
+Here we compute analytically the integrals that have been introduced in the main text.
+The integral Ju[ ]1 in equation ( 38). Here, following Mermin [ 26], we will show that
+=Ju Nd[]1 3. Recall that its explicit form reads
+∫∫ ∫ δ…+ … + − ()uu u u u udd d 1 . ( A . 1 )
+uu
+dd
+0
+1
+1
+1
+2
+1
+11
+11
+To simplify computation of this integral, we can, without changing its value, extend the range
+of all the variables to in ﬁnity, i.e.,
+∫∫ ∫ δ…+ … + −
+∞∞ ∞
+()uu u u u udd d 1 . ( A . 2 )
+uu
+dd
+0
+12 1 1
+11
+By changing the variables =+uvuii 1 for =…i 2, , and then =uv d11 , it can further be
+rewritten as
+∫∫ δ…+ … + −
+∞∞
+()d
+vv v v v1 dd 1 . ( A . 3 )dd2 0
+1
+0
+11
+One ﬁnally notices that the value of the integral is the same if v1 is replaced by any vi, and
+consequently
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+37
+
+=== page 39 ===
+∫∫
+∫∫
+δ
+δ
+…+ … + −
+=… + … + + … + −
+=
+∞∞
+∞∞
+()
+()
+d
+vv v v v
+d
+v v vv vv
+d
+N
+1 dd 1
+1 dd ( ) 1
+1 ,( A . 4 )
+dd
+dd d
+2 0
+1
+0
+11
+3 0
+1
+0
+11
+3
+which is what we wanted to prove. Recall that N is de ﬁned by equation ( 36).
+The integral ∼Ju[]1 in equation ( 53). Now, repeating the same tricks as above, we
+compute
+∫∫ ∫ δ=…+ … + −∼ ()Ju u u u u u u[] d d d 1 . ( A . 5 )
+d
+dd1
+1
+1
+1
+0
+1
+2
+0
+1
+11
+As before, we can exploit the fact that the argument of integration contains the Dirac delta and
+extend upper bounds of all integrals to in ﬁnity. Then, by a change of the variable
+→+uu d 111 , one gets
+⎜⎟
+⎜⎟
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+∫∫
+∫∫
+δ
+δ
+=… + … + − −
++… + … + − −
+∼ ∞∞
+∞∞
+Ju u u u u u d
+d
+d uu u u d
+d
+[] d d 1
+1 dd 1 .( A . 6 )
+dd
+dd
+1
+0
+1
+0
+11
+0
+1
+0
+1
+Now, we change all variables →−uu d d (1 )ii with i =1 , … , d, and then use the property
+δ δ=ax a x() ( 1 || ) ( ), which gives
+⎜⎟
+⎜⎟
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+∫∫
+∫∫
+δ
+δ
+= − …+ … + −
++ − …+ … + −
+∼ ∞∞
+− ∞∞
+()
+()
+Ju d
+d uu u u u
+d
+d
+d uu u u
+[] 1 dd 1
+11 dd 1 . ( A . 7 )
+d
+dd
+d
+dd
+1
+0
+1
+0
+11
+1
+0
+1
+0
+1
+To complete the proof, one notices that the ﬁrst integral has been already computed and
+amounts to N d, while the second one is simply N. As a result,
+⎜⎟
+⎛
+⎝
+⎞
+⎠= −−∼ −
+Ju N
+d
+d
+d
+d
+d[] 21 1 .( A . 8 )
+d
+1 2
+1
+The integral ∼Ju[ ]1
+2 in equation ( 54). Following the same steps as before, it is fairly easy
+to see that
+⎡⎣ ⎤⎦ ∫∫ ∫ δ=… + … + −∼ ()Ju u u uu u u dd d 1 ( A . 9 )
+d
+dd1
+2
+1
+1
+1
+0
+1
+2
+0
+1
+1
+2
+1
+can be expressed as
+⎜⎟ ⎜⎟ ⎜⎟⎡⎣ ⎤⎦
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+∫∫ δ
+= − + − + −
+×… + … + −
+∼ −+
+∞∞
+()
+Ju N
+d
+d
+d
+N
+d
+d
+d
+d
+d
+uu u u u
+12 1 1
+d d 1 . (A.10)
+dd d
+dd
+1
+2
+2
+1
+2
+1
+0
+1
+0 1
+2
+1
+The last integral can be computed directly. From the fact that it contains the Dirac delta,
+one obtains
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+38
+
+=== page 40 ===
+∫∫
+∫∫ ∫
+δ…+ … + −
+=…
+∞∞
+∞− − − … −
+−
+−
+()uu u u u
+uu u u
+dd 1
+d d d . (A.11)
+dd
+uu u
+d
+0
+1
+0 1
+2
+1
+0
+1 1
+2
+0
+1
+2
+0
+1
+1
+d11 2
+Straightforward integration over the variables … −uu,, d21 gives
+∫∫
+∫
+δ…+ … + −
+= − −
+∞∞
+−
+()
+()
+uu u u u
+d uu u
+dd 1
+1
+(2 ) ! d 1 , (A.12)
+dd
+d
+0
+1
+0 1
+2
+1
+0
+1
+1 1
+2
+1
+2
+which further amounts to
+∫∫ δ…+ … + − = +
+∞∞
+()uu u u u N
+dddd 1 2
+(1 ) , (A.13)dd
+0
+1
+0 1
+2
+1
+and consequently,
+⎜⎟ ⎜⎟
+⎜⎟
+⎡⎣ ⎤⎦
+⎡
+⎣
+⎢
+⎢
+⎛
+⎝
+⎞
+⎠
+⎤
+⎦
+⎥
+⎥
+⎛
+⎝
+⎞
+⎠
+⎛
+⎝
+⎞
+⎠
+=+ − + +
+−−
+= −
++
+−
+∼ −
+−
+Ju N
+dd d
+d
+dd
+d
+d
+d
+d
+N
+d
+d
+d
+d
+d
+12 1 2
+1
+11
+53
+1
+1 . (A.14)
+d
+d
+1
+2
+21
+1
+The integral  u[]1 in equation ( 87) Let us now compute the following integral
+∫∫ ∫ δ=… + … + − ()uu u u u u u[ ] d d d 1 . (A.15)
+uu
+dd1
+0
+1
+1
+0
+2
+0
+11
+11
+For this purpose, we rewrite all integrals over the variables ui =…id( 2, , ) as
+∫∫∫ =−
+∞∞
+uuuddd , ( A . 1 6 )
+u
+ii
+u
+i
+00
+1
+1
+which after some algebra leads us to
+∫∫
+∫
+∑
+δ
+=− …
+×… + … + −
+=
+−
+− ∞∞
++
+∞
++
+ ()
+()
+uu u u u
+uu u u
+[] ( 1 ) d d d
+d d 1 , (A.17)
+k
+d
+d
+k
+k
+u
+k
+kd d
+1
+0
+1
+1
+0
+11 2 1
+0
+21
+1
+where we have exploited the fact that the integrated function is invariant under any
+permutation of the variables …uu,, d2 . Now, by changing the variables →−uu uii 1 with
+=…+ik 2, , 1, and then →+uu k (1 )11 , each integration in the summand rewrites as
+∫∫ ∫
+∫∫
+∫∫
+δ
+δ
+δ
+…… + … + −
+=… + + … + −
+=
++
+…+ … + −
+∞∞
++
+∞
++
+∞∞
+∞∞
+()
+()
+()
+uu u u u u u u
+uu u u k u u
+k
+uu u u u u
+dd dd d 1
+d d d ( 1) 1
+1
+(1 )
+d d d 1 . (A.18)
+u
+kk d d
+dd
+dd
+0
+11 2 1
+0
+21
+0
+11
+0
+21
+2 0
+11
+0
+21
+1
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+39
+
+=== page 41 ===
+The last integral has already been computed and it amounts to N d, which ﬁnally gives
+⎜⎟
+⎛
+⎝
+⎞
+⎠∑∑= −−
++
+=
+=
+−
+=
+ u N
+d
+d
+k k
+N
+d k[] 1( 1 )
+(1 )
+1. (A.19)
+k
+d k
+k
+d
+1
+0
+1
+22
+1
+To obtain the last equality, we have utilized one of the representations of the harmonic
+number ≡ ∑ =Hd k
+d
+k1
+1 , namely,
+⎜⎟
+⎛
+⎝
+⎞
+⎠∑= −
++
+−
++=
+−
+H d
+kk
+1
+1
+(1 )
+1 . (A.20)d
+k
+d k
+0
+1
+Integrals over the Bloch sphere. Here we show that
+∫ λλ π=−
+λ<
+yx yd ( · ) · , (A.21)
+x·0
+where x, y, and λ are unit vectors from 3.
+Let us ﬁrst note that both integrals are invariant under any rotation of the Bloch sphere,
+i.e.,
+∫∫ λλ λ λ =′
+λλ<′ <
+yyd ( · ) d ( · ), (A.22)
+xx·0 ·0
+where ′= Ox x and ′= Oyy with O being an element of the SO(3) group. This allows us to
+choose the reference frame such that x is aligned with its z-axis, i.e., we choose such O that
+=Ox [ 0 ,0 ,1]. Now, with respect to this new frame of reference, we can parametrize λ as
+λ ϕθ ϕθ θ= [cos sin , sin sin , cos ] with ϕπ∈ [0, 2 ] and θπ∈ [0, ]. As a result, the integral
+(A.21) rewrites as
+∫∫ θθ ϕ ϕθ ϕθ θ ′ + ′ + ′
+π
+ππ
+()dy y ysin d cos sin sin sin cos , (A.23)
+20
+2
+12 3
+where the range of the ﬁrst integral comes from the condition λ <x ·0 , which after rotation
+simpliﬁes to θ <cos 0 . Performing all integrations in the above, one obtains that
+∫ λλ ππ=− ′ =−
+λ<
+yyx yd ( · ) · . (A.24)
+x·0 3
+Along exactly the same lines, one also ﬁnds that
+∫ λλλ π=
+λ<
+yz y zd ( · )(·) 2
+3 · . (A.25)
+x·0
+References
+[1] Einstein A, Podolsky B and Rosen N 1935 Phys. Rev. 47 777–80
+[2] Schrödinger E 1935 Math. Proc. Camb. Phil. Soc. 31 555–63
+[3] Bohm D 1952 Phys. Rev. 85 166–79
+[4] Bohm D 1952 Phys. Rev. 85 180–93
+[5] Bell J S 1964 Physics 1 195–200
+[6] Gisin N 1991 Phys. Lett. A 154 201–2
+[7] Werner R F 1989 Phys. Rev. A 40 4277–81
+[8] Popescu S 1995 Phys. Rev. Lett. 74 2619–22
+[9] Masanes Ll, Acín A and Gisin N 2006 Phys. Rev. A 73 012112
+[10] Pironio S 2005 J. Math. Phys. 46 062112
+[11] Arnault F 2012 J. Phys. A: Math. Theor. 45 255304
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+40
+
+=== page 42 ===
+[12] Tura J et al 2014 in preparation
+[13] Brunner N, Cavalcanti D, Pironio S, Scarani V and Wehner S 2014 Rev. Mod. Phys. 86 419
+[14] Clauser J F, Horne M A, Shimony A and Holt R A 1969 Phys. Rev. Lett. 23 880
+[15] Fine A 1982 Phys. Rev. Lett. 48 291–5
+[16] Barrett J 2002 Phys. Rev. A 65 042302
+[17] Acín A, Gisin N and Toner B 2006 Phys. Rev. A 73 062105
+[18] Almeida M L, Pironio S, Barrett J, Toth G and Acín A 2007 Phys. Rev. Lett. 99 040403
+[19] Grothendieck A 1953 Bol. Soc. Mat. São Paulo 8 1
+[20] Nielsen M A 1999 Phys. Rev. Lett. 83 436
+[21] Collins D, Gisin N, Linden N, Massar S and Popescu S 2002 Phys. Rev. Lett. 88 040404
+[22] Acín A, Durt T, Gisin N and Latorre J I 2002 Phys. Rev. A 65 052325
+[23] Hirsch F, Quintino M T, Bowles J and Brunner N 2013 Phys. Rev. Lett. 111 160402
+[24] Horodecki M, Horodecki P and Horodecki R 1996 Phys. Lett. A 223 1–8
+[25] Terhal B 2000 Phys. Lett. A 271 319–26
+[26] Mermin N D 1996 Hidden Quantum Non-Locality (Dodrecht: Kluwer Academic) pp 57 –71
+[27] Gisin N and Gisin B 1999 Phys. Lett. A 297 279–84
+[28] Degorre J, Laplante S and Roland J 2005 Phys. Rev. A 72 062314
+[29] Bowles J, Vértesi T, Quintino M T and Brunner N 2014 Phys. Rev. Lett. 112 200402
+[30] Tsirelson B 1987 J. Sov. Math. 36 557–70
+[31] Krivine J L 1979 Adv. Math. 31 16
+[32] Fishburn P C and Reeds J A 1994 SIAM J. Discret. Math. 7 48–56
+[33] Vértesi T 2008 Phys. Rev. A 78 032112
+[34] Toner B F 2006 Quantifying quantum nonlocality PhD thesis
+[35] Larsson J 1999 Phys. Lett. A 256 245–52
+[36] Collins D and Gisin N 2004 J. Phys. A: Math. Gen. 37 1775
+[37] Horodecki M and Horodecki P 1999 Phys. Rev. A 59 4206
+[38] Wiseman H M, Jones S J and Doherty A C 2007 Phys. Rev. Lett. 98 140402
+[39] Gurvits L and Barnum H 2002 Phys. Rev. A 66 062311
+[40] Tóth G and Acín A 2006 Phys. Rev. A 74 030306(R)
+[41] Eggeling T and Werner R F 2001 Phys. Rev. A 63 042111
+[42] Quintino M T 2014 private communication
+[43] Pérez-García D, Wolf M M, Palazuelos C, Villanueva I and Junge M 2008 Comm. Math. Phys.
+279 455–86
+[44] Peres A 1996 Phys. Rev. A 54 2685–9
+[45] Masanes L 2006 Phys. Rev. Lett. 97 050503
+[46] Masanes L, Liang Y C and Doherty A C 2008 Phys. Rev. Lett. 100 090403
+[47] Navascués M and Vértesi T 2011 Phys. Rev. Lett. 106 060403
+[48] Palazuelos C 2012 Phys. Rev. Lett. 109 190401
+[49] Cavalcanti D, Acín A, Brunner N and Vértesi T 2013 Phys. Rev. A 87 042104
+[50] Cavalcanti D, Almeida M L, Scarani V and Acín A 2011 Nat. Comm. 2 184
+[51] Gisin N 1996 Phys. Lett. A 210 151–6
+[52] Peres A 1999 Found. Phys. 29 589
+[53] Dür W 2001 Phys. Rev. Lett. 87 230402
+[54] Kaszlikowski D, Kwek L C, Chen J and Oh C 2002 Phys. Rev. A 66 052309
+[55] Sen(De) A, Sen U and Żukowski M 2002 Phys. Rev. A 66 062318
+[56] Augusiak R and Horodecki P 2006 Phys. Rev. A 74 010305
+[57] Vértesi T and Brunner N 2012 Phys. Rev. Lett. 108 030403
+[58] Vértesi T and Brunner N 2014 arXiv: 1405.4502
+[59] Svetlichny G 1987 Phys. Rev. D 35 3066
+[60] Gallego R, Wür ﬂinger L E, Acín A and Navascués M 2012 Phys. Rev. Lett. 109 070401
+[61] Bancal J D, Barrett J, Gisin N and Pironio S 2013 Phys. Rev. A 88 014102
+[62] Augusiak R, Demianowicz M, Tura J and Acín A 2014 arXiv: 1407.3114
+J. Phys. A: Math. Theor. 47 (2014) 424002 R Augusiak et al
+41

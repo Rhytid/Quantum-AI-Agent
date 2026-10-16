@@ -1,0 +1,3206 @@
+=== page 1 ===
+Quantum Inﬂation: A General Approach to Quantum Causal Compatibility
+Elie Wolfe,1 Alejandro Pozas-Kerstjens, 2, 3 Matan Grinberg, 1, 4
+Denis Rosset, 1 Antonio Ac´ ın,5, 6 and Miguel Navascu´ es7
+1Perimeter Institute for Theoretical Physics, Waterloo, N2L 2Y5 Ontario, Canada
+2Departamento de An´ alisis Matem´ atico, Universidad Complutense de Madrid, 28040 Madrid, Spain
+3ICFO-Institut de Ci` encies Fot` oniques, The Barcelona Institute of
+Science and Technology, 08860 Castelldefels (Barcelona), Spain
+4Princeton University, Princeton, New Jersey 08544, USA
+5ICFO-Institut de Cienci` es Fot` oniques, The Barcelona Institute of
+Science and Technology, 08860 Castelldefels (Barcelona), Spain
+6ICREA, Passeig Lluis Companys 23, 08010 Barcelona, Spain
+7Institute for Quantum Optics and Quantum Information (IQOQI), Boltzmanngasse 3 1090 Vienna, Austria
+Causality is a seminal concept in science: Any research discipline, from sociology and medicine to
+physics and chemistry, aims at understanding the causes that could explain the correlations observed
+among some measured variables. While several methods exist to characterize classical causal models,
+no general construction is known for the quantum case. In this work, we present quantum inﬂation,
+a systematic technique to falsify if a given quantum causal model is compatible with some observed
+correlations. We demonstrate the power of the technique by reproducing known results and solving
+open problems for some paradigmatic examples of causal networks. Our results may ﬁnd applications
+in many ﬁelds: from the characterization of correlations in quantum networks to the study of quantum
+eﬀects in thermodynamic and biological processes.
+I. INTRODUCTION
+It can be argued that one of the main challenges in
+any scientiﬁc discipline is to identify which causes are
+behind the correlations observed among some measured
+variables, encapsulated by their joint probability distri-
+bution. Understanding this problem is crucial in many
+situations, such as, for example, the development of med-
+ical treatments, taking data-based social policy deci-
+sions, the design of new materials or the theoretical mod-
+eling of experiments. More precise characterizations of
+causal correlations enable better decision among com-
+peting explanations for given statistics, a task known as
+causal discovery. Advances in causal understanding
+also enable quantiﬁcation of causal eﬀects from purely
+observational data, thus extracting counterfactual con-
+clusions even in instances where randomized or con-
+trolled trials are not feasible, a task known as causal
+inference [1–3].
+Bayesian causal networks, in the form of directed
+acyclic graphs (DAGs), provide the tools to formalize
+such problems. These graphs, examples of which are
+shown in Fig. 1, encode the causal relations between
+the various variables in the problem, which could be
+either observed or non-observed. The latter, also known
+as latent, are required in many relevant situations in
+order to explain correlations among the observed. The
+fundamental task addressed in this work underlies both
+causal discovery and causal inference, and is known
+as the causal compatibility problem. It consists of
+deciding whether a given joint probability distribution
+over some observed variables can be explained by a
+given candidate Bayesian causal network. Equivalently,
+the objective of causal compatibility can be viewed as
+characterizing the set of distributions compatible with
+a given Bayesian network.
+In all cases, the measured variables in a causal network
+are, by deﬁnition, classical. However, causal networks
+may be classical or quantum depending on whether cor-
+relations are established by means of classical or quan-
+tum information. Because of its importance and broad
+range of applications, there is a vast literature devoted
+to understanding the problem of causal compatibility for
+classical causal networks; see for instance Ref. [1]. On
+the contrary, very little is known for the quantum case
+despite the fact that nature is ultimately quantum and
+quantum eﬀects are expected to be crucial for the un-
+derstanding of many relevant phenomena in many scien-
+tiﬁc disciplines. Moreover the two problems are known
+to be diﬀerent, as one of the consequences of Bell’s theo-
+rem [4, 5] is that quantum causal networks can explain
+correlations for which the analogous classical network
+fails [6–10]. Our work addresses these issues and pro-
+vides a systematic construction to tackle the problem
+of causal compatibility for quantum causal networks.
+As mentioned, several results already exist in the clas-
+sical case. Whenever the network does not contain any
+latent variable the solution is rather simple and it suﬃces
+to check whether all the conditional independences asso-
+ciated to the network topology are satisﬁed [1]. The prob-
+lem, however, becomes much more diﬃcult as soon as the
+network also includes latent variables, as their presence
+generally implies nontrivial inequalities on the observed
+probabilities. A general method to tackle the causal
+compatibility problem, known as the inﬂation tech-
+nique, is obtained in [11]. It consists of a hierarchy of
+conditions, organized according to their computational
+cost, that are necessary for a Bayesian network to be
+arXiv:1909.10519v4  [quant-ph]  27 May 2021
+
+=== page 2 ===
+2
+able to explain the observed correlations. Moreover, the
+hierarchy is asymptotically suﬃcient, in the sense that
+the candidate Bayesian network is compatible if, and
+only if, all conditions in the hierarchy are satisﬁed [12].
+When moving to quantum causal scenarios, the prob-
+lem of causal compatibility presents several new fea-
+tures. In the classical case, the cardinality of the latent
+variables can be upper bounded [13] and, therefore, the
+problem is decidable. In the quantum case, however, a
+similar upper bound cannot exist because the problem
+of quantum causal compatibility is undecidable, as im-
+plied by recent results on quantum correlations [14, 15].
+Yet, this fact does not preclude the existence of a method
+similar to inﬂation to tackle the question. Unfortu-
+nately, the inﬂation technique cannot be straightfor-
+wardly adapted to the quantum case because it relies on
+information broadcasting, a primitive that is not plau-
+sible with quantum information [16, 17]. Other causal
+analysis techniques which are fundamentally quantum
+have been proposed. Notable among these is the quan-
+tum entropy vector approach in Ref. [18], which is ap-
+plicable to all causal structures but uses only those con-
+straints on entropies imposed by the causal structure,
+the scalar extension in Ref. [19], which imposes stronger
+constraints but cannot be applied to causal structures
+in which all observed nodes are causally connected, such
+as the triangle scenario in Fig. 1(b) or the covariance
+matrix approach in Ref. [20], which provides low-degree
+polynomial (and, thus, rough) approximations of the
+sets of quantum correlations in networks.
+The main result of our work is the construction of
+quantum inﬂation, a systematic technique to study
+causal compatibility in any quantum Bayesian network.
+It can be seen as a quantum analog of the classical inﬂa-
+tion technique which avoids the latter’s reliance on in-
+B
+U
+A
+X Y
+(a)
+A
+BC UBC
+UAC UAB (b)
+FIG. 1. DAG representation of diﬀerent causal scenarios.
+The red, dashed circles are latent nodes, and the yellow,
+single-lined circles denote observed variables. (a) The Bell
+scenario is one of the simplest causal structures exhibiting a
+classical-quantum gap, that is, where there exist distribu-
+tions that can be realized upon taking the latent nodes to
+represent quantum states (subsequently denoted asU=ρ),
+but not when the latent nodes are taken to represent distribu-
+tions over classical hidden variables (subsequently denoted
+asU=Λ). (b) The triangle scenario, with three observed and
+three latent nodes, also presents a classical-quantum gap.
+formation broadcast. In Sec. II we introduce the graph-
+ical notation to be used throughout this work and de-
+ﬁne the causal compatibility problem. We next explain
+quantum inﬂation by means of a simple example in
+Sec. III, deferring its detailed construction for arbitrary
+two-layer DAGs to Sec. IV. Section V generalizes the
+technique to apply to every possible multilayer causal
+structure involving unobserved quantum systems, uti-
+lizing the two-layer construction as its elementary con-
+stituent. Section VI then considers a slight modiﬁcation
+to quantum inﬂation to obtain a new tool for assessing
+causal compatibility with classical models. The next
+three sections illustrate the power of quantum inﬂation
+through diﬀerent applications. First, in Sec. VII, we fo-
+cus on the study of quantum correlations and use quan-
+tum inﬂation to characterize correlations achievable in
+various tripartite quantum causal networks, including
+the derivation of quantum causal incompatibility wit-
+nesses. Second, we show in Sec. VIII how quantum inﬂa-
+tion can be used for cryptography purposes in quantum
+networks, in particular, to bound the eavesdropper’s
+predictability on the observed measurement outcomes.
+Third, in Sec. IX, we consider a standard application
+in causality and show how to use quantum inﬂation to
+bound the strength of causal eﬀects (this is, to perform
+do-conditional estimation) in the presence of quantum
+common causes. Finally, we conclude in Sec. X.
+We expect quantum inﬂation to ﬁnd an application
+in many diﬀerent contexts. The most immediate one is
+probably the characterization of correlations in quan-
+tum networks and its use for quantum information pro-
+tocols. However, tools to characterize classical causal
+connections are commonly used in many scientiﬁc disci-
+plines; see, for instance, Refs. [21, 22] for examples in
+the context of biomolecular investigations or genomics.
+Progress in our understanding of these and other pro-
+cesses at smaller scales will eventually have to face quan-
+tum phenomena and understand how causal explana-
+tions are aﬀected by them. In fact, some recent works
+advocate, admittedly not always in fully convincing
+ways, that quantum eﬀects may play a role in biologi-
+cal processes [23, 24]. We expect quantum inﬂation to
+be a fundamental method to address all these scientiﬁc
+challenges that are to come.
+II. DEVICE-INDEPENDENT QUANTUM
+CAUSAL STRUCTURES
+In this work we consider physical scenarios where an
+experimenter can observe a number of random variables.
+Some of such observed variables can be inﬂuenced by
+other observed variables and also by unknown quantum
+processes. Our goal is to determine whether the postu-
+lated causal relations between the observed variables
+and such hidden processes are compatible with the ob-
+served statistics.
+Think, for instance, of the scenario depicted in Fig. 2.
+
+=== page 3 ===
+3
+a b c
+x y z
+Alice Bob Charlie
+∗
+UAB
+∗
+UB′C
+FIG. 2. The quantum tripartite line in the device-
+independent framework.
+The quantum states UAB andUB′C are, respectively,
+distributed to the parties Alice and Bob, and Bob and
+Charlie. Alice (respectively, Charlie) probes her (respec-
+tively, his) subsystem with a measurement labeled byX
+(respectively,Z), obtaining the resultA (respectively,
+C). Bob probes both of his parts of states UAB and
+UB′C via a collective measurement labeledY , obtaining
+the outcomeB. If Alice, Bob, and Charlie repeat this
+experiment several times, then they can estimate the
+probabilities{PABCXYZ(a,b,c,x,y,z)}, that, from now
+on, we just refer to asP (a,b,c,x,y,z). We further assume
+that, for each party, the choice of measurement setting
+is done independently of the other two parties.
+This scenario is known as the tripartite-line causal
+scenario [25, 26], and it is meant to model the action
+of a quantum repeater in a device-independent way,
+where we assume no knowledge of the state preparations
+or measurement devices involved or, for that matter,
+the Hilbert spacesHA,HB,HB′, andHC where those
+objects act.
+For any Hilbert spaceH, letB(H) denote the set of
+linear bounded operators mapping H to itself. The
+distributionPABCXYZ is realizable in the tripartite-line
+causal scenario if and only if there exist Hilbert spaces
+HA,HB,HB′, andHC, quantum states
+UAB∈B (HA⊗HB), U AB≽0, Tr[UAB]=1,
+UB′C∈B (HB′⊗HC), U B′C≽0, Tr[UB′C]=1, (1)
+and positive operator valued measures (POVMs)
+Ea|x∈B (HA), E a|x≽0,
+∑
+a
+Ea|x = 1A,
+Fb|y∈B (HB⊗HB′), F b|y≽0,
+∑
+b
+Fb|y = 1BB ′,
+Gc|z∈B (HC), G c|z≽0,
+∑
+c
+Gc|z = 1C,
+(2)
+such that
+PABCXYZ(a,b,c,x,y,z)=
+PX(x)PY(y)PZ(z)×
+Tr
+[
+(UAB⊗UB′C)(Ea|x⊗Fb|y⊗Gc|z)
+]
+.
+(3)
+For simplicity, rather than sketching the correspond-
+ing quantum experiment, we prefer to represent the re-
+lations between the variablesX,Y ,Z,A,B,C,UAB,
+and UB′C, by means of what we hereby call device-
+independent quantum causal structures, or quantum
+causal structures, for short. This structure fully de-
+termines the form of the observed statistics, as in Eq.(3).
+A quantum causal structure is a Directed Acyclic
+Graph (DAG) where each node represents a classical or
+a quantum system. All quantum nodes are assumed to
+be latent: This assumption means that we can extract
+information from them only through their classical suc-
+cessors. Conversely, all classical variables are regarded
+as directly observable. The outgoing edges of a quan-
+tum node represent diﬀerent subsystems or sectors of
+the corresponding quantum state, whereas the outgo-
+ing edges of a classical node denote copies of the node
+variable. The interpretation of the DAG is that each
+node is generated by applying an unknown determinis-
+tic quantum operation to all of its incoming edges. A
+root node (a node without incoming edges) can be re-
+garded as the result of applying a transformation to a
+system with no information content: The correspond-
+ing random variable or quantum system is, therefore,
+assumed uncorrelated with any other root nodes.
+The quantum causal structure corresponding to the
+tripartite-line causal scenario (Fig. 2) is depicted in
+Fig. 3(a). Since the variablesX,Y , andZ and the quan-
+tum states UAB andUB′C are assumed independent,
+they are represented by root nodes. The random variable
+A is the result of applying a quantum operation from
+the random variableX and one part of stateUAB toA’s
+sample space. Since the outcome of the map is a classical
+variable, any such map corresponds to a quantum mea-
+surement onHA, labeled byX, i.e., to the POVMs (2).
+When we specify the quantum operations mapping
+incoming edges to nodes in a quantum causal structure
+G, we speak of a quantum realization ofG. A distribu-
+tionPobs over the observed nodesVVVO ofG is said to be
+UB'C
+B C
+UAB
+A
+X Y Z
+(a)
+A
+B C
+X
+Y
+UAD
+UBC
+S
+Z (b)
+FIG. 3. DAG representation of two example causal scenar-
+ios with quantum latent nodes. (a) The tripartite-line causal
+scenario, where two causally independent partiesA andC
+each share some quantum entanglement with a central party
+B, later denotedQ
+/uniF1E0for brevity. (b) Arbitrary quantum-
+latent causal structures contain directed edges beyond the
+traditional network connections of latent-to-terminal edges
+and root-to-terminal edges. A method for analyzing corre-
+lations in general structures with quantum latent nodes is
+given in Sec. V.
+
+=== page 4 ===
+4
+compatible withG if there exists a quantum realization
+that generates the distributionPobs(VVVO).
+Coming back to our example,PABCXYZ is compatible
+with the quantum causal structure in Fig. 3(a) if and only
+ifP admits a decomposition of the form (3), for some
+Hilbert spacesHA,HB,HB′, andHC and operators
+satisfying Eqs. (1) and (2).
+As another example, consider the DAG in Fig. 3(b),
+with quantum nodes UAD and UBC. A distribu-
+tion{PABCXYZS} is compatible with this causal struc-
+ture if and only if there exists a state UAD, quan-
+tum channels Ωs∈B (HD)→B (HB⊗HC), and POVMs
+Ea|x∈B (HA), Fb|y∈B (HB′), and Gc|bz∈B (HC) such
+that
+PABCXYZS(a,b,c,x,y,z,s)=
+PX(x)PY|AX(y|a,x)PZ(z)PS(s)× (4)
+Tr
+[
+(1A⊗Ωs)(UAD)(Ea|x⊗Fb|y⊗Gc|bz)
+]
+.
+In general terms, the quantum causal structures we
+consider are arbitrary combinations of the following
+elements:
+• preparations, controlled or not, of multipartite
+quantum states of arbitrary dimension (as an ex-
+tension to the formalism, we also add sources of
+global shared randomness in Sec. VII C 1),
+• transformations of (multipartite) quantum sys-
+tems, described by quantum channels which may
+be classically controlled, and
+• measurements, i.e., operations which generate
+classical random variables from (a set of) quantum
+states.
+Without loss of generality we can assume that all mea-
+surements are projective and that all transformations
+are unitary, since we can dilate all such operations and
+then subsume all the local ancilla states into the causal
+structure’s preparations.
+When we depict such a process as a directed acyclic
+graph, the vertices in the DAG represent the outcomes
+of these process elements, not the process elements them-
+selves. That is, DAGs are distinct from circuit diagrams.
+For instance, in Fig. 3(b) the nodeB indicates the post-
+measurement random variable arising from a measure-
+ment on some subsystem ofUBC classically controlled
+byY . The node UBC there indicates the (bipartite)
+posttransformation state arising from a transformation
+(classically controlled byS) applied to a fraction of the
+subsystems ofUAD.
+Note that combinations of these elements can describe
+quite complex operations. For instance, an operation
+with both classical and quantum inputs and outputs
+is captured in this formalism by a controlled transfor-
+mation followed by a projective measurement on a sub-
+space of the resulting state.
+Given a quantum causal structureG, the purpose of
+this work is to tackle the following problem.
+Causal Compatibility Problem
+Input: a device-independent causal structure G, and
+a probability distribution Pobs(VVVO) over its observed
+nodesVVVO.
+Output: if Pobs(VVVO) is compatible with G, output
+COMPATIBLE. Otherwise, output INCOMPATIBLE.
+The main challenge when addressing the causal com-
+patibility problem comes from the fact that the Hilbert
+spacesH(i)
+Q required to reproduce the observed statis-
+ticsPobs(VVVO) are not known a priori, and they might
+well be inﬁnite dimensional. In fact, for the causal struc-
+ture depicted in Fig. 1(a) (the quantum correlations sce-
+nario), the causal compatibility problem is known to be
+undecidable [14]. Moreover, even the weaker problem
+of deciding ifPobs(VVVO) can be roughly approximated by
+a compatible distribution cannot be solved, in general,
+by a Turing machine [15].
+The quantum inﬂation technique, introduced in the
+next sections, is a tool to prove that certain distributions
+Pobs(VVVO) are incompatible with the considered causal
+structureG. That is, for some instances, the inﬂation
+technique allows us to solve the causal compatibility
+problem in the negative. Even though the no-go results
+of Refs. [14, 15] imply that this tool, as any other tool
+designed to tackle the quantum causal compatibility
+problem, cannot be complete,1 in the next sections we
+illustrate its applicability by proving the incompatibil-
+ity of large sets of observed distributions for diﬀerent
+quantum causal structures.
+III. QUANTUM INFLA TION BY EXAMPLE
+For the sake of clarity, it is convenient to start the
+presentation of quantum inﬂation through an exam-
+ple. Consider the quantum causal network depicted in
+Fig. 4(a), whereby three random variables A,B, and
+C (taking the valuesa,b, andc, respectively) are gen-
+erated by conducting bipartite measurements over the
+ends of three bipartite quantum statesρAB,ρBC, and
+ρAC (from now on, quantum latent variables are de-
+noted withρ, instead ofU). We are handed the distri-
+butionPobs(a,b,c) of observed variables and asked if it
+is compatible with this model. How to proceed?
+1 Namely, that for many quantum-latent causal structures G,
+there will exist incompatible distributionsPobs(VVVO) whose in-
+compatibility cannot be detected through the quantum inﬂa-
+tion technique. It is important to note that the undecidabil-
+ity proofs of Refs. [ 14, 15] imply a limitation not speciﬁc to
+quantum inﬂation, however: Any further method for quantum
+causal compatibility must also be incomplete.
+
+=== page 5 ===
+5
+Suppose that there existed indeed bipartite states
+ρAB,ρBC, andρAC of systemsA′′B′,B′′C′, andA′C′′
+and commuting measurement operatorsEa,Fb, andGc,
+acting on systemsA′A′′,B′B′′, andC′C′′, respectively,
+which are able to reproduce the correlationsPobs(a,b,c).
+Now imagine how the scenario would change ifn inde-
+pendent copiesρi
+AB,ρi
+BC, andρi
+AC,i=1,...,n of each of
+the original states are distributed instead, as depicted
+in Fig. 4(b). Call ρ the overall quantum state before
+any measurement is carried out. For any i,j = 1,...,n
+we can, in principle, implement measurement{Ea}a on
+theith copy ofρAC and thejth copy ofρAB: We denote
+by{Ei,j
+a }a the corresponding measurement operators.
+Similarly, call{Fi,j
+b }b, (respectively,{Gi,j
+c }c) the mea-
+surement{Fb}b (respectively,{Gc}c) over the states
+ρi
+AB andρj
+BC (respectively,ρi
+BC andρj
+AC).
+classical
+The newly deﬁned operators and their averages,
+⟨X⟩ρ :=Tr[ρX], satisfy nontrivial relations. For exam-
+ple, forH =E,F,G andi⁄=k,j⁄=l the operatorsHi,j and
+Hk,l act on diﬀerent Hilbert spaces and, hence, com-
+mute,
+[
+Hi,j,Hk,l]
+=0. Similarly, expressions such as⟨
+E1,1
+a E1,2
+a′ F 2,2
+b
+⟩
+ρ
+and
+⟨
+E1,2
+a E1,1
+a′ F 1,2
+b
+⟩
+ρ
+can be shown
+identical, since one can arrive at the second one from
+the ﬁrst one just by exchangingρ1
+AB withρ2
+AB. More
+generally, for any functionQ({Ei,j
+a ,Fk,l
+b ,Gm,n
+c }) of the
+measurement operators and any three permutationsπ,
+A
+BC ρBC
+ρAC ρAB
+=
+A′A′′
+E a
+C ′′
+A′′ A′
+B′
+B′′C ′
+A′′A′
+A′′A′
+/arrow_right
+(a)
+A
+BC
+ρBC
+2
+ρAC
+2 ρAB
+2
+ρBC
+1
+ρAC
+1 ρAB
+1
+=
+E1,1
+a (b)
+FIG. 4. Quantum inﬂation in the triangle scenario. (a) In
+the original scenario, by probing systems A′ andA′′ with
+the quantum measurement{Ea}a, a valuea for the random
+variableA is generated. The valuesb andc for the random
+variablesB andC are produced similarly. (b) In quantum
+inﬂation, we distribute n (in the case shown, n=2) inde-
+pendent copies of the same states to the parties, which now
+use the original measurement operators on diﬀerent pairs
+of copies of the states they receive. For instance, the mea-
+surement operators{E1,1
+a }a act on the states corresponding
+to copiesρ1
+AB andρ1
+AC, and the measurements with other
+superindices are deﬁned in an analogous way.
+π′, andπ′′ of the indices 1,...,n, one should have
+⟨
+Q({Ei,j
+a ,Fk,l
+b ,Gm,n
+c })
+⟩
+ρ
+=
+⟨
+Q({Eπ(i),π′(j)
+a ,Fπ′(k),π′′(l)
+b ,Gπ′′(m),π(n)
+c })
+⟩
+ρ
+.
+(5)
+Finally, note that, if we conduct the measurements
+{Ei,i,Fi,i,Gi,i}n
+i=1 at the same time (something we can
+do, as they all commute with each other), then the mea-
+surement outcomes a1,...,an,b1,...,bn,c1,...,cn are dis-
+tributed according to
+⟨ n∏
+i=1
+Ei,i
+aiFi,i
+bi Gi,i
+ci
+⟩
+ρ
+=
+n∏
+i=1
+Pobs(ai,bi,ci). (6)
+That is, if the original distributionPobs(a,b,c) is com-
+patible with the network in Fig. 4(a), then there should
+exist a Hilbert spaceH, a state ρ :H→H and opera-
+tors{Ei,j
+a }i,j,a,{Fk,l
+b }k,l,b, and{Gm,n
+c }m,n,c satisfying
+the above relations. If such is the case, we say that
+Pobs(a,b,c) admits annth-order quantum inﬂation.
+By increasing the index ofn, we arrive at a hierarchy of
+conditions, each of which must be satisﬁed by any com-
+patible distributionPobs(a,b,c).
+At ﬁrst glance, disproving the existence of a quan-
+tum inﬂation looks as diﬃcult as the original feasibility
+problem. However, the former task can be tackled via
+noncommutative polynomial optimization (NPO) the-
+ory [27]. Originally developed to characterize quantum
+correlations in Bell scenarios through the Navascues-
+Pironio-Acin (NPA) hierarchy [28, 29], the general goal
+of NPO theory is to optimize the expectation value of a
+polynomial over operators subject to a number of poly-
+nomial operator and statistical constraints. This opti-
+mization is achieved by means of a hierarchy of semideﬁ-
+nite programming (SDP) tests [30]; see also Appendix A.
+In our particular case, we are dealing with a feasibility
+problem. The polynomial operator constraints we wish
+to enforce onEi,j
+a ,Fk,l
+b , andGm,n
+c are that they deﬁne
+complete families of projectors, which commute when
+acting on diﬀerent quantum systems. The statistical con-
+straints are given by Eqs.(5) and (6). If for somen we are
+able to certify, via NPO theory, thatPobs(a,b,c) does not
+admit annth-order quantum inﬂation, then we would
+prove thatPobs(a,b,c) does not admit a realization in the
+quantum network in Fig. 4(a). An application of this
+method for this precise scenario is given in Sec. VII A 1.
+The method just described can be easily adapted to
+bound the statistics of any network in which the observed
+variables are deﬁned by measurements on the quantum
+latent variables, the triangle scenario described in this
+section being only an example of such networks. To test
+the incompatibility of a distributionPobs, one would
+• consider a modiﬁed network withn copies of each
+of the latent variables;
+• extend the original measurement operators to act
+on all possible copies of each system;
+
+=== page 6 ===
+6
+• work out how operator averages relate toPobs and
+to each other; and
+• use NPO theory to disprove the existence of a state
+and operators satisfying the inferred constraints.
+In Sec. V we further show how to extend the notion
+of quantum inﬂation to prove infeasibility in general
+quantum causal structures, where there might be causal
+connections among observed variables, as well as from
+observed to latent variables.
+IV. DET AILED DESCRIPTION
+To illustrate the details of the construction, we ﬁrst
+consider a subset of causal scenarios in which single
+measurements are applied to diﬀerent quantum states.
+They correspond to two-layer DAGs in which arrows
+coming from a ﬁrst layer, consisting in both observed
+and latent variables, go to a second layer of observed
+variables. Each of the variables in the second layer is
+regarded as an outcome variable, since it is the result
+of conducting a measurement on a quantum state. The
+tuple of values of all the classical observed parents of
+such a variable can be understood as the measurement
+setting used to produce this outcome; this case is, for
+instance, variablesX,Y , and Z in the tripartite-line
+scenario in Fig. 3(a).
+The essential premise of quantum inﬂation is to ask
+what would happen if multiple copies of the original
+(unspeciﬁed) quantum states are simultaneously avail-
+able to each party. In this gedanken experiment the
+parties use copies of their original measurement appa-
+ratus to performn simultaneous measurements on the
+n copies of the original quantum states now available
+to them. There are diﬀerent ways in which a party can
+align her measurements to act on the states now avail-
+able; thus, we must explicitly specifyupon which unique
+set of Hilbert spaces a given measurement operator acts
+nontrivially. Let us therefore denote measurement op-
+erators by
+ˆOs|k
+i|m≡ ˆO
+(
+outcome variable=k, spaces=s,
+setting=m, outcome=i
+)
+,
+where the four indices specify
+1. k, the index or name of the outcome variable in
+the original causal graph,
+2. s, the Hilbert spaces the given operator acts on,
+3. m, the measurement setting being used, and
+4. i, the outcome associated with the operator.
+In the example in Fig. 4, we have
+Ei,j
+a =E
+{A′
+i,A′′
+j}
+a = ˆO
+{A′
+i,A′′
+j}|A
+a|∅ ,
+Fi,j
+b =F
+{B′
+i,B′′
+j}
+b = ˆO
+{B′
+i,B′′
+j}|B
+b|∅ ,
+Gi,j
+c =G
+{C′
+i,C′′
+j}
+c = ˆO
+{C′
+i,C′′
+j}|C
+c|∅ .
+(7)
+Now, using ann=2 quantum inﬂation as in Fig. 4(b),
+one ﬁnds that s for outcome variable k =A may be
+sampled from precisely four possibilities, each value
+being a diﬀerent tuple:
+s∈
+{
+{A′
+1,A′′
+1},{A′
+1,A′′
+2},{A′
+2,A′′
+1},{A′
+2,A′′
+2}
+}
+,
+whereA′
+i (respectively,A′′
+i ) denotes the factorA of the
+Hilbert space whereρi
+AC (respectively,ρi
+AB) acts.
+These operators are regarded as the noncommuting
+variables of an NPO problem where the polynomial
+constraints are derived according to rules pertaining to
+the operators’ projective nature as well as a number of
+commutation rules. The statistical constraints are then
+enforced by imposing symmetry under permutations of
+the state indices, and also equating certain expectation
+values with products of observed probabilities.
+Projection rules
+For ﬁxeds,k,m, the noncommuting variables{ ˆOs|k
+i|m}i
+must correspond to a complete set of measurement op-
+erators. Since we do not restrict the dimensionality of
+the Hilbert space where they act, we can take them to
+be a complete set of projectors. That is, they must obey
+the relations
+ˆOs|k
+i|m =( ˆOs|k
+i|m)†, ˆOs|k
+i|m
+ˆOs|k
+i′|m =δii′ ˆOs|k
+i|m,∀s,k,i,i′,m (8a)
+∑
+i
+ˆOs|k
+i|m = 1, for alls,k,m. (8b)
+These relations imply, in turn, that each of the non-
+commuting variables is a bounded operator. Hence, by
+Ref. [27], the hierarchy of SDP programs provided by
+NPO is complete; i.e., if said distribution does not ad-
+mit annth-order inﬂation, then one of the NPO SDP
+relaxations will detect its infeasibility.
+Commutation rules
+Operators acting on diﬀerent Hilbert spaces must
+commute. More formally,
+[
+ˆOs1|k1
+i1|m1
+, ˆOs2|k2
+i2|m2
+]
+=0 if s1∩s2=∅. (9)
+As shown in Sec. VI, it is possible to construct an alter-
+native SDP for constraining the correlations ofclassical
+causal structures by imposing that all measurement op-
+erators commute.
+Symmetry under permutations of the indices
+Because of the way inﬂated networks are constructed
+from the original network, all averages of products of the
+
+=== page 7 ===
+7
+noncommuting variables must be invariant under any
+permutationπ of the source indices. Callρ the overall
+quantum state of the inﬂated network (since we do not
+cap the Hilbert space dimension, we can assume that
+all state preparations in the original network are pure).
+Then we have that
+⟨ ˆOs1|k1
+i1|m1
+· ˆOs2|k2
+i2|m2
+····· ˆOsn|kn
+in|mn
+⟩
+ρ
+=
+⟨
+ˆOπ(s1)|k1
+i1|m1
+· ˆOπ(s2)|k2
+i2|m2
+····· ˆOπ(sn)|kn
+in|mn
+⟩
+ρ
+.
+(10)
+An example of such statistical constraints imposed in the
+triangle scenario is given in Eq. (5). Another example,
+for an inﬂation leveln=3, is the following:
+⟨
+E{A′
+1,A′′
+1}
+0 E{A′
+2,A′′
+2}
+1 F{B′
+1,B′′
+3}
+0 G{C′
+1,C′′
+1}
+0
+⟩
+ρ
+applyρ1
+AB↔ρ2
+AB
+=
+⟨
+E{A′
+1,A′′
+2}
+0 E{A′
+2,A′′
+1}
+1 F{B′
+2,B′′
+3}
+0 G{C′
+1,C′′
+1}
+0
+⟩
+ρ
+(11a)
+applyρ1
+AB↔ρ3
+AB
+=
+⟨
+E{A′
+1,A′′
+2}
+0 E{A′
+2,A′′
+3}
+1 F{B′
+2,B′′
+3}
+0 G{C′
+1,C′′
+1}
+0
+⟩
+ρ
+(11b)
+applyρ1
+BC↔ρ3
+BC
+=
+⟨
+E{A′
+1,A′′
+2}
+0 E{A′
+2,A′′
+3}
+1 F{B′
+2,B′′
+1}
+0 G{C′
+3,C′′
+1}
+0
+⟩
+ρ
+, (11c)
+where, for readability, we identify ˆOs|A
+a|∅ ( ˆOs|B
+b|∅ ) [ ˆOs|C
+c|∅ ]
+withEs
+a (F s
+b ) [Gs
+c] per Eq. (7).
+Consistency with identiﬁable monomials
+Finally, the crucial ingredient that connects an in-
+ﬂated network to the observed correlations is that, as de-
+scribed by Eq. (6) in Sec. III, certain expectation values
+pertaining to the inﬂated network can be related to prod-
+ucts of the probabilities ofPobs. We refer to those prod-
+ucts of probabilities as the identiﬁable monomials.
+Letn be the order of the considered inﬂation. We ﬁrst
+single out thejth copy of each state, forj =1,...,n. For
+each random variablek, we write⃗jk for the set of Hilbert
+spaces on whichk acts with the copy labels of all Hilbert
+spaces set toj (e.g.,⃗1A ={A′
+1,A′′
+1} and⃗2A ={A′
+2,A′′
+2}
+in Fig. 4); we writeij,k for the measurement outcome
+ofk andmj,k for its measurement setting, so we end up
+describing the operator ˆO
+⃗jk|k
+ij,k|mj,k
+. For ﬁxedj, the prod-
+uct of these operators over all random variablesk has an
+expectation value that reproduces the observed prob-
+abilityPobs(⋂
+k(ij,k|mj,k,k)). Now, if we furthermore
+take the product ofj over alln copies, the expectation
+value of the resulting operator reproduces a degree-n
+monomial comprised of observable probabilities. For-
+mally, for any set of indices{ij,k,mj,k}j,k, we have that
+⟨ n∏
+j=1
+∏
+k
+ˆO
+⃗jk|k
+ij,k|mj,k
+⟩
+ρ
+=
+n∏
+j=1
+Pobs
+(⋂
+k
+(ij,k|mj,k,k)
+)
+, (12)
+where (i|m,k) denotes the event of probingk with setting
+m and obtaining the result i, and where ⃗jk indicates
+that this operator acts nontrivially on only the Hilbert
+spaces associated with copy indexσ={jj...} of those
+original sources which are parents of partyk. See Eq. (6)
+for an example of this consistency rule applied to the
+triangle scenario.
+The constraints (8), (9), (10) and (12) are satisﬁed by
+the overall state and operators involved in annth-order
+quantum inﬂation of a particular causal process with
+observed distributionPobs. All have a form suitable to
+assess their physical realizability through NPO via a
+feasibility problem.
+The same machinery can easily be adapted to opti-
+mization problems beyond feasibility. Crucially, the left-
+hand side of Eq.(12), under the constraints(8)-(10), can
+be interpreted as a relaxation of the convex hull ofn in-
+dependent copies of a distributionPobs compatible with
+the considered causal structure. Therefore, quantum in-
+ﬂation can be exploited not only for assessing whether
+an observed probability distribution can be generated
+in a particular quantum causal scenario, but also to op-
+timize Bell-like polynomial expressionsB(Pobs) over all
+quantumPobs admitting a given causal explanation, so
+long as the polynomialB(Pobs) makes reference only to
+identiﬁable monomials. The key idea is to express any
+Bell-like polynomialB as a linear function over the ex-
+pectation values
+⟨∏
+jOj
+⟩
+, via the correspondence (12).
+Minimizing or maximizing such a linear combination of
+expectation values can also be cast as a noncommutative
+polynomial optimization problem, that can be similarly
+tackled with NPO. In many polynomial optimization
+problems, no information about the distributionPobs is
+speciﬁed in advance; in Sec. VII C we show an explicit
+example of how Eq. (12) is exploited in the optimiza-
+tion of polynomial Bell operators. In other cases, such
+as the quantum network security analysis in Sec. VIII,
+we consider polynomial optimization subject to partial
+speciﬁcation of the identiﬁable monomials, for instance,
+if one has constraints pertaining to marginals ofPobs.
+In fact, this idea can be generalized even further
+to carry optimizations over polynomials of arbitrary
+operator averages, i.e., not necessarily those averages
+related to products of observed probabilities (we show a
+simple example in Sec. VII C 2). Moreover, the quantum
+inﬂation technique can also be applied for studying
+classical causal inference. We explain how to do so in
+Sec. VI, but, before that, we describe how to extend the
+ideas above to arbitrary quantum causal networks.
+
+=== page 8 ===
+8
+V. ARBITRAR Y CAUSAL SCENARIOS
+In the previous section, we provide a systematic
+method to characterize the correlations achievable in a
+subset of quantum causal networks, namely, two-layer
+DAGs, where no node has both parents and children
+and where every observable node has at most one ob-
+servable parent. Let us denote such DAGs to have anet-
+work form. In this section, we generalize all previous
+methodology to characterize correlations in arbitrary
+causal structures composed of the elements described
+in Sec. II. Namely, we explain how an arbitrary causal
+structure composed of these elements can be reduced
+to network form cases, which we can already solve.
+A. Visible nodes with parents and children:
+Maximal interruption
+The ﬁrst generalization we consider extends our tech-
+niques for network form DAGs to arbitrary so-called
+latent exogenous causal structures, where all unob-
+served nodes are root nodes but otherwise classical vari-
+ables can have both parents and children.
+We use the term maximal interruption to refer
+to our procedure for mapping the correlations of any
+latent-exogenous causal structure to the correlations
+of a unique network form structure. The procedure is
+based on recursive application of two simple rules.
+First, suppose a directed edge is found to originate
+from an endogenous (nonroot) observable node, such as
+nodeA in Fig. 5(a). Such a node is playing two distinct
+roles simultaneously: On the one hand, it acts like a set-
+ting variable relative to its children. On the other hand,
+it acts like an outcome variable relative to its parents.
+The standard NPA semideﬁnite programming hierar-
+chy [28, 29] presumes that every variable is exclusively
+either a setting or an outcome, however. Interruption
+splits such dual-role nodes in two, yielding a gedanken
+experiment graph with an eﬀective outcome node as
+well as an eﬀective setting node; see Fig. 5(b). Postse-
+ρAB
+X A B
+(a)
+ρAB
+X A BA1
+# (b)
+FIG. 5. (a) The instrumental causal structure and (b) its
+maximal interruption, which is isomorphic to the standard
+causal structure of a Bell experiment. Tsirelson-type in-
+equalities pertaining to the interrupted graph are translated
+into constraints for the quantum instrumental scenario [31–
+33] via the postselection relationP5(a)(A=a,B=b|X=x)=
+P5(b)(A=a,B=b|X=x,A#
+1 =a).
+lecting on the eﬀective outcome variable, for example,
+A in Fig. 5(b), taking a value that matches that of the
+eﬀective setting variable,A#
+1 in Fig. 5(b), allows us to
+characterize the set of distributions compatible with the
+original graph as a projection of the space of distribu-
+tions compatible with the interrupted graph. This idea
+has precedent in classical causal networks in the single-
+world intervention graphs pioneered by Ref. [34] (see also
+the node-splitting procedure of Ref. [35]), as well as the
+e-separation technique introduced in Ref. [36]. Interrup-
+tion of the sort illustrated in Fig. 5 is already exploited
+in quantum information research in Refs. [31–33].
+The other rule relevant to maximal interruption in-
+volves the case where one observable node has multiple
+children, such as nodeS in Fig. 6(a). If every outcome
+ρAB
+A B
+X Y
+S
+(a)
+ρABX
+A B
+Y
+S1
+# S2
+# (b)
+FIG. 6. (a) A Bell-like causal structure with a set-
+ting common to both parties and (b) its maximal inter-
+ruption, which is a Bell causal structure assigning dis-
+tinct outcome variables wholly distinct input variables.
+Quantum correlations in the common-setting scenario (a)
+can be explored by applying the standard NPA semidef-
+inite programming hierarchy [ 28, 29] to the scenario in
+(b) and then translating back to (a) according to the
+postselection relation P6(a)(A=a,B=b|X=x,Y =y,S=s) =
+P6(b)(A=a,B=b|X=x,Y =y,S #
+1 =S#
+2 =s).
+ρAB
+X
+A
+B
+ρAC
+C
+(a)
+ρAB
+X1
+#
+A
+B
+ρAC
+C
+A1
+# A2
+# B1
+# X2
+# (b)
+FIG. 7. An example causal structure (a) and its max-
+imal interruption (b). Note that in (a) the observable
+nodes A and B both possess at least one parent node
+as well as at least one child node. Additionally, the ob-
+servable nodes A andX have multiple child nodes. Con-
+straints on distributions extended to the interrupted graph
+(such as those obtained via quantum inﬂation) are trans-
+lated into constraints on the original distribution using
+the postselection relation P7(a)(A=a,B=b,C=c|X=x) =
+P7(b)(A=a,B=b,C=c|X #
+1 =X #
+2 =x,A#
+1 =A#
+2 =a,B#
+1 =b).
+The maximally interrupted DAG in (b) has the two-layer
+network structure considered in Sec. IV.
+
+=== page 9 ===
+9
+node is considered a “party” in the interpretation of
+Bell scenario causal structures, then such nodes can be
+thought of setting variables which are common to more
+than one party. Think of Fig. 6(a) as a Bell experiment
+in which Alice’s (respectively, Bob’s) setting consists
+of one bit determined by a source of private random-
+nessX (respectively,Y ), as well as one bit determined
+by a shared random numberS. Without loss of gener-
+ality, we can characterize the set of correlations that
+Alice and Bob can observe in this scenario by instead
+characterizing compatibility relative to Fig. 6(b) and
+then postselecting onS#
+1 =S#
+2 . That is, we can charac-
+terize the set of correlations that Alice and Bob would
+observe if theS bit for Alice and theS bit for Bob were
+independent—i.e., Fig. 6(b)—such that the set of distri-
+butions compatible with Fig. 6(a) is the projection of the
+set of distributions compatible with the independent-
+settings scenario onto the subspace whereS#
+1 =S#
+2 .
+Maximal interruption, then, is the combination of
+both these two forms of node splitting. Graphically,
+maximal interruption modiﬁes a graph G as follows:
+For every observed variableV which is neither a root
+node nor a terminal node, as well as for anyV having
+multiple children, we introducek new variables{V #
+i }i
+wherek denotes the number of edges outgoing fromV .
+We then replace each edge formerly originating from
+V by an edge originating from the correspondingV #
+i .
+In the resulting (partially) interrupted graphG′ , V
+is a terminal node and every V #
+i is a root node. The
+correlations inG′ are related to those in the original
+graphG by postselection, namely
+PG(...,V =v)=PG′(...,V =v|V #
+1 =...=V #
+k =v). (13)
+Proceeding in this fashion, any latent exogenous causal
+structure can be converted into a network form. A
+graphical example of this conversion is shown in Fig. 7.
+Distributions over the nodes of the interrupted graph
+G′ constitute extensions of distributions pertaining to
+the original graph. That is, observed statistics P per-
+taining toG only partially specify an extensionP′ toG′.
+Critically, a distributionP is compatible with a graph
+G if and only if there exists some valid extensionP′
+ofP which is compatible with the interrupted graphG′.
+P′
+AB|A# is said to constitute a valid extension of the
+original distributionPAB whenP′
+AB|A# is compatible
+with the interruption graphG′ and recovers the origi-
+nal distributionPAB under postselection. Formally, we
+have the following lemma.
+Fundamental Lemma of Interruption
+PAB∈CompatibleDistributions
+[
+G
+]
+iﬀ ∃P ′ :P′
+AB|A#∈ ValidExtensionsG′
+[
+PAB
+]
+,
+i.e. PAB(ab)=P′
+AB|A#(ab|a)
+and P′
+AB|A#∈ CompatibleDistributions
+[
+G′]
+.
+(14)
+This result allows us to witness causal incompatibil-
+ity relative toG by witnessing causal incompatibility
+relative toG′. SinceG′ is of network form, we can read-
+ily apply quantum inﬂation to it.
+B. Latent nodes with parents
+The remaining case that needs to be considered is that
+of latent nonexogenous causal structures, where latent
+nodes can have parents. The Evans exogenization pro-
+cedure [37] allows classical latent nonexogenous struc-
+tures to be transformed into latent exogenous causal
+structures with the same predictive power. The proce-
+dure consists in replacing all arrows from a parent node
+to a latent node with arrows from the parent node to the
+children of the latent node. This operation is repeated
+for all parents of all latent nodes such that ﬁnally all
+latent variables become parentless.
+When applied to quantum latent variables, however,
+exogenization results in a new quantum network that,
+in general, does not predict the same distributions of
+observed events as its predecessor. This result is again
+related to the impossibility of broadcasting quantum
+information [17]. The example in Fig. 8, evidencing
+this compatibility mismatch, is wholly due to Stefano
+Pironio.
+To make the issue explicit, in the original network
+shown in Fig. 8(a) the variableS has the interpretation
+of a setting, which adjusts the stateρBC before it is sent
+toB andC. Thus, it is possible for P (A,B|X,Y,S =0)
+to maximally violate a Bell inequality forA andB, and
+P (A,C|X,Z,S=1) to maximally violate a Bell inequal-
+ity forA andC. If one applies the Evans exogenization
+procedure to the original network, one obtains the net-
+work in Fig. 8(b). However, no quantum state prepared
+independently ofS can maximally violate a Bell inequal-
+ity betweenA andB and at the same time maximally
+violate another Bell inequality betweenA andC, due to
+A
+B C
+X
+Y Z
+ρAS
+ρBC
+S
+(a)
+A B C
+X Y Zρ S (b)
+FIG. 8. In (a), there is a causal structure withρBC being a
+nonexogenous unobserved quantum node. In (b), there is
+a diﬀerent causal structure, corresponding to the classical
+latent reduction of the former. While these two graphs are
+equivalent if the unobserved nodes are classical, they are
+demonstrably inequivalent when the unobserved nodes are
+quantum.
+
+=== page 10 ===
+10
+the monogamy of quantum correlations [38, 39]. Conse-
+quently, it is not possible to reproduce such correlations
+within the causal network in Fig. 8(b), a product of ap-
+plying Evans exogenization to Fig. 8(a).
+One way to deal with this predicament is to regard
+observable variables with unobserved children as ran-
+dom variables indicating the classical control of a quan-
+tum channel. If a nonroot latent node has latent par-
+ents, then it is understood as a controlled channel on
+the Hilbert space deﬁned by the latent parents. If, in-
+stead, a nonroot latent node has exclusively observable
+parents, then the latent node is regarded as a controlled
+source of quantum state preparation, which we model as
+a source of quantum states followed by a quantum chan-
+nel controlled by the observable parents. In the same
+way, latent variables with latent children are treated as
+uncontrolled quantum channels (we defer to Appendix B
+the discussion that illustrates the need to account for
+this type of channels). Thus, in Fig. 8(a), we treat the
+latent variableρAS as a joint quantum state and the
+root variableS as the classical control for a quantum
+channel acting on theBC subsystems. That is, one un-
+derstands ρABC|S=s = ˆUsρAS ˆU†
+s , where, for all values
+ofs, ˆUs is a unitary operator that commutes with any
+operator acting solely onA’s subsystem. As such, the
+joint distribution of the values of the visible variables
+A,B, andC conditioned on the root visible nodes can
+be understood as generated by
+P (A=a,B=b,C=c|X=x,Y =y,Z=z,S=s)
+=
+⟨
+ˆU†
+s ˆAa
+x ˆBb
+y ˆCc
+z ˆUs
+⟩
+ρAS
+=
+⟨
+ˆAa
+x ˆU†
+s ˆBb
+y ˆCc
+z ˆUs
+⟩
+ρAS
+.
+This interpretation can be made without loss of general-
+ity, since the subspaceS of the complete Hilbert space
+AS can be understood as containing the subspaces cor-
+responding toB andC.
+As in the exogenous case, annth-order inﬂation of a
+causal structure with nonexogenous quantum variables
+requires takingn copies of the unobserved root nodes
+and of the unobserved nodes with only visible parents.
+Each unitary operator ˆUs in the original causal struc-
+ture gives rise to operators of the form ˆO{Sj}|U
+s in the
+inﬂated graph, wherej denotes the copy of the Hilbert
+space where ˆUs acts. The unitary or outcome operators
+associated to the descendants of any such “unitary node”
+(for instance,B andC, in Fig. 8) inherit the copy label
+j of the Hilbert spaceSj.
+With this last prescription, the symmetry relabeling
+rule [Eq. (10)] still holds. However, the projection rules
+[Eqs. (8a) and (8b)] hold only if the noncommuting vari-
+ablek in question corresponds to an outcome variable in
+the original graph. Ifk corresponds to a unitary variable,
+then the operator ˆOs|k
+m must be subject to the constraints
+ˆOs|k
+m ( ˆOs|k
+m )† =( ˆOs|k
+m )† ˆOs|k
+m = 1. (15)
+The commutation rule (9) remains valid upon qualify-
+ing that the Hilbert spaces listed ins1∪s2 must be si-
+multaneously coexisting in the original graph. For ex-
+ample, in Fig. 8(a), the operators corresponding to the
+Hilbert spaces associated to the outcome variables B
+andC coexist after the transformation Us is applied
+over systemS. It follows that the corresponding mea-
+surement operatorsOs|B
+b|y andOs′|C
+c|z commute. Finally,
+rule (12) expressing consistency with identiﬁable mono-
+mials must also be amended to take into account that
+descendants of a unitary variable must be bracketed by
+the corresponding unitary and its adjoint.
+Note that the aforementioned operator and statistical
+constraints are all polynomial, and, thus, they can all
+be enforced in the framework of NPO theory.
+Interruption, classical exogenization, and the treat-
+ment for quantum exogenous variables hereby presented
+cover all possible nontrivial causal inﬂuences in arbi-
+trary quantum causal structures composed of prepara-
+tions, transformations, and measurements as described
+in Sec. II. Quantum inﬂation is, therefore, a technique
+of full applicability to bound the quantum correlations
+achievable in general causal scenarios.
+VI. SDP FOR CLASSICAL COMP A TIBILITY
+The quantum inﬂation technique can be easily
+adapted for solving the problem of causal compatibility
+with an arbitrary classical causal structure. It is known
+that any correlation achievable with only classical la-
+tent variables can be realized in terms of commuting
+measurements acting on a quantum state [40]. There-
+fore, in order to detect correlations incompatible with
+classical structures, one must generalize the commuta-
+tion relations in the original quantum inﬂation method
+to the constraint that any pair of measurement opera-
+tors commutes. That is,
+ˆOs1|k1
+i1|m1
+· ˆOs2|k2
+i2|m2
+= ˆOs2|k2
+i2|m2
+· ˆOs1|k1
+i1|m1
+,
+for alls1,s2,k1,k2,m1,m2,i1, andi2. This general-
+ization deﬁnes a hierarchy of constraints that classical
+correlations compatible with a given causal structure
+must satisfy.
+Contrary to the quantum case, the NPO hierarchy
+with commuting operators associated to a ﬁxed inﬂa-
+tion level is guaranteed to converge at a ﬁnite level. In
+fact, for NPO hierarchy levels higher thanN·m·(d−1)—
+whereN is the number of parties,m is the number of
+settings per party, and d is the number of outcomes
+per measurement—application of the commutation rela-
+tions allows one to reduce any product of the operators
+involved into one of shorter length. For a ﬁxed inﬂation
+level, the problem solved at the highest level of the NPO
+hierarchy is analogous to the linear program solved in
+classical inﬂation [11] at the same inﬂation level.
+In contrast with the original classical inﬂation tech-
+nique, the classical variant of the quantum inﬂation
+
+=== page 11 ===
+11
+technique described in this work uses semideﬁnite pro-
+gramming and exhibits far more eﬃcient scaling with
+the inﬂation hierarchy than the original linear program-
+ming approach [12]. One must note that this gain in
+eﬃciency comes at the expense of introducing further
+relaxations in the problem. Nevertheless, this classi-
+cal variant of quantum inﬂation is capable of recover-
+ing a variety of seminal results of classical causal com-
+patibility, such as the incompatibility of the so-called
+W and GHZ distributions (described in the results sec-
+tions) with classical realizations in the triangle scenario.
+It also identiﬁes the distribution described by Fritz [6],
+known to have a quantum realization in the triangle sce-
+nario, as incompatible with classical realizations. For
+all these results, the relaxed SDP formulation is far less
+memory demanding than the raw linear programming
+formulation. Furthermore, the SDP approach is the
+only method that can be used when using inﬂation to
+assess causal compatibility in the presence of terminal
+nodes which can take continuous values.
+In conclusion, not only can quantum inﬂation be lever-
+aged to obtain results for networks with classical sources,
+but we argue that it is the most suitable technique to be
+used for addressing causal compatibility with classical
+realizations in large networks.
+VII. APPLICA TIONS TO QUANTUM
+CORRELA TIONS IN NETWORKS
+We illustrate in this section various problems akin to
+quantum information science where quantum inﬂation
+provides a means to its solution or to approximations of
+it. We focus here on broad classes of problems (determin-
+ing whether a distribution can be generated in a quan-
+tum network, ﬁnding witnesses of network nonlocality,
+and characterizing the quantum correlations achievable
+in a particular network) that underlie many practical
+problems and which we illustrate in concrete examples
+of relevance. Except those in Secs. VII A 1 and VII A 3,
+all the results described are novel, and quantum inﬂa-
+tion outperforms alternative methods for characteriz-
+ing quantum network correlations.2 Moreover, to date,
+quantum inﬂation is the only technique capable of mak-
+ing strong quantitative statements about genuine mul-
+tipartite quantum nonlocality under local operations
+and shared randomness (as illustrated in Ref. [41]), in
+that it is the natural framework for studying the device-
+independent analog of genuine network multipartite en-
+tanglement [42].
+2 In the particular case in Sec. VII A 1, we still answer an open
+problem, although we later ﬁnd that the same result can also be
+derived by using nonfanout classical inﬂations of the triangle
+scenario. Note that nonfanout classical inﬂations yield GPT-
+valid—and, hence, also quantum-valid—constraints [11].
+A
+BC ρBC
+ρAC ρAB
+FIG. 9. The quantum triangle scenario, without settings.
+Each of the observable variablesA,B, andC are dependent
+only on the sources of bipartite entanglement. This ﬁgure is
+essentially a reproduction of Fig. 1(b), the only diﬀerence
+being some added speciﬁcity regarding the quantum nature
+of the latent nodes.
+A. Quantum causal compatibility
+We begin by showing examples of speciﬁc probability
+distributions that we are able to identify as incompat-
+ible with various tripartite quantum causal networks.
+While quantum inﬂation applies to networks with ob-
+served variables of arbitrary cardinality, we hereafter
+consider scenarios involving exclusively two-output ob-
+served variables. We adopt the standard notations and
+label these outputs as{0,1}, unless otherwise speciﬁed.
+1. The triangle scenario
+We start with the simplest version of the triangle
+scenario consisting of three parties that are inﬂuenced in
+pairs by bipartite latent variables, as depicted in Fig. 9.
+The ﬁrst example we study in this scenario is the so-
+called W distribution. This distribution is deﬁned by
+the task of all parties outputting the outcome 0 except
+one, which should output 1. Explicitly, it is
+PW(a,b,c):=
+{
+1
+3 a+b+c=1,
+0 otherwise. (16)
+The W distribution is proven in Ref. [11] not to be real-
+izable in the triangle scenario when the latent variables
+are classical. Additionally, it is easy to see that it is re-
+alizable with tripartite classical randomness. However,
+the question of whether the W distribution is realizable
+in the quantum triangle scenario remained open. It can
+be shown thatPW does not admit a second-order quan-
+tum inﬂation, and a witness that certiﬁes this incompat-
+ibility can be found in Eq. (21). Therefore, a quantum
+realization of the W distribution in the triangle scenario
+is impossible.
+Quantum inﬂation is robust and certiﬁes that, when
+mixing the W distribution with white noise, the resulting
+distributionPW,v(a,b,c):=vPW(a,b,c)+(1−v)/8 does
+not have a quantum realization in the triangle for all
+visibilitiesv higher than 3(2−
+√
+3)≈0.8039. This result
+is obtained by solving the NPO program associated to a
+
+=== page 12 ===
+12
+A
+X
+B
+Y
+C
+Z ρBC
+ρAC ρAB
+FIG. 10. The quantum triangle scenario with settings, some-
+times denotedQ∆ for brevity. Each of the observable vari-
+ablesA,B, andC are now dependent not only on the sources
+of bipartite entanglement, but on additional observable classi-
+cal variablesX,Y , andZ representing measurement choices.
+second-order inﬂation and the set of monomialsL2 (see
+Appendix C for the deﬁnition of this set), restricted to
+operators of length≤3.
+2. The triangle scenario with settings
+One can also consider more complicated networks
+that include additional observable variables to encode
+for choices of discrete measurement settings. Figure 10
+shows this type of network for the case of the triangle
+scenario. In this setup we study the Mermin-GHZ
+distribution, deﬁned byPMermin(a,b,c|x,y,z):=
+
+
+
+1/8 x+y+z =0 mod 2 ,(
+1+(−1)a+b+c)
+/8 x+y+z =1,(
+1−(−1)a+b+c)
+/8 x+y+z =3.
+(17)
+Quantum inﬂation also allows one to prove that the
+Mermin-GHZ distribution is not compatible with a quan-
+tum realization in the triangle scenario with inputs, by
+showing that PMermin does not admit a second-order
+quantum inﬂation; such incompatibility is certiﬁed by
+the violation of Eq. (22). Additionally, its noisy version
+PMermin,v :=vPMermin+(1−v)/8 can be proven not to
+have a quantum realization for any visibilityv higher
+than
+√
+2/3≈0.8165.
+3. The tripartite-line scenario
+Quantum inﬂation is organized as an inﬁnite hierar-
+chy of necessary conditions. There are, however, situa-
+tions in which it recovers the quantum boundary at a
+ﬁnite step. An example of these situations is provided
+by the tripartite-line scenario in Fig. 11, which under-
+lies phenomena such as entanglement swapping. The
+tripartite-line scenario constitutes the essential causal
+unit employed in quantum repeaters and long-distance
+ρBC
+B C
+ρAB
+A
+X Y Z
+FIG. 11. The tripartite-line causal scenario, where two
+causally independent partiesA andC each share some quan-
+tum entanglement with a central partyB, sometimes denoted
+Q
+/uniF1E0for brevity. This ﬁgure is a reproduction of Fig. 3(a).
+entanglement distribution networks. The main charac-
+teristic of this structure is that there is no causal con-
+nection between the extreme variablesA andC. As a
+consequence of this characteristic, all correlations real-
+izable in the tripartite-line scenario satisfy the following
+factorization relation
+∑
+b
+Pobs(a,b,c|x,y,z)=Pobs(a|x)Pobs(c|z). (18)
+This scenario is thoroughly studied in the litera-
+ture [25, 26]. In fact, it is known that the probability
+distribution
+P2PR(a,b,c|x,y,z):=
+[
+1+(−1)a+b+c+xy+yz]
+/8, (19)
+despite satisfying the constraint of Eq. (18), can-
+not be realized in the tripartite-line scenario in
+terms of classical or quantum latent variables. How-
+ever, it is known that its mixture with white noise,
+P2PR,v :=vP2PR+(1−v)/8, can be realized if the visibil-
+ity parameterv is suﬃciently small [26]. P2PR,v admits
+a realization in terms of quantum latent variables for
+any 0≤v≤1/2 and in terms of classical latent variables
+for any 0≤v≤1/4.
+Quantum inﬂation correctly recovers that allP2PR,v
+with visibilityv>1/2 are incompatible with the quantum
+tripartite-line scenario. It does so by certifying that, for
+anyv>1/2, the corresponding P2PR,v does not admit
+a second-order inﬂation, and this infeasibility is found
+already at the NPO hierarchy level corresponding to the
+setS2 (see Appendix C for a deﬁnition of this monomial
+set). That is, in this scenario, a ﬁnite order of quantum
+inﬂation, namely, the second, already singles out the
+whole region of quantum violation.
+Furthermore, we can also contrast against realiza-
+tions in terms of classical latent variables by following
+the predicament in Sec. VI, that is, by imposing that all
+operators in the problem commute. This classical ver-
+sion of quantum inﬂation, when analyzing compatibil-
+ity with a third-order inﬂation, solving the NPO prob-
+lem associated to the corresponding set of monomials
+L1 (its deﬁnition can be found in Appendix C), wit-
+nesses that allP2PR,v with visibilityv>0.328 cannot be
+realized in terms of classical hidden variables. Lower
+values of this bound can, in principle, be achieved by
+considering higher inﬂation orders and larger monomial
+
+=== page 13 ===
+13
+∈ Q
+/uniF1E0
+∈ L
+/uniF1E0
+v
+0 1
+4 0.328 1
+2 1
+FIG. 12. Summary of results recoverable with quantum
+inﬂation in the tripartite-line scenario in Fig. 3(a) (orange
+dashed lines).Q
+/uniF1E0andL
+/uniF1E0denote, respectively, the sets
+of quantum and classical correlations that can be generated
+in the tripartite-line scenario. Quantum inﬂation correctly
+recovers that allP2PR,v with visibilityv>1/2 are incompati-
+ble with the quantum tripartite line scenario already at the
+NPO hierarchy ﬁnite levelS2 when assessing compatibility
+with a second-order inﬂation. When imposing that all mea-
+surements commute, it witnesses that allP2PR,v with visibil-
+ityv>0.328 cannot be realized in terms of classical hidden
+variables.
+sets. The required computational capabilities for solv-
+ing these problems, however, fall outside those provided
+by standard tabletop computers. We defer the inter-
+ested reader to Sec. X for a brief discussion on the com-
+putational cost of implementing quantum inﬂation, and
+to Ref. [43, Chap. 5] for a fuller analysis.
+B. Witnesses of quantum causal incompatibility
+A feature of semideﬁnite programming that has been
+widely employed in quantum information theory is the
+fact that the solution certiﬁcates of SDPs can be inter-
+preted as Bell-like inequalities or witnesses that are ca-
+pable of identifying correlations not attainable using the
+considered resources [29, 40]. The certiﬁcates obtained
+when using quantum inﬂation can have a similar inter-
+pretation as witnesses of quantum causal incompatibil-
+ity. For instance, the certiﬁcate that provides the value
+ofvmax =6−3
+√
+3≈0.8039 for the W distribution in the
+quantum triangle scenario gives rise to the inequality
+W’s Certiﬁcate
+
+
+−2Pinf(a{A′
+1 ,A′′
+1 }=0)
++Pinf(a{A′
+1 ,A′′
+1 }=0,a{A′
+2 ,A′′
+2 }=0)
+−2Pinf(a{A′
+1 ,A′′
+1 }=0,b{B′
+1 ,B′′
+1 }=0)
++4Pinf(a{A′
+1 ,A′′
+1 }=0,b{B′
+2 ,B′′
+2 }=0)
+−4Pinf(a{A′
+1 ,A′′
+1 }=0,b{B′
+1 ,B′′
+1 }=0,
+a{A′
+2 ,A′′
+2 }=0,b{B′
+2 ,B′′
+2 }=0)
++2Pinf(a{A′
+1 ,A′′
+1 }=0,a{A′
+2 ,A′′
+2 }=0,b{B′
+1 ,B′′
+1 }=0)
++2Pinf(a{A′
+1 ,A′′
+1 }=0,b{B′
+1 ,B′′
+1 }=0,b{B′
+2 ,B′′
+2 }=0)
+−2Pinf(a{A′
+1 ,A′′
+2 }=0,b{B′
+1 ,B′′
+2 }=0,c{C′
+1 ,C′′
+2 }=0)
++[A→B→C→A]+[A→C→B→A]
+
+
+≤0, (20)
+where +[A→B→C→A] and +[A→C→B→A] mean
+repeating every term in the sum under the cyclic and
+anticyclic permutations of subsystems, respectively—
+thereby implicitly tripling the coeﬃcients of any cyclic-
+invariant terms. This certiﬁcate is deﬁned in terms
+of a quantum distribution compatible with a second-
+order inﬂation of the triangle scenario. Now, by using
+the rules of Eq. (12) for consistency with identiﬁable
+monomials, this certiﬁcate can be transformed into a
+witness of tripartite distributions whose violation signals
+the distribution as being incompatible with a realization
+in the triangle scenario with quantum latent variables
+(note that we switch to the expectation-value picture3):
+W’s Witness
+(⟨A⟩+⟨A⟩2−⟨A⟩⟨AB⟩−⟨A⟩⟨AC⟩
+−2⟨BC⟩+⟨B⟩⟨C⟩−⟨BC⟩2−⟨A⟩⟨B⟩⟨C⟩
++[A→B→C→A]+[A→C→B→A]
+)
+≤3. (21)
+In fact, the W distribution of Eq. (16) attains a value
+of 3+ 8/9 for this witness.
+Remarkably, the witness obtained is polynomial in the
+elements of the probability distribution. This result is
+in stark contrast with witnesses obtained through other
+techniques, which are either linear in the elements of the
+probability distribution or in the variables’ entropies.
+Exploiting SDP duality also enables us to obtain a
+polynomial witness for the infeasibility of the Mermin-
+GHZ distribution box discussed in Sec. VII A 2, namely,
+Mermin Box Polynomial Witness
+
+
+
+⟨A0B0C0⟩2
++⟨A0B1C1⟩2
++⟨A1B0C1⟩2
++⟨A1B1C0⟩2
+
++3
+
+
+⟨A1B1C1⟩2
++⟨A0B0C1⟩2
++⟨A0B1C0⟩2
++⟨A1B0C0⟩2
+
+
++2
+
+
+⟨A0B1C1⟩(⟨A1B0C1⟩−⟨A0B0C0⟩)
++⟨A1B0C1⟩(⟨A1B1C0⟩−⟨A0B0C0⟩)
++⟨A1B1C0⟩(⟨A0B1C1⟩−⟨A0B0C0⟩)
+
+
++6
+
+
+⟨A0B0C1⟩(⟨A1B0C0⟩−⟨A1B1C1⟩)
++⟨A0B1C0⟩(⟨A0B0C1⟩−⟨A1B1C1⟩)
++⟨A1B0C0⟩(⟨A0B1C0⟩−⟨A1B1C1⟩)
+
+
+
+
+≤32. (22)
+We apply this witness to the 45 nonlocal extremal
+points of the tripartite nonsignaling scenario [44] and
+notice that it recognizes 15 out of these 45 points as not
+realizable in the quantum triangle scenario.4
+C. Optimization in quantum causal scenarios
+As explained in Sec. IV, the constraints(8), (9), (10),
+and (12) characterize relaxations of the set of quantum
+correlations compatible with a given causal structure.
+This characterization can be employed to easily bound
+optimal values of polynomials of the measurement oper-
+ators in the problem via NPO theory [27]. We provide
+in what follows several examples of this procedure.
+3 This result is obtained by performing the substitutionsp(i=
+0)= 1
+2 (1+ ⟨I⟩), andp(i=0,j =0)= 1
+4 (1+ ⟨I⟩+⟨J⟩+⟨IJ ⟩).
+4 In the ordering of Ref. [44], the boxes incompatible with the
+quantum triangle scenario are numbers 2, 13, 21, 22, 27, 29, 30,
+31, 34, 36, 39, 41, 43, 44, and 46.
+
+=== page 14 ===
+14
+1. Optimization of linear functionals
+As a ﬁrst application, we derive upper bounds to
+the maximum value that certain Bell-like operators
+can achieve in the quantum triangle scenario. The
+results herein are obtained by considering second-order
+inﬂations, solving the associated NPO problems with
+the set of monomialsS2∪L 1. Including the identity
+operator, we ﬁnd that each party has nine possible
+operators at this SDP level, such that the resulting
+moment matrix involved in the calculations has size
+873×873.
+Mermin’s Inequality [45]
+(⟨A1B0C0⟩
++⟨A0B1C0⟩
++⟨A0B0C1⟩
+−⟨A1B1C1⟩
+)
+≤
+
+
+
+2 L∆,L⍾
+3.085∗ Q∆
+4 Q⍾,NS∆,NS ⍾
+, (23)
+Svetlichny’s Inequality [46]
+
+
+⟨A1B0C0⟩
++⟨A0B1C0⟩
++⟨A0B0C1⟩
+−⟨A1B1C1⟩
+−⟨A0B1C1⟩
+−⟨A1B0C1⟩
+−⟨A1B1C0⟩
++⟨A0B0C0⟩
+
+
+≤
+
+
+
+4 L∆,L⍾
+4.405∗ Q∆
+4
+√
+2 Q⍾
+8 NS∆,NS ⍾
+. (24)
+In Eqs. (23) and (24), the triangle∆ denotes the causal
+triangle scenario, while ⍾ refers to the standard tripar-
+tite Bell scenario where all parties receive shares of a
+joint quantum state. Clearly, for any setX ={L,Q,NS} ,
+the bound obtained inX∆ is smaller than or equal to the
+one obtained inX ⍾. The asterisk means that the val-
+ues given are upper bounds; that is, quantum inﬂation
+shows that Mermin’s and Svetlichny’s inequalities can-
+not exceed 3.085 or 4.405, respectively, in the quantum
+triangle scenario, but, at the moment, it is unknown
+whether those values are attainable.
+It is known that both the algebraic maximum of 4
+for Mermin’s inequality and the algebraic maximum
+of 8 for Svetlichny’s inequality can be achieved in the
+triangle structure, if one considers that the latent nodes
+distribute nonsignaling resources (see, for instance, [47,
+Sec. III C]). This result means that no diﬀerence between
+the triangle and the Bell scenarios can be identiﬁed with
+these two inequalities when the latent variables represent
+nonsignaling resources, i.e., maxNS ∆ = maxNS ⍾ for
+these two inequalities. Consequently, our ﬁnding here
+that maxQ∆<maxQ⍾ for these two inequalities cannot
+be recovered by means of the GPT-valid (nonfanout)
+variant of the inﬂation method considered in Ref. [11,
+Sec. V D].
+In a similar manner, the maximum values attainable
+by any linear function in the classical triangle and Bell
+scenarios also coincide, because, even thoughL∆ ⊊L⍾,
+the extremal correlations inL⍾ are also members of the
+setL∆, as the local deterministic strategies are product
+correlations.
+Remarkably, we see a divergence in linear-function
+optimization over∆ and ⍾ when considering quantum
+latent variables. In the quantum triangle scenario, it
+is not possible to saturate such inequalities up to the
+bounds attainable in the quantum Bell scenario. This
+constraint has the implication that having access to tri-
+partite quantum resources allows for improved perfor-
+mance in information tasks relative to having access
+to arbitrary bipartite quantum states and unlimited
+shared randomness [42].
+Recall that, while polynomial functions may diﬀer
+over the triangle scenarios with and without shared ran-
+domness, linear-function optimization is independent
+of the presence or absence of shared randomness.5 That
+is, even thoughQ∆ ⊊Q∆+SR ⊊Q⍾, it is the case that
+Q∆+SR is the convex hull ofQ∆. The results above,
+thus, demonstrate that the Mermin-GHZ box of Eq.(17)
+is not achievable inQ∆+SR, a result relevant to Ref. [41].
+A
+X
+B
+Y
+C
+Z
+ρBC
+ρAC ρAB
+Λ
+(a)
+ρBC
+B C
+ρAB
+A
+X Y Z
+Λ (b)
+FIG. 13. (a) The quantum triangle scenario with settings and
+shared randomness, sometimes denotedQ∆+SR for brevity.
+(b) The quantum tripartite-line scenario with shared random-
+ness, sometimes denotedQ
+/uniF1E0+SR for brevity. Such “hybrid”
+DAGs denote the presence of quantum sources along with
+the presence of a classical source of shared randomness. The
+classical latent node is denoted Λ, and is depicted in white
+text on a dark red background to distinguish it from the other
+quantum latent nodes. ThoughQ∆+SR is inequivalent toQ∆
+depicted in Fig. 10, and similarlyQ
+/uniF1E0+SR is inequivalent to
+Q
+/uniF1E0depicted in Fig. 11, nevertheless both causal structures
+in each pair are equivalent up tolinear-function optimization.
+5 Linear-function optimization problems are agnostic to the pres-
+ence or absence of shared randomness only when there are no
+additional constraints onPobs, as is the case with our maximiz-
+ing the Mermin or Svetlichny functionals here. However, con-
+strained optimization is not agnostic to the presence or absence
+of shared randomness, even if the objective function is linear in
+Pobs. In the absence of shared randomness, constraints onPobs
+are incorporated into the quantum inﬂation semideﬁnite pro-
+gram via Eq.(12), i.e., the rule regarding consistency with iden-
+tiﬁable monomials. However, Eq.(12) does not hold in the pres-
+ence of shared randomness; it is replaced by the weaker Eq.(25).
+The cryptography example in Sec. VIII explicitly demonstrates
+the dramatic impact of adding shared randomness to a linear-
+function optimization problem involving constraints onPobs.
+
+=== page 15 ===
+15
+The values 3.085 and 4.405 given forQ∆ in Eqs. (23)
+and (24) represent upper bounds to the real maximum
+values achievable. We can readily establish lower bounds
+of 2
+√
+2 and 4, respectively, by considering explicit bi-
+partite quantum correlations for Alice and and Bob and
+taking Charlie to always answer +1. It is an open ques-
+tion whether, when increasing the inﬂation and NPO
+hierarchies, one will ﬁnd that the values forQ∆ will col-
+lapse to those lower bounds.
+It should be noted that the quantum inﬂation tech-
+nique can readily be adapted to witness the incompati-
+bility of a given distribution with a causal structure in-
+volving classical shared randomnessin addition to quan-
+tum latent nodes, such as the quantum triangle scenario
+with settings and shared randomness or the quantum
+tripartite-line scenario with shared randomness depicted
+in Fig. 13. In particular, Eqs. (8)–(10) hold regardless
+of the presence or absence of shared randomness. How-
+ever, Eq. (12) is valid only in the absence of shared ran-
+domness. The analog of Eq. (12) for hybrid causal struc-
+tures with shared randomness simply replaces higher-
+degree monomials with degree-1 monomials, i.e.,
+⟨∏
+k
+ˆO
+⃗1k|k
+ik|mk
+⟩
+ρ
+=Pobs
+(⋂
+k
+(ik|mk,k)
+)
+. (25)
+2. Optimization of nonlinear functionals
+Quantum inﬂation can also be used to optimize non-
+linear witnesses f. The essential idea can be seen al-
+ready in Sec. VII B, where Eq.(12) relates linear func-
+tions in an inﬂation to polynomials in the corresponding
+original scenario. Note that, for this optimization to be
+possible, in general one must consider at least an order-
+q inﬂation when optimizing a polynomial of degreeq.
+Consider, for instance, minimizing the 2-norm be-
+tween a distributionPobs(a,b,c) achievable in the quan-
+tum triangle scenario and that of the W distribution,
+that is:
+f(Pobs)≡
+∑
+a,b,c=0,1
+|Pobs(a,b,c)−PW(a,b,c)|2
+=
+∑
+a,b,c=0,1
+(
+Pobs(a,b,c)2+PW(a,b,c)2
+−2Pobs(a,b,c)PW(a,b,c)
+)
+,
+(26)
+where one can readily verify that∑
+a,b,cPW(a,b,c)2 =1/3.
+One can estimate the minimum value of this function
+using second-order inﬂation or higher, via Eq. (12). Ex-
+plicitly, the constraints from Eq.(12) that apply to this
+problem are
+Pobs(a,b,c)2 =
+⟨
+E1,1
+a E2,2
+a F 1,1
+b F 2,2
+b G1,1
+c G2,2
+c
+⟩
+,
+andPobs(a,b,c)PW(a,b,c)=PW(a,b,c)
+⟨
+E1,1
+a F 1,1
+b G1,1
+c
+⟩
+.
+While obtaining nontrivial bounds onf(Pobs) is, in prin-
+ciple, possible, in practice, it appears to require levels
+of the NPO hierarchy too computationally expensive.
+VIII. APPLICA TIONS TO QUANTUM
+CR YPTOGRAPHY IN NETWORKS
+In this section, we showcase a concrete application of
+quantum inﬂation: the security analysis of multipartite
+quantum key distribution protocols where the parties
+not all share a joint quantum state but are instead ar-
+ranged in a network. Because entangled systems can be
+transmitted only over relatively short distances and only
+a small number of parties can practically share an entan-
+gled state distributed by a single source, multisource net-
+works are a promising solution for long-distance quan-
+tum key distribution. However, the fact that the under-
+lying causal structure is no longer the Bell scenario has
+a profound impact in the associated security proofs [48].
+Imagine that two parties,A andC, attempt to estab-
+lish a secret key. They are too far apart, so they employ
+a quantum repeaterB in order to establish correlations.
+However, a malicious party E may be eavesdropping
+what in reality are tripartite sources that leak one of the
+subsystems generated,6 as in Fig. 14(a). TheABC|XZ
+marginal within the eavesdropped quantum repeater
+ρBCE
+B
+C
+ρABE
+A
+X ZE
+(a)
+ρBCE
+B
+C
+ρABE
+A
+X ZE
+Λ (b)
+FIG. 14. (a)A andC employ the repeaterB in order to gen-
+erate a secret shared key. WhileA andC have a choice of
+which measurement to perform in the states they receive—
+denoted byX andZ—B performs a four-outcome Bell state
+measurement. Unbeknowns toA,B, andC, a fourth party
+E may be eavesdropping the sources in an attempt to extract
+information about the secret key that A andC are estab-
+lishing. (b) The eavesdropped network scenario with shared
+randomness. Some tripartite distributions which are crypto-
+graphically secure under the assumption of no shared ran-
+domness become insecure if hidden dependence on shared
+randomness cannot be excluded on physical grounds.
+6 These “third subsystems” need not strictly be additional parti-
+cles generated at each source but can, for instance, be the ﬁelds
+surrounding them [49]. Eve is allowed to perform a joint mea-
+surement on her two shares, one received from each source (call
+themE′ andE′′, using the notation in Sec. III), producing the
+value of the random variableE.
+
+=== page 16 ===
+16
+scenario is essentially a special case of the tripartite-line
+scenario in Fig. 3(a). An important question to answer
+is how reliably canE guess the key generated byA and
+C by manipulating the leaked subsystems.
+Reference [48] tackles this problem, ﬁnding a trade-
+oﬀ between the violation of previously known network
+inequalities and the amount of information thatE can
+infer about the outcomes ofA andC upon performing
+a measurement, under the assumption that the eaves-
+dropper is bounded only by nonsignaling constraints.
+Since no quantum constraints are considered, the ob-
+tained bounds on the information achievable by the
+eavesdropper are very conservative. In fact, ifA,B, and
+C observe statistics compatible with a quantum entan-
+glement swapping experiment, the information bounds
+derived in Ref. [ 48] turn out to be trivial. To derive
+tighter bounds for the more realistic case of quantum
+eavesdroppers, one needs to use tools bounding the set
+of allowed quantum correlations in the considered net-
+work, something that quantum inﬂation provides. In
+the following, we analyze the same scenario using the
+semideﬁnite relaxations of the set of quantum correla-
+tions achievable in the scenario in Fig. 14(a) provided
+by quantum inﬂation,7 ﬁnding tighter bounds on the
+eavesdropper predictability on the measurement out-
+comes by the honest partiesA andC.
+We are interested in bounding how much information
+E can infer aboutA’s andC’s outcomes in the network in
+Fig. 14(a) from their choice of measurements. We follow
+Ref. [48] and estimate this information via the total
+variation distance ∆ E,E|AC between the distribution
+ofE’s outcome with and without conditioning on the
+inputs and outputs ofA andC, that is,
+∆a,c,x,z
+E,E|AC := 1
+2
+|E|∑
+e=1
+⏐⏐PE|ACXZ(e|a,c,x,z)−PE(e)
+⏐⏐, (27)
+when partiesA,B, andC observe some speciﬁc probabil-
+ity distributionPABC|XZ(a,b,c|x,z). For the sake of ex-
+ample, we focus on bounding the total variation distance
+conditioned upona=c=x=z=0, i.e., ∆0,0,0,0
+E,E|AC. That is,
+we want to maximize ∆0,0,0,0
+E,E|AC over all the probability
+distributions
+{
+PABCE|XZ
+}
+that can be quantumly real-
+ized in the network in Fig. 14(a), and whose marginal
+onA,B, andC matches the givenPABC|XZ.
+Superﬁcially, it might appear that the unspeciﬁed
+cardinality of|E| constitutes an obstacle to exploring the
+space of all
+{
+PABCE|XZ
+}
+compatible with the network
+in Fig. 14(a). We bypass this concern, however, by
+exploiting an alternative formulation of total variation
+distance [50], namely,
+∆a,c,x,z
+E,E|AC =PE|ACXZ(0⋆|a,c,x,z)−PE(0⋆), (28)
+7 This scenario can, in principle, also be numerically characterized
+via the scalar extension method in Ref. [19].
+where 0⋆ is the bin (coarse graining over a sub-
+set of possible values of E) which maximizes
+PE|ACXZ(0⋆|a,c,x,z)−PE(0⋆), i.e.,
+0⋆ :=
+⋁
+e′ :PE|ACXZ(e′|a,c,x,z)≥PE(e′). (29)
+Note that 0⋆ is an implicit function of the values
+{a,c,x,z} which identify the particular total variation
+distance ∆a,c,x,z
+E,E|AC. Since we are concerned only about
+binningE intoe∈ 0⋆ versuse/∈ 0⋆, we can eﬀectively
+modelE as dichotomic for the purposes of optimization,
+allowing us to set up the following SDP:
+max PACE|XZ(0⋆,0,0|0,0)
+PAC|XZ(0,0|0,0) −PE(0⋆)
+=
+⟨
+A1
+0|0C 1
+0|0E1,1
+0⋆
+⟩
+PAC|XZ(0,0|0,0)−
+⟨
+E1,1
+0⋆
+⟩
+s.t. Γ (n,I)≽0, and Eqs. (8), (9), (10).
+Eq. (12) is also imposed, but only on
+the marginalPABC|XZ, i.e. excluding
+identiﬁable monomials involvingE.
+(30)
+Note that we distinguish between identiﬁable mono-
+mials—which are deﬁned by the order of inﬂation via
+Eq. (12)—versus known probabilities—which may be
+deﬁned by a partial speciﬁcation of the global proba-
+bility distribution over the observable nodes in a given
+causal structure. That is, one may ﬁnd that a strict
+subset of all identiﬁable monomials are preassigned nu-
+merical values when tackling constrained optimization
+problems, such as is the case with Eq. (30). In Eq. (30),
+Γ(n,I) is the moment matrix associated to the set of op-
+erators
+{
+Ai
+a|x,Bj,k
+b ,Cl
+c|z,Em,o
+e
+}
+with 1≤i,j,k,l,m,o≤I,
+for someI th-order inﬂation8 and some NPO hierarchy
+leveln.
+In Fig. 15, we depict upper bounds for ∆0,0,0,0
+E,E|AC when
+the partiesA,B, andC measure the standard distribu-
+tion in repeater networks (see Appendix D for its def-
+inition) with some visibility v. Importantly, when A,
+B, andC observe the distribution corresponding to the
+sources sending noiseless singlets (i.e.,v=1), we certify
+that the distance between the distributions cannot ex-
+ceed zero, and, thus, there is no better strategy forE to
+guessA’s andC’s outcomes than making a uniformly
+random guess. Thus, for v=1, we prove that the key es-
+tablished betweenA andC is completely secure, as ex-
+pected. Note that, in contrast with Ref. [48], we allow
+E to be a quantum eavesdropper, meaning that Eve is
+8 Recall that, in the eavesdropped repeater of Fig. 14(a), the
+indicesi,j, andm correspond to copies of the stateρABE and
+the indicesk,l, ando correspond to copies of the stateρBCE .
+
+=== page 17 ===
+17
+0.850 0.875 0.900 0.925 0.950 0.975 1.000
+Singlet visibility
+0.00
+0.25
+0.50
+0.75
+PE|ACXZ(0∗|0, 0, 0, 0)− PE(0∗)
+Eavesdropped repeater
+Eavesdropped repeater + SR
+FIG. 15. Upper bounds to the total variation distance
+∆0,0,0,0
+E,E|AC :=PE|ACXZ(0⋆|0,0,0,0)−PE(0⋆) when the parties
+A,B, andC observe the distribution depicted in Eq. (D1)
+with singlet visibilityv. The solid curve tracks the upper
+bound in the eavesdropped repeater network depicted in
+Fig. 14(a), whereas the dashed line tracks the worst case
+bound, when all the parties are coordinated through classi-
+cal shared randomness, as in Fig. 14(b). The computations
+for the eavesdropped repeater network are carried out by con-
+sidering its second-order quantum inﬂation and the moment
+matrix generated by operator sequences associated to the
+corresponding local levelL1 not exceeding length two. This
+computation results in a moment matrix of size 857×857.
+On the other hand, the bound ∆a,c,x,z
+E,E|AC≤min{1,2(2−R)}
+oﬀered by Ref. [48] merely implies the trivial ∆0,0,0,0
+E,E|AC≤1
+for this example, as 2(2−R) evaluates to 2(2−v
+√
+2), and
+1≤2(2−v
+√
+2) for allv∈[0,1].
+allowed to perform a joint entangled measurement on
+her subsystems of bothρABE andρBCE .
+For comparison, imagine if it were impossible to en-
+sure the absence of any classical shared randomness be-
+tween the parties. Dropping the no-shared-randomness
+assumptions means that we now consider the network
+underlying the process to be that of Fig. 14(b). In
+that causal scenario, we can readily establish that
+maxP ∆0,0,0,0
+E,E|AC =3/4 whenPABC|XZ is the standard dis-
+tribution in repeater networks (D1), for any visibilityv.
+This result follows from the fact that suchPABC|XZ can
+be simulated classically with tripartite shared random-
+ness; i.e.,PABC|XZ does not violate any tripartite Bell
+inequality. SincePAC|XZ could be a deterministic func-
+tion of Λ, it follows that there exists a causal model for
+Fig. 14(b) in which the eavesdropperE can perfectly pre-
+dict the outcomes ofA,B, andC leveraging her access
+to Λ. Perfect predictability (i.e., zero security) leads
+toPE|ACXZ(0⋆|0,0,0,0)=1 and PE(0⋆)=PAC(0,0) and,
+more generally, to the absolute maximal possible total
+variation distance ∆a,c,x,z
+E,E|AC =1−PAC|XZ(0,0|0,0)=3/4.
+In summary, our analysis demonstrates the practical
+value for quantum cryptography applications of being
+able to bound the quantum correlations achievable in
+networks by means of quantum inﬂation. It also high-
+lights the critical role that network structure assump-
+tions play in establishing security proofs, as just the
+addition of shared randomness transforms the distribu-
+tion from being perfectly secure to completely insecure.
+IX. BOUNDING CAUSAL EFFECTS UNDER
+QUANTUM CONFOUNDING
+We now turn to explore an application of quantum
+inﬂation unrelated to quantum information theory. It
+is the quantum version of mediation analysis, which
+uses observational data and a promise of causal struc-
+ture to estimate causal relationships and predict coun-
+terfactual intervention. Informally, mediation analysis
+quantiﬁes the relative strengths of diﬀerent causal path-
+ways which could play a role in establishing some ob-
+served correlations. While this aspect has not been ex-
+plored in the context of quantum mechanics (with the
+very recent exception of Ref. [33]), mediation analysis
+is a widespread tool in medical and biochemical stud-
+ies [51–53]. To quantify causal strengths in disciplines
+concerned with microscopic phenomena, it is crucial to
+account for causes mediated by quantum carriers, some-
+thing possible using quantum inﬂation.
+Reichenbach’s common causal principle states that
+all nonspurious statistical correlations must admit some
+causal explanation, and this principle can be general-
+ized to include quantum causal explanations as well [8,
+10, 54, 55]. Often, however, one may wish to distinguish
+between various causal possibilities for establishing sta-
+tistical correlation. Moreover, even knowledge of the
+true causal structure is still inferior to a complete under-
+standing of functional relationships between observable
+variables.
+Consider the multiple possible causal explanations
+for correlation between variables A andB in Fig. 16.
+We have
+• the direct eﬀect ofA onB, associated with the edge
+A→B,
+• the indirect eﬀect ofA onB, associated with the
+direct pathA→Y→B,
+UX
+A B
+Y
+FIG. 16. A graph admitting multiple causal explanations
+for correlation betweenA andB.
+
+=== page 18 ===
+18
+• the common dependence ofA andB onX, associ-
+ated with the forking path A←X→B, and
+• the common dependence ofA andB onU, associ-
+ated with the forking pathA←X←U→B.
+Of course, in reality, the true causal explanation of a
+correlation typically involves all these routes. The sub-
+ﬁeld of causal inference known asmediation analysis
+provides deﬁnitions of eﬀect strength parameters for
+quantifying the relative signiﬁcance of diﬀerent causal
+pathways [56–59]. Such measures are generally intended
+to distinguish between
+• the total causal eﬀect ofA onB, associated with all
+paths originating atA and terminating atB, and
+• everything else, namely the total common cause
+dependence shared between A andB, associated
+with all their common ancestors.
+Latent confounding is the possibility of partially ex-
+plaining a pair of variables’ observed correlation in terms
+of the functional dependence on their unobserved com-
+mon causes. Estimating (or identifying) the strength of
+causal eﬀects in the presence of latent confounding is
+the subject of extensive research [57–64]; our contribu-
+tion in this section is to unlock the possibility of eﬀect
+estimation in the presence of quantum latent confound-
+ing by using quantum inﬂation.
+The most well-studied measure of eﬀect strength is
+the average causal eﬀect(ACE) which quantiﬁes how
+much one variableB functionally depends on anotherA.
+It is deﬁned as the variation in the expectation value of
+B under intervention of diﬀerent values forA. Formally,
+ACE[a1,a2,B]:=⟨B doa#
+1 )B⟩−⟨B doa#
+2 )B⟩
+with ACE[ A,B]:=max
+a1,a2
+ACE[a1,a2,B]. (31)
+Note that the distribution ofB under intervention onA
+has a meaning distinct from conditioning onA. When
+A andB share some common causal ancestry, typically
+P (B|{A=a})⁄=P (B do{A#=a})B), (32)
+where the notation{A#=a})B indicates that the value
+ofA as seen byB is been artiﬁcially set toa, independent
+of the actual value ofA that may be observed. For a re-
+view of do-conditionals and distinction between passive
+(observational) and active (interventional) conditioning,
+we refer the reader to Refs. [58, 60–62]. The fundamen-
+tal lemmas of mediation analysis constrain the possible
+values of interventional do-conditionals from knowledge
+of both the underlying causal structure and the distri-
+bution under passive observation. Every do-conditional
+can be expressed in terms of extending the original distri-
+bution to a particular interruption of the original graph.
+When estimating the do-conditional{A#=a#})B,
+the interrupted graph G′ is formed by replacing the
+A→B edge set inG withA#→B, such thatG′ contains
+the additional variablesA#. WheneverPABC is deﬁned
+over the observed variables{A,B,C}, then the extended
+distributionP′
+ABC|A# further pertains to the variables
+A# as well.
+The fundamental principle of mediation analysis is
+that every viable do-conditional constitutes some ex-
+tended distribution or suitable marginal thereof. Ac-
+cordingly, the potential range of a do-conditional is de-
+ﬁned by variation over allvalid extensions of the origi-
+nal distributions.
+Note that the interrupted graphG′ representing the
+intervention onG has a vertex set consisting of all nodes
+ofG—say,ABC—along with the auxiliary interven-
+tion variablesA#. When the do-conditional pertains
+only to a marginal of the interrupted graphG′, the do-
+conditionalP′ refers to a strict subset of the observed
+variables inG′. Without loss of generality, therefore, we
+consider characterizing the set of do-conditionals of the
+formPAB do A# )B which are compatible with some ob-
+served distributionPABC relative to the intervention
+A# )B depicted inG′.
+Fundamental Lemma of Mediation Analysis:
+PAB do A# )B∈ CompatibleDoConditionalsG′
+[
+PABC
+]
+iﬀ ∃P ′ :P′
+ABC|A#∈ ValidExtensionsG′
+[
+PABC
+]
+such that (33)
+PAB do A# )B(ab doa#)=
+∑
+c
+P′
+ABC|A#(abc|a#).
+Recall that P′
+ABC|A# is said to be valid extension
+of the original distribution PABC toG′ only if it is
+compatible with the interrupted graph and recovers the
+original distribution under postselection. That is,
+P′
+ABC|A#∈ ValidExtensionsG′
+[
+PABC
+]
+when PABC(abc)=P′
+ABC|A#(abc|a)
+and P′
+ABC|A#∈ CompatibleDistributions
+[
+G′]
+.
+(34)
+which pretty much recapitulates Eq.(14), except here
+we distinguish between the nodes pertinent to the con-
+ditional (AB) and all other observed nodes (C).
+For the purposes of this work, we emphasize that me-
+diation analysis explicitly maps the problem of bound-
+ing causal eﬀects to the problem of causal compatibility
+relative to an interrupted graph. In particular, media-
+tion analysis implies that the quantum inﬂation tech-
+nique can provide upper and lower bounds for thequan-
+tum ACE, i.e., can constrain causal eﬀects in the pres-
+ence of quantum confounding. For instance, quantum
+ACE can be lower (respectively, upper) bounded by min-
+imizing (respectively, maximizing) ACE[a1,a2,B] over
+extended distributions which are quantum compatible
+with the graph interruption corresponding to replacing
+the edgeA→B with the edgeA#→B.
+An important result in mediation analysis is that
+some do-conditionals are constrained to a single point
+value (called identiﬁable) regardless of the particular
+
+=== page 19 ===
+19
+ρAX ρXD
+A
+X
+DB C
+ρBC
+(a)
+ρAX ρXD
+A
+X
+DB C
+ρBC
+X
+#
+BC=x (b)
+ρAX ρXD
+A
+X
+DB C
+ρBC
+X
+#
+D=x (c)
+ρAX ρXD
+A
+X
+DB C
+ρBC
+X
+#
+B=x1 X
+#
+C=x2 (d)
+FIG. 17. A survey of hypothetical interventions on edges emanating from the node X in a pedagogically motivated example
+causal structure.
+(a) The example causal structure without any interventions.
+(b) The do-conditional P
+(
+ABCDX do{X #=x#} ){BC}
+)
+where both edges X→B and X→C are in-
+tervened upon with the same value of X being sent down both intervened edges. This do-
+conditional is identiﬁable and has a unique value computable from observational statistics alone, namely
+P (ABCDX=x do{X #=x#} ){BC})=P (ABCDX=x)P (BC|A,X=x#)/P (BC|A,X=x).
+(c) The do-conditional P
+(
+ABCDX do{X #=x#} )D
+)
+where the edge X→D is intervened upon. This do-conditional is
+nonidentiﬁable (asX andD share a latent parent) and, hence, is interesting to estimate using quantum inﬂation.
+(d) The do-conditional P (ABCDX do{X #=x#
+1} )B,{X #=x#
+2} )C) where the pair of edges X→B andX→C are inter-
+vened upon with a diﬀerent value ofX being sent down the two intervened edges. This do-conditional is nonidentiﬁable (as
+B andC share a latent parent) and, hence, is interesting to estimate using quantum inﬂation.
+observed statistics. The criteria for determining identi-
+ﬁable do-conditionals (and eﬃcient algorithms for com-
+puting their values) is the subject of Refs. [58–62]. Non-
+identiﬁable do-conditionals can typically be constrained
+only to lie within certain numerical spans [57, 63, 64].9
+Visual examples of some identiﬁable and nonidentiﬁable
+do-conditionals are provided in Fig. 17.
+We note that the criteria for determining identiﬁ-
+ability are valid independent of the (non)classicality
+of the latent variables. Consequently, quantum and
+classical mediation analysis can diﬀer only in terms of
+the inequalities they imply for ranges of nonidentiﬁ-
+able do-conditionals. Reference [65] highlights such a
+quantum-classical gap regarding the nonidentiﬁable do-
+conditional of the instrumental scenario. Chaves et al.
+[65] explicitly construct a quantum causal model for
+the instrumental scenario where the quantum average
+causal eﬀect is zero even though the resulting observa-
+tional distribution would necessarily imply a strictly
+positive classical ACE.
+To illustrate the utility of quantum inﬂation for medi-
+ation analysis, consider the quantum triangle scenario
+supplemented by a directed edgeA→B, illustrated in
+Fig. 18(a). The GHZ distribution
+PGHZ(a,b,c):=
+{
+1
+2 a=b=c
+0 otherwise (35)
+9 Fine-tuned instances of the observable distribution can con-
+strain a nonidentiﬁable do-conditional to the point where it
+can take only some extremal ﬁxed value.
+is compatible with this graph. To achieve this correla-
+tion, however, we anticipate thatB must functionally
+depend onA. However,PB do A# )B is not identiﬁable,
+asA andB share an unobserved common parent. We
+employ the quantum inﬂation technique to verify that
+the ACE[A,B]=1 for the GHZ distribution without as-
+suming classicality, thus teaching us that the quantum
+ACE is not less than the classical ACE in this exam-
+ple. This result means that, when reproducing the GHZ
+distribution in the quantum triangle scenario with sig-
+naling per Fig. 18(a), the functional dependence ofB
+on the signal fromA cannot be reduced relative to the
+strong dependence ofB onA required to reproduce the
+GHZ distribution in the classical triangle scenario with
+signaling. This result is in stark contrast to the exam-
+ple in Ref. [65], where an instrumental scenario correla-
+tion requires reduced functional dependence between
+the observable variables when the latent node is quan-
+tum versus when it is classical.
+Authors’ note: Following the initial publication of the
+manuscript on the arXiv, the authors became aware of
+the related work in Ref. [33] which explores quantifying
+direct causal inﬂuence in the quantum Instrumental
+scenario.
+X. CONCLUSIONS
+We introduced the quantum inﬂation technique, a
+systematic method to discern whether an observable
+distribution is compatible with a causal explanation in-
+volving quantum degrees of freedom. The technique is
+
+=== page 20 ===
+20
+A
+BC ρBC
+ρAC ρAB
+(a)
+A
+BC ρBC
+ρAC ρAB A#=a (b)
+FIG. 18. (a) The triangle scenario supplemented with a
+directed edge from A→B. (b) The relevant interrupted
+graph used to both deﬁne and compute the ACE ofA onB.
+of general applicability, in that it can be employed to
+analyze correlations achievable by any quantum causal
+structure with, potentially, visible-to-visible, latent-to-
+visible, visible-to-latent, or latent-to-latent connections.
+Furthermore, we discussed how a slight modiﬁcation
+allows also to study causal realizations in terms of clas-
+sical latent variables.
+We used quantum inﬂation to study correlations
+achievable in diﬀerent quantum causal structures. First,
+we proved that the W and Mermin-GHZ distributions
+cannot be generated in the triangle scenario with quan-
+tum latent variables, bounded their noise resistance, and
+showed how quantum inﬂation is capable of recovering
+known results in the entanglement swapping scenario.
+Moreover, exploiting the dual formulation of semideﬁ-
+nite programs, we derived polynomial quantum causal
+witnesses for the triangle scenario with and without in-
+puts. Second, we showed how quantum inﬂation can be
+employed as a tool for constrained polynomial optimiza-
+tion. We illustrated this fact in a variety of ways. We
+bounded the maximum values achievable by Mermin’s
+and Svetlichny’s inequalities in the quantum triangle
+scenario, ﬁnding signiﬁcant gaps relative to the values
+achievable when one has access to arbitrary three-way
+entanglement. We also bounded the amount of informa-
+tion that an eavesdropper can obtain when two distant
+parties generate secret key using a quantum repeater.
+Finally, we illustrated the applicability of quantum in-
+ﬂation for mediation analysis in the presence of quan-
+tum common causes.
+The implementation of quantum inﬂation synthesizes
+two diﬀerent hierarchies: the one of inﬂations and, for
+each inﬂation, the NPO hierarchy used to determine
+whether a distribution admits such an inﬂation. While
+asymptotic convergence has been proven for the latter;
+that of the former is an open question. Nevertheless, we
+have identiﬁed situations in which tight results can be
+obtained at ﬁnite steps of the hierarchies. Moreover, re-
+cent results [66] show that a convergent NPO hierarchy
+can be deﬁned for the analysis of quantum correlations
+in sequential Bell scenarios. Given that many nonexoge-
+nous causal structures can be mapped to networks link-
+ing such sequential scenarios (though not all, as shown
+in Appendix B), Ref. [66]’s proof becomes an interest-
+ing alternative to quantum inﬂation for analyzing such
+special cases.
+The number of copies of a given operator increases
+polynomially with the quantum inﬂation hierarchy level,
+where the exponent is given by the number of sources
+that feed the original operator. Moreover it is known [29]
+that, for a ﬁxed inﬂation level, the complexity of each
+level in the corresponding NPO hierarchy,Sn, is expo-
+nential in the level indexn. For these reasons, in terms
+of practical applicability, standard tabletop computers
+are typically incapable of handling inﬂation and NPO
+hierarchy levels beyond 3. The optimal choice of which
+hierarchy to prioritize under scarce computational re-
+sources appears to vary depending on the particular
+problem at hand. We direct the reader to Ref. [43, Chap.
+5] for a fuller discussion on the impacts of varying the
+diﬀerent hierarchy level choices and an account of some
+intuitions in this matter. Despite this computational
+load, the SDPs associated to quantum inﬂation present
+a high degree of symmetry, and it is expected that ex-
+ploiting these symmetries explicitly will reduce the com-
+putational barriers currently associated with high levels
+of the inﬂation hierarchy.
+Quantum inﬂation can ﬁnd an application in many
+ﬁelds. Clear ﬁrst applications are generalizations of en-
+tanglement theory and quantum information protocols
+to networks [41, 42]. From a more general perspective,
+and due to the central role that causality has in science,
+we expect quantum inﬂation to become a fundamen-
+tal tool for analyzing causality in any situation where a
+quantum behavior is presumed.
+ACKNOWLEDGMENTS
+We acknowledge useful discussions with Stefano Piro-
+nio, Rob Spekkens, David Schmid, and T.C. Fraser.
+This work is supported by Fundaci´ o Obra Social “la
+Caixa” (LCF/BQ/ES15/10360001), the ERC through
+the AdG CERQUTE and the CoG QITBOX, the Eu-
+ropean Union’s Horizon 2020 research and innovation
+programm—Grant Agreement No. 648913—the AXA
+Chair in Quantum Information Science, the Govern-
+ment of Spain (FIS2020-TRANQI and Severo Ochoa
+CEX2019-000910-S), Fundacio Cellex, Fundacio Mir-
+Puig, Generalitat de Catalunya (CERCA, AGAUR SGR
+1381), and the Austrian Science fund (FWF) stand-
+alone project P 30947. This research was supported by
+Perimeter Institute for Theoretical Physics. Research at
+Perimeter Institute is supported in part by the Govern-
+ment of Canada through the Department of Innovation,
+Science and Economic Development Canada and by the
+Province of Ontario through the Ministry of Colleges
+and Universities. This publication was made possible
+through the support of a grant from the John Temple-
+
+=== page 21 ===
+21
+ton Foundation. The opinions expressed in this publi- cation are those of the authors and do not necessarily
+reﬂect the views of the John Templeton Foundation.
+[1] J. Pearl, Causality: Models, Reasoning, and Inference
+(Cambridge University Press, 2009).
+[2] S. Morgan and C. Winship,Counterfactuals and Causal
+Inference: Methods and Principles for Social Research
+(Cambridge University Press, 2007).
+[3] I. Shpitser and J. Pearl, “Complete identiﬁcation meth-
+ods for the causal hierarchy,” J. Mach. Learn. Res. 9,
+1941 (2008).
+[4] J. S. Bell, “On the problem of hidden variables in
+quantum mechanics,” Rev. Mod. Phys. 38, 447 (1966).
+[5] N. Brunner, D. Cavalcanti, S. Pironio, V. Scarani, and
+S. Wehner, “Bell nonlocality,” Rev. Mod. Phys. 86,
+419 (2014).
+[6] T. Fritz, “Beyond Bell’s theorem: correlation scenarios,”
+New J. Phys. 14, 103001 (2012).
+[7] J. Henson, R. Lal, and M. F. Pusey, “Theory-
+independent limits on correlations from generalized
+Bayesian networks,” New J. Phys. 16, 113043 (2014).
+[8] C. J. Wood and R. W. Spekkens, “The lesson of causal
+discovery algorithms for quantum correlations: causal
+explanations of Bell-inequality violations require ﬁne-
+tuning,” New J. Phys. 17, 033002 (2015).
+[9] R. Chaves, R. Kueng, J. Bohr Brask, and D. Gross,
+“Unifying framework for relaxations of the causal as-
+sumptions in Bell’s theorem,” Phys. Rev. Lett. 114,
+140403 (2015).
+[10] E. Wolfe, D. Schmid, A. B. Sainz, R. Kunjwal, and R. W.
+Spekkens, “Quantifying Bell: the Resource Theory of
+Nonclassicality of Common-Cause Boxes,” Quantum 4,
+280 (2020).
+[11] E. Wolfe, R. W. Spekkens, and T. Fritz, “The Inﬂation
+Technique for causal inference with latent variables,” J.
+Causal Inference 7, 20170020 (2019).
+[12] M. Navascu´ es and E. Wolfe, “The inﬂation technique
+completely solves the causal compatibility problem,” J.
+Causal Inference 8, 70 (2020).
+[13] D. Rosset, N. Gisin, and E. Wolfe, “Universal bound on
+the cardinality of local hidden variables in networks,”
+Quant. Info. & Comp. 18, 910 (2018).
+[14] W. Slofstra, “The set of quantum correlations is not
+closed,” For. Math., Pi 7, e1 (2019).
+[15] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen,
+“MIP*=RE,” arXiv:2001.04383 (2020).
+[16] H. Barnum, C. M. Caves, C. A. Fuchs, R. Jozsa, and
+B. Schumacher, “Noncommuting mixed states cannot
+be broadcast,” Phys. Rev. Lett. 76, 2818 (1996).
+[17] H. Barnum, J. Barrett, M. Leifer, and A. Wilce,
+“Cloning and broadcasting in generic probabilistic theo-
+ries,” quant-ph/0611295 (2006).
+[18] R. Chaves, C. Majenz, and D. Gross, “Informa-
+tion–theoretic implications of quantum causal struc-
+tures,” Nat. Commun. 6 (2015).
+[19] A. Pozas-Kerstjens, R. Rabelo, L. Rudnicki, R. Chaves,
+D. Cavalcanti, M. Navascu´ es, and A. Ac´ ın, “Bounding
+the sets of classical and quantum correlations in net-
+works,” Phys. Rev. Lett. 123, 140503 (2019).
+[20] J. ˚Aberg, R. Nery, C. Duarte, and R. Chaves, “Semidef-
+inite tests for quantum network topologies,” Phys. Rev.
+Lett. 125, 110505 (2020).
+[21] R. O. Ness, K. Sachs, and O. Vitek, “From correlation to
+causality: Statistical approaches to learning regulatory
+relationships in large-scale biomolecular investigations,”
+J. Proteome Res. 15, 683 (2016).
+[22] A. J. Hartemink, D. K. Giﬀord, T. S. Jaakkola, and
+R. A. Young, “Using graphical models and genomic ex-
+pression data to statistically validate models of genetic
+regulatory networks,” in Biocomputing (World Scien-
+tiﬁc, 2001) pp. 422–433.
+[23] N. Lambert, Y.-N. Chen, Y.-C. Cheng, C.-M. Li, G.-Y.
+Chen, and F. Nori, “Quantum biology,” Nat. Phys. 9,
+10 (2013).
+[24] J. Cao, R. J. Cogdell, D. F. Coker, H.-G. Duan,
+J. Hauer, U. Kleinekath¨ ofer, T. L. C. Jansen, T. Manˇ cal,
+R. J. D. Miller, J. P. Ogilvie, V. I. Prokhorenko,
+T. Renger, H.-S. Tan, R. Tempelaar, M. Thorwart,
+E. Thyrhaug, S. Westenhoﬀ, and D. Zigmantas, “Quan-
+tum biology revisited,” Sci. Adv. 6 (2020).
+[25] C. Branciard, N. Gisin, and S. Pironio, “Characteriz-
+ing the nonlocal correlations created via entanglement
+swapping,” Phys. Rev. Lett. 104, 170401 (2010).
+[26] C. Branciard, D. Rosset, N. Gisin, and S. Pironio,
+“Bilocal versus nonbilocal correlations in entanglement-
+swapping experiments,” Phys. Rev. A 85, 032119
+(2012).
+[27] S. Pironio, M. Navascu´ es, and A. Ac´ ın, “Convergent
+relaxations of polynomial optimization problems with
+non-commuting variables,” SIAM J. Optim. 20, 2157
+(2010).
+[28] M. Navascu´ es, S. Pironio, and A. Ac´ ın, “Bounding the
+set of quantum correlations,” Phys. Rev. Lett. 98,
+010401 (2007).
+[29] M. Navascu´ es, S. Pironio, and A. Ac´ ın, “A convergent
+hierarchy of semideﬁnite programs characterizing the
+set of quantum correlations,” New J. Phys. 10, 073013
+(2008).
+[30] L. Vandenberghe and S. Boyd, “Semideﬁnite program-
+ming,” SIAM Rev. 38, 49 (1996).
+[31] T. Van Himbeeck, J. Bohr Brask, S. Pironio, R. Ra-
+manathan, A. B. Sainz, and E. Wolfe, “Quantum viola-
+tions in the Instrumental scenario and their relations
+to the Bell scenario,” Quantum 3, 186 (2019).
+[32] I. Agresti, G. Carvacho, D. Poderini, L. Aolita,
+R. Chaves, and F. Sciarrino, “Experimental connection
+between the Instrumental and Bell inequalities,” Proc.
+MDPI AG 12, 27 (2019).
+
+=== page 22 ===
+22
+[33] M. Gachechiladze, N. Miklin, and R. Chaves, “Quan-
+tifying causal inﬂuences in the presence of a quantum
+common cause,” Phys. Rev. Lett. 125, 230401 (2020).
+[34] T. S. Richardson and J. M. Robins, Single World
+Intervention Graphs (SWIGs) : A Uniﬁcation of the
+Counterfactual and Graphical Approaches to Causality
+(Now Publishers Inc, 2013) Working Paper#128, Center
+for Stat. & Soc. Sci., U. Washington.
+[35] J. Barrett, R. Lorenz, and O. Oreshkov, “Quantum
+causal models,” arXiv:1906.10726 (2019).
+[36] R. J. Evans, “Graphical methods for inequality con-
+straints in marginalized DAGs,” in IEEE International
+Workshop on Machine Learning for Signal Processing
+(2012).
+[37] R. J. Evans, “Margins of discrete Bayesian networks,”
+Annals Stat. 46, 2623 (2018).
+[38] B. Toner, “Monogamy of non-local quantum correla-
+tions,” Proc. Roy. Soc. A 465, 59 (2009).
+[39] M. P. Seevinck, “Monogamy of correlations versus
+monogamy of entanglement,” Quant. Info. Proc. 9,
+273 (2010).
+[40] F. Baccari, D. Cavalcanti, P. Wittek, and A. Ac´ ın,
+“Eﬃcient device-independent entanglement detection
+for multipartite systems,” Phys. Rev. X 7, 021042
+(2017).
+[41] D. Schmid, T. C. Fraser, R. Kunjwal, A. B. Sainz,
+E. Wolfe, and R. W. Spekkens, “Understanding the
+interplay of entanglement and nonlocality: motivating
+and developing a new branch of entanglement theory,”
+arXiv:2004.09194 (2020).
+[42] M. Navascu´ es, E. Wolfe, D. Rosset, and A. Pozas-
+Kerstjens, “Genuine Network Multipartite Entangle-
+ment,” Phys. Rev. Lett. 125, 240505 (2020).
+[43] A. Pozas-Kerstjens, Quantum information outside
+quantum information , Ph.D. thesis, Universitat
+Polit` ecnica de Catalunya (2019).
+[44] S. Pironio, J.-D. Bancal, and V. Scarani, “Extremal
+correlations of the tripartite no-signaling polytope,” J.
+Phys. A 44, 065303 (2011).
+[45] N. D. Mermin, “Quantum mysteries revisited,” Amer.
+J. Phys. 58, 731 (1990).
+[46] G. Svetlichny, “Distinguishing three-body from two-
+body nonseparability by a Bell-type inequality,” Phys.
+Rev. D 35, 3066 (1987).
+[47] J. Barrett, N. Linden, S. Massar, S. Pironio,
+S. Popescu, and D. Roberts, “Nonlocal correlations as
+an information-theoretic resource,” Phys. Rev. A 71,
+022101 (2005).
+[48] C. M. Lee and M. J. Hoban, “Towards device-
+independent information processing on general quan-
+tum networks,” Phys. Rev. Lett. 120, 020504 (2018).
+[49] L. P. Thinh, J.-D. Bancal, and E. Mart´ ın-Mart´ ınez,
+“Certiﬁed randomness from a two-level system in a
+relativistic quantum ﬁeld,” Phys. Rev. A 94, 022321
+(2016).
+[50] D. A. Levin and Y. Peres, Markov Chains and Mixing
+Times (American Mathematical Society, 2017).
+[51] Y.-T. Huang and W.-C. Pan, “Hypothesis test of
+mediation eﬀect in causal mediation model with high-
+dimensional continuous mediators,” Biometrics72, 402
+(2016).
+[52] J. Hutton, T. Fatima, T. J. Major, R. Topless, L. K.
+Stamp, T. R. Merriman, and N. Dalbeth, “Mediation
+analysis to understand genetic relationships between
+habitual coﬀee intake and gout,” Arthritis Res. Ther.
+20 (2018).
+[53] M. B. Sohn and H. Li, “Compositional mediation anal-
+ysis for microbiome studies,” Ann. Appl. Stat. 13, 661
+(2019).
+[54] E. G. Cavalcanti and R. Lal, “On modiﬁcations of
+Reichenbach’s principle of common cause in light of
+Bell’s theorem,” J. Phys. A 47, 424018 (2014).
+[55] J.-M. A. Allen, J. Barrett, D. C. Horsman, C. M.
+Lee, and R. W. Spekkens, “Quantum common causes
+and quantum causal models,” Phys. Rev. X 7, 031021
+(2017).
+[56] D. Janzing, D. Balduzzi, M. Grosse-Wentrup, and
+B. Sch¨ olkopf, “Quantifying causal inﬂuences,” Ann.
+Statist. 41, 2324 (2013).
+[57] C. H. Miles, P. Kanki, S. Meloni, and E. J. Tchet-
+gen Tchetgen, “On partial identiﬁcation of the pure di-
+rect eﬀect,” arXiv:1509.01652 (2015).
+[58] D. Malinsky, I. Shpitser, and T. Richardson, “A poten-
+tial outcomes calculus for identifying conditional path-
+speciﬁc eﬀects,” arXiv:1903.03662 (2019).
+[59] R. Bhattacharya, R. Nabi, and I. Shpitser, “Semipara-
+metric inference for causal eﬀects in graphical models
+with hidden variables,” arXiv:2003.12659 (2020).
+[60] I. Shpitser and E. J. Tchetgen Tchetgen, “Causal infer-
+ence with a graphical hierarchy of interventions,” Ann.
+Statist. 44, 2433 (2016).
+[61] I. Shpitser and E. Sherman, “Identiﬁcation of person-
+alized eﬀects associated with causal pathways,” in Un-
+certainty in Artiﬁcial Intelligence, Vol. 2018 (2018).
+[62] M. J. Stensrud, J. G. Young, V. Didelez, J. M.
+Robins, and M. A. Hern´ an, “Separable eﬀects for
+causal inference in the presence of competing events,”
+arXiv:1901.09472 (2019).
+[63] Z. Cai, M. Kuroki, J. Pearl, and J. Tian, “Bounds on
+direct eﬀects in the presence of confounded intermediate
+variables,” Biometrics 64, 695 (2008).
+[64] C. Kang and J. Tian, “Inequality constraints in causal
+models with hidden variables,” in Uncertainty in Arti-
+ﬁcial Intelligence (2006).
+[65] R. Chaves, G. Carvacho, I. Agresti, V. Di Giulio,
+L. Aolita, S. Giacomini, and F. Sciarrino, “Quantum
+violation of an instrumental test,” Nat. Phys. 14, 291
+(2018).
+[66] J. Bowles, F. Baccari, and A. Salavrakos, “Bound-
+ing sets of sequential quantum correlations and device-
+independent randomness certiﬁcation,” Quantum 4,
+344 (2020).
+[67] T. Moroder, J.-D. Bancal, Y.-C. Liang, M. Hof-
+mann, and O. G¨ uhne, “Device-independent entangle-
+ment quantiﬁcation and related applications,” Phys.
+Rev. Lett. 111, 030501 (2013).
+
+=== page 23 ===
+23
+Appendix A: Non-commutative polynomial
+optimization
+A generic NPO problem can be cast as
+p∗ = min
+(H,X,ρ)
+⟨p(X)⟩ρ
+such that qi(X)≽0 ∀i=1...mq,
+that is, ﬁnding a Hilbert spaceH, a positive-semideﬁnite
+operator ρ :H → Hwith trace one, and a list of
+bounded operators X = (X1,...,X n) in H (where
+XiXj⁄=XjXi in general) that minimize the expecta-
+tion value⟨p(X)⟩ρ =Tr[ρ·p(X)] of the polynomial oper-
+atorp(X) given some polynomial constraintsqi(X)≽0,
+whereqi(X)≽0 means that the operatorqi(X) should
+be positive semideﬁnite. One can also add to the opti-
+mization statistical constraints of the form⟨rj(X)⟩ρ≥0,
+forj =1,...,mr. Note that the NPO formalism can also
+accommodate equality constraints of the formq(X)=0
+or⟨rj(X)⟩ρ = 0, since they are equivalent to the con-
+straintsq(X),−q(X)≽ 0 and⟨rj(X)⟩ρ,⟨−rj(X)⟩ρ≥ 0,
+respectively.
+The procedure for solving these problems is described
+in Ref. [27], and uses a hierarchy of relaxations where
+each of the hierarchy’s steps is an SDP instance. The so-
+lutions to these problems form a monotonically increas-
+ing sequence of lower bounds on the global minimump∗:
+p1≤p2≤···≤ p∞≤p∗.
+If the constraints{qi(X)≽0}i imply (explicitly or im-
+plicitly; see Ref. [27]) that all noncommuting variables
+X1,...,Xn are bounded (and they do so in all the NPO
+problems considered in this work), then the sequence
+of lower bounds is asymptotically convergent. That is,
+p∞ =p∗.
+In our case, given some observed correlations, we deal
+with a feasibility problem about the existence of a quan-
+tum state and measurements subject to polynomial op-
+erator and statistical constraints arising from the causal
+networks and the observed correlations. This feasibility
+problem can be mapped into an optimization problem
+in diﬀerent ways. For instance, while not being the most
+practical procedure, the easiest way of doing it is by con-
+sidering a constant polynomialp(X)=1 as the function
+to be optimized. This problem has a solution equal to 1
+provided that the polynomial and statistical constraints
+are simultaneously satisﬁable. Any step in the hierar-
+chy is therefore a necessary SDP test to be satisﬁed for
+the causal model to be compatible with the observed
+correlations. Note that the same formalism can be used
+to optimize polynomials of the operators, such as, for
+instance, Bell-like inequalities, over quantum correla-
+tions compatible with a given causal structure [41].
+Appendix B: The treatment of latent variables
+with latent parents
+The study of network form quantum causal structures
+with quantum inﬂation is, essentially, solving the prob-
+lem of classifying entanglement networks in a device-
+independent manner [41, 42]. Generalizing to latent
+nonexogenous scenarios can, thus, be seen as a fur-
+ther generalization of the problem of classiﬁcation of
+entanglement generation in general causal structures.
+Consider, for instance, four parties and two three-way
+sources of entanglement. One can imagine two distinct
+ways to generate the ﬁnal four-partite quantum state
+from the initial pair of sources. In the ﬁrst case, depicted
+in Fig. 19(a), each of the four parties applies arbitrary
+(local) quantum channels to the states they receive from
+the sources. In the second case, depicted in Fig. 19(b),
+a nonlocal quantum channel spanning Bob and Char-
+lie’s systems is applied prior to the ﬁnal assignment of
+Hilbert spaces to parties.
+One might naively think that this further generality
+does not add much—after all, Bob and Charlie can share
+arbitrary entanglement in either scenario—but that is
+not the case. Only the causal structure depicted in
+Fig. 19(b) can give rise to the state
+ρ19(b) :=|AB00⟩⟨AB00|+|A0C1⟩⟨A0C1|
+2 , (B1)
+where |AB00⟩=|0000⟩+|1100⟩√
+2
+and |A0C1⟩=|0001⟩+|1011⟩√
+2 .
+The stateρ19(b) describes maximalA−B entanglement
+andC=|0⟩ whenD=|0⟩ mixed with maximalA−C en-
+tanglement andB=|0⟩ whenD=|1⟩. Here, measuring
+ρ′
+D in the computational basis will steer the ρ′
+ABC to-
+ward either maximal entanglement betweenA andB
+or maximal entanglement betweenA andC. This steer-
+ρABC ρBCD
+ρA
+′
+ρB
+′ ρC
+′
+ρD
+′
+(a)
+ρABC ρBCD
+ρA
+′
+ρB
+′ ρC
+′
+ρD
+′
+ρBC (b)
+FIG. 19. Inequivalent state generating procedures. (a) de-
+picts a two-layer state generating procedure, whereas (b) al-
+lows for the application of an arbitrary Bob-Charlie channel,
+generating the intermediate stateρBC, prior to distributing
+Hilbert spaces to the four parties. One can conﬁrm that (a)
+generates a strict subset of the states realizable in (b), and
+quantum inﬂation can distinguish these two scenarios in a
+device-independent manner.
+
+=== page 24 ===
+24
+ing is possible only if theB−C entanglement structure
+is determined by a node which shares causal ancestry
+withA as well withD. There is no node in Fig. 19(a)
+that satisﬁes these requirements, which implies that the
+stateρ19(b) cannot be generated by such a causal struc-
+ture. On the other hand, ρBC in Fig. 19(b) is a node
+which does satisfy the requirements, and thus, both
+structures are not equivalent.
+Alternatively, this result can also be understood
+through monogamy of nonlocality: Access toρ19(b) en-
+ables maximally violating the CHSH inequality by ei-
+ther playersA andB or by playersA andC, where non-
+local parties are ﬂagged by the value of a measurement
+onρ′
+D. This result precisely replicates the example in
+Fig. 8, except that the switch settingS in Fig. 8(a) is re-
+placed by measurement onρ′
+D in Fig. 19(b) in the com-
+putational basis.
+An explicit realization of ρ19(b) in Fig. 19(b) is as
+follows. Let ρABC and ρBCD be, respectively, pro-
+jectors onto the pure states ( |00⟩ +|11⟩)AB1 and
+(|00⟩+|11⟩)B2D⊗|0⟩C. Then, perform a controlled swap
+on qubitsB2 andC depending onB1’s computational
+basis value, and trace out the subsystemB1.
+In Sec. V B, we prescribe encoding all quantum chan-
+nels in the causal structure as unspeciﬁed unitaries that
+can be incorporated into the generating monomials.
+Though Fig. 8 there illustrates classically controlled
+quantum channels, uncontrolled quantum channels can
+equally well be incorporated into the elementary mono-
+mials. Consider applying quantum inﬂation to Fig. 19.
+Inﬂation imbues every unitary with a pair of indices cor-
+responding to which copies of the root quantum states
+the given unitary pertains to. For the unrestricted case
+in Fig. 19(a), we ﬁnd that misaligning the copy index
+pertaining to one of the root quantum states leads to a
+pair of operators which need not commute, namely,
+Ui,j
+BC·Ui,k
+BC⁄=Ui,k
+BC·Ui,j
+BC for j⁄=k. (B2)
+On the other hand, the local unitaries relevant to
+Fig. 19(b) do commute even in the presence of mis-
+aligned copy indices, namely
+Ui,j
+B ·Ui,k
+C =Ui,k
+C ·Ui,j
+B for j⁄=k. (B3)
+One can readily see, therefore, how inﬂation levels
+n≥2 give rise to SDPs with more constrained mo-
+ment matrices when quantum inﬂation is applied to
+Fig. 19(a) instead of Fig. 19(b). This example is a device-
+independent distinction aﬀorded by the prescription of
+Sec. V B which cannot be recovered using the sequen-
+tial measurements framework of Ref. [66].
+Appendix C: Monomial sets for NPO problems
+The hierarchies of semideﬁnite programs that bound
+the solutions of NPO problems can be described in terms
+of sets of products of the noncommutative operators
+in the problem. In this work, we use two diﬀerent
+hierarchies that are both asymptotically complete. The
+levels in the ﬁrst hierarchy are known asNPA levels[28,
+29]. The NPA level n,Sn, is associated to the set of
+all products of operators in the problem, of length no
+larger thann. For example, the setS2 associated to the
+inﬂations of the quantum triangle scenario discussed in
+the main text is
+S2 ={1}∪{Hi,j
+p }p,i,j∪{Hi,j
+p (H′)k,l
+q }p,q,i,j,k,l,
+where Hp,H′
+q = E,F,G . On the other hand, some
+problems may achieve tighter results at lower levels if
+one instead considerslocal levels[67]. The local leveln,
+Ln, is built from the products of operators that contain
+at mostn operators of a same party. For instance, in
+the quantum triangle scenario, the setL1 associated to
+its inﬂations is
+L1 ={1}∪{Hi,j
+p }p,i,j∪{Hi,j
+p (H′)k,l
+q }p,q,i,j,k,l
+∪{Ei,j
+a Fk,l
+b Gm,n
+c }a,b,c,i,j,k,l,m,n,
+whereHp⁄=H′
+q. While both hierarchies are asymptoti-
+cally complete, they satisfy the relationSn⊂Ln⁄⊂Sn+1
+(in fact, the smallest set of the NPA hierarchy that con-
+tainsLn isSpn, wherep is the number of parties), and,
+thus, the use of ﬁnite levels of one or the other hierar-
+chy may be more or less convenient depending on the
+speciﬁc problem to solve.
+Appendix D: Quantum key distribution in the
+tripartite-line scenario
+The distribution observed byA,B, andC that allows
+them to guarantee that a quantum eavesdropperE can-
+not guess the outputs of the extremesA andC with a
+conﬁdence higher than that shown in Fig. 15 is gener-
+ated in a standard quantum repeater scenario, where
+the sources distribute maximally entangled bipartite
+quantum states and the repeater party B performs a
+Bell state measurement in the standard basis. Follow-
+ing Ref. [48], we choose the sources to distribute singlets
+|ψ−⟩=(|01⟩−|10⟩)/
+√
+2 and the partiesA andC to per-
+form the measurements (σz+σx)/
+√
+2 forx=z=0 and
+(σz−σx)/
+√
+2 forx=z=1. In such a case, the distribu-
+tion observed byA,B andC isPABC|XZ(a,b1b0,c|x,z):=
+2+(−1)a+c[
+(−1)b0 +(−1)b1+x+z]
+32 .
+As shown in Sec. VIII, if A, B, and C observe this
+distribution, they are guaranteed that an eavesdropper
+E cannot predict the outputs ofA andC better than
+randomly guessing them.
+If the sources are not perfect and instead distribute
+noisy singlets, ρ =v|ψ−⟩⟨ψ−| + (1−v)1/4, then the
+
+=== page 25 ===
+25
+distribution observed byA,B, and C takes the form
+PABC|XZ,v(a,b1b0,c|x,z):=
+v2PABC|XZ(a,b1b0,c|x,z)+ 1−v2
+16
+= 2+v2(−1)a+c[
+(−1)b0 +(−1)b1+x+z]
+32 . (D1)
+IfA,B andC observe this distribution, they can be sure
+only that an eavesdropper cannot guess the outputs of
+A andC with a probability higher than that depicted
+in Fig. 15.

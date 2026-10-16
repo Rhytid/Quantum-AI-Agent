@@ -1,0 +1,884 @@
+=== page 1 ===
+arXiv:quant-ph/9708004v1  1 Aug 1997
+A Multiparticle Generalization of Entanglement Swapping
+S.Bose, V.Vedral and P.L.Knight
+Optics Section, The Blackett Laboratory, Imperial College , London SW7 2BZ, England
+(November 26, 2024)
+We generalize the procedure of entanglement swapping to obt ain a scheme for manipulating
+entanglement in multiparticle systems. We describe how thi s scheme allows to establish multiparticle
+entanglement between particles belonging to distant users in a communication network through a
+prior distribution of singlets followed by only local measu rements. We show that this scheme can be
+regarded as a method of generating entangled states of many p articles and compare it with existing
+schemes using simple quantum computational networks. We hi ghlight the practical advantages of
+using a series of entanglement swappings during the distrib ution of entangled particles between two
+parties. Applications of multiparticle entangled states i n cryptographic conferencing and in reading
+messages from more than one source through a single measurem ent are also described.
+Pacs Nos: 03.65.Bz
+I. INTRODUCTION
+There are numerous uses of spatially separated entan-
+gled pairs of particles such as cryptography based on
+Bell’s theorem [1], teleportation [2], superdense coding
+[3], cheating bit commitment [4] and, of course, simply
+testing Bell’s inequalities [5,6]. It is natural to expect
+that three or more spatially separated particles in an en-
+tangled state (such as a GHZ state [7]) will have varied
+applications as well. A well known application is in test-
+ing nonlocality from new directions [7–9]. More recently,
+applications such as reducing communication complexity
+[10] and quantum telecomputation [11] have been sug-
+gested. An idea of cryptography with GHZ states [12] has
+also been suggested earlier. This essentially means that
+multiparticle entangled states present possibilities of i m-
+plementing networked cryptographic conferencing [13,14]
+in an alternative way and we shall elaborate brieﬂy on
+this aspect in section VI of this article. In addition, we
+shall show (by generalizing superdense coding [3] to the
+multiparticle case), that the use of multiparticle entan-
+gled states can allow one to read messages from more
+than one source through a single measurement. In short,
+distributed entangled particles in a multiparticle entan-
+gled state may be extremely useful for certain forms of
+quantum communication. Hence it will become neces-
+sary to distribute entangled N-tuplets between nodes of
+communication networks if any set of users of the net-
+work wish to harness the beneﬁts of these forms of quan-
+tum communication. The prime focus of this paper is to
+present a method of manipulating entanglement in mul-
+tiparticle systems that can accomplish this task by just a
+local measurement if each of the users share singlets with
+a central node prior to that. In a sense, it allows one to
+construct a Biham-Huttner-Mor (BHM) like telephone
+exchange [14], with the added capability of setting up
+multiparticle entanglement between particles belonging
+to diﬀerent users of the network.
+Our scheme is actually obtained by generalizing an ear-
+lier scheme of Zukowski et al [15] known as entanglement
+swapping to the multiparticle case. Building on an earlier
+proposal by Yurke and Stoler [16] of entangling particles
+originating from independent sources, they showed that
+through entanglement swapping one can entangle parti-
+cles which do not even share any common past. Their
+aim was to realize ’event ready detectors’ for Bell ex-
+periments. In section V we point out two ways in which
+their original entanglement swapping scheme can come to
+a practical advantage while distributing entangled parti-
+cles between two parties. We also point out that our
+form of multiparticle entanglement manipulation diﬀers
+from the method proposed recently by Zeilinger et al [17]
+for the generation of multiparticle entangled states in the
+application of a few quantum gates and yet can be used
+for the same purpose. We begin by brieﬂy recapitulating
+the original entanglement swapping scheme of Zukowski
+et al [15] in Section.II.
+II. THE ENTANGLEMENT SW APPING SCHEME
+OF ZUKOWSKI ET AL
+In terms of a binary variable ui ∈ { 0, 1} and its com-
+plement uc
+i (deﬁned as 1 − ui), one can write down any
+Bell state (not normalized) of two particles i and j as
+|Ψ(i, j)⟩± = |ui, uj⟩ ± |uc
+i , uc
+j⟩ . (1)
+In the above it is understood that |ui⟩ and |uc
+i ⟩ are two
+orthogonal states of a two state system. Consider the
+initial state of four particles 1,2,3 and 4 to be
+|Ψ(1, 2)⟩+ ⊗ |Ψ(3, 4)⟩+ = |u1, u2, u3, u4⟩
++ |uc
+1, uc
+2, u3, u4⟩
++ |u1, u2, uc
+3, uc
+4⟩
++ |uc
+1, uc
+2, uc
+3, uc
+4⟩ .
+(2)
+That is, particles 1 and 2 are mutually entangled (in a
+Bell state), and particles 3 and 4 are mutually entangled
+(also in a Bell state). When we conduct a measurement
+of the Bell operator (deﬁned in [6]) on particles 2 and 3
+1
+
+=== page 2 ===
+(which projects particles 2 and 3 to a Bell state), then
+the joint state of the four particles become either of the
+following four :
+|Φ1⟩= (|u2, u3⟩+ |uc
+2, uc
+3⟩) ⊗ (|u1, u4⟩+ |uc
+1, uc
+4⟩) , (3a)
+|Φ2⟩= (|u2, u3⟩ − |uc
+2, uc
+3⟩) ⊗ (|u1, u4⟩ − |uc
+1, uc
+4⟩) , (3b)
+|Φ3⟩= (|u2, uc
+3⟩+ |uc
+2, u3⟩) ⊗ (|u1, uc
+4⟩+ |uc
+1, u4⟩) , (3c)
+|Φ4⟩= (|u2, uc
+3⟩ − |uc
+2, u3⟩) ⊗ (|u1, uc
+4⟩ − |uc
+1, u4⟩) . (3d)
+To derive the above, only the orthogonality of |ui⟩and
+|uc
+i ⟩is required. In other words, no matter what the out-
+come is, the particles 1 and 4 are now in one of the Bell
+states . Whereas prior to the measurement, the Bell pairs
+were (1,2) and (3,4), after the measurement the Bell pairs
+are (2,3) and (1,4). It can easily be shown that the same
+fact would hold true even if (1,2) and (3,4) started in
+some other Bell states than those in Eq.(2). A pictorial
+way of representing the above process is given in Fig.1.
+/1 /4
+/2 /3
+/1 /4
+/2 /3
+FIG. 1. The swapping of entanglement between pairs of
+particles due to a Bell state measurement on two of them is
+shown. The bold lines connect particles in Bell states and th e
+dashed lines connect particles on which the Bell state mea-
+surement is made
+It is clear that the most interesting aspect of this
+scheme is that particles 1 and 4 which do not share any
+common past are entangled after the swapping.
+III. A MUL TIP AR TICLE GENERALIZATION OF
+ENTANGLEMENT SW APPING
+The method of entanglement manipulation described
+in the previous section can readily be generalized to cases
+where a greater number of particles are involved. An
+explicit scheme that generalizes entanglement swapping
+to the case of generating a 3-particle GHZ state from
+three Bell pairs has already been presented by Zukowski
+et al [18]. But it should be interesting to demonstrate
+that their entanglement swapping scheme may actually
+be signiﬁcantly generalized to the case of starting with
+cat states involving any number of particles, doing lo-
+cal measurements by selecting any number of particles
+from the diﬀerent cat states and also ending up with cat
+states involving any number of particles ( The cat state
+is a terminology used to refer to generalizations of Bell
+states and GHZ states to higher number of particles). To
+see that consider an initial state in which there are N dif-
+ferent sets of entangled particles in cat states. Let each
+of these sets be labelled by m (where m = 1, 2, .., N), the
+ith particle of the mth set be labelled by i(m) and the
+total number of particles in the mth set be nm. Then the
+initial state can be represented by
+|Ψ⟩=
+N∏
+m=1
+|Ψ⟩m, (4)
+in which each of the cat states |Ψ⟩m is given by
+|Ψ⟩m =
+nm∏
+i=1
+|ui(m)⟩ ±
+nm∏
+i=1
+|uc
+i(m)⟩ (5)
+where the symbols ui(m) stand for binary variables ∈
+{0, 1} with uc
+i(m) = 1 − ui(m). Now imagine that the ﬁrst
+pm particles from all the entangled sets are brought to-
+gether (i.e a total of p = ∑N
+m=1 pm particles) and a joint
+measurement is performed on all of them. Note that the
+set of all cat states of p particles forms a complete or-
+thonormal basis. Let the nature of the measurement on
+the selected particles be such that it projects them to
+this basis. Such a basis will be composed of states of the
+type
+|Ψ(p)⟩=
+N∏
+m=1
+pm∏
+i=1
+|ui(m)⟩ ±
+N∏
+m=1
+pm∏
+i=1
+|uc
+i(m)⟩. (6)
+By simply operating with |Ψ(p)⟩⟨Ψ(p)| on |Ψ⟩of Eq.(4),
+we ﬁnd that the rest of the particles (i.e those not being
+measured) are projected to states of the type
+|Ψ(
+N∑
+m=1
+nm − p)⟩=
+N∏
+m=1
+nm∏
+i=pm+1
+|ui(m)⟩ ±
+N∏
+m=1
+nm∏
+i=pm+1
+|uc
+i(m)⟩,
+(7)
+which represents a cat state of the rest of the particles.
+In a schematic way the above process can be represented
+as
+N∏
+m=1
+|E(nm)⟩ → |E(p)⟩ ⊗ |E(
+N∑
+m=1
+nm − p)⟩ (8)
+2
+
+=== page 3 ===
+where |E(n)⟩denotes a n particle cat state. As a speciﬁc
+example, in Fig.2, we have shown the conversion of a col-
+lection of two Bell states and a 3 particle GHZ state to a
+3 particle GHZ state and a 4 particle GHZ state due to
+a projection of 3 of these particles to a 3 particle GHZ
+state.
+/1
+/2 /3
+/4
+/5
+/6 /7
+/1
+/2 /3
+/4
+/5
+/6 /7
+FIG. 2. The conversion of two Bell states and a 3 parti-
+cle GHZ state to a 3 particle GHZ state and a 4 particle
+GHZ state due to a GHZ state projection on three particles
+(one taken from each of the initially entangled sets) is show n.
+The bold lines connect mutually entangled particles and the
+dashed lines connect particles on which the GHZ state pro-
+jection is made.
+As must be evident from Fig.2, there is a general pen-
+cil and paper rule for ﬁnding out the result when our
+method of entanglement manipulation is applied to a cer-
+tain collection of cat states of particles. One just has to
+connect the particles being measured to frame a polygon
+and those not being measured to frame a complementary
+polygon. These two polygons represent the two multi-
+particle cat states obtained after the manipulation.
+IV. ESTABLISHING MUL TIP AR TICLE
+ENTANGLEMENT BETWEEN P AR TICLES
+LOCATED AT DIFFERENT NODES OF A
+COMMUNICATION NETWORK
+We now describe how our method of multiparticle en-
+tanglement manipulation can be used to set up entangle-
+ment between particles belonging to N users in a com-
+munication network. To begin with, each user of the
+network needs to share entangled pairs of particles (in
+a Bell state) with a central exchange. Consider Fig.3:
+A, B, C and D are users who share the Bell pairs (1,2),
+(3,4), (5,6) and (7,8) respectively with a central exchange
+O. Now suppose that A, B and C wish to share a GHZ
+triplet. Then a measurement which projects particles 2,
+3 and 5 to GHZ states will have to be performed at O.
+Immediately, particles 1, 4 and 6 belonging to A, B and
+C respectively will be reduced to a GHZ state. In a sim-
+ilar manner one can entangle particles belonging to any
+N users of the network and create a N particle cat state.
+The main advantages of using this technique for es-
+tablishing entanglement over the simple generation of N
+particle entangled states at a source and their subsequent
+distribution are as follows.
+(A) Firstly, each user can at ﬁrst purify [19] a large
+number of partially decohered Bell pairs shared with
+the central exchange to obtain a smaller number of pure
+shared Bell pairs. These can then be used as the start-
+ing point for the generation of any types of multiparticle
+cat states of the particles possessed by the users. The
+problems of decoherence during propagation of the par-
+ticles can thus be avoided in principle. Also the necessity
+of having to purify N-particle cat states can be totally
+evaded. Puriﬁcation of singlets followed by our scheme
+will generate N-particle cats in their purest form.
+(B) Secondly, our method allows a certain degree of
+freedom to entangle particles belonging to any set of users
+only if the necessity arises. It may not be known in ad-
+vance exactly which set of users will need to share a N
+particle cat state. To arrange for all possibilities in an a
+priori fashion would require selecting all possible combi-
+nations of users and distributing particles in multipartic le
+entangled states among them. That is very uneconomi-
+cal. On the other hand, generating entangled N-tuplets
+at the time of need and supplying them to the users who
+wish to communicate is deﬁnitely time consuming.
+/1
+A
+C
+/6
+B
+/4
+D
+/7
+/2
+/5 /8
+/3
+O
+3
+
+=== page 4 ===
+FIG. 3. The conﬁguration used for the distribution of en-
+tanglement. Initially users A,B,C and D share Bell pairs wit h
+the central exchange O. Subsequently, a local measurement
+at O is suﬃcient to entangle particles belonging to any subse t
+of users chosen from A, B, C and D .
+It is pertinent to compare our scheme with the BHM
+cryptographic network with exchanges [14]. There are
+two main diﬀerences.
+(A) Firstly, they used a time reversed EPR scheme for
+setting up the connections and had quantum memories
+to protect their states. They had, of course, compared
+their scheme with one that uses the original entanglement
+swapping of two Bell pairs to establish connections. We,
+use a multiparticle generalization of entanglement swap-
+ping for our connections and are thereby unable to take
+advantage of any type of quantum memories.
+(B) Secondly, their prime focus was to connect any pair
+of users of a N-user network on request, while our main
+focus is to establish multiparticle entangled states of the
+particles possesed by the users.
+V. PRACTICAL USES OF STANDARD
+ENTANGLEMENT SW APPING
+A. Speeding up the distribution of entanglement
+We now explain how standard entanglement swapping
+helps to save a signiﬁcant amount of time when one wants
+to supply two distant users with a pair of atoms or elec-
+trons (or any particle possesing mass) in a Bell state from
+some central source. The trick is to place several Bell
+state producing and Bell state measuring substations in
+the route between them. Consider Fig.4(a): A and B are
+two users separated by a distance L; O, which is situated
+midway between A and B is a source of Bell pairs. The
+time needed for the particles to reach A and B is at least
+t1 = L/2v where v < c (the speed of light) is the speed
+of the particles. Now consider Fig.4(b) in which two Bell
+pair producing stations C and D are introduced halfway
+between AO and BO respectively and O is now just a
+Bell state measuring station. At t = 0, both C and D
+send oﬀ Bell pairs (1,2) and (3,4) respectively. 2 and 3
+arrive at O, 1 reaches A and 4 reaches B. They all arrive
+at their destinations exactly at t = L/4v. At this in-
+stant a Bell state measurement is performed on particles
+2 and 3 at O. This measurement immediately reduces
+the particles 1 and 4 reaching A and B respectively, to a
+Bell state. If the time of measurement is denoted by tm,
+then the time needed to supply a Bell pair to A and B
+with the two extra substations C and D on the path is
+t2 = L/4v + tm. It is evident that t2 is lesser than t1 if
+tm < L/4v. Of course, to this time one needs to add the
+time needed to do classical communication between the
+station O and the users A and B to communicate the par-
+ticular Bell state to which particles 1 and 4 are projected.
+So for photons in Bell states, this procedure cannot really
+save any time. But for particles possesing mass, this is
+deﬁnitely a way to reduce the time needed to supply to
+distant users with a Bell pair. In this way one can reduce
+the time needed to supply two distant users with a Bell
+pair even further by including more and more Bell pair
+producing and measuring substations on the way.
+A C O D B
+/1 /2 /3 /4
+/(b/)
+/(a/)
+A O B
+FIG. 4. A method of increasing the speed of distributing
+an entangled pair of particles (that posses mass) between tw o
+distant users A and B is illustrated. Extra Bell state gen-
+erating substations C and D are inserted between A and B
+and a Bell state projection is performed at O to speed up the
+distribution of a Bell pair between A and B.
+B. Correction of amplitude errors developed due to
+propagation
+We would like to show that entanglement swapping
+can be used, with some probability which we quantify,
+to correct amplitude errors that might develop in maxi-
+mally entangled states during propagation. Assume that
+in Fig.4(b), the Bell pairs emitted from C and D acquire
+amplitude errors and become less entangled states of the
+type
+|Ψ⟩= cos θ|01⟩+ sin θ|10⟩. (9)
+Thus, the combined state of the two entangled pairs,
+when particles 2 and 3 reach O is given by,
+4
+
+=== page 5 ===
+|Φ⟩= cos 2 θ|0101⟩+ sin θ cos θ(|1001⟩
++ |0110⟩) + sin2 θ|1010⟩. (10)
+If a Bell state measurement is now performed on parti-
+cles 2 and 3 that reach O, then the probability of them be-
+ing projected onto the Bell states |00⟩+ |11⟩or |00⟩− |11⟩
+is sin2 2θ/2, while the probability of them being projected
+onto any of the other two Bell states is (1+cos 2 2θ)/2. In
+the ﬁrst case (i.e when 2 and 3 get projected to |00⟩+|11⟩
+or |00⟩ − |11⟩ ), the distant particles 1 and 4 are pro-
+jected onto the Bell states |00⟩+ |11⟩ or |00⟩ − |11⟩. In
+this way in spite of amplitude errors due to propagation
+of the particles, A and B may ﬁnally share a Bell state.
+Of course in case of the other two outcomes of the state
+of particles 2 and 3, particles 1 and 4 go to states even
+less entangled than that of Eq.(9). That is why we can
+consider entanglement swapping suitable for correction
+of amplitude errors only probabilistically. The probabil-
+ity of success in this case (sin 2 2θ/2), is lower than the
+probability of failure ((1 + cos 2 2θ)/2). However, from
+the outcome of the Bell state measurement, one knows
+when the correction has been successful. This may be
+regarded as a kind of puriﬁcation in series in contrast to
+the standard puriﬁcations [19] which occur in parallel.
+It should be noted that earlier there have been sugges-
+tions [20] of placing several stations in series in the path
+between two distant users, purifying singlets shared by
+adjacent stations and then using teleportation from one
+station to the next to derive puriﬁed singlets shared by
+the two users. The suggestion here is quite diﬀerent in
+the sense that the methodology of entanglement swap-
+ping itself is being used for supplying a pair of distant
+users with a pure Bell pair and no separate puriﬁcation
+procedure is invoked.
+VI. COMMUNICATION SCHEMES USING
+DISTRIBUTED MUL TIP AR TICLE
+ENTANGLEMENT
+So far we have described how particles belonging to
+several users in a network can be put in a multiparticle
+entangled state. We now describe how such a situation
+can be useful. The uses that readily come to mind are
+tests of nonlocality for many particle entangled states
+[7–9]. Reducing the communication complexity of cer-
+tain functions [10] may also be a ﬁeld of application of
+multiparticle entangled states. We describe here two pos-
+sible applications in communications.
+A. Cryptographic conferencing
+Consider the following situation. A certain group of
+users may need to have a secret meeting. Let the meet-
+ing be subject to the following two conditions:
+(1) All members of the group must be able to decrypt
+the encrypted public messages broadcasted by any mem-
+ber of the group.
+(2) Nobody outside the group must be able to decrypt
+the encrypted public messages broadcasted by members
+of this group.
+Such requirements may arise when the members of a
+committee are to take some decision which has to have
+the consent of everybody within the committee, but must
+be kept secret from the rest of the world. One can re-
+gard this as a special case of networked cryptographic
+conferencing [13,14].To establish the secret key for this
+type of meeting, the committee can employ either of two
+possible options. The ﬁrst one is to use simple two-user
+cryptographic key distributions [1,21], to set up random
+keys shared by each pair of users. Whenever a certain
+user intends to broadcast a secret message for the group,
+she has to encrypt it using a separate key for each of
+the other users of the group. However, for the type of
+conferencing considered here, this is not a good option
+because of two reasons. Firstly, the broadcaster has to
+encrypt the same message several times using diﬀerent
+keys. Secondly, the broadcaster will have the freedom to
+send diﬀerent messages to diﬀerent members of the group
+and thereby mislead a subset of the group. A better op-
+tion is that the users within the group share particles in
+multiparticle maximally entangled states. To generate
+the random key, all users conduct measurements in two
+nonorthogonal bases on the particles belonging to them.
+The results of those measurements in which the bases
+chosen by all the users coincide, are used to establish the
+secret key known to all the users within the group. This
+can then be used to frame encrypted messages that can
+be decrypted by an user if and only if she is a member
+of the group. If the users are sure about the fact that
+they are sharing a perfect N-particle cat state, they can
+even use a single basis to perform their measurements
+and thereby reduce the wastage of bits due to the non-
+coincidence of all their bases. It is known that the 3
+particle GHZ states are eigenstates of certain operators
+of the form SxSxSy [7] and by measuring the eigenval-
+ues of these operators one can verify whether the state
+is intact or corrupted by some evesdropper. But mea-
+suring these operators should not change the particular
+GHZ state in which the particles are because this state
+is an eigenstate of the operator being measured. So, in
+principle, while doing a 3 party cryptography with a 3
+particle GHZ state, one can essentially use the same set
+of particles for verifying the ﬁdelity of the GHZ state and
+the susequent establishment of a secret key. It should be
+mentioned here that the idea of using GHZ states for
+cryptography is not entirely new but has been presented
+earlier [12].
+5
+
+=== page 6 ===
+B. A multiparticle generalization of entanglement
+swapping
+Sharing particles in a multiparticle entangled state
+may also help an user to read messages from more than
+one user through a single measurement. This is a kind
+of generalization of the well known superdense coding
+scheme [3]. Suppose N + 1 users are sharing a N + 1 par-
+ticle maximally entangled state, possessing one particle
+each. Also suppose that one of them, say user 1, intends
+to receive messages from the N other users, whom we
+shall refer to as senders. This can be done in the follow-
+ing way. The N senders will have to mutually decide a
+priori to perform only certain unitary operations on the
+particles given to them. One of the senders will have
+any of 4 possible unitary operations at his/her disposal,
+while each of the others will have any of 2 possible uni-
+tary operations at their disposal. They will be encoding
+bits onto the particles possessed by them through these
+unitary operations. In that way, one of the senders will
+be encoding 2 bits on his/her particle, while each of the
+others will be encoding 1 bit each. Now, the unitary
+transformations must be so chosen that for each possible
+combination of unitary transformations performed by the
+senders, the state of the N + 1 particles go to a diﬀer-
+ent member of the set of maximally entangled states of
+N + 1 particles. This is certainly possible because the N
+senders are allowed to perform 4 × 2 × 2 × ... × 2 = 2 N +1
+diﬀerent combinations of unitary operations on the ini-
+tial N + 1 particle maximally entangled state and there
+are exactly 2 N +1 states in the set of maximally entan-
+gled states of N + 1 particles. After performing their
+unitary operations, each of the N senders send their par-
+ticles to user 1. User 1 then performs a measurement
+on the N + 1 particles possessed by him, which identiﬁes
+the particular maximally entangled state in which these
+particles are. Since each of these maximally entangled
+states correspond to a diﬀerent combination of unitary
+transformations performed by the senders, he can learn
+about the messages sent by each of the senders from the
+outcome of his measurement. Thus a single measurement
+is suﬃcient to reveal the messages sent by more than one
+user.
+FIG. 5. The general circuit to generate a N particle maxi-
+mally entangled state from disentangled inputs is shown. On e
+can generate any desired state chosen from the basis of max-
+imally entangled states of N particles by inputting an appro-
+priate combination of zeros and ones at the input port on
+the left hand side. When we input any speciﬁc N particle
+maximally entangled state from the right hand side, then by
+measuring the bits obtained on the left hand side, one can
+conclude which maximally entangled state was inputted. In
+other words, when run in the reverse direction, the circuit
+represents a measuring device for N particle maximally en-
+tangled states. The box in the ﬁgure stands for a Hadamard
+transformation .
+Now let us compare the eﬃciency of the above scheme
+with the case when user 1 performs a superdense coded
+communication [3] with each of the N senders separately.
+For that we have to refer to the quantum circuits needed
+to perform measurements of multiparticle maximally en-
+tangled states. The circuit shown in Fig.5 does exactly
+this when run in the reverse direction (i.e inputs from
+the right and output from the left). The vertical lines
+are Controlled Nots [22] and the box is a unitary trans-
+formation equivalent to a rotation on the Bloch sphere
+known as the Hadamard transformation [22] (For opti-
+cal implementations of elementary gates, see e.g. [23]).
+Thus, if user 1 was using our scheme then she would
+need to measure a N + 1 particle maximally entangled
+state and therefore require N Controlled Nots and one
+Hadamard transformation gate. She learns N + 1 bits of
+information from this measurement. Thus if a Hadamard
+transformation takes time th and a Controlled Not takes
+time tc, then the rate of information gain is
+r1 = N + 1
+th + N tc
+(11)
+bits per unit time. On the other hand, if user 1 was
+separately doing superdense coded communication with
+each of the N senders, she would need to do N Bell state
+measurements which require one Controlled Not and one
+Hadamard transformation each. She gains 2 N bits of in-
+formation from this. Thus the rate of information gain
+in this case is
+r2 = 2N
+N (th + tc) . (12)
+If one assumes that quantum gates have the same time
+scale of operation (that is, th = tc), then r2 is exactly
+equal to r1. However if one deﬁnes eﬃciency as rate di-
+vided by the number of particles used (considering par-
+ticles and channels required to propagate them to be im-
+portant resources), then our method is deﬁnitely more ef-
+ﬁcient because it requires only N + 1 particles as opposed
+to superdense coded communication with each sender
+which requires 2 N particles.
+6
+
+=== page 7 ===
+VII. ENTANGLED STATES OF HIGHER
+NUMBER OF P AR TICLES FROM ENTANGLED
+STATES OF LOWER NUMBER OF P AR TICLES
+Entangled states involving higher number of particles
+can be generated from entangled states involving lower
+number of particles by employing our scheme. The ba-
+sic ingredients which we need are GHZ (three particle
+maximally entangled) states and a Bell state measuring
+device. Let us describe how to proceed from a N particle
+maximally entangled state to a N + 1 particle maximally
+entangled state. One has to take one particle from the N
+particle maximally entangled state and another particle
+from a GHZ state and perform a Bell state measurement
+on these two particles. The result will be to put these two
+particles in a Bell state and the remaining N +1 particles
+in a maximally entangled state . Symbolically, the way of
+proceeding from a N particle maximally entangled state
+to a N + 1 particle maximally entangled state is given by
+|E(N )⟩ ⊗ |E(3)⟩Bell State Meas.− → | E(N + 1)⟩ ⊗ |E(2)⟩.
+An example of proceeding from a 4 particle maximally
+entangled state to a 5 particle maximally entangled state
+by the above procedure is shown in Fig.5 .
+FIG. 6. Building of a 5 particle entangled state from a 4
+particle entangled state using a GHZ state and a Bell state
+measurement
+As far as the question of generating the GHZ state,
+which is a basic ingredient, is concerned, one can per-
+haps use the method suggested by Zeilinger et al. [17]
+which is described in the next section. Alternatively, one
+can generate GHZ states using our method by starting
+from three Bell pairs and performing a GHZ state mea-
+surement taking one particle from each pair. An explicit
+scheme to produce 3-particle GHZ states from 3 entan-
+gled pairs have been suggested by Zukowski et al. [18]
+earlier.
+VIII. COMP ARISON WITH THE METHOD OF
+ZEILINGER ET AL.
+We would now like to compare our method of generat-
+ing multiparticle entangled states to that of Zeilinger et a l
+[17]. We describe how the Zeilinger group’s scheme works
+in the spirit of the former sections, i.e. using projections
+onto the Bell states. We then use simple quantum com-
+putational networks, consisting of Controlled Not and
+Not operations [22], to present measurements in the Bell
+and generalized Bell basis. This quantum computational
+approach, as we will see shortly, immediately reveals a
+basic similarity between the two schemes of generating
+multiparticle entangled states and shows precisely how
+they diﬀer.
+Assume that we start with two entangled pairs (1 , 2)
+and (3 , 4) of two-level systems in a state
+|Ψ(1, 2)⟩ ⊗ |Ψ(3, 4)⟩= (|0, 0⟩+ |1, 1⟩) ⊗ (|0, 0⟩+ |1, 1⟩)
+= |0, 0, 0, 0⟩+ |0, 0, 1, 1⟩
++ |1, 1, 0, 0⟩+ |1, 1, 1, 1⟩ . (13)
+As before we omit the normalization. The fact that we
+use this particular, “computational” basis (0 , 1) does not
+limit the generality of our method, but is more convenient
+in describing the action of quantum gates. Suppose now
+that we aﬀect a Controlled Not gate between qubits 2
+(control) and 3 (target), i.e. qubit 3 changes its value
+only if qubit 2 is in the state |1⟩. The above state then
+becomes:
+|0, 0, 0, 0⟩+ |0, 0, 1, 1⟩+ |1, 1, 1, 0⟩+ |1, 1, 0, 1⟩ (14)
+Now we measure the value of the third qubit. We have
+two possibilities depending on whether the outcome of
+this measurement is 0 or 1:
+|0, 0, 0⟩+ |1, 1, 1⟩ outcome 0 (15)
+|0, 0, 1⟩+ |1, 1, 0⟩ outcome 1 (16)
+So, by the action of a single Controlled not gate and a
+measurement , we can create a GHZ state out of two pairs
+initially in a Bell state. A network for this operation is
+given in Fig. 7.
+Now this directly generalizes to more entangled par-
+ticles. Suppose that we have a group of N entangled
+particles and M entangled particles, each one in a maxi-
+mally entangled state. It is then enough to perform a
+Controlled Not operation between a particle from the
+ﬁrst and a particle from the second group, and then a
+measurement of the target particle. The end product
+will clearly be a maximally entangled state of N + M − 1
+particles and a single particle disentangled from the rest.
+This completes our description of Zeilinger et al’s scheme.
+7
+
+=== page 8 ===
+/1
+/2
+/3
+/4
+FIG. 7. Implementation of Zeilinger’s scheme using quan-
+tum gates. The production of a GHZ state with the use of a
+controlled not, and a measurement is shown.
+Let us now compare this to our scheme of generat-
+ing multiparticle entanglement. The basic ingredient in
+our protocol is a projection onto a maximally entangled
+state of N particles. The network for a measurement in
+this basis is an inverse of the network which generates
+maximally entangled state from a distentangled input in
+the computational basis. It is simply the circuit of Fig.
+5 run in the reverse direction. In order to generate a
+N + 1 particle maximally entangled state , we have to do
+a Bell state measurement selecting one particle from the
+GHZ state and another particle from a N particle max-
+imally entangled state. A Bell state measurement will
+require a Controlled Not gate and a Hadamard trans-
+formation gate, as is evident from Fig. 5 , specializ-
+ing to the case of two inputs. Meanwhile, to generate a
+N + 1 particle maximally entangled state using Zeilinger
+group’s scheme one may require to start with a N particle
+maximally entangled state and a Bell state and will have
+to perform a Controlled Not choosing one particle from
+each set followed by a measurement on one of the parti-
+cles. Hence as far a comparing our scheme with Zeilinger
+group’s scheme is concerned, in the case of generating
+N + 1 particle maximally entangled state from a N par-
+ticle maximally entangled state, our scheme has just one
+extra Hadamard transformation. However, our method
+necessarily requires a GHZ state for proceeding from N
+to N + 1 particle maximally entangled state, while for
+the scheme of Zeilinger et al, Bell states are suﬃcient. In
+that sense the latter method is simpler. However as far
+as setting up entanglement between particles belonging
+to distant users is concerned, our method is necessary.
+For example, if the operator at O in Fig.3 performed the
+manipulation described by the Zeilinger group manipu-
+lation on particles 2 and 3, then 1, 2 and 4 will go into
+a GHZ state and essentially the subsystem of particles
+1 and 4 will be in a disentangled state. This method
+will thus not be applicable to setting up entanglement
+between particles belonging to distant users.
+IX. CONCLUSION
+In this paper we have described a scheme for manipu-
+lation of multiparticle entangled states and have demon-
+strated its potential applications. Our analysis remains
+at a very schematic and theoretical level, and practical
+implementations have not been considered. The direc-
+tion from which practical implementations of our scheme
+and similar schemes may be approached is uncertain at
+present. There is, however, a number of possible practi-
+cal implementations involving entangled photons [17,23],
+entangled ions in a linear trap [24] and entangled nu-
+clear spins in NMR [25]. In general, any medium that
+proves to be useful for quantum computation will imme-
+diately support implementation of multiparticle entan-
+glement manipulations. This may also enable us to study
+the problem of quantifying the amount of entanglement
+in a given multi-particle entangled state [26]. For exam-
+ple, we showed how to create an N particle entangled
+state given an M particle entangled state. By study-
+ing creation and destruction of entanglement in these
+measurements we can perhaps relate amounts of entan-
+glement present in states involving diﬀerent number of
+particles. In this paper we have dealt solely with pure
+states. It should be interesting to generalize our scheme
+to arbitrary density matrices.
+A novel feature of entanglement swapping is that it
+allows superluminal establishment of entanglement be-
+tween two distant particles. This contrasts with standard
+schemes of setting up entanglement which rely on gener-
+ating entangled particles at a point and supplying them
+to distant users and as such can take place at most at the
+speed light takes to travel from the source of the particles
+to either of the users. Another feature of entanglement
+swapping is that the particles which are entangled ﬁnally
+can come from totally independent initial sets of entan-
+gled particles, which means they must have had diﬀer-
+ent values of local hidden variables (if one supposed that
+they exist). It should then be interesting to investigate
+whether these can lead to any stronger type or diﬀerent
+type of violation of local hidden variable (LHV) models
+than that given by Bell’s inequality.
+ACKNOWLEDGMENTS
+We thank Artur Ekert, Lucien Hardy, Richard Jozsa,
+Martin Plenio, Sandu Popescu, Harald Weinfurter and
+Anton Zeilinger for very useful feedback on earlier ver-
+sions of this work. This work was supported in part
+by the UK Engineering and Physical Sciences Research
+Council, the European Union, the Inlaks Foundation and
+by the Knight Trust.
+8
+
+=== page 9 ===
+[1] A. K. Ekert, Phys. Rev. Lett. 67, 661 (1991); C. H. Ben-
+nett, G. Brassard and N. D. Mermin, Phys. Rev. Lett
+68, 557(1992).
+[2] C. H. Bennett, G. Brassard, C. Crepeau, R. Jozsa, A.
+Peres and W. K. Wooters, Phys. Rev. Lett. 70, 1895
+(1993); S. L. Braunstein and A. Mann , Phys. Rev. A
+51, R1727 (1995).
+[3] C. H. Bennett and S. J. Wiesner, Phys. Rev. Lett. 69 ,
+2881 (1992).
+[4] H.-K. Lo and H. F. Chau, Phys. Rev. Lett. 78, 3410
+(1997); D. Mayers, Phys. Rev. Lett. 78, 3414 (1997).
+[5] J. S. Bell, Physics 1, 195(1964); J. F. Clauser, M. A.
+Horne, A. Shimony and R. A. Holt, Phys. Rev. Lett 23,
+880 (1969); N. Gisin and A. Peres, Phys.Lett A 162 15
+(1992).
+[6] S. L. Braunstein, A. Mann and M. Revzen, Phys. Rev.
+Lett 68, 3259(1992).
+[7] D. M. Greenberger, M. A. Horne and A. Zeilinger, in
+Bell’s theorem , Quantum Theory, and Conceptions of
+the Universe , M. Kafatos, ed., Kluwer Academic, Dor-
+drecht, The Netherlands (1989) ; D. M. Greenberger, M.
+A. Horne, A. Shimony and A. Zeilinger, Am. J. Phys 58,
+1131 (1990); N. D. Mermin, Am. J. Phys 58, 731 (1990);
+N. D. Mermin, Phys. Today 43(6), 9 (1990).
+[8] N. D. Mermin, Phys. Rev. Lett 65, 1838 (1990); D. Home
+and A. S. Majumdar, Phys. Rev. A 52, 4959 (1995); A.
+Cheﬂes and S. M. Barnett, Phys. Rev. A 55, 1721 (1997).
+[9] D. P. DiVincenzo and A. Peres, Phys. Rev. A 55, 4089
+(1997).
+[10] H. Buhrman, R. Cleve and W. van Dam, lanl eprint
+quant-ph/9705033, 1997 ; R. Cleve and H. Buhrman, lanl
+eprint quant-ph/9704026, 1997 .
+[11] L. K. Grover, lanl eprint quant-ph/9704012, 1997.
+[12] M.A. Horne, A. Zeilinger and M. Zukowski, in Interna-
+tional Conference on Quantum Electronics (Technical Di-
+gest Series 1992) Vol. 9, p. 162 ; H.Weinfurter , private
+communication.
+[13] S. J. D. Phoenix, S. M. Barnett, P. D. Townsend, K. J.
+Blow, J. Mod. Opt. 42, 1155(1995); P. D. Townsend, C.
+Marand, S. J. D. Phoenix, K. J. Blow and S. M. Bar-
+nett, Phil. Trans. Roy. Soc London A 354, 805(1996); P.
+D. Townsend, Nature 385, 47 (1997).
+[14] E. Biham, B. Huttner and T. Mor, Phys. Rev. A 54, 2651
+(1996).
+[15] M. Zukowski, A. Zeilinger, M. A. Horne, and A. K. Ekert,
+Phys. Rev. Lett 71, 4287 (1993).
+[16] B. Yurke and D. Stoler, Phys. Rev. A 46, 2229 (1992); B.
+Yurke and D. Stoler, Phys. Rev. Lett. 68, 1251 (1992).
+[17] A. Zeilinger, M. A. Horne, H. Weinfurter, and M.
+Zukowski, Phys. Rev. Lett 78, 3031 (1997).
+[18] M. Zukowski, A. Zeilinger and H. Weinfurter in Funda-
+mental Problems in Quantum Theory vol. 755 Annals of
+the New York Academy of Sciences (Greenberger and
+Zeilinger Eds.) p. 91 (1995).
+[19] D. Deutsch, A. Ekert, R. Jozsa, C. Machiavello, S.
+Popescu, A.Sanpera, Phys. Rev. Lett. 77, 2818 (1996); C.
+H. Bennett, H. J. Bernstein, S. Popescu, B. Schumacher,
+Phys. Rev. A 53, 2046, (1996); C. H. Bennett, G. Bras-
+sard, S. Popescu, B. Schumacher, J. A. Smolin and W.
+K. Wooters, Phys. Rev. Lett. 76, 722(1996); H.-K. Lo
+and S. Popescu , lanl eprint quant-ph/9707038, 1997.
+[20] Suggested by D. P. DiVincenzo, as mentioned in Ref. [14]
+[21] C. H. Bennett and G. Brassard, in Proceedings of IEEE
+International Conference on Computers, Systems and
+Signal Processing, Bangalore, India (IEEE, New York,
+1984), p. 175 ; C. H. Bennett, Phys. Rev. Lett 68,
+3121(1992); C. H. Bennett, F. Bessette, G. Brassard, L.
+Salvail and J. Smolin, J. Cryptol. 5, 3 (1992); B. Hut-
+tner, N. Imoto, N. Gisin and T. Mor, Phys. Rev. A 51,
+1863 (1995).
+[22] A. Barenco, C. H. Bennett, R. Cleve, D. P. Divincenzo,
+N. Margolus, P. Shor, T. Sleator, J. A. Smolin and H.
+Weinfurter, Phys. Rev. A 52, 3457(1995); A. Barenco,
+Contemporary Physics 37, 375(1996).
+[23] N. J. Cerf, C. Adami and P. G. Kwiat, lanl eprint quant-
+ph/9706022, 1997.
+[24] J. I. Cirac and P. Zoller, Phys. Rev. Lett. 74, 4091 (1995).
+[25] N. A. Gershenfeld and I. L. Chuang, Science 275, 350
+(1997).
+[26] V. Vedral, M. B. Plenio, M. A. Rippin and P. L. Knight,
+Phys. Rev. Lett. 78, 2275 (1997).
+9

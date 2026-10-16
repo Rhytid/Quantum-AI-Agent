@@ -1,0 +1,1243 @@
+=== page 1 ===
+The inflation hierarchy and the polarization hierarchy are complete for the quantum bilocal
+scenario
+Laurens T. Ligthart and David Gross
+Institute for Theoretical Physics, University of Cologne, Germany
+(Dated: May 29, 2023)
+It is a fundamental but difficult problem to characterize the set of correlations that can be obtained by per-
+forming measurements on quantum mechanical systems. The problem is particularly challenging when the
+preparation procedure for the quantum states is assumed to comply with a given causal structure. Recently, a
+first completeness result for this quantum causal compatibility problem has been given, based on the so-called
+quantum inflation technique. However, completeness was achieved by imposing additional technical constraints,
+such as an upper bound on the Schmidt rank of the observables. Here, we show that these complications are
+unnecessary in the quantum bilocal scenario, a much-studied abstract model of entanglement swapping exper-
+iments. We prove that the quantum inflation hierarchy is complete for the bilocal scenario in the commuting
+observables model of locality. We also give a bilocal version of an observation by Tsirelson, namely that in
+finite dimensions, the commuting observables model and the tensor product model of locality coincide. These
+results answer questions recently posed by Renou and Xu. Finally, we point out that our techniques can be
+interpreted more generally as giving rise to an SDP hierarchy that is complete for the problem of optimizing
+polynomial functions in the states of operator algebras defined by generators and relations. The completeness of
+this polarization hierarchyfollows from a quantum de Finetti theorem for states on maximalC∗-tensor products.
+I. INTRODUCTION
+Studying the correlations that can be obtained by perform-
+ing measurements on spatially separated systems is central to
+the theory of quantum information. Indeed, such considera-
+tions led to the development of Bell inequalities and the the-
+ory of non-locality [1–3]. These phenomena require a theory
+of Nature that is fundamentally different from a classical the-
+ory. That is, if correlations are observed that break a Bell in-
+equality or are otherwise shown to be non-local, they cannot
+be derived from a model with local hidden variables. Such
+correlations have indeed been observed in numerous experi-
+ments (see e.g. Refs. [3, 4] for reviews).
+Practically, such non-local correlations have many applica-
+tions in quantum information processing tasks, such as quan-
+tum cryptography [5, 6], private random number generation
+[7], entanglement detection [8] and quantum networks [9–12].
+This paper will focus on the bilocal scenario. In the bilocal
+scenario (Fig. 1), we are concerned with the set of correlations
+that can be obtained by three parties (Alice, Bob, and Charlie)
+performing measurements on pairs of quantum particles orig-
+inating from two independent sources: One distributing a pair
+between Alice and Bob, and one between Bob and Charlie.
+We assume that each party can choose among a finite num-
+ber of measurement settings, their choices being labeled by
+numbersx,y,z . Each then obtains one of a finite number of
+possible outcomes. We represent their respective outcomes
+byα,β,γ . The statistics of such an experiment are then de-
+scribed by a collection p(αβγ|xyz) of conditional probabili-
+ties.
+The bilocal scenario is one of the most fundamental causal
+structures: It is the simplest non-trivial structure in which
+source states are assumed to be independent. It is also a
+straightforward generalization of the Bell scenario. Never-
+theless it allows for new behaviour such as entanglement
+swapping [13] and is surprisingly hard to analyze. Here, we
+are primarily concerned with the bilocal causal compatibil-
+ity problem: Given a collection of conditional probabilities
+p(αβγ|xyz), decide whether it is compatible with an experi-
+ment of the form described above.
+Several techniques to answer this question have already
+been developed. These include, but are not limited to, (non-
+linear) Bell inequalities [9], machine learning techniques [14],
+information-theoretic methods [15], scalar extension [16–18]
+and the inflation technique that is also considered in this paper
+[19–22]. For a more complete list, both on the bilocal scenario
+and more general network scenarios, we refer to the excellent
+review of Ref. [12].
+Recently, the authors of Ref. [18] asked whether the hi-
+erarchy of semi-definite programming constraints known as
+the quantum inflation technique is complete for the bilocal
+compatibility problem. One of the main results of this paper,
+partly building on their constructions, is to answer this ques-
+tion in the affirmative. We develop two complete semidef-
+inite programming hierarchies that are closely related. The
+first, which we call the polarization hierarchy, uses symmet-
+ric product states to linearize the non-convex independence
+constraint. The second is a version of the quantum inflation
+hierarchy, which relaxes the independence condition to a fam-
+ily of linear symmetry constraints. Along the way, we obtain
+a number of equivalent characterizations of bilocal quantum
+correlations, which might be of independent interest.
+A. Outline
+The paper is structured as follows. In Section II several
+technical preliminaries are explained that are useful to under-
+stand later discussions on models of locality and the algebraic
+formulation of quantum theory.
+Section III discusses different notions of quantum correla-
+tions, first for the Bell scenario and then for the bilocal sce-
+nario. Theorem 10 of this section is central to proving equiva-
+lence of several of these formulations for the bilocal scenario.
+arXiv:2212.11299v2  [quant-ph]  26 May 2023
+
+=== page 2 ===
+2
+Ultimately, it explains why complete hierarchies for the bilo-
+cal scenario are easier to construct than in the general case
+treated in Ref. [22].
+Section IV constructs two complete semidefinite program-
+ming hierarchies for the reduced model of the bilocal scenario.
+This part of the paper can be understood as an exposition and
+slight adaption of the methods developed in Ref. [22] (which
+in turn builds on Refs. [20, 21, 23–25]).
+II. PRELIMINARIES
+A. Quantum models of locality
+In order to give a precise definition of the set of bilocal
+quantum correlations, one needs to fix a quantum model of
+locality. This turns out to be a surprisingly subtle issue.
+There are two commonly used “pictures” on which a for-
+malization of quantum mechanical descriptions of Nature can
+be based.
+In elementary quantum mechanics (related to the
+Schr¨odinger picture), the fundamental mathematical ob-
+ject associated with a quantum system is a Hilbert space
+H. The set of observables is then derived as the algebra of
+bounded operatorsB(H) acting onH.
+Alternatively, inalgebraic quantum mechanics[26–28] (re-
+lated to the Heisenberg picture), quantum systems are primar-
+ily described via an algebraA of observables. A Hilbert space
+is then a secondary object, which can be derived e.g. via the
+GNS construction [29].
+The two points of view are mostly equivalent as a basis for
+describing natural phenomena. Differences are commonly as-
+sociated with finer technical points, e.g. in the rigorous de-
+scription of the thermodynamic limit [26]. One would thus
+assume that the choice of which point of view to adopt be-
+comes a matter of taste and convenience. While most working
+physicists prefer the Schr¨odinger picture, the algebraic model
+is easier to reason about algorithmically, which explains its
+use in completeness proofs such as those of Refs. [22–24].
+However, the two approaches suggest different formaliza-
+tions of the notion of “locality”, which is obviously relevant
+for the problem treated in this paper.
+Indeed, consider two spatially separated subsystems A, B
+of some composite system. Separation implies that physical
+properties ofA andB can be simultaneously measured, which
+means that the associated observable algebrasA,B must mu-
+tually commute, [a,b ] = 0 ,a ∈ A,b ∈ B. In algebraic
+quantum mechanics, this assumption (sometimes referred to
+as Einstein locality [27, Sec. 8.5]) is the only one made.
+In contrast, the Schr¨odinger picture-approach is to associate
+one Hilbert spaceHA,HB with each subsystem and to take
+the observable algebras to be
+A =B(HA)⊗ 1 ⊂B(HA⊗HB),
+B = 1 ⊗B(HB)⊂B(HA⊗HB) (1)
+respectively.
+The surprisingly technically complex theory of tensor prod-
+ucts of operator algebras [30] shows that not every pair of
+commuting algebras can be realized on a tensor product of
+Hilbert spaces as in Eq. (1). For a considerable time, it
+was an open question (known as Tsirelson’s Problem [31–
+33]), whether these operator-theoretic subtleties would mani-
+fest themselves at the level of finite sets of observable correla-
+tion functions (as made precise in Sec. III A). Unfortunately,
+it has now become clear that this is indeed the case [34]. Thus,
+whenever one speaks about “quantum correlations”, one has
+to be specific as to whether one is working in the more restric-
+tive tensor product Hilbert space model or the more general
+commuting observable model.
+At present, there does not seem to be strong evidence indi-
+cating which of the two approaches is more relevant for the
+description of natural phenomena. Both are legitimate targets
+of inquiry, as long as authors indicate clearly (as we have tried
+to do) which model they are working with at any time.
+B. Algebras of observables
+For a Hilbert spaceH, letB(H) be the set of bounded op-
+erators on H. An algebra A ⊂B(H) of operators that is
+closed under taking adjoints and under operator norm limits is
+a concreteC∗-algebra [29, 35].
+The same way one can axiomatically define the notion of a
+group as an abstraction of concrete groups of linear operators,
+one can also define C∗-algebras abstractly, without referring
+to a concrete Hilbert space. We will encounter abstract C∗-
+algebras in the context of the NPO hierarchy in Sec. IV, but
+will keep the discussion of this theory at a minimum. See
+Refs. [26, 29, 30, 35] for details.
+A C∗-algebra is unital if it contains an element acting as
+the identity. All C∗-algebras encountered in this paper are
+unital, and we will not mention this property explicitly. What
+is more, wheneverA is aC∗-subalgebra of some C∗-algebra
+D, we will assume thatA contains the unit ofD.
+An element a of a C∗-algebraA is positive if it is of the
+forma =b∗b for someb∈A . A state onA is a linear func-
+tional that is positive in the sense that ρ(b∗b)≥ 0 for every
+b∈A and normalized in the sense thatρ(1 ) = 1. We denote
+the state space of an algebraA byK(A). A positive operator-
+valued measure (POVM) with finitely many outcomes labeled
+by a variable α is a set{Aα}α⊂A such that Aα is positive
+andP
+αAα = 1 .
+Occasionally, it is necessary to use a weaker notion of con-
+vergence than the one induced by the operator norm. Re-
+call from elementary real analysis, that, in addition to norm
+convergence, the weaker concept of point-wise convergence
+has its role. A non-commutative analogue of the topology of
+point-wise convergence is the weak operator topology. Here,
+instead of evaluating functions at points in their domain, one
+takes “matrix elements” of operators between state vectors.
+More precisely, a net aλ ⊂ B(H) converges in the weak
+operator topology if⟨ϕ|aλ|ψ⟩ converges in C for all vectors
+|ϕ⟩,|ψ⟩ ∈ H. Concrete C∗-algebras that are closed in the
+weak operator topology (rather than just the norm topology)
+are von Neumann algebras.
+Weak operator closures appear naturally in the study of
+
+=== page 3 ===
+3
+tensor products of operators acting on the tensor product of
+infinite-dimensional Hilbert spaces. For example, consider
+two Hilbert spacesHA,HB, and define the algebraic tensor
+product
+B(HA)⊗algB(HB)
+:=
+n nX
+i=1
+ai⊗bi,
+n∈ N ,ai∈B(HA),bi∈B(HB)
+o
+⊂B(HA⊗HB).
+Based on the situation in finite dimensions, we would expect
+equality betweenB(HA)⊗algB(HB) andB(HA⊗HB). This
+behavior is recovered for general Hilbert spaces only after tak-
+ing the closure of the algebraic tensor product with respect to
+the weak operator topology. In general, ifA⊂ B(HA),B⊂
+B(HB), then the weak operator closure of the algebraic ten-
+sor product (also known as the von Neumann tensor product
+[29, Sec. III.1.5]) is denoted byA ¯⊗B⊂ B(HA⊗HB).
+III. QUANTUM CORRELATIONS
+A. Two-party quantum correlations
+As a warm-up, we can now state precisely the two well-
+known distinct models oftwo-party quantum correlations, i.e.
+the set of conditional probabilities p(αβ|xy) obtainable by
+two parties performing local measurements on a shared quan-
+tum state.
+Definition 1 (Two-party correlations, tensor product model) .
+A setp(αβ|xy) of conditional probabilities is abipartite quan-
+tum distribution in the Hilbert space tensor product model if
+the following holds. There are
+• Hilbert spacesHA,HB,
+• for each of Alice’s settings x a POVM {Aα|x}α ⊂
+B(HA), and for each of Bob’s settings y a POVM
+{Bβ|y}β⊂B(HB),
+• a density operator ρ onHA⊗HB
+such that
+p(αβ|xy) = tr
+ 
+ρAα|x⊗Bβ|y
+
+.
+In order to highlight the essential difference, we first give
+a version of the commuting observables model that is phrased
+as closely as possible to the tensor product model.
+Definition 2 (Two-party quantum correlations, commuting
+observables model). A setp(αβ|xy) of conditional probabil-
+ities is a bipartite quantum distribution in the commuting ob-
+servables model if the following holds. There is
+• a Hilbert spaceH
+• for each of Alice’s settings x a POVM {Aα|x}α ⊂
+B(H), and for each of Bob’s settings y a POVM
+{Bβ|y}β ⊂ B(H), such that all of Alice’s operators
+commute with all of Bob’s,
+A BA BC
+X Y
+C
+Z
+σABA
+σ BCC
+FIG. 1. The bilocal scenario. Alice and Bob share a bipartite quan-
+tum stateσABA and Bob and Charlie share a bipartite quantum state
+σBCC. Alice performs a measurement with the POVM {Aα|x}α
+based on the setting measurement settingx. Bob and Charlie perform
+a similar measurement. The conditional probabilities p(αβγ |xyz)
+that can arise in this way are called bilocal correlations.
+• a density operator ρ onH
+such that
+p(αβ|xy) = tr
+ 
+ρAα|xBβ|y
+
+.
+As alluded to before,Tsirelson’s problemasked whether the
+two definitions characterize the same set of correlations [31–
+33, 36]. This problem has since been answered in the negative
+[34].
+There is an equivalent way of characterizing the commuting
+observable model. This version refers only to the observable
+algebras and not directly to any Hilbert space:
+Definition 3 (Two-party quantum correlations, commuting
+operator model: algebraic formulation) . A set p(αβ|xy) of
+conditional probabilities is a bipartite quantum distributionin
+the commuting observable modelif the following holds. There
+are
+• a C∗-algebraD (of global observables),
+• two mutually commuting C∗-subalgebrasA,B ⊂ D
+(the observables measurable by the respective parties),
+• for each of Alice’s settings x a POVM{Aα|x}α⊂A ,
+and for each of Bob’s settingsy a POVM{Bβ|y}β⊂B ,
+• a state ρ onD
+such that
+p(αβ|xy) =ρ(Aα|xBβ|y).
+Proving the equivalence between Def. 2 and Def. 3 amounts
+to an application of the GNS construction [29].
+B. Bilocal correlations
+When modeling locality using tensor products of Hilbert
+spaces, the set of bilocal correlations is defined as follows.
+
+=== page 4 ===
+4
+Definition 4 (Tensor product model) . A set p(αβγ|xyz) of
+conditional probabilities is a bilocal quantum distribution in
+the product tensor model if the following holds. There are
+• Hilbert spacesHA,HBA,HBC,HC,
+• for each of the settings x,y,z POVMs
+{Aα|x}α⊂B(HA),
+{Bβ|y}β⊂B(HBA) ¯⊗B(HBC),
+{Cγ|z}γ⊂B(HC),
+• density operators σABA onHA⊗H BA andσBCC on
+HBC⊗HC,
+such that
+p(αβγ|xyz) = tr
+ 
+(σABA⊗σBCC) (Aα|x⊗Bβ|y⊗Cγ|z)
+
+.
+In the commuting observables-model, bilocality takes on
+the following form:
+Definition 5 (Commuting observables model) . A set
+p(αβγ|xyz) of conditional probabilities is said to be abilocal
+quantum distribution in the commuting observables model if
+the following holds. There are
+• a C∗-algebraD,
+• mutually commuting C∗-subalgebrasA,BA,BC,C ⊂
+D,
+• for each of the settings x,y,z POVMs
+{Aα|x}α⊂A,
+{Bβ|y}β⊂B A·BC,
+{Cγ|z}γ⊂C ,
+withB :=BA·B C the subalgebra ofD generated by
+BA andBC,
+• a state ρ onD that acts as a product state in the sense
+ρ(abAbCc) =ρ(abA)ρ(bCc) (2)
+for alla∈A,bA∈B A,bC∈B C,c∈C ,
+such that
+p(αβγ|xyz) =ρ(Aα|xBβ|yCγ|z).
+C. Equivalent characterizations of bilocal quantum
+correlations
+We will give three further characterizations of the set
+of bilocal quantum correlations in the commuting operator
+model. Some of these equivalences are integral to our com-
+pleteness proof – but they might also be of independent inter-
+est.
+All statements made here are corollaries of the technical
+Theorem 10 proven in Sec. III E.
+1. A reduced factorization condition
+To motivate the first reformulation in Corollary 6 below,
+let us try to see which part of Def. 5 might be the most dif-
+ficult to work with algorithmically. In our assessment, this
+is the “hidden factorization condition” of Eq. (2). It is “hid-
+den” in the sense that it involves product operatorsbAbC,bA∈
+BA,bC ∈B C that need not lie in the algebra generated by
+the POVMs. But it is properties of precisely this algebra that
+methods building on the non-commutative polynomial opti-
+mization (NPO) hierarchy [24], used in e.g. the quantum in-
+flation method of [19], typically optimize over. As argued in
+more detail in Ref. [22, Sec. 2.5], this poses a barrier against
+proving completeness for such methods, including the origi-
+nal quantum inflation scheme.
+Reference [22] circumvents this problem by explicitly
+adding generators for the algebras BA,BC to the input of
+the NPO hierarchy, and expressing the POVM elements as
+finite-rank superpositions of those. The price to pay for this
+workaround consists of additional computational costs, as
+well as the necessity to upper-bound this “Schmidt rank” of
+the POVM elements.
+The following corollary shows that in the special case of the
+bilocal scenario, these difficulties can fortunately be avoided.
+Indeed, the weaker factorization condition (3), involving only
+operators generated by the measured POVMs, suffices to im-
+ply the a priori more general (2). We will refer to the weaker
+constraints as the reduced model.
+Corollary 6 (Reduced model). A set p(αβγ|xyz) of condi-
+tional probabilities is bilocal in the commuting observables
+model of Def. 5 if and only if there are
+• a C∗-algebraD,
+• mutually commuting C∗-subalgebrasA,B,C⊂D ,
+• for each of the settings x,y,z POVMs
+{Aα|x}α⊂A,
+{Bβ|y}β⊂B,
+{Cγ|z}γ⊂C ,
+• a state ρ onD that acts as a product state in the sense
+ρ(ac) =ρ(a)ρ(c) (3)
+for alla∈A,c∈C ,
+such that
+p(αβγ|xyz) =ρ(Aα|xBβ|yCγ|z).
+We note that the reduced model arises implicitly from the
+factorisation bilocal NPA hierarchyof [18].
+
+=== page 5 ===
+5
+2. Bilocal Tsirelson Problem
+The second reformulation, specified in Corollary 7 below,
+clarifies the differences between the Hilbert space tensor prod-
+uct model and the commuting operator model of bilocal cor-
+relations.
+The two approaches are obviously different: To see this,
+one can simply embed the two-party scenario into the bilocal
+one, e.g. by taking theA system orC system to be trivial.
+It could be surmised that there are “genuine bilocal dif-
+ferences” between the two approaches, and that the bilocal
+scenario could teach us about Tsirelson’s Problem in a way
+that goes beyond the two-party case. We will, however, show
+that this is not the case. More precisely, consider the mixed
+model formalized below, where the bipartition ABA|BCC is
+described by a Hilbert space tensor product, while all we can
+say about the bipartitions A|BA and BC|C is that they are
+associated with commuting observable algebras.
+Corollary 7 (Mixed model). A setp(αβγ|xyz) of conditional
+probabilities is bilocal in the commuting observables model of
+Def. 5 if and only if there are
+• Hilbert spacesHABA,HBCC,
+• mutually commuting C∗-algebras
+A,BA⊂B(HABA), BC,C⊂ B(HBCC),
+• for each of the settings x,y,z POVMs
+{Aα|x}α⊂A,
+{Bβ|y}β⊂B A ¯⊗BC,
+{Cγ|z}γ⊂C ,
+• density operators σABA on HABA and σBCC on
+HBCC,
+such that
+p(αβγ|xyz) = tr
+ 
+(σABA⊗σBCC) (Aα|xBβ|yCγ|z)
+
+,
+where all operators act onB(HABA⊗HBCC) in the natural
+way.
+3. The Renou-Xu formulation
+Finally, we consider the formulation used in Ref. [18]. It
+could be described as the bilocal analogue of Def. 2, in the
+sense that it formalizes a commuting observables-model while
+avoiding to explicitly introduce the local observable algebras.
+While in the two-party case, the equivalence of Def. 2 and
+Def. 3 was a direct consequence of the GNS construction, the
+relation between the Renou-Xu model and commuting oper-
+ator models defined above may not be as obvious. However,
+we will show:
+Corollary 8 (Renou-Xu model [18]) . A set p(αβγ|xyz) of
+conditional probabilities is bilocal in the commuting observ-
+ables model of Def. 5 if and only if there are
+• a Hilbert spaceH,
+• commuting projection operators P,Q ∈ B(H), such
+thatPQ is a normalized rank-one projection,
+• for each of Alice’s settings x, a POVM {Aα|x}α ⊂
+B(H), and likewise for Bob and Charlie, such that: (1)
+operators belonging to different parties commute, and
+(2)
+[Aα|x,Q ] = [P,Cγ|z] = 0,
+such that
+p(αβγ|xyz) = tr
+ 
+PQA α|xBβ|yCγ|z
+
+.
+D. The finite-dimensional case
+In the two-party case, the distinction between the tensor
+product model and the commuting observable model ceases
+to exist if either can be realized in finite dimensions. Refer-
+ence [18] asked whether the same is true for the bilocal sce-
+nario. Here, we answer this question in the affirmative. In
+fact, the equivalence already holds when both Alice and Char-
+lie can be associated with a finite-dimensional system.
+Corollary 9. Assumep(αβγ|xyz) is compatible with any of
+the models given in Def. 4, Def. 5, Cor. 6, Cor. 7, Cor. 8, and is
+such that the C∗-algebra generated by Alice’s and Charlie’s
+POVMs are finite-dimensional.
+Thenp(αβγ|xyz) is compatible with all these models, and
+all operator algebras and Hilbert spaces can be chosen to be
+finite-dimensional.
+E. Proof of the equivalences
+The claimed equivalences derive from the following theo-
+rem. We state it in general terms (i.e. not yet specific to the
+various models of bilocality).
+Recall [29, Sec. II.6.4]. that the GNS construction asso-
+ciates with every C∗-algebraF and state σ∈ K(F) a triple
+(H,π,|Ω⟩), where H is a Hilbert space, π : F →B(H)
+a∗-representation, and|Ω⟩∈H a cyclic vector that imple-
+ments the state in the sense thatσ(f) =⟨Ω|π(f)|Ω⟩ for every
+f∈F .
+Theorem 10. Let A,B,C be mutually commuting C∗-
+subalgebras of some C∗-algebraD. Let ρ be a state on D
+such that
+ρ(ac) =ρ(a)ρ(c) ∀a∈A,c∈C . (4)
+Let (HABA,πA,|ΩA⟩) be the GNS representation of A
+associated with the state ρ. Let BA be the commutant of
+πA(A) in B(HABA). Define (HBCC,πC,|ΩC⟩) andBC ⊂
+B(HBCC) analogously.
+Then there exists a completely positive unital map
+Λ :B→B A ¯⊗BC⊂B(HABA⊗HBCC)
+
+=== page 6 ===
+6
+such that for alla∈A,b∈B,c∈C
+ρ(abc) = tr
+ 
+|ΩA⟩⟨ΩA|⊗| ΩC⟩⟨ΩC| πA(a)Λ(b)πC(c)
+
+,
+where all operators act onB(HABA⊗HBCC) in the natural
+way.
+The spacesHABA,HBCC have previously appeared in the
+proof of Thm. 3.2 in Ref. [18] (as VABL,VBRC). In fact, this
+inspired our formulation of Thm. 10. We go beyond this prior
+result by showing that they give rise to a tensor product struc-
+ture on the global Hilbert space.
+To prove the theorem, consider in addition the GNS repre-
+sentation (πD,HD,|ΩD⟩) ofD associated withρ.
+Lemma 11. There is an isometric embedding V :HABA⊗
+HBCC→HD which fulfills
+V|ΩA⟩⊗| ΩC⟩ =|ΩD⟩, (5)
+VπA(a)⊗πC(c) =πD(ac)V. (6)
+Equation (6) says that V intertwines πA⊗πC and πD as
+representations of theC∗-algebra generated byA andC.
+Proof. The factorization property (4) implies that|ΩA⟩⊗|ΩC⟩
+and|ΩD⟩ induce the same state on the C∗-algebra generated
+byA andC:
+⟨ΩA|⊗⟨ ΩC| (πA(a)⊗πC(c))|ΩA⟩⊗| ΩC⟩
+=ρ(a)ρ(c) =ρ(ac) =⟨ΩD|πD(ac)|ΩD⟩.
+By the uniqueness property of the GNS construction [35,
+Proposition 4.5.3], there exists a unitary
+V :HABA⊗HBCC→πD(AC)|ΩD⟩ =:K
+such that
+V|ΩA⟩⊗| ΩC⟩ =|ΩD⟩,
+VπA(a)⊗πC(c)V∗ =πD(ac) ↾K,
+where the final symbol denotes the restriction of πD toK =
+rangeV . The advertised intertwining relation follows by mul-
+tiplying the last line with V from the right and finally re-
+interpretingV as a map to all ofHD.
+Lemma 12. It holds that
+V∗πD(B)V ⊂B A ¯⊗BC.
+Proof. We first claim that
+V∗πD(B)V ⊂ (πA(A)⊗algπC(C))′.
+Indeed, fora∈A,b∈B,c∈C , Eq. (6) and its adjoint give
+[V∗πD(b)V,πA(a)⊗πC(c)]
+=V∗πD(b)VπA(a)⊗πC(c)−πA(a)⊗πC(c)V∗πD(b)V
+=V∗πD(b)πD(ac)V−V∗πD(ac)πD(b)V
+=V∗[πD(b),πD(ac)]V = 0.
+Now use the fact that the commutator of a set equals the com-
+mutator of its weak operator closure [29, I.2.5.3], the Bicom-
+mutant Theorem [35, Theorem 5.3.1], and the Commutation
+Theorem for von Neumann algebras [29, III.4.5.8] to conclude
+(πA(A)⊗algπC(C))′ = (πA(A) ¯⊗πC(C))′
+= (πA(A)′′ ¯⊗πC(C)′′)′
+= (πA(A)′′′ ¯⊗πC(C)′′′)
+= (πA(A)′ ¯⊗πC(C)′).
+Proof (of Theorem 10). Set
+Λ :b7→V∗πD(b)V
+and compute, using Lemma 11 repeatedly,
+⟨ΩA|⟨ΩC|πA(a)(V∗πD(b)V )πC(c)|ΩA⟩|ΩC⟩
+=⟨ΩA|⟨ΩC|V∗πD(a)πD(b)πD(c)V|ΩA⟩|ΩC⟩
+=⟨ΩD|πD(abc)|ΩD⟩ =ρ(abc).
+After these preparations, we can now proceed to prove the
+equivalences claimed to hold in Sec. III C. The proof’s chain
+of implications among the various models is visualized in
+Fig. 2. The implication “reduced model⇒ Renou-Xu model”
+also follows from Thm. 3.2 of [18].
+Proof (of the equivalences stated in Sec. III C).
+Step 1: We claim that if p(αβγ|xyz) is compatible with the
+tensor product model of Def. 4, the commuting observables
+model of Def. 5, or the Renou-Xu model of Cor. 8, then it is
+also compatible with the reduced model (Cor. 6).
+This is straightforward to verify, except perhaps for the
+Renou-Xu model, which we treat explicitly. Indeed, consider
+a Renou-Xu model realization for p(αβγ|xyz). LetA be the
+C∗-algebra generated by Alice’s POVM elements, and like-
+wise for Bob and Charlie. Let D be the C∗-algebra gener-
+ated byA,B,C. By assumption, there is a normalized vector
+|ψ⟩∈H , such thatPQ =|ψ⟩⟨ψ|. Letρ be the associated vec-
+tor stateρ(x) =⟨ψ|x|ψ⟩ onD. We have now constructed all
+objects that enter the reduced model. Using the commutation
+relations of the Renou-Xu model, one verifies the factoriza-
+tion constraint (3) for alla∈A,c∈C :
+ρ(ac) = tr(PQac )
+= tr(PPQQac )
+= tr(PQaQPc )
+=⟨ψ|a|ψ⟩⟨ψ|c|ψ⟩
+=ρ(a)ρ(c)
+(a similar calculation appears in the proof of Thm. 3.2 of
+Ref. [18]).
+Step 2 is to show that, by Thm. 10, the reduced model im-
+plies the mixed model. Assume a reduced model description
+with elementsA,B,C,D,ρ,A α|x,... is given. They satisfy
+
+=== page 7 ===
+7
+tensor product
+commuting observables
+Renou-Xu
+
+
+ ⇒ reduced =⇒
+Thm. 10
+mixed ⇒
+
+
+
+[if dim A, dim C < ∞] tensor product
+commuting observables
+Renou-Xu
+FIG. 2. Logical structure of the proof given in Sec. III E. The equivalences claimed in Sec. III C follow from this chain of implications among
+the various models of bilocal quantum correlations.
+the assumptions of Thm. 10, so that we can use the objects
+whose existence it guarantees in the construction of the mixed
+model. Indeed, one immediately verifies the properties of the
+mixed model from the choices
+H(mix)
+ABA =HABA, H(mix)
+BCC =HBCC,
+A(mix) =πA(A), C(mix) =πC(C),
+B(mix)
+A =BA, B(mix)
+C =BC,
+A(mix)
+a|x =πA(Aα|x),B (mix)
+b|y = Λ(Bβ|y), C (mix)
+c|z =πC(Cγ|z),
+σ(mix)
+ABA =|ΩA⟩⟨ΩA|,σ (mix)
+BCC =|ΩC⟩⟨ΩC|.
+Step 3: The mixed model obviously implies the commut-
+ing operator model. It also implies the Renou-Xu model by
+setting
+P =|ΩA⟩⟨ΩA|⊗ 1 BCC, Q = 1 ABA⊗| ΩC⟩⟨ΩC|
+(which is similar to the construction of their operators ρ,σ in
+the proof of Thm. 3.2 of Ref. [18]).
+It remains to treat the finite-dimensional case, as adver-
+tised in Cor. 9. The proof combines the construction given in
+Thm. 10 with the well-known fact (c.f. Ref. [31, 36]) that for
+two-party correlations, a finite-dimensional commuting model
+(as in Def. 2) implies a tensor product model (as in Def. 1).
+Specifically, we will use the following reformulation of The-
+orem 1 of Ref. [31]:
+Lemma 13. IfF,G are mutually commutingC∗-algebras on
+a finite-dimensional Hilbert space H, then there exist finite-
+dimensional Hilbert spacesHF,HG and an isometric embed-
+ding
+WFG :H→H F⊗HG
+such that
+WFGFW∗
+FG⊂B(HF)⊗ 1 ,
+WFGGW∗
+FG⊂ 1 ⊗B(HG).
+In keeping with the notation of C∗-algebras, W∗ denotes
+the adjoint of W , i.e. the operator that would be denoted as
+W† in physics notation.
+Proof (of the equivalences for finite-dimensional models).
+By the previous proof, all models imply the mixed model,
+where specificallyHABA,HBCC arise from the GNS repre-
+sentation of the observable algebras A andC respectively.
+In particular, the dimensions of these Hilbert spaces are
+upper-bounded by the dimension of the associated algebras,
+which in turn can be chosen to be the ones generated by
+Alice’s and Charlie’s observables. All operators that enter
+the construction of the mixed model as laid out in Cor. 7
+are linear maps on the tensor product of these two Hilbert
+spaces and therefore finite-dimensional. The third step of the
+previous proof then gives finite-dimensional realizations in
+the commuting operator model and the Renou-Xu model.
+It remains to be shown that p(αβγ|xyz) can be realized in
+the Hilbert space tensor product model (Def. 4), and in par-
+ticular in one involving only finite-dimensional spaces. Let
+a finite-dimensional mixed model realization of p(αβγ|xyz)
+with elementsHABA,HBCC,A,BA,BC,B,Aα|x,σABA,...
+be given. Our strategy is to apply Lem. 13 separately toA,BA
+and toBC,C. First, choosingF =A andG =BA in Lem. 13
+establishes the existence of two Hilbert spacesHA,HBA and
+an isometry
+WABA :HABA→HA⊗HBA.
+These allow us to choose the first set of objects that will enter
+the tensor product model as
+H(t.p.)
+A =HA, H(t.p.)
+BA =HBA,
+A(t.p.)
+α|x =WABAAα|xW∗
+ABA,
+σ(t.p.)
+ABA =WABAσABAW∗
+ABA.
+An analogous procedure starting withBC,C gives
+H(t.p.)
+BC =HBC, H(t.p.)
+C =HC,
+C (t.p.)
+γ|z =WBCCCγ|zW∗
+BCC,
+σ(t.p.)
+BCC =WBCCσBCCW∗
+BCC.
+Finally, with
+B(t.p.)
+β|y = (WABA⊗WBCC)Bβ|y(WABA⊗WBCC)∗
+it is straight-forward to verify the properties of the tensor
+product model.
+It is apparent from the proof that the condition in Cor. 9 can
+be slightly weakened. Instead of demanding that the algebras
+A,C be finite-dimensional, it is sufficient for the conclusions
+to hold that the GNS Hilbert spaceHABA⊗HBCC associated
+with the restriction of the state toAC is finite-dimensional.
+
+=== page 8 ===
+8
+IV . TWO COMPLETE HIERARCHIES FOR THE
+REDUCED MODEL
+In this section, we will construct complete hierarchies of
+relaxations for the reduced model defined in Cor. 6. Most
+ingredients for this construction and the completeness proof
+have been developed in Ref. [22] (based on Refs. [19, 21, 24,
+25]), to which we will refer for technical details.
+A. Outline
+LetD be the universalC∗-algebra ([29, Sec. II.8.3] , [22,
+Sec. 2.2]) with generators
+G ={1 ,Aα|x,Bβ|y,Cγ|z} (7)
+and relations
+[Aα|x,Bβ|y] = 0, ∀α,β,x,y, (8)
+[Bβ|y,Cγ|z] = 0, ∀β,γ,y,z, (9)
+[Cγ|z,Aα|x] = 0, ∀α,γ,x,z, (10)
+[1 ,X ] = 0 ∀X∈G , (11)
+1 X =X1 =X ∀X∈G , (12)
+X∗ =X⪰ 0, ∀X∈G , (13)
+X
+α
+Aα|x =
+X
+β
+Bβ|y =
+X
+γ
+Cγ|z = 1 ∀x,y,z. (14)
+In a precise sense [22, 29],D is the direct sum of all possible
+realizations of this algebra as operators on Hilbert spaces. Let
+K(D) be the set of all states onD.
+We aim to solve the following optimization problem:
+f∗ = min
+ρ∈K(D)
+X
+α,β,γ,x,y,z
+ 
+ρ(Aα|xBβ|yCγ|z)−p(αβγ|xyz)
+2
+s. t. ρ(ac)−ρ(a)ρ(c) = 0 ∀a∈A, c∈C
+(15)
+The objective function of this problem represents the minimal
+2-norm distance between a quantum realization of the reduced
+model of the bilocal scenario and the observed statistics. We
+accept that the correlations can arise from a reduced model
+if f∗ = 0 (or at most some small ε that represents numeri-
+cal and statistical tolerances). By Theorem 10 this means that
+such correlations can also arise in the mixed model, the com-
+muting observables model and the Renou-Xu model of the
+bilocal scenario. If f∗ > 0, the correlations cannot have been
+produced in any of the models, including the tensor product
+one.
+The problem (15) is “polynomial” in two different ways:
+The operatorsAα|xBβ|yCγ|z andac are (norm limits of) non-
+commutative polynomials in the generators, while the objec-
+tive function and the constraints are second order polynomials
+in the state.
+As described in Ref. [22], we will use two different tech-
+niques to deal with these non-linearities:
+1. Non-commutative polynomial optimization (NPO) [24]
+provides a hierarchy of SDP relaxations for optimizing
+over linear functions on states of the universal algebra
+D, subject to linear constraints. Its completeness fol-
+lows from the GNS construction.
+2. By passing to their polarizations, one can interpret the
+polynomial functions on K(D) as linear functions on
+symmetric product states on multiple copies ofD. Such
+states are constructed from symmetric extensions of
+states onD and completeness follows from a suitable
+quantum de Finetti theorem [22].
+In Sec. IV B below, we lay out how to use the results of
+Ref. [22] to construct a converging hierarchy of SDP relax-
+ations for polynomial optimization problems over algebras
+given in terms of generators and relations. While we focus on
+the bilocal scenario, the techniques can be straightforwardly
+adapted to general algebras and polynomials. We call this ap-
+proach the polarization hierarchy. In Sec. IV C, we describe
+a slightly different approach more closely related to quantum
+inflation [21], which we also prove to be complete.
+B. Polarization hierarchy
+To define the polarization hierarchy, choose a leveln∈ N
+and considern copies of the generators:
+Gn ={1 ,A (i)
+α|x,B (i)
+β|y,C (i)
+γ|z} i∈ 1,...n. (16)
+Relations analogous to those in Eqs. (8)-(14) are imposed for
+eachi, together with relations stating that operators for differ-
+ent values of the superscripti commute. The resulting univer-
+salC∗-algebraDn is the “largest C∗-algebra generated from
+n commuting copies ofD”, or, more precisely, the maximal
+C∗-tensor productDn =D⊗maxn [22, 26].
+We note that this algebra is closely related to the algebra
+that is constructed for the most general version of the quantum
+inflation technique [21]. This technique works with an even
+larger algebra, where e.g. Bob’s operators carry two indices
+B(i,j)
+β|y that can be varied independently. It will turn out that
+our simpler model is sufficient for the bilocal scenario.
+On then-th tensor product ofD, we can linearizen-th order
+polynomial functions on K(D) by passing to their polariza-
+tion as follows [22, Sec. 4.1.2]: With every state σ∈ K(D)
+associate its n-fold symmetric product state Πn
+σ ∈ K(Dn)
+which is defined by its action on product operators in the ob-
+vious way:
+Πn
+σ(x1⊗···⊗ xn) =σ(x1)...σ (xn)
+
+=== page 9 ===
+9
+and extended to all ofDn by linearity and continuity. Then
+X
+α,β,γ,x,y,z
+
+σ(A(1)
+α|xB(1)
+β|yC (1)
+γ|z)−p(αβγ|xyz)
+2
+=Π2
+σ
+ X
+α,β,γ,x,y,z
+A(1)
+α|xB(1)
+β|yC (1)
+γ|zA(2)
+α|xB(2)
+β|yC (2)
+γ|z
+− 2p(αβγ|xyz)A(1)
+α|xB(1)
+β|yC (1)
+γ|z +p(αβγ|xyz)21
+
+=:Π2
+σ(y0),
+wherey0 is the element ofD2 on which Π2
+σ is evaluated.
+Similarly, one can turn the independence constraint of (15)
+into a linear constraint on two inflation levels. However, it
+will turn out that for the completeness proof, it is necessary
+to impose constraints that are bounded from below and attain
+their minimal value on the feasible set of states. We will thus
+formulate the factorization constraints as
+(σ(ac)−σ(a)σ(c))2 = 0,
+so that the polarization becomes
+Π4
+σ(yac) = 0,
+where
+yac :=a(1)c(1)a(2)c(2)− 2a(1)c(1)a(2)c(3)
++a(1)c(2)a(3)c(4)
+Here, the indices indicate which copies of the POVM elements
+are used to generate the operator, e.g. a(2) can be written as
+(the norm limit of) a polynomial in the generators{1 ,A (2)
+α|x}.
+In this way, both the polynomial objective function and the
+polynomial constraints correspond to the linear pairing be-
+tween operators y0,yac∈D 4 and symmetric product states
+inK(D4).
+More generally, given a degreem polynomialq whose ac-
+tion on states is bounded from below by 0, one can optimize
+over polynomial constraints of the form
+q(σ) = 0,
+by passing to the polarizationyq∈D m ofq.
+Unfortunately, the set of symmetric product states is not
+an affine subset of state space, which means that the NPO
+method cannot directly optimize over it. To get around this
+restriction, we will combine three tricks. First, realize that
+NPO can optimize over the set of all symmetric states. In-
+deed, the symmetric group Sn acts onDn by permuting the
+indices of the generators, and a stateρ∈K(Dn) is symmetric
+if it satisfies the linear constraints ρ(π(x)) = ρ(x) for ev-
+eryx∈D n,π ∈ Sn. Second, in both quantum and classical
+probability [20, 22, 25, 37–39], there is a well-known family
+of statements collectively known as de Finetti theorems that
+show that symmetric states on infinitely many copies are a
+convex combination of symmetric product states. In our par-
+ticular case, “infinitely many copies” can be made rigorous as
+the inductive limit of maximal C∗-tensor products. The fol-
+lowing de Finetti theorem, adapted to this setting, is proven in
+Ref. [22]
+Theorem 14 (Max tensor product Quantum de Finetti The-
+orem [22] ) . Let ρ ∈ K(D∞) be a symmetric state on an
+infinite maximal tensor product
+D∞ = lim
+n→∞
+D⊗maxn.
+Then there exists a unique probability measure µ over states
+onD such that for allx∈D∞,
+ρ(x) =
+Z
+K(D)
+Π∞
+σ (x) dµ(σ), (17)
+where Π∞
+σ is the infinite symmetric product state on D∞ as-
+sociated with the stateσ onD.
+The third trick is to choose the polynomial constraints in
+such a way that they demand that point-wise non-negative
+polynomials are set to 0. If such an extremal condition is sat-
+isfied by a (continuous, as in Eq. (17)) convex combination,
+then it must in fact be satisfied almost surely. Applying this to
+the constraints and the objective function, we will see that in
+our case the Π∞
+σ are almost surely a feasible solution of (15)
+that attains the minimumf∞ = limn→∞fn of the relaxation
+(18) below.
+Let us now formulate the NPO hierarchy and its conver-
+gence proof more precisely. Define An to be the subalgebra
+ofDn that consists of Alice’s operators and similar for Bob
+and Charlie. Let U be a countable basis ofAn. Usually this
+basis is taken to be the set of all words in Alice’s POVM ele-
+ments. Define V for Bob andW for Charlie in a similar way.
+Forn≥ 4 the hierarchy of NPO problems is then given by
+fn = min
+ρ∈K(Dn)
+ρ(y0)
+s. t. ρ(π(abc)) =ρ(abc),
+ρ(yac) = 0,
+∀π∈Sn,a∈U,b∈V,c ∈W.
+(18)
+Each of these NPO problems can in turn be solved via the
+complete hierarchy of SDP relaxations introduced in Ref. [23,
+24], where we have used the formulation of NPO problems in
+Ref. [22].
+The following theorem then states that (15) and (18) are
+equivalent in the limit.
+Theorem 15. Letf∞ = limn→∞fn. It holds thatf∞ =f∗.
+Proof. The proof is very similar to that of Theorem 11 in
+Ref. [22].
+It is clear that
+fn≤f∗ ∀n, (19)
+since each level of the hierarchy (18) is a relaxation of the
+optimization problem (15).
+For the converse direction, use NPO to construct a stateωn
+onD∞ for each level n of the hierarchy by taking the infi-
+nite tensor product of an optimizing state of the optimization
+problem (18) at leveln.
+
+=== page 10 ===
+10
+By the Banach-Alaoglu theorem applied to the state space
+K(D∞), this sequence admits a weak ∗-convergent subse-
+quence. Let ω be its limit point. Since each ωn obeys the
+constraints of Eq. (18), so does ω. Hence, ω is a symmetric
+state on the algebraD∞ and Theorem 14 applies. That is, ω
+can be written as
+ω =
+Z
+dµ(σ) Π∞
+σ , (20)
+with µ a unique probability measure over states σ∈ K(D)
+and Π∞
+σ an infinite product state onD∞.
+By construction, each of the yac is non-negative on the
+product states Π∞
+σ . Therefore, since ω(yac) = 0 , and µ is
+a probability measure, it holds that
+Π∞
+σ (yac) = 0 almost everywhere w.r.t.µ.
+That is, there exists a full measure subset E ⊂ K(D) such
+that for allσ∈E, it holds that Π∞
+σ (yac) = 0.
+Hence, each Π∞
+σ withσ∈ E defines a feasible state σ for
+the optimization problem (15) by restricting to one copy of the
+algebraD. From this one can conclude that Π∞
+σ (y0)≥ f∞
+for allσ∈E, for otherwise one could have takenω to be the
+point measure on a state σ′ such that Πσ′(y0) < f∞. This
+would contradict the fact thatf∞ is a minimum.
+Combining this with the fact thatω(y0) =f∞, it must hold
+that
+Π∞
+σ (y0) =f∞ almost everywhere w.r.t.µ onE.
+I.e., there exists a set F ⊂ E with full measure, such that
+for all σ∈ F it holds that Π∞
+σ (y0) = f∞. Finally, we can
+conclude for anyσ∈F
+f∞ = Π∞
+σ (y0)≥f∗. (21)
+Combining Eqs. (19) and (21) yields f∞ = f∗, proving the
+theorem.
+C. Inflation hierarchy
+There exists a second convergent hierarchy that is more
+closely related to the quantum inflation hierarchy of Ref. [21].
+By showing convergence of such a hierarchy, we answer a
+question posed by Renou and Xu in Ref. [18]. The hierarchy
+is very similar to that of Eq. (18), but instead of treating the
+independence constraints as polynomial conditions, they are
+enforced by imposing additional symmetries. Loosely speak-
+ing, these new symmetry constraints posit that copies of the
+state σABA can be permuted independently of the copies of
+σBCC, see Fig. 3 for a visualization. The advantage of this
+hierarchy over the polarization hierarchy is that the symmetry
+constraints can already be imposed at level 2 of the hierarchy.
+In the notation introduced above Eq. (18), the leveln relax-
+ation is given by
+˜fn = min
+ρ∈K(Dn)
+ρ(y0)
+s. t. ρ(π(abc)) =ρ(abc), ∀π∈Sn
+ρ(aπ(c)) =ρ(ac), ∀π∈Sn.
+(22)
+A B
+X Y
+C
+Z
+ABA
+σ1
+ABA
+σ2
+σ1
+BCC
+σ2
+BCC
+FIG. 3. The level 2 inflation of the bilocal scenario. Each of the states
+σABA andσBCC has been copied. The total state of the system is
+permutation symmetric under the exchange of each of these copies.
+The inflation technique builds on this observation.
+Theorem 16. Let ˜f∞ = limn→∞ ˜fn. It holds that ˜f∞ =f∗.
+Proof. We only give a short proof sketch, since the techniques
+are nearly identical to the proof of Theorem 15.
+Construct a state ω∈ K(D∞) as the limit of optimizing
+states of (22) (c.f. the proof of Theorem 15). By the de Finetti
+theorem this state has the form
+ω =
+Z
+dµ(σ)Π∞
+σ . (23)
+Fix onen∈ N . Using the cycle notation, define the permu-
+tation
+π = (1,n + 1) (2,n + 2)... (n, 2n),
+i.e.π exchanges the 1st block ofn symbols with the 2nd block
+ofn symbols. Using the additional symmetry constraints of
+ω, when restricted to elements of Alice and Charlie, we see
+that for eacha∈A n andc∈C n, and for alln
+ω(ac) =ω(aπ(c)) (24)
+=
+Z
+dµ(σ) Π∞
+σ (aπ(c)) (25)
+=
+Z
+dµ(σ) Π∞
+σ (a)Π∞
+σ (π(c)) (26)
+=
+Z
+dµ(σ) Π∞
+σ (a)Π∞
+σ (c), (27)
+where the symmetry ofω was used in (24), Eq. (23) was used
+for Eq. (25), and in Eqs. (26) and (27) it was used that each
+Π∞
+σ is a symmetric product state over disjoint inflation lev-
+els. From this we can see that Π∞
+σ obeys the factorization
+constraint almost surely with respect toµ.
+The rest of the proof is now similar to that of Theorem 15.
+We note that this result also proves convergence of the
+“full” quantum inflation hierarchy [21] where Bob’s POVMs
+have two separate indices: For each n, the NPO problem that
+describes such a full inflation level is a relaxation of problem
+(15) that is at least as restrictive as the relaxation (18). Hence,
+its optimal value lies betweenfn andf∗ for everyn.
+
+=== page 11 ===
+11
+V . CONCLUSION AND DISCUSSION
+In this paper we have shown the equivalence of several
+models of locality for the bilocal scenario. In particular, we
+have shown that a reduced model of bilocality, in which only
+Alice and Charlie are supposed to be independent, is enough
+to reproduce exactly the bilocal quantum distributions in the
+commuting observables model. Furthermore, if Alice’s and
+Charlie’s systems can be associated with a finite dimensional
+algebra, the correlations also coincide with the tensor product
+model.
+Additionally, we have constructed two converging SDP
+hierarchies for the bilocal scenario, based on the above-
+mentioned classification. The polarization hierarchy makes
+use of the fact that certain polynomial expressions in a state
+can be linearized on tensor powers of that state. Here, this
+idea was applied to the factorization constraint between Alice
+and Charlie, but it can be applied to polynomials of higher or-
+der as well. The second hierarchy is a form of the quantum
+inflation hierarchy.
+In deriving these results, we have answered two open ques-
+tions of Ref. [18]:
+1. whether the bilocal scenario allows for new insights into
+Tsirelson’s problem: No.
+2. and whether the quantum inflation hierarchy is com-
+plete for the bilocal scenario: Yes.
+Several follow-up questions suggest themselves.
+One can ask whether it is possible to use the technique of
+Theorem 10 to show that the quantum inflation hierarchy con-
+verges for other networks. We believe Theorem 10 can be
+adapted to the more general case of star networks, in which
+one central party shares a bipartite quantum state withn other
+parties, but no other connections are present. Note that the
+bilocal scenario is a star network withn = 2, where Bob acts
+as the central party.
+The bilocal scenario is also a line network , in which the
+parties are arranged in a line and share a bipartite quantum
+state with each of their neighbours. It is less clear whether the
+technique can be extended to arbitrary line networks.
+A numerical comparison can be made between the hierar-
+chies suggested in this paper, the scalar extension hierarchy,
+and the quantum inflation hierarchy as originally suggested in
+Ref. [21]. We leave such a comparison for later work.
+VI. ACKNOWLEDGMENTS
+We thank Johan ˚Aberg, Mariami Gachechiladze, Alejan-
+dro Pozas-Kerstjens, Marc-Olivier Renou, Xiangling Xu, and
+Julius Zeiss for insightful discussions. This work has been
+supported by Germany’s Excellence Strategy – Cluster of Ex-
+cellence Matter and Light for Quantum Computing (ML4Q)
+EXC 2004/1 – 390534769.
+Data sharing. Data sharing is not applicable to this article
+as no new data were created or analyzed in this study.
+[1] J. S. Bell, On the einstein podolsky rosen paradox, Physics
+Physique Fizika 1, 195 (1964).
+[2] J. S. Bell, Speakable and unspeakable in quantum mechanics:
+Collected papers on quantum philosophy (Cambridge univer-
+sity press, 2004).
+[3] N. Brunner, D. Cavalcanti, S. Pironio, V . Scarani, and
+S. Wehner, Bell nonlocality, Reviews of Modern Physics 86,
+419 (2014).
+[4] J.-W. Pan, Z.-B. Chen, C.-Y . Lu, H. Weinfurter, A. Zeilinger,
+and M. ˙Zukowski, Multiphoton entanglement and interferome-
+try, Rev. Mod. Phys.84, 777 (2012).
+[5] A. Ac ´ın, N. Brunner, N. Gisin, S. Massar, S. Pironio, and
+V . Scarani, Device-independent security of quantum cryptog-
+raphy against collective attacks, Physical Review Letters 98,
+230501 (2007).
+[6] J. Barrett, L. Hardy, and A. Kent, No signaling and quantum
+key distribution, Physical review letters 95, 010503 (2005).
+[7] S. Pironio, A. Ac ´ın, S. Massar, A. B. de La Giroday, D. N.
+Matsukevich, P. Maunz, S. Olmschenk, D. Hayes, L. Luo, T. A.
+Manning, et al., Random numbers certified by bell’s theorem,
+Nature 464, 1021 (2010).
+[8] J.-D. Bancal, N. Gisin, Y .-C. Liang, and S. Pironio, Device-
+independent witnesses of genuine multipartite entanglement,
+Phys. Rev. Lett. 106, 250404 (2011).
+[9] C. Branciard, D. Rosset, N. Gisin, and S. Pironio, Bilocal versus
+nonbilocal correlations in entanglement-swapping experiments,
+Physical Review A 85, 032119 (2012).
+[10] D. Rosset, C. Branciard, T. J. Barnea, G. P ¨utz, N. Brunner, and
+N. Gisin, Nonlinear bell inequalities tailored for quantum net-
+works, Physical review letters 116, 010403 (2016).
+[11] A. Pozas-Kerstjens, N. Gisin, and A. Tavakoli, Full network
+nonlocality, Physical review letters 128, 010403 (2022).
+[12] A. Tavakoli, A. Pozas-Kerstjens, M.-X. Luo, and M.-O. Renou,
+Bell nonlocality in networks, Reports on Progress in Physics
+85, 056001 (2022).
+[13] M. ˙Zukowski, A. Zeilinger, M. A. Horne, and A. K. Ek-
+ert, “event-ready-detectors” bell experiment via entanglement
+swapping, Phys. Rev. Lett. 71, 4287 (1993).
+[14] A. Canabarro, S. Brito, and R. Chaves, Machine learning non-
+local correlations, Physical review letters 122, 200401 (2019).
+[15] R. Chaves, C. Majenz, and D. Gross, Information–theoretic im-
+plications of quantum causal structures, Nature communica-
+tions 6, 1 (2015).
+[16] A. Pozas Kerstjens, Quantum information outside quantum in-
+formation (2019).
+[17] A. Pozas-Kerstjens, R. Rabelo, L. Rudnicki, R. Chaves, D. Cav-
+alcanti, M. Navascu´es, and A. Ac´ın, Bounding the sets of classi-
+cal and quantum correlations in networks, Phys. Rev. Lett.123,
+140503 (2019).
+[18] M.-O. Renou and X. Xu, Two convergent npa-like hier-
+archies for the quantum bilocal scenario, arXiv preprint
+arXiv:2210.09065v2 (2022).
+[19] E. Wolfe, R. W. Spekkens, and T. Fritz, The inflation technique
+for causal inference with latent variables, Journal of Causal In-
+ference 7, 10.1515/jci-2017-0020 (2019).
+
+=== page 12 ===
+12
+[20] M. Navascu ´es and E. Wolfe, The inflation technique completely
+solves the causal compatibility problem, Journal of Causal In-
+ference 8, 70 (2020).
+[21] E. Wolfe, A. Pozas-Kerstjens, M. Grinberg, D. Rosset, A. Ac´ın,
+and M. Navascu ´es, Quantum inflation: A general approach to
+quantum causal compatibility, Physical Review X 11, 021043
+(2021).
+[22] L. T. Ligthart, M. Gachechiladze, and D. Gross, A convergent
+inflation hierarchy for quantum causal structures, arXiv preprint
+arXiv:2110.14659 (2021).
+[23] M. Navascu ´es, S. Pironio, and A. Ac ´ın, A convergent hierar-
+chy of semidefinite programs characterizing the set of quantum
+correlations, New Journal of Physics 10, 073013 (2008).
+[24] S. Pironio, M. Navascu ´es, and A. Acin, Convergent relaxations
+of polynomial optimization problems with noncommuting vari-
+ables, SIAM Journal on Optimization 20, 2157 (2010).
+[25] G. Raggio and R. Werner, Quantum statistical mechanics of
+general mean field systems, Helv. Phys. Acta 62 (1989).
+[26] O. Bratteli and D. W. Robinson, Operator Algebras and Quan-
+tum Statistical Mechanics: Volume 1: C∗-and W∗-Algebras.
+Symmetry Groups. Decomposition of States (Springer, Berlin,
+2012).
+[27] K. Landsman, Foundations of quantum theory: From classical
+concepts to operator algebras (Springer Nature, 2017).
+[28] V . Moretti,Fundamental Mathematical Structures of Quantum
+Theory: Spectral Theory, Foundational Issues, Symmetries, Al-
+gebraic Formulation(Springer, 2019).
+[29] B. Blackadar, Operator algebras: theory of C∗-algebras and
+von Neumann algebras, V ol. 122 (Springer Science & Business
+Media, Berlin, 2006).
+[30] M. Takesaki, Theory of operator algebras I, V ol. 124 (Springer
+Science & Business Media, Berlin, 2001).
+[31] V . B. Scholz and R. F. Werner, Tsirelson’s problem,
+arXiv:0812.4305 (2008).
+[32] M. Junge, M. Navascues, C. Palazuelos, D. Perez-Garcia,
+V . B. Scholz, and R. F. Werner, Connes’ embedding problem
+and Tsirelson’s problem, Journal of Mathematical Physics 52,
+012102 (2011).
+[33] T. Fritz, Tsirelson’s problem and Kirchberg’s conjecture, Re-
+views in Mathematical Physics 24, 1250012 (2012).
+[34] Z. Ji, A. Natarajan, T. Vidick, J. Wright, and H. Yuen,MIP∗ =
+RE, arXiv:2001.04383 (2020).
+[35] R. V . Kadison and J. R. Ringrose, Fundamentals of the Theory
+of Operator Algebras. Vol. I (Oxford University Press, 1983).
+[36] B. Tsirelson, Bell inequalities and operator algebras (open
+problem 33 in quantum information) (2007).
+[37] P. Diaconis and D. Freedman, Finite exchangeable sequences,
+The Annals of Probability , 745 (1980).
+[38] P. Diaconis and D. Freedman, A dozen de Finetti-style results
+in search of a theory, inAnnales de l’IHP Probabilit´es et statis-
+tiques, V ol. 23 (1987) pp. 397–423.
+[39] C. M. Caves, C. A. Fuchs, and R. Schack, Unknown quantum
+states: the quantum de finetti representation, Journal of Mathe-
+matical Physics 43, 4537 (2002).
